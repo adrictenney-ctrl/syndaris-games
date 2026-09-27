@@ -8,10 +8,8 @@ Pick the game in the table's lobby.
 
 - **The table device is the server.** Open `table.html` on it and it hosts the game. Game rules, dealing,
   scoring, and bots all run there (`js/euchre.js`).
-- **Phones join by scanning the QR code** on the table. They connect directly to the table over WebRTC
-  (PeerJS), with no app install and no accounts. A phone only ever receives its own hand.
-- The free PeerJS cloud introduces the devices to each other, so an internet connection is needed to
-  connect. After that, game traffic goes device to device.
+- **Phones join by scanning the QR code** on the table. Messages pass through an internet relay (see Networking)
+  with no app install and no accounts. A phone only ever receives its own hand.
 - Each seat's name plate, speech bubbles, and played cards are rotated to face the person sitting on that
   side of the table. Use **⟲ Flat / Upright** in the corner to switch to TV mode, where nothing is rotated.
 - Empty seats can be filled with bots. If someone's phone dies mid-game, their seat shows "reconnecting…".
@@ -53,6 +51,21 @@ next hand. On the phone, tap your hole cards to flip them face down if someone's
 One simplification: an all-in raise that's smaller than a full raise still lets players who already acted
 raise again. In casino rules they could only call or fold.
 
+## Publishing an update
+The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndaris-games/ (from the `main`
+branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
+pushing a change, bump N everywhere:
+```bash
+N=4; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+```
+
+## Networking
+Phones and the table exchange messages through a free public MQTT relay (`broker.emqx.io`, over secure
+WebSockets). Messages are encrypted with a key derived from the room code. That stops casual snooping on the
+public relay, but anyone who knows the room code could decrypt them. The table device still runs the game; the
+relay only forwards messages. Direct device-to-device (WebRTC) links were dropped because many home routers
+and cellular networks block them.
+
 ## Adding a game
 1. Add its seat layout to `js/games.js`.
 2. Write a rules engine (see `js/euchre.js` and `js/poker.js`).
@@ -69,6 +82,6 @@ raise again. In casino rules they could only call or fold.
 | `js/play-euchre.js`, `js/play-poker.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
 | `js/euchre.js`, `js/poker.js` | Rules engines, per-player views, bots |
-| `js/net.js` | Host/join networking (PeerJS) |
+| `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |
