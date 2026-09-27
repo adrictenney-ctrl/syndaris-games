@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0f3f28">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg">
+  <title>Syndaris Table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cards.css">
+  <style>
+    body { display: grid; place-items: center; min-height: 100%; padding: 24px 16px; }
+    main { width: 100%; max-width: 760px; text-align: center; }
+    h1 { font-family: 'Fraunces', Georgia, serif; color: var(--gold); font-size: clamp(40px, 9vw, 72px); margin: 0; letter-spacing: -.02em; }
+    .tag { color: var(--ink-dim); font-size: 18px; margin: 8px 0 32px; }
+    .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    a.choice {
+      display: block; text-decoration: none; color: var(--ink); text-align: left; padding: 24px; border-radius: 22px;
+      background: rgba(0,0,0,.25); border: 2px solid rgba(255,255,255,.1); transition: transform .15s, border-color .15s;
+    }
+    a.choice:hover { transform: translateY(-3px); border-color: var(--gold); }
+    a.choice b { display: block; font-size: 22px; margin-bottom: 6px; }
+    a.choice span { color: var(--ink-dim); line-height: 1.45; }
+    .icon { font-size: 34px; margin-bottom: 10px; display: block; }
+    .deco { display: flex; justify-content: center; margin-bottom: 20px; height: 110px; }
+    .deco .card { --cw: 70px; margin: 0 -14px; }
+    .games { margin-top: 28px; color: var(--ink-dim); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="deco" id="deco"></div>
+    <h1>Syndaris Table</h1>
+    <p class="tag">One screen in the middle. Everyone's hand on their phone.</p>
+    <div class="choices">
+      <a class="choice" href="table.html"><span class="icon">🂠</span><b>Be the table</b><span>Lay this tablet (or TV, or laptop) in the middle. It hosts the game and shows the cards everyone plays.</span></a>
+      <a class="choice" href="play.html"><span class="icon">📱</span><b>Join with my phone</b><span>Scan the code on the table, or tap here and type the 4-letter room code.</span></a>
+    </div>
+    <p class="games">Now playing: Euchre · Texas Hold'em</p>
+  </main>
+  <script type="module">
+    import { cardEl } from './js/cards.js';
+    const deco = document.getElementById('deco');
+    ['JH', 'JD', 'AH', 'KS', 'QC'].forEach((c, i) => {
+      const el = cardEl(c);
+      el.style.transform = `rotate(${(i - 2) * 9}deg) translateY(${Math.abs(i - 2) * 6}px)`;
+      deco.appendChild(el);
+    });
+  </script>
+</body>
+</html>

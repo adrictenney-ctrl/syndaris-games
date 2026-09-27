@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3f28">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg">
+  <title>Syndaris Hand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/play.css">
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+  <main id="app">
+    <section id="s-join" class="screen">
+      <h1>Syndaris</h1>
+      <p class="sub">Your phone is your hand of cards.</p>
+      <label class="field">Your name
+        <input id="name" maxlength="14" autocomplete="nickname" placeholder="e.g. Sam">
+      </label>
+      <label class="field" id="roomField">Room code
+        <input id="room" maxlength="4" autocapitalize="characters" autocomplete="off" placeholder="ABCD">
+      </label>
+      <button id="joinBtn" class="primary">Join the table</button>
+    </section>
+
+    <section id="s-wait" class="screen">
+      <div class="spinner"></div>
+      <p id="waitMsg">Connecting to the table…</p>
+      <button id="cancelBtn" class="ghost">Back</button>
+    </section>
+
+    <section id="s-seat" class="screen">
+      <p class="eyebrow" id="seatGame"></p>
+      <h2>Where are you sitting?</h2>
+      <p class="sub">Pick your spot around the table screen — the open seats say "Open seat" facing you.</p>
+      <div class="minitable" id="minitable">
+        <div class="mt-felt">TABLE</div>
+      </div>
+    </section>
+
+    <section id="s-game" class="screen">
+      <header class="hud">
+        <div class="team" id="hudL"></div>
+        <div id="hudC" class="trump"></div>
+        <div class="team" id="hudR"></div>
+      </header>
+      <div id="whoami"></div>
+      <div id="board"></div>
+      <div id="myHand"></div>
+      <div id="status">
+        <div id="statusMain"></div>
+        <div id="statusSub"></div>
+      </div>
+      <div id="panel"></div>
+      <div id="handWrap"><div id="hand"></div></div>
+      <div id="handHint"></div>
+    </section>
+
+    <div id="netbar" hidden></div>
+    <div id="toast"></div>
+  </main>
+  <script type="module" src="js/play.js"></script>
+</body>
+</html>

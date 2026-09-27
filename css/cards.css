@@ -1,0 +1,77 @@
+:root {
+  --felt-1: #1f6b45;
+  --felt-2: #0f3f28;
+  --ink: #f4efe2;
+  --ink-dim: rgba(244, 239, 226, 0.62);
+  --gold: #e9c46a;
+  --card-red: #c1121f;
+  --card-black: #16161d;
+  --seat-0: #5aa9ff;
+  --seat-1: #ffb347;
+  --seat-2: #b58cff;
+  --seat-3: #4fd18b;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: radial-gradient(ellipse at center, var(--felt-1) 0%, var(--felt-2) 75%, #0a2a1b 100%);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+button { font: inherit; }
+
+.card {
+  --cw: 80px;
+  position: relative;
+  flex: none;
+  width: var(--cw);
+  height: calc(var(--cw) * 1.4);
+  border-radius: calc(var(--cw) * 0.08);
+  background: linear-gradient(160deg, #fffdf7 0%, #f3eee1 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 calc(var(--cw) * .03) calc(var(--cw) * .08) rgba(0,0,0,.35);
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-size: calc(var(--cw) * 0.21);
+  color: var(--card-black);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.card.red { color: var(--card-red); }
+.card .corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.95;
+}
+.card .corner.tl { top: 5%; left: 6%; }
+.card .corner.br { bottom: 5%; right: 6%; transform: rotate(180deg); }
+.card .corner b { font-weight: 700; font-size: 1.05em; letter-spacing: -0.04em; }
+.card .corner i { font-style: normal; font-size: 0.9em; }
+.card .mid {
+  position: absolute;
+  inset: 20% 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card .pip { font-size: 2.5em; line-height: 1; }
+.card.ace .pip { font-size: 3.3em; }
+.card.face .mid {
+  border: calc(var(--cw) * 0.012 + 0.5px) solid currentColor;
+  border-radius: calc(var(--cw) * 0.05);
+  background: repeating-linear-gradient(45deg, rgba(233,196,106,.16) 0 4px, transparent 4px 8px);
+}
+.card .fl { font-size: 2.1em; font-weight: 700; line-height: 1; }
+.card .fs { font-size: 1.3em; line-height: 1; }
+
+.card.back {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(233,196,106,.55) 0 8%, transparent 9%),
+    repeating-linear-gradient(45deg, #7a1c2c 0 5px, #8f2436 5px 10px);
+  border: calc(var(--cw) * 0.06) solid #fbf7ec;
+}
+:root { --seat-4: #ff6b8b; --seat-5: #3ad1d8; --seat-6: #f4e04d; --seat-7: #ff8c5a; }

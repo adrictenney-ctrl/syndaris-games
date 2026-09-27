@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3f28">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg">
+  <title>Syndaris Table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/table.css">
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+  <div id="felt">
+    <div id="watermark"></div>
+    <div id="center">
+      <div id="kitty"></div>
+      <div id="trick"></div>
+    </div>
+
+    <div id="lobby">
+      <div class="mirror" aria-hidden="true">Room <b class="roomcode"></b></div>
+      <div class="lobby-main">
+        <div id="qr"></div>
+        <div class="lobby-info">
+          <div id="gamePick" class="gamepick"></div>
+          <h1 id="gameTitle">Euchre</h1>
+          <p class="scan">Scan with your phone to join · Room <b class="roomcode"></b></p>
+          <p class="url" id="joinUrl"></p>
+          <p class="warn" id="localWarn" hidden>This page is open on <b>localhost</b>, which phones can't reach. Open it using this computer's network address instead (see README).</p>
+          <div class="settings" id="settings"></div>
+          <button id="startBtn" class="big" disabled>Waiting for players…</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay" hidden></div>
+
+    <div id="toolbar">
+      <span id="netstatus" class="pill">Connecting…</span>
+      <button id="btnOrient" class="tool" title="Switch between flat (around the table) and upright (TV)">⟲ Flat</button>
+      <button id="btnFull" class="tool" title="Full screen">⤢</button>
+      <button id="btnEnd" class="tool" title="End game and return to lobby" hidden>End game</button>
+    </div>
+  </div>
+
+  <template id="seatTpl">
+    <div class="seat">
+      <div class="bubble"></div>
+      <div class="fan"></div>
+      <div class="plate">
+        <div class="who"><span class="dot"></span><span class="name"></span><span class="badges"></span></div>
+        <div class="meta"></div>
+        <div class="seat-actions">
+          <button class="addbot">+ Add bot</button>
+          <button class="kick">Remove</button>
+          <button class="takeover">Let a bot play</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script type="module" src="js/table.js"></script>
+</body>
+</html>

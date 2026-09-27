@@ -1,0 +1,10 @@
+{
+  "name": "Syndaris Table",
+  "short_name": "Syndaris",
+  "description": "Card games with a shared table screen and your hand on your phone.",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "background_color": "#0f3f28",
+  "theme_color": "#0f3f28",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
