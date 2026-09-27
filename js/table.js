@@ -48,26 +48,13 @@ const clients = new Map(); // pid -> { name, lastSeen }
 
 // ---------------------------------------------------------------- networking
 
-let everOnline = false;
 const net = hostRoom(session.room, {
   onStatus(s) {
-    if (s === 'online') everOnline = true;
     const el = $('#netstatus');
     el.className = 'pill ' + (s === 'online' ? 'ok' : 'bad');
     el.textContent = {
       online: `Room ${session.room}`, connecting: 'Connecting…', reconnecting: 'Reconnecting…', waiting: 'Opening room…',
     }[s] || s;
-  },
-  onIdTaken() {
-    // A brand-new room whose code is somehow in use elsewhere: just pick another.
-    if (!everOnline && !session.game && !session.players.some(Boolean)) {
-      session.room = newRoom();
-      save();
-      renderLobbyInfo();
-      setTimeout(() => net.rename(session.room), 0);
-      return true;
-    }
-    return false;
   },
   onMessage,
   onLeave(pid) {

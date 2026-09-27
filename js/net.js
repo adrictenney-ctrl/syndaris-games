@@ -1,134 +1,164 @@
-// Peer-to-peer networking via PeerJS (WebRTC). The table device *is* the server:
-// it registers a room id, phones connect straight to it. Game traffic flows device
-// to device; the PeerJS cloud is only used to introduce them (needs internet once).
-/* global Peer */
+// Networking between the table and the phones.
+//
+// Messages go through a public MQTT relay over secure WebSockets instead of a direct
+// device-to-device link. Direct (WebRTC) links fail on many home routers and on
+// cellular, and a relay works on any connection that can load a web page. The table is
+// still the "server": it runs the game, and the relay only forwards messages.
+//
+// Topics:  <PREFIX>/<ROOM>/host       phones → table
+//          <PREFIX>/<ROOM>/p/<pid>    table → one phone
+// Payloads are AES-GCM encrypted with a key derived from the room code (when the browser
+// allows it), so other users of the public relay can't casually read anyone's hand.
+/* global mqtt */
 
-const PREFIX = 'syndaris-table-v1-';
-const CONN_OPTS = { reliable: true, serialization: 'json' };
+const BROKER = 'wss://broker.emqx.io:8084/mqtt';
+const PREFIX = 'syndaris-table/v2';
+const validPid = p => typeof p === 'string' && /^[\w-]{1,40}$/.test(p);
+const rand = () => Math.random().toString(36).slice(2, 10);
 
-export function hostRoom(room, { onMessage, onLeave, onStatus, onIdTaken }) {
-  let peer = null;
-  const conns = new Map(); // playerId -> DataConnection
+// ---------------------------------------------------------------- scrambling
 
-  function open() {
-    peer = new Peer(PREFIX + room);
-    onStatus('connecting');
-    peer.on('open', () => onStatus('online'));
-    peer.on('connection', conn => {
-      conn.on('data', msg => {
-        if (!msg || typeof msg !== 'object') return;
-        if (msg.t === 'hello' && typeof msg.id === 'string') {
-          const old = conns.get(msg.id);
-          if (old && old !== conn) old.close();
-          conn._pid = msg.id;
-          conns.set(msg.id, conn);
-        }
-        if (conn._pid) onMessage(conn._pid, msg);
-      });
-      conn.on('close', () => {
-        if (conn._pid && conns.get(conn._pid) === conn) {
-          conns.delete(conn._pid);
-          onLeave(conn._pid);
-        }
-      });
-      conn.on('error', () => {});
-    });
-    peer.on('disconnected', () => {
-      onStatus('reconnecting');
-      setTimeout(() => { if (!peer.destroyed && peer.disconnected) peer.reconnect(); }, 2000);
-    });
-    peer.on('error', err => {
-      if (err.type === 'unavailable-id') {
-        // Usually our own previous page load still holding the id for a moment.
-        onStatus('waiting');
-        peer.destroy();
-        if (onIdTaken && onIdTaken()) return;
-        setTimeout(open, 3000);
-      } else if (['network', 'server-error', 'socket-error', 'socket-closed'].includes(err.type)) {
-        onStatus('reconnecting');
-        setTimeout(() => {
-          if (peer.destroyed) open();
-          else if (peer.disconnected) peer.reconnect();
-        }, 3000);
-      }
-    });
+const keys = new Map();
+function roomKey(room) {
+  if (!globalThis.crypto?.subtle) return Promise.resolve(null); // plain http on a LAN address
+  if (!keys.has(room)) {
+    keys.set(room, crypto.subtle
+      .digest('SHA-256', new TextEncoder().encode('syndaris-table:' + room))
+      .then(raw => crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['encrypt', 'decrypt']))
+      .catch(() => null));
   }
-  open();
+  return keys.get(room);
+}
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const unb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+
+async function pack(room, obj) {
+  const text = JSON.stringify(obj);
+  const key = await roomKey(room);
+  if (!key) return text;
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const data = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(text));
+  return JSON.stringify({ iv: b64(iv), e: b64(data) });
+}
+
+async function unpack(room, payload) {
+  try {
+    const outer = JSON.parse(new TextDecoder().decode(payload));
+    if (!outer || typeof outer.e !== 'string') return outer;
+    const key = await roomKey(room);
+    if (!key) return null;
+    const data = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(outer.iv) }, key, unb64(outer.e));
+    return JSON.parse(new TextDecoder().decode(data));
+  } catch {
+    return null;
+  }
+}
+
+function connect(opts) {
+  return mqtt.connect(BROKER, { keepalive: 20, reconnectPeriod: 2000, connectTimeout: 10000, clean: true, ...opts });
+}
+
+// ---------------------------------------------------------------- table side
+
+export function hostRoom(room, { onMessage, onLeave, onStatus }) {
+  const seen = new Map(); // pid -> last message time
+  const inbox = () => `${PREFIX}/${room}/host`;
+  const client = connect({ clientId: 'syn-host-' + rand() });
+
+  onStatus('connecting');
+  client.on('connect', () => {
+    client.subscribe(inbox(), err => onStatus(err ? 'reconnecting' : 'online'));
+  });
+  client.on('reconnect', () => onStatus('reconnecting'));
+  client.on('offline', () => onStatus('reconnecting'));
+  client.on('error', () => {});
+  client.on('message', async (topic, payload) => {
+    if (topic !== inbox()) return;
+    const d = await unpack(room, payload);
+    if (!d || !validPid(d.from) || !d.msg || typeof d.msg !== 'object') return;
+    if (d.msg.t === 'bye') {
+      if (seen.delete(d.from)) onLeave(d.from);
+      return;
+    }
+    seen.set(d.from, Date.now());
+    onMessage(d.from, d.msg);
+  });
 
   return {
-    send(pid, msg) {
-      const c = conns.get(pid);
-      if (c && c.open) c.send(msg);
+    async send(pid, msg) {
+      if (!client.connected || !validPid(pid)) return;
+      client.publish(`${PREFIX}/${room}/p/${pid}`, await pack(room, msg));
     },
-    clients: () => [...conns.keys()],
+    clients: () => [...seen].filter(([, t]) => Date.now() - t < 30000).map(([p]) => p),
     rename(newRoom) {
+      client.unsubscribe(inbox());
       room = newRoom;
-      if (peer && !peer.destroyed) peer.destroy();
-      open();
+      if (client.connected) client.subscribe(inbox());
     },
   };
 }
 
-export function joinRoom(room, { onOpen, onMessage, onStatus }) {
-  let peer = null, conn = null, alive = false, lastMsg = 0, retry = null, openTimer = null;
+// ---------------------------------------------------------------- phone side
 
-  function startPeer() {
-    if (peer && !peer.destroyed) peer.destroy();
-    peer = new Peer();
-    peer.on('open', connect);
-    peer.on('disconnected', () => { if (!peer.destroyed) setTimeout(() => peer.disconnected && !peer.destroyed && peer.reconnect(), 1500); });
-    peer.on('error', err => {
-      if (err.type === 'peer-unavailable') { onStatus('no-table'); schedule(connect, 3000); }
-      else { onStatus('offline'); schedule(startPeer, 3000); }
+export function joinRoom(room, { pid, onOpen, onMessage, onStatus }) {
+  const hostTopic = `${PREFIX}/${room}/host`;
+  const mine = `${PREFIX}/${room}/p/${pid}`;
+  let alive = false, lastMsg = 0, helloAt = 0;
+
+  // The relay sends this "bye" for us if the phone drops off without saying goodbye.
+  const client = connect({
+    clientId: 'syn-' + pid + '-' + rand(),
+    will: { topic: hostTopic, payload: JSON.stringify({ from: pid, msg: { t: 'bye' } }), qos: 0, retain: false },
+  });
+
+  const hello = () => { helloAt = Date.now(); onOpen(); };
+
+  onStatus('connecting');
+  client.on('connect', () => {
+    client.subscribe(mine, err => {
+      if (err) return onStatus('offline');
+      onStatus('connecting');
+      hello();
     });
-  }
+  });
+  client.on('reconnect', () => { alive = false; onStatus('lost'); });
+  client.on('offline', () => { alive = false; onStatus('offline'); });
+  client.on('error', () => {});
+  client.on('message', async (topic, payload) => {
+    if (topic !== mine) return;
+    const m = await unpack(room, payload);
+    if (!m) return;
+    lastMsg = Date.now();
+    if (!alive) { alive = true; onStatus('online'); }
+    onMessage(m);
+  });
 
-  function schedule(fn, ms) {
-    clearTimeout(retry);
-    retry = setTimeout(fn, ms);
-  }
-
-  function connect() {
-    if (!peer || peer.destroyed || peer.disconnected) return startPeer();
-    if (conn) { try { conn.close(); } catch {} }
-    onStatus('connecting');
-    const c = conn = peer.connect(PREFIX + room, CONN_OPTS);
-    clearTimeout(openTimer);
-    openTimer = setTimeout(() => { if (c === conn && !c.open) connect(); }, 10000);
-    c.on('open', () => {
-      if (c !== conn) return;
-      clearTimeout(openTimer);
-      alive = true;
-      lastMsg = Date.now();
-      onStatus('online');
-      onOpen();
-    });
-    c.on('data', m => { if (c === conn) { lastMsg = Date.now(); onMessage(m); } });
-    c.on('close', () => {
-      if (c !== conn) return;
-      alive = false;
-      onStatus('lost');
-      schedule(connect, 1500);
-    });
-  }
-
-  // Heartbeat: phones going to sleep often drop the link without a clean close.
+  // Heartbeat, plus re-saying hello if the table hasn't answered (table not open yet,
+  // table reloaded, or messages lost while the phone was asleep).
   setInterval(() => {
-    if (!alive) return;
-    try { conn.send({ t: 'ping' }); } catch {}
-    if (Date.now() - lastMsg > 12000) { alive = false; onStatus('lost'); connect(); }
+    if (!client.connected) return;
+    send({ t: 'ping' });
+    if (alive && Date.now() - lastMsg > 12000) { alive = false; onStatus('lost'); hello(); }
+    else if (!alive && Date.now() - helloAt > 5000) { onStatus('no-table'); hello(); }
   }, 4000);
 
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && (!alive || Date.now() - lastMsg > 6000)) connect();
+    if (document.visibilityState !== 'visible') return;
+    if (!client.connected) client.reconnect();
+    else hello();
   });
 
-  startPeer();
+  async function send(msg) {
+    if (!client.connected) return false;
+    client.publish(hostTopic, await pack(room, { from: pid, msg }));
+    return true;
+  }
 
   return {
     send(msg) {
-      if (conn && conn.open) { conn.send(msg); return true; }
-      return false;
+      if (!client.connected) return false;
+      send(msg);
+      return true;
     },
   };
 }

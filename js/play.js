@@ -46,6 +46,7 @@ $('#joinBtn').onclick = () => {
   $('#waitMsg').textContent = 'Connecting to the table…';
   show('s-wait');
   net = joinRoom(room, {
+    pid,
     onOpen: () => net.send({ t: 'hello', id: pid, name }),
     onMessage,
     onStatus,
