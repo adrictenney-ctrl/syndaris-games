@@ -1,12 +1,13 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=3';
-import { cardEl, snap, keepAwake } from './cards.js?v=3';
-import { hostRoom } from './net.js?v=3';
-import euchre from './table-euchre.js?v=3';
-import holdem from './table-poker.js?v=3';
+import { GAMES, SIDE_ROT } from './games.js?v=4';
+import { cardEl, snap, keepAwake } from './cards.js?v=4';
+import { hostRoom } from './net.js?v=4';
+import euchre from './table-euchre.js?v=4';
+import holdem from './table-poker.js?v=4';
+import outcast from './table-outcast.js?v=4';
 
-const MODES = { euchre, holdem };
+const MODES = { euchre, holdem, outcast };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
@@ -19,7 +20,7 @@ function freshSession(room) {
     room: room || newRoom(),
     gameId: 'euchre',
     players: new Array(GAMES.euchre.layout.length).fill(null),
-    settings: { euchre: { ...euchre.defaults }, holdem: { ...holdem.defaults } },
+    settings: Object.fromEntries(Object.entries(MODES).map(([id, m]) => [id, { ...m.defaults }])),
     game: null,
   };
 }
@@ -29,6 +30,7 @@ let session = (() => {
     const s = JSON.parse(localStorage.getItem(STORE));
     if (s && s.room && GAMES[s.gameId] && Array.isArray(s.players)) {
       s.players.forEach(p => { if (p && !p.bot) p.connected = false; });
+      s.settings = s.settings || {};
       for (const id in MODES) s.settings[id] = { ...MODES[id].defaults, ...s.settings[id] };
       return s;
     }
@@ -149,7 +151,7 @@ function automate() {
   clearTimeout(autoTimer);
   const g = session.game;
   if (!g) return;
-  const t = mode().timer(g);
+  const t = mode().timer(g, session.players);
   if (t) { autoTimer = setTimeout(() => { t.run(); update(); }, t.ms); return; }
   const turn = mode().turn(g);
   if (turn >= 0 && session.players[turn]?.bot) {
@@ -235,6 +237,30 @@ function buildSeats() {
     return el;
   });
   document.body.dataset.game = session.gameId;
+  document.body.classList.toggle('many-seats', info().layout.length > 4);
+  drawPrint();
+}
+
+// The table's printed markings: a double oval with the name set along it, readable from
+// both long sides. Sized to sit just inside the seats.
+function drawPrint() {
+  const r = $('#felt').getBoundingClientRect();
+  const W = r.width, H = r.height, v = Math.min(W, H) / 100;
+  const edge = (3.4 + 1.2 + (info().layout.length > 4 ? 21 : 25) + 1.6) * v;
+  const cx = W / 2, cy = H / 2, rx = W / 2 - edge, ry = H / 2 - edge;
+  if (rx < 10 * v || ry < 10 * v) { $('#print').innerHTML = ''; return; }
+  const tx = rx - 1.7 * v, ty = ry - 1.7 * v;
+  const words = 'SYNDARIS ✦ CARD TABLE';
+  const text = id => `<text font-size="${1.7 * v}" opacity=".7"><textPath href="#${id}" startOffset="50%" text-anchor="middle">${words}</textPath></text>`;
+  $('#print').innerHTML = `<svg viewBox="0 0 ${W} ${H}">
+    <defs>
+      <path id="arcB" d="M ${cx - tx} ${cy} A ${tx} ${ty} 0 0 0 ${cx + tx} ${cy}"/>
+      <path id="arcT" d="M ${cx + tx} ${cy} A ${tx} ${ty} 0 0 0 ${cx - tx} ${cy}"/>
+    </defs>
+    <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="currentColor" stroke-width="${0.16 * v}" opacity=".5"/>
+    <ellipse cx="${cx}" cy="${cy}" rx="${rx - 0.8 * v}" ry="${ry - 0.8 * v}" fill="none" stroke="currentColor" stroke-width="${0.08 * v}" opacity=".3"/>
+    ${text('arcB')}${text('arcT')}
+  </svg>`;
 }
 
 function renderLobbyInfo() {
@@ -281,6 +307,7 @@ function geometry() {
     // A point `d` vmin in from the edge that seat sits on, relative to the table centre.
     inset(seat, d) {
       const L = layout[seat];
+      d += 2.6; // clear of the rail
       if (upright && L.side % 2 === 1) d += 8;
       let x = (L.x / 100) * r.width, y = (L.y / 100) * r.height;
       if (L.side === 0) y = r.height - d * vmin;
@@ -298,7 +325,7 @@ function render() {
   document.body.classList.toggle('in-lobby', !g);
   document.body.classList.toggle('in-game', !!g);
   document.body.classList.toggle('upright', upright);
-  $('#btnOrient').textContent = upright ? '⟲ Upright' : '⟲ Flat';
+  $('#btnOrient').textContent = upright ? 'Upright' : 'Flat';
   $('#btnEnd').hidden = !g;
 
   if (!g) {
@@ -307,10 +334,17 @@ function render() {
     $('#startBtn').disabled = !ok;
     $('#startBtn').textContent = ok ? 'Deal the cards'
       : G.min === G.max ? `Waiting for players (${n}/${G.max})` : `Need at least ${G.min} players`;
-    $('#gameTitle').textContent = G.name;
   }
 
+  turnSeat = -1;
   session.players.forEach((p, pos) => renderSeat(pos, p, g));
+  // The lamp follows whoever's turn it is.
+  const lamp = $('#lamp');
+  lamp.classList.toggle('on', turnSeat >= 0);
+  if (turnSeat >= 0) {
+    const pt = geometry().inset(turnSeat, 20);
+    lamp.style.transform = `translate(${pt.x}px, ${pt.y}px)`;
+  }
   if (g) {
     const ctx = geometry();
     mode().renderCenter(g, ctx);
@@ -330,18 +364,19 @@ function renderSeat(pos, p, g) {
   el.classList.toggle('lost', !!p && !p.connected);
   el.classList.toggle('out', !!plate?.out);
   el.classList.toggle('turn', !!plate?.turn);
+  if (plate?.turn) turnSeat = pos;
   el.classList.toggle('joinable', !!g && !p && !!GAMES[session.gameId].midJoin);
   el.querySelector('.name').textContent = p ? p.name : session.gameId === 'euchre' ? `Open seat · ${GAMES.euchre.layout[pos].name}` : 'Open seat';
 
   const badges = plate ? [...plate.badges] : [];
   if (p && !p.connected) badges.unshift('<span class="badge lost">reconnecting…</span>');
-  if (!g && p?.bot) badges.push('<span class="badge">BOT</span>');
+  if (!g && p?.bot) badges.push('<span class="badge">bot</span>');
   el.querySelector('.badges').innerHTML = badges.join('');
 
   const partner = GAMES[session.gameId].id === 'euchre' ? session.players[(pos + 2) % 4] : null;
   el.querySelector('.meta').innerHTML = plate ? plate.meta
     : p ? (partner !== null ? `<span>Partner: ${partner?.name || '—'}</span>` : '<span>Ready</span>')
-      : '<span>Scan the code to sit here</span>';
+      : '<span>Scan the join card to sit here</span>';
 
   const fan = el.querySelector('.fan');
   const n = plate ? plate.cards : 0;
@@ -356,6 +391,7 @@ function renderSeat(pos, p, g) {
 }
 
 let lastAnn = null;
+let turnSeat = -1;
 function showBubble(pos, text) {
   const b = seatEls[pos]?.querySelector('.bubble');
   if (!b) return;
@@ -396,7 +432,7 @@ $('#btnFull').onclick = () => {
   else (d.requestFullscreen || d.webkitRequestFullscreen)?.call(d);
 };
 $('#btnEnd').onclick = () => { if (confirm('End this game and go back to the lobby?')) endGame(); };
-window.addEventListener('resize', () => session.game && render());
+window.addEventListener('resize', () => { drawPrint(); render(); });
 
 buildSeats();
 renderLobbyInfo();

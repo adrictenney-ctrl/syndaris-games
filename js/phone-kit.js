@@ -1,5 +1,5 @@
 // Shared bits for the phone screens: toasts, the scoreboard header, and the hand of cards.
-import { cardEl, setFace } from './cards.js?v=3';
+import { cardEl, setFace } from './cards.js?v=4';
 
 export const $ = s => document.querySelector(s);
 
@@ -44,6 +44,7 @@ export function renderHand(cards, o = {}) {
     }
   }
   el.classList.toggle('big', cards.length <= 2);
+  el.classList.toggle('many', cards.length > 9);
   layoutHand();
   $('#handHint').textContent = o.hint || '';
 }

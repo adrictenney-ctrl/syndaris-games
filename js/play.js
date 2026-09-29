@@ -1,12 +1,13 @@
 // A player's phone: joining, picking a seat, then the game's own phone UI.
-import { GAMES } from './games.js?v=3';
-import { keepAwake } from './cards.js?v=3';
-import { joinRoom } from './net.js?v=3';
-import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=3';
-import * as euchreUI from './play-euchre.js?v=3';
-import * as pokerUI from './play-poker.js?v=3';
+import { GAMES } from './games.js?v=4';
+import { keepAwake } from './cards.js?v=4';
+import { joinRoom } from './net.js?v=4';
+import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=4';
+import * as euchreUI from './play-euchre.js?v=4';
+import * as pokerUI from './play-poker.js?v=4';
+import * as outcastUI from './play-outcast.js?v=4';
 
-const UIS = { euchre: euchreUI, holdem: pokerUI };
+const UIS = { euchre: euchreUI, holdem: pokerUI, outcast: outcastUI };
 const params = new URLSearchParams(location.search);
 
 let pid = null;
@@ -152,7 +153,7 @@ function renderSeatPicker() {
       width: w + '%', height: h + '%',
       left: (100 - w) * fx + '%', top: ((100 - h) * L.y) / 100 + '%',
     });
-    b.style.borderColor = `var(--seat-${seat})`;
+    b.style.setProperty('--dot', `var(--seat-${seat})`);
     b.classList.toggle('mine', mine);
     b.classList.toggle('open', !s);
     const joinable = !s && (!st.started || G.midJoin);
