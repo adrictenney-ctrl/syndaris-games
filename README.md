@@ -1,7 +1,7 @@
 # Syndaris Table
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em** and **Outcast**.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em** and **Veto**.
 Pick the game in the table's lobby.
 
 ## How it works
@@ -39,8 +39,8 @@ on by default and can be switched off in the lobby, in which case a round where 
 redealt. Anyone who calls trump can go alone. Scoring: 3–4 tricks = 1 point, all 5 = 2, alone and all 5 = 4,
 euchred = 2 points to the defenders. Play to 10 by default (5, 7, and 11 are also available).
 
-## Outcast rules
-Outcast is a shedding game that plays like UNO, but with its own look: four colours (red ●, gold ▲,
+## Veto rules
+Veto is a shedding game that plays like UNO, but with its own look: four colours (red ●, gold ▲,
 teal ■, plum ◆), each with a shape so colour isn't the only cue. The deck has 108 cards. Each colour has one
 0, plus two each of 1–9, Skip, Reverse and +2. There are also 4 Wilds and 4 Wild +4s.
 
@@ -74,7 +74,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=5; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=6; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ## Networking
@@ -95,11 +95,11 @@ and cellular networks block them.
 |---|---|
 | `index.html` | Landing page: be the table / join with phone |
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
-| `js/table-euchre.js`, `js/table-poker.js`, `js/table-outcast.js` | Each game's table drawing and hookup |
+| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-outcast.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/outcast.js` | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js` | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

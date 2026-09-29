@@ -26,9 +26,9 @@ const PIPS = {
   T: [[L, 0], [R, 0], [M, 17], [L, 33.3], [R, 33.3], [L, 66.6], [R, 66.6], [M, 83], [L, 100], [R, 100]],
 };
 
-// Cards are "rank + suit" (standard deck, e.g. "TH") or "colour-value-n" (Outcast, e.g. "R-7-12").
+// Cards are "rank + suit" (standard deck, e.g. "TH") or "colour-value-n" (Veto, e.g. "R-7-12").
 export function setFace(el, card) {
-  if (card.includes('-')) return setOutcastFace(el, card);
+  if (card.includes('-')) return setVetoFace(el, card);
   const r = rankOf(card), s = suitOf(card);
   const rl = RANK_LABEL[r] || r, sy = SUIT_SYMBOL[s];
   let mid;
@@ -42,14 +42,14 @@ export function setFace(el, card) {
     `<div class="corner br"><b>${rl}</b><i>${sy}</i></div>`;
 }
 
-// Outcast cards: ivory stock, a frame in the card's colour, a serif numeral, and a shape per
+// Veto cards: ivory stock, a frame in the card's colour, a serif numeral, and a shape per
 // colour (red circle, gold triangle, teal square, plum diamond) so colour isn't the only cue.
-const OUTCAST_LABEL = { skip: '⊘', rev: '⇄', d2: '+2', d4: '+4', wild: '' };
+const VETO_LABEL = { skip: '⊘', rev: '⇄', d2: '+2', d4: '+4', wild: '' };
 const QUAD = '<span class="quad"><i class="emb e-R"></i><i class="emb e-O"></i><i class="emb e-P"></i><i class="emb e-T"></i></span>';
 
-function setOutcastFace(el, card) {
+function setVetoFace(el, card) {
   const [c, v] = card.split('-');
-  const label = OUTCAST_LABEL[v] ?? v;
+  const label = VETO_LABEL[v] ?? v;
   const wild = c === 'W';
   el.className = `card oc c-${c}${wild ? ` oc-${v}` : ''}`;
   el.dataset.card = card;

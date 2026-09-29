@@ -1,4 +1,4 @@
-// Outcast: shedding-game rules engine (UNO-style play) + bots. Runs only on the table (host).
+// Veto: shedding-game rules engine (UNO-style play) + bots. Runs only on the table (host).
 // Cards are "colour-value-n": colour R O T P (red, gold, teal, plum; W for wilds), value 0–9, skip, rev, d2, wild, d4,
 // and n makes each of the 108 cards unique. Seats are 0..7 clockwise; empty seats are null.
 

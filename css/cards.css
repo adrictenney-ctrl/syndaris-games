@@ -32,7 +32,7 @@
   --seat-5: #3f9a9a;
   --seat-6: #c9a24a;
   --seat-7: #d9d2c0;
-  /* Outcast inks */
+  /* Veto inks */
   --oc-R: #a8323a;
   --oc-O: #b8841f;
   --oc-T: #1d7571;
@@ -147,7 +147,7 @@ button { font: inherit; }
     0 calc(var(--cw) * .05) calc(var(--cw) * .12) rgba(0, 0, 0, .35);
 }
 
-/* ---------------------------------------------------------------- Outcast cards */
+/* ---------------------------------------------------------------- Veto cards */
 .card.oc { --c: var(--card-black); color: var(--c); font-family: var(--serif); }
 .card.oc.c-R, .emb.e-R { --c: var(--oc-R); }
 .card.oc.c-O, .emb.e-O { --c: var(--oc-O); }

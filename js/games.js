@@ -29,9 +29,9 @@ export const GAMES = {
       S(100, 50, 3, 'Right end'),
     ],
   },
-  outcast: {
-    id: 'outcast',
-    name: 'Outcast',
+  veto: {
+    id: 'veto',
+    name: 'Veto',
     blurb: '2–8 players · match colours, empty your hand',
     min: 2,
     max: 8,
@@ -39,6 +39,6 @@ export const GAMES = {
     layout: null,  // same seats as Hold'em (filled in below)
   },
 };
-GAMES.outcast.layout = GAMES.holdem.layout;
+GAMES.veto.layout = GAMES.holdem.layout;
 
 export const SIDE_ROT = [0, 90, 180, -90];

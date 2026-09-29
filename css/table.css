@@ -112,7 +112,7 @@ body.upright .seat.side-1 { left: calc(var(--seat-w) / 2 + var(--rail) + 1.2vmin
 body.upright .seat.side-3 { left: calc(100% - var(--seat-w) / 2 - var(--rail) - 1.2vmin); }
 body.upright .seat.side-2 { flex-direction: column-reverse; justify-content: flex-start; }
 
-/* Up to 8 seats (Hold'em, Outcast): smaller placements. */
+/* Up to 8 seats (Hold'em, Veto): smaller placements. */
 body.many-seats #felt { --seat-w: min(28vmin, 300px); --seat-h: 21vmin; }
 body.many-seats .who .name { font-size: 3vmin; max-width: 19vmin; }
 body.many-seats .plate { padding: .8vmin 1.4vmin .9vmin; min-width: 86%; }
@@ -389,7 +389,7 @@ button.big.ghost { background: transparent; color: inherit; border: .14vmin soli
 .bet.gone, .hole-card.gone, .hand-label.gone, .board-card.gone { opacity: 0; }
 .bet.payout b { color: var(--brass-hi); }
 
-/* Printed pot line (and the Outcast colour line) */
+/* Printed pot line (and the Veto colour line) */
 .pot-label {
   transform: translate(-50%, -50%) rotate(var(--r)) translateY(var(--dy, 9vmin));
   font-family: var(--display); font-size: 2.7vmin; letter-spacing: .1em; color: var(--gold-ink); white-space: nowrap;
@@ -410,7 +410,7 @@ body.upright .mirror-label { display: none; }
 .hand-label:empty { display: none; }
 .hand-label.winner { background: var(--stock); color: var(--card-red); box-shadow: 0 .4vmin 1vmin rgba(0, 0, 0, .4); }
 
-/* ---------- Outcast pieces ---------- */
+/* ---------- Veto pieces ---------- */
 .cc-ring {
   position: absolute; left: 0; top: 0; width: var(--size); height: var(--size);
   transform: translate(-50%, -50%); color: var(--gold-faint); pointer-events: none;

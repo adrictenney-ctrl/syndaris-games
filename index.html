@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=4">
+  <link rel="stylesheet" href="css/cards.css?v=5">
   <style>
     body { display: grid; place-items: center; min-height: 100%; padding: 28px 16px; }
     main { width: 100%; max-width: 720px; text-align: center; }
@@ -43,10 +43,10 @@
       <a class="choice" href="table.html"><b>Be the table</b><span>Lay this tablet (or a laptop, or a TV) in the middle. It deals, keeps score, and shows every card played.</span></a>
       <a class="choice" href="play.html"><b>Join with my phone</b><span>Scan the join card on the table, or type its 4-letter room code.</span></a>
     </div>
-    <p class="games">Euchre · Texas Hold'em · Outcast</p>
+    <p class="games">Euchre · Texas Hold'em · Veto</p>
   </main>
   <script type="module">
-    import { cardEl } from './js/cards.js?v=4';
+    import { cardEl } from './js/cards.js?v=5';
     const deco = document.getElementById('deco');
     ['JH', 'AS', 'R-7-1', 'KD', 'QC'].forEach((c, i) => {
       const el = cardEl(c);

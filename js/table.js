@@ -1,13 +1,13 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=4';
-import { cardEl, snap, keepAwake } from './cards.js?v=4';
-import { hostRoom } from './net.js?v=4';
-import euchre from './table-euchre.js?v=4';
-import holdem from './table-poker.js?v=4';
-import outcast from './table-outcast.js?v=4';
+import { GAMES, SIDE_ROT } from './games.js?v=5';
+import { cardEl, snap, keepAwake } from './cards.js?v=5';
+import { hostRoom } from './net.js?v=5';
+import euchre from './table-euchre.js?v=5';
+import holdem from './table-poker.js?v=5';
+import veto from './table-veto.js?v=5';
 
-const MODES = { euchre, holdem, outcast };
+const MODES = { euchre, holdem, veto };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
