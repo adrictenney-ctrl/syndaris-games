@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto** and **Go Fish**, with **Cooking Up Trouble** on the way.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish** and **Chess**, with **Cooking Up Trouble** on the way.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess.
 
 ## How it works
 
@@ -58,6 +58,21 @@ leftover cards: numbers at face value, action cards 20, wilds 50. You can also l
 The name, colours and card faces are original, so the game stands apart from Mattel's UNO trademark and card
 design. The rules themselves are the standard ones.
 
+## Chess
+Two players, or one player against the computer (add a bot to the other seat). White sits at the bottom of the
+table screen and Black at the top. With the tablet flat, Black's pieces are turned to face Black.
+
+- **Moving:** tap a piece, then its destination. You can do this on your phone (the board is turned to your side)
+  or right on the table screen. On the table, a tap moves for whoever's turn it is, unless that's the computer.
+- **Full rules:** castling, en passant, promotion (you choose the piece), check, checkmate, stalemate, threefold
+  repetition, the 50-move rule, and draws when neither side has enough pieces to checkmate. The move generator is
+  checked against the standard "perft" reference counts.
+- **Clock (optional):** none, 5 min, 10 min, or 15 min + 10 s per move. Running out of time loses, or draws if
+  the other side has nothing left that could checkmate.
+- **From the phone:** resign (tap twice), offer a draw, accept or decline a draw.
+- **Computer:** Easy, Normal or Hard. Hard searches deeper and is capped at about a second and a half per move,
+  so a tablet never freezes for long.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -92,7 +107,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=10; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=12; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ## Networking
@@ -115,11 +130,11 @@ and cellular networks block them.
 |---|---|
 | `index.html` | Game catalog: pick a game for the table, or join with your phone |
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
-| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js` | Each game's table drawing and hookup |
+| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js` | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js` | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

@@ -230,3 +230,32 @@ body[data-game="gofish"] {
   60% { transform: translate(-50%, -30%) scale(1.05) rotate(-3deg); opacity: 1; }
   100% { transform: translate(-50%, 160%) scale(.5) rotate(0); opacity: 0; }
 }
+
+/* ---------- Chess ---------- */
+body[data-game="chess"] {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(255, 220, 170, .08), transparent 70%),
+    linear-gradient(180deg, #4b2a17, #33190c);
+}
+#chessPhone {
+  --S: min(11.2vw, 6.4vh, 52px);
+  display: grid; grid-template-columns: repeat(8, var(--S)); grid-template-rows: repeat(8, var(--S));
+  margin: 6px auto 12px; border: 5px solid #5a3218; border-radius: 4px;
+  box-shadow: 0 0 0 1.5px #c9a55a, 0 10px 26px rgba(0, 0, 0, .55);
+}
+#chessPhone .sq { position: relative; display: grid; place-items: center; }
+#chessPhone .sq.light { background: #e7cf9e; }
+#chessPhone .sq.dark { background: #8e5b33; }
+#chessPhone .sq.last { box-shadow: inset 0 0 0 99px rgba(255, 210, 80, .32); }
+#chessPhone .sq.sel { box-shadow: inset 0 0 0 3px #f6d27a, inset 0 0 0 99px rgba(255, 210, 80, .3); }
+#chessPhone .sq.check { background: radial-gradient(circle, rgba(230, 40, 30, .9), rgba(230, 40, 30, .3) 50%, transparent 75%), #e7cf9e; }
+#chessPhone .sq.dot::after { content: ''; position: absolute; width: 30%; height: 30%; border-radius: 50%; background: rgba(30, 60, 20, .45); }
+#chessPhone .sq.hit::after { content: ''; position: absolute; inset: 5%; border-radius: 50%; border: 3px solid rgba(30, 60, 20, .5); }
+.pc { font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'Apple Symbols', serif; line-height: 1; }
+#chessPhone .pc { font-size: calc(var(--S) * .8); pointer-events: none; }
+.pc.w { color: #faf3e3; -webkit-text-stroke: 1px #2a2018; text-shadow: 0 2px 3px rgba(0, 0, 0, .5); }
+.pc.b { color: #1c1918; -webkit-text-stroke: .8px rgba(245, 232, 205, .65); text-shadow: 0 2px 3px rgba(0, 0, 0, .5); }
+.row.promo { display: grid; grid-template-columns: repeat(4, 1fr); }
+.panel-btn.piece { min-width: 0; padding: 6px 0; background: var(--stock); border: 0; }
+.panel-btn.piece .pc { font-size: 42px; }
+body[data-game="chess"] #handWrap, body[data-game="chess"] #handHint { display: none; }

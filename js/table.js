@@ -1,14 +1,15 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=9';
-import { cardEl, snap, keepAwake } from './cards.js?v=9';
-import { hostRoom } from './net.js?v=9';
-import euchre from './table-euchre.js?v=9';
-import holdem from './table-poker.js?v=9';
-import veto from './table-veto.js?v=9';
-import gofish from './table-gofish.js?v=9';
+import { GAMES, SIDE_ROT } from './games.js?v=11';
+import { cardEl, snap, keepAwake } from './cards.js?v=11';
+import { hostRoom } from './net.js?v=11';
+import euchre from './table-euchre.js?v=11';
+import holdem from './table-poker.js?v=11';
+import veto from './table-veto.js?v=11';
+import gofish from './table-gofish.js?v=11';
+import chess from './table-chess.js?v=11';
 
-const MODES = { euchre, holdem, veto, gofish };
+const MODES = { euchre, holdem, veto, gofish, chess };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
@@ -302,6 +303,15 @@ function geometry() {
     upright,
     nameOf,
     bubble: (seat, text) => showBubble(seat, text),
+    // Moves made by touching the table itself (chess pieces on the board).
+    isBot: seat => !!session.players[seat]?.bot,
+    act(seat, a) {
+      if (!session.game) return 'No game';
+      const err = mode().act(session.game, seat, a);
+      if (err) showBubble(seat, err);
+      else update();
+      return err;
+    },
     rot: seat => (upright ? 0 : SIDE_ROT[layout[seat].side]),
     // A point `d` vmin in from the edge that seat sits on, relative to the table centre.
     inset(seat, d) {

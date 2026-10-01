@@ -592,3 +592,80 @@ body[data-game="gofish"] .plate { background: rgba(4, 38, 46, .5); }
 .switch b { grid-area: state; font-family: var(--display); font-weight: 400; font-size: 3vmin; }
 .switch .sw-label { grid-area: label; display: flex; flex-direction: column; font-size: 2vmin; font-weight: 700; line-height: 1.15; }
 .switch .sw-label small { font-size: 1.45vmin; font-weight: 500; opacity: .85; margin-top: .2vmin; }
+
+/* =====================================================================
+   Chess: an inlaid board on a dark walnut table
+   ===================================================================== */
+body[data-game="chess"] #felt {
+  --seat-w: min(23vmin, 260px);
+  --seat-h: 22vmin;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 220, 170, .1), transparent 72%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 55%, rgba(10, 4, 0, .6) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .22' numOctaves='3' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .12 0 0 0 0 .05 0 0 0 0 .02 0 0 0 1.1 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #4b2a17, #3a1f10);
+}
+body[data-game="chess"] #print { display: none; }
+body[data-game="chess"] .fan { display: none; }
+body[data-game="chess"] .who .name { font-size: 3.4vmin; max-width: 15vmin; }
+body[data-game="chess"] .meta { flex-direction: column; gap: .6vmin; }
+body[data-game="chess"] .plate { min-width: 92%; }
+
+.clock { font-family: var(--num); font-size: 4.6vmin; line-height: 1; color: var(--ivory); letter-spacing: .02em; padding: .3vmin 1.2vmin; border-radius: .6vmin; }
+.clock.running { background: rgba(255, 228, 168, .14); box-shadow: inset 0 0 0 .15vmin var(--gold-ink); }
+.clock.low { color: #ff9d8a; }
+.caps { display: flex; flex-wrap: wrap; justify-content: center; max-width: 20vmin; }
+.cap { font-style: normal; font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', serif; font-size: 2.6vmin; line-height: 1; margin: 0 -.2vmin; }
+.cap.w { color: #f8f1e0; -webkit-text-stroke: .08vmin #2a2018; }
+.cap.b { color: #1d1a1a; -webkit-text-stroke: .08vmin rgba(245, 235, 215, .6); }
+
+#chessboard { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); z-index: 2; }
+.cb-frame {
+  position: relative; padding: var(--frame);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.3 .01' numOctaves='3' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 .15 0 0 0 0 .07 0 0 0 0 .02 0 0 0 1 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #6e3f1f, #4a2711);
+  border-radius: .8vmin;
+  box-shadow: 0 2vmin 5vmin rgba(0, 0, 0, .6), inset 0 .2vmin 0 rgba(255, 220, 170, .25), inset 0 -.3vmin .6vmin rgba(0, 0, 0, .5);
+}
+.cb-squares {
+  display: grid; grid-template-columns: repeat(8, var(--S)); grid-template-rows: repeat(8, var(--S));
+  box-shadow: 0 0 0 .3vmin #c9a55a, 0 0 0 .5vmin #2a1608;
+}
+.sq { position: relative; cursor: pointer; }
+.sq.light { background: linear-gradient(135deg, #ecd6a8, #dcc08b); }
+.sq.dark { background: linear-gradient(135deg, #9a6438, #80502b); }
+.sq.light, .sq.dark { background-blend-mode: multiply; }
+.sq.last { box-shadow: inset 0 0 0 999px rgba(255, 210, 80, .32); }
+.sq.sel { box-shadow: inset 0 0 0 .5vmin #f6d27a, inset 0 0 0 999px rgba(255, 210, 80, .28); }
+.sq.check { background: radial-gradient(circle, rgba(230, 40, 30, .85) 0%, rgba(230, 40, 30, .35) 45%, transparent 75%), linear-gradient(135deg, #ecd6a8, #dcc08b); }
+.sq.dot::after { content: ''; position: absolute; left: 50%; top: 50%; width: 30%; height: 30%; translate: -50% -50%; border-radius: 50%; background: rgba(30, 60, 20, .45); }
+.sq.hit::after { content: ''; position: absolute; inset: 6%; border-radius: 50%; border: .5vmin solid rgba(30, 60, 20, .5); }
+.cb-pieces { position: absolute; left: var(--frame); top: var(--frame); width: calc(var(--S) * 8); height: calc(var(--S) * 8); pointer-events: none; }
+.pc {
+  position: absolute; left: 0; top: 0; width: var(--S); height: var(--S);
+  display: grid; place-items: center;
+  font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'Apple Symbols', serif; font-size: calc(var(--S) * .8); line-height: 1;
+  transition: transform .38s cubic-bezier(.3, .9, .3, 1), opacity .35s;
+}
+.pc.w { color: #faf3e3; -webkit-text-stroke: calc(var(--S) * .018) #2a2018; text-shadow: 0 calc(var(--S) * .05) calc(var(--S) * .07) rgba(0, 0, 0, .55); }
+.pc.b { color: #1c1918; -webkit-text-stroke: calc(var(--S) * .014) rgba(245, 232, 205, .6); text-shadow: 0 calc(var(--S) * .05) calc(var(--S) * .07) rgba(0, 0, 0, .55); }
+.pc.taken { opacity: 0; }
+.coords { position: absolute; display: grid; font-family: var(--num); font-size: calc(var(--frame) * .55); color: var(--brass-hi); pointer-events: none; }
+.coords i { font-style: normal; display: grid; place-items: center; }
+.coords.files { left: var(--frame); width: calc(var(--S) * 8); height: var(--frame); grid-template-columns: repeat(8, 1fr); }
+.coords.files.bottom { bottom: 0; }
+.coords.files.top { top: 0; transform: rotate(180deg); }
+.coords.ranks { top: var(--frame); height: calc(var(--S) * 8); width: var(--frame); grid-template-rows: repeat(8, 1fr); }
+.coords.ranks.left { left: 0; }
+.coords.ranks.right { right: 0; }
+.coords.ranks.right i { transform: rotate(180deg); }
+#chessboard.upright .coords.files.top { transform: none; }
+.cb-promo {
+  position: absolute; left: var(--frame); top: var(--frame); width: var(--S); z-index: 4;
+  display: grid; grid-template-columns: 1fr; background: var(--stock); border-radius: .6vmin; box-shadow: 0 1vmin 3vmin rgba(0, 0, 0, .6);
+}
+.cb-promo[hidden] { display: none; }
+.cb-promo button { position: relative; width: var(--S); height: var(--S); border: 0; background: none; cursor: pointer; }
+.cb-promo button:hover { background: rgba(201, 165, 90, .3); }
+.who { flex-wrap: wrap; row-gap: .5vmin; } .who .name { flex-shrink: 0; }

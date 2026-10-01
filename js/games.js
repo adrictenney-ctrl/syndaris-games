@@ -41,6 +41,16 @@ export const GAMES = {
 };
 GAMES.veto.layout = GAMES.holdem.layout;
 
+GAMES.chess = {
+  id: 'chess',
+  name: 'Chess',
+  blurb: '2 players · or play the computer',
+  min: 2,
+  max: 2,
+  // Players sit at the two ends of the board, off to the side so the board can be big.
+  layout: [S(11, 100, 0, 'White'), S(89, 0, 2, 'Black')],
+};
+
 GAMES.gofish = {
   id: 'gofish',
   name: 'Go Fish',

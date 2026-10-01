@@ -11,8 +11,8 @@
   <title>Play On Display</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=9">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cards.css?v=11">
   <style>
     body { min-height: 100%; padding: 36px 20px 48px; }
     main { max-width: 1040px; margin: 0 auto; }
@@ -48,6 +48,11 @@
     .t-euchre { background: radial-gradient(ellipse at 50% 35%, #226a47, #185236 55%, #0b2d1e); }
     .t-holdem { background: radial-gradient(ellipse at 50% 35%, #2c5888, #1c3c64 55%, #0b1b33); }
     .t-veto { background: repeating-linear-gradient(90deg, rgba(40, 18, 4, .4) 0 2px, transparent 2px 64px), linear-gradient(180deg, #9a6438, #7a4826); }
+    .t-chess { background: linear-gradient(180deg, #4b2a17, #33190c); }
+    .t-chess .cards { background: conic-gradient(#e7cf9e 25%, #8e5b33 0 50%, #e7cf9e 0 75%, #8e5b33 0) 0 0 / 50px 50px; width: 150px; height: 100px; border: 4px solid #5a3218; box-shadow: 0 0 0 1px #c9a55a, 0 8px 18px rgba(0, 0, 0, .5); }
+    .cpc { position: absolute; top: 50%; transform: translate(-50%, -50%); font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', serif; font-size: 62px; line-height: 1; }
+    .cpc.w { color: #faf3e3; -webkit-text-stroke: 1.2px #2a2018; text-shadow: 0 3px 5px rgba(0, 0, 0, .55); }
+    .cpc.b { color: #1c1918; -webkit-text-stroke: 1px rgba(245, 232, 205, .65); text-shadow: 0 3px 5px rgba(0, 0, 0, .55); }
     .t-gofish { background: radial-gradient(ellipse at 50% 35%, #2a8796, #145867 55%, #08303d); }
     .t-gofish .pad {
       position: absolute; width: 54px; aspect-ratio: 1; border-radius: 50%; z-index: 0;
@@ -76,13 +81,13 @@
     <div class="shelf" id="shelf"></div>
   </main>
   <script type="module">
-    import { GAMES } from './js/games.js?v=9';
-    import { cardEl } from './js/cards.js?v=9';
+    import { GAMES } from './js/games.js?v=11';
+    import { cardEl } from './js/cards.js?v=11';
     const art = {
       euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
     };
     const shelf = document.getElementById('shelf');
-    for (const id of ['euchre', 'holdem', 'veto', 'gofish']) {
+    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess']) {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;
@@ -90,7 +95,8 @@
       box.innerHTML = `${id === 'gofish' ? '<i class="pad" style="left:14px;top:16px"></i><i class="pad" style="right:18px;top:120px;width:38px;rotate:140deg"></i>' : ''}
         <div class="cards"></div><h2>${G.name}</h2><p>${G.blurb}</p><span class="play">Set up the table →</span>`;
       const fan = box.querySelector('.cards');
-      art[id].forEach((c, i) => {
+      if (id === 'chess') fan.innerHTML = '<span class="cpc w" style="left:34%">♚︎</span><span class="cpc b" style="left:66%">♛︎</span>';
+      else art[id].forEach((c, i) => {
         const el = cardEl(c);
         el.style.transform = `translate(-50%, -50%) translateX(${(i - 1) * 34}px) rotate(${(i - 1) * 12}deg) translateY(${Math.abs(i - 1) * 6}px)`;
         fan.appendChild(el);
