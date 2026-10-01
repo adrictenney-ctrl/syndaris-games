@@ -1,6 +1,6 @@
 // Texas Hold'em on the table screen: board, pot, bets in front of each player, showdown.
-import * as P from './poker.js?v=11';
-import { cardEl, setFace, snap } from './cards.js?v=11';
+import * as P from './poker.js?v=13';
+import { cardEl, setFace, snap } from './cards.js?v=13';
 
 let boardKey = null;
 let boardEls = [];
@@ -95,7 +95,7 @@ export default {
   renderCenter(g, ctx) {
     const center = document.getElementById('center');
     document.getElementById('watermark').textContent = '';
-    const cw = ctx.vmin * 8;
+    const cw = ctx.vmin * 8 * ctx.cardScale;
 
     // Pot label (twice, so both long sides of a flat table can read it).
     let labels = [...document.querySelectorAll('.pot-label')];
@@ -113,7 +113,7 @@ export default {
       const w = g.result.winners;
       text = w.map(x => `${ctx.nameOf(x.seat)} wins ${x.amount.toLocaleString()}${x.hand ? ' · ' + x.hand : ''}`).join('  ·  ');
     } else if (g.phase !== 'gameOver') text = `Pot ${P.potTotal(g).toLocaleString()}`;
-    labels.forEach(l => { l.textContent = text; l.classList.toggle('big', g.phase === 'showdown'); });
+    labels.forEach(l => { l.textContent = text; l.classList.toggle('big', g.phase === 'showdown'); l.style.setProperty('--dy', Math.max(ctx.vmin * 9, cw * 1.12) + 'px'); });
 
     // Board.
     const key = g.handNo;

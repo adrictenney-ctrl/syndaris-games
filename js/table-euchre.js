@@ -1,6 +1,6 @@
 // Euchre on the table screen: rules hookup, seat plates, trick area, end-of-hand panel.
-import * as E from './euchre.js?v=11';
-import { cardEl, setFace, snap } from './cards.js?v=11';
+import * as E from './euchre.js?v=13';
+import { cardEl, setFace, snap } from './cards.js?v=13';
 
 const DIR = [[0, 1], [-1, 0], [0, -1], [1, 0]]; // toward each side's edge
 
@@ -60,7 +60,8 @@ export default {
     const rot = seat => ctx.rot(seat);
     const spot = (seat, jitter) => {
       const [dx, dy] = DIR[ctx.layout[seat].side];
-      return `translate(-50%, -50%) translate(${dx * 11.5}vmin, ${dy * 9.5}vmin) rotate(${rot(seat) + jitter}deg)`;
+      const k = ctx.cardScale;
+      return `translate(-50%, -50%) translate(${dx * 11.5 * k}vmin, ${dy * 9.5 * k}vmin) rotate(${rot(seat) + jitter}deg)`;
     };
     const edge = (seat, extra = '') => {
       const [dx, dy] = DIR[ctx.layout[seat].side];

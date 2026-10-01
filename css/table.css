@@ -669,3 +669,20 @@ body[data-game="chess"] .plate { min-width: 92%; }
 .cb-promo button { position: relative; width: var(--S); height: var(--S); border: 0; background: none; cursor: pointer; }
 .cb-promo button:hover { background: rgba(201, 165, 90, .3); }
 .who { flex-wrap: wrap; row-gap: .5vmin; } .who .name { flex-shrink: 0; }
+
+/* ---------- card size slider (table corner) ---------- */
+#felt { --trick-cw: calc(10.5vmin * var(--card-scale, 1)); }
+.fan .card { --cw: calc(5.5vmin * var(--card-scale, 1)); margin-left: calc(-3.4vmin * var(--card-scale, 1)); }
+body.many-seats .fan .card { --cw: calc(4.8vmin * var(--card-scale, 1)); margin-left: calc(-3.2vmin * var(--card-scale, 1)); }
+.fan { height: calc(5.5vmin * 1.4 * var(--card-scale, 1)); }
+.sizer {
+  display: flex; align-items: center; gap: 1vmin; padding: .5vmin 1.2vmin; border-radius: .5vmin;
+  border: .14vmin solid var(--gold-faint); color: var(--gold-ink);
+  font-family: var(--ui); font-size: 1.5vmin; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+}
+.sizer input { width: 14vmin; accent-color: var(--brass); cursor: pointer; }
+body[data-game="chess"] .sizer { display: none; }
+/* Seats grow with the card size so the bigger face-down hands don't push names off the edge. */
+#felt { --seat-h: calc(25vmin + 7.7vmin * (var(--card-scale, 1) - 1)); }
+body.many-seats #felt { --seat-h: calc(21vmin + 6.7vmin * (var(--card-scale, 1) - 1)); }
+body[data-game="chess"] #felt { --seat-h: 22vmin; }

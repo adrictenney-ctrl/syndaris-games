@@ -1,6 +1,6 @@
 // Veto on the table screen: draw pile, discard pile, direction ring, current colour.
-import * as C from './veto.js?v=11';
-import { cardEl, snap } from './cards.js?v=11';
+import * as C from './veto.js?v=13';
+import { cardEl, snap } from './cards.js?v=13';
 
 let pile = [];          // discard pile elements on the felt, oldest first
 let pileRound = null;
@@ -85,7 +85,7 @@ export default {
 
   renderCenter(g, ctx) {
     $('watermark').textContent = '';
-    const cw = ctx.vmin * 10.5;
+    const cw = ctx.vmin * 10.5 * ctx.cardScale;
     const drawX = -cw * 0.78, discX = cw * 0.72;
 
     const ring = ensure('ccRing', 'cc-ring', RING);
@@ -142,6 +142,10 @@ export default {
       snap();
       while (pile.length > 8) pile.shift().remove();
     }
+
+    // Keep everything on the felt at the chosen card size.
+    pile.forEach(p => p.style.setProperty('--cw', cw + 'px'));
+    draw.querySelectorAll('.card').forEach(b => b.style.setProperty('--cw', cw + 'px'));
 
     // Cards flying from the draw pile to whoever drew.
     if (g.drawn && g.drawn.id !== lastDrawnId) {

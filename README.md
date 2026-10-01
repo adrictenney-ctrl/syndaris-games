@@ -107,8 +107,13 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=12; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=14; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
+
+## Card size on the table
+The table's corner toolbar has a **Card size** slider (0.8× to 1.8×). It scales the cards in the middle of the table
+and the face-down hands at each seat, for every card game. Each table device remembers its own setting. Chess hides
+it, since the board already fills the screen.
 
 ## Networking
 Players do **not** need to be on the same Wi-Fi. Any internet connection works, including cellular, so a friend on their phone plan can join the same table.

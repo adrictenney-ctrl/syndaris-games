@@ -1,13 +1,13 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=11';
-import { cardEl, snap, keepAwake } from './cards.js?v=11';
-import { hostRoom } from './net.js?v=11';
-import euchre from './table-euchre.js?v=11';
-import holdem from './table-poker.js?v=11';
-import veto from './table-veto.js?v=11';
-import gofish from './table-gofish.js?v=11';
-import chess from './table-chess.js?v=11';
+import { GAMES, SIDE_ROT } from './games.js?v=13';
+import { cardEl, snap, keepAwake } from './cards.js?v=13';
+import { hostRoom } from './net.js?v=13';
+import euchre from './table-euchre.js?v=13';
+import holdem from './table-poker.js?v=13';
+import veto from './table-veto.js?v=13';
+import gofish from './table-gofish.js?v=13';
+import chess from './table-chess.js?v=13';
 
 const MODES = { euchre, holdem, veto, gofish, chess };
 const STORE = 'syndaris.table.v2';
@@ -39,6 +39,11 @@ let session = (() => {
   } catch {}
   return freshSession();
 })();
+
+// How big cards are drawn on the table (the slider in the corner), remembered on this device.
+let cardScale = 1;
+try { cardScale = Math.min(1.8, Math.max(0.8, Number(localStorage.getItem('pod.cardScale')) || 1)); } catch {}
+document.documentElement.style.setProperty('--card-scale', cardScale);
 
 let upright = false;
 try { upright = localStorage.getItem('syndaris.table.upright') === '1'; } catch {}
@@ -301,6 +306,7 @@ function geometry() {
     vmin,
     layout,
     upright,
+    cardScale,
     nameOf,
     bubble: (seat, text) => showBubble(seat, text),
     // Moves made by touching the table itself (chess pieces on the board).
@@ -441,6 +447,14 @@ function renderOverlay(g) {
 // ---------------------------------------------------------------- controls
 
 $('#startBtn').onclick = startGame;
+$('#cardSize').value = String(cardScale);
+$('#cardSize').oninput = e => {
+  cardScale = Number(e.target.value);
+  document.documentElement.style.setProperty('--card-scale', cardScale);
+  try { localStorage.setItem('pod.cardScale', String(cardScale)); } catch {}
+  render();
+};
+
 $('#btnOrient').onclick = () => {
   upright = !upright;
   try { localStorage.setItem('syndaris.table.upright', upright ? '1' : '0'); } catch {}

@@ -1,7 +1,7 @@
 // Go Fish on the table screen: the whole table is a pond. Face-down cards drift in the
 // water; books sit in front of each player; caught cards come up out of the water.
-import * as F from './gofish.js?v=11';
-import { cardEl, snap } from './cards.js?v=11';
+import * as F from './gofish.js?v=13';
+import { cardEl, snap } from './cards.js?v=13';
 
 const $ = id => document.getElementById(id);
 let floaters = [];      // drifting face-down cards in the pond
@@ -216,7 +216,7 @@ export default {
   renderCenter(g, ctx) {
     $('watermark').textContent = '';
     const v = ctx.vmin;
-    const cw = v * 6.4;
+    const cw = v * 6.4 * ctx.cardScale;
     const center = $('center');
 
     // The pond: up to 16 face-down cards drifting in a loose school.
@@ -250,11 +250,13 @@ export default {
       floaters.push(f);
     }
 
+    floaters.forEach(f => f.firstChild.style.setProperty('--cw', cw + 'px'));
+
     // "How many left in the pond", printed for both long sides.
     ['pondLabelA', 'pondLabelB'].forEach((id, i) => {
       const l = ensure(id, 'pot-label' + (i ? ' mirror-label' : ''));
       l.style.setProperty('--r', i ? '180deg' : '0deg');
-      l.style.setProperty('--dy', v * 19 + 'px');
+      l.style.setProperty('--dy', v * 19 * Math.max(1, ctx.cardScale * 0.9) + 'px');
       l.textContent = g.phase === 'gameOver' ? '' : g.pond.length ? `${g.pond.length} in the pond` : 'The pond is empty';
     });
 
@@ -328,12 +330,12 @@ export default {
         center.appendChild(el);
         bookEls.set(seat, el);
       }
-      if (el.dataset.key !== books.join('')) {
-        el.dataset.key = books.join('');
+      if (el.dataset.key !== books.join('') + ctx.cardScale) {
+        el.dataset.key = books.join('') + ctx.cardScale;
         el.innerHTML = '';
         books.forEach((r, i) => {
           const c = cardEl(r + 'SHDC'[i % 4]);
-          c.style.setProperty('--cw', v * 5 + 'px');
+          c.style.setProperty('--cw', v * 5 * ctx.cardScale + 'px');
           c.style.transform = `translateX(${(i - (books.length - 1) / 2) * v * 2.2}px) rotate(${(i - (books.length - 1) / 2) * 5}deg)`;
           el.appendChild(c);
         });
