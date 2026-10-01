@@ -1,8 +1,8 @@
-# Syndaris Table
+# Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em** and **Veto**.
-Pick the game in the table's lobby.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto** and **Go Fish**, with **Cooking Up Trouble** on the way.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish.
 
 ## How it works
 
@@ -58,6 +58,23 @@ leftover cards: numbers at face value, action cards 20, wilds 50. You can also l
 The name, colours and card faces are original, so the game stands apart from Mattel's UNO trademark and card
 design. The rules themselves are the standard ones.
 
+## Go Fish rules
+2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
+of the deck is the pond.
+
+- On your turn, ask one player for a rank you already hold. If they have any, they hand over all of them and you
+  go again.
+- If they don't, they say "Go fish!" and you draw one card from the pond. If it's the rank you asked for, you go
+  again; otherwise play passes to the left.
+- Four of a kind is a book, and it goes face up in front of you right away.
+- If your hand runs out, you draw from the pond on your turn. When the pond is empty, you just ask.
+- When all 13 books are down, the most books wins. Ties are shared.
+
+**Fishing motion.** The table's corner has a **Fishing motion** switch, which can be flipped any time. With it on,
+"Go fish!" asks you to turn your phone sideways and pull it back like a fishing rod to reel the card in, and the
+caught card leaps out of the pond on the table. iPhones ask for permission to use motion the first time, and
+every phone has a "tap to reel" fallback. With it off, you just tap **Draw from the pond**.
+
 ## Texas Hold'em rules implemented
 No-limit, 2–8 players. Starting chips (500 to 5,000) and blinds (5/10 up to 50/100) are set in the lobby. The
 dealer button rotates, and heads-up blinds follow the standard rules. Minimum raises follow the size of the
@@ -75,7 +92,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=7; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=9; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ## Networking
@@ -96,13 +113,13 @@ and cellular networks block them.
 ## Files
 | File | What it does |
 |---|---|
-| `index.html` | Landing page: be the table / join with phone |
+| `index.html` | Game catalog: pick a game for the table, or join with your phone |
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
-| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js` | Each game's table drawing and hookup |
+| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js` | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js` | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

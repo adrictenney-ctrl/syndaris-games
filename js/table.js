@@ -1,13 +1,14 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=6';
-import { cardEl, snap, keepAwake } from './cards.js?v=6';
-import { hostRoom } from './net.js?v=6';
-import euchre from './table-euchre.js?v=6';
-import holdem from './table-poker.js?v=6';
-import veto from './table-veto.js?v=6';
+import { GAMES, SIDE_ROT } from './games.js?v=8';
+import { cardEl, snap, keepAwake } from './cards.js?v=8';
+import { hostRoom } from './net.js?v=8';
+import euchre from './table-euchre.js?v=8';
+import holdem from './table-poker.js?v=8';
+import veto from './table-veto.js?v=8';
+import gofish from './table-gofish.js?v=8';
 
-const MODES = { euchre, holdem, veto };
+const MODES = { euchre, holdem, veto, gofish };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
@@ -187,11 +188,8 @@ function endGame() {
 }
 
 // Switching games: move everyone to the nearest seat in the new layout.
-function switchGame(id) {
-  if (session.game || id === session.gameId) return;
-  const oldLayout = info().layout;
-  const newLayout = GAMES[id].layout;
-  const seated = session.players.map((p, i) => p && { p, at: oldLayout[i] }).filter(Boolean);
+function remapPlayers(players, oldLayout, newLayout) {
+  const seated = players.map((p, i) => p && { p, at: oldLayout[i] }).filter(x => x && x.at);
   const next = new Array(newLayout.length).fill(null);
   for (const { p, at } of seated) {
     let best = -1, bestD = Infinity;
@@ -202,12 +200,7 @@ function switchGame(id) {
     });
     if (best >= 0) next[best] = p;
   }
-  mode().reset();
-  session.gameId = id;
-  session.players = next;
-  buildSeats();
-  renderLobbyInfo();
-  update();
+  return next;
 }
 
 // ---------------------------------------------------------------- rendering
@@ -250,7 +243,7 @@ function drawPrint() {
   const cx = W / 2, cy = H / 2, rx = W / 2 - edge, ry = H / 2 - edge;
   if (rx < 10 * v || ry < 10 * v) { $('#print').innerHTML = ''; return; }
   const tx = rx - 1.7 * v, ty = ry - 1.7 * v;
-  const words = 'SYNDARIS ✦ CARD TABLE';
+  const words = 'PLAY ON DISPLAY ✦ CARD TABLE';
   const text = id => `<text font-size="${1.7 * v}" opacity=".7"><textPath href="#${id}" startOffset="50%" text-anchor="middle">${words}</textPath></text>`;
   $('#print').innerHTML = `<svg viewBox="0 0 ${W} ${H}">
     <defs>
@@ -277,9 +270,9 @@ function renderLobbyInfo() {
     qrEl.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
   } else qrEl.textContent = 'QR unavailable — type the address instead';
 
-  $('#gamePick').innerHTML = Object.values(GAMES).map(G =>
-    `<button class="gp ${G.id === session.gameId ? 'on' : ''}" data-game="${G.id}"><b>${G.name}</b><small>${G.blurb}</small></button>`).join('');
-  $('#gamePick').querySelectorAll('[data-game]').forEach(b => { b.onclick = () => switchGame(b.dataset.game); });
+  // The game is picked in the catalog (index.html); here we just name it.
+  $('#gameTitle').textContent = info().name;
+  $('#gameBlurb').textContent = info().blurb;
 
   const set = session.settings[session.gameId];
   const box = $('#settings');
@@ -303,6 +296,7 @@ function geometry() {
     layout,
     upright,
     nameOf,
+    bubble: (seat, text) => showBubble(seat, text),
     rot: seat => (upright ? 0 : SIDE_ROT[layout[seat].side]),
     // A point `d` vmin in from the edge that seat sits on, relative to the table centre.
     inset(seat, d) {
@@ -327,6 +321,11 @@ function render() {
   document.body.classList.toggle('upright', upright);
   $('#btnOrient').textContent = upright ? 'Upright' : 'Flat';
   $('#btnEnd').hidden = !g;
+  $('#allGames').hidden = !!g;
+  // A game can add its own switch to the corner toolbar (Go Fish's fishing motion).
+  const tool = mode().tool;
+  $('#btnTool').hidden = !tool;
+  if (tool) $('#btnTool').textContent = tool.label(session.settings[session.gameId]);
 
   if (!g) {
     const n = session.players.filter(Boolean).length;
@@ -433,6 +432,23 @@ $('#btnFull').onclick = () => {
 };
 $('#btnEnd').onclick = () => { if (confirm('End this game and go back to the lobby?')) endGame(); };
 window.addEventListener('resize', () => { drawPrint(); render(); });
+
+$('#btnTool').onclick = () => {
+  const tool = mode().tool;
+  if (!tool) return;
+  tool.toggle(session.settings[session.gameId], session.game);
+  renderLobbyInfo();
+  update();
+};
+
+// Opened from the catalog with ?game=<id>: switch to that game (unless one is being played).
+const wanted = new URLSearchParams(location.search).get('game');
+if (wanted && GAMES[wanted] && !session.game && wanted !== session.gameId) {
+  const oldLayout = info().layout;
+  session.gameId = wanted;
+  session.players = remapPlayers(session.players, oldLayout, GAMES[wanted].layout);
+  save();
+}
 
 buildSeats();
 renderLobbyInfo();

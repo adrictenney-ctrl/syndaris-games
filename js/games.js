@@ -41,4 +41,14 @@ export const GAMES = {
 };
 GAMES.veto.layout = GAMES.holdem.layout;
 
+GAMES.gofish = {
+  id: 'gofish',
+  name: 'Go Fish',
+  blurb: '2–8 players · ask, fish, collect books',
+  min: 2,
+  max: 8,
+  midJoin: true, // dealt in next game
+  layout: GAMES.holdem.layout,
+};
+
 export const SIDE_ROT = [0, 90, 180, -90];

@@ -8,51 +8,100 @@
   <meta name="theme-color" content="#0b2d1e">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg">
-  <title>Syndaris Table</title>
+  <title>Play On Display</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=6">
+  <link rel="stylesheet" href="css/cards.css?v=8">
   <style>
-    body { display: grid; place-items: center; min-height: 100%; padding: 28px 16px; }
-    main { width: 100%; max-width: 720px; text-align: center; }
-    .deco { display: flex; justify-content: center; margin-bottom: 26px; height: 118px; }
-    .deco .card { --cw: 74px; margin: 0 -16px; }
-    h1 { font-family: var(--display); font-weight: 400; color: var(--ivory); font-size: clamp(44px, 9vw, 76px); letter-spacing: .05em; margin: 0; }
-    .tag { font-family: var(--serif); font-style: italic; color: var(--gold-ink); font-size: 20px; margin: 4px 0 34px; }
-    .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    a.choice {
-      display: block; text-decoration: none; text-align: left; padding: 22px 24px 24px; border-radius: 6px; color: var(--paper-ink);
-      background: repeating-linear-gradient(0deg, rgba(120, 100, 60, .03) 0 1px, transparent 1px 3px), linear-gradient(165deg, #fbf7ec, var(--stock) 60%, #ebe2cb);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, .4); transition: transform .2s;
+    body { min-height: 100%; padding: 36px 20px 48px; }
+    main { max-width: 1040px; margin: 0 auto; }
+    header { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+    h1 { font-family: var(--display); font-weight: 400; color: var(--ivory); font-size: clamp(40px, 7vw, 68px); letter-spacing: .04em; margin: 0; line-height: 1; }
+    .tag { font-family: var(--serif); font-style: italic; color: var(--gold-ink); font-size: 19px; margin: 8px 0 0; }
+    a.join {
+      font-family: var(--display); font-size: 19px; letter-spacing: .04em; text-decoration: none; color: var(--ivory);
+      padding: 11px 20px 13px; border: 1px solid var(--gold-faint); border-radius: 8px; background: rgba(8, 28, 19, .35);
     }
-    a.choice:nth-child(1) { transform: rotate(-1deg); }
-    a.choice:nth-child(2) { transform: rotate(.8deg); }
-    a.choice:hover { transform: translateY(-3px) rotate(0); }
-    a.choice b { display: block; font-family: var(--display); font-weight: 400; font-size: 27px; margin-bottom: 6px; }
-    a.choice span { font-family: var(--serif); font-size: 17px; line-height: 1.4; color: #5c5145; }
-    .games { margin-top: 34px; font-size: 11px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-ink); }
+    a.join small { display: block; font-family: var(--ui); font-size: 12px; letter-spacing: .04em; color: var(--gold-ink); margin-top: 2px; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-ink); margin: 0 0 14px; }
+
+    /* The shelf: each game is a box, dressed in its own table */
+    .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 22px; }
+    .box {
+      position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 300px;
+      padding: 20px; border-radius: 10px; overflow: hidden; text-decoration: none; color: var(--ivory);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(255, 255, 255, .08);
+      transition: transform .2s, box-shadow .2s;
+    }
+    a.box:hover { transform: translateY(-4px); box-shadow: 0 20px 38px rgba(0, 0, 0, .5), inset 0 0 0 1px rgba(255, 255, 255, .14); }
+    .box::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .5)); pointer-events: none; }
+    .box > * { position: relative; z-index: 1; }
+    .box .cards { position: absolute; left: 50%; top: 34%; transform: translate(-50%, -50%); height: 100px; width: 200px; z-index: 0; }
+    .box .cards .card { --cw: 62px; position: absolute; left: 50%; top: 50%; }
+    .box h2 { font-family: var(--display); font-weight: 400; font-size: 30px; margin: 0; letter-spacing: .02em; }
+    .box p { font-family: var(--serif); font-style: italic; font-size: 16px; color: rgba(245, 238, 221, .8); margin: 4px 0 0; }
+    .box .play { margin-top: 14px; font-size: 12px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--brass-hi); }
+    .box.soon { cursor: default; opacity: .8; }
+    .box.soon .play { color: #7a6c58; }
+
+    .t-euchre { background: radial-gradient(ellipse at 50% 35%, #226a47, #185236 55%, #0b2d1e); }
+    .t-holdem { background: radial-gradient(ellipse at 50% 35%, #2c5888, #1c3c64 55%, #0b1b33); }
+    .t-veto { background: repeating-linear-gradient(90deg, rgba(40, 18, 4, .4) 0 2px, transparent 2px 64px), linear-gradient(180deg, #9a6438, #7a4826); }
+    .t-gofish { background: radial-gradient(ellipse at 50% 35%, #2a8796, #145867 55%, #08303d); }
+    .t-gofish .pad {
+      position: absolute; width: 54px; aspect-ratio: 1; border-radius: 50%; z-index: 0;
+      background: radial-gradient(circle at 38% 34%, #7bbd62, #3f7d3a);
+      -webkit-mask: conic-gradient(from 25deg, transparent 0 28deg, #000 28deg); mask: conic-gradient(from 25deg, transparent 0 28deg, #000 28deg);
+    }
+    .t-cooking {
+      color: #2a2320;
+      background: repeating-linear-gradient(90deg, rgba(0, 0, 0, .1) 0 1px, transparent 1px 44px), repeating-linear-gradient(0deg, rgba(0, 0, 0, .1) 0 1px, transparent 1px 44px), linear-gradient(180deg, #ece5d6, #cfc4ad);
+    }
+    .t-cooking::after { background: none; }
+    .t-cooking p { color: #5c5145; }
+    .t-cooking .pot { position: absolute; left: 50%; top: 32%; transform: translate(-50%, -50%); font-size: 74px; z-index: 0; }
   </style>
 </head>
 <body>
   <main>
-    <div class="deco" id="deco"></div>
-    <h1>Syndaris</h1>
-    <p class="tag">One table in the middle. Everyone's hand on their phone.</p>
-    <div class="choices">
-      <a class="choice" href="table.html"><b>Be the table</b><span>Lay this tablet (or a laptop, or a TV) in the middle. It deals, keeps score, and shows every card played.</span></a>
-      <a class="choice" href="play.html"><b>Join with my phone</b><span>Scan the join card on the table, or type its 4-letter room code.</span></a>
-    </div>
-    <p class="games">Euchre · Texas Hold'em · Veto</p>
+    <header>
+      <div>
+        <h1>Play On Display</h1>
+        <p class="tag">Pick a game for the table. Everyone's hand goes on their phone.</p>
+      </div>
+      <a class="join" href="play.html">Join with my phone<small>Scan the table's code or type its room code</small></a>
+    </header>
+    <p class="eyebrow">The games</p>
+    <div class="shelf" id="shelf"></div>
   </main>
   <script type="module">
-    import { cardEl } from './js/cards.js?v=6';
-    const deco = document.getElementById('deco');
-    ['JH', 'AS', 'R-7-1', 'KD', 'QC'].forEach((c, i) => {
-      const el = cardEl(c);
-      el.style.transform = `rotate(${(i - 2) * 9}deg) translateY(${Math.abs(i - 2) * 7}px)`;
-      deco.appendChild(el);
-    });
+    import { GAMES } from './js/games.js?v=8';
+    import { cardEl } from './js/cards.js?v=8';
+    const art = {
+      euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
+    };
+    const shelf = document.getElementById('shelf');
+    for (const id of ['euchre', 'holdem', 'veto', 'gofish']) {
+      const G = GAMES[id];
+      const box = document.createElement('a');
+      box.className = `box t-${id}`;
+      box.href = `table.html?game=${id}`;
+      box.innerHTML = `${id === 'gofish' ? '<i class="pad" style="left:14px;top:16px"></i><i class="pad" style="right:18px;top:120px;width:38px;rotate:140deg"></i>' : ''}
+        <div class="cards"></div><h2>${G.name}</h2><p>${G.blurb}</p><span class="play">Set up the table →</span>`;
+      const fan = box.querySelector('.cards');
+      art[id].forEach((c, i) => {
+        const el = cardEl(c);
+        el.style.transform = `translate(-50%, -50%) translateX(${(i - 1) * 34}px) rotate(${(i - 1) * 12}deg) translateY(${Math.abs(i - 1) * 6}px)`;
+        fan.appendChild(el);
+      });
+      shelf.appendChild(box);
+    }
+    // Cooking Up Trouble is waiting on its rulebook.
+    const soon = document.createElement('div');
+    soon.className = 'box t-cooking soon';
+    soon.innerHTML = `<span class="pot">🍲</span><h2>Cooking Up Trouble</h2><p>Party game · coming soon</p><span class="play">Coming soon</span>`;
+    shelf.appendChild(soon);
   </script>
 </body>
 </html>

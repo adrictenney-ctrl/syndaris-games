@@ -1,6 +1,6 @@
 {
-  "name": "Syndaris Table",
-  "short_name": "Syndaris",
+  "name": "Play On Display",
+  "short_name": "Play On Display",
   "description": "Card games with a shared table screen and your hand on your phone.",
   "start_url": "./index.html",
   "display": "fullscreen",
