@@ -1,1 +1,8 @@
 .claude/
+tv-app/.gradle/
+tv-app/build/
+tv-app/app/build/
+tv-app/local.properties
+tv-app/keystore.properties
+*.jks
+*.apk

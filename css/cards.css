@@ -215,3 +215,22 @@ button { font: inherit; }
 .card.oc.oc-d4 .val.tax { transform: translate(-50%, -62%); }
 .card.oc.oc-d4 .wild-word { bottom: 19%; }
 .card.oc.c-O .val, .card.oc.c-O .corner b, .card.oc.c-O .tax-word { color: color-mix(in srgb, var(--oc-O) 82%, #3a2200); }
+
+/* ---------- TV remote: the highlight that follows the arrow keys ---------- */
+html.tv-nav .tv-focus {
+  outline: max(4px, .5vmin) solid #ffd66b !important;
+  outline-offset: max(3px, .35vmin);
+  box-shadow: 0 0 0 max(8px, 1vmin) rgba(255, 214, 107, .22), 0 0 max(24px, 4vmin) rgba(255, 214, 107, .55) !important;
+  border-radius: 6px;
+  z-index: 30;
+}
+html.tv-nav .box.tv-focus { transform: translateY(-6px) scale(1.04); }
+html.tv-nav .sq.tv-focus { outline-offset: calc(-1 * max(4px, .5vmin)); }
+html.tv-nav *:focus { outline: none; }
+html.tv a.join, html.tv #btnFull { display: none !important; }
+#tvToast {
+  position: fixed; left: 50%; bottom: 8vh; transform: translate(-50%, 20px); opacity: 0; z-index: 100; pointer-events: none;
+  background: var(--stock); color: var(--paper-ink); font-family: var(--serif); font-style: italic; font-size: max(20px, 2.6vmin);
+  padding: 1.2vmin 3vmin 1.5vmin; border-radius: 6px; box-shadow: 0 10px 30px rgba(0, 0, 0, .5); transition: .25s;
+}
+#tvToast.show { opacity: 1; transform: translate(-50%, 0); }

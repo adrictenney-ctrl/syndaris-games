@@ -1,13 +1,13 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=13';
-import { cardEl, snap, keepAwake } from './cards.js?v=13';
-import { hostRoom } from './net.js?v=13';
-import euchre from './table-euchre.js?v=13';
-import holdem from './table-poker.js?v=13';
-import veto from './table-veto.js?v=13';
-import gofish from './table-gofish.js?v=13';
-import chess from './table-chess.js?v=13';
+import { GAMES, SIDE_ROT } from './games.js?v=14';
+import { cardEl, snap, keepAwake } from './cards.js?v=14';
+import { hostRoom } from './net.js?v=14';
+import euchre from './table-euchre.js?v=14';
+import holdem from './table-poker.js?v=14';
+import veto from './table-veto.js?v=14';
+import gofish from './table-gofish.js?v=14';
+import chess from './table-chess.js?v=14';
 
 const MODES = { euchre, holdem, veto, gofish, chess };
 const STORE = 'syndaris.table.v2';
@@ -46,7 +46,11 @@ try { cardScale = Math.min(1.8, Math.max(0.8, Number(localStorage.getItem('pod.c
 document.documentElement.style.setProperty('--card-scale', cardScale);
 
 let upright = false;
-try { upright = localStorage.getItem('syndaris.table.upright') === '1'; } catch {}
+try {
+  const saved = localStorage.getItem('syndaris.table.upright');
+  // A TV stands up, so it starts in Upright mode unless someone changed it.
+  upright = saved === null ? document.documentElement.classList.contains('tv') : saved === '1';
+} catch {}
 
 const mode = () => MODES[session.gameId];
 const info = () => GAMES[session.gameId];
