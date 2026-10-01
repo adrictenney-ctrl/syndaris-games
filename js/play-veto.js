@@ -1,7 +1,7 @@
 // Veto on a player's phone: your hand, draw / keep, wild colours, "last card!".
-import { GAMES } from './games.js?v=5';
-import { COLORS, COLOR_NAME, cardName, parse } from './veto.js?v=5';
-import { $, toast, setHud, setStatus, renderHand, flyCard, cardEl } from './phone-kit.js?v=5';
+import { GAMES } from './games.js?v=6';
+import { COLORS, COLOR_NAME, cardName, parse } from './veto.js?v=6';
+import { $, toast, setHud, setStatus, renderHand, flyCard, cardEl } from './phone-kit.js?v=6';
 
 const LAYOUT = GAMES.veto.layout;
 let ctx = null;
@@ -51,7 +51,7 @@ export function render(c) {
       board.appendChild(el);
     }
   }
-  $('#myHand').textContent = g.pending && g.turn === you ? `+${g.pending} is coming your way` : '';
+  $('#myHand').textContent = g.pending && g.turn === you ? `You're taxed ${g.pending} cards` : '';
 
   const myTurn = g.phase === 'play' && g.turn === you && g.active;
   document.body.classList.toggle('myturn', myTurn);
@@ -87,7 +87,7 @@ function renderStatus(g, you, myTurn) {
   if (!g.active) return setStatus("You're in next round", 'Hang tight while this one finishes');
   if (myTurn) {
     if (g.drew) return setStatus('You drew a playable card', `Play the ${cardName(g.drew)}, or keep it`);
-    if (g.pending) return setStatus(`+${g.pending} coming at you`, g.legal.length ? 'Stack a draw card, or take them' : `Draw ${g.pending}`);
+    if (g.pending) return setStatus(`Taxed ${g.pending} cards`, g.legal.length ? 'Pass it on with a Tax card, or pay up' : `Pay up: draw ${g.pending}`);
     return setStatus('Your turn', g.color ? `Match ${COLOR_NAME[g.color]} or ${valueWord(g.top)}` : 'Play any card');
   }
   setStatus(`${nameOf(g.turn)}'s turn`, g.next === you ? "You're next" : '');
@@ -96,7 +96,7 @@ function renderStatus(g, you, myTurn) {
 const valueWord = top => {
   const { c, v } = parse(top);
   if (c === 'W') return 'play a wild';
-  return { skip: 'a Skip', rev: 'a Reverse', d2: 'a +2' }[v] || `a ${v}`;
+  return { skip: 'a Skip', rev: 'a Reverse', d2: 'a Tax' }[v] || `a ${v}`;
 };
 
 function renderPanel(g, you, myTurn) {
@@ -109,7 +109,7 @@ function renderPanel(g, you, myTurn) {
   const send = ctx.send;
   const rows = [];
 
-  if (catchable != null) rows.push(`<button class="panel-btn catch wide" id="catch">Catch ${ctx.nameOf(catchable)} — they didn't call it (+2)</button>`);
+  if (catchable != null) rows.push(`<button class="panel-btn catch wide" id="catch">Catch ${ctx.nameOf(catchable)} — they didn't call it (they draw 2)</button>`);
   const mustCall = g.vulnerable === you;
   const canPreCall = myTurn && g.hand.length === 2 && !g.called && g.legal.length;
   if (mustCall || canPreCall) rows.push(`<button class="panel-btn call wide" id="call">Last card!</button>`);
@@ -121,7 +121,7 @@ function renderPanel(g, you, myTurn) {
   } else if (myTurn) {
     const main = [];
     if (g.drew) main.push('<button class="panel-btn" id="keep">Keep it</button>');
-    else main.push(`<button class="panel-btn ${g.legal.length ? '' : 'go'}" id="draw">${g.pending ? `Take ${g.pending}` : 'Draw a card'}</button>`);
+    else main.push(`<button class="panel-btn ${g.legal.length ? '' : 'go'}" id="draw">${g.pending ? `Pay the tax (draw ${g.pending})` : 'Draw a card'}</button>`);
     if (selected) main.push(`<button class="panel-btn go" id="play">Play ${cardName(selected)}</button>`);
     rows.push(`<div class="row">${main.join('')}</div>`);
   }
@@ -166,8 +166,8 @@ function tapCard(id) {
   if (!(g.phase === 'play' && g.turn === ctx.st.you)) return;
   if (!g.legal.includes(id)) {
     if (g.drew) return toast('You can only play the card you just drew');
-    if (g.pending) return toast(`Stack a draw card or take ${g.pending}`);
-    if (parse(id).v === 'd4') return toast(`Wild Draw Four only works when you have no ${COLOR_NAME[g.color]}`);
+    if (g.pending) return toast(`Pass the tax on with a Tax card, or pay ${g.pending}`);
+    if (parse(id).v === 'd4') return toast(`A Wild Tax only works when you have no ${COLOR_NAME[g.color]}`);
     return toast(g.color ? `Play ${COLOR_NAME[g.color]} or match the number` : "That can't be played now");
   }
   if (selected === id) return playCard(id);

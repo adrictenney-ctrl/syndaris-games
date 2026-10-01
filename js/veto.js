@@ -16,7 +16,7 @@ export const points = id => {
 };
 export const cardName = id => {
   const { c, v } = parse(id);
-  const val = { skip: 'Skip', rev: 'Reverse', d2: 'Draw Two', wild: 'Wild', d4: 'Wild Draw Four' }[v] || v;
+  const val = { skip: 'Skip', rev: 'Reverse', d2: 'Tax ×2', wild: 'Wild', d4: 'Wild Tax ×4' }[v] || v;
   return c === 'W' ? val : `${COLOR_NAME[c]} ${val}`;
 };
 
@@ -121,7 +121,7 @@ export function startRound(g) {
   for (let k = 0; k < 7; k++) for (const i of activeSeats(g)) g.seats[i].hand.push(g.deck.pop());
   g.seats.forEach(s => { if (s) s.hand = sortHand(s.hand); });
 
-  // Turn up the first card. A Wild Draw Four goes back in the deck.
+  // Turn up the first card. A Wild Tax goes back in the deck.
   let first = g.deck.pop();
   while (parse(first).v === 'd4') {
     g.deck.splice(Math.floor(Math.random() * g.deck.length), 0, first);
@@ -164,7 +164,7 @@ export function applyAction(g, seat, a) {
     if (g.vulnerable !== a.target || a.target === seat) return 'Too late, they are safe';
     g.vulnerable = null;
     draw(g, a.target, 2);
-    announce(g, a.target, 'Caught! +2 cards');
+    announce(g, a.target, 'Caught! Draws 2');
     return null;
   }
 
@@ -204,8 +204,8 @@ export function applyAction(g, seat, a) {
   if (g.drew && a.card !== g.drew) return 'You can only play the card you just drew';
   if (!canPlay(g, s.hand, a.card)) {
     const { v } = parse(a.card);
-    if (g.pending) return `Play a draw card or take ${g.pending}`;
-    if (v === 'd4') return `You can only play Wild Draw Four when you have no ${COLOR_NAME[g.color]} cards`;
+    if (g.pending) return `Pass the tax on with a Tax card, or pay ${g.pending}`;
+    if (v === 'd4') return `You can only play a Wild Tax when you have no ${COLOR_NAME[g.color]} cards`;
     return `Play ${COLOR_NAME[g.color]} or match the number`;
   }
   const { c, v } = parse(a.card);
@@ -227,7 +227,7 @@ export function applyAction(g, seat, a) {
   else if (v === 'rev') { g.dir *= -1; g.turn = two ? seat : step(g, seat); msg = 'Reverse!'; }
   else if (v === 'd2' || v === 'd4') {
     const n = v === 'd2' ? 2 : 4;
-    msg = v === 'd4' ? `+4 · ${COLOR_NAME[g.color]}` : '+2';
+    msg = v === 'd4' ? `Tax ×4 · ${COLOR_NAME[g.color]}` : 'Tax ×2';
     if (g.settings.stacking) {
       g.pending += n;
       g.pendingType = v;

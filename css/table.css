@@ -274,6 +274,7 @@ body.in-lobby #lobby { display: flex; }
 #qr svg path, #qr svg rect[fill="black"] { fill: var(--paper-ink); }
 .tent-cap { margin: 1.4vmin 0 .2vmin; font-family: var(--display); font-size: 2.5vmin; letter-spacing: .06em; }
 .tent-room { margin: 0; font-size: 1.6vmin; letter-spacing: .2em; text-transform: uppercase; color: #7a6c58; }
+.tent-note { margin: .8vmin 0 0; font-family: var(--serif); font-style: italic; font-size: 1.6vmin; color: #7a6c58; }
 .tent-room b { font-family: var(--num); font-weight: 400; font-size: 3.6vmin; letter-spacing: .16em; color: var(--paper-ink); text-transform: none; }
 
 .lobby-info { max-width: 50vmin; }

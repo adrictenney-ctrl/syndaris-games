@@ -42,17 +42,18 @@ euchred = 2 points to the defenders. Play to 10 by default (5, 7, and 11 are als
 ## Veto rules
 Veto is a shedding game that plays like UNO, but with its own look: four colours (red ●, gold ▲,
 teal ■, plum ◆), each with a shape so colour isn't the only cue. The deck has 108 cards. Each colour has one
-0, plus two each of 1–9, Skip, Reverse and +2. There are also 4 Wilds and 4 Wild +4s.
+0, plus two each of 1–9, Skip, Reverse and Tax ×2. There are also 4 Wilds and 4 Wild Tax ×4s.
 
 - Everyone is dealt 7 cards. On your turn, match the colour or the number/symbol, or play a wild.
 - If you can't play, draw one card. If it fits you may play it; otherwise play passes.
-- Wild +4 can only be played when you hold nothing of the current colour.
+- A **Tax** card makes the next player pay: they draw 2 (or 4 for a Wild Tax) and lose their turn.
+- A Wild Tax can only be played when you hold nothing of the current colour.
 - With two players, Reverse works like Skip.
 - When you're about to play your second-to-last card, tap **Last card!**. If you forget, anyone can tap
   **Catch** before the next player moves, and you draw 2. Bots will catch you too.
 
 The lobby sets the length: one round, or play to 200 or 500 points. The winner of each round scores everyone's
-leftover cards: numbers at face value, action cards 20, wilds 50. You can also turn on stacking +2 and +4.
+leftover cards: numbers at face value, action cards 20, wilds 50. You can also let players pass a tax on by playing another Tax card.
 
 The name, colours and card faces are original, so the game stands apart from Mattel's UNO trademark and card
 design. The rules themselves are the standard ones.
@@ -74,10 +75,12 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=6; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=7; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ## Networking
+Players do **not** need to be on the same Wi-Fi. Any internet connection works, including cellular, so a friend on their phone plan can join the same table.
+
 Phones and the table exchange messages through a free public MQTT relay (`broker.emqx.io`, over secure
 WebSockets). Messages are encrypted with a key derived from the room code. That stops casual snooping on the
 public relay, but anyone who knows the room code could decrypt them. The table device still runs the game; the

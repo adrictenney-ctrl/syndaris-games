@@ -1,6 +1,6 @@
 // Veto on the table screen: draw pile, discard pile, direction ring, current colour.
-import * as C from './veto.js?v=5';
-import { cardEl, snap } from './cards.js?v=5';
+import * as C from './veto.js?v=6';
+import { cardEl, snap } from './cards.js?v=6';
 
 let pile = [];          // discard pile elements on the felt, oldest first
 let pileRound = null;
@@ -36,7 +36,7 @@ export default {
   settingsHTML: s => `
     <label>Play <select data-set="target">${[[0, 'one round'], [200, 'to 200 points'], [500, 'to 500 points']]
       .map(([v, t]) => `<option value="${v}" ${v === s.target ? 'selected' : ''}>${t}</option>`).join('')}</select></label>
-    <label><input type="checkbox" data-set="stacking" ${s.stacking ? 'checked' : ''}> Stack +2 and +4</label>`,
+    <label><input type="checkbox" data-set="stacking" ${s.stacking ? 'checked' : ''}> Tax cards can be passed on</label>`,
 
   create: (settings, players) => C.createGame(settings, players.map(Boolean)),
   act: C.applyAction,
@@ -163,7 +163,7 @@ export default {
     }
 
     // Current colour, printed twice so both long sides can read it.
-    const text = g.phase !== 'play' ? '' : (g.color ? C.COLOR_NAME[g.color] : 'Any colour') + (g.pending ? ` · +${g.pending} waiting` : '');
+    const text = g.phase !== 'play' ? '' : (g.color ? C.COLOR_NAME[g.color] : 'Any colour') + (g.pending ? ` · tax of ${g.pending} waiting` : '');
     ['ccLabelA', 'ccLabelB'].forEach((id, i) => {
       const l = ensure(id, 'pot-label' + (i ? ' mirror-label' : ''));
       l.style.setProperty('--r', i ? '180deg' : '0deg');

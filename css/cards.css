@@ -33,10 +33,10 @@
   --seat-6: #c9a24a;
   --seat-7: #d9d2c0;
   /* Veto inks */
-  --oc-R: #a8323a;
-  --oc-O: #b8841f;
-  --oc-T: #1d7571;
-  --oc-P: #6a3f86;
+  --oc-R: #e3233a;
+  --oc-O: #f2a000;
+  --oc-T: #00a39b;
+  --oc-P: #9a3cd0;
 }
 
 * { box-sizing: border-box; }
@@ -196,3 +196,22 @@ button { font: inherit; }
   position: absolute; left: 0; right: 0; bottom: 21%; text-align: center;
   font-family: var(--display); font-size: .78em; letter-spacing: .14em; color: var(--card-black);
 }
+
+/* Brighter Veto cards: a wash of the card's colour on the stock, a bolder frame and emblem */
+.card.oc:not(.c-W) {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 50%, color-mix(in srgb, var(--c) 16%, transparent), transparent 75%),
+    linear-gradient(165deg, color-mix(in srgb, var(--c) 6%, #fbf7ec) 0%, color-mix(in srgb, var(--c) 10%, var(--stock)) 100%);
+}
+.card.oc.c-W {
+  background:
+    conic-gradient(from 45deg at 50% 50%, color-mix(in srgb, var(--oc-R) 12%, var(--stock)) 0 25%, color-mix(in srgb, var(--oc-O) 12%, var(--stock)) 0 50%,
+      color-mix(in srgb, var(--oc-T) 12%, var(--stock)) 0 75%, color-mix(in srgb, var(--oc-P) 12%, var(--stock)) 0);
+}
+.card.oc .frame { border-width: calc(var(--cw) * .03); }
+.card.oc .big-emb { opacity: .22; }
+.card.oc .val.tax { font-size: calc(var(--cw) * .44); transform: translate(-50%, -66%); }
+.card.oc .tax-word { bottom: 22%; color: var(--c); font-size: .9em; letter-spacing: .22em; }
+.card.oc.oc-d4 .val.tax { transform: translate(-50%, -62%); }
+.card.oc.oc-d4 .wild-word { bottom: 19%; }
+.card.oc.c-O .val, .card.oc.c-O .corner b, .card.oc.c-O .tax-word { color: color-mix(in srgb, var(--oc-O) 82%, #3a2200); }

@@ -44,7 +44,8 @@ export function setFace(el, card) {
 
 // Veto cards: ivory stock, a frame in the card's colour, a serif numeral, and a shape per
 // colour (red circle, gold triangle, teal square, plum diamond) so colour isn't the only cue.
-const VETO_LABEL = { skip: '⊘', rev: '⇄', d2: '+2', d4: '+4', wild: '' };
+// Draw cards are "Tax" cards (×2, and the wild ×4): next player pays by drawing.
+const VETO_LABEL = { skip: '⊘', rev: '⇄', d2: '×2', d4: '×4', wild: '' };
 const QUAD = '<span class="quad"><i class="emb e-R"></i><i class="emb e-O"></i><i class="emb e-P"></i><i class="emb e-T"></i></span>';
 
 function setVetoFace(el, card) {
@@ -54,10 +55,11 @@ function setVetoFace(el, card) {
   el.className = `card oc c-${c}${wild ? ` oc-${v}` : ''}`;
   el.dataset.card = card;
   const emb = wild ? '' : `<i class="emb e-${c}"></i>`;
-  const corner = wild ? (v === 'd4' ? '+4' : 'W') : label;
+  const corner = wild ? (v === 'd4' ? '×4' : 'W') : label;
   const centre = wild
-    ? `${QUAD}${v === 'd4' ? '<span class="val">+4</span>' : '<span class="wild-word">wild</span>'}`
-    : `<i class="emb e-${c} big-emb"></i><span class="val${v === 'skip' || v === 'rev' ? ' sym' : ''}">${label}</span>`;
+    ? `${QUAD}${v === 'd4' ? '<span class="val tax">×4</span><span class="wild-word">wild tax</span>' : '<span class="wild-word">wild</span>'}`
+    : `<i class="emb e-${c} big-emb"></i><span class="val${v === 'skip' || v === 'rev' ? ' sym' : ''}${v === 'd2' ? ' tax' : ''}">${label}</span>` +
+      (v === 'd2' ? '<span class="wild-word tax-word">tax</span>' : '');
   el.innerHTML =
     `<div class="frame"></div>` +
     `<div class="corner tl"><b>${corner}</b>${emb}</div>` + centre +
