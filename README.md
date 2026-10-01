@@ -107,8 +107,32 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=15; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=16; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
+
+## TV app (Google TV, Android TV, Fire TV)
+`tv-app/` is a small Android app that shows the site full screen on a TV and works with the TV remote. Use it as
+the table: put it on the TV and players join from their phones as usual.
+
+**Install it.** The APK is at **https://adrictenney-ctrl.github.io/syndaris-games/tv.apk**.
+- **Fire TV:** install the free **Downloader** app from the Amazon store and type in that address. The first time,
+  Fire TV asks you to allow Downloader to install apps.
+- **Google TV / Android TV:** install **Downloader** from the Play Store and do the same. Alternatively, send the
+  file over with an app like *Send Files to TV*. Allow "install unknown apps" for whichever app opens it.
+
+**The remote:**
+- **Arrows** move the gold highlight.
+- **OK** presses whatever is highlighted.
+- **Back** goes back a screen. During a game, the first Back only warns; the game is saved either way.
+
+TVs start in **Upright** mode. The same remote navigation also works on any TV's built-in browser (or with a
+keyboard) at the site address with `?tv=1`. That covers Samsung and LG TVs, which can't install Android apps.
+
+The app loads the live website, so updates to the site reach every TV without reinstalling.
+
+**Building it:** you need Android Studio's Java and the Android SDK. Then run `gradlew.bat assembleRelease` in
+`tv-app/`. Release signing reads `tv-app/keystore.properties`, which is not in git. The key itself lives in
+`Documents/play-on-display-keys/` and must be backed up: every future version has to be signed with the same key.
 
 ## Card size on the table
 The table's corner toolbar has a **Card size** slider (0.8× to 1.8×). It scales the cards in the middle of the table

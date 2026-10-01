@@ -37,7 +37,8 @@ function focus(el) {
   document.querySelectorAll('.tv-focus').forEach(e => e.classList.remove('tv-focus'));
   el.classList.add('tv-focus');
   el.focus({ preventScroll: true });
-  el.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
+  const r = el.getBoundingClientRect();
+  if (r.top < 0 || r.bottom > innerHeight) el.scrollIntoView?.({ block: 'center', inline: 'nearest' });
 }
 
 function move(dir) {

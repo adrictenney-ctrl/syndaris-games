@@ -234,3 +234,7 @@ html.tv a.join, html.tv #btnFull { display: none !important; }
   padding: 1.2vmin 3vmin 1.5vmin; border-radius: 6px; box-shadow: 0 10px 30px rgba(0, 0, 0, .5); transition: .25s;
 }
 #tvToast.show { opacity: 1; transform: translate(-50%, 0); }
+/* On a TV, both rows of the game catalog fit on one screen. */
+html.tv .box { min-height: 32vh; }
+html.tv body { padding-top: 4vh; }
+html.tv header { margin-bottom: 2vh; }

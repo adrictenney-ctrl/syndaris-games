@@ -6,3 +6,4 @@ tv-app/local.properties
 tv-app/keystore.properties
 *.jks
 *.apk
+!tv.apk
