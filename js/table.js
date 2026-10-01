@@ -1,12 +1,12 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=8';
-import { cardEl, snap, keepAwake } from './cards.js?v=8';
-import { hostRoom } from './net.js?v=8';
-import euchre from './table-euchre.js?v=8';
-import holdem from './table-poker.js?v=8';
-import veto from './table-veto.js?v=8';
-import gofish from './table-gofish.js?v=8';
+import { GAMES, SIDE_ROT } from './games.js?v=9';
+import { cardEl, snap, keepAwake } from './cards.js?v=9';
+import { hostRoom } from './net.js?v=9';
+import euchre from './table-euchre.js?v=9';
+import holdem from './table-poker.js?v=9';
+import veto from './table-veto.js?v=9';
+import gofish from './table-gofish.js?v=9';
 
 const MODES = { euchre, holdem, veto, gofish };
 const STORE = 'syndaris.table.v2';
@@ -237,7 +237,12 @@ function buildSeats() {
 // The table's printed markings: a double oval with the name set along it, readable from
 // both long sides. Sized to sit just inside the seats.
 function drawPrint() {
-  const r = $('#felt').getBoundingClientRect();
+  // Some tables have their own scenery (Go Fish: rocks, lily pads, koi).
+  const decor = $('#decor');
+  const fr = $('#felt').getBoundingClientRect();
+  if (mode().decorate) mode().decorate(decor, fr.width, fr.height, Math.min(fr.width, fr.height) / 100);
+  else { decor.innerHTML = ''; delete decor.dataset.key; }
+  const r = fr;
   const W = r.width, H = r.height, v = Math.min(W, H) / 100;
   const edge = (3.4 + 1.2 + (info().layout.length > 4 ? 21 : 25) + 1.6) * v;
   const cx = W / 2, cy = H / 2, rx = W / 2 - edge, ry = H / 2 - edge;
@@ -325,7 +330,13 @@ function render() {
   // A game can add its own switch to the corner toolbar (Go Fish's fishing motion).
   const tool = mode().tool;
   $('#btnTool').hidden = !tool;
-  if (tool) $('#btnTool').textContent = tool.label(session.settings[session.gameId]);
+  if (tool) {
+    const on = tool.on(session.settings[session.gameId]);
+    const b = $('#btnTool');
+    b.className = 'switch' + (on ? ' on' : '');
+    b.setAttribute('aria-pressed', String(on));
+    b.innerHTML = `<span class="track"><span class="knob"></span></span><span class="sw-label">${tool.label}<small>${tool.hint}</small></span><b>${on ? 'On' : 'Off'}</b>`;
+  }
 
   if (!g) {
     const n = session.players.filter(Boolean).length;

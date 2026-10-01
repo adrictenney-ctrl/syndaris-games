@@ -545,3 +545,50 @@ body[data-game="gofish"] #decor { display: block; }
 .books { position: absolute; left: 0; top: 0; z-index: 2; transition: transform .5s; }
 .books .card { position: absolute; left: 0; top: 0; translate: -50% -50%; }
 body[data-game="gofish"] #print { display: none; }
+
+/* ---------- Go Fish pond: rocky shore, koi, lily pads ---------- */
+body[data-game="gofish"] #rail { display: none; }
+body[data-game="gofish"] .plate { background: rgba(4, 38, 46, .5); }
+#decor .koi-layer { position: absolute; inset: 0; }
+.koi {
+  position: absolute; left: 0; top: 0;
+  offset-rotate: auto;
+  animation: swim 40s linear infinite;
+  opacity: .92;
+  filter: drop-shadow(.8vmin 1.4vmin .7vmin rgba(0, 25, 30, .45));
+}
+.koi svg { width: 100%; display: block; }
+.koi .tail { transform-box: view-box; transform-origin: 24px 24px; animation: wag .7s ease-in-out infinite alternate; }
+@keyframes swim { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes wag { from { transform: rotate(-16deg); } to { transform: rotate(16deg); } }
+#decor .pad { translate: -50% -50%; }
+.shore .rock {
+  position: absolute; translate: -50% -50%;
+  background: radial-gradient(circle at 34% 28%, var(--hi) 0%, var(--mid) 48%, var(--lo) 100%);
+  box-shadow:
+    inset -.5vmin -.8vmin 1.3vmin rgba(0, 0, 0, .42),
+    inset .3vmin .4vmin .6vmin rgba(255, 255, 255, .2),
+    0 .6vmin 1.1vmin rgba(0, 25, 30, .6);
+}
+.shore .rock.moss { background: radial-gradient(circle at 34% 28%, #9bb07a 0%, #627548 32%, var(--mid) 62%, var(--lo) 100%); }
+
+/* ---------- the motion switch: a little wooden sign on the shore ---------- */
+.switch {
+  position: absolute; left: 4vmin; bottom: 4vmin; z-index: 21; width: 21vmin;
+  display: grid; grid-template-columns: auto 1fr; grid-template-areas: "track state" "label label";
+  align-items: center; gap: .9vmin 1.2vmin; padding: 1.2vmin 1.5vmin 1.3vmin; text-align: left; cursor: pointer;
+  font-family: var(--ui); color: #f8f0dd;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .1) 0 .2vmin, transparent .2vmin 1.4vmin),
+    linear-gradient(180deg, #93603a, #6c4325);
+  border: .25vmin solid #3c2513; border-radius: .9vmin;
+  box-shadow: 0 .7vmin 1.6vmin rgba(0, 0, 0, .55), inset 0 .2vmin 0 rgba(255, 255, 255, .22);
+}
+.switch[hidden] { display: none; }
+.switch .track { grid-area: track; position: relative; width: 6.2vmin; height: 3.3vmin; border-radius: 99px; background: rgba(0, 0, 0, .45); transition: background .25s; }
+.switch .knob { position: absolute; top: .45vmin; left: .45vmin; width: 2.4vmin; height: 2.4vmin; border-radius: 50%; background: #f8f0dd; box-shadow: 0 .2vmin .4vmin rgba(0, 0, 0, .45); transition: transform .25s; }
+.switch.on .track { background: #3fa86b; }
+.switch.on .knob { transform: translateX(2.9vmin); }
+.switch b { grid-area: state; font-family: var(--display); font-weight: 400; font-size: 3vmin; }
+.switch .sw-label { grid-area: label; display: flex; flex-direction: column; font-size: 2vmin; font-weight: 700; line-height: 1.15; }
+.switch .sw-label small { font-size: 1.45vmin; font-weight: 500; opacity: .85; margin-top: .2vmin; }

@@ -1,7 +1,7 @@
 // Go Fish on the table screen: the whole table is a pond. Face-down cards drift in the
 // water; books sit in front of each player; caught cards come up out of the water.
-import * as F from './gofish.js?v=8';
-import { cardEl, snap } from './cards.js?v=8';
+import * as F from './gofish.js?v=9';
+import { cardEl, snap } from './cards.js?v=9';
 
 const $ = id => document.getElementById(id);
 let floaters = [];      // drifting face-down cards in the pond
@@ -30,14 +30,151 @@ function splash(x, y, big) {
   setTimeout(() => s.remove(), 1400);
 }
 
+// ---------------------------------------------------------------- pond scenery
+
+// Seeded random so the rocks don't jump around every time the screen resizes.
+function seeded(seed) {
+  let s = seed >>> 0;
+  return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
+}
+
+// A point `d` px along the screen's edge (clockwise from top-left), plus which edge.
+function onEdge(d, W, H) {
+  if (d < W) return { x: d, y: 0, nx: 0, ny: 1 };
+  d -= W;
+  if (d < H) return { x: W, y: d, nx: -1, ny: 0 };
+  d -= H;
+  if (d < W) return { x: W - d, y: H, nx: 0, ny: -1 };
+  d -= W;
+  return { x: 0, y: H - d, nx: 1, ny: 0 };
+}
+
+const ROCK_TONES = [
+  ['#a59d8f', '#6f685d', '#3b3731'], // grey granite
+  ['#a8977c', '#76654c', '#3e3426'], // sandstone
+  ['#8f978a', '#5d6657', '#2f3530'], // mossy
+  ['#b3aca0', '#827a6d', '#46413a'], // pale
+];
+
+function rock(x, y, w, h, rand) {
+  const el = document.createElement('i');
+  el.className = 'rock';
+  const t = ROCK_TONES[Math.floor(rand() * ROCK_TONES.length)];
+  const r = () => 38 + Math.round(rand() * 24);
+  Object.assign(el.style, {
+    left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px',
+    borderRadius: `${r()}% ${r()}% ${r()}% ${r()}% / ${r()}% ${r()}% ${r()}% ${r()}%`,
+    rotate: Math.round(rand() * 360) + 'deg',
+  });
+  el.style.setProperty('--hi', t[0]);
+  el.style.setProperty('--mid', t[1]);
+  el.style.setProperty('--lo', t[2]);
+  if (rand() < 0.3) el.classList.add('moss');
+  return el;
+}
+
+// Koi: body, patches, fins and a tail that wags. Drawn facing right.
+const KOI = [
+  { body: '#f6f1e7', patch: '#e2462b', head: '#e2462b' },   // kohaku: white with red
+  { body: '#f08a24', patch: '#f8c25c', head: '#f08a24' },   // orange ogon
+  { body: '#f4efe4', patch: '#1c1a1d', head: '#e0502f' },   // tancho-ish with black
+  { body: '#1f1d22', patch: '#e9b13a', head: '#1f1d22' },   // black and gold
+  { body: '#fbf7ee', patch: '#f2b347', head: '#fbf7ee' },   // pale with gold
+];
+const koiSVG = k => `<svg viewBox="0 0 120 48" aria-hidden="true">
+  <g class="tail"><path d="M24 24 C14 12 6 6 1 6 C6 14 10 20 14 24 C10 28 6 34 1 42 C6 42 14 36 24 24 Z" fill="${k.patch}" opacity=".9"/></g>
+  <path d="M58 33 C56 42 48 46 43 45 C48 41 51 37 52 33 Z" fill="${k.body}" opacity=".85"/>
+  <path d="M58 15 C56 6 48 2 43 3 C48 7 51 11 52 15 Z" fill="${k.body}" opacity=".85"/>
+  <path d="M22 24 C32 12 64 8 96 12 C110 14 118 19 118 24 C118 29 110 34 96 36 C64 40 32 36 22 24 Z" fill="${k.body}"/>
+  <path d="M60 11 C70 9 80 11 84 16 C78 22 66 22 58 18 Z" fill="${k.patch}"/>
+  <path d="M38 30 C44 26 54 28 56 33 C50 36 42 35 38 30 Z" fill="${k.patch}"/>
+  <path d="M100 13 C110 15 117 20 118 24 C117 28 110 33 100 35 C104 28 104 20 100 13 Z" fill="${k.head}"/>
+  <circle cx="108" cy="20" r="1.6" fill="#141214"/><circle cx="108" cy="28" r="1.6" fill="#141214"/>
+</svg>`;
+
+// A smooth closed loop through a few random points in the open water.
+function swimPath(rand, W, H, v) {
+  const m = 16 * v;
+  const pts = Array.from({ length: 5 }, (_, i) => {
+    const a = (i / 5) * Math.PI * 2 + rand() * 0.8;
+    return [W / 2 + Math.cos(a) * (W / 2 - m) * (0.55 + rand() * 0.45), H / 2 + Math.sin(a) * (H / 2 - m) * (0.55 + rand() * 0.45)];
+  });
+  if (rand() < 0.5) pts.reverse();
+  // Catmull-Rom through the points, as cubic Béziers.
+  let d = `M ${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+  for (let i = 0; i < pts.length; i++) {
+    const p0 = pts[(i - 1 + pts.length) % pts.length], p1 = pts[i], p2 = pts[(i + 1) % pts.length], p3 = pts[(i + 2) % pts.length];
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += ` C ${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+  }
+  return d + ' Z';
+}
+
 export default {
   defaults: { motion: false },
+
+  // The pond's scenery: a rocky shore all the way round, lily pads, and koi swimming laps.
+  decorate(el, W, H, v) {
+    const key = `${Math.round(W)}x${Math.round(H)}`;
+    if (el.dataset.key === key) return;
+    el.dataset.key = key;
+    el.innerHTML = '';
+    const rand = seeded(20260930);
+
+    // Koi first, so they swim under the lily pads and the rocks.
+    const koiLayer = document.createElement('div');
+    koiLayer.className = 'koi-layer';
+    KOI.forEach((k, i) => {
+      const f = document.createElement('div');
+      f.className = 'koi';
+      f.innerHTML = koiSVG(k);
+      f.style.offsetPath = `path('${swimPath(rand, W, H, v)}')`;
+      f.style.width = (10 + rand() * 4) * v + 'px';
+      f.style.animationDuration = 34 + rand() * 22 + 's';
+      f.style.animationDelay = -rand() * 40 + 's';
+      f.querySelector('.tail').style.animationDuration = 0.5 + rand() * 0.35 + 's';
+      koiLayer.appendChild(f);
+    });
+    el.appendChild(koiLayer);
+
+    // Lily pads near the corners, where no one sits.
+    [[0.09, 0.14, 11, 20], [0.9, 0.17, 8, 140], [0.1, 0.7, 8, 260, true], [0.17, 0.25, 5, 60], [0.86, 0.8, 7, 200]].forEach(([fx, fy, s, r, flower]) => {
+      const p = document.createElement('i');
+      p.className = 'pad';
+      Object.assign(p.style, { left: fx * W + 'px', top: fy * H + 'px', width: s * v + 'px', rotate: r + 'deg' });
+      if (flower) p.innerHTML = '<b></b>';
+      el.appendChild(p);
+    });
+
+    // The shore: rocks of mixed sizes hugging every edge, bigger piles in the corners.
+    const shore = document.createElement('div');
+    shore.className = 'shore';
+    const perim = 2 * (W + H);
+    for (let d = 0; d < perim;) {
+      const s = (4 + rand() * 4.5) * v;
+      const p = onEdge(d, W, H);
+      const inward = s * (0.05 + rand() * 0.15);
+      shore.appendChild(rock(p.x + p.nx * inward, p.y + p.ny * inward, s * (1 + rand() * 0.5), s * (0.7 + rand() * 0.25), rand));
+      d += s * (0.6 + rand() * 0.35);
+    }
+    [[0, 0], [W, 0], [W, H], [0, H]].forEach(([x, y]) => {
+      for (let k = 0; k < 3; k++) {
+        const s = (9 + rand() * 7) * v;
+        const ox = (x ? -1 : 1) * rand() * 5 * v, oy = (y ? -1 : 1) * rand() * 5 * v;
+        shore.appendChild(rock(x + ox, y + oy, s * 1.2, s * 0.85, rand));
+      }
+    });
+    el.appendChild(shore);
+  },
 
   settingsHTML: s => `<label><input type="checkbox" data-set="motion" ${s.motion ? 'checked' : ''}> Fishing motion (reel in with your phone)</label>`,
 
   // The little corner switch for the motion controls; works mid-game too.
   tool: {
-    label: s => `Fishing motion: ${s.motion ? 'on' : 'off'}`,
+    label: 'Fishing motion',
+    hint: 'Reel in by pulling your phone back',
+    on: s => !!s.motion,
     toggle(s, g) {
       s.motion = !s.motion;
       if (g) g.settings.motion = s.motion;

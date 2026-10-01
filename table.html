@@ -13,14 +13,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=8">
-  <link rel="stylesheet" href="css/table.css?v=8">
+  <link rel="stylesheet" href="css/cards.css?v=9">
+  <link rel="stylesheet" href="css/table.css?v=9">
   <script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.1/dist/mqtt.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 </head>
 <body>
   <div id="felt">
-    <div id="decor" aria-hidden="true"><i class="pad p1"></i><i class="pad p2"></i><i class="pad p3"><b></b></i><i class="pad p4"></i></div>
+    <div id="decor" aria-hidden="true"></div>
     <div id="print" aria-hidden="true"></div>
     <div id="lamp" aria-hidden="true"></div>
     <div id="watermark"></div>
@@ -52,9 +52,9 @@
 
     <div id="overlay" hidden></div>
 
+    <button id="btnTool" class="switch" hidden></button>
     <div id="toolbar">
       <span id="netstatus" class="pill">Connecting…</span>
-      <button id="btnTool" class="tool" hidden></button>
       <button id="btnOrient" class="tool" title="Switch between flat (around the table) and upright (TV)">Flat</button>
       <button id="btnFull" class="tool" title="Full screen">Full screen</button>
       <button id="btnEnd" class="tool" title="End game and return to the lobby" hidden>End game</button>
@@ -78,6 +78,6 @@
     </div>
   </template>
 
-  <script type="module" src="js/table.js?v=8"></script>
+  <script type="module" src="js/table.js?v=9"></script>
 </body>
 </html>

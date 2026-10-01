@@ -1,12 +1,12 @@
 // A player's phone: joining, picking a seat, then the game's own phone UI.
-import { GAMES } from './games.js?v=8';
-import { keepAwake } from './cards.js?v=8';
-import { joinRoom } from './net.js?v=8';
-import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=8';
-import * as euchreUI from './play-euchre.js?v=8';
-import * as pokerUI from './play-poker.js?v=8';
-import * as vetoUI from './play-veto.js?v=8';
-import * as gofishUI from './play-gofish.js?v=8';
+import { GAMES } from './games.js?v=9';
+import { keepAwake } from './cards.js?v=9';
+import { joinRoom } from './net.js?v=9';
+import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=9';
+import * as euchreUI from './play-euchre.js?v=9';
+import * as pokerUI from './play-poker.js?v=9';
+import * as vetoUI from './play-veto.js?v=9';
+import * as gofishUI from './play-gofish.js?v=9';
 
 const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI };
 const params = new URLSearchParams(location.search);
