@@ -71,3 +71,15 @@ GAMES.backgammon = {
   max: 2,
   layout: GAMES.chess.layout, // players in the corners, board in the middle
 };
+
+GAMES.sketch = {
+  id: 'sketch',
+  name: 'Sketch & Guess',
+  blurb: '3–8 players · draw it, guess it',
+  min: 3,
+  max: 8,
+  midJoin: true,   // new players start guessing right away
+  noBots: true,    // a bot can't draw or guess
+  startLabel: 'Start drawing',
+  layout: GAMES.holdem.layout,
+};

@@ -1,16 +1,17 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=17';
-import { cardEl, snap, keepAwake } from './cards.js?v=17';
-import { hostRoom } from './net.js?v=17';
-import euchre from './table-euchre.js?v=17';
-import holdem from './table-poker.js?v=17';
-import veto from './table-veto.js?v=17';
-import gofish from './table-gofish.js?v=17';
-import chess from './table-chess.js?v=17';
-import backgammon from './table-backgammon.js?v=17';
+import { GAMES, SIDE_ROT } from './games.js?v=18';
+import { cardEl, snap, keepAwake } from './cards.js?v=18';
+import { hostRoom } from './net.js?v=18';
+import euchre from './table-euchre.js?v=18';
+import holdem from './table-poker.js?v=18';
+import veto from './table-veto.js?v=18';
+import gofish from './table-gofish.js?v=18';
+import chess from './table-chess.js?v=18';
+import backgammon from './table-backgammon.js?v=18';
+import sketch from './table-sketch.js?v=18';
 
-const MODES = { euchre, holdem, veto, gofish, chess, backgammon };
+const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
@@ -106,7 +107,20 @@ function onMessage(pid, msg) {
       else update();
       break;
     }
+    case 'ink': {
+      // Live drawing (Sketch & Guess). Drawn straight onto the table without re-sending
+      // everyone's screen; saved a moment later.
+      const g = session.game;
+      if (g && seat >= 0 && mode().ink?.(g, seat, msg)) saveSoon();
+      break;
+    }
   }
+}
+
+let saveT = null;
+function saveSoon() {
+  clearTimeout(saveT);
+  saveT = setTimeout(save, 1500);
 }
 
 function cleanName(n) {
@@ -242,6 +256,7 @@ function buildSeats() {
   });
   document.body.dataset.game = session.gameId;
   document.body.classList.toggle('many-seats', info().layout.length > 4);
+  document.body.classList.toggle('no-bots', !!info().noBots);
   drawPrint();
 }
 
@@ -363,7 +378,7 @@ function render() {
     const n = session.players.filter(Boolean).length;
     const ok = n >= G.min && n <= G.max;
     $('#startBtn').disabled = !ok;
-    $('#startBtn').textContent = ok ? 'Deal the cards'
+    $('#startBtn').textContent = ok ? G.startLabel || 'Deal the cards'
       : G.min === G.max ? `Waiting for players (${n}/${G.max})` : `Need at least ${G.min} players`;
   }
 

@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess** and **Backgammon**, with **Cooking Up Trouble** on the way.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon** and **Sketch & Guess**, with **Cooking Up Trouble** on the way.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess.
 
 ## How it works
 
@@ -90,6 +90,26 @@ backgammon case: walnut frame, felt field, ivory and oxblood points.
   after someone reaches match point).
 - **Computer:** weighs pip count, safety, made points, primes and hits, and handles the cube.
 
+## Sketch & Guess
+A drawing and guessing party game for 3–8 players. (It plays like the classic draw-and-guess games, under its own
+name so it stays clear of anyone's trademark.) Everyone takes turns drawing.
+
+- **Picking:** the drawer's phone offers three words (easy, medium and hard, or all from one level, set in the lobby).
+  Only the drawer sees them. If they don't pick within 20 seconds, one is picked for them.
+- **Drawing:** the drawer draws on their phone, with nine colours, an eraser, three pen sizes, Undo and Clear. The
+  drawing appears on the table's sketch pad as it's drawn. The table also shows the word as blanks and a clock.
+- **Guessing:** everyone else types answers on their own phone, as many times as they like. A phone says "so close!"
+  for near misses. Small typos, plurals and "a/the" are accepted. The table only marks who got it, not what anyone
+  typed, so nobody can copy.
+- **Hints (optional):** a letter is revealed halfway through and another at three quarters.
+- **End of each turn:** when time runs out or everyone has it, the table shows the word and every player's final
+  answer, marked right or wrong with the points earned. The next turn starts after 10 seconds, or tap **Next now**.
+- **Scoring:** first correct guess 3 points, second 2, everyone after that 1. The drawer gets 1 point per correct
+  guesser, up to 3.
+- **Length:** everyone draws 1–4 times. Drawing time is 45–120 seconds.
+- The drawer can **pass** a word they can't draw (tap twice). The table has **Skip turn** in case the drawer walks away.
+- There are no bots, since a bot can't draw or guess. New players can sit down at any time and start guessing.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -124,7 +144,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=18; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=19; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ## TV app (Google TV, Android TV, Fire TV)
@@ -176,11 +196,11 @@ and cellular networks block them.
 |---|---|
 | `index.html` | Game catalog: pick a game for the table, or join with your phone |
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
-| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js`, `js/table-backgammon.js` | Each game's table drawing and hookup |
+| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js`, `js/table-backgammon.js`, `js/table-sketch.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`) | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`) | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

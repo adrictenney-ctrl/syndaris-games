@@ -1,16 +1,17 @@
 // A player's phone: joining, picking a seat, then the game's own phone UI.
-import { GAMES } from './games.js?v=17';
-import { keepAwake } from './cards.js?v=17';
-import { joinRoom } from './net.js?v=17';
-import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=17';
-import * as euchreUI from './play-euchre.js?v=17';
-import * as pokerUI from './play-poker.js?v=17';
-import * as vetoUI from './play-veto.js?v=17';
-import * as gofishUI from './play-gofish.js?v=17';
-import * as chessUI from './play-chess.js?v=17';
-import * as backgammonUI from './play-backgammon.js?v=17';
+import { GAMES } from './games.js?v=18';
+import { keepAwake } from './cards.js?v=18';
+import { joinRoom } from './net.js?v=18';
+import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=18';
+import * as euchreUI from './play-euchre.js?v=18';
+import * as pokerUI from './play-poker.js?v=18';
+import * as vetoUI from './play-veto.js?v=18';
+import * as gofishUI from './play-gofish.js?v=18';
+import * as chessUI from './play-chess.js?v=18';
+import * as backgammonUI from './play-backgammon.js?v=18';
+import * as sketchUI from './play-sketch.js?v=18';
 
-const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI };
+const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI };
 const params = new URLSearchParams(location.search);
 
 let pid = null;
@@ -112,14 +113,14 @@ function render() {
     $('#board').innerHTML = '';
     $('#myHand').textContent = '';
   }
-  const c = { st, send, nameOf };
+  const c = { st, send, nameOf, raw: msg => net?.send(msg) };
 
   if (!st.game) {
     document.body.classList.remove('myturn');
     ui.renderLobby(c);
     const G = GAMES[st.gameId];
     const n = st.seats.filter(Boolean).length;
-    setStatus(`You're in! · ${G.name}`, n >= G.min ? 'Waiting for someone to tap "Deal" on the table.' : 'Waiting for everyone to sit down…');
+    setStatus(`You're in! · ${G.name}`, n >= G.min ? `Waiting for someone to tap "${G.startLabel || 'Deal'}" on the table.` : 'Waiting for everyone to sit down…');
     $('#panel').innerHTML = '<button class="panel-btn wide" id="chgSeat">Change seat</button>';
     $('#chgSeat').onclick = () => { pickingSeat = true; render(); };
     renderHand([]);

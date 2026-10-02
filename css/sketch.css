@@ -1,0 +1,134 @@
+/* Sketch & Guess: a spiral sketchbook lying on a green cutting mat. */
+
+/* ---------- the table ---------- */
+body[data-game="sketch"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 240, 200, .1), transparent 72%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 55%, rgba(0, 20, 12, .55) 100%),
+    repeating-linear-gradient(0deg, rgba(220, 240, 220, .2) 0 1px, transparent 1px 5vmin),
+    repeating-linear-gradient(90deg, rgba(220, 240, 220, .2) 0 1px, transparent 1px 5vmin),
+    repeating-linear-gradient(0deg, rgba(220, 240, 220, .07) 0 1px, transparent 1px 1vmin),
+    repeating-linear-gradient(90deg, rgba(220, 240, 220, .07) 0 1px, transparent 1px 1vmin),
+    linear-gradient(180deg, #1f5c43, #174a35);
+}
+body[data-game="sketch"] #print, body[data-game="sketch"] .fan, body[data-game="sketch"] .sizer { display: none; }
+body.no-bots .seat .addbot, body.no-bots .seat .takeover { display: none !important; }
+body.no-bots.in-game .seat.lost .kick { display: inline-block; }
+.badge.got { color: #9fe0a6; border-color: rgba(159, 224, 166, .5); }
+
+#sketch {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * 1.2);
+  font-family: var(--ui); color: var(--ivory);
+}
+.sk-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: calc(var(--v) * 3); row-gap: calc(var(--v) * .6); min-height: calc(var(--v) * 6); width: 100%; }
+.sk-who { flex-basis: 100%; justify-content: center; }
+.sk-who { display: flex; align-items: center; gap: calc(var(--v) * .8); font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.3); color: var(--gold-ink); white-space: nowrap; }
+.sk-who i, .sk-card i { width: calc(var(--v) * 1.3); height: calc(var(--v) * 1.3); border-radius: 50%; display: inline-block; box-shadow: 0 0 0 .15vmin var(--ivory); }
+.sk-blanks { font-family: var(--num); font-size: calc(var(--v) * 4.4); letter-spacing: .12em; white-space: pre; line-height: 1; color: var(--ivory); text-shadow: 0 .3vmin .6vmin rgba(0, 0, 0, .5); }
+.sk-clock {
+  font-family: var(--num); font-size: calc(var(--v) * 3.6); min-width: calc(var(--v) * 9); text-align: center; line-height: 1;
+  padding: calc(var(--v) * .6) calc(var(--v) * 1.2); border-radius: calc(var(--v) * .8);
+  background: var(--stock); color: var(--paper-ink); box-shadow: 0 .4vmin 1vmin rgba(0, 0, 0, .45);
+}
+.sk-clock:empty { display: none; }
+.sk-clock.low { color: var(--card-red); animation: skPulse 1s ease-in-out infinite; }
+@keyframes skPulse { 50% { transform: scale(1.08); } }
+
+.sk-body { display: flex; align-items: center; gap: calc(var(--v) * 2.5); }
+.sk-pad {
+  position: relative; padding: calc(var(--v) * 2.4) 0 0; flex: none; box-sizing: content-box;
+  background: #fbf7ec; border-radius: calc(var(--v) * .6);
+  box-shadow: 0 1vmin 2.6vmin rgba(0, 0, 0, .5), 0 .3vmin 0 #e3dccb, 0 .6vmin 0 #d6cebb;
+  rotate: -.5deg;
+}
+.sk-pad canvas { display: block; touch-action: none; }
+/* Wire binding along the top. */
+.sk-rings {
+  position: absolute; left: 3%; right: 3%; top: calc(var(--v) * -1.3); height: calc(var(--v) * 3);
+  background: radial-gradient(ellipse calc(var(--v) * .55) calc(var(--v) * 1.4) at 50% 50%, transparent 60%, #8f949a 62%, #d9dde2 75%, #6c7076 92%, transparent 95%) 0 0 / calc(var(--v) * 2.2) 100% repeat-x;
+}
+.sk-rings::after {
+  content: ''; position: absolute; left: 0; right: 0; top: calc(var(--v) * 1.6); height: calc(var(--v) * .8);
+  background: radial-gradient(circle calc(var(--v) * .35) at 50% 50%, #3a3a3a 70%, transparent 75%) 0 0 / calc(var(--v) * 2.2) 100% repeat-x;
+}
+.sk-msg {
+  position: absolute; inset: calc(var(--v) * 2.4) 0 0; display: grid; place-items: center; pointer-events: none; text-align: center; padding: 0 8%;
+  font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.8); color: #8a7f6c;
+}
+.sk-msg b { font-style: normal; font-family: var(--display); font-weight: 400; color: var(--paper-ink); }
+.sk-msg .dots::after { content: '…'; animation: skDots 1.4s steps(4) infinite; display: inline-block; overflow: hidden; vertical-align: bottom; width: 1.1em; }
+@keyframes skDots { from { width: 0; } }
+.sk-fuse { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--v) * .5); background: rgba(42, 35, 32, .08); border-radius: 0 0 calc(var(--v) * .6) calc(var(--v) * .6); overflow: hidden; }
+.sk-fuse i { display: block; height: 100%; background: linear-gradient(90deg, #e0382c, #f39a1e); transition: width .25s linear; }
+#sketch:not([data-phase="draw"]) .sk-fuse { display: none; }
+
+/* The answers card, at the end of each turn. */
+.sk-card:empty { display: none; }
+.sk-card {
+  align-self: stretch; overflow: auto; box-sizing: border-box; padding: calc(var(--v) * 2.4) calc(var(--v) * 2.8);
+  background: var(--stock); color: var(--paper-ink); border-radius: calc(var(--v) * .5);
+  box-shadow: 0 1vmin 2.6vmin rgba(0, 0, 0, .5); rotate: .8deg; animation: skIn .45s cubic-bezier(.2, .9, .3, 1.2);
+}
+@keyframes skIn { from { transform: translateY(4vmin) rotate(4deg); opacity: 0; } }
+.sk-card .eyebrow { margin: 0; font-size: calc(var(--v) * 1.4); letter-spacing: .26em; text-transform: uppercase; font-weight: 700; color: #7a6c58; }
+.sk-card .was { margin: calc(var(--v) * 1.2) 0 0; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.2); color: #7a6c58; }
+.sk-card h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: calc(var(--v) * 5.6); line-height: 1.05; color: var(--card-red); text-transform: capitalize; }
+.sk-card .drew { display: flex; align-items: center; gap: calc(var(--v) * .7); margin: calc(var(--v) * .6) 0 calc(var(--v) * 1.4); font-size: calc(var(--v) * 1.8); }
+.sk-card ul { list-style: none; margin: 0; padding: calc(var(--v) * 1.2) 0 0; border-top: .14vmin solid rgba(42, 35, 32, .2); }
+.sk-card li { display: grid; grid-template-columns: auto 1fr auto; gap: calc(var(--v) * 1.2); align-items: baseline; padding: calc(var(--v) * .55) 0; font-size: calc(var(--v) * 2.1); }
+.sk-card .nm { display: flex; align-items: center; gap: calc(var(--v) * .6); font-weight: 600; white-space: nowrap; }
+.sk-card .ans { font-family: var(--serif); font-size: 1.15em; overflow-wrap: anywhere; }
+.sk-card .ans em { color: #a09582; font-size: .85em; }
+.sk-card li.no .ans { text-decoration: line-through; text-decoration-color: rgba(176, 42, 48, .55); }
+.sk-card li.yes .ans { font-weight: 700; }
+.sk-card .pts { font-family: var(--num); font-size: 1.1em; }
+.sk-card li.yes .pts { color: #237a3a; }
+.sk-card li.no .pts, .sk-card li.none .pts { color: var(--card-red); }
+.sk-card .sk-next { margin: calc(var(--v) * 1.6) 0 0; font-size: calc(var(--v) * 1.6); color: #7a6c58; display: flex; align-items: center; gap: calc(var(--v) * 1); flex-wrap: wrap; }
+.sk-card .tool { color: var(--paper-ink); border-color: rgba(42, 35, 32, .35); }
+.sk-actions:empty { display: none; }
+.sk-actions .tool { opacity: .7; }
+
+/* ---------- the phone ---------- */
+body[data-game="sketch"] #handWrap, body[data-game="sketch"] #handHint { display: none; }
+body[data-game="sketch"] #statusMain { white-space: pre-wrap; letter-spacing: .04em; }
+body.sk-drawing #status { margin: 8px 0 6px; min-height: 0; }
+body.sk-drawing #whoami { display: none; }
+#skPhone { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 10px; }
+#skPhone .sk-pad { padding-top: 14px; rotate: none; border-radius: 6px; box-shadow: 0 6px 18px rgba(0, 0, 0, .45); }
+#skPhone .sk-pad::before {
+  content: ''; position: absolute; left: 4%; right: 4%; top: 4px; height: 6px;
+  background: radial-gradient(circle 3px at 50% 50%, #3a3a3a 70%, transparent 75%) 0 0 / 14px 100% repeat-x;
+}
+.sk-tools { display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%; }
+.sk-colours, .sk-sizes { display: flex; gap: 5px; justify-content: center; flex-wrap: wrap; }
+.sk-colours button {
+  width: 28px; height: 28px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; background: var(--c);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .25), 0 2px 5px rgba(0, 0, 0, .4);
+}
+.sk-colours button.eraser {
+  background: linear-gradient(135deg, #fbf7ec 0 55%, #f2a6b0 55%); border-radius: 6px; width: 34px;
+}
+.sk-colours button.on { box-shadow: 0 0 0 2.5px var(--brass-hi), 0 0 0 5px rgba(0, 0, 0, .35); transform: scale(1.1); }
+.sk-sizes button {
+  min-width: 44px; height: 38px; border-radius: 8px; cursor: pointer; display: grid; place-items: center; padding: 0 10px;
+  font-family: var(--ui); font-size: 14px; font-weight: 600; color: var(--ivory); background: rgba(8, 28, 19, .35); border: 1px solid var(--gold-faint);
+}
+.sk-sizes button i { width: var(--s); height: var(--s); border-radius: 50%; background: var(--ivory); }
+.sk-sizes button.on { background: var(--stock); border-color: var(--stock); }
+.sk-sizes button.on i { background: var(--paper-ink); }
+.sk-choices { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.panel-btn.sk-word { font-family: var(--display); font-size: 26px; font-weight: 400; text-transform: capitalize; padding: 14px 16px 12px; color: var(--paper-ink); background: var(--stock); border: 0; box-shadow: 0 4px 12px rgba(0, 0, 0, .4); }
+.panel-btn.sk-word small { display: block; font-family: var(--ui); font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: #7a6c58; margin-top: 2px; }
+.panel-btn.sk-pass { flex: none; min-width: 220px; font-size: 14px; color: #f2b0a4; border-color: rgba(242, 176, 164, .4); }
+.sk-guess { display: flex; gap: 8px; width: 100%; }
+.sk-guess input {
+  flex: 1; min-width: 0; font-family: var(--serif); font-size: 22px; padding: 10px 14px; border-radius: 8px;
+  border: 1px solid var(--gold-faint); background: var(--stock); color: var(--paper-ink); outline: none;
+}
+.sk-guess input:focus { border-color: var(--brass-hi); box-shadow: 0 0 0 2px rgba(232, 205, 136, .4); }
+.sk-guess .panel-btn { flex: none; min-width: 0; padding: 10px 18px; }
+.sk-mine { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--gold-ink); text-align: center; min-height: 20px; }
+.sk-mine.close { color: var(--brass-hi); font-weight: 700; }
+body[data-game="sketch"] { background: linear-gradient(180deg, #1f5c43, #133c2b); }
