@@ -1,8 +1,8 @@
 // Chess on the table screen: an inlaid board in the middle of a dark wood table.
 // With the tablet flat, Black's pieces are turned to face the player across the table.
 // Moves can be made by tapping the board on the table, or from either phone.
-import * as C from './chess.js?v=16';
-import { snap } from './cards.js?v=16';
+import * as C from './chess.js?v=17';
+import { snap } from './cards.js?v=17';
 
 export const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
 const glyph = p => GLYPH[p.toLowerCase()] + '︎';

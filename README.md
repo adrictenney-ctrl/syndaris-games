@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish** and **Chess**, with **Cooking Up Trouble** on the way.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess** and **Backgammon**, with **Cooking Up Trouble** on the way.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon.
 
 ## How it works
 
@@ -73,6 +73,23 @@ table screen and Black at the top. With the tablet flat, Black's pieces are turn
 - **Computer:** Easy, Normal or Hard. Hard searches deeper and is capped at about a second and a half per move,
   so a tablet never freezes for long.
 
+## Backgammon
+Two players, or one against the computer. White sits at the bottom, Black at the top. The board is an open
+backgammon case: walnut frame, felt field, ivory and oxblood points.
+
+- **Moving:** roll, then tap a checker and tap where it goes. Tap it on your phone (the board is turned to your
+  side) or on the table screen. Highlighted points are the only legal choices, and the same checker can move with
+  both dice in one tap. **Undo** puts the whole turn back until it's finished.
+- **Rules:** hitting and the bar (you must enter before anything else), blocked points, doubles played four
+  times, and bearing off with an exact roll or a higher one from the farthest checker. Forced moves: you must use
+  both dice if any sequence allows it, and if only one die can be played it must be the larger one. With no legal
+  move, the turn passes by itself.
+- **Doubling cube (optional):** double before you roll, and the other player takes or drops. After a take, the
+  cube belongs to the player who took it. Gammons count double and backgammons triple.
+- **Match play:** single game, or first to 3, 5 or 7 points, with the Crawford rule (no doubling in the game right
+  after someone reaches match point).
+- **Computer:** weighs pip count, safety, made points, primes and hits, and handles the cube.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -107,7 +124,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=17; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=18; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ## TV app (Google TV, Android TV, Fire TV)
@@ -159,11 +176,11 @@ and cellular networks block them.
 |---|---|
 | `index.html` | Game catalog: pick a game for the table, or join with your phone |
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
-| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js` | Each game's table drawing and hookup |
+| `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js`, `js/table-backgammon.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js` | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`) | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

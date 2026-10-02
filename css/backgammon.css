@@ -1,0 +1,111 @@
+/* Backgammon board, shared by the table and phones. Sizes are in --u units (one point's width). */
+.bg-board { position: relative; width: calc(var(--u) * 15); height: calc(var(--u) * 11.8); flex: none; }
+.bg-frame {
+  position: absolute; inset: 0; border-radius: calc(var(--u) * .3);
+  background: linear-gradient(160deg, #6e3f1f, #4a2711);
+  box-shadow: 0 calc(var(--u) * .4) calc(var(--u) * 1.2) rgba(0, 0, 0, .55), inset 0 calc(var(--u) * .05) 0 rgba(255, 220, 170, .25);
+}
+.bg-field {
+  position: absolute; top: calc(var(--u) * .4); width: calc(var(--u) * 6); height: calc(var(--u) * 11);
+  background: radial-gradient(ellipse at 50% 50%, #276a46, #1a4e33);
+  box-shadow: inset 0 0 calc(var(--u) * .4) rgba(0, 0, 0, .45);
+}
+.bg-field.left { left: calc(var(--u) * .4); }
+.bg-field.right { left: calc(var(--u) * 7.4); }
+.bg-bar {
+  position: absolute; left: calc(var(--u) * 6.4); top: calc(var(--u) * .4); width: var(--u); height: calc(var(--u) * 11);
+  background: linear-gradient(90deg, #3d200e, #5a321a 50%, #3d200e); cursor: pointer;
+}
+.bg-tray {
+  position: absolute; left: calc(var(--u) * 13.4); width: calc(var(--u) * 1.2); height: calc(var(--u) * 5.3);
+  background: #163f2a; box-shadow: inset 0 0 calc(var(--u) * .3) rgba(0, 0, 0, .6); border-radius: calc(var(--u) * .1);
+}
+.bg-tray.top { top: calc(var(--u) * .4); }
+.bg-tray.bottom { bottom: calc(var(--u) * .4); cursor: pointer; }
+
+.bg-pt { position: absolute; width: var(--u); height: calc(var(--u) * 5); cursor: pointer; }
+.bg-pt i { position: absolute; inset: 0 calc(var(--u) * .05); }
+.bg-pt.odd i { background: linear-gradient(#efe2c3, #d9c79f); }
+.bg-pt.even i { background: linear-gradient(#9b3029, #7a211c); }
+.bg-pt.bottom i { clip-path: polygon(0 100%, 100% 100%, 50% 6%); }
+.bg-pt.top i { clip-path: polygon(0 0, 100% 0, 50% 94%); }
+.bg-pt.last i { filter: brightness(1.18) saturate(1.15); }
+.bg-pt::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.bg-pt.bottom::before { background: linear-gradient(to top, rgba(255, 214, 107, .55), transparent 85%); }
+.bg-pt.top::before { background: linear-gradient(to bottom, rgba(255, 214, 107, .55), transparent 85%); }
+.bg-pt.src::before { opacity: .35; }
+.bg-pt.tgt::before, .bg-pt.sel::before { opacity: 1; }
+.bg-pt.tgt::after {
+  content: ''; position: absolute; left: 50%; width: calc(var(--u) * .3); height: calc(var(--u) * .3); translate: -50% 0;
+  border-radius: 50%; background: #ffd66b; box-shadow: 0 0 calc(var(--u) * .3) #ffd66b;
+}
+.bg-pt.bottom.tgt::after { top: calc(var(--u) * -.45); }
+.bg-pt.top.tgt::after { bottom: calc(var(--u) * -.45); }
+.bg-bar.src, .bg-bar.sel { box-shadow: inset 0 0 0 calc(var(--u) * .08) #ffd66b; }
+.bg-tray.tgt { box-shadow: inset 0 0 0 calc(var(--u) * .1) #ffd66b, 0 0 calc(var(--u) * .5) #ffd66b; }
+
+.bg-checkers { position: absolute; inset: 0; pointer-events: none; }
+.ck { position: absolute; width: calc(var(--u) * .92); height: calc(var(--u) * .92); translate: -50% -50%; border-radius: 50%; }
+.ck.w {
+  background: radial-gradient(circle at 40% 35%, #fffbf2, #e9dfca 60%, #cdbf9f);
+  box-shadow: inset 0 0 0 calc(var(--u) * .06) #cbbd9c, inset 0 0 0 calc(var(--u) * .17) #f7f0e1, 0 calc(var(--u) * .07) calc(var(--u) * .12) rgba(0, 0, 0, .55);
+}
+.ck.b {
+  background: radial-gradient(circle at 40% 35%, #4d4549, #1f1b1e 60%, #0d0b0d);
+  box-shadow: inset 0 0 0 calc(var(--u) * .06) #3d363a, inset 0 0 0 calc(var(--u) * .17) #1a171a, 0 calc(var(--u) * .07) calc(var(--u) * .12) rgba(0, 0, 0, .6);
+}
+.slab { position: absolute; width: var(--u); height: calc(var(--u) * .26); translate: -50% -50%; border-radius: calc(var(--u) * .07); left: calc(var(--u) * 14) !important; }
+.slab.w { background: linear-gradient(#fbf6ea, #d8ccb0); box-shadow: 0 1px 0 #9e9078; }
+.slab.b { background: linear-gradient(#3b3437, #121012); box-shadow: 0 1px 0 #000; }
+
+.bg-dice { position: absolute; left: calc(var(--u) * 10.4); top: 50%; translate: -50% -50%; display: flex; gap: calc(var(--u) * .3); align-items: center; z-index: 2; }
+.die {
+  position: relative; width: calc(var(--u) * .95); height: calc(var(--u) * .95); border-radius: calc(var(--u) * .16);
+  background: linear-gradient(145deg, #fffaf0, #e2d6bd); box-shadow: 0 calc(var(--u) * .08) calc(var(--u) * .15) rgba(0, 0, 0, .55);
+}
+.die i { position: absolute; width: calc(var(--u) * .18); height: calc(var(--u) * .18); translate: -50% -50%; border-radius: 50%; background: #1c1a1f; }
+.bg-dice.b .die { background: linear-gradient(145deg, #3d3639, #141114); }
+.bg-dice.b .die i { background: #f5eedd; }
+.die.used { opacity: .28; }
+.bg-dice em { font-style: normal; font-family: var(--num); color: var(--ivory); font-size: calc(var(--u) * .5); }
+.flat-table .bg-dice.b { rotate: 180deg; }
+.bg-cube {
+  position: absolute; left: calc(var(--u) * 6.9); top: 50%; translate: -50% -50%; width: calc(var(--u) * .85); height: calc(var(--u) * .85); z-index: 2;
+  display: grid; place-items: center; border-radius: calc(var(--u) * .12); font-family: var(--num); font-size: calc(var(--u) * .48);
+  background: linear-gradient(145deg, #fffaf0, #e2d6bd); color: #2a2320; box-shadow: 0 calc(var(--u) * .08) calc(var(--u) * .15) rgba(0, 0, 0, .55);
+}
+.bg-cube[hidden] { display: none; }
+.bg-cube.own-w { top: calc(var(--u) * 10.9); }
+.bg-cube.own-b { top: calc(var(--u) * .9); }
+.flat-table .bg-cube.own-b { rotate: 180deg; }
+
+/* ---------- on the table: an open backgammon case on cognac leather ---------- */
+body[data-game="backgammon"] #felt {
+  --seat-w: min(23vmin, 260px);
+  --seat-h: 22vmin;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 220, 170, .12), transparent 72%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 50%, rgba(20, 8, 2, .6) 100%),
+    linear-gradient(180deg, #7a4322, #5a2f16);
+}
+body[data-game="backgammon"] #print, body[data-game="backgammon"] .fan, body[data-game="backgammon"] .sizer { display: none; }
+body[data-game="backgammon"] .who .name { font-size: 3.4vmin; max-width: 15vmin; }
+body[data-game="backgammon"] .meta { flex-direction: column; gap: .4vmin; }
+body[data-game="backgammon"] .plate { min-width: 92%; }
+#bgboard { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); z-index: 2; }
+/* Roll / Double / Take / Drop / Undo sit on the left half of the board, facing whoever has to act. */
+.bg-actions {
+  position: absolute; left: 0; top: 0; z-index: 4;
+  transform: translate(-50%, -50%) translateX(calc(var(--u) * -3.6));
+  display: flex; flex-direction: column; align-items: center; gap: 1.2vmin;
+}
+.bg-actions.b:not(.upright) { transform: translate(-50%, -50%) translateX(calc(var(--u) * -3.6)) rotate(180deg); }
+.bg-actions p { margin: 0; font-family: var(--serif); font-style: italic; font-size: 2.6vmin; color: var(--ivory); text-shadow: 0 .2vmin .5vmin rgba(0, 0, 0, .7); }
+.bg-actions:empty { display: none; }
+
+/* ---------- on a phone ---------- */
+body.phone-bg { background: linear-gradient(180deg, #7a4322, #4d2812); }
+#bgPhone { margin: 4px auto 12px; }
+#bgPhone.flipped { rotate: 180deg; }
+#bgPhone.flipped .bg-dice, #bgPhone.flipped .bg-cube { rotate: 180deg; }
+body[data-game="backgammon"] #handWrap, body[data-game="backgammon"] #handHint { display: none; }

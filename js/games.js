@@ -62,3 +62,12 @@ GAMES.gofish = {
 };
 
 export const SIDE_ROT = [0, 90, 180, -90];
+
+GAMES.backgammon = {
+  id: 'backgammon',
+  name: 'Backgammon',
+  blurb: '2 players · or play the computer',
+  min: 2,
+  max: 2,
+  layout: GAMES.chess.layout, // players in the corners, board in the middle
+};

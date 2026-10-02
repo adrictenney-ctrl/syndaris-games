@@ -259,3 +259,4 @@ body[data-game="chess"] {
 .panel-btn.piece { min-width: 0; padding: 6px 0; background: var(--stock); border: 0; }
 .panel-btn.piece .pc { font-size: 42px; }
 body[data-game="chess"] #handWrap, body[data-game="chess"] #handHint { display: none; }
+body[data-game="backgammon"] { background: linear-gradient(180deg, #7a4322, #4d2812); }
