@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon** and **Sketch & Guess**, with **Cooking Up Trouble** on the way.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess** and **Chef's Kiss**.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, an espresso tabletop with kitchen line drawings for Chef's Kiss.
 
 ## How it works
 
@@ -110,6 +110,47 @@ name so it stays clear of anyone's trademark.) Everyone takes turns drawing.
 - The drawer can **pass** a word they can't draw (tap twice). The table has **Skip turn** in case the drawer walks away.
 - There are no bots, since a bot can't draw or guess. New players can sit down at any time and start guessing.
 
+## Chef's Kiss
+A party game of funny pairings for 3–8 players, built from the official instructions (29 September 2026). The
+kitchen words are a metaphor; it isn't a cooking game. There are two kinds of cards: **Recipe Cards** (burgundy, the
+prompt) and **Ingredient Cards** (terracotta orange, the response).
+
+- **Each round** one player is the **Chef**; everyone else is an **Apprentice**. The first Chef is the first player at
+  the table, and the Chef moves one seat to the left each round.
+- **The Chef** holds three Recipe Cards (dealt face down; touch one to turn it over) and slides one up into the
+  selection area. It appears on the table.
+- **Apprentices** hold five Ingredient Cards, also face down until touched, and slide up the one that pairs best.
+  The table shows face-down cards as they come in.
+- **Lobby the Chef:** when everyone has played, the cards are revealed on the table and on the Chef's phone, in a
+  random order. There's no timer on the Chef's decision. The Chef **must** award exactly one Chef's Kiss (1 point),
+  either on their phone or by tapping a card on the table. Then the table shows who played what.
+- **Hands are refilled** after every round, so the Chef always has three Recipe Cards and Apprentices have five
+  Ingredient Cards. Hands are dealt for variety (people, things, happenings, places) so nobody gets five of a kind.
+- **Swap:** each player may swap out one Ingredient Card per round.
+- **Brain Bulb 💡:** every card has one. Touch it to see a short description of the card's title.
+- **Three's a Party (Double Vision):** with exactly three players, each Apprentice plays two cards.
+- **Bot mode:** computer players can fill seats. They play a random card, and as Chef they pick a random winner.
+- **Your own cards:** "✎ My cards" on the phone lets you write, edit, delete and play your own Ingredient Cards.
+  They're kept on that phone only, and the game doesn't filter them.
+- **Chef's Kisses Forever:** each phone keeps a lifetime count of the Kisses won on it. Winning a game adds a
+  bonus Kiss.
+- **Moving cards:** cards on the table (and the Recipe Card on your phone) can be dragged, pinched bigger or
+  smaller, and twisted with two fingers. With a mouse, scroll to resize and Shift+scroll to rotate. Double-tap puts
+  a card back.
+- **Ending:** play to 5, 7 or 10 Chef's Kisses, or no target. The game-length timer is 30 minutes, 60 minutes, 2
+  hours, or none; when time is up the current round finishes and the most Chef's Kisses wins.
+- **Timers:** a Recipe Card timer (off, 5, 10 or 15 s) and an Ingredient Card timer (off, 10, 15, 20 or 30 s). When
+  one runs out, a random card is played. The host can change any timer mid-game with **⏱ Timers** on the table,
+  which also has "End the game now".
+- **Teams:** 2, 3 or 4 colored teams. Players are spread across the teams in seat order (latecomers join the
+  smallest team). Everyone still scores individually; team scores are the sum.
+- **Decks:** Editions are the **2026 Edition** (default), **Simply Silly** (ages 6–9) and **Easy Peasy** (ages
+  10–12). Decade-Decks ('50s, '60s, '70s, '80s, '90s) add Ingredient Cards. Mix any of them in the lobby. All
+  official cards are family-friendly.
+
+Not built yet: the Fan-Pacs (their card lists weren't in the instructions), the Super-Duper Pantry, descriptions in
+other languages, and the optional on-device AI suggestions. The rules say the game must work without AI, and it does.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -144,8 +185,12 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=19; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=24; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
+
+### Cloudflare (playondisplay.com)
+playondisplay.com is a Cloudflare Pages upload. Run `bash build-cloudflare.sh` to build a flat folder
+(`../play-on-display-site`, no sub-folders), then drag all of its files into a new Cloudflare deployment.
 
 ## TV app (Google TV, Android TV, Fire TV)
 `tv-app/` is a small Android app that shows the site full screen on a TV and works with the TV remote. Use it as
@@ -179,8 +224,9 @@ it, since the board already fills the screen.
 ## Networking
 Players do **not** need to be on the same Wi-Fi. Any internet connection works, including cellular, so a friend on their phone plan can join the same table.
 
-Phones and the table exchange messages through a free public MQTT relay (`broker.emqx.io`, over secure
-WebSockets). Messages are encrypted with a key derived from the room code. That stops casual snooping on the
+Phones and the table exchange messages through two free public MQTT relays at once (`broker.emqx.io` and
+`broker.hivemq.com`, over secure WebSockets), so the game keeps going if one is slow or down. Messages ask the relay
+to confirm delivery, and the table resends everyone's screen every few seconds in case an update is lost. Messages are encrypted with a key derived from the room code. That stops casual snooping on the
 public relay, but anyone who knows the room code could decrypt them. The table device still runs the game; the
 relay only forwards messages. Direct device-to-device (WebRTC) links were dropped because many home routers
 and cellular networks block them.
@@ -198,9 +244,9 @@ and cellular networks block them.
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
 | `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js`, `js/table-backgammon.js`, `js/table-sketch.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`) | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`) | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

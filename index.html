@@ -12,7 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=18">
+  <link rel="stylesheet" href="css/cards.css?v=23">
+  <link rel="stylesheet" href="css/chefskiss.css?v=23">
   <style>
     body { min-height: 100%; padding: 36px 20px 48px; }
     main { max-width: 1040px; margin: 0 auto; }
@@ -71,13 +72,11 @@
     .skmini { width: 136px !important; height: 84px !important; top: 30% !important; padding-top: 8px; background: #fbf7ec; border-radius: 4px; rotate: -3deg; box-shadow: 0 8px 18px rgba(0, 0, 0, .5); }
     .skmini::before { content: ""; position: absolute; left: 6px; right: 6px; top: 3px; height: 6px; background: radial-gradient(circle 2.5px at 50% 50%, #3a3a3a 70%, transparent 75%) 0 0 / 12px 100% repeat-x; }
     .skmini svg { display: block; width: 100%; height: 100%; }
-    .t-cooking {
-      color: #2a2320;
-      background: repeating-linear-gradient(90deg, rgba(0, 0, 0, .1) 0 1px, transparent 1px 44px), repeating-linear-gradient(0deg, rgba(0, 0, 0, .1) 0 1px, transparent 1px 44px), linear-gradient(180deg, #ece5d6, #cfc4ad);
-    }
-    .t-cooking::after { background: none; }
-    .t-cooking p { color: #5c5145; }
-    .t-cooking .pot { position: absolute; left: 50%; top: 32%; transform: translate(-50%, -50%); font-size: 74px; z-index: 0; }
+    .t-chefskiss { background: radial-gradient(ellipse at 50% 35%, #4a342a, #2a1d17 70%); }
+    .ckmini { --w: 84px; width: 200px !important; height: 130px !important; top: 33% !important; }
+    .ckmini .ck-card { position: absolute; left: 50%; top: 50%; }
+    .ckmini .ck-card.r { transform: translate(-82%, -50%) rotate(-9deg); }
+    .ckmini .ck-card.i { transform: translate(-18%, -46%) rotate(8deg); }
   </style>
 </head>
 <body>
@@ -92,15 +91,16 @@
     <p class="eyebrow">The games</p>
     <div class="shelf" id="shelf"></div>
   </main>
-  <script type="module" src="js/tvnav.js?v=18"></script>
+  <script type="module" src="js/tvnav.js?v=23"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=18';
-    import { cardEl } from './js/cards.js?v=18';
+    import { GAMES } from './js/games.js?v=23';
+    import { cardEl } from './js/cards.js?v=23';
+    import { face } from './js/ck-face.js?v=23';
     const art = {
       euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
     };
     const shelf = document.getElementById('shelf');
-    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess', 'backgammon', 'sketch']) {
+    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess', 'backgammon', 'sketch', 'chefskiss']) {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;
@@ -111,6 +111,10 @@
       if (id === 'chess') fan.innerHTML = '<span class="cpc w" style="left:34%">♚︎</span><span class="cpc b" style="left:66%">♛︎</span>';
       else if (id === 'backgammon') { fan.className = 'cards bgmini'; fan.innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i><b class="w" style="left:16%;top:22%"></b><b class="w" style="left:16%;top:40%"></b><b class="b" style="left:84%;top:78%"></b><b class="b" style="left:84%;top:60%"></b><b class="b" style="left:50%;top:22%"></b>'; }
       else if (id === 'sketch') { fan.className = 'cards skmini'; fan.innerHTML = '<svg viewBox="0 0 160 104"><path d="M30 78 Q 40 30 80 34 Q 120 38 126 74" fill="none" stroke="#e0382c" stroke-width="5" stroke-linecap="round"/><circle cx="80" cy="60" r="16" fill="none" stroke="#1d1b1a" stroke-width="4"/><path d="M74 56h1M86 56h1M73 66q7 6 14 0" stroke="#1d1b1a" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M22 92 L 140 92" stroke="#2f7de1" stroke-width="4" stroke-linecap="round"/></svg>'; }
+      else if (id === 'chefskiss') {
+        fan.className = 'cards ckmini';
+        fan.innerHTML = face({ kind: 'r', t: 'Totally adorable', d: '' }) + face({ kind: 'i', t: 'A goat in pajamas', d: '' });
+      }
       else art[id].forEach((c, i) => {
         const el = cardEl(c);
         el.style.transform = `translate(-50%, -50%) translateX(${(i - 1) * 34}px) rotate(${(i - 1) * 12}deg) translateY(${Math.abs(i - 1) * 6}px)`;
@@ -118,11 +122,6 @@
       });
       shelf.appendChild(box);
     }
-    // Cooking Up Trouble is waiting on its rulebook.
-    const soon = document.createElement('div');
-    soon.className = 'box t-cooking soon';
-    soon.innerHTML = `<span class="pot">🍲</span><h2>Cooking Up Trouble</h2><p>Party game · coming soon</p><span class="play">Coming soon</span>`;
-    shelf.appendChild(soon);
   </script>
 </body>
 </html>

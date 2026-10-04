@@ -83,3 +83,14 @@ GAMES.sketch = {
   startLabel: 'Start drawing',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.chefskiss = {
+  id: 'chefskiss',
+  name: "Chef's Kiss",
+  blurb: '3–8 players · pair the cards, win the Kiss',
+  min: 3,
+  max: 8,
+  midJoin: true,   // dealt in at the next round
+  startLabel: 'Start the game',
+  layout: GAMES.holdem.layout,
+};
