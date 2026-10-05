@@ -1,5 +1,5 @@
 // Shared bits for the phone screens: toasts, the scoreboard header, and the hand of cards.
-import { cardEl, setFace } from './cards.js?v=24';
+import { cardEl, setFace } from './cards.js?v=26';
 
 export const $ = s => document.querySelector(s);
 

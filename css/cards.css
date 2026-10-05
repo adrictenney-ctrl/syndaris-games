@@ -235,8 +235,8 @@ html.tv a.join, html.tv #btnFull { display: none !important; }
 }
 #tvToast.show { opacity: 1; transform: translate(-50%, 0); }
 /* On a TV, both rows of the game catalog fit on one screen. */
-html.tv .box { min-height: 39vh; padding: 2.2vh 20px; }
-html.tv .box .cards { top: 30%; transform: translate(-50%, -50%) scale(.62); }
+html.tv .box { min-height: 35vh; padding: 2vh 18px; }
+html.tv .box .cards { zoom: .62; }
 html.tv .box .pot { font-size: 9vh; top: 28%; }
 html.tv .box h2 { font-size: 5vh; }
 html.tv .box p { font-size: 2.8vh; }
