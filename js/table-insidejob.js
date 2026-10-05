@@ -1,7 +1,7 @@
 // Inside Job on the table: the community cards, the chips still in the middle, the vault and
 // alarm track, and at the showdown the lineup of hands from the lowest red chip to the highest.
-import * as J from './insidejob.js?v=28';
-import { cardEl, snap } from './cards.js?v=28';
+import * as J from './insidejob.js?v=29';
+import { cardEl, snap } from './cards.js?v=29';
 
 let root = null;
 let key = '';

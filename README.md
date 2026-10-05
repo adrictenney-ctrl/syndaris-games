@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess**, **Chef's Kiss** and **Inside Job**.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss, a heist blueprint for Inside Job.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess**, **Chef's Kiss Party Game** and **Inside Job**.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss Party Game, a heist blueprint for Inside Job.
 
 ## How it works
 
@@ -110,7 +110,7 @@ name so it stays clear of anyone's trademark.) Everyone takes turns drawing.
 - The drawer can **pass** a word they can't draw (tap twice). The table has **Skip turn** in case the drawer walks away.
 - There are no bots, since a bot can't draw or guess. New players can sit down at any time and start guessing.
 
-## Chef's Kiss
+## Chef's Kiss Party Game
 A party game of funny pairings for 3–8 players, built from the official instructions (29 September 2026). The
 kitchen words are a metaphor; it isn't a cooking game. There are two kinds of cards: **Recipe Cards** (burgundy, the
 prompt) and **Ingredient Cards** (terracotta orange, the response).
@@ -209,7 +209,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=29; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=30; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)

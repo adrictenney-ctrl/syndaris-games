@@ -86,7 +86,7 @@ GAMES.sketch = {
 
 GAMES.chefskiss = {
   id: 'chefskiss',
-  name: "Chef's Kiss",
+  name: "Chef's Kiss Party Game",
   blurb: '3–8 players · pair the cards, win the Kiss',
   min: 3,
   max: 8,

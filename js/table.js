@@ -1,17 +1,17 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=28';
-import { cardEl, snap, keepAwake } from './cards.js?v=28';
-import { hostRoom } from './net.js?v=28';
-import euchre from './table-euchre.js?v=28';
-import holdem from './table-poker.js?v=28';
-import veto from './table-veto.js?v=28';
-import gofish from './table-gofish.js?v=28';
-import chess from './table-chess.js?v=28';
-import backgammon from './table-backgammon.js?v=28';
-import sketch from './table-sketch.js?v=28';
-import chefskiss from './table-chefskiss.js?v=28';
-import insidejob from './table-insidejob.js?v=28';
+import { GAMES, SIDE_ROT } from './games.js?v=29';
+import { cardEl, snap, keepAwake } from './cards.js?v=29';
+import { hostRoom } from './net.js?v=29';
+import euchre from './table-euchre.js?v=29';
+import holdem from './table-poker.js?v=29';
+import veto from './table-veto.js?v=29';
+import gofish from './table-gofish.js?v=29';
+import chess from './table-chess.js?v=29';
+import backgammon from './table-backgammon.js?v=29';
+import sketch from './table-sketch.js?v=29';
+import chefskiss from './table-chefskiss.js?v=29';
+import insidejob from './table-insidejob.js?v=29';
 
 const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob };
 const STORE = 'syndaris.table.v2';
