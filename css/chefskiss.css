@@ -1,5 +1,5 @@
-/* Chef's Kiss: burgundy Recipe Cards, terracotta Ingredient Cards, on a warm espresso
-   tabletop with faint kitchen line drawings. (The kitchen is a metaphor, not a cooking game.) */
+/* Chef's Kiss: burgundy Recipe Cards and terracotta Ingredient Cards on a deep teal party table
+   with scattered kiss marks and confetti. (Not a cooking game: the kitchen words are only a metaphor.) */
 :root {
   --ck-burgundy: #7d1f30;
   --ck-burgundy-deep: #5a1220;
@@ -66,10 +66,11 @@
 /* ---------- the table ---------- */
 body[data-game="chefskiss"] #felt {
   background:
-    radial-gradient(ellipse 60% 55% at 50% 48%, rgba(255, 214, 160, .13), transparent 72%),
-    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 52%, rgba(10, 4, 2, .6) 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' fill='none' stroke='%23fbe7cf' stroke-opacity='.075' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M30 70c-8-2-12-12-6-18 3-12 18-14 24-6 8-6 20 0 18 10 8 4 6 16-3 16zM34 70v18h28V70'/%3E%3Cpath d='M170 30c10 0 14 20 0 34-14-14-10-34 0-34zm0 34v40M158 32c4 14 20 14 24 0'/%3E%3Cpath d='M70 170c10-14 26-14 30 0 4-14 20-14 30 0-6 18-24 30-30 34-6-4-24-16-30-34z'/%3E%3Cellipse cx='205' cy='180' rx='12' ry='18'/%3E%3Cpath d='M205 198v42'/%3E%3Cpath d='M120 90h50M114 86h6v8h-6zM170 86h6v8h-6z'/%3E%3C/svg%3E") 0 0 / 26vmin 26vmin,
-    linear-gradient(180deg, #3a2a22, #2a1d17);
+    radial-gradient(ellipse 58% 52% at 50% 48%, rgba(255, 236, 214, .16), transparent 72%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 50%, rgba(2, 10, 14, .65) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cg fill='%23ff6f8e' fill-opacity='.09'%3E%3Cpath transform='translate(40 52) rotate(-18) scale(.75)' d='M2 17C10 6 20 2 26 7c3 2 4 3 6 3s3-1 6-3c6-5 16-1 24 10-7 11-17 17-30 17S9 28 2 17Z'/%3E%3Cpath transform='translate(196 168) rotate(14) scale(.9)' d='M2 17C10 6 20 2 26 7c3 2 4 3 6 3s3-1 6-3c6-5 16-1 24 10-7 11-17 17-30 17S9 28 2 17Z'/%3E%3Cpath transform='translate(70 236) rotate(-6) scale(.55)' d='M2 17C10 6 20 2 26 7c3 2 4 3 6 3s3-1 6-3c6-5 16-1 24 10-7 11-17 17-30 17S9 28 2 17Z'/%3E%3C/g%3E%3Cg fill-opacity='.16'%3E%3Ccircle cx='150' cy='40' r='3' fill='%23ffd66b'/%3E%3Ccircle cx='260' cy='90' r='2.5' fill='%23fbf1e0'/%3E%3Ccircle cx='120' cy='140' r='2' fill='%23ff8aa3'/%3E%3Ccircle cx='30' cy='170' r='2.5' fill='%23ffd66b'/%3E%3Ccircle cx='250' cy='270' r='3' fill='%23ff8aa3'/%3E%3Crect x='212' y='30' width='12' height='4' rx='2' transform='rotate(30 218 32)' fill='%23ffd66b'/%3E%3Crect x='90' y='96' width='12' height='4' rx='2' transform='rotate(-40 96 98)' fill='%23fbf1e0'/%3E%3Crect x='160' y='250' width='12' height='4' rx='2' transform='rotate(70 166 252)' fill='%23ffd66b'/%3E%3Crect x='280' y='200' width='10' height='4' rx='2' transform='rotate(-15 285 202)' fill='%23ff8aa3'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 30vmin 30vmin,
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .012) 0 2px, transparent 2px 5px),
+    linear-gradient(180deg, #164651, #0c2a33);
 }
 body[data-game="chefskiss"] #print, body[data-game="chefskiss"] .fan { display: none; }
 
@@ -133,7 +134,7 @@ body[data-game="chefskiss"] #print, body[data-game="chefskiss"] .fan { display: 
 
 /* ---------- the phone ---------- */
 body[data-game="chefskiss"] #handWrap, body[data-game="chefskiss"] #handHint { display: none; }
-body[data-game="chefskiss"] { background: linear-gradient(180deg, #3a2a22, #22170f); }
+body[data-game="chefskiss"] { background: linear-gradient(180deg, #164651, #0a222a); }
 #ckPhone { flex: 1 1 auto; min-height: 0; width: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-bottom: 6px; }
 .ckp-recipe { --w: min(44vw, 190px); display: flex; justify-content: center; }
 .ckp-recipe:empty { display: none; }

@@ -1,16 +1,16 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=23';
-import { cardEl, snap, keepAwake } from './cards.js?v=23';
-import { hostRoom } from './net.js?v=23';
-import euchre from './table-euchre.js?v=23';
-import holdem from './table-poker.js?v=23';
-import veto from './table-veto.js?v=23';
-import gofish from './table-gofish.js?v=23';
-import chess from './table-chess.js?v=23';
-import backgammon from './table-backgammon.js?v=23';
-import sketch from './table-sketch.js?v=23';
-import chefskiss from './table-chefskiss.js?v=23';
+import { GAMES, SIDE_ROT } from './games.js?v=24';
+import { cardEl, snap, keepAwake } from './cards.js?v=24';
+import { hostRoom } from './net.js?v=24';
+import euchre from './table-euchre.js?v=24';
+import holdem from './table-poker.js?v=24';
+import veto from './table-veto.js?v=24';
+import gofish from './table-gofish.js?v=24';
+import chess from './table-chess.js?v=24';
+import backgammon from './table-backgammon.js?v=24';
+import sketch from './table-sketch.js?v=24';
+import chefskiss from './table-chefskiss.js?v=24';
 
 const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss };
 const STORE = 'syndaris.table.v2';
