@@ -1,5 +1,6 @@
 // Chess on a player's phone: the board turned to your side, tap a piece then a square.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=26';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=28';
+import { targetsFrom, tapMoves } from './chess.js?v=28';
 
 const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
 const glyph = p => GLYPH[p.toLowerCase()] + '︎';
@@ -110,7 +111,7 @@ function drawBoard(g) {
   if (key === lastKey) return;
   lastKey = key;
   const flip = g.color === 'b';
-  const targets = selected != null ? new Set(g.legal.filter(m => m.from === selected).map(m => m.to)) : new Set();
+  const targets = selected != null ? targetsFrom(g.legal, selected) : new Set();
   const kingSq = g.check ? g.board.indexOf(g.turn === 'w' ? 'K' : 'k') : -1;
   let html = '';
   for (let row = 0; row < 8; row++) {
@@ -133,10 +134,10 @@ function onSquare(s) {
   const g = ctx.st.game;
   if (g.result || g.turn !== g.color) return;
   if (selected != null) {
-    const opts = g.legal.filter(m => m.from === selected && m.to === s);
+    const opts = tapMoves(g.legal, selected, s);
     if (opts.length > 1) { promo = { from: selected, to: s }; panelKey = ''; renderPanel(g, g.color, true); return; }
     if (opts.length === 1) {
-      ctx.send({ type: 'move', from: selected, to: s });
+      ctx.send({ type: 'move', from: selected, to: opts[0].to });
       selected = null;
       navigator.vibrate?.(15);
       return;

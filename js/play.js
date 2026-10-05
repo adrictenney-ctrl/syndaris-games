@@ -1,18 +1,19 @@
 // A player's phone: joining, picking a seat, then the game's own phone UI.
-import { GAMES } from './games.js?v=26';
-import { keepAwake } from './cards.js?v=26';
-import { joinRoom } from './net.js?v=26';
-import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=26';
-import * as euchreUI from './play-euchre.js?v=26';
-import * as pokerUI from './play-poker.js?v=26';
-import * as vetoUI from './play-veto.js?v=26';
-import * as gofishUI from './play-gofish.js?v=26';
-import * as chessUI from './play-chess.js?v=26';
-import * as backgammonUI from './play-backgammon.js?v=26';
-import * as sketchUI from './play-sketch.js?v=26';
-import * as chefskissUI from './play-chefskiss.js?v=26';
+import { GAMES } from './games.js?v=28';
+import { keepAwake } from './cards.js?v=28';
+import { joinRoom } from './net.js?v=28';
+import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=28';
+import * as euchreUI from './play-euchre.js?v=28';
+import * as pokerUI from './play-poker.js?v=28';
+import * as vetoUI from './play-veto.js?v=28';
+import * as gofishUI from './play-gofish.js?v=28';
+import * as chessUI from './play-chess.js?v=28';
+import * as backgammonUI from './play-backgammon.js?v=28';
+import * as sketchUI from './play-sketch.js?v=28';
+import * as chefskissUI from './play-chefskiss.js?v=28';
+import * as insidejobUI from './play-insidejob.js?v=28';
 
-const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI };
+const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI };
 const params = new URLSearchParams(location.search);
 
 let pid = null;

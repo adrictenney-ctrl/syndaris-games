@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess** and **Chef's Kiss**.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess**, **Chef's Kiss** and **Inside Job**.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss, a heist blueprint for Inside Job.
 
 ## How it works
 
@@ -151,6 +151,30 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
 Not built yet: the Fan-Pacs (their card lists weren't in the instructions), the Super-Duper Pantry, descriptions in
 other languages, and the optional on-device AI suggestions. The rules say the game must work without AI, and it does.
 
+## Inside Job
+A cooperative heist for 3–6 players, played with Texas Hold'em hands and a standard deck. It plays like the board
+game *The Gang*, with its own name and look. Everyone is on the same crew. **Nobody may say what cards they hold.**
+
+- **Each heist:** everyone gets two private cards, then the flop, turn and river come out like in Hold'em. Each of the
+  four rounds has its own color of poker chips: white (before the flop), yellow (flop), orange (turn), red (river).
+- **Chips:** each round there's one chip per player, marked 100, 200, 300 and so on. 100 means "I think I have the
+  weakest hand at the table", and the highest chip means the strongest.
+- **Taking chips:** on your phone, tap a chip in the middle, or tap the chip in front of another player to take it
+  from them. They then have to take another one. Taking a new chip puts your old one back in the middle.
+- **Moving on:** when everyone has a chip, each player taps "I'm happy with my chip". Any chip change makes everyone
+  confirm again. The next cards come out when the whole crew is happy.
+- **Showdown:** hands are revealed from the lowest red chip to the highest. If each hand is at least as strong as the
+  one before it (ties are fine), the vault opens. If not, the alarm goes off.
+- **Winning:** crack 3 vaults before 3 alarms go off.
+- **Complications and Specialists (optional, on by default):** after a cracked vault, the next heist gets a
+  Complication: *Butterfingers*, *Blind River*, *Cold Start* or *Sticky Fingers*. After an alarm, a Specialist joins
+  the crew: *the Safecracker*, *the Lookout*, *the Insider* or *the Forger*. The table shows what the current one
+  does.
+- **Computer players** can fill seats. They judge their hands with a quick simulation, take matching chips, and swap
+  chips with each other, but they never take chips from people.
+
+**Chess castling:** tap your king, then tap the rook (or the square two to the side).
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -185,7 +209,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=27; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=29; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)
@@ -244,9 +268,9 @@ and cellular networks block them.
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
 | `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js`, `js/table-backgammon.js`, `js/table-sketch.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/play-insidejob.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`) | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`), `js/insidejob.js` | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

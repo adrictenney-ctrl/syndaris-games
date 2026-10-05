@@ -1,6 +1,6 @@
 // Backgammon on a player's phone: the board turned to your side, tap a checker then a point.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=26';
-import { buildBoard, drawBoard, tap } from './bg-board.js?v=26';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=28';
+import { buildBoard, drawBoard, tap } from './bg-board.js?v=28';
 
 let ctx = null;
 let selected = null;

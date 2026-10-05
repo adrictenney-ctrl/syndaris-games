@@ -94,3 +94,13 @@ GAMES.chefskiss = {
   startLabel: 'Start the game',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.insidejob = {
+  id: 'insidejob',
+  name: 'Inside Job',
+  blurb: '3–6 players · a silent heist, together',
+  min: 3,
+  max: 6,
+  startLabel: 'Start the heist',
+  layout: GAMES.holdem.layout,
+};

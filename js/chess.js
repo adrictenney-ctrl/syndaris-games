@@ -305,7 +305,7 @@ export function viewFor(g, seat) {
   const me = seatColor(seat);
   return {
     color: me, board: g.board, turn: g.turn, lastMove: g.lastMove, check: !g.result && inCheck(g),
-    legal: !g.result && g.turn === me ? g.legal.map(m => ({ from: m.from, to: m.to, promo: m.promo ? m.promo.toLowerCase() : null })) : [],
+    legal: !g.result && g.turn === me ? g.legal.map(m => ({ from: m.from, to: m.to, promo: m.promo ? m.promo.toLowerCase() : null, castle: m.castle || null })) : [],
     moves: g.moves.slice(-40), moveCount: g.moves.length, result: g.result, drawOffer: g.drawOffer,
     captured: g.captured, clocks: clocksNow(g), gameNo: g.gameNo,
   };
@@ -422,4 +422,19 @@ export function botAction(g, seat) {
     if (bestScore > MATE - 100 || Date.now() - started > budget / 3) break;
   }
   return { type: 'move', from: best.from, to: best.to, promo: best.promo ? best.promo.toLowerCase() : null };
+}
+
+// Castling by touch: after picking up the king, tapping your own rook castles that way
+// (as well as tapping the square two to the side). Returns the rook square for a castle move.
+export const CASTLE_ROOK = { K: 7, Q: 0, k: 63, q: 56 };
+export function targetsFrom(legal, from) {
+  const out = new Set();
+  for (const m of legal) if (m.from === from) { out.add(m.to); if (m.castle) out.add(CASTLE_ROOK[m.castle]); }
+  return out;
+}
+// The move a tap means: a normal destination, or the rook for castling.
+export function tapMoves(legal, from, sq) {
+  const direct = legal.filter(m => m.from === from && m.to === sq);
+  if (direct.length) return direct;
+  return legal.filter(m => m.from === from && m.castle && CASTLE_ROOK[m.castle] === sq);
 }

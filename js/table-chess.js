@@ -1,8 +1,8 @@
 // Chess on the table screen: an inlaid board in the middle of a dark wood table.
 // With the tablet flat, Black's pieces are turned to face the player across the table.
 // Moves can be made by tapping the board on the table, or from either phone.
-import * as C from './chess.js?v=26';
-import { snap } from './cards.js?v=26';
+import * as C from './chess.js?v=28';
+import { snap } from './cards.js?v=28';
 
 export const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
 const glyph = p => GLYPH[p.toLowerCase()] + '︎';
@@ -118,7 +118,7 @@ function sync(g) {
 function highlight(g) {
   const sqs = boardEl.querySelectorAll('.sq');
   const check = !g.result && C.inCheck(g) ? g.board.indexOf(g.turn === 'w' ? 'K' : 'k') : -1;
-  const targets = selected != null ? new Set(g.legal.filter(m => m.from === selected).map(m => m.to)) : new Set();
+  const targets = selected != null ? C.targetsFrom(g.legal, selected) : new Set();
   sqs.forEach(el => {
     const s = Number(el.dataset.sq);
     el.classList.toggle('last', !!g.lastMove && (s === g.lastMove.from || s === g.lastMove.to));
@@ -136,12 +136,12 @@ function onSquare(s) {
   const seat = g.turn === 'w' ? 0 : 1;
   if (ctx.isBot(seat)) return;
   if (selected != null) {
-    const opts = g.legal.filter(m => m.from === selected && m.to === s);
+    const opts = C.tapMoves(g.legal, selected, s);
     if (opts.length > 1) return showPromo(selected, s, seat);
     if (opts.length === 1) {
       const from = selected;
       selected = null;
-      ctx.act(seat, { type: 'move', from, to: s });
+      ctx.act(seat, { type: 'move', from, to: opts[0].to });
       return;
     }
   }
