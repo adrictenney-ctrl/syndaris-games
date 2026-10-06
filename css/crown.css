@@ -72,7 +72,7 @@ body[data-game="crown"] #print, body[data-game="crown"] .fan, body[data-game="cr
 .cd-log b { color: #fff; font-weight: 600; }
 
 /* ---------- the phone ---------- */
-body[data-game="crown"] { background: linear-gradient(180deg, #4a1c5c, #24092f); }
+body[data-game="crown"] { background: linear-gradient(180deg, #2e1538, #120714); }
 body[data-game="crown"] #handWrap, body[data-game="crown"] #handHint { display: none; }
 #cdRole { width: min(92vw, 380px); margin: 4px 0 10px; position: relative; user-select: none; -webkit-user-select: none; touch-action: none; cursor: pointer; }
 #cdRole .cd-back, #cdRole .cd-face { border-radius: 14px; padding: 14px 16px; text-align: center; box-shadow: 0 8px 20px rgba(0, 0, 0, .45); }

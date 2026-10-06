@@ -48,7 +48,7 @@ body[data-game="hollow"] #print, body[data-game="hollow"] .fan, body[data-game="
 .hm-sheet > .tool { color: #2b2116; border-color: rgba(43, 33, 22, .35); }
 
 /* ---------- the phone ---------- */
-body[data-game="hollow"] { background: linear-gradient(180deg, #4d3d30, #241a12); transition: background 1s; }
+body[data-game="hollow"] { background: linear-gradient(180deg, #3a2e24, #17110c); transition: background 1s; }
 body[data-game="hollow"].hm-night { background: linear-gradient(180deg, #121a2e, #070a14); }
 body[data-game="hollow"] #handWrap, body[data-game="hollow"] #handHint { display: none; }
 body[data-game="hollow"] #panel { overflow-y: auto; min-height: 0; flex: 1 1 auto; gap: 10px; padding-bottom: 10px; }

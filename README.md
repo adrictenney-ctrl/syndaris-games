@@ -271,7 +271,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=35; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=38; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)
@@ -341,5 +341,9 @@ and cellular networks block them.
 The table is designed as a real card room. Everything is either printed on the felt in gold ink (the oval
 with the name, the seat outlines, the pot line, the direction ring) or a physical object sitting on it (cards,
 chips, the ivory dealer button, paper slips for announcements and scores). A soft pool of lamp light moves to
-whoever's turn it is. Type: IM Fell English (names, headings), DM Serif Display (card numerals), Figtree
-(small labels).
+whoever's turn it is. Type: Cormorant Garamond (names, headings), DM Serif Display (card numerals), Manrope
+(small labels, set in tracked capitals).
+
+Around the tables, the site is a private members' room: onyx black, champagne gold and fine hairlines, with
+deep jewel tones (emerald, sapphire, oxblood, aubergine) only as quiet glows behind each game. The tokens
+(`--onyx`, `--champagne`, `--hairline` and friends) live at the top of `css/cards.css`.

@@ -1,28 +1,37 @@
 /* Lamplight: shared tokens + card faces.
    Everything on the table is either printed on the felt (gold ink) or an object sitting on it. */
 :root {
-  --baize-hi: #226a47;
-  --baize: #185236;
-  --baize-deep: #0b2d1e;
+  --baize-hi: #184a34;
+  --baize: #113a29;
+  --baize-deep: #071c14;
   --walnut: #5b351d;
   --walnut-dark: #26150b;
   --leather: #17110d;
-  --brass: #c9a55a;
-  --brass-hi: #ead39a;
-  --ivory: #f5eedd;
+  --brass: #bfa273;
+  --brass-hi: #e3d2ab;
+  --ivory: #efe9dc;
   --stock: #f7f1e2;
   --ink: #f5eedd;                          /* text on felt */
   --ink-dim: rgba(245, 238, 221, .6);
-  --gold-ink: rgba(218, 188, 118, .78);    /* printing on the felt */
-  --gold-faint: rgba(218, 188, 118, .32);
+  --gold-ink: rgba(214, 192, 148, .78);    /* printing on the felt */
+  --gold-faint: rgba(214, 192, 148, .3);
   --gold: var(--brass);
   --card-red: #a8222b;
   --card-black: #1c1a1f;
   --paper-ink: #2a2320;
-  --display: 'IM Fell English SC', 'IM Fell English', Georgia, serif;
-  --serif: 'IM Fell English', Georgia, serif;
+  /* The house: onyx, champagne and hairlines, for the site around the tables. */
+  --onyx: #0c0b0a;
+  --onyx-2: #14120f;
+  --onyx-3: #1c1915;
+  --champagne: #cdb487;
+  --champagne-hi: #e8dbbd;
+  --hairline: rgba(205, 180, 135, .18);
+  --hairline-hi: rgba(205, 180, 135, .42);
+  --mute: rgba(239, 233, 220, .56);
+  --display: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+  --serif: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
   --num: 'DM Serif Display', Georgia, serif;
-  --ui: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ui: 'Manrope', 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
   /* Seat markers: clay chip colours, muted so they sit on the felt quietly. */
   --seat-0: #3f6fa6;
   --seat-1: #c0633a;
@@ -218,9 +227,9 @@ button { font: inherit; }
 
 /* ---------- TV remote: the highlight that follows the arrow keys ---------- */
 html.tv-nav .tv-focus {
-  outline: max(4px, .5vmin) solid #ffd66b !important;
+  outline: max(3px, .4vmin) solid #e3cf9f !important;
   outline-offset: max(3px, .35vmin);
-  box-shadow: 0 0 0 max(8px, 1vmin) rgba(255, 214, 107, .22), 0 0 max(24px, 4vmin) rgba(255, 214, 107, .55) !important;
+  box-shadow: 0 0 0 max(8px, 1vmin) rgba(227, 207, 159, .14), 0 0 max(24px, 4vmin) rgba(227, 207, 159, .35) !important;
   border-radius: 6px;
   z-index: 30;
 }
@@ -234,16 +243,3 @@ html.tv a.join, html.tv #btnFull { display: none !important; }
   padding: 1.2vmin 3vmin 1.5vmin; border-radius: 6px; box-shadow: 0 10px 30px rgba(0, 0, 0, .5); transition: .25s;
 }
 #tvToast.show { opacity: 1; transform: translate(-50%, 0); }
-/* On a TV, both rows of the game catalog fit on one screen. */
-html.tv .box { min-height: 35vh; padding: 2vh 18px; }
-html.tv .box .cards { zoom: .62; }
-html.tv .box .pot { font-size: 9vh; top: 28%; }
-html.tv .box h2 { font-size: 5vh; }
-html.tv .box p { font-size: 2.8vh; }
-html.tv .box .play { margin-top: 1.2vh; font-size: 2vh; }
-html.tv h1 { font-size: 8vh; }
-html.tv .tag { font-size: 3vh; margin-top: .6vh; }
-html.tv .shelf { gap: 2.4vh; }
-html.tv .eyebrow { margin-bottom: 1.4vh; }
-html.tv body { padding-top: 4vh; }
-html.tv header { margin-bottom: 2vh; }

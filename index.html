@@ -5,154 +5,309 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#0b2d1e">
+  <meta name="theme-color" content="#0c0b0a">
+  <meta name="description" content="A private game room for your living room. The big screen becomes the table, and every phone becomes a private hand.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg">
   <title>Play On Display</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=34">
-  <link rel="stylesheet" href="css/chefskiss.css?v=34">
-  <link rel="stylesheet" href="css/insidejob.css?v=34">
-  <link rel="stylesheet" href="css/crown.css?v=34">
-  <link rel="stylesheet" href="css/hollow.css?v=34">
-  <link rel="stylesheet" href="css/casino.css?v=34">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cards.css?v=37">
+  <link rel="stylesheet" href="css/chefskiss.css?v=37">
+  <link rel="stylesheet" href="css/insidejob.css?v=37">
+  <link rel="stylesheet" href="css/crown.css?v=37">
+  <link rel="stylesheet" href="css/hollow.css?v=37">
+  <link rel="stylesheet" href="css/casino.css?v=37">
   <style>
-    body { min-height: 100%; padding: 36px 20px 48px; }
-    main { max-width: 1040px; margin: 0 auto; }
-    header { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
-    h1 { font-family: var(--display); font-weight: 400; color: var(--ivory); font-size: clamp(40px, 7vw, 68px); letter-spacing: .04em; margin: 0; line-height: 1; }
-    .tag { font-family: var(--serif); font-style: italic; color: var(--gold-ink); font-size: 19px; margin: 8px 0 0; }
-    a.join {
-      font-family: var(--display); font-size: 19px; letter-spacing: .04em; text-decoration: none; color: var(--ivory);
-      padding: 11px 20px 13px; border: 1px solid var(--gold-faint); border-radius: 8px; background: rgba(8, 28, 19, .35);
+    html { background: var(--onyx); scroll-behavior: smooth; }
+    body {
+      min-height: 100%; color: var(--ivory);
+      background:
+        radial-gradient(ellipse 70% 50% at 72% 0%, rgba(205, 180, 135, .09), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 0% 30%, rgba(120, 90, 60, .07), transparent 70%),
+        var(--onyx);
     }
-    a.join small { display: block; font-family: var(--ui); font-size: 12px; letter-spacing: .04em; color: var(--gold-ink); margin-top: 2px; }
-    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-ink); margin: 0 0 14px; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+    a { color: inherit; }
+    .caps { font-family: var(--ui); font-size: 11px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--champagne); }
 
-    /* The shelf: each game is a box, dressed in its own table */
-    .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 18px; }
+    /* ---------- nav ---------- */
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 26px 0; border-bottom: 1px solid var(--hairline); }
+    .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+    .brand img { width: 34px; height: 34px; }
+    .brand span { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: .34em; text-transform: uppercase; color: var(--ivory); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; cursor: pointer;
+      font-family: var(--ui); font-size: 11.5px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase;
+      padding: 16px 28px; border-radius: 2px; transition: background .3s, color .3s, border-color .3s, box-shadow .3s;
+    }
+    .btn.solid { color: #17130c; background: linear-gradient(180deg, var(--champagne-hi), var(--champagne) 60%, #b89c6c); box-shadow: 0 10px 30px rgba(205, 180, 135, .12); }
+    .btn.solid:hover { box-shadow: 0 14px 40px rgba(205, 180, 135, .22); }
+    .btn.line { color: var(--ivory); border: 1px solid var(--hairline-hi); }
+    .btn.line:hover { border-color: var(--champagne); color: var(--champagne-hi); }
+    nav .btn { padding: 12px 20px; }
+
+    /* ---------- hero ---------- */
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 40px; padding: 96px 0 104px; }
+    .hero h1 {
+      font-family: var(--display); font-weight: 500; font-size: clamp(46px, 6.6vw, 88px); line-height: .98; letter-spacing: -.01em;
+      margin: 22px 0 26px; color: var(--ivory);
+    }
+    .hero h1 em { font-style: italic; color: var(--champagne-hi); }
+    .hero .lede { font-size: 17px; line-height: 1.7; color: var(--mute); max-width: 470px; margin: 0 0 40px; }
+    .hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .rule { display: inline-flex; align-items: center; gap: 14px; }
+    .rule::before { content: ''; width: 36px; height: 1px; background: var(--champagne); opacity: .7; }
+
+    .stage { position: relative; height: 440px; }
+    .stage::before {
+      content: ''; position: absolute; inset: 6% 4%; border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 55%, rgba(31, 74, 55, .55), rgba(16, 38, 29, .35) 45%, transparent 70%);
+      filter: blur(6px);
+    }
+    .stage::after {
+      content: ''; position: absolute; left: 50%; top: 50%; width: 82%; aspect-ratio: 1.55; translate: -50% -48%; border-radius: 50%;
+      border: 1px solid var(--hairline); box-shadow: inset 0 0 0 10px rgba(205, 180, 135, .025);
+    }
+    .still { position: absolute; inset: 0; }
+    .stage .card { --cw: 128px; position: absolute; left: 50%; top: 50%; z-index: 1; box-shadow: 0 30px 60px rgba(0, 0, 0, .6), 0 0 0 .5px rgba(40, 30, 10, .35); }
+    .stage .pchip { position: absolute; z-index: 2; }
+    .hchip {
+      position: absolute; z-index: 2; width: var(--d); aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; display: grid; place-items: center;
+      font-family: var(--num); font-size: calc(var(--d) * .26); color: var(--champagne-hi);
+      background: radial-gradient(circle, var(--c) 0 52%, var(--champagne) 53% 55%, var(--c) 56% 66%, transparent 67%), repeating-conic-gradient(var(--champagne) 0 10deg, var(--c) 10deg 45deg);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .6), 0 0 0 1px rgba(0, 0, 0, .5), inset 0 0 0 2px rgba(0, 0, 0, .25);
+    }
+
+    /* ---------- how it works ---------- */
+    .how { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+    .how div { padding: 44px 36px 46px 0; }
+    .how div + div { padding-left: 36px; border-left: 1px solid var(--hairline); }
+    .how b { display: block; font-family: var(--display); font-weight: 500; font-style: italic; font-size: 30px; color: var(--champagne); line-height: 1; }
+    .how h3 { font-family: var(--display); font-weight: 600; font-size: 26px; margin: 18px 0 10px; letter-spacing: .005em; }
+    .how p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--mute); }
+
+    /* ---------- the collection ---------- */
+    .collection { padding: 104px 0 40px; }
+    .col-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+    .col-head h2 { font-family: var(--display); font-weight: 500; font-size: clamp(36px, 4.4vw, 56px); line-height: 1.02; margin: 18px 0 0; }
+    .col-head h2 em { color: var(--champagne-hi); }
+    .col-head p { margin: 0; max-width: 340px; font-size: 15px; line-height: 1.7; color: var(--mute); }
+
+    .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); border-top: 1px solid var(--hairline); border-left: 1px solid var(--hairline); }
     .box {
-      position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 250px;
-      padding: 20px; border-radius: 10px; overflow: hidden; text-decoration: none; color: var(--ivory);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(255, 255, 255, .08);
-      transition: transform .2s, box-shadow .2s;
+      --tint: #2a2620;
+      position: relative; display: flex; flex-direction: column; padding: 0 26px 28px; overflow: hidden;
+      border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+      text-decoration: none; color: var(--ivory); background: var(--onyx-2);
+      opacity: 0; translate: 0 14px; animation: rise .8s cubic-bezier(.2, .7, .2, 1) forwards; animation-delay: calc(var(--i) * 55ms + 150ms);
     }
-    a.box:hover { transform: translateY(-4px); box-shadow: 0 20px 38px rgba(0, 0, 0, .5), inset 0 0 0 1px rgba(255, 255, 255, .14); }
-    .box::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .5)); pointer-events: none; }
+    @keyframes rise { to { opacity: 1; translate: 0 0; } }
+    .box::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; transition: opacity .5s;
+      background: radial-gradient(ellipse 85% 62% at 50% 30%, color-mix(in srgb, var(--tint) 92%, transparent), color-mix(in srgb, var(--tint) 24%, transparent) 60%, transparent 85%);
+    }
+    .box::after {
+      content: ''; position: absolute; inset: 12px; pointer-events: none; border: 1px solid var(--champagne); opacity: 0; transition: opacity .45s, inset .45s;
+    }
+    a.box:hover::after, a.box:focus-visible::after { opacity: .5; inset: 10px; }
+    a.box:hover::before { opacity: 1.0; filter: brightness(1.25); }
+    a.box:focus-visible { outline: none; }
     .box > * { position: relative; z-index: 1; }
-    /* The art sits above the name in the normal flow, so the two can never overlap. */
-    .box .cards { position: relative; flex: none; height: 100px; width: 200px; margin: auto auto 16px; z-index: 0; }
+    .art { display: grid; place-items: center; height: 210px; }
+    .art .cards { position: relative; height: 110px; width: 200px; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+    a.box:hover .art .cards { transform: translateY(-6px) scale(1.04); }
     .box .cards .card { --cw: 62px; position: absolute; left: 50%; top: 50%; }
-    .box h2 { font-family: var(--display); font-weight: 400; font-size: 27px; margin: 0; letter-spacing: .02em; }
-    .box p { font-family: var(--serif); font-style: italic; font-size: 16px; color: rgba(245, 238, 221, .8); margin: 4px 0 0; }
-    .box .play { margin-top: 14px; font-size: 12px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--brass-hi); }
-    .box.soon { cursor: default; opacity: .8; }
-    .box.soon .play { color: #7a6c58; }
+    .box .meta-line { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1px solid var(--hairline); }
+    .box .meta-line .caps { font-size: 10px; letter-spacing: .28em; }
+    .box .meta-line i { font-style: normal; font-family: var(--ui); font-size: 15px; color: var(--champagne); transition: transform .4s; }
+    a.box:hover .meta-line i { transform: translateX(5px); }
+    .box h2 { font-family: var(--display); font-weight: 600; font-size: 29px; line-height: 1.05; margin: 14px 0 6px; letter-spacing: .005em; }
+    .box p { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 17px; line-height: 1.35; color: var(--mute); margin: 0; }
 
-    .t-euchre { background: radial-gradient(ellipse at 50% 35%, #226a47, #185236 55%, #0b2d1e); }
-    .t-holdem { background: radial-gradient(ellipse at 50% 35%, #2c5888, #1c3c64 55%, #0b1b33); }
-    .t-veto { background: repeating-linear-gradient(90deg, rgba(40, 18, 4, .4) 0 2px, transparent 2px 64px), linear-gradient(180deg, #9a6438, #7a4826); }
-    .t-chess { background: linear-gradient(180deg, #4b2a17, #33190c); }
-    .t-backgammon { background: linear-gradient(180deg, #7a4322, #4d2812); }
-    .bgmini { width: 170px !important; height: 104px !important; background: radial-gradient(ellipse, #276a46, #1a4e33); border: 6px solid #5a321a; border-radius: 6px; box-shadow: 0 8px 18px rgba(0, 0, 0, .5); overflow: hidden; }
-    .bgmini i { position: absolute; top: 0; width: 14%; height: 45%; background: #efe2c3; clip-path: polygon(0 0, 100% 0, 50% 100%); }
-    .bgmini i:nth-child(1) { left: 2%; } .bgmini i:nth-child(2) { left: 18%; background: #9b3029; } .bgmini i:nth-child(3) { left: 34%; }
-    .bgmini i:nth-child(4) { left: 52%; background: #9b3029; } .bgmini i:nth-child(5) { left: 68%; } .bgmini i:nth-child(6) { left: 84%; background: #9b3029; }
+    .t-euchre { --tint: #1d4433; } .t-holdem { --tint: #1c2f4a; } .t-veto { --tint: #4b301c; } .t-gofish { --tint: #173f48; }
+    .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
+    .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
+
+    /* Each game's little still life */
+    .bgmini { width: 170px !important; height: 104px !important; background: radial-gradient(ellipse, #22553c, #163f2b); border: 6px solid #4a2a17; border-radius: 4px; box-shadow: 0 0 0 1px rgba(205, 180, 135, .35), 0 14px 26px rgba(0, 0, 0, .55); overflow: hidden; }
+    .bgmini i { position: absolute; top: 0; width: 14%; height: 45%; background: #e8dcc0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+    .bgmini i:nth-child(1) { left: 2%; } .bgmini i:nth-child(2) { left: 18%; background: #7f2a26; } .bgmini i:nth-child(3) { left: 34%; }
+    .bgmini i:nth-child(4) { left: 52%; background: #7f2a26; } .bgmini i:nth-child(5) { left: 68%; } .bgmini i:nth-child(6) { left: 84%; background: #7f2a26; }
     .bgmini b { position: absolute; width: 22px; height: 22px; border-radius: 50%; translate: -50% -50%; }
     .bgmini b.w { background: radial-gradient(circle at 40% 35%, #fffbf2, #cdbf9f); box-shadow: inset 0 0 0 3px #f7f0e1, 0 2px 3px rgba(0,0,0,.5); }
     .bgmini b.b { background: radial-gradient(circle at 40% 35%, #4d4549, #0d0b0d); box-shadow: inset 0 0 0 3px #1a171a, 0 2px 3px rgba(0,0,0,.5); }
-    .t-chess .cards { background: conic-gradient(#e7cf9e 25%, #8e5b33 0 50%, #e7cf9e 0 75%, #8e5b33 0) 0 0 / 50px 50px; width: 150px; height: 100px; border: 4px solid #5a3218; box-shadow: 0 0 0 1px #c9a55a, 0 8px 18px rgba(0, 0, 0, .5); }
+    .t-chess .cards { background: conic-gradient(#ddc69a 25%, #7a4f2e 0 50%, #ddc69a 0 75%, #7a4f2e 0) 0 0 / 50px 50px; width: 150px !important; height: 100px !important; border: 4px solid #4a2a15; box-shadow: 0 0 0 1px rgba(205, 180, 135, .5), 0 14px 26px rgba(0, 0, 0, .55); }
     .cpc { position: absolute; top: 50%; transform: translate(-50%, -50%); font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', serif; font-size: 62px; line-height: 1; }
-    .cpc.w { color: #faf3e3; -webkit-text-stroke: 1.2px #2a2018; text-shadow: 0 3px 5px rgba(0, 0, 0, .55); }
+    .cpc.w { color: #f6efe0; -webkit-text-stroke: 1.2px #2a2018; text-shadow: 0 3px 5px rgba(0, 0, 0, .55); }
     .cpc.b { color: #1c1918; -webkit-text-stroke: 1px rgba(245, 232, 205, .65); text-shadow: 0 3px 5px rgba(0, 0, 0, .55); }
-    .t-gofish { background: radial-gradient(ellipse at 50% 35%, #2a8796, #145867 55%, #08303d); }
-    .t-gofish .pad {
-      position: absolute; width: 54px; aspect-ratio: 1; border-radius: 50%; z-index: 0;
-      background: radial-gradient(circle at 38% 34%, #7bbd62, #3f7d3a);
-      -webkit-mask: conic-gradient(from 25deg, transparent 0 28deg, #000 28deg); mask: conic-gradient(from 25deg, transparent 0 28deg, #000 28deg);
-    }
-    .t-sketch { background: repeating-linear-gradient(0deg, rgba(220, 240, 220, .18) 0 1px, transparent 1px 22px), repeating-linear-gradient(90deg, rgba(220, 240, 220, .18) 0 1px, transparent 1px 22px), linear-gradient(180deg, #1f5c43, #133c2b); }
-    .skmini { width: 136px !important; height: 84px !important; padding-top: 8px; background: #fbf7ec; border-radius: 4px; rotate: -3deg; box-shadow: 0 8px 18px rgba(0, 0, 0, .5); }
+    .skmini { width: 136px !important; height: 84px !important; padding-top: 8px; background: #f4efe2; border-radius: 3px; rotate: -3deg; box-shadow: 0 14px 26px rgba(0, 0, 0, .55); }
     .skmini::before { content: ""; position: absolute; left: 6px; right: 6px; top: 3px; height: 6px; background: radial-gradient(circle 2.5px at 50% 50%, #3a3a3a 70%, transparent 75%) 0 0 / 12px 100% repeat-x; }
     .skmini svg { display: block; width: 100%; height: 100%; }
-    .t-insidejob { background: repeating-linear-gradient(0deg, rgba(200, 225, 255, .16) 0 1px, transparent 1px 20px), repeating-linear-gradient(90deg, rgba(200, 225, 255, .16) 0 1px, transparent 1px 20px), linear-gradient(180deg, #1b4a86, #123563); }
-    .ijmini { display: flex; align-items: center; justify-content: center; }
+    .ijmini, .cdmini, .hmmini { display: flex; align-items: center; justify-content: center; }
     .ijmini .pchip { --chip: 50px; margin: 0 -6px; }
     .ijmini .pchip:nth-child(odd) { transform: translateY(-10px); }
-    .t-blackjack { background: radial-gradient(ellipse at 50% 35%, #1d7a4a, #0f4a2b 70%); }
-    .t-baccarat { background: radial-gradient(ellipse at 50% 35%, #93203a, #520b17 70%); }
-    .t-crown { background: radial-gradient(ellipse at 50% 35%, #5c2672, #2e0f3b 70%); }
-    .cdmini { display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .cdmini { gap: 10px; }
     .cdmini .edict { --e: 58px; }
     .cdmini .edict:first-child { transform: rotate(-8deg); } .cdmini .edict:last-child { transform: rotate(8deg); }
-    .t-hollow { background: radial-gradient(ellipse at 50% 30%, #7a5b3a, #3c3027 60%, #1a1410); }
-    .hmmini { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 44px; }
-    .hmmini span:nth-child(2) { font-size: 56px; transform: translateY(-14px); }
-    .t-chefskiss { background: radial-gradient(ellipse at 50% 35%, #1d5865, #0c2a33 70%); }
+    .hmmini { gap: 18px; font-size: 40px; filter: saturate(.7); }
+    .hmmini span:nth-child(2) { font-size: 52px; transform: translateY(-14px); }
     .ckmini { --w: 66px; width: 170px !important; height: 104px !important; }
     .ckmini .ck-card { position: absolute; left: 50%; top: 50%; }
     .ckmini .ck-card.r { transform: translate(-82%, -50%) rotate(-9deg); }
     .ckmini .ck-card.i { transform: translate(-18%, -46%) rotate(8deg); }
+    .gfmini { display: flex; align-items: center; justify-content: center; }
+
+    /* ---------- footer ---------- */
+    footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 56px 0 64px; margin-top: 64px; border-top: 1px solid var(--hairline); }
+    footer p { margin: 0; font-family: var(--display); font-style: italic; font-size: 19px; color: var(--mute); }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding: 56px 0 64px; gap: 10px; }
+      .stage { order: -1; }
+      .stage { height: 330px; }
+      .still { scale: .74; }
+      .how { grid-template-columns: 1fr; }
+      .how div, .how div + div { padding: 30px 0; border-left: 0; }
+      .how div + div { border-top: 1px solid var(--hairline); }
+      .collection { padding-top: 72px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 16px; }
+      nav { padding: 18px 0; }
+      .brand span { font-size: 11px; letter-spacing: .26em; }
+      nav .btn { padding: 10px 14px; letter-spacing: .18em; font-size: 10.5px; }
+      .hero .ctas { flex-direction: column; }
+      .hero .ctas .btn { width: 100%; }
+      .stage { height: 270px; }
+      .still { scale: .6; }
+      .shelf { grid-template-columns: 1fr 1fr; }
+      .box { padding: 0 14px 18px; }
+      .art { height: 150px; }
+      .art .cards { transform: scale(.72); }
+      a.box:hover .art .cards { transform: scale(.75); }
+      .box h2 { font-size: 22px; margin-top: 10px; }
+      .box p { font-size: 15px; }
+      .box .meta-line .caps { font-size: 9px; letter-spacing: .2em; }
+    }
+    @media (prefers-reduced-motion: reduce) { .box { opacity: 1; translate: none; animation: none; } }
+
+    /* ---------- TV: just the collection, every game on one screen ---------- */
+    html.tv .hero, html.tv .how, html.tv footer, html.tv .col-head p, html.tv nav .btn { display: none; }
+    html.tv nav { padding: 3vh 0 2vh; }
+    html.tv .wrap { max-width: none; padding: 0 3vw; }
+    html.tv .collection { padding: 3vh 0 0; }
+    html.tv .col-head { margin-bottom: 3vh; }
+    html.tv .col-head h2 { font-size: 6vh; margin-top: 1vh; }
+    html.tv .shelf { grid-template-columns: repeat(7, 1fr); }
+    html.tv .box { padding: 0 1.4vw 2.4vh; }
+    html.tv .art { height: 17vh; }
+    html.tv .art .cards { zoom: .62; }
+    html.tv .box h2 { font-size: 3.6vh; margin: 1.2vh 0 .4vh; }
+    html.tv .box p { font-size: 2.2vh; }
+    html.tv .box .meta-line { padding-top: 1.4vh; }
   </style>
 </head>
 <body>
-  <main>
-    <header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html"><img src="icon.svg" alt=""><span>Play On Display</span></a>
+      <a class="btn line" href="play.html">Join a table</a>
+    </nav>
+
+    <section class="hero">
       <div>
-        <h1>Play On Display</h1>
-        <p class="tag">Pick a game for the table. Everyone's hand goes on their phone.</p>
+        <span class="caps rule">The private game room</span>
+        <h1>Game night,<br><em>beautifully</em> set.</h1>
+        <p class="lede">Your television becomes the table. Every guest's phone becomes a private hand. No downloads, no accounts. Just pour a drink and deal.</p>
+        <div class="ctas">
+          <a class="btn solid" href="#collection">Choose a game</a>
+          <a class="btn line" href="play.html">Join with my phone</a>
+        </div>
       </div>
-      <a class="join" href="play.html">Join with my phone<small>Scan the table's code or type its room code</small></a>
-    </header>
-    <p class="eyebrow">The games</p>
-    <div class="shelf" id="shelf"></div>
-  </main>
-  <script type="module" src="js/tvnav.js?v=34"></script>
+      <div class="stage" aria-hidden="true"><div class="still" id="stage"></div></div>
+    </section>
+
+    <section class="how">
+      <div><b>I.</b><h3>Set the table</h3><p>Open a game on a television, tablet or laptop. That screen becomes the shared table everyone gathers around.</p></div>
+      <div><b>II.</b><h3>Take a seat</h3><p>Guests scan the code with their phone camera and choose a chair. Nothing to install, nothing to sign up for.</p></div>
+      <div><b>III.</b><h3>Play your hand</h3><p>Cards, chips and secrets stay on each phone, out of sight. The table shows only what everyone should see.</p></div>
+    </section>
+
+    <section class="collection" id="collection">
+      <div class="col-head">
+        <div>
+          <span class="caps rule">The collection</span>
+          <h2 id="colTitle">Every table, <em>one evening.</em></h2>
+        </div>
+        <p>Classic card tables, a full casino floor, and party games that keep the room talking long after midnight.</p>
+      </div>
+      <div class="shelf" id="shelf"></div>
+    </section>
+
+    <footer>
+      <a class="brand" href="index.html"><img src="icon.svg" alt=""><span>Play On Display</span></a>
+      <p>Bring the guests. We'll set the table.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/tvnav.js?v=37"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=34';
-    import { cardEl } from './js/cards.js?v=34';
-    import { face } from './js/ck-face.js?v=34';
-    import { edict } from './js/table-crown.js?v=34';
+    import { GAMES } from './js/games.js?v=37';
+    import { cardEl } from './js/cards.js?v=37';
+    import { face } from './js/ck-face.js?v=37';
+    import { edict } from './js/table-crown.js?v=37';
+
+    // The hero still life: a hand of cards laid on the felt, with a few chips.
+    const stage = document.getElementById('stage');
+    [['AS', -150, -14, -16], ['KH', -48, -30, -4], ['QD', 52, -24, 8], ['JC', 150, -4, 19]].forEach(([c, x, y, r]) => {
+      const el = cardEl(c);
+      el.style.transform = `translate(-50%, -50%) translate(${x * 0.78}px, ${y}px) rotate(${r}deg)`;
+      stage.appendChild(el);
+    });
+    stage.insertAdjacentHTML('beforeend', `<span class="hchip" style="--d:66px;--c:#16130f;left:20%;top:80%;rotate:-14deg">1K</span>
+      <span class="hchip" style="--d:58px;--c:#4a1a20;left:80%;top:82%;rotate:12deg">500</span>
+      <span class="hchip" style="--d:58px;--c:#4a1a20;left:83%;top:79%;rotate:40deg">500</span>`);
+
     const art = {
       blackjack: ['AS', 'KH'], baccarat: ['9D', '8C', '5S'], euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
     };
+    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'chess', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen'];
+    document.getElementById('colTitle').innerHTML = `${words[ids.length] || ids.length} tables, <em>one evening.</em>`;
     const shelf = document.getElementById('shelf');
-    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess', 'backgammon', 'sketch', 'chefskiss', 'insidejob', 'crown', 'hollow', 'blackjack', 'baccarat']) {
+    ids.forEach((id, n) => {
       const G = GAMES[id];
+      const [who, ...rest] = G.blurb.split(' · ');
+      const what = rest.join(' · ');
       const box = document.createElement('a');
       box.className = `box t-${id}`;
+      box.style.setProperty('--i', n);
       box.href = `table.html?game=${id}`;
-      box.innerHTML = `${id === 'gofish' ? '<i class="pad" style="left:14px;top:16px"></i><i class="pad" style="right:18px;top:120px;width:38px;rotate:140deg"></i>' : ''}
-        <div class="cards"></div><h2>${G.name}</h2><p>${G.blurb}</p><span class="play">Set up the table →</span>`;
+      box.innerHTML = `<div class="art"><div class="cards"></div></div>
+        <div class="meta-line"><span class="caps">${who}</span><i>→</i></div>
+        <h2>${G.name}</h2><p>${what ? what[0].toUpperCase() + what.slice(1) : ''}</p>`;
       const fan = box.querySelector('.cards');
       if (id === 'chess') fan.innerHTML = '<span class="cpc w" style="left:34%">♚︎</span><span class="cpc b" style="left:66%">♛︎</span>';
       else if (id === 'backgammon') { fan.className = 'cards bgmini'; fan.innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i><b class="w" style="left:16%;top:22%"></b><b class="w" style="left:16%;top:40%"></b><b class="b" style="left:84%;top:78%"></b><b class="b" style="left:84%;top:60%"></b><b class="b" style="left:50%;top:22%"></b>'; }
-      else if (id === 'sketch') { fan.className = 'cards skmini'; fan.innerHTML = '<svg viewBox="0 0 160 104"><path d="M30 78 Q 40 30 80 34 Q 120 38 126 74" fill="none" stroke="#e0382c" stroke-width="5" stroke-linecap="round"/><circle cx="80" cy="60" r="16" fill="none" stroke="#1d1b1a" stroke-width="4"/><path d="M74 56h1M86 56h1M73 66q7 6 14 0" stroke="#1d1b1a" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M22 92 L 140 92" stroke="#2f7de1" stroke-width="4" stroke-linecap="round"/></svg>'; }
-      else if (id === 'crown') {
-        fan.className = 'cards cdmini';
-        fan.innerHTML = edict('L') + edict('D');
-      }
-      else if (id === 'hollow') {
-        fan.className = 'cards hmmini';
-        fan.innerHTML = '<span>🏮</span><span>🌙</span><span>🏮</span>';
-      }
-      else if (id === 'insidejob') {
-        fan.className = 'cards ijmini';
-        fan.innerHTML = '<span class="pchip c-white"><b>100</b></span><span class="pchip c-yellow"><b>200</b></span><span class="pchip c-orange"><b>300</b></span><span class="pchip c-red"><b>400</b></span>';
-      }
-      else if (id === 'chefskiss') {
-        fan.className = 'cards ckmini';
-        fan.innerHTML = face({ kind: 'r', t: 'Totally adorable', d: '' }) + face({ kind: 'i', t: 'A goat in pajamas', d: '' });
-      }
-      else art[id].forEach((c, i) => {
+      else if (id === 'sketch') { fan.className = 'cards skmini'; fan.innerHTML = '<svg viewBox="0 0 160 104"><path d="M30 78 Q 40 30 80 34 Q 120 38 126 74" fill="none" stroke="#a8322a" stroke-width="5" stroke-linecap="round"/><circle cx="80" cy="60" r="16" fill="none" stroke="#1d1b1a" stroke-width="4"/><path d="M74 56h1M86 56h1M73 66q7 6 14 0" stroke="#1d1b1a" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M22 92 L 140 92" stroke="#2b4f7e" stroke-width="4" stroke-linecap="round"/></svg>'; }
+      else if (id === 'crown') { fan.className = 'cards cdmini'; fan.innerHTML = edict('L') + edict('D'); }
+      else if (id === 'hollow') { fan.className = 'cards hmmini'; fan.innerHTML = '<span>🏮</span><span>🌙</span><span>🏮</span>'; }
+      else if (id === 'insidejob') { fan.className = 'cards ijmini'; fan.innerHTML = '<span class="pchip c-white"><b>100</b></span><span class="pchip c-yellow"><b>200</b></span><span class="pchip c-orange"><b>300</b></span><span class="pchip c-red"><b>400</b></span>'; }
+      else if (id === 'chefskiss') { fan.className = 'cards ckmini'; fan.innerHTML = face({ kind: 'r', t: 'Totally adorable', d: '' }) + face({ kind: 'i', t: 'A goat in pajamas', d: '' }); }
+      else art[id].forEach((c, i, all) => {
         const el = cardEl(c);
-        el.style.transform = `translate(-50%, -50%) translateX(${(i - 1) * 34}px) rotate(${(i - 1) * 12}deg) translateY(${Math.abs(i - 1) * 6}px)`;
+        const mid = (all.length - 1) / 2;
+        el.style.transform = `translate(-50%, -50%) translateX(${(i - mid) * 34}px) rotate(${(i - mid) * 12}deg) translateY(${Math.abs(i - mid) * 6}px)`;
         fan.appendChild(el);
       });
       shelf.appendChild(box);
-    }
+    });
   </script>
 </body>
 </html>

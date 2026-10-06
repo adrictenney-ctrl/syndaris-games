@@ -1,21 +1,21 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=34';
-import { cardEl, snap, keepAwake } from './cards.js?v=34';
-import { hostRoom } from './net.js?v=34';
-import euchre from './table-euchre.js?v=34';
-import holdem from './table-poker.js?v=34';
-import veto from './table-veto.js?v=34';
-import gofish from './table-gofish.js?v=34';
-import chess from './table-chess.js?v=34';
-import backgammon from './table-backgammon.js?v=34';
-import sketch from './table-sketch.js?v=34';
-import chefskiss from './table-chefskiss.js?v=34';
-import insidejob from './table-insidejob.js?v=34';
-import crown from './table-crown.js?v=34';
-import hollow from './table-hollow.js?v=34';
-import blackjack from './table-blackjack.js?v=34';
-import baccarat from './table-baccarat.js?v=34';
+import { GAMES, SIDE_ROT } from './games.js?v=37';
+import { cardEl, snap, keepAwake } from './cards.js?v=37';
+import { hostRoom } from './net.js?v=37';
+import euchre from './table-euchre.js?v=37';
+import holdem from './table-poker.js?v=37';
+import veto from './table-veto.js?v=37';
+import gofish from './table-gofish.js?v=37';
+import chess from './table-chess.js?v=37';
+import backgammon from './table-backgammon.js?v=37';
+import sketch from './table-sketch.js?v=37';
+import chefskiss from './table-chefskiss.js?v=37';
+import insidejob from './table-insidejob.js?v=37';
+import crown from './table-crown.js?v=37';
+import hollow from './table-hollow.js?v=37';
+import blackjack from './table-blackjack.js?v=37';
+import baccarat from './table-baccarat.js?v=37';
 
 const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat };
 const STORE = 'syndaris.table.v2';

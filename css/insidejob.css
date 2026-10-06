@@ -52,7 +52,7 @@ body[data-game="insidejob"] .meta { flex-direction: column; gap: .6vmin; }
 .ij-track span { font-size: calc(var(--v) * 1.4); letter-spacing: .16em; text-transform: uppercase; color: #a9c4ec; }
 .ij-track em { width: calc(var(--v) * 1.4); }
 .ij-track i { width: calc(var(--v) * 2.6); height: calc(var(--v) * 2.6); border-radius: 50%; border: .25vmin solid rgba(234, 242, 255, .45); display: grid; place-items: center; }
-.ij-track i.vault.on { background: radial-gradient(circle, #ffe08a 0 30%, #d9a520 31% 60%, #8a6408 61%); border-color: #ffe08a; box-shadow: 0 0 1.4vmin rgba(255, 214, 107, .6); }
+.ij-track i.vault.on { background: radial-gradient(circle, #ffe08a 0 30%, #d9a520 31% 60%, #8a6408 61%); border-color: #ffe08a; box-shadow: 0 0 1.4vmin rgba(227, 207, 159, .6); }
 .ij-track i.alarm.on { background: radial-gradient(circle, #ff8a8a 0 30%, #e0262b 31%); border-color: #ff8a8a; box-shadow: 0 0 1.4vmin rgba(255, 60, 60, .7); animation: ijBlink 1s steps(2) infinite; }
 @keyframes ijBlink { 50% { opacity: .55; } }
 .ij-twist {

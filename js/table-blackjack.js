@@ -1,8 +1,8 @@
 // Blackjack on the table: the dealer's hand in the middle, each player's bet and hands in
 // front of their seat, and the house rules printed on the felt.
-import * as B from './blackjack.js?v=34';
-import { cardEl, snap } from './cards.js?v=34';
-import { chipStack, money } from './casino.js?v=34';
+import * as B from './blackjack.js?v=37';
+import { cardEl, snap } from './cards.js?v=37';
+import { chipStack, money } from './casino.js?v=37';
 
 let root = null, key = '';
 const seen = new Set();
