@@ -1,23 +1,23 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=41';
-import { cardEl, snap, keepAwake } from './cards.js?v=41';
-import { hostRoom } from './net.js?v=41';
-import euchre from './table-euchre.js?v=41';
-import holdem from './table-poker.js?v=41';
-import veto from './table-veto.js?v=41';
-import gofish from './table-gofish.js?v=41';
-import chess from './table-chess.js?v=41';
-import backgammon from './table-backgammon.js?v=41';
-import sketch from './table-sketch.js?v=41';
-import chefskiss from './table-chefskiss.js?v=41';
-import insidejob from './table-insidejob.js?v=41';
-import crown from './table-crown.js?v=41';
-import hollow from './table-hollow.js?v=41';
-import blackjack from './table-blackjack.js?v=41';
-import baccarat from './table-baccarat.js?v=41';
-import checkers from './table-checkers.js?v=41';
-import yacht from './table-yacht.js?v=41';
+import { GAMES, SIDE_ROT } from './games.js?v=42';
+import { cardEl, snap, keepAwake } from './cards.js?v=42';
+import { hostRoom } from './net.js?v=42';
+import euchre from './table-euchre.js?v=42';
+import holdem from './table-poker.js?v=42';
+import veto from './table-veto.js?v=42';
+import gofish from './table-gofish.js?v=42';
+import chess from './table-chess.js?v=42';
+import backgammon from './table-backgammon.js?v=42';
+import sketch from './table-sketch.js?v=42';
+import chefskiss from './table-chefskiss.js?v=42';
+import insidejob from './table-insidejob.js?v=42';
+import crown from './table-crown.js?v=42';
+import hollow from './table-hollow.js?v=42';
+import blackjack from './table-blackjack.js?v=42';
+import baccarat from './table-baccarat.js?v=42';
+import checkers from './table-checkers.js?v=42';
+import yacht from './table-yacht.js?v=42';
 
 const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht };
 const STORE = 'syndaris.table.v2';
