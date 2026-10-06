@@ -12,9 +12,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=29">
-  <link rel="stylesheet" href="css/chefskiss.css?v=29">
-  <link rel="stylesheet" href="css/insidejob.css?v=29">
+  <link rel="stylesheet" href="css/cards.css?v=31">
+  <link rel="stylesheet" href="css/chefskiss.css?v=31">
+  <link rel="stylesheet" href="css/insidejob.css?v=31">
+  <link rel="stylesheet" href="css/crown.css?v=31">
+  <link rel="stylesheet" href="css/hollow.css?v=31">
   <style>
     body { min-height: 100%; padding: 36px 20px 48px; }
     main { max-width: 1040px; margin: 0 auto; }
@@ -78,6 +80,13 @@
     .ijmini { display: flex; align-items: center; justify-content: center; }
     .ijmini .pchip { --chip: 50px; margin: 0 -6px; }
     .ijmini .pchip:nth-child(odd) { transform: translateY(-10px); }
+    .t-crown { background: radial-gradient(ellipse at 50% 35%, #5c2672, #2e0f3b 70%); }
+    .cdmini { display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .cdmini .edict { --e: 58px; }
+    .cdmini .edict:first-child { transform: rotate(-8deg); } .cdmini .edict:last-child { transform: rotate(8deg); }
+    .t-hollow { background: radial-gradient(ellipse at 50% 30%, #7a5b3a, #3c3027 60%, #1a1410); }
+    .hmmini { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 44px; }
+    .hmmini span:nth-child(2) { font-size: 56px; transform: translateY(-14px); }
     .t-chefskiss { background: radial-gradient(ellipse at 50% 35%, #1d5865, #0c2a33 70%); }
     .ckmini { --w: 66px; width: 170px !important; height: 104px !important; }
     .ckmini .ck-card { position: absolute; left: 50%; top: 50%; }
@@ -97,16 +106,17 @@
     <p class="eyebrow">The games</p>
     <div class="shelf" id="shelf"></div>
   </main>
-  <script type="module" src="js/tvnav.js?v=29"></script>
+  <script type="module" src="js/tvnav.js?v=31"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=29';
-    import { cardEl } from './js/cards.js?v=29';
-    import { face } from './js/ck-face.js?v=29';
+    import { GAMES } from './js/games.js?v=31';
+    import { cardEl } from './js/cards.js?v=31';
+    import { face } from './js/ck-face.js?v=31';
+    import { edict } from './js/table-crown.js?v=31';
     const art = {
       euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
     };
     const shelf = document.getElementById('shelf');
-    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess', 'backgammon', 'sketch', 'chefskiss', 'insidejob']) {
+    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess', 'backgammon', 'sketch', 'chefskiss', 'insidejob', 'crown', 'hollow']) {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;
@@ -117,6 +127,14 @@
       if (id === 'chess') fan.innerHTML = '<span class="cpc w" style="left:34%">♚︎</span><span class="cpc b" style="left:66%">♛︎</span>';
       else if (id === 'backgammon') { fan.className = 'cards bgmini'; fan.innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i><b class="w" style="left:16%;top:22%"></b><b class="w" style="left:16%;top:40%"></b><b class="b" style="left:84%;top:78%"></b><b class="b" style="left:84%;top:60%"></b><b class="b" style="left:50%;top:22%"></b>'; }
       else if (id === 'sketch') { fan.className = 'cards skmini'; fan.innerHTML = '<svg viewBox="0 0 160 104"><path d="M30 78 Q 40 30 80 34 Q 120 38 126 74" fill="none" stroke="#e0382c" stroke-width="5" stroke-linecap="round"/><circle cx="80" cy="60" r="16" fill="none" stroke="#1d1b1a" stroke-width="4"/><path d="M74 56h1M86 56h1M73 66q7 6 14 0" stroke="#1d1b1a" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M22 92 L 140 92" stroke="#2f7de1" stroke-width="4" stroke-linecap="round"/></svg>'; }
+      else if (id === 'crown') {
+        fan.className = 'cards cdmini';
+        fan.innerHTML = edict('L') + edict('D');
+      }
+      else if (id === 'hollow') {
+        fan.className = 'cards hmmini';
+        fan.innerHTML = '<span>🏮</span><span>🌙</span><span>🏮</span>';
+      }
       else if (id === 'insidejob') {
         fan.className = 'cards ijmini';
         fan.innerHTML = '<span class="pchip c-white"><b>100</b></span><span class="pchip c-yellow"><b>200</b></span><span class="pchip c-orange"><b>300</b></span><span class="pchip c-red"><b>400</b></span>';

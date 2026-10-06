@@ -104,3 +104,31 @@ GAMES.insidejob = {
   startLabel: 'Start the heist',
   layout: GAMES.holdem.layout,
 };
+
+// Ten seats: three along each long side and two at each end.
+const TEN = [
+  S(72, 100, 0, 'Bottom right'), S(50, 100, 0, 'Bottom middle'), S(28, 100, 0, 'Bottom left'),
+  S(0, 72, 1, 'Left end, near'), S(0, 28, 1, 'Left end, far'),
+  S(28, 0, 2, 'Top left'), S(50, 0, 2, 'Top middle'), S(72, 0, 2, 'Top right'),
+  S(100, 28, 3, 'Right end, far'), S(100, 72, 3, 'Right end, near'),
+];
+
+GAMES.crown = {
+  id: 'crown',
+  name: 'Crown & Dagger',
+  blurb: '5–10 players · find the Usurper',
+  min: 5,
+  max: 10,
+  startLabel: 'Deal the roles',
+  layout: TEN,
+};
+
+GAMES.hollow = {
+  id: 'hollow',
+  name: 'Hollowmere',
+  blurb: '5–10 players · a village, a Shade, a long night',
+  min: 5,
+  max: 10,
+  startLabel: 'Let night fall',
+  layout: TEN,
+};

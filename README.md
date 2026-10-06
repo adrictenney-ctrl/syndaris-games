@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess**, **Chef's Kiss Party Game** and **Inside Job**.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss Party Game, a heist blueprint for Inside Job.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess**, **Chef's Kiss Party Game**, **Inside Job**, **Crown & Dagger** and **Hollowmere**.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss Party Game, a heist blueprint for Inside Job, a royal purple throne room for Crown & Dagger, a lantern-lit village square for Hollowmere.
 
 ## How it works
 
@@ -175,6 +175,43 @@ game *The Gang*, with its own name and look. Everyone is on the same crew. **Nob
 
 **Chess castling:** tap your king, then tap the rook (or the square two to the side).
 
+## Crown & Dagger
+A hidden-role game for 5–10 players, played like *Secret Hitler* but set at a royal court, with its own names and
+look. Roles are dealt secretly to phones: most players are **Loyalists**; a few are the **Conspiracy**, and one of them
+is the secret **Usurper**. (Conspirators know each other and the Usurper. The Usurper only knows them with 5–6 players.)
+Hold your phone's role card to peek at it.
+
+- **Each round** the Regent (rotating clockwise) names a Steward. The last Regent and Steward can't be named (with 5
+  players left, only the last Steward). Everyone votes **Aye** or **Nay** on their phone; the votes show on the table
+  once all are in.
+- **If approved**, the Regent secretly draws three edicts and discards one, and the Steward enacts one of the two left.
+  The deck has 6 Loyal and 11 Dagger edicts.
+- **If refused**, the failed-council tracker moves up. After three failures the top edict is enacted automatically.
+- **Powers** come with Dagger edicts, depending on the number of players: *Read the scrolls* (peek at the next three),
+  *Question loyalty* (secretly learn someone's side), *Call a council* (choose the next Regent), *Banish* (remove a
+  player).
+- **Veto:** after 5 Dagger edicts, the Steward may ask to throw both edicts out. If the Regent agrees, it counts as a
+  failed council.
+- **Loyalists win** with 5 Loyal edicts or by banishing the Usurper. **The Conspiracy wins** with 6 Dagger edicts, or if
+  the Usurper is approved as Steward once 3 Dagger edicts are in force.
+
+## Hollowmere
+A social-deduction game for 5–10 players, played like *Blood on the Clocktower* (its "Trouble Brewing" set), with its
+own village, characters, names and wording. **The app is the Storyteller**: it deals characters, wakes players at night
+on their phones, handles poison and false information, and announces deaths, so everyone gets to play.
+
+- **Characters** (hold your phone's card to peek): 13 Villagers (the Gossip, Archivist, Inspector, Cook, Sensitive,
+  Seer, Gravedigger, Guardian, Last Witness, Innocent, Hunter, Knight, Elder), 4 Outcasts (the Servant, Sleepwalker,
+  Hermit, Martyr), 4 Henchmen (the Venomist, Informant, Heir, Patron), and the Shade. Tap **Characters** on the table to
+  see what each one does.
+- **Night:** everyone taps something on their phone (a choice, or "go to sleep"), so nobody can tell who has an
+  ability. Information arrives in "What you know" at dawn. Poisoned players and the Sleepwalker get false information.
+  The Hermit and the Informant may read as the other side.
+- **Day:** talk. Any living player can nominate once a day, and each player can be nominated once. Everyone votes on
+  their phone; dead players get one last vote. Enough votes (half the living, rounded up) and more than anyone else
+  puts the nominee on the block. Tap **End the day** on the table to execute them, then night falls.
+- **Good wins** when the Shade dies. **Evil wins** when only two players are left, or if the Martyr is executed.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -209,7 +246,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=30; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=32; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)
@@ -268,9 +305,9 @@ and cellular networks block them.
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
 | `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js`, `js/table-backgammon.js`, `js/table-sketch.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/play-insidejob.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/play-insidejob.js`, `js/play-crown.js`, `js/play-hollow.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`), `js/insidejob.js` | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`), `js/insidejob.js`, `js/crown.js`, `js/hollow.js` (+ `js/hollow-chars.js`) | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |
