@@ -132,3 +132,25 @@ GAMES.hollow = {
   startLabel: 'Let night fall',
   layout: TEN,
 };
+
+GAMES.blackjack = {
+  id: 'blackjack',
+  name: 'Blackjack',
+  blurb: '1–7 players · beat the dealer to 21',
+  min: 1,
+  max: 7,
+  midJoin: true,   // sit down any time; you're dealt in next round
+  startLabel: 'Open the table',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.baccarat = {
+  id: 'baccarat',
+  name: 'Baccarat',
+  blurb: '1–8 players · Player, Banker or Tie',
+  min: 1,
+  max: 8,
+  midJoin: true,
+  startLabel: 'Open the table',
+  layout: GAMES.holdem.layout,
+};

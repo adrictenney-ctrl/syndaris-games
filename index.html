@@ -12,11 +12,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=31">
-  <link rel="stylesheet" href="css/chefskiss.css?v=31">
-  <link rel="stylesheet" href="css/insidejob.css?v=31">
-  <link rel="stylesheet" href="css/crown.css?v=31">
-  <link rel="stylesheet" href="css/hollow.css?v=31">
+  <link rel="stylesheet" href="css/cards.css?v=34">
+  <link rel="stylesheet" href="css/chefskiss.css?v=34">
+  <link rel="stylesheet" href="css/insidejob.css?v=34">
+  <link rel="stylesheet" href="css/crown.css?v=34">
+  <link rel="stylesheet" href="css/hollow.css?v=34">
+  <link rel="stylesheet" href="css/casino.css?v=34">
   <style>
     body { min-height: 100%; padding: 36px 20px 48px; }
     main { max-width: 1040px; margin: 0 auto; }
@@ -80,6 +81,8 @@
     .ijmini { display: flex; align-items: center; justify-content: center; }
     .ijmini .pchip { --chip: 50px; margin: 0 -6px; }
     .ijmini .pchip:nth-child(odd) { transform: translateY(-10px); }
+    .t-blackjack { background: radial-gradient(ellipse at 50% 35%, #1d7a4a, #0f4a2b 70%); }
+    .t-baccarat { background: radial-gradient(ellipse at 50% 35%, #93203a, #520b17 70%); }
     .t-crown { background: radial-gradient(ellipse at 50% 35%, #5c2672, #2e0f3b 70%); }
     .cdmini { display: flex; align-items: center; justify-content: center; gap: 10px; }
     .cdmini .edict { --e: 58px; }
@@ -106,17 +109,17 @@
     <p class="eyebrow">The games</p>
     <div class="shelf" id="shelf"></div>
   </main>
-  <script type="module" src="js/tvnav.js?v=31"></script>
+  <script type="module" src="js/tvnav.js?v=34"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=31';
-    import { cardEl } from './js/cards.js?v=31';
-    import { face } from './js/ck-face.js?v=31';
-    import { edict } from './js/table-crown.js?v=31';
+    import { GAMES } from './js/games.js?v=34';
+    import { cardEl } from './js/cards.js?v=34';
+    import { face } from './js/ck-face.js?v=34';
+    import { edict } from './js/table-crown.js?v=34';
     const art = {
-      euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
+      blackjack: ['AS', 'KH'], baccarat: ['9D', '8C', '5S'], euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
     };
     const shelf = document.getElementById('shelf');
-    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess', 'backgammon', 'sketch', 'chefskiss', 'insidejob', 'crown', 'hollow']) {
+    for (const id of ['euchre', 'holdem', 'veto', 'gofish', 'chess', 'backgammon', 'sketch', 'chefskiss', 'insidejob', 'crown', 'hollow', 'blackjack', 'baccarat']) {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;

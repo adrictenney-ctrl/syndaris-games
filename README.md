@@ -1,8 +1,8 @@
 # Play On Display
 
 In-person card games. One device lies flat in the middle of the table (tablet, laptop, or TV) and shows the
-cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess**, **Chef's Kiss Party Game**, **Inside Job**, **Crown & Dagger** and **Hollowmere**.
-The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss Party Game, a heist blueprint for Inside Job, a royal purple throne room for Crown & Dagger, a lantern-lit village square for Hollowmere.
+cards everyone plays. Each player's phone holds their private hand. Games: **Euchre**, **Texas Hold'em**, **Veto**, **Go Fish**, **Chess**, **Backgammon**, **Sketch & Guess**, **Chef's Kiss Party Game**, **Inside Job**, **Crown & Dagger**, **Hollowmere**, **Blackjack** and **Baccarat**.
+The start page is a catalog of games. Choosing one opens the table for that game, and each game has its own table: green felt for Euchre, navy casino felt for Hold'em, a wooden table for Veto, a pond for Go Fish, an inlaid board on a dark walnut table for Chess, an open backgammon case on cognac leather for Backgammon, a sketchbook on a green cutting mat for Sketch & Guess, a deep teal party table with kiss marks and confetti for Chef's Kiss Party Game, a heist blueprint for Inside Job, a royal purple throne room for Crown & Dagger, a lantern-lit village square for Hollowmere, classic green felt for Blackjack, deep red felt for Baccarat.
 
 ## How it works
 
@@ -212,6 +212,31 @@ on their phones, handles poison and false information, and announces deaths, so 
   puts the nominee on the block. Tap **End the day** on the table to execute them, then night falls.
 - **Good wins** when the Shade dies. **Evil wins** when only two players are left, or if the Martyr is executed.
 
+## Blackjack
+1–7 players against the house; the table is the dealer. Everyone bets from their own chips and plays on their phone.
+
+- **Betting:** tap chips on your phone (5, 25, 100, 500), then **Deal me in**. Your last bet is kept for the next round.
+  The cards are dealt when everyone is in, or 20 seconds after the first player is ready (and anyone can tap
+  **Deal now** on the table).
+- **Playing:** in seat order, **Hit**, **Stand**, **Double** (any two cards, also after a split), **Split** (pairs, up
+  to four hands; split Aces get one card each) and **Surrender** (late surrender, optional).
+- **The dealer** peeks for blackjack under an Ace or a ten. An Ace up offers **insurance** (pays 2 to 1). The dealer
+  stands on all 17s, or hits soft 17 (setting).
+- **Pays:** blackjack 3 to 2 (or 6 to 5, setting), wins 1 to 1, ties push.
+- **Settings:** starting chips, minimum bet, 1/2/6/8 decks (reshuffled when a quarter of the shoe is left), rebuys.
+- **Computer players** play basic strategy.
+
+## Baccarat
+1–8 players against the house (punto banco). Bet on the **Player** hand, the **Banker** hand or a **Tie**, and
+optionally on a **Player pair** or **Banker pair**. Pick a chip on your phone and tap where to bet.
+
+- The table deals both hands one card at a time by the standard drawing rules (naturals on 8 or 9; the Player draws
+  on 0–5; the Banker's draw depends on the Player's third card). Closest to 9 wins.
+- **Pays:** Player 1 to 1, Banker 1 to 1 less 5% commission, Tie 8 to 1 (Player and Banker bets push on a tie),
+  pairs 11 to 1.
+- The table keeps a **bead road** of past results (blue Player, red Banker, green Tie; dots mark pairs).
+- 8-deck shoe. Settings: starting chips, minimum bet, pair bets on/off, rebuys.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -246,7 +271,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=32; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=35; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)
@@ -305,9 +330,9 @@ and cellular networks block them.
 | `table.html`, `js/table.js`, `css/table.css` | The table screen: lobby, seats, networking, game hosting |
 | `js/table-euchre.js`, `js/table-poker.js`, `js/table-veto.js`, `js/table-gofish.js`, `js/table-chess.js`, `js/table-backgammon.js`, `js/table-sketch.js` | Each game's table drawing and hookup |
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
-| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/play-insidejob.js`, `js/play-crown.js`, `js/play-hollow.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
+| `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/play-insidejob.js`, `js/play-crown.js`, `js/play-hollow.js`, `js/play-blackjack.js`, `js/play-baccarat.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`), `js/insidejob.js`, `js/crown.js`, `js/hollow.js` (+ `js/hollow-chars.js`) | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`), `js/insidejob.js`, `js/crown.js`, `js/hollow.js` (+ `js/hollow-chars.js`), `js/blackjack.js`, `js/baccarat.js` (+ `js/casino.js`) | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

@@ -1,21 +1,23 @@
 // A player's phone: joining, picking a seat, then the game's own phone UI.
-import { GAMES } from './games.js?v=31';
-import { keepAwake } from './cards.js?v=31';
-import { joinRoom } from './net.js?v=31';
-import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=31';
-import * as euchreUI from './play-euchre.js?v=31';
-import * as pokerUI from './play-poker.js?v=31';
-import * as vetoUI from './play-veto.js?v=31';
-import * as gofishUI from './play-gofish.js?v=31';
-import * as chessUI from './play-chess.js?v=31';
-import * as backgammonUI from './play-backgammon.js?v=31';
-import * as sketchUI from './play-sketch.js?v=31';
-import * as chefskissUI from './play-chefskiss.js?v=31';
-import * as insidejobUI from './play-insidejob.js?v=31';
-import * as crownUI from './play-crown.js?v=31';
-import * as hollowUI from './play-hollow.js?v=31';
+import { GAMES } from './games.js?v=34';
+import { keepAwake } from './cards.js?v=34';
+import { joinRoom } from './net.js?v=34';
+import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=34';
+import * as euchreUI from './play-euchre.js?v=34';
+import * as pokerUI from './play-poker.js?v=34';
+import * as vetoUI from './play-veto.js?v=34';
+import * as gofishUI from './play-gofish.js?v=34';
+import * as chessUI from './play-chess.js?v=34';
+import * as backgammonUI from './play-backgammon.js?v=34';
+import * as sketchUI from './play-sketch.js?v=34';
+import * as chefskissUI from './play-chefskiss.js?v=34';
+import * as insidejobUI from './play-insidejob.js?v=34';
+import * as crownUI from './play-crown.js?v=34';
+import * as hollowUI from './play-hollow.js?v=34';
+import * as blackjackUI from './play-blackjack.js?v=34';
+import * as baccaratUI from './play-baccarat.js?v=34';
 
-const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI };
+const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI };
 const params = new URLSearchParams(location.search);
 
 let pid = null;
