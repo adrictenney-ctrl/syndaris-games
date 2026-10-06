@@ -1,0 +1,82 @@
+/* Checkers: an ebony-and-champagne board on a bottle-green leather desk. */
+body[data-game="checkers"] #felt {
+  --seat-w: min(23vmin, 260px);
+  --seat-h: 22vmin;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 210, 160, .07), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #17322b 0%, #0f231d 55%, #07120f 100%);
+}
+body[data-game="checkers"] #print, body[data-game="checkers"] .fan, body[data-game="checkers"] .sizer { display: none; }
+body[data-game="checkers"] .who .name { font-size: 3.4vmin; max-width: 15vmin; }
+body[data-game="checkers"] .meta { flex-direction: column; gap: .6vmin; }
+body[data-game="checkers"] .plate { min-width: 92%; }
+.dr-side { display: inline-flex; align-items: center; gap: .9vmin; font-family: var(--ui); font-size: .8em; letter-spacing: .22em; text-transform: uppercase; }
+.dr-side .drp { --S: 3.4vmin; position: static; width: 2.4vmin; height: 2.4vmin; }
+
+#drboard { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); z-index: 2; }
+.dr-frame {
+  position: relative; padding: var(--frame); border-radius: .5vmin;
+  background: linear-gradient(160deg, #241a13, #120d09 60%, #1b140f);
+  box-shadow: 0 2.4vmin 6vmin rgba(0, 0, 0, .65), inset 0 0 0 .14vmin rgba(205, 180, 135, .45), inset 0 .2vmin 0 rgba(255, 230, 190, .12);
+}
+.dr-squares {
+  display: grid; grid-template-columns: repeat(8, var(--S)); grid-template-rows: repeat(8, var(--S));
+  box-shadow: 0 0 0 .18vmin #cdb487, 0 0 0 .5vmin #0e0a07;
+}
+.dq { position: relative; cursor: pointer; }
+.dq.lt { background: linear-gradient(135deg, #e6d8b8, #d4c199); }
+.dq.dk {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02 .4' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .06 0 0 0 0 .03 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #3d2c1f, #271b12);
+}
+.dq i { position: absolute; left: 6%; top: 4%; font-style: normal; font-family: var(--ui); font-size: calc(var(--S) * .13); color: rgba(205, 180, 135, .35); }
+.dq.last { box-shadow: inset 0 0 0 999px rgba(205, 180, 135, .16); }
+.dq.sel { box-shadow: inset 0 0 0 calc(var(--S) * .05) #e3cf9f, inset 0 0 0 999px rgba(205, 180, 135, .18); }
+.dq.dot::after { content: ''; position: absolute; left: 50%; top: 50%; width: 28%; height: 28%; translate: -50% -50%; border-radius: 50%; background: #e3cf9f; box-shadow: 0 0 calc(var(--S) * .25) rgba(227, 207, 159, .7); }
+.dq.via::after { content: ''; position: absolute; left: 50%; top: 50%; width: 22%; height: 22%; translate: -50% -50%; border-radius: 50%; border: calc(var(--S) * .025) solid rgba(227, 207, 159, .7); }
+
+.dr-pieces { position: absolute; left: var(--frame); top: var(--frame); width: calc(var(--S) * 8); height: calc(var(--S) * 8); pointer-events: none; }
+.dr-pieces .drp { position: absolute; left: 0; top: 0; width: var(--S); height: var(--S); background: none; box-shadow: none; transition: transform .28s cubic-bezier(.3, .8, .3, 1), opacity .4s, scale .4s; }
+.dr-pieces .drp::before { content: ''; position: absolute; inset: 14%; border-radius: 50%; }
+.dr-pieces .drp.taken { opacity: 0; scale: .6; }
+.dr-pieces .drp .dcrown { position: absolute; inset: 0; display: grid; place-items: center; }
+
+/* The pieces: lathe-turned discs with a champagne inlay ring; kings wear a gold crown. */
+.drp { position: relative; display: block; border-radius: 50%; }
+.drp.d::before, #drPhone .drp.d, .dr-side .drp.d, .drmini .drp.d {
+  background:
+    repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .035) 0 1px, transparent 1px 4px),
+    radial-gradient(circle at 36% 30%, #4b413b, #1a1411 58%, #0b0807);
+  box-shadow:
+    inset 0 0 0 calc(var(--S) * .07) #120d0b, inset 0 0 0 calc(var(--S) * .085) rgba(205, 180, 135, .75),
+    0 calc(var(--S) * .05) 0 #050403, 0 calc(var(--S) * .1) calc(var(--S) * .14) rgba(0, 0, 0, .6);
+}
+.drp.l::before, #drPhone .drp.l, .dr-side .drp.l, .drmini .drp.l {
+  background:
+    repeating-radial-gradient(circle at 50% 50%, rgba(120, 95, 50, .06) 0 1px, transparent 1px 4px),
+    radial-gradient(circle at 36% 30%, #fffcf4, #ece2cc 55%, #cdbd9b);
+  box-shadow:
+    inset 0 0 0 calc(var(--S) * .07) #e6dbc3, inset 0 0 0 calc(var(--S) * .085) rgba(160, 128, 74, .8),
+    0 calc(var(--S) * .05) 0 #a8987a, 0 calc(var(--S) * .1) calc(var(--S) * .14) rgba(0, 0, 0, .5);
+}
+.drp.king.d::before, #drPhone .drp.king.d { box-shadow: inset 0 0 0 calc(var(--S) * .07) #120d0b, inset 0 0 0 calc(var(--S) * .085) rgba(205, 180, 135, .75), 0 calc(var(--S) * .05) 0 #050403, 0 calc(var(--S) * .1) 0 #2a221d, 0 calc(var(--S) * .14) calc(var(--S) * .16) rgba(0, 0, 0, .6); }
+.drp.king.l::before, #drPhone .drp.king.l { box-shadow: inset 0 0 0 calc(var(--S) * .07) #e6dbc3, inset 0 0 0 calc(var(--S) * .085) rgba(160, 128, 74, .8), 0 calc(var(--S) * .05) 0 #a8987a, 0 calc(var(--S) * .1) 0 #d9cdb1, 0 calc(var(--S) * .14) calc(var(--S) * .16) rgba(0, 0, 0, .5); }
+.drp .dcrown { font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', serif; font-weight: 400; font-size: calc(var(--S) * .36); line-height: 1; color: #d9c18f; text-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
+.drp.l .dcrown { color: #a8864a; text-shadow: 0 1px 0 rgba(255, 255, 255, .6); }
+.drp .dcrown:empty { display: none; }
+@keyframes drCan { 50% { box-shadow: inset 0 0 0 999px rgba(227, 207, 159, .2); } }
+.dq.can { animation: drCan 1.6s ease-in-out infinite; }
+
+/* ---------- phone ---------- */
+#drPhone {
+  --S: min(11.2vw, 6.4vh, 52px);
+  display: grid; grid-template-columns: repeat(8, var(--S)); grid-template-rows: repeat(8, var(--S));
+  margin: 6px auto 12px; border: 6px solid #17110d; border-radius: 3px;
+  box-shadow: 0 0 0 1px #cdb487, inset 0 0 0 1px rgba(205, 180, 135, .3), 0 12px 30px rgba(0, 0, 0, .6);
+}
+#drPhone .dq { display: grid; place-items: center; }
+#drPhone .dq.dk { background: linear-gradient(135deg, #3d2c1f, #271b12); }
+#drPhone .drp { width: 80%; height: 80%; display: grid; place-items: center; pointer-events: none; }
+#drPhone .dq.gone::before { content: ''; position: absolute; inset: 30%; border-radius: 50%; border: 1.5px dashed rgba(205, 180, 135, .35); }
+body[data-game="checkers"] #handWrap, body[data-game="checkers"] #handHint { display: none; }

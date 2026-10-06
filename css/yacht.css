@@ -1,0 +1,109 @@
+/* Yacht Club: midnight-navy felt, a walnut dice tray lined in green baize, ivory dice,
+   and an ivory score card printed in champagne and ink. */
+body[data-game="yacht"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 210, 160, .07), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #17243a 0%, #0f1a2b 55%, #070d17 100%);
+}
+body[data-game="yacht"] #print, body[data-game="yacht"] .fan, body[data-game="yacht"] .sizer { display: none; }
+.yc-note { font-family: var(--serif); font-style: italic; font-size: 2.2vmin; color: var(--gold-ink); }
+
+#yacht { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; align-items: center; gap: calc(var(--v) * 3.4); z-index: 2; }
+.yc-left { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * 1.4); width: var(--trayW); }
+.yc-head { margin: 0; font-family: var(--ui); font-size: calc(var(--v) * 1.5); font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--champagne); white-space: nowrap; }
+.yc-head b { font-family: var(--display); font-size: 1.9em; font-weight: 600; letter-spacing: .01em; text-transform: none; color: var(--ivory); margin-left: .3em; }
+.yc-sub { margin: 0; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.1); color: var(--gold-ink); white-space: nowrap; }
+
+.yc-tray {
+  --die: calc(var(--trayW) * .15);
+  position: relative; width: 100%; padding: calc(var(--v) * 1.6); border-radius: calc(var(--v) * 2.2);
+  background: linear-gradient(160deg, #3a2618, #1f140c 60%, #2c1d12);
+  box-shadow: 0 2.4vmin 5vmin rgba(0, 0, 0, .6), inset 0 0 0 .14vmin rgba(205, 180, 135, .55), inset 0 .25vmin 0 rgba(255, 225, 180, .15);
+}
+.yc-rail {
+  display: flex; justify-content: center; align-items: center; gap: calc(var(--die) * .22);
+  height: calc(var(--die) * 1.3); margin-bottom: calc(var(--v) * 1.2);
+  border-bottom: .14vmin solid rgba(205, 180, 135, .3);
+}
+.yc-rail:empty::before { content: 'Kept dice rest here'; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 1.7); color: rgba(205, 180, 135, .4); }
+.yc-well {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: calc(var(--die) * .3);
+  min-height: calc(var(--die) * 2.6); padding: calc(var(--die) * .4); border-radius: calc(var(--v) * 1.2);
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 45%, rgba(255, 240, 200, .08), transparent 70%),
+    linear-gradient(180deg, #17402f, #0d281d);
+  box-shadow: inset 0 .6vmin 1.6vmin rgba(0, 0, 0, .65), inset 0 0 0 .14vmin rgba(0, 0, 0, .5);
+}
+.yc-wait { margin: 0; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.2); color: rgba(239, 233, 220, .7); text-align: center; }
+
+/* Dice: ivory with ink pips, softly rounded. */
+.ydie {
+  --d: var(--die, 44px);
+  display: inline-grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr); flex: none;
+  width: var(--d); height: var(--d); padding: calc(var(--d) * .14); border-radius: calc(var(--d) * .2);
+  background: radial-gradient(circle at 32% 28%, #fffdf6, #efe7d4 55%, #d9ccb0);
+  box-shadow: inset 0 calc(var(--d) * -.05) calc(var(--d) * .08) rgba(110, 90, 50, .35), inset 0 calc(var(--d) * .03) 0 rgba(255, 255, 255, .8), 0 calc(var(--d) * .1) calc(var(--d) * .16) rgba(0, 0, 0, .55);
+  transform: rotate(var(--r, 0deg)) translateY(calc(var(--y, 0) * var(--d) * .2));
+}
+.ydie i { display: block; margin: auto; width: 74%; height: 74%; border-radius: 50%; }
+.ydie i.on { background: radial-gradient(circle at 40% 35%, #3d3833, #141110); box-shadow: inset 0 calc(var(--d) * .01) calc(var(--d) * .02) rgba(0, 0, 0, .6); }
+.ydie.held { box-shadow: 0 0 0 calc(var(--d) * .045) #cdb487, 0 calc(var(--d) * .1) calc(var(--d) * .16) rgba(0, 0, 0, .55); }
+.ydie.tumble { animation: ycTumble .6s cubic-bezier(.2, .8, .3, 1.05) both; }
+@keyframes ycTumble {
+  0% { transform: translate(calc(var(--d) * -1.6), calc(var(--d) * -1.4)) rotate(calc(var(--r, 0deg) - 260deg)) scale(.8); opacity: .3; }
+  60% { transform: translate(calc(var(--d) * .12), 0) rotate(calc(var(--r, 0deg) + 14deg)); opacity: 1; }
+}
+
+/* The score card */
+.yc-card {
+  padding: calc(var(--v) * 1.4) calc(var(--v) * 1.8); border-radius: .4vmin; color: #2a2320;
+  background:
+    repeating-linear-gradient(0deg, rgba(120, 100, 60, .03) 0 1px, transparent 1px 3px),
+    linear-gradient(170deg, #fbf7ee, #f1e9d7 60%, #e7dcc4);
+  box-shadow: 0 2.4vmin 5vmin rgba(0, 0, 0, .55), 0 0 0 .1vmin rgba(40, 30, 10, .3), inset 0 0 0 calc(var(--v) * .5) #f6f0e2, inset 0 0 0 calc(var(--v) * .6) rgba(170, 140, 90, .55);
+}
+.yc-card table { border-collapse: collapse; }
+.yc-card th, .yc-card td { height: var(--row); padding: 0 calc(var(--v) * 1); text-align: center; white-space: nowrap; }
+.yc-card th { font-family: var(--ui); font-weight: 700; font-size: calc(var(--row) * .38); letter-spacing: .14em; text-transform: uppercase; color: #5c4e3c; max-width: calc(var(--v) * 12); overflow: hidden; text-overflow: ellipsis; border-bottom: .14vmin solid rgba(120, 95, 55, .5); }
+.yc-card th i { display: inline-block; width: .7em; height: .7em; border-radius: 50%; margin-right: .5em; vertical-align: .05em; }
+.yc-card td { font-family: var(--num); font-size: calc(var(--row) * .56); border-bottom: .1vmin solid rgba(120, 95, 55, .18); min-width: calc(var(--v) * 6); }
+.yc-card td.lbl { text-align: left; font-family: var(--display); font-weight: 600; font-size: calc(var(--row) * .56); padding-left: 0; min-width: 0; }
+.yc-card td.lbl small { margin-left: .7em; font-family: var(--ui); font-weight: 500; font-size: .55em; letter-spacing: .06em; color: #8c7b62; }
+.yc-card .now { background: rgba(205, 180, 135, .2); }
+.yc-card td.maybe { font-family: var(--display); font-style: italic; font-weight: 500; color: #9a7b45; }
+.yc-card td.zero { color: #a89a85; }
+.yc-card td.flash { animation: ycFlash 1.6s ease-out; }
+@keyframes ycFlash { 0% { background: rgba(205, 170, 100, .7); } }
+.yc-card tr.sum td { font-size: calc(var(--row) * .48); color: #6b5c48; border-bottom-color: rgba(120, 95, 55, .45); }
+.yc-card tr.sum td.lbl { font-size: calc(var(--row) * .5); }
+.yc-card .need { font-family: var(--ui); font-size: .8em; color: #9b8a70; }
+.yc-card tr.total td { font-size: calc(var(--row) * .66); border-bottom: 0; padding-top: calc(var(--v) * .3); color: #2a2320; }
+.yc-card tr.total td.lbl { font-size: calc(var(--row) * .6); letter-spacing: .02em; }
+
+/* ---------- phone ---------- */
+body[data-game="yacht"] { background: linear-gradient(180deg, #121c2d, #070b13); }
+body[data-game="yacht"] #handWrap, body[data-game="yacht"] #handHint { display: none; }
+body[data-game="yacht"] #status { min-height: 0; margin: 8px 0 6px; }
+#hudC em.of { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--gold-ink); }
+#ycPhone { width: 100%; max-width: 440px; flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
+.yp-dice { display: flex; justify-content: center; gap: 8px; min-height: 76px; padding: 12px 10px 6px; border-radius: 14px; background: linear-gradient(180deg, #17402f, #0d281d); box-shadow: inset 0 4px 12px rgba(0, 0, 0, .6), 0 0 0 1px rgba(205, 180, 135, .35); }
+.yp-die { --die: min(15vw, 58px); display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: 0; padding: 0; cursor: pointer; }
+.yp-die:disabled { cursor: default; opacity: 1; }
+.yp-die small { height: 12px; font-family: var(--ui); font-size: 9.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--champagne); }
+.yp-die.kept .ydie { box-shadow: 0 0 0 3px #cdb487, 0 6px 10px rgba(0, 0, 0, .55); transform: translateY(-4px); }
+.yp-empty { margin: auto; font-family: var(--serif); font-style: italic; font-size: 18px; color: rgba(239, 233, 220, .6); }
+.yp-act { display: flex; justify-content: center; }
+.yp-act .panel-btn { width: 100%; }
+.yp-card { flex: 1; min-height: 0; overflow-y: auto; padding-bottom: 14px; -webkit-overflow-scrolling: touch; }
+.yp-card ul { list-style: none; margin: 0 0 10px; padding: 0; border-top: 1px solid var(--hairline); }
+.yp-card li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 12px; border-bottom: 1px solid var(--hairline); }
+.yp-card li span { font-family: var(--display); font-weight: 600; font-size: 19px; color: var(--ivory); }
+.yp-card li small { display: block; font-family: var(--ui); font-weight: 500; font-size: 11px; letter-spacing: .04em; color: var(--mute); }
+.yp-card li b { font-family: var(--num); font-weight: 400; font-size: 22px; color: var(--ivory); min-width: 2.2em; text-align: right; }
+.yp-card li.done span, .yp-card li.done b { opacity: .5; }
+.yp-card li.open { cursor: pointer; background: rgba(205, 180, 135, .06); }
+.yp-card li.open b { font-family: var(--display); font-style: italic; color: var(--champagne-hi); }
+.yp-card li.open.nil b { color: var(--mute); }
+.yp-card li.pick { background: rgba(205, 180, 135, .22); box-shadow: inset 3px 0 0 var(--champagne); }
+.yp-card li.sum span { font-family: var(--ui); font-weight: 600; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--champagne); }
+.yp-card li.sum b { font-size: 17px; color: var(--champagne); }

@@ -237,6 +237,30 @@ optionally on a **Player pair** or **Banker pair**. Pick a chip on your phone an
 - The table keeps a **bead road** of past results (blue Player, red Banker, green Tie; dots mark pairs).
 - 8-deck shoe. Settings: starting chips, minimum bet, pair bets on/off, rebuys.
 
+## Checkers
+American checkers (English draughts) on an ebony-and-champagne board, on a bottle-green leather desk.
+Ebony (seat 0, the bottom) moves first; Ivory sits across. Men move one square diagonally forward; a man
+that reaches the far row is crowned (a gold crown on the piece) and kings move one square in any diagonal
+direction. Captures are compulsory, jumps chain, and crowning ends the move. You win by taking every
+piece or leaving the other side with no move. Draws: by agreement, the same position three times, or
+forty moves each without a capture or a man moving. Moves are written with the standard square numbers
+(11-15, 22×15×8). Move from a phone or by tapping the table: pick up a piece and tap where it lands (for a
+multiple jump, the square it finishes on). The computer plays Easy, Normal or Hard (alpha-beta search
+that keeps looking while captures are forced). Move generation is checked against the published perft
+counts (7, 49, 302, 1469, 7361, 36768). Code: `js/checkers.js`, `js/table-checkers.js`,
+`js/play-checkers.js`, `css/checkers.css` (all classes use a `dr` prefix; `ck` belongs to Chef's Kiss).
+
+## Yacht Club
+The classic five-dice scorecard game (the Yacht / Yahtzee family, under its own name). 1–8 players,
+bots welcome. On your turn your phone shows the dice: roll up to three times (tap Roll or shake the
+phone), tap dice to keep them, then tap an open box and confirm. Thirteen boxes: Aces to Sixes (bonus 35
+at 63), Three and Four of a kind, Full house 25, Small straight 30, Large straight 40, Yacht 50 and
+Chance. Each extra Yacht scores a 100 bonus and follows the official joker rules. The table shows a
+walnut dice tray (kept dice sit up on the rail) and the shared ivory score card, with the current
+player's possible scores pencilled in. Bots choose which dice to keep by simulating every hold, and
+average about 230 points. Code: `js/yacht.js`, `js/table-yacht.js`, `js/play-yacht.js`, `css/yacht.css`
+(dice use the `ydie` class; `die` belongs to Backgammon).
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -271,7 +295,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=38; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=42; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)

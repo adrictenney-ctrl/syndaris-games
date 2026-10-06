@@ -154,3 +154,23 @@ GAMES.baccarat = {
   startLabel: 'Open the table',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.checkers = {
+  id: 'checkers',
+  name: 'Checkers',
+  blurb: '2 players · or play the computer',
+  min: 2,
+  max: 2,
+  startLabel: 'Set up the board',
+  layout: GAMES.chess.layout, // players at the two ends of the board
+};
+
+GAMES.yacht = {
+  id: 'yacht',
+  name: 'Yacht Club',
+  blurb: '1–8 players · five dice, three rolls, thirteen boxes',
+  min: 1,
+  max: 8,
+  startLabel: 'Open the score card',
+  layout: GAMES.holdem.layout,
+};

@@ -1,23 +1,25 @@
 // The table: the shared screen in the middle. Hosts the game, the lobby and the seats.
 // Game-specific rules and drawing live in table-<game>.js modules.
-import { GAMES, SIDE_ROT } from './games.js?v=37';
-import { cardEl, snap, keepAwake } from './cards.js?v=37';
-import { hostRoom } from './net.js?v=37';
-import euchre from './table-euchre.js?v=37';
-import holdem from './table-poker.js?v=37';
-import veto from './table-veto.js?v=37';
-import gofish from './table-gofish.js?v=37';
-import chess from './table-chess.js?v=37';
-import backgammon from './table-backgammon.js?v=37';
-import sketch from './table-sketch.js?v=37';
-import chefskiss from './table-chefskiss.js?v=37';
-import insidejob from './table-insidejob.js?v=37';
-import crown from './table-crown.js?v=37';
-import hollow from './table-hollow.js?v=37';
-import blackjack from './table-blackjack.js?v=37';
-import baccarat from './table-baccarat.js?v=37';
+import { GAMES, SIDE_ROT } from './games.js?v=41';
+import { cardEl, snap, keepAwake } from './cards.js?v=41';
+import { hostRoom } from './net.js?v=41';
+import euchre from './table-euchre.js?v=41';
+import holdem from './table-poker.js?v=41';
+import veto from './table-veto.js?v=41';
+import gofish from './table-gofish.js?v=41';
+import chess from './table-chess.js?v=41';
+import backgammon from './table-backgammon.js?v=41';
+import sketch from './table-sketch.js?v=41';
+import chefskiss from './table-chefskiss.js?v=41';
+import insidejob from './table-insidejob.js?v=41';
+import crown from './table-crown.js?v=41';
+import hollow from './table-hollow.js?v=41';
+import blackjack from './table-blackjack.js?v=41';
+import baccarat from './table-baccarat.js?v=41';
+import checkers from './table-checkers.js?v=41';
+import yacht from './table-yacht.js?v=41';
 
-const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat };
+const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';

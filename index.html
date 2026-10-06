@@ -13,12 +13,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=37">
-  <link rel="stylesheet" href="css/chefskiss.css?v=37">
-  <link rel="stylesheet" href="css/insidejob.css?v=37">
-  <link rel="stylesheet" href="css/crown.css?v=37">
-  <link rel="stylesheet" href="css/hollow.css?v=37">
-  <link rel="stylesheet" href="css/casino.css?v=37">
+  <link rel="stylesheet" href="css/cards.css?v=41">
+  <link rel="stylesheet" href="css/chefskiss.css?v=41">
+  <link rel="stylesheet" href="css/insidejob.css?v=41">
+  <link rel="stylesheet" href="css/crown.css?v=41">
+  <link rel="stylesheet" href="css/hollow.css?v=41">
+  <link rel="stylesheet" href="css/casino.css?v=41">
+  <link rel="stylesheet" href="css/checkers.css?v=41">
+  <link rel="stylesheet" href="css/yacht.css?v=41">
   <style>
     html { background: var(--onyx); scroll-behavior: smooth; }
     body {
@@ -133,6 +135,7 @@
     .t-euchre { --tint: #1d4433; } .t-holdem { --tint: #1c2f4a; } .t-veto { --tint: #4b301c; } .t-gofish { --tint: #173f48; }
     .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
     .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
+    .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; }
 
     /* Each game's little still life */
     .bgmini { width: 170px !important; height: 104px !important; background: radial-gradient(ellipse, #22553c, #163f2b); border: 6px solid #4a2a17; border-radius: 4px; box-shadow: 0 0 0 1px rgba(205, 180, 135, .35), 0 14px 26px rgba(0, 0, 0, .55); overflow: hidden; }
@@ -162,6 +165,12 @@
     .ckmini .ck-card.r { transform: translate(-82%, -50%) rotate(-9deg); }
     .ckmini .ck-card.i { transform: translate(-18%, -46%) rotate(8deg); }
     .gfmini { display: flex; align-items: center; justify-content: center; }
+    .drmini { --S: 25px; width: 160px !important; height: 110px !important; border: 5px solid #17110d; box-shadow: 0 0 0 1px rgba(205, 180, 135, .55), 0 14px 26px rgba(0, 0, 0, .55);
+      background: conic-gradient(#e2d3b1 25%, #33251a 0 50%, #e2d3b1 0 75%, #33251a 0) 0 0 / 50px 50px; }
+    .drmini .drp { position: absolute; width: 21px; height: 21px; translate: -50% -50%; }
+    .drmini .drp .dcrown { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; }
+    .ycmini { display: flex; align-items: center; justify-content: center; gap: 10px; --die: 46px; }
+    .ycmini .ydie:nth-child(1) { rotate: -12deg; translate: 0 8px; } .ycmini .ydie:nth-child(2) { rotate: 6deg; translate: 0 -10px; } .ycmini .ydie:nth-child(3) { rotate: 18deg; translate: 0 6px; }
 
     /* ---------- footer ---------- */
     footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 56px 0 64px; margin-top: 64px; border-top: 1px solid var(--hairline); }
@@ -204,7 +213,7 @@
     html.tv .collection { padding: 3vh 0 0; }
     html.tv .col-head { margin-bottom: 3vh; }
     html.tv .col-head h2 { font-size: 6vh; margin-top: 1vh; }
-    html.tv .shelf { grid-template-columns: repeat(7, 1fr); }
+    html.tv .shelf { grid-template-columns: repeat(8, 1fr); }
     html.tv .box { padding: 0 1.4vw 2.4vh; }
     html.tv .art { height: 17vh; }
     html.tv .art .cards { zoom: .62; }
@@ -256,12 +265,13 @@
     </footer>
   </div>
 
-  <script type="module" src="js/tvnav.js?v=37"></script>
+  <script type="module" src="js/tvnav.js?v=41"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=37';
-    import { cardEl } from './js/cards.js?v=37';
-    import { face } from './js/ck-face.js?v=37';
-    import { edict } from './js/table-crown.js?v=37';
+    import { GAMES } from './js/games.js?v=41';
+    import { cardEl } from './js/cards.js?v=41';
+    import { face } from './js/ck-face.js?v=41';
+    import { edict } from './js/table-crown.js?v=41';
+    import { dieHTML } from './js/table-yacht.js?v=41';
 
     // The hero still life: a hand of cards laid on the felt, with a few chips.
     const stage = document.getElementById('stage');
@@ -277,8 +287,8 @@
     const art = {
       blackjack: ['AS', 'KH'], baccarat: ['9D', '8C', '5S'], euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
     };
-    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'chess', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
-    const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen'];
+    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'yacht', 'chess', 'checkers', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'];
     document.getElementById('colTitle').innerHTML = `${words[ids.length] || ids.length} tables, <em>one evening.</em>`;
     const shelf = document.getElementById('shelf');
     ids.forEach((id, n) => {
@@ -297,6 +307,12 @@
       else if (id === 'backgammon') { fan.className = 'cards bgmini'; fan.innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i><b class="w" style="left:16%;top:22%"></b><b class="w" style="left:16%;top:40%"></b><b class="b" style="left:84%;top:78%"></b><b class="b" style="left:84%;top:60%"></b><b class="b" style="left:50%;top:22%"></b>'; }
       else if (id === 'sketch') { fan.className = 'cards skmini'; fan.innerHTML = '<svg viewBox="0 0 160 104"><path d="M30 78 Q 40 30 80 34 Q 120 38 126 74" fill="none" stroke="#a8322a" stroke-width="5" stroke-linecap="round"/><circle cx="80" cy="60" r="16" fill="none" stroke="#1d1b1a" stroke-width="4"/><path d="M74 56h1M86 56h1M73 66q7 6 14 0" stroke="#1d1b1a" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M22 92 L 140 92" stroke="#2b4f7e" stroke-width="4" stroke-linecap="round"/></svg>'; }
       else if (id === 'crown') { fan.className = 'cards cdmini'; fan.innerHTML = edict('L') + edict('D'); }
+      else if (id === 'checkers') {
+        fan.className = 'cards drmini';
+        const pc = (c, x, y, k) => `<span class="drp ${c}${k ? ' king' : ''}" style="left:${x}px;top:${y}px"><b class="dcrown">${k ? '♛︎' : ''}</b></span>`;
+        fan.innerHTML = pc('d', 12.5, 12.5) + pc('l', 37.5, 37.5) + pc('d', 87.5, 87.5, true) + pc('l', 112.5, 12.5) + pc('d', 62.5, 62.5);
+      }
+      else if (id === 'yacht') { fan.className = 'cards ycmini'; fan.innerHTML = dieHTML(6) + dieHTML(6) + dieHTML(6); }
       else if (id === 'hollow') { fan.className = 'cards hmmini'; fan.innerHTML = '<span>🏮</span><span>🌙</span><span>🏮</span>'; }
       else if (id === 'insidejob') { fan.className = 'cards ijmini'; fan.innerHTML = '<span class="pchip c-white"><b>100</b></span><span class="pchip c-yellow"><b>200</b></span><span class="pchip c-orange"><b>300</b></span><span class="pchip c-red"><b>400</b></span>'; }
       else if (id === 'chefskiss') { fan.className = 'cards ckmini'; fan.innerHTML = face({ kind: 'r', t: 'Totally adorable', d: '' }) + face({ kind: 'i', t: 'A goat in pajamas', d: '' }); }
