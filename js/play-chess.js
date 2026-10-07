@@ -1,6 +1,6 @@
 // Chess on a player's phone: the board turned to your side, tap a piece then a square.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=54';
-import { targetsFrom, tapMoves } from './chess.js?v=54';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=55';
+import { targetsFrom, tapMoves } from './chess.js?v=55';
 
 const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
 const glyph = p => GLYPH[p.toLowerCase()] + '︎';

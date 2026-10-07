@@ -1,0 +1,75 @@
+/* Homestead: a deep-sea table around the island; frontier tiles; pieces in the players' colours. */
+body[data-game="homestead"] #felt { --seat-w: min(27vmin, 290px); --seat-h: 15vmin; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(200, 230, 230, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #16303a 0%, #0e2029 55%, #060d12 100%); }
+body[data-game="homestead"] #print, body[data-game="homestead"] .fan, body[data-game="homestead"] .sizer { display: none; }
+body[data-game="homestead"] .meta { flex-direction: column; gap: .4vmin; }
+
+#homestead { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; gap: 2.4vmin; align-items: center; z-index: 2; }
+.hs-board { height: var(--H, 500px); aspect-ratio: 112 / 100; }
+.hs-map { width: 100%; height: 100%; display: block; overflow: visible; }
+.hs-sea { fill: #1e4b5c; stroke: #d6c7a0; stroke-width: .6; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .6)); }
+.hs-hex polygon { stroke: #e8dcc0; stroke-width: .5; }
+.hs-hex.pick { cursor: pointer; }
+.hs-hex.pick polygon { stroke: #f1dfb2; stroke-width: 1.1; }
+.hs-ic { font-size: 3.6px; text-anchor: middle; dominant-baseline: middle; opacity: .9; }
+.hs-tok { fill: #f4ecd8; stroke: rgba(0, 0, 0, .35); stroke-width: .3; }
+.hs-num { font-family: var(--num); font-size: 3.6px; text-anchor: middle; dominant-baseline: middle; fill: #2a2320; }
+.hs-num.red { fill: #a8322f; font-weight: 700; }
+.hs-pips { font-size: 2.6px; text-anchor: middle; fill: #6b5c48; letter-spacing: -.3px; }
+.hs-bandit circle, .hs-bandit path { fill: #1a1715; stroke: #f1dfb2; stroke-width: .3; }
+.hs-port line { stroke: #d6c7a0; stroke-width: .5; stroke-dasharray: .8 .6; }
+.hs-port circle { fill: #f4ecd8; stroke: #6b5c48; stroke-width: .3; }
+.hs-port text { font-family: var(--ui); font-weight: 800; font-size: 1.9px; text-anchor: middle; fill: #2a2320; }
+.hs-port .hs-pr { font-size: 3px; }
+.hs-road { stroke-width: 1.6; stroke-linecap: round; filter: drop-shadow(0 .2px .3px rgba(0, 0, 0, .7)); }
+.hs-road.pick { stroke: rgba(241, 223, 178, .55); stroke-width: 1.9; stroke-dasharray: 1 1; cursor: pointer; }
+.hs-cabin, .hs-manor { stroke: rgba(0, 0, 0, .7); stroke-width: .35; filter: drop-shadow(0 .3px .4px rgba(0, 0, 0, .6)); }
+.hs-spot { fill: rgba(241, 223, 178, .85); stroke: #2a2320; stroke-width: .3; cursor: pointer; animation: hsGlow 1.2s ease-in-out infinite; }
+.hs-spot.up { fill: none; stroke: #f1dfb2; stroke-width: .6; }
+@keyframes hsGlow { 50% { opacity: .5; } }
+.hs-side { width: 22vmin; display: flex; flex-direction: column; gap: 1.4vmin; }
+.hs-dice { display: flex; align-items: center; gap: 1.2vmin; --die: 5.4vmin; min-height: 5.6vmin; }
+.hs-dice b { font-family: var(--num); font-weight: 400; font-size: 4.4vmin; color: var(--champagne-hi); margin-left: .6vmin; }
+.hs-scores { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6vmin; }
+.hs-scores li { display: flex; align-items: center; gap: .8em; font-family: var(--display); font-weight: 600; font-size: 2.3vmin; color: var(--ivory); }
+.hs-scores li i { width: 1.4vmin; height: 1.4vmin; border-radius: 50%; }
+.hs-scores li b { margin-left: auto; font-family: var(--num); font-weight: 400; font-size: 2.8vmin; color: var(--champagne-hi); }
+.hs-log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5vmin; font-family: var(--ui); font-size: 1.5vmin; color: var(--mute); }
+.hs-log li { display: flex; align-items: center; gap: .6em; } .hs-log li:last-child { color: var(--ivory); }
+.hs-log i { width: 1vmin; height: 1vmin; border-radius: 50%; flex: none; }
+.hs-now { margin: 0; font-family: var(--serif); font-style: italic; font-size: 2vmin; color: var(--ivory); }
+.hs-now b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+/* ---------- phone ---------- */
+body[data-game="homestead"] { background: linear-gradient(180deg, #14303a, #060d12); }
+body[data-game="homestead"] #handWrap, body[data-game="homestead"] #handHint { display: none; }
+body[data-game="homestead"] #status { flex: none; min-height: 0; margin: 8px 0 6px; }
+#hsPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 0; overflow-y: auto; padding-bottom: 12px; }
+#hsPhone > * { flex: none; }
+.hs-res { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+.hs-res span { display: flex; flex-direction: column; align-items: center; padding: 6px 2px; border-radius: 10px; background: rgba(255, 248, 230, .05); box-shadow: inset 0 0 0 1px var(--hairline); }
+.hs-res i { font-style: normal; font-size: 20px; }
+.hs-res b { font-family: var(--num); font-weight: 400; font-size: 22px; color: var(--ivory); line-height: 1.1; }
+.hs-res small { font-family: var(--ui); font-size: 9.5px; letter-spacing: .06em; color: var(--mute); }
+.hs-phone-map { border-radius: 12px; overflow: hidden; background: #0e2029; }
+.hs-build .panel-btn { min-width: 0; padding: 8px 4px; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.hs-build .panel-btn small { font-size: 12px; letter-spacing: 1px; }
+.panel-btn.on { color: #17130c; background: var(--champagne); border-color: var(--champagne); }
+.hs-trade { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 12px; background: rgba(255, 248, 230, .04); box-shadow: inset 0 0 0 1px var(--hairline); }
+.hs-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.hs-chips button { padding: 7px 10px; border-radius: 99px; cursor: pointer; font-family: var(--ui); font-size: 13px; font-weight: 600; color: var(--ivory); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); }
+.hs-chips button.on { color: #17130c; background: var(--champagne); border-color: var(--champagne); }
+.hs-chips button:disabled { opacity: .35; }
+.hs-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hs-two > div > div, .hs-pick > div { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
+.hs-two button, .hs-pick button { width: 30px; height: 30px; border-radius: 50%; border: 0; cursor: pointer; background: rgba(255, 248, 230, .1); color: var(--ivory); font-size: 16px; }
+.hs-two b, .hs-pick b { min-width: 20px; text-align: center; font-family: var(--num); font-weight: 400; font-size: 18px; color: var(--ivory); }
+.hs-two span { font-size: 18px; width: 26px; }
+.hs-pick span { flex: 1; font-family: var(--ui); font-size: 14px; color: var(--ivory); }
+.hs-offer { margin: 0; font-family: var(--ui); font-size: 15px; color: var(--ivory); text-align: center; }
+.hs-charters { display: flex; flex-direction: column; gap: 6px; }
+.hs-ch { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: center; padding: 8px 12px; border-radius: 10px; background: linear-gradient(170deg, #f3e9cf, #e2d0a6); color: #2a2320; }
+.hs-ch b { font-family: var(--display); font-weight: 600; font-size: 17px; }
+.hs-ch small { grid-column: 1; font-family: var(--ui); font-size: 11.5px; color: #6b5c48; }
+.hs-ch button, .hs-ch em { grid-row: 1 / span 2; grid-column: 2; }
+.hs-ch button { padding: 8px 14px; border-radius: 99px; border: 0; cursor: pointer; font-family: var(--ui); font-weight: 800; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: #3f6b46; }
+.hs-ch em { font-style: normal; font-family: var(--ui); font-size: 11px; color: #8a7a62; }

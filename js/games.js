@@ -340,3 +340,13 @@ GAMES.ironroutes = {
   startLabel: 'Lay the first track',
   layout: GAMES.skyline.layout,
 };
+
+GAMES.homestead = {
+  id: 'homestead',
+  name: 'Homestead',
+  blurb: '2–4 players · settle the island, trade, build to 10',
+  min: 2,
+  max: 4,
+  startLabel: 'Settle the island',
+  layout: [S(0, 70, 1, 'Left, near'), S(0, 30, 1, 'Left, far'), S(100, 30, 3, 'Right, far'), S(100, 70, 3, 'Right, near')],
+};

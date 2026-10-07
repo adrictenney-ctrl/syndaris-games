@@ -1,7 +1,7 @@
 // Go Fish on the table screen: the whole table is a pond. Face-down cards drift in the
 // water; books sit in front of each player; caught cards come up out of the water.
-import * as F from './gofish.js?v=54';
-import { cardEl, snap } from './cards.js?v=54';
+import * as F from './gofish.js?v=55';
+import { cardEl, snap } from './cards.js?v=55';
 
 const $ = id => document.getElementById(id);
 let floaters = [];      // drifting face-down cards in the pond
