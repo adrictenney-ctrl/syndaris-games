@@ -29,8 +29,9 @@ import fourup from './table-fourup.js?v=51';
 import seedstones from './table-seedstones.js?v=51';
 import sonar from './table-sonar.js?v=51';
 import milestones from './table-milestones.js?v=51';
+import wrongnumber from './table-wrongnumber.js?v=51';
 
-const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones };
+const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones, wrongnumber };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';

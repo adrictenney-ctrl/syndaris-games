@@ -1,0 +1,41 @@
+/* Wrong Number: a dark plum table with a giant phone in the middle. */
+body[data-game="wrongnumber"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 210, 240, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2a1f38 0%, #1b1426 55%, #0a070f 100%); }
+body[data-game="wrongnumber"] #print, body[data-game="wrongnumber"] .fan, body[data-game="wrongnumber"] .sizer { display: none; }
+
+#wrongnumber { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); z-index: 2; }
+.wn-phone {
+  width: calc(var(--ph, 500px) * .62); height: var(--ph, 500px); display: flex; flex-direction: column; border-radius: calc(var(--ph, 500px) * .07); overflow: hidden;
+  background: #0f0d14; box-shadow: 0 3vmin 7vmin rgba(0, 0, 0, .6), 0 0 0 .5vmin #24202c, 0 0 0 .7vmin rgba(205, 180, 135, .45);
+}
+.wn-phone header { display: flex; align-items: center; gap: 1.2vmin; padding: 1.6vmin 2vmin; background: #191621; border-bottom: .14vmin solid rgba(255, 255, 255, .06); }
+.wn-phone header i { width: 4.4vmin; height: 4.4vmin; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #9a92a8 0 22%, transparent 23%), radial-gradient(ellipse 60% 40% at 50% 95%, #9a92a8 0 60%, transparent 61%), #3a3446; }
+.wn-phone header b { display: block; font-family: var(--ui); font-weight: 700; font-size: 2vmin; color: var(--ivory); }
+.wn-phone header small { font-family: var(--ui); font-size: 1.4vmin; color: var(--mute); }
+.wn-chat { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2vmin; padding: 2vmin; scrollbar-width: none; }
+.wn-msg { max-width: 82%; margin: 0; padding: 1.2vmin 1.8vmin; border-radius: 2.2vmin; font-family: var(--ui); font-size: 2.1vmin; line-height: 1.3; text-align: left; border: 0; }
+.wn-msg p { margin: 0; }
+.wn-msg small { display: block; margin-top: .5vmin; font-size: 1.3vmin; opacity: .8; }
+.wn-msg.in { align-self: flex-start; background: #2c2836; color: var(--ivory); border-bottom-left-radius: .6vmin; }
+.wn-msg.out { align-self: flex-end; background: linear-gradient(180deg, #d7bf8c, #b89a62); color: #1c1610; border-bottom-right-radius: .6vmin; animation: wnPop .4s cubic-bezier(.2, .9, .3, 1.3) both; }
+.wn-msg.out.won { box-shadow: 0 0 0 .3vmin #f1dfb2, 0 0 3vmin rgba(241, 223, 178, .5); }
+.wn-msg.out.lost { opacity: .45; }
+@keyframes wnPop { from { transform: scale(.6) translateY(1vmin); opacity: 0; } }
+.wn-typing { align-self: flex-end; display: flex; gap: .6vmin; padding: 1.4vmin 1.8vmin; border-radius: 2.2vmin; background: rgba(215, 191, 140, .25); }
+.wn-typing i { width: 1vmin; height: 1vmin; border-radius: 50%; background: var(--champagne); animation: wnDot 1.2s infinite; }
+.wn-typing i:nth-child(2) { animation-delay: .2s; } .wn-typing i:nth-child(3) { animation-delay: .4s; }
+@keyframes wnDot { 50% { opacity: .25; transform: translateY(-.4vmin); } }
+.wn-note { margin: .4vmin 0 0; align-self: center; font-family: var(--serif); font-style: italic; font-size: 1.8vmin; color: var(--mute); text-align: center; }
+
+/* ---------- phone ---------- */
+body[data-game="wrongnumber"] { background: linear-gradient(180deg, #221a2e, #0a070f); }
+body[data-game="wrongnumber"] #handWrap, body[data-game="wrongnumber"] #handHint { display: none; }
+body[data-game="wrongnumber"] #status { flex: none; min-height: 0; margin: 8px 0 6px; }
+#wnPhone { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; overflow-y: auto; padding: 0 2px 10px; }
+#wnPhone > * { flex: none; }
+#wnPhone .wn-msg { font-size: 15.5px; padding: 10px 14px; border-radius: 18px; max-width: 86%; }
+#wnPhone .wn-msg.in { border-bottom-left-radius: 5px; }
+#wnPhone .wn-msg.out { border-bottom-right-radius: 5px; cursor: pointer; animation: none; }
+#wnPhone .wn-msg.out.sel { box-shadow: 0 0 0 3px #f1dfb2, 0 6px 16px rgba(0, 0, 0, .5); transform: translateX(-4px); }
+.wn-thread { display: flex; flex-direction: column; }
+.wn-list { display: flex; flex-direction: column; gap: 8px; }
+#wnPhone .wn-note { font-size: 15px; }

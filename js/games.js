@@ -289,3 +289,13 @@ GAMES.milestones = {
   startLabel: 'Deal the cards',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.wrongnumber = {
+  id: 'wrongnumber',
+  name: 'Wrong Number',
+  blurb: '3–8 players · strange texts, funnier replies',
+  min: 3,
+  max: 8,
+  startLabel: 'Start texting',
+  layout: GAMES.holdem.layout,
+};
