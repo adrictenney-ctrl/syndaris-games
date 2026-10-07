@@ -1,7 +1,7 @@
 // Skyline on a player's phone: your turn's buttons (roll, buy, end turn, bail…), the deed for
 // the square you're on, your own deeds (raise floors, sell, mortgage, pay off), and trades.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=52';
-import { BOARD, DISTRICTS, PIECES, groupOf, canBuild, canSell, canMortgage, unmortgageCost } from './skyline.js?v=52';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=53';
+import { BOARD, DISTRICTS, PIECES, groupOf, canBuild, canSell, canMortgage, unmortgageCost } from './skyline.js?v=53';
 
 let ctx = null, panelKey = '', wasMyTurn = false;
 let trading = null;   // { to, give:Set, get:Set, giveCash, getCash } while building an offer

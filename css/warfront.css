@@ -1,0 +1,49 @@
+/* Warfront: a dark sea under the map, hex territories tinted by region, owner tokens on top. */
+body[data-game="warfront"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(170, 210, 230, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #162637 0%, #0e1a27 55%, #060b11 100%); }
+body[data-game="warfront"] #print, body[data-game="warfront"] .fan, body[data-game="warfront"] .sizer { display: none; }
+
+#warfront { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; gap: 3vmin; align-items: center; z-index: 2; }
+.wf-board { height: var(--H, 500px); aspect-ratio: 186 / 129; padding: 1.4vmin; border-radius: 1.4vmin;
+  background: repeating-radial-gradient(circle at 30% 40%, rgba(150, 200, 230, .04) 0 .3vmin, transparent .3vmin 2.4vmin), radial-gradient(ellipse at 50% 40%, #1d3a52, #10243a 70%);
+  box-shadow: 0 2.4vmin 6vmin rgba(0, 0, 0, .6), inset 0 0 0 .2vmin rgba(205, 180, 135, .4); }
+.wf-map { width: 100%; height: 100%; display: block; overflow: visible; }
+.wf-lane { stroke: rgba(205, 220, 230, .45); stroke-width: .5; stroke-dasharray: 1.4 1.2; }
+.wf-hex polygon { stroke: rgba(10, 18, 26, .9); stroke-width: .7; filter: saturate(.85) brightness(.82); }
+.wf-tok { stroke: rgba(0, 0, 0, .55); stroke-width: .5; }
+.wf-n { font-family: var(--ui); font-weight: 800; font-size: 4.2px; text-anchor: middle; dominant-baseline: middle; fill: #fff; paint-order: stroke; stroke: rgba(0, 0, 0, .55); stroke-width: .6; }
+.wf-name { font-family: var(--ui); font-weight: 700; font-size: 2.1px; text-anchor: middle; fill: rgba(255, 250, 235, .9); paint-order: stroke; stroke: rgba(0, 0, 0, .6); stroke-width: .5; }
+.wf-hex.sel polygon, .wf-hex.sel2 polygon { stroke: #f1dfb2; stroke-width: 1.4; filter: none; }
+.wf-hex.target polygon { stroke: #e08a74; stroke-width: 1.2; filter: brightness(1.05); }
+.wf-arrow { stroke: #f1dfb2; stroke-width: 1.2; stroke-linecap: round; }
+.wf-side { width: 22vmin; display: flex; flex-direction: column; gap: 1.4vmin; }
+.wf-legend { display: flex; flex-direction: column; gap: .6vmin; font-family: var(--ui); font-size: 1.6vmin; color: var(--ivory); }
+.wf-legend span { display: flex; align-items: center; gap: .7em; }
+.wf-legend i { width: 1.4vmin; height: 1.4vmin; border-radius: .3vmin; }
+.wf-legend b { color: var(--champagne-hi); }
+.wf-legend em { font-style: normal; font-size: 1.8vmin; }
+.wf-dice p { margin: 0; font-family: var(--serif); font-style: italic; font-size: 1.8vmin; color: var(--gold-ink); }
+.wf-dice div { display: flex; justify-content: space-between; margin: .8vmin 0; }
+.wf-dice span { display: flex; gap: .5vmin; }
+.wf-dice i { display: grid; place-items: center; width: 3.6vmin; height: 3.6vmin; border-radius: .6vmin; font-style: normal; font-family: var(--num); font-size: 2.2vmin; box-shadow: 0 .3vmin .6vmin rgba(0, 0, 0, .5); }
+.wf-dice .atk i { background: #c4533f; color: #fff; }
+.wf-dice .def i { background: var(--stock); color: #222; }
+.wf-log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5vmin; font-family: var(--ui); font-size: 1.5vmin; color: var(--mute); }
+.wf-log li { display: flex; align-items: center; gap: .6em; }
+.wf-log li:last-child { color: var(--ivory); }
+.wf-log i { width: 1vmin; height: 1vmin; border-radius: 50%; flex: none; }
+.wf-now { margin: 0; font-family: var(--serif); font-style: italic; font-size: 2vmin; color: var(--ivory); }
+.wf-now b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+/* ---------- phone ---------- */
+body[data-game="warfront"] { background: linear-gradient(180deg, #13263a, #060b11); }
+body[data-game="warfront"] #handWrap, body[data-game="warfront"] #handHint { display: none; }
+body[data-game="warfront"] #status { flex: none; min-height: 0; margin: 8px 0 6px; }
+#wfPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; overflow-y: auto; }
+#wfPhone > * { flex: none; }
+.wf-phone-map { padding: 6px; border-radius: 12px; background: radial-gradient(ellipse at 50% 40%, #1d3a52, #10243a 70%); }
+.wf-phone-map .wf-hex { cursor: pointer; }
+.wf-phone-map .wf-n { font-size: 5px; }
+.wf-amt .panel-btn { min-width: 0; padding: 10px 0; }
+.wf-amt .panel-btn.on, .wf-step b { color: #17130c; background: var(--champagne); border-color: var(--champagne); }
+.wf-step { align-items: center; }
+.wf-step b { display: grid; place-items: center; min-width: 60px; height: 46px; border-radius: 10px; font-family: var(--num); font-weight: 400; font-size: 24px; }

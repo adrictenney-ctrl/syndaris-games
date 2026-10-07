@@ -1,9 +1,9 @@
 // Scribble Chain on the table. While everyone works: which step it is, the clock, and who's
 // finished. Then the reveal: each sketchbook opens on the table, page by page — the word, the
 // drawing, the guess, the next drawing… — with who did each page.
-import * as C from './scribble.js?v=52';
-import { fitCanvas, paint } from './sketch-pad.js?v=52';
-import { snap } from './cards.js?v=52';
+import * as C from './scribble.js?v=53';
+import { fitCanvas, paint } from './sketch-pad.js?v=53';
+import { snap } from './cards.js?v=53';
 
 let root = null, key = '', tick = null, gref = null;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -320,3 +320,13 @@ GAMES.manor = {
   startLabel: 'Seal the envelope',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.warfront = {
+  id: 'warfront',
+  name: 'Warfront',
+  blurb: '2–6 players · conquer the islands, one battle at a time',
+  min: 2,
+  max: 6,
+  startLabel: 'Deploy the armies',
+  layout: GAMES.skyline.layout,   // players at the two ends, map in the middle
+};
