@@ -330,3 +330,13 @@ GAMES.warfront = {
   startLabel: 'Deploy the armies',
   layout: GAMES.skyline.layout,   // players at the two ends, map in the middle
 };
+
+GAMES.ironroutes = {
+  id: 'ironroutes',
+  name: 'Iron Routes',
+  blurb: '2–5 players · build rail lines across the country',
+  min: 2,
+  max: 5,
+  startLabel: 'Lay the first track',
+  layout: GAMES.skyline.layout,
+};

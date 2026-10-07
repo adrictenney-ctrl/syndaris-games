@@ -1,0 +1,64 @@
+/* Iron Routes: a parchment map on a dark green desk; coloured car spaces; our own rail cards. */
+body[data-game="ironroutes"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 220, 190, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #1d2f26 0%, #132019 55%, #070c09 100%); }
+body[data-game="ironroutes"] #print, body[data-game="ironroutes"] .fan, body[data-game="ironroutes"] .sizer { display: none; }
+body[data-game="ironroutes"] .meta { flex-direction: column; gap: .4vmin; }
+
+#ironroutes { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; gap: 2.6vmin; align-items: center; z-index: 2; }
+.ir-board { height: var(--H, 500px); aspect-ratio: 106 / 66; padding: 1vmin; border-radius: 1vmin;
+  background: radial-gradient(ellipse at 40% 30%, rgba(255, 255, 255, .2), transparent 60%), repeating-linear-gradient(0deg, rgba(120, 100, 60, .04) 0 1px, transparent 1px 4px), linear-gradient(170deg, #efe4c9, #ddcca4);
+  box-shadow: 0 2.4vmin 6vmin rgba(0, 0, 0, .6), inset 0 0 0 .3vmin rgba(120, 90, 50, .4), inset 0 0 6vmin rgba(120, 90, 50, .25); }
+.ir-map { width: 100%; height: 100%; display: block; }
+.ir-car { stroke-width: 1.5; stroke-linecap: butt; opacity: .85; filter: drop-shadow(0 .15px .2px rgba(0, 0, 0, .5)); }
+.ir-car.own { stroke-width: 1.9; opacity: 1; stroke-linecap: round; }
+.ir-route.mine .ir-car { filter: drop-shadow(0 0 .6px #fff); }
+.ir-city circle { fill: #2a2320; stroke: #f3ead4; stroke-width: .5; }
+.ir-city text { font-family: var(--display); font-weight: 600; font-size: 2.1px; text-anchor: middle; fill: #2a2320; paint-order: stroke; stroke: rgba(243, 234, 212, .85); stroke-width: .5; }
+.ir-city.hi circle { fill: #b8423d; r: 2; }
+.ir-side { width: 24vmin; display: flex; flex-direction: column; gap: 1.2vmin; }
+.ir-market { display: flex; flex-direction: column; gap: .8vmin; }
+.ir-card {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4em; min-width: 7em; padding: .7em 1em; border-radius: .6em;
+  font-family: var(--ui); font-weight: 800; font-size: 1.5vmin; letter-spacing: .12em; text-transform: uppercase;
+  color: #fff; background: linear-gradient(160deg, color-mix(in srgb, var(--k) 85%, #fff), var(--k) 55%, color-mix(in srgb, var(--k) 70%, #000));
+  box-shadow: 0 .4vmin .9vmin rgba(0, 0, 0, .5), inset 0 0 0 .2vmin rgba(255, 255, 255, .35); text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+}
+.ir-card i { font-style: normal; font-size: 1.3em; }
+.ir-card[style*="ece4d2"] { color: #3a3226; text-shadow: none; }
+.ir-card.back { --k: #3a4a3e; background: repeating-linear-gradient(45deg, rgba(205, 180, 135, .25) 0 2px, transparent 2px 6px), linear-gradient(160deg, #2f4034, #1c2a21); }
+.ir-deck { margin: 0; font-family: var(--ui); font-size: 1.5vmin; letter-spacing: .1em; color: var(--gold-ink); }
+.ir-deck b { color: var(--ivory); }
+.ir-log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5vmin; font-family: var(--ui); font-size: 1.5vmin; color: var(--mute); }
+.ir-log li { display: flex; align-items: center; gap: .6em; } .ir-log li:last-child { color: var(--ivory); }
+.ir-log i { width: 1vmin; height: 1vmin; border-radius: 50%; flex: none; }
+.ir-now { margin: 0; font-family: var(--serif); font-style: italic; font-size: 2vmin; color: var(--ivory); }
+.ir-now b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+/* ---------- phone ---------- */
+body[data-game="ironroutes"] { background: linear-gradient(180deg, #1a2b22, #070c09); }
+body[data-game="ironroutes"] #handWrap, body[data-game="ironroutes"] #handHint { display: none; }
+body[data-game="ironroutes"] #status { flex: none; min-height: 0; margin: 8px 0 6px; }
+#irPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 0; overflow-y: auto; padding-bottom: 12px; }
+#irPhone > * { flex: none; }
+#irPhone .ir-card { font-size: 11px; min-width: 0; padding: 9px 10px; }
+.ir-marketp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.ir-marketp button, .ir-pay button { padding: 0; border: 0; background: none; cursor: pointer; }
+.ir-marketp button .ir-card, .ir-pay .ir-card { width: 100%; }
+.ir-marketp button:disabled { opacity: .35; }
+.ir-hand { display: flex; flex-wrap: wrap; gap: 6px; }
+.ir-held { display: inline-flex; align-items: center; gap: 4px; }
+.ir-held b { font-family: var(--num); font-weight: 400; font-size: 18px; color: var(--ivory); }
+.ir-claims { display: flex; flex-direction: column; gap: 6px; }
+.ir-claims button { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-align: left; font-family: var(--display); font-weight: 600; font-size: 17px; color: var(--ivory); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); }
+.ir-claims button i { width: 14px; height: 14px; border-radius: 3px; flex: none; }
+.ir-claims button small { margin-left: auto; font-family: var(--ui); font-weight: 600; font-size: 12px; color: var(--gold-ink); }
+.ir-pay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.ir-tix { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.ir-tix li { display: grid; grid-template-columns: 1fr auto 20px; gap: 8px; align-items: center; padding: 8px 12px; border-radius: 10px; background: linear-gradient(170deg, #efe4c9, #ddcca4); color: #2a2320; font-family: var(--display); font-weight: 600; font-size: 16px; }
+.ir-tix li b { font-family: var(--num); font-weight: 400; font-size: 18px; }
+.ir-tix li i { font-style: normal; color: #2f7a4a; }
+.ir-tix li.done { opacity: .7; }
+.ir-tix li.quiet { background: none; color: var(--mute); font-style: italic; }
+.ir-tix.offer li { cursor: pointer; }
+.ir-tix.offer li.on { box-shadow: 0 0 0 3px var(--champagne); }
+.ir-none { margin: 0; font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--mute); }
+.ir-phone-map { border-radius: 10px; overflow: hidden; background: linear-gradient(170deg, #efe4c9, #ddcca4); padding: 4px; }

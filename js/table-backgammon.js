@@ -1,8 +1,8 @@
 // Backgammon on the table screen: a backgammon case open in the middle of the table.
 // Checkers can be moved by tapping the board on the table (or with a TV remote), or from phones.
-import * as B from './backgammon.js?v=53';
-import { buildBoard, drawBoard, tap } from './bg-board.js?v=53';
-import { snap } from './cards.js?v=53';
+import * as B from './backgammon.js?v=54';
+import { buildBoard, drawBoard, tap } from './bg-board.js?v=54';
+import { snap } from './cards.js?v=54';
 
 let boardEl = null, actionsEl = null;
 let gameRef = null, ctxRef = null;
