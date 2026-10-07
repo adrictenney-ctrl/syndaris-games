@@ -1,0 +1,47 @@
+/* Wordsmith: a walnut board with cream squares, our own bonus colours, ivory letter tiles. */
+body[data-game="wordsmith"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 230, 190, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2c2620 0%, #1d1915 55%, #0b0a08 100%); }
+body[data-game="wordsmith"] #print, body[data-game="wordsmith"] .fan, body[data-game="wordsmith"] .sizer { display: none; }
+body[data-game="wordsmith"] .meta { flex-direction: column; gap: .4vmin; }
+
+#wordsmith { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; gap: 3vmin; align-items: center; z-index: 2; }
+.ws-wrap { width: var(--B, 500px); }
+.ws-board { display: grid; grid-template-columns: repeat(15, 1fr); gap: 1px; padding: 1.2%; aspect-ratio: 1; border-radius: .8vmin;
+  background: linear-gradient(160deg, #5a3a22, #3c2615); box-shadow: 0 2.4vmin 6vmin rgba(0, 0, 0, .6), inset 0 0 0 .2vmin rgba(205, 180, 135, .5); }
+.ws-sq { position: relative; display: grid; place-items: center; aspect-ratio: 1; background: #ece2cb; overflow: hidden; }
+.ws-sq em { font-style: normal; font-family: var(--ui); font-weight: 800; font-size: calc(var(--B, 500px) * .0105); line-height: 1.05; text-align: center; text-transform: uppercase; letter-spacing: .02em; color: rgba(255, 255, 255, .92); }
+.ws-sq.W3 { background: #8c2f3a; } .ws-sq.W2 { background: #c98a8f; } .ws-sq.L3 { background: #2f557e; } .ws-sq.L2 { background: #8fb2c9; }
+.ws-sq.star em { font-size: calc(var(--B, 500px) * .035); color: #fff; }
+.ws-tile { position: absolute; inset: 4%; display: grid; place-items: center; border-radius: 12%; font-family: var(--num); font-weight: 400; font-size: calc(var(--B, 500px) * .038); color: #2a2320;
+  background: linear-gradient(160deg, #fffaf0, #eadfc6); box-shadow: 0 1px 2px rgba(0, 0, 0, .5), inset 0 -1px 0 rgba(120, 100, 60, .3); }
+.ws-tile sub { position: absolute; right: 9%; bottom: 4%; font-family: var(--ui); font-weight: 700; font-size: .36em; }
+.ws-tile.blank { color: #8a6d36; }
+.ws-tile.last { box-shadow: 0 0 0 2px #e3cf9f, 0 1px 2px rgba(0, 0, 0, .5); background: linear-gradient(160deg, #fff6dc, #ecdcb2); }
+.ws-tile.pending { background: linear-gradient(160deg, #f6e7b8, #d9c08a); box-shadow: 0 0 0 2px #2f7a4a; }
+.ws-side { width: 26vmin; display: flex; flex-direction: column; gap: 1.4vmin; }
+.ws-bag { margin: 0; font-family: var(--ui); font-size: 1.7vmin; letter-spacing: .08em; color: var(--gold-ink); }
+.ws-bag b { color: var(--ivory); font-family: var(--num); font-weight: 400; font-size: 1.4em; }
+.ws-log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5vmin; }
+.ws-log li { display: flex; align-items: center; gap: .7em; font-family: var(--display); font-weight: 600; font-size: 2.2vmin; color: var(--ivory); }
+.ws-log li i { width: 1.1vmin; height: 1.1vmin; border-radius: 50%; }
+.ws-log li b { margin-left: auto; font-family: var(--num); font-weight: 400; color: var(--champagne-hi); }
+.ws-now { margin: 0; font-family: var(--serif); font-style: italic; font-size: 2vmin; color: var(--ivory); }
+.ws-now b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+/* ---------- phone ---------- */
+body[data-game="wordsmith"] { background: linear-gradient(180deg, #2a231c, #0b0a08); }
+body[data-game="wordsmith"] #handWrap, body[data-game="wordsmith"] #handHint { display: none; }
+body[data-game="wordsmith"] #status { flex: none; min-height: 0; margin: 8px 0 6px; }
+#wsPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 0; overflow-y: auto; }
+#wsPhone > * { flex: none; }
+.ws-scroll { --B: min(94vw, 430px); overflow: auto; border-radius: 8px; }
+.ws-scroll .ws-board { width: var(--B); }
+.ws-scroll.zoom { --B: 760px; max-height: 58vh; }
+.ws-scroll .ws-sq em { font-size: 5px; }
+.ws-scroll.zoom .ws-sq em { font-size: 8px; }
+.ws-rack { display: flex; justify-content: center; gap: 5px; padding: 6px; border-radius: 10px; background: linear-gradient(180deg, #4a2f1b, #2c1b0f); --B: 640px; }
+.ws-rack button { position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; }
+.ws-rack button .ws-tile { inset: 0; font-size: 24px; }
+.ws-rack button.sel .ws-tile { box-shadow: 0 0 0 3px var(--champagne); transform: translateY(-4px); }
+.ws-rack button.used { opacity: .25; }
+.ws-letters { display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px; }
+.ws-letters button { padding: 8px 0; border-radius: 6px; border: 0; cursor: pointer; font-family: var(--num); font-size: 18px; background: var(--stock); color: #2a2320; }

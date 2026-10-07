@@ -331,6 +331,59 @@ card being weighed up floating beside it; phones show your grid big enough to ta
 `js/table-lowtide.js`, `js/play-lowtide.js`, `css/lowtide.css` (size variable `--lw`; `--w` belongs to
 Chef's Kiss).
 
+## Tic Tac Toe, Four Up, Seed Stones, Sonar
+Two-player games played as a match (best of 1/3/5/7), against a friend or the computer (Easy/Normal/Hard).
+Shared match logic is in `js/duel.js`. **Tic Tac Toe**: gold rings vs ivory diamonds on a slate board;
+perfect play on Hard. **Four Up** (four in a row): a walnut frame, champagne vs oxblood discs; alpha-beta
+search. **Seed Stones** (mancala, Kalah rules): six pits and a store each, capture into an empty pit,
+another turn when your last stone lands in your store; 3–6 stones per pit. **Sonar** (the fleet game):
+hide five ships on a 10×10 grid on your phone (shuffle or place), then ping the other player's waters;
+the table shows both radar screens. Computer: random / hunt-and-target / probability.
+
+## Milestones
+2–6 players. Ten stages of sets, runs and colour groups (the Phase 10 rules, with our own cards: four jewel
+colours, wilds and skips). Draw, lay down your stage (the phone works out the groups from the cards you
+pick), add to anyone's laid-down groups, discard. Skips make someone miss a turn. Code: `js/milestones.js`.
+
+## Wrong Number
+3–8 players. A party game of texts from unknown numbers (the New Phone, Who Dis? idea) with every prompt
+and reply written for us (`js/wrongnumber-cards.js`, 70 texts, ~175 replies). The Receiver picks the
+funniest anonymous reply; first to 3/5/7/10 points. One "new phone" (fresh hand) per player per game.
+
+## Scribble Chain
+3–8 players, no bots. Sketchbooks pass round the table: secret word, drawing, guess, drawing… (the
+Telestrations idea). Everyone works at once on their phone with a timer; the table then reveals each
+book page by page. With an even number of players the owner makes the final guess. Code: `js/scribble.js`.
+
+## Midnight Manor
+3–6 players. A deduction mystery (the Clue idea) with our own six suspects, six weapons and nine-room
+mansion. Move to a neighbouring room (or a corner passage), suggest, and the first player who can
+disproves privately on their phone; accuse to win (or be out). Each phone has a notebook that fills in
+your own and shown cards. Code: `js/manor.js`.
+
+## Warfront
+2–6 players. Territory and dice (the Risk idea) on our own island map: 30 hex territories in six regions
+joined by sea lanes. Reinforce (territories ÷ 3, region bonuses, supply-card sets), attack (3 dice v 2),
+move in, fortify once. Conquer everything or play to a round limit. Code: `js/warfront.js`.
+
+## Iron Routes
+2–5 players. Rail building (the Ticket to Ride idea) on our own country of 22 cities and 55 routes, with
+our own eight card colours plus engines. Two cards, claim a route, or draw tickets; routes score 1/2/4/7/10;
+tickets add or subtract at the end; longest line +10. Code: `js/ironroutes.js`.
+
+## Homestead
+2–4 players. Island settling (the Catan idea) with our own names: Timber, Clay, Fleece, Wheat, Stone;
+cabins, manors, roads; the Bandit; Ranger, Monument, Surveyors, Bounty and Embargo charters; Longest Road
+and Largest Patrol. Snake setup, 7s and discards, harbours 3:1 / 2:1, bank and player trades. Code:
+`js/homestead.js`.
+
+## Wordsmith
+2–4 players. A crossword tile game (the Scrabble idea) with our own board layout, letter values, tile
+counts and a +40 bonus for all seven tiles. Words are checked against an open-source English word list
+loaded by the table (`word-list` on jsDelivr, MIT); if it can't load, every word is accepted. The
+computer finds moves with an anchor/cross-check search. Phones: tap a tile, tap a square; Play, Recall,
+Shuffle, Swap, Pass, Zoom. Code: `js/wordsmith.js`.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
