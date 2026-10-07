@@ -289,6 +289,14 @@ the total. Any player still in can **Cash out** on their phone at any moment to 
 a pot that suits them, adjusted for the scoreboard and the rounds left. Code: `js/cashout.js`,
 `js/table-cashout.js`, `js/play-cashout.js`, `css/cashout.css`.
 
+## Crazy Eights
+2–8 players on dark teal baize (two decks for 6+). Match the top card by suit or rank; eights are wild —
+play one any time and call the next suit on your phone. Can't play? Draw one card and play it or pass
+(or turn on "Draw until you can play"). First out scores everyone else's cards: eights 50, pictures 10,
+aces 1, the rest face value. Play one hand or to 100/200. The table shows the stock, the discard pile and
+the suit in play printed large. Code: `js/crazy8.js`, `js/table-crazy8.js`, `js/play-crazy8.js`,
+`css/crazy8.css`.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.

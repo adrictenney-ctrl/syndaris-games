@@ -204,3 +204,13 @@ GAMES.cashout = {
   startLabel: 'Open the vault',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.crazy8 = {
+  id: 'crazy8',
+  name: 'Crazy Eights',
+  blurb: '2–8 players · match suit or rank, eights are wild',
+  min: 2,
+  max: 8,
+  startLabel: 'Deal the cards',
+  layout: GAMES.holdem.layout,
+};

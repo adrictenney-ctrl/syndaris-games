@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/spoons.css?v=44">
   <link rel="stylesheet" href="css/doubt.css?v=44">
   <link rel="stylesheet" href="css/cashout.css?v=44">
+  <link rel="stylesheet" href="css/crazy8.css?v=44">
   <style>
     html { background: var(--onyx); }
     body {
@@ -139,7 +140,7 @@
     .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
     .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
     .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; }
-    .t-spoons { --tint: #3d2818; } .t-doubt { --tint: #34182f; } .t-cashout { --tint: #24272d; }
+    .t-crazy8 { --tint: #17393b; } .t-spoons { --tint: #3d2818; } .t-doubt { --tint: #34182f; } .t-cashout { --tint: #24272d; }
     .spmini { display: flex; align-items: center; justify-content: center; }
     .spmini .spoon { --v: 9px; position: absolute; left: 50%; top: 50%; }
     .spmini .card { --cw: 58px; }
@@ -266,13 +267,13 @@
     import { dieHTML } from './js/table-yacht.js?v=44';
     import { SPOON_SVG } from './js/table-spoons.js?v=44';
 
-    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'spoons', 'doubt', 'chess', 'checkers', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'spoons', 'doubt', 'crazy8', 'chess', 'checkers', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
       euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', checkers: 'board',
-      backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice',
+      backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards',
     };
     const KIND_NAME = { all: 'All games', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
-    const NEW = new Set(['spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
+    const NEW = new Set(['crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
@@ -286,7 +287,7 @@
     if (onTV) { cat = 'all'; who = 'any'; }
 
     const art = {
-      blackjack: ['AS', 'KH'], baccarat: ['9D', '8C', '5S'], euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
+      blackjack: ['AS', 'KH'], crazy8: ['8S', '8H', '8D'], baccarat: ['9D', '8C', '5S'], euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
     };
     function artFor(id) {
       const fan = document.createElement('div');

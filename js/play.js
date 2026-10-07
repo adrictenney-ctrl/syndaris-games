@@ -21,8 +21,9 @@ import * as yachtUI from './play-yacht.js?v=44';
 import * as spoonsUI from './play-spoons.js?v=44';
 import * as doubtUI from './play-doubt.js?v=44';
 import * as cashoutUI from './play-cashout.js?v=44';
+import * as crazy8UI from './play-crazy8.js?v=44';
 
-const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI };
+const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI, crazy8: crazy8UI };
 const params = new URLSearchParams(location.search);
 
 let pid = null;

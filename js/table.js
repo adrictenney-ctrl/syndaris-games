@@ -21,8 +21,9 @@ import yacht from './table-yacht.js?v=44';
 import spoons from './table-spoons.js?v=44';
 import doubt from './table-doubt.js?v=44';
 import cashout from './table-cashout.js?v=44';
+import crazy8 from './table-crazy8.js?v=44';
 
-const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout };
+const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8 };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
