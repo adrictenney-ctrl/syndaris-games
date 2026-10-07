@@ -310,3 +310,13 @@ GAMES.scribble = {
   startLabel: 'Open the sketchbooks',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.manor = {
+  id: 'manor',
+  name: 'Midnight Manor',
+  blurb: '3–6 players · who did it, with what, and where?',
+  min: 3,
+  max: 6,
+  startLabel: 'Seal the envelope',
+  layout: GAMES.holdem.layout,
+};

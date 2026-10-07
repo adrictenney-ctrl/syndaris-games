@@ -1,9 +1,9 @@
 // Cash Out on the table: the pot in a brass-framed counter, the two dice, a track of the
 // rolls this round (the first three are safe — after that a 7 wipes the pot), and who has
 // already cashed out.
-import * as C from './cashout.js?v=51';
-import { snap } from './cards.js?v=51';
-import { dieHTML } from './table-yacht.js?v=51';
+import * as C from './cashout.js?v=52';
+import { snap } from './cards.js?v=52';
+import { dieHTML } from './table-yacht.js?v=52';
 
 let root = null, lastRoll = -1, potShown = 0, potAnim = 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

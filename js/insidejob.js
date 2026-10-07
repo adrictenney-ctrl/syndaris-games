@@ -4,7 +4,7 @@
 // from the middle or straight from another player. At the showdown, hands are revealed
 // from the lowest red chip to the highest: if they really go weakest to strongest, the vault
 // opens. Crack 3 vaults before 3 alarms go off.
-import { bestHand, describe, RANKS } from './poker.js?v=51';
+import { bestHand, describe, RANKS } from './poker.js?v=52';
 
 export const ROUNDS = ['white', 'yellow', 'orange', 'red'];
 export const ROUND_NAME = ['Before the flop', 'The flop', 'The turn', 'The river'];
