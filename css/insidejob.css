@@ -12,11 +12,12 @@
   box-shadow: 0 calc(var(--chip) * .06) 0 rgba(0, 0, 0, .35), 0 calc(var(--chip) * .1) calc(var(--chip) * .2) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--chip) * .03) rgba(0, 0, 0, .25);
   font-family: var(--num); color: var(--ink); user-select: none;
 }
-.pchip b { font-weight: 400; font-size: calc(var(--chip) * .3); letter-spacing: -.02em; line-height: 1; }
-.pchip.c-white { --c: #f3f0e7; --ink: #1d2a44; --edge: #31446b; }
-.pchip.c-yellow { --c: #f2c230; --ink: #3a2900; --edge: #8a6a00; }
-.pchip.c-orange { --c: #ee7a22; --ink: #fff; --edge: #8f3f06; }
-.pchip.c-red { --c: #cf2b2f; --ink: #fff; --edge: #6e0d10; }
+.pchip b { font-weight: 400; font-size: calc(var(--chip) * .32); letter-spacing: -.02em; line-height: 1; }
+.pchip.c-white { --c: #f3f0e7; --ink: #111; --edge: #31446b; }
+.pchip.c-yellow { --c: #f2c230; --ink: #111; --edge: #8a6a00; }
+.pchip.c-orange { --c: #ee7a22; --ink: #111; --edge: #8f3f06; }
+.pchip.c-red { --c: #cf2b2f; --ink: #111; --edge: #6e0d10; }
+.pchip.c-black { --c: #1c1a1f; --ink: #fff; --edge: #000; }
 .pchip.c-white:not(.empty) { background: radial-gradient(circle, var(--c) 0 54%, var(--edge) 55% 57%, transparent 58%), repeating-conic-gradient(var(--c) 0 22.5deg, #31446b 22.5deg 30deg, var(--c) 30deg 45deg); }
 .pchip.empty { background: none; box-shadow: none; border: 2px dashed rgba(255, 255, 255, .3); box-sizing: border-box; }
 .pchip[role="button"] { cursor: pointer; }

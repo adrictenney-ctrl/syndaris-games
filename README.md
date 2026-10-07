@@ -297,6 +297,26 @@ aces 1, the rest face value. Play one hand or to 100/200. The table shows the st
 the suit in play printed large. Code: `js/crazy8.js`, `js/table-crazy8.js`, `js/play-crazy8.js`,
 `css/crazy8.css`.
 
+## Skyline
+A property-trading board game with its own city, names, board and pieces (no borrowed names or art), and a
+**Prison** rather than a jail. 2–6 players sit at the two ends of the table so the board can fill the
+middle. The board is a loop of 36 squares, Payday in the top-left corner, clockwise: eight districts
+(Harbor Row, Old Mill, Garden Quarter, Lantern Lane, Museum Mile, The Exchange, Crown Heights, Summit
+Park), four metro stations, the Power Grid and Fiber Network, three Fortune squares, the City Levy, Prison,
+the Rooftop Garden and Go to Prison. Pieces: Anchor, Crown, Star, Moon, Lily, Knight, Sun, Gem.
+
+Rules: $200 for passing Payday; land on an unowned deed to buy it (no auctions); owning a whole district
+doubles bare rent and lets you raise up to four floors and then a tower, built evenly; stations charge
+25/50/100/200, utilities 4× or 10× the dice; three doubles in a row, Go to Prison or a Fortune card send
+you to Prison (roll doubles, pay $50, or use a pardon; on the third failed roll you pay and move).
+Mortgage for half the price, pay off for 55%. If you can't pay, you go into debt: sell floors or
+mortgage on your phone, or declare bankruptcy (your deeds go to whoever you owe). Trades: on your turn
+offer any mix of deeds and cash to another player; they accept or decline on their phone. Game length:
+20/30/45 rounds (richest by net worth wins) or until one is left. Bots buy sensibly, build with spare
+cash, get out of Prison early, raise money when in debt, and accept trades that are good for them (they
+won't hand you a district cheap); they never start trades. Code: `js/skyline.js`, `js/table-skyline.js`,
+`js/play-skyline.js`, `css/skyline.css`.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -331,7 +351,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=42; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=47; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)

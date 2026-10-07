@@ -214,3 +214,17 @@ GAMES.crazy8 = {
   startLabel: 'Deal the cards',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.skyline = {
+  id: 'skyline',
+  name: 'Skyline',
+  blurb: '2–6 players · buy the city, raise towers, collect rent',
+  min: 2,
+  max: 6,
+  startLabel: 'Open the city',
+  // Players sit at the two ends so the board can fill the table.
+  layout: [
+    S(0, 78, 1, 'Left, near'), S(0, 50, 1, 'Left, middle'), S(0, 22, 1, 'Left, far'),
+    S(100, 22, 3, 'Right, far'), S(100, 50, 3, 'Right, middle'), S(100, 78, 3, 'Right, near'),
+  ],
+};
