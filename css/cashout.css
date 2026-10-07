@@ -1,0 +1,67 @@
+/* Cash Out: a graphite vault, a brass-framed pot counter, ivory dice, a track of rolls. */
+body[data-game="cashout"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 210, 160, .08), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .012) 0 1px, transparent 1px 4px),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #23262c 0%, #17191d 55%, #0a0b0d 100%);
+}
+body[data-game="cashout"] #print, body[data-game="cashout"] .fan, body[data-game="cashout"] .sizer { display: none; }
+
+#cashout { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * 1.6); z-index: 2; }
+.co-round { margin: 0; font-family: var(--ui); font-size: calc(var(--v) * 1.5); font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-ink); }
+.co-round b { color: var(--ivory); }
+.co-vault {
+  position: relative; display: flex; flex-direction: column; align-items: center; min-width: calc(var(--v) * 40);
+  padding: calc(var(--v) * 1.6) calc(var(--v) * 4) calc(var(--v) * 2); border-radius: calc(var(--v) * 1.6);
+  background: radial-gradient(ellipse at 50% 0%, #2b2e35, #121418 75%);
+  box-shadow: 0 2.4vmin 5vmin rgba(0, 0, 0, .6), inset 0 0 0 .3vmin #8c7449, inset 0 0 0 .6vmin #15171b, inset 0 0 0 .75vmin rgba(205, 180, 135, .5);
+  transition: box-shadow .4s;
+}
+.co-vault small { font-family: var(--ui); font-size: calc(var(--v) * 1.4); font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-ink); }
+.co-pot { font-family: var(--num); font-weight: 400; font-size: calc(var(--v) * 11); line-height: 1; color: var(--champagne-hi); text-shadow: 0 0 4vmin rgba(227, 207, 159, .25); font-variant-numeric: tabular-nums; }
+.co-vault.danger { box-shadow: 0 2.4vmin 5vmin rgba(0, 0, 0, .6), inset 0 0 0 .3vmin #9a4a3e, inset 0 0 0 .6vmin #15171b, inset 0 0 0 .75vmin rgba(214, 120, 104, .55), 0 0 6vmin rgba(180, 60, 50, .18); }
+.co-vault.bust .co-pot { color: #c8776d; text-decoration: line-through; text-decoration-thickness: .3vmin; }
+.co-fx { position: absolute; right: calc(var(--v) * -3); top: calc(var(--v) * -2); font-family: var(--display); font-weight: 600; font-size: calc(var(--v) * 3.4); padding: .05em .5em .12em; border-radius: 99px; background: var(--stock); color: var(--paper-ink); box-shadow: 0 1vmin 2vmin rgba(0, 0, 0, .5); opacity: 0; transform: scale(.6) rotate(8deg); }
+.co-fx.show { animation: coFx .5s cubic-bezier(.2, .9, .3, 1.3) forwards; }
+.co-fx.big { background: var(--champagne); }
+.co-fx.dbl { background: #cdb487; color: #17130c; }
+.co-fx.bad { background: #8e2a33; color: #fff1ec; }
+@keyframes coFx { to { opacity: 1; transform: scale(1) rotate(8deg); } }
+.co-dice { display: flex; gap: calc(var(--v) * 2.4); --die: calc(var(--v) * 8); min-height: calc(var(--v) * 8); }
+.co-track { display: flex; gap: calc(var(--v) * .6); }
+.co-track i { display: grid; place-items: center; width: calc(var(--v) * 3); height: calc(var(--v) * 3); border-radius: 50%; font-style: normal; font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.2); color: rgba(239, 233, 220, .4); border: .14vmin solid rgba(205, 180, 135, .25); }
+.co-track i.safe { border-color: rgba(159, 196, 154, .45); }
+.co-track i.risk { border-color: rgba(212, 121, 111, .4); }
+.co-track i.done.safe { background: rgba(159, 196, 154, .3); color: var(--ivory); }
+.co-track i.done.risk { background: rgba(212, 121, 111, .32); color: var(--ivory); }
+.co-track i.next { box-shadow: 0 0 0 .3vmin var(--champagne); color: var(--ivory); }
+.co-msg { margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.1); color: var(--ivory); }
+.co-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.co-banked { display: flex; gap: calc(var(--v) * 1); flex-wrap: wrap; justify-content: center; max-width: calc(var(--v) * 60); min-height: calc(var(--v) * 3); }
+.co-banked span { display: inline-flex; align-items: center; gap: .5em; padding: .3em .8em; border-radius: 99px; background: rgba(205, 180, 135, .12); font-family: var(--ui); font-size: calc(var(--v) * 1.5); color: var(--ivory); }
+.co-banked i { width: .7em; height: .7em; border-radius: 50%; }
+.co-banked b { color: var(--champagne-hi); }
+
+/* ---------- phone ---------- */
+body[data-game="cashout"] { background: linear-gradient(180deg, #1c1e23, #0a0b0d); }
+body[data-game="cashout"] #board { display: flex; justify-content: center; }
+body[data-game="cashout"] #handWrap, body[data-game="cashout"] #handHint { display: none; }
+.co-phone { width: 100%; max-width: 420px; margin-top: 8px; padding: 16px 18px 12px; border-radius: 18px; text-align: center; background: radial-gradient(ellipse at 50% 0%, #2b2e35, #121418 80%); box-shadow: inset 0 0 0 2px #8c7449, inset 0 0 0 4px #15171b, inset 0 0 0 5px rgba(205, 180, 135, .45); }
+.co-phone small { font-family: var(--ui); font-size: 11px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-ink); }
+.co-phone > b { display: block; font-family: var(--num); font-weight: 400; font-size: 64px; line-height: 1.05; color: var(--champagne-hi); }
+.co-phone.danger { box-shadow: inset 0 0 0 2px #9a4a3e, inset 0 0 0 4px #15171b, inset 0 0 0 5px rgba(214, 120, 104, .5); }
+.co-phone.bust > b { color: #c8776d; text-decoration: line-through; }
+.co-pdice { display: flex; justify-content: center; align-items: center; gap: 10px; --die: 42px; min-height: 46px; }
+.co-pdice em { font-style: normal; font-family: var(--display); font-weight: 600; font-size: 22px; color: var(--champagne-hi); margin-left: 6px; }
+.co-pdice em.bad { color: #e6a198; }
+.co-phone p { margin: 6px 0 0; font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--gold-ink); }
+.co-bank {
+  width: 100%; padding: 22px 18px; border: 0; border-radius: 18px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 2px; color: #17130c;
+  background: linear-gradient(180deg, var(--champagne-hi), var(--champagne) 60%, #b89c6c);
+  box-shadow: 0 12px 30px rgba(205, 180, 135, .18), 0 4px 10px rgba(0, 0, 0, .45);
+}
+.co-bank span { font-family: var(--ui); font-size: 22px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.co-bank small { font-family: var(--ui); font-size: 12.5px; font-weight: 600; letter-spacing: .06em; }
+.co-bank:active { transform: scale(.98); }
+.co-bank:disabled { opacity: .45; }

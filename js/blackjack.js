@@ -4,7 +4,7 @@
 // dealer stands or hits on soft 17 (setting), double on any two cards, double after
 // split, split up to four hands (split Aces get one card each), late surrender
 // (setting), insurance pays 2:1.
-import { makeShoe, syncStacks } from './casino.js?v=42';
+import { makeShoe, syncStacks } from './casino.js?v=44';
 
 const rnd = n => Math.floor(Math.random() * n);
 let annN = 0;

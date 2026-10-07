@@ -2,7 +2,7 @@
 // Recipe Card (the prompt). Everyone else is an Apprentice and plays the Ingredient Card
 // from their hand that they think pairs best with it. The Chef must award exactly one
 // Chef's Kiss (1 point). The Chef role then passes to the left.
-import { DECKS } from './chefskiss-cards.js?v=42';
+import { DECKS } from './chefskiss-cards.js?v=44';
 
 export const HAND = 5;          // Ingredient Cards per Apprentice
 export const RECIPES = 3;       // Recipe Cards to choose from

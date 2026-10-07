@@ -13,14 +13,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=42">
-  <link rel="stylesheet" href="css/chefskiss.css?v=42">
-  <link rel="stylesheet" href="css/insidejob.css?v=42">
-  <link rel="stylesheet" href="css/crown.css?v=42">
-  <link rel="stylesheet" href="css/hollow.css?v=42">
-  <link rel="stylesheet" href="css/casino.css?v=42">
-  <link rel="stylesheet" href="css/checkers.css?v=42">
-  <link rel="stylesheet" href="css/yacht.css?v=42">
+  <link rel="stylesheet" href="css/cards.css?v=44">
+  <link rel="stylesheet" href="css/chefskiss.css?v=44">
+  <link rel="stylesheet" href="css/insidejob.css?v=44">
+  <link rel="stylesheet" href="css/crown.css?v=44">
+  <link rel="stylesheet" href="css/hollow.css?v=44">
+  <link rel="stylesheet" href="css/casino.css?v=44">
+  <link rel="stylesheet" href="css/checkers.css?v=44">
+  <link rel="stylesheet" href="css/yacht.css?v=44">
+  <link rel="stylesheet" href="css/spoons.css?v=44">
+  <link rel="stylesheet" href="css/doubt.css?v=44">
+  <link rel="stylesheet" href="css/cashout.css?v=44">
   <style>
     html { background: var(--onyx); }
     body {
@@ -136,6 +139,13 @@
     .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
     .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
     .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; }
+    .t-spoons { --tint: #3d2818; } .t-doubt { --tint: #34182f; } .t-cashout { --tint: #24272d; }
+    .spmini { display: flex; align-items: center; justify-content: center; }
+    .spmini .spoon { --v: 9px; position: absolute; left: 50%; top: 50%; }
+    .spmini .card { --cw: 58px; }
+    .comini { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; --die: 40px; }
+    .comini b { font-family: var(--num); font-weight: 400; font-size: 34px; line-height: 1; color: var(--champagne-hi); padding: 2px 16px; border-radius: 10px; background: #121418; box-shadow: inset 0 0 0 2px #8c7449, 0 8px 18px rgba(0, 0, 0, .5); }
+    .comini div { display: flex; gap: 10px; }
 
     /* Each game's little still life */
     .bgmini { width: 170px !important; height: 104px !important; background: radial-gradient(ellipse, #22553c, #163f2b); border: 6px solid #4a2a17; border-radius: 4px; box-shadow: 0 0 0 1px rgba(205, 180, 135, .35), 0 14px 26px rgba(0, 0, 0, .55); overflow: hidden; }
@@ -247,21 +257,22 @@
     </div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=42"></script>
+  <script type="module" src="js/tvnav.js?v=44"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=42';
-    import { cardEl } from './js/cards.js?v=42';
-    import { face } from './js/ck-face.js?v=42';
-    import { edict } from './js/table-crown.js?v=42';
-    import { dieHTML } from './js/table-yacht.js?v=42';
+    import { GAMES } from './js/games.js?v=44';
+    import { cardEl } from './js/cards.js?v=44';
+    import { face } from './js/ck-face.js?v=44';
+    import { edict } from './js/table-crown.js?v=44';
+    import { dieHTML } from './js/table-yacht.js?v=44';
+    import { SPOON_SVG } from './js/table-spoons.js?v=44';
 
-    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'yacht', 'chess', 'checkers', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'spoons', 'doubt', 'chess', 'checkers', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
       euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', checkers: 'board',
-      backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards',
+      backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice',
     };
     const KIND_NAME = { all: 'All games', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
-    const NEW = new Set(['yacht', 'checkers']);
+    const NEW = new Set(['spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
@@ -289,6 +300,15 @@
         const pc = (c, x, y, k) => `<span class="drp ${c}${k ? ' king' : ''}" style="left:${x}px;top:${y}px"><b class="dcrown">${k ? '♛︎' : ''}</b></span>`;
         fan.innerHTML = pc('d', 12.5, 12.5) + pc('l', 37.5, 37.5) + pc('d', 87.5, 87.5, true) + pc('l', 112.5, 12.5) + pc('d', 62.5, 62.5);
       }
+      else if (id === 'spoons') {
+        fan.className = 'cards spmini';
+        fan.innerHTML = [-42, -14, 14, 42].map((a, i) => `<div class="spoon" style="transform: translate(-50%, -50%) rotate(${a}deg) translateY(-6px)">${SPOON_SVG}</div>`).join('');
+        ['7S', '7H', '7D', '7C'].forEach((c, i) => { const el = cardEl(c); el.style.position = 'absolute'; el.style.left = '50%'; el.style.top = '50%'; el.style.transform = `translate(-50%, -30%) translateX(${(i - 1.5) * 22}px) rotate(${(i - 1.5) * 8}deg)`; fan.appendChild(el); });
+      }
+      else if (id === 'doubt') {
+        [null, null, null, 'QS'].forEach((c, i) => { const el = c ? cardEl(c) : cardEl(null, true); el.style.transform = `translate(-50%, -50%) translateX(${(i - 1.5) * 30}px) rotate(${(i - 1.5) * 11 + (i === 3 ? 6 : 0)}deg) translateY(${i === 3 ? -10 : Math.abs(i - 1.5) * 5}px)`; fan.appendChild(el); });
+      }
+      else if (id === 'cashout') { fan.className = 'cards comini'; fan.innerHTML = `<b>1,240</b><div>${dieHTML(5)}${dieHTML(5)}</div>`; }
       else if (id === 'yacht') { fan.className = 'cards ycmini'; fan.innerHTML = dieHTML(6) + dieHTML(6) + dieHTML(6); }
       else if (id === 'hollow') { fan.className = 'cards hmmini'; fan.innerHTML = '<span>🏮</span><span>🌙</span><span>🏮</span>'; }
       else if (id === 'insidejob') { fan.className = 'cards ijmini'; fan.innerHTML = '<span class="pchip c-white"><b>100</b></span><span class="pchip c-yellow"><b>200</b></span><span class="pchip c-orange"><b>300</b></span><span class="pchip c-red"><b>400</b></span>'; }

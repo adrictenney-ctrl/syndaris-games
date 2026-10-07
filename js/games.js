@@ -174,3 +174,33 @@ GAMES.yacht = {
   startLabel: 'Open the score card',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.spoons = {
+  id: 'spoons',
+  name: 'Spoons',
+  blurb: '3–8 players · four of a kind, then grab a spoon',
+  min: 3,
+  max: 8,
+  startLabel: 'Deal the cards',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.doubt = {
+  id: 'doubt',
+  name: 'I Doubt It',
+  blurb: '3–6 players · lay cards face down, lie, call the bluff',
+  min: 3,
+  max: 6,
+  startLabel: 'Deal the cards',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.cashout = {
+  id: 'cashout',
+  name: 'Cash Out',
+  blurb: '2–8 players · roll for the pot, cash out before the 7',
+  min: 2,
+  max: 8,
+  startLabel: 'Open the vault',
+  layout: GAMES.holdem.layout,
+};

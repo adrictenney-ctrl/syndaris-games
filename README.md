@@ -261,6 +261,34 @@ player's possible scores pencilled in. Bots choose which dice to keep by simulat
 average about 230 points. Code: `js/yacht.js`, `js/table-yacht.js`, `js/play-yacht.js`, `css/yacht.css`
 (dice use the `ydie` class; `die` belongs to Backgammon).
 
+## Spoons
+3–8 players, all playing at once on a dark oak table. Everyone holds four cards. The dealer looks at cards
+off the deck; each card you look at, you either keep (tap one of yours to swap it out — yours goes to the
+player on your left) or pass it straight on. The last player's passes go to the discard, which is
+reshuffled when the deck runs out. Four of a kind? Hit **Grab a spoon** on your phone. The spoons sit in
+a ring on the table (one fewer than players) and slide to whoever takes them — once one goes, everyone
+can grab. The player left without one takes a letter (S-P-O-O-N); spell it and you're out. Grabbing
+before anyone has four of a kind costs a letter. Bots tick every 0.8 s and switch ranks if they stall.
+Code: `js/spoons.js`, `js/table-spoons.js`, `js/play-spoons.js`, `css/spoons.css`.
+
+## I Doubt It
+Also called Cheat. 3–6 players on plum baize. The whole deck is dealt. On your turn, pick 1–4 cards on
+your phone and lay them face down as the rank that's up (Aces, Twos … Kings, round again) — true or not.
+Everyone else gets a big **I doubt it!** button with a countdown (4/6/8/10 s, a table setting). If the
+claim was a lie the player who laid them picks up the pile; if it was true, the doubter does. The cards
+are turned over on the table for everyone to see. First to empty their hand and survive the doubt wins.
+Bots tell the truth when they can, bluff with cards that won't be needed soon, and doubt impossible or
+suspicious claims. Code: `js/doubt.js`, `js/table-doubt.js`, `js/play-doubt.js`, `css/doubt.css`.
+
+## Cash Out
+A push-your-luck dice game with the same rules as BANK! (by ThunderHive Games), under its own name and
+look. 2–8 players, 10/15/20 rounds, on a graphite vault table. Each round the pot starts at zero and
+players take turns rolling two dice. Rolls 1–3 are safe: a 7 adds 70, anything else adds the total. From
+roll 4 on, a 7 ends the round (anyone still in gets nothing), doubles double the pot, anything else adds
+the total. Any player still in can **Cash out** on their phone at any moment to bank the pot. Bots bank at
+a pot that suits them, adjusted for the scoreboard and the rounds left. Code: `js/cashout.js`,
+`js/table-cashout.js`, `js/play-cashout.js`, `css/cashout.css`.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.

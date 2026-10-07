@@ -1,5 +1,5 @@
 // Shared bits for the phone screens: toasts, the scoreboard header, and the hand of cards.
-import { cardEl, setFace } from './cards.js?v=42';
+import { cardEl, setFace } from './cards.js?v=44';
 
 export const $ = s => document.querySelector(s);
 
@@ -58,6 +58,8 @@ export function layoutHand() {
   const avail = Math.min(el.parentElement.clientWidth - 16, 760);
   const spread = n <= 2 ? 0.92 : 0.82;
   const step = n > 1 ? Math.min(cw * spread, (avail - cw) / (n - 1)) : 0;
+  // Big hands fan flatter so the ends don't curl off the screen.
+  const flat = Math.min(1, 8 / n);
   el.style.width = `${cw + step * (n - 1)}px`;
   cards.forEach((ce, i) => {
     const off = i - (n - 1) / 2;
@@ -67,7 +69,7 @@ export function layoutHand() {
     ce.style.bottom = '0';
     ce.style.left = `${i * step}px`;
     ce.style.zIndex = String(i + 1);
-    ce.style.transform = `translateY(${off * off * 3 - (isSel ? 30 : 0)}px) rotate(${off * (n <= 2 ? 6 : 4)}deg)`;
+    ce.style.transform = `translateY(${off * off * 3 * flat * flat - (isSel ? 30 : 0)}px) rotate(${off * (n <= 2 ? 6 : 4) * flat}deg)`;
     ce.classList.toggle('sel', isSel);
     ce.classList.toggle('dim', !!opts.dim && opts.dim.includes(c));
   });
