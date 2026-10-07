@@ -299,3 +299,14 @@ GAMES.wrongnumber = {
   startLabel: 'Start texting',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.scribble = {
+  id: 'scribble',
+  name: 'Scribble Chain',
+  blurb: '3–8 players · draw, guess, pass it on',
+  min: 3,
+  max: 8,
+  noBots: true,   // bots can't draw
+  startLabel: 'Open the sketchbooks',
+  layout: GAMES.holdem.layout,
+};
