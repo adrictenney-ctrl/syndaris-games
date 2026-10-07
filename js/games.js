@@ -269,3 +269,13 @@ GAMES.seedstones = {
   startLabel: 'Start the game',
   layout: GAMES.chess.layout,
 };
+
+GAMES.sonar = {
+  id: 'sonar',
+  name: 'Sonar',
+  blurb: '2 players · hide your fleet, ping theirs',
+  min: 2,
+  max: 2,
+  startLabel: 'Hide the fleets',
+  layout: GAMES.chess.layout,
+};

@@ -1,0 +1,58 @@
+/* Sonar: two radar screens in deep teal glass, pings in sea-green and coral. */
+body[data-game="sonar"] #felt {
+  --seat-w: min(26vmin, 280px); --seat-h: 20vmin;
+  background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(160, 230, 220, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #12282c 0%, #0b1a1d 55%, #040a0b 100%);
+}
+body[data-game="sonar"] #print, body[data-game="sonar"] .fan, body[data-game="sonar"] .sizer { display: none; }
+body[data-game="sonar"] .meta { flex-direction: column; gap: .5vmin; }
+.so-left { font-family: var(--ui); font-size: .85em; letter-spacing: .06em; }
+
+#sonar { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 1.8vmin; z-index: 2; }
+.so-score { margin: 0; font-family: var(--ui); font-size: 1.6vmin; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); }
+.so-screens { display: flex; gap: 4vmin; }
+.so-screen { display: flex; flex-direction: column; align-items: center; gap: 1vmin; }
+.so-screen h4 { margin: 0; display: flex; align-items: center; gap: .6em; font-family: var(--display); font-weight: 600; font-size: 2.6vmin; color: var(--ivory); }
+.so-screen h4 i { width: 1.4vmin; height: 1.4vmin; border-radius: 50%; }
+.so-screen p { margin: 0; font-family: var(--ui); font-size: 1.4vmin; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); }
+.so-screen .so-grid { width: var(--G, 300px); }
+.so-screen.target .so-grid { box-shadow: 0 0 0 .3vmin rgba(227, 207, 159, .8), 0 2vmin 5vmin rgba(0, 0, 0, .6), 0 0 4vmin rgba(120, 220, 200, .15); }
+.so-msg { margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: 2.2vmin; color: var(--ivory); }
+.so-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+.so-grid {
+  position: relative; display: grid; grid-template-columns: repeat(10, 1fr); aspect-ratio: 1; padding: 1.2%; gap: 1px; border-radius: 3%; overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #0f3a3a, #082224 70%);
+  box-shadow: 0 2vmin 5vmin rgba(0, 0, 0, .6), inset 0 0 0 .2vmin rgba(120, 220, 200, .35);
+}
+/* The sweep: a slow rotating beam over the screen. */
+.so-grid::before { content: ''; position: absolute; inset: -20%; background: conic-gradient(from 0deg, rgba(120, 230, 200, .14), transparent 18%); animation: soSweep 6s linear infinite; pointer-events: none; }
+@keyframes soSweep { to { transform: rotate(360deg); } }
+.so-grid::after { content: ''; position: absolute; inset: 0; background: repeating-radial-gradient(circle at 50% 50%, transparent 0 18%, rgba(120, 220, 200, .08) 18% 18.4%); pointer-events: none; }
+.so-c { position: relative; display: block; aspect-ratio: 1; background: rgba(120, 220, 200, .05); font-style: normal; }
+.so-c.ship { background: linear-gradient(180deg, #8b98a3, #58646e); }
+.so-c.ship.h.bow { border-radius: 50% 10% 10% 50%; } .so-c.ship.h.stern { border-radius: 10% 40% 40% 10%; }
+.so-c.ship.v.bow { border-radius: 50% 50% 10% 10%; } .so-c.ship.v.stern { border-radius: 10% 10% 40% 40%; }
+.so-c.miss::after { content: ''; position: absolute; inset: 36%; border-radius: 50%; background: rgba(170, 230, 220, .65); }
+.so-c.hit { background: radial-gradient(circle, #f08a6e 0 30%, #b84330 60%, #5a1a12); }
+.so-c.ship.hit { background: radial-gradient(circle, #ffb08f 0 25%, #c4472f 55%, #50626b); }
+.so-c.last { box-shadow: 0 0 0 .25vmin #f1dfb2; z-index: 1; }
+.so-c.pick { cursor: crosshair; }
+.so-c.pick:hover { background: rgba(227, 207, 159, .25); }
+
+/* ---------- phone ---------- */
+body[data-game="sonar"] { background: linear-gradient(180deg, #10272a, #040a0b); }
+body[data-game="sonar"] #handWrap, body[data-game="sonar"] #handHint { display: none; }
+body[data-game="sonar"] #status { min-height: 0; margin: 8px 0 4px; }
+body[data-game="sonar"] #status { flex: none; }
+#soPhone { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-height: 0; overflow-y: auto; padding-bottom: 8px; }
+#soPhone > * { flex: none; }
+#soPhone .so-grid { width: min(92vw, 380px); }
+#soPhone .so-c.last { box-shadow: 0 0 0 2px #f1dfb2; }
+#soPhone .so-small .so-grid { width: min(52vw, 210px); }
+#soPhone .place .so-c { cursor: pointer; }
+#soPhone .place.locked { opacity: .75; }
+.so-ships { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 6px; }
+.so-ships button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 10px; border-radius: 10px; cursor: pointer; font-family: var(--ui); font-size: 12.5px; font-weight: 700; color: var(--ivory); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); }
+.so-ships button small { font-size: 8px; letter-spacing: 1px; color: #8b98a3; }
+.so-ships button.on { color: #17130c; background: var(--champagne); border-color: var(--champagne); }
+.so-ships button.on small { color: #3a3226; }

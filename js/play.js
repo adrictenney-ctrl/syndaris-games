@@ -27,8 +27,9 @@ import * as lowtideUI from './play-lowtide.js?v=50';
 import * as trioUI from './play-trio.js?v=50';
 import * as fourupUI from './play-fourup.js?v=50';
 import * as seedstonesUI from './play-seedstones.js?v=50';
+import * as sonarUI from './play-sonar.js?v=50';
 
-const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI, crazy8: crazy8UI, skyline: skylineUI, lowtide: lowtideUI, trio: trioUI, fourup: fourupUI, seedstones: seedstonesUI };
+const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI, crazy8: crazy8UI, skyline: skylineUI, lowtide: lowtideUI, trio: trioUI, fourup: fourupUI, seedstones: seedstonesUI, sonar: sonarUI };
 const params = new URLSearchParams(location.search);
 
 let pid = null;
