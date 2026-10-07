@@ -1,27 +1,27 @@
 // Skyline on a player's phone: your turn's buttons (roll, buy, end turn, bail…), the deed for
 // the square you're on, your own deeds (raise floors, sell, mortgage, pay off), and trades.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=48';
-import { BOARD, DISTRICTS, PIECES, groupOf, canBuild, canSell, canMortgage, unmortgageCost } from './skyline.js?v=48';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=50';
+import { BOARD, DISTRICTS, PIECES, groupOf, canBuild, canSell, canMortgage, unmortgageCost } from './skyline.js?v=50';
 
 let ctx = null, panelKey = '', wasMyTurn = false;
 let trading = null;   // { to, give:Set, get:Set, giveCash, getCash } while building an offer
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const money = n => `$${Number(n).toLocaleString()}`;
 
-export function reset() { panelKey = ''; trading = null; document.getElementById('skPhone')?.remove(); }
+export function reset() { panelKey = ''; trading = null; document.getElementById('slPhone')?.remove(); }
 
 export function renderLobby(c) {
   const p = PIECES[c.st.you % PIECES.length];
   $('#whoami').innerHTML = `<i style="background:var(--seat-${c.st.you})"></i>${c.nameOf(c.st.you)} · plays the ${p.name} ${p.glyph}`;
   setHud('#hudL', null); setHud('#hudR', null); setHud('#hudC', null);
-  document.getElementById('skPhone')?.remove();
+  document.getElementById('slPhone')?.remove();
 }
 
 function el() {
-  let e = document.getElementById('skPhone');
+  let e = document.getElementById('slPhone');
   if (!e) {
     e = document.createElement('div');
-    e.id = 'skPhone';
+    e.id = 'slPhone';
     e.addEventListener('click', onClick);
     $('#status').after(e);
   }
@@ -33,22 +33,22 @@ const asGame = g => ({ ...g, cash: g.cash, owner: g.owner, level: g.level, mortg
 
 function deed(i, g) {
   const t = BOARD[i];
-  if (!['lot', 'metro', 'utility'].includes(t.kind)) return `<div class="sk-deed plain"><b>${esc(t.name)}</b><small>${{ payday: 'Collect $200 each time you pass', prison: g.inPrison[ctx.st.you] ? 'Roll doubles, pay $50 or use a pardon' : 'Just visiting', garden: 'Nothing happens here', fortune: 'Draw a Fortune card', tax: `Pay $${t.amount}`, arrest: 'Go straight to Prison' }[t.kind] || ''}</small></div>`;
+  if (!['lot', 'metro', 'utility'].includes(t.kind)) return `<div class="sl-deed plain"><b>${esc(t.name)}</b><small>${{ payday: 'Collect $200 each time you pass', prison: g.inPrison[ctx.st.you] ? 'Roll doubles, pay $50 or use a pardon' : 'Just visiting', garden: 'Nothing happens here', fortune: 'Draw a Fortune card', tax: `Pay $${t.amount}`, arrest: 'Go straight to Prison' }[t.kind] || ''}</small></div>`;
   const o = g.owner[i];
   const head = t.kind === 'lot' ? `style="background:${DISTRICTS[t.d].color}"` : '';
   let rows = '';
   if (t.kind === 'lot') rows = ['Rent', 'With 1 floor', '2 floors', '3 floors', '4 floors', 'With a tower'].map((l, k) => `<li class="${g.level[i] === k && o != null ? 'cur' : ''}"><span>${l}</span><b>${money(t.rent[k])}</b></li>`).join('') + `<li class="note"><span>Whole district doubles bare rent · floors ${money(DISTRICTS[t.d].build)} each</span></li>`;
   else if (t.kind === 'metro') rows = [1, 2, 3, 4].map(n => `<li><span>${n} station${n > 1 ? 's' : ''}</span><b>${money(25 * 2 ** (n - 1))}</b></li>`).join('');
   else rows = '<li><span>One utility</span><b>4 × dice</b></li><li><span>Both utilities</span><b>10 × dice</b></li>';
-  return `<div class="sk-deed"><header ${head}><small>${t.kind === 'lot' ? DISTRICTS[t.d].name : t.kind === 'metro' ? 'Metro station' : 'Utility'}</small><b>${esc(t.name)}</b></header>
+  return `<div class="sl-deed"><header ${head}><small>${t.kind === 'lot' ? DISTRICTS[t.d].name : t.kind === 'metro' ? 'Metro station' : 'Utility'}</small><b>${esc(t.name)}</b></header>
     <ul>${rows}</ul><footer>${o == null ? `For sale · ${money(t.price)}` : `Owned by ${o === ctx.st.you ? 'you' : esc(ctx.nameOf(o))}${g.mortgaged[i] ? ' · mortgaged' : ''}`}</footer></div>`;
 }
 
 function myDeeds(g, you) {
   const G = asGame(g);
   const mine = BOARD.map((_, i) => i).filter(i => g.owner[i] === you);
-  if (!mine.length) return '<p class="sk-none">No deeds yet — buy what you land on.</p>';
-  return `<ul class="sk-deeds">${mine.map(i => {
+  if (!mine.length) return '<p class="sl-none">No deeds yet — buy what you land on.</p>';
+  return `<ul class="sl-deeds">${mine.map(i => {
     const t = BOARD[i];
     const color = t.kind === 'lot' ? DISTRICTS[t.d].color : t.kind === 'metro' ? '#8b8f96' : '#a6946b';
     const lv = g.level[i] === 5 ? '<em class="tower">tower</em>' : g.level[i] ? `<em>${g.level[i]} floor${g.level[i] > 1 ? 's' : ''}</em>` : '';
@@ -68,12 +68,12 @@ function tradeBuilder(g, you) {
   const list = (owner, set, key) => BOARD.map((_, i) => i).filter(i => g.owner[i] === owner && canGive(i)).map(i => {
     const b = BOARD[i], color = b.kind === 'lot' ? DISTRICTS[b.d].color : '#8b8f96';
     return `<label class="${set.has(i) ? 'on' : ''}"><input type="checkbox" data-${key}="${i}" ${set.has(i) ? 'checked' : ''}><i style="background:${color}"></i>${esc(b.name)}</label>`;
-  }).join('') || '<p class="sk-none">Nothing to trade</p>';
-  const step = (key, max) => `<div class="sk-cash"><button data-c="${key}" data-d="-50">−</button><b>${money(t[key])}</b><button data-c="${key}" data-d="50" ${t[key] + 50 > max ? 'disabled' : ''}>+</button></div>`;
-  return `<div class="sk-trade">
+  }).join('') || '<p class="sl-none">Nothing to trade</p>';
+  const step = (key, max) => `<div class="sl-cash"><button data-c="${key}" data-d="-50">−</button><b>${money(t[key])}</b><button data-c="${key}" data-d="50" ${t[key] + 50 > max ? 'disabled' : ''}>+</button></div>`;
+  return `<div class="sl-trade">
     <p class="pick">Trade with</p>
     <div class="row">${others.map(s => `<button class="panel-btn who ${s === t.to ? 'on' : ''}" data-to="${s}">${esc(ctx.nameOf(s))}</button>`).join('')}</div>
-    ${t.to == null ? '' : `<div class="sk-cols">
+    ${t.to == null ? '' : `<div class="sl-cols">
       <div><p class="pick">You give</p>${list(you, t.give, 'give')}${step('giveCash', g.cash[you])}</div>
       <div><p class="pick">You get</p>${list(t.to, t.get, 'get')}${step('getCash', g.cash[t.to])}</div>
     </div>`}
@@ -87,7 +87,7 @@ function offerCard(g, you) {
   const mine = t.to === you;
   const giveSide = [t.give.length ? names(t.give) : '', t.giveCash ? money(t.giveCash) : ''].filter(Boolean).join(' + ') || 'nothing';
   const getSide = [t.get.length ? names(t.get) : '', t.getCash ? money(t.getCash) : ''].filter(Boolean).join(' + ') || 'nothing';
-  return `<div class="sk-offer"><p class="pick">${mine ? `${esc(ctx.nameOf(t.from))} offers you` : `Your offer to ${esc(ctx.nameOf(t.to))}`}</p>
+  return `<div class="sl-offer"><p class="pick">${mine ? `${esc(ctx.nameOf(t.from))} offers you` : `Your offer to ${esc(ctx.nameOf(t.to))}`}</p>
     <p><b>${mine ? 'You get' : 'You give'}:</b> ${giveSide}</p><p><b>${mine ? 'You give' : 'You get'}:</b> ${getSide}</p>
     <div class="row">${mine ? '<button class="panel-btn fold" data-x="decline">Decline</button><button class="panel-btn go" data-x="accept">Accept</button>' : '<button class="panel-btn" data-x="cancel">Withdraw offer</button>'}</div></div>`;
 }
@@ -162,11 +162,11 @@ export function render(c) {
   // Deed, offers, trade builder, your deeds
   const box = el();
   let html = '';
-  if (g.card && g.card.seat === you && me) html += `<div class="sk-fortune"><small>Fortune</small><p>${esc(g.card.text)}</p></div>`;
+  if (g.card && g.card.seat === you && me) html += `<div class="sl-fortune"><small>Fortune</small><p>${esc(g.card.text)}</p></div>`;
   if (g.trade && (g.trade.to === you || g.trade.from === you)) html += offerCard(g, you);
   else if (trading) html += tradeBuilder(g, you);
   else if (!g.broke[you]) html += deed(g.pos[you], g);
-  html += `<p class="pick sk-h">Your deeds</p>${myDeeds(g, you)}`;
+  html += `<p class="pick sl-h">Your deeds</p>${myDeeds(g, you)}`;
   box.innerHTML = html;
 
   renderHand([]);

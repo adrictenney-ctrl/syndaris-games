@@ -238,3 +238,34 @@ GAMES.lowtide = {
   startLabel: 'Deal the grids',
   layout: GAMES.holdem.layout,
 };
+
+// Quick two-player games share the chess seats (the two ends of the board).
+GAMES.trio = {
+  id: 'trio',
+  name: 'Tic Tac Toe',
+  blurb: '2 players · or play the computer',
+  min: 2,
+  max: 2,
+  startLabel: 'Start the match',
+  layout: GAMES.chess.layout,
+};
+
+GAMES.fourup = {
+  id: 'fourup',
+  name: 'Four Up',
+  blurb: '2 players · drop discs, line up four',
+  min: 2,
+  max: 2,
+  startLabel: 'Start the match',
+  layout: GAMES.chess.layout,
+};
+
+GAMES.seedstones = {
+  id: 'seedstones',
+  name: 'Seed Stones',
+  blurb: '2 players · sow, capture, fill your store',
+  min: 2,
+  max: 2,
+  startLabel: 'Start the game',
+  layout: GAMES.chess.layout,
+};

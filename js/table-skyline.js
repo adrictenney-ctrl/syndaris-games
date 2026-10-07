@@ -2,9 +2,9 @@
 // Payday is the top-left corner and play runs clockwise. Each lot carries its district's
 // colour as a ribbon on the inside edge, the owner's colour as a flag, and its floors.
 // The centre of the board shows the skyline, the dice, the latest Fortune card and news.
-import * as K from './skyline.js?v=48';
-import { snap } from './cards.js?v=48';
-import { dieHTML } from './table-yacht.js?v=48';
+import * as K from './skyline.js?v=50';
+import { snap } from './cards.js?v=50';
+import { dieHTML } from './table-yacht.js?v=50';
 
 let root = null, tokenAt = {}, hopTimers = {}, lastRoll = -1, lastCard = 0, B = 0, U = 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -42,11 +42,11 @@ function tileHTML(i) {
   if (sd < 0) {
     const icon = { payday: '✦', prison: '▦', garden: '❀', arrest: '➚' }[t.kind];
     const sub = { payday: 'Collect $200 as you pass', prison: 'Just visiting', garden: 'Take a breather', arrest: 'Straight to Prison' }[t.kind];
-    return `<div class="sk-tile corner k-${t.kind}" data-i="${i}" style="grid-area:${cell(i)[0]}/${cell(i)[1]}"><i>${icon}</i><b>${t.name}</b><small>${sub}</small></div>`;
+    return `<div class="sl-tile corner k-${t.kind}" data-i="${i}" style="grid-area:${cell(i)[0]}/${cell(i)[1]}"><i>${icon}</i><b>${t.name}</b><small>${sub}</small></div>`;
   }
   const ribbon = t.kind === 'lot' ? `<span class="rib" style="background:${K.DISTRICTS[t.d].color}"></span>` : '';
   const icon = { metro: '◉', utility: t.name.startsWith('Power') ? 'ϟ' : '⌁', fortune: '?', tax: '§' }[t.kind] || '';
-  return `<div class="sk-tile s${sd} k-${t.kind}" data-i="${i}" style="grid-area:${cell(i)[0]}/${cell(i)[1]}">${ribbon}
+  return `<div class="sl-tile s${sd} k-${t.kind}" data-i="${i}" style="grid-area:${cell(i)[0]}/${cell(i)[1]}">${ribbon}
     ${icon ? `<i>${icon}</i>` : ''}<b>${esc(t.name)}</b>${t.price ? `<small>$${t.price}</small>` : t.amount ? `<small>Pay $${t.amount}</small>` : ''}
     <span class="own"></span><span class="lv"></span></div>`;
 }
@@ -54,16 +54,16 @@ function tileHTML(i) {
 function build() {
   root = document.createElement('div');
   root.id = 'skyline';
-  root.innerHTML = `<div class="sk-board">${K.BOARD.map((_, i) => tileHTML(i)).join('')}
-    <div class="sk-mid">
-      <div class="sk-art">${SKYLINE_SVG}</div>
+  root.innerHTML = `<div class="sl-board">${K.BOARD.map((_, i) => tileHTML(i)).join('')}
+    <div class="sl-mid">
+      <div class="sl-art">${SKYLINE_SVG}</div>
       <h2>SKYLINE</h2>
-      <div class="sk-dice"></div>
-      <p class="sk-now"></p>
-      <div class="sk-card"></div>
-      <ul class="sk-log"></ul>
+      <div class="sl-dice"></div>
+      <p class="sl-now"></p>
+      <div class="sl-card"></div>
+      <ul class="sl-log"></ul>
     </div>
-    <div class="sk-tokens"></div></div>`;
+    <div class="sl-tokens"></div></div>`;
   document.getElementById('center').appendChild(root);
 }
 
@@ -80,14 +80,14 @@ function tilePoint(i, k, n) {
 }
 
 function placeTokens(g) {
-  const layer = root.querySelector('.sk-tokens');
+  const layer = root.querySelector('.sl-tokens');
   const live = g.order.filter(s => !g.broke[s]);
   for (const s of g.order) {
     let el = layer.querySelector(`[data-s="${s}"]`);
     if (g.broke[s]) { el?.remove(); continue; }
     if (!el) {
       el = document.createElement('div');
-      el.className = 'sk-token';
+      el.className = 'sl-token';
       el.dataset.s = s;
       el.style.setProperty('--c', `var(--seat-${s})`);
       el.textContent = PIECE(s).glyph;
@@ -119,7 +119,7 @@ function setTok(el, g, s, live) {
 }
 
 function paintTiles(g) {
-  root.querySelectorAll('.sk-tile').forEach(el => {
+  root.querySelectorAll('.sl-tile').forEach(el => {
     const i = Number(el.dataset.i);
     const o = g.owner[i];
     const own = el.querySelector('.own');
@@ -155,7 +155,7 @@ export default {
     const props = g.owner.filter(o => o === seat).length;
     return {
       badges,
-      meta: `<span class="sk-piece" style="--c:var(--seat-${seat})">${PIECE(seat).glyph}</span><span><b>$${g.cash[seat].toLocaleString()}</b></span><span><b>${props}</b> deeds</span>`,
+      meta: `<span class="sl-piece" style="--c:var(--seat-${seat})">${PIECE(seat).glyph}</span><span><b>$${g.cash[seat].toLocaleString()}</b></span><span><b>${props}</b> deeds</span>`,
       cards: 0, turn: K.current(g) === seat && g.phase !== 'over', out: g.broke[seat],
     };
   },
@@ -178,13 +178,13 @@ export default {
     placeTokens(g);
 
     if (g.rollId !== lastRoll && g.dice) {
-      root.querySelector('.sk-dice').innerHTML = g.dice.map((d, i) => dieHTML(d, lastRoll !== -1 ? 'tumble' : '').replace('class="ydie', `style="--r:${i ? 8 : -10}deg" class="ydie`)).join('');
+      root.querySelector('.sl-dice').innerHTML = g.dice.map((d, i) => dieHTML(d, lastRoll !== -1 ? 'tumble' : '').replace('class="ydie', `style="--r:${i ? 8 : -10}deg" class="ydie`)).join('');
       if (lastRoll !== -1) snap(0.4);
       lastRoll = g.rollId;
     }
     const cur = K.current(g);
     const t = K.BOARD[g.pos[cur]];
-    const now = root.querySelector('.sk-now');
+    const now = root.querySelector('.sl-now');
     if (g.phase === 'over') now.innerHTML = `<b>${esc(ctx.nameOf(g.winner))}</b> owns the skyline`;
     else if (g.debt) now.innerHTML = `<b>${esc(ctx.nameOf(g.debt.seat))}</b> owes $${-g.cash[g.debt.seat]} — mortgaging…`;
     else if (g.trade) now.innerHTML = `<b>${esc(ctx.nameOf(g.trade.from))}</b> offers <b>${esc(ctx.nameOf(g.trade.to))}</b> a deal`;
@@ -192,11 +192,11 @@ export default {
     else if (g.phase === 'buy') now.innerHTML = `<b>${esc(ctx.nameOf(cur))}</b> is on ${esc(t.name)} · buy it for $${t.price}?`;
     else now.innerHTML = `<b>${esc(ctx.nameOf(cur))}</b> · ${esc(t.name)}`;
 
-    const card = root.querySelector('.sk-card');
+    const card = root.querySelector('.sl-card');
     if (g.card && g.card.id !== lastCard) { lastCard = g.card.id; card.innerHTML = `<small>Fortune</small><p>${esc(g.card.text)}</p>`; card.classList.add('show'); }
     else if (!g.card) { card.classList.remove('show'); }
-    root.querySelector('.sk-log').innerHTML = g.log.slice(-4).map(l => `<li><i style="background:var(--seat-${l.seat})"></i>${esc(l.text)}</li>`).join('');
-    root.querySelector('.sk-mid h2').textContent = g.settings.rounds ? `Round ${Math.min(g.round, g.settings.rounds)} of ${g.settings.rounds}` : 'SKYLINE';
+    root.querySelector('.sl-log').innerHTML = g.log.slice(-4).map(l => `<li><i style="background:var(--seat-${l.seat})"></i>${esc(l.text)}</li>`).join('');
+    root.querySelector('.sl-mid h2').textContent = g.settings.rounds ? `Round ${Math.min(g.round, g.settings.rounds)} of ${g.settings.rounds}` : 'SKYLINE';
   },
 
   overlay(g, ctx) {

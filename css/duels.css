@@ -1,0 +1,83 @@
+/* The quick two-player games: Trio, Four Up and Seed Stones. */
+body[data-game="trio"] #felt, body[data-game="fourup"] #felt, body[data-game="seedstones"] #felt {
+  --seat-w: min(26vmin, 280px);
+  --seat-h: 20vmin;
+}
+body[data-game="trio"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 210, 180, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2a2d33 0%, #1b1d22 55%, #0b0c0e 100%); }
+body[data-game="fourup"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 210, 180, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #1d3346 0%, #13222f 55%, #070d13 100%); }
+body[data-game="seedstones"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(240, 220, 180, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #3a2a1c 0%, #261a10 55%, #110b06 100%); }
+body[data-game="trio"] #print, body[data-game="fourup"] #print, body[data-game="seedstones"] #print,
+body[data-game="trio"] .fan, body[data-game="fourup"] .fan, body[data-game="seedstones"] .fan,
+body[data-game="trio"] .sizer, body[data-game="fourup"] .sizer, body[data-game="seedstones"] .sizer { display: none; }
+body[data-game="trio"] .meta, body[data-game="fourup"] .meta, body[data-game="seedstones"] .meta { align-items: center; gap: 1.2vmin; }
+
+#trio, #fourup, #seedstones { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 2vmin; z-index: 2; }
+.tr-score, .fu-score, .ss-score { margin: 0; font-family: var(--ui); font-size: 1.6vmin; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); }
+.tr-msg, .fu-msg, .ss-msg { margin: 0; display: flex; align-items: center; gap: .6em; font-family: var(--serif); font-style: italic; font-size: 2.4vmin; color: var(--ivory); white-space: nowrap; }
+.tr-msg b, .fu-msg b, .ss-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+/* ---------- Trio ---------- */
+.tr-board { display: grid; grid-template-columns: repeat(3, 1fr); width: var(--B, 300px); aspect-ratio: 1; padding: calc(var(--B, 300px) * .04); border-radius: calc(var(--B, 300px) * .04);
+  background: linear-gradient(160deg, #34373e, #22252a); box-shadow: 0 2.4vmin 6vmin rgba(0, 0, 0, .6), inset 0 0 0 .16vmin rgba(205, 180, 135, .5); }
+.tr-cell { position: relative; display: grid; place-items: center; border: 0; background: none; cursor: pointer; padding: 0; }
+.tr-cell:nth-child(3n+1), .tr-cell:nth-child(3n+2) { border-right: .3vmin solid rgba(205, 180, 135, .6); }
+.tr-cell:nth-child(-n+6) { border-bottom: .3vmin solid rgba(205, 180, 135, .6); }
+.tr-cell:disabled { cursor: default; }
+.tr-cell:not(:disabled):hover { background: rgba(205, 180, 135, .06); }
+.tr-cell.win { background: rgba(227, 207, 159, .16); }
+.tr-mark { display: block; width: 62%; aspect-ratio: 1; }
+.tr-mark.ring { border-radius: 50%; border: calc(var(--B, 300px) * .035) solid #d9bf86; box-shadow: 0 .4vmin .8vmin rgba(0, 0, 0, .5), inset 0 .3vmin .5vmin rgba(0, 0, 0, .35); box-sizing: border-box; }
+.tr-mark.gem { width: 50%; transform: rotate(45deg); border-radius: 12%; background: linear-gradient(135deg, #fffaf0, #d8ccb2); box-shadow: 0 .4vmin .8vmin rgba(0, 0, 0, .5), inset 0 0 0 calc(var(--B, 300px) * .012) rgba(110, 90, 50, .5); }
+.tr-mark.pop { animation: trPop .3s cubic-bezier(.2, .9, .3, 1.4); }
+@keyframes trPop { from { scale: .3; opacity: .3; } }
+.tr-mark.small { display: inline-block; width: 2.4vmin; vertical-align: middle; }
+.tr-mark.ring.small { border-width: .45vmin; }
+.tr-mark.gem.small { width: 1.8vmin; }
+
+/* ---------- Four Up ---------- */
+.fu-frame { display: grid; grid-template-columns: repeat(7, var(--S, 44px)); gap: calc(var(--S, 44px) * .06); padding: calc(var(--S, 44px) * .14); border-radius: calc(var(--S, 44px) * .18);
+  background: linear-gradient(170deg, #5a3a22, #3a2414); box-shadow: 0 2.4vmin 6vmin rgba(0, 0, 0, .6), inset 0 0 0 .16vmin rgba(205, 180, 135, .55); }
+.fu-col { display: flex; flex-direction: column; gap: calc(var(--S, 44px) * .06); padding: 0; border: 0; background: none; cursor: pointer; border-radius: calc(var(--S, 44px) * .2); }
+.fu-col:not(:disabled):hover { background: rgba(227, 207, 159, .12); }
+.fu-col:disabled { cursor: default; }
+.fu-slot { display: grid; place-items: center; width: var(--S, 44px); height: var(--S, 44px); border-radius: 50%; background: radial-gradient(circle at 50% 40%, #0d1a26, #1a2c3c); box-shadow: inset 0 .4vmin .8vmin rgba(0, 0, 0, .7); }
+.fu-slot.win { box-shadow: 0 0 0 .3vmin #f1dfb2, 0 0 2vmin rgba(241, 223, 178, .6); }
+.fu-disc { display: block; width: 88%; height: 88%; border-radius: 50%; }
+.fu-disc.s0 { background: radial-gradient(circle at 35% 30%, #fff4d6, #d9bf86 55%, #a8884c); box-shadow: inset 0 0 0 .25vmin rgba(120, 90, 40, .5), 0 .2vmin .4vmin rgba(0, 0, 0, .5); }
+.fu-disc.s1 { background: radial-gradient(circle at 35% 30%, #c86a72, #8c2a35 55%, #5a141d); box-shadow: inset 0 0 0 .25vmin rgba(40, 0, 6, .5), 0 .2vmin .4vmin rgba(0, 0, 0, .5); }
+.fu-disc.drop { animation: fuDrop .45s cubic-bezier(.4, 0, .6, 1.2); }
+@keyframes fuDrop { from { transform: translateY(-500%); } }
+.fu-disc.small { display: inline-block; width: 2.4vmin; height: 2.4vmin; vertical-align: middle; }
+
+/* ---------- Seed Stones ---------- */
+.ss-board { display: flex; align-items: stretch; gap: calc(var(--P, 50px) * .14); padding: calc(var(--P, 50px) * .18); border-radius: calc(var(--P, 50px) * .6);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .3' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .1 0 0 0 0 .04 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E"), linear-gradient(170deg, #8a5a32, #5e3a1d);
+  box-shadow: 0 2.4vmin 6vmin rgba(0, 0, 0, .6), inset 0 .3vmin 0 rgba(255, 220, 170, .25), inset 0 0 0 .16vmin rgba(205, 180, 135, .4); }
+.ss-rows { display: flex; flex-direction: column; gap: calc(var(--P, 50px) * .14); }
+.ss-row { display: flex; gap: calc(var(--P, 50px) * .14); }
+.ss-pit, .ss-store { position: relative; border: 0; padding: 0; background: radial-gradient(ellipse at 50% 40%, #2c1a0d, #4a2e17 70%); box-shadow: inset 0 .6vmin 1.2vmin rgba(0, 0, 0, .7), 0 .14vmin 0 rgba(255, 220, 170, .2); }
+.ss-pit { width: var(--P, 50px); height: var(--P, 50px); border-radius: 50%; cursor: pointer; }
+.ss-pit:disabled { cursor: default; }
+.ss-pit:not(:disabled) { box-shadow: inset 0 .6vmin 1.2vmin rgba(0, 0, 0, .7), 0 0 0 .3vmin rgba(227, 207, 159, .7); }
+.ss-pit.last { box-shadow: inset 0 .6vmin 1.2vmin rgba(0, 0, 0, .7), 0 0 0 .3vmin #9fc49a; }
+.ss-store { width: calc(var(--P, 50px) * 1.1); border-radius: calc(var(--P, 50px) * .55); }
+.ss-peb { position: absolute; inset: 14%; }
+.ss-peb i { position: absolute; width: 22%; height: 22%; translate: -50% -50%; border-radius: 45%; box-shadow: inset -.1vmin -.15vmin .2vmin rgba(0, 0, 0, .4), 0 .1vmin .2vmin rgba(0, 0, 0, .5); }
+.ss-store .ss-peb i { width: 18%; height: 9%; }
+.ss-pit b, .ss-store b { position: absolute; left: 50%; bottom: -1.2vmin; transform: translateX(-50%); font-family: var(--num); font-weight: 400; font-size: calc(var(--P, 50px) * .3); color: var(--ivory); text-shadow: 0 .2vmin .4vmin #000; }
+.ss-row:first-child .ss-pit b { bottom: auto; top: -1.2vmin; }
+.ss-store b { bottom: 50%; transform: translate(-50%, 50%); font-size: calc(var(--P, 50px) * .5); }
+.ss-mini { display: inline-grid; place-items: center; min-width: 3.6vmin; height: 3.6vmin; padding: 0 .6vmin; border-radius: 99px; background: #3a2414; font-family: var(--num); font-size: 2vmin; color: var(--ivory); box-shadow: inset 0 0 0 .14vmin rgba(205, 180, 135, .5); }
+
+/* ---------- phones ---------- */
+body[data-game="trio"], body[data-game="fourup"], body[data-game="seedstones"] { background: radial-gradient(ellipse 140% 100% at 50% 40%, #16130f 0%, var(--onyx) 70%); }
+body[data-game="trio"] #handWrap, body[data-game="fourup"] #handWrap, body[data-game="seedstones"] #handWrap,
+body[data-game="trio"] #handHint, body[data-game="fourup"] #handHint, body[data-game="seedstones"] #handHint { display: none; }
+#trPhone { --B: min(86vw, 52vh, 380px); margin: 10px auto 16px; }
+#trPhone .tr-cell { border-width: 2px; }
+#fuPhone { --S: min(11vw, 7vh, 52px); margin: 10px auto 16px; }
+#ssPhone { --P: min(11.5vw, 54px); margin: 24px auto 24px; }
+#ssPhone .ss-pit b, #ssPhone .ss-store b { font-size: 16px; }
+#ssPhone .ss-pit b { bottom: -16px; } #ssPhone .ss-row:first-child .ss-pit b { top: -16px; }
+#whoami .tr-mark.small, #whoami .fu-disc.small { width: 14px; height: 14px; box-shadow: none; }
+#whoami .tr-mark.ring.small { border-width: 3px; }

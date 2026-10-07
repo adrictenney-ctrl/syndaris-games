@@ -1,10 +1,10 @@
 // Go Fish on a player's phone: pick a rank and a player to ask; when it's "Go fish!",
 // draw from the pond — or, with the table's fishing-motion switch on, turn the phone
 // sideways and pull it back like a rod to reel the card in.
-import { GAMES } from './games.js?v=48';
-import { RANK_NAME, rankPlural } from './gofish.js?v=48';
-import { $, toast, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=48';
-import { cardText } from './cards.js?v=48';
+import { GAMES } from './games.js?v=50';
+import { RANK_NAME, rankPlural } from './gofish.js?v=50';
+import { $, toast, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=50';
+import { cardText } from './cards.js?v=50';
 
 const LAYOUT = GAMES.gofish.layout;
 let ctx = null;

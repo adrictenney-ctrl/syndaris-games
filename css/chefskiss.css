@@ -97,7 +97,7 @@ body[data-game="chefskiss"] #print, body[data-game="chefskiss"] .fan { display: 
 .ck-sub { position: relative; display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .6); cursor: grab; animation: ckFlip .5s cubic-bezier(.2, .9, .3, 1.2) both; }
 .ck-sub.held { cursor: grabbing; }
 @keyframes ckFlip { from { transform: rotateY(90deg) scale(.9); opacity: 0; } }
-.deal { animation: ckDeal .45s cubic-bezier(.2, .9, .3, 1.15) both; }
+#chefskiss .deal { animation: ckDeal .45s cubic-bezier(.2, .9, .3, 1.15) both; }
 @keyframes ckDeal { from { transform: translateY(-20vmin) rotate(-14deg) scale(.7); opacity: 0; } }
 .ck-sub.chosen .ck-card { box-shadow: 0 0 0 calc(var(--v) * .5) #e3cf9f, 0 1.5vmin 3vmin rgba(0, 0, 0, .5); }
 .ck-sub.lost { opacity: .5; filter: saturate(.6); }
