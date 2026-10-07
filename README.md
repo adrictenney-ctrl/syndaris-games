@@ -317,6 +317,20 @@ cash, get out of Prison early, raise money when in debt, and accept trades that 
 won't hand you a district cheap); they never start trades. Code: `js/skyline.js`, `js/table-skyline.js`,
 `js/play-skyline.js`, `css/skyline.css`.
 
+## Low Tide
+The same rules as Skyjo (by Magilano), under its own name, cards and look: a deep-sea table and tide cards
+in sea-glass colours (−2/−1 indigo, 0 aqua, 1–4 seafoam, 5–8 sand, 9–12 coral) with a wave-patterned back.
+2–8 players. 150 cards (five −2s, ten −1s, fifteen 0s, ten each of 1–12). Everyone has twelve face-down
+cards in a 3×4 grid and turns up two to start; the highest pair goes first. On your turn: draw from the
+deck (swap it into your grid, or throw it away and turn one hidden card up) or take the top discard (and
+swap it in). Three matching face-up cards in a column wash away. When someone has turned up their whole
+grid, everyone else gets one last turn; then all cards are shown and scored. If the player who went out
+doesn't have the strictly lowest score, their (positive) score is doubled. The game ends when someone
+reaches 100 (or 50/150) — lowest total wins. Each grid sits in front of its player on the table, with the
+card being weighed up floating beside it; phones show your grid big enough to tap. Code: `js/lowtide.js`,
+`js/table-lowtide.js`, `js/play-lowtide.js`, `css/lowtide.css` (size variable `--lw`; `--w` belongs to
+Chef's Kiss).
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -351,7 +365,7 @@ The site is hosted on GitHub Pages at https://adrictenney-ctrl.github.io/syndari
 branch). Every script and stylesheet reference has a `?v=N` tag so phones don't keep an old copy. Before
 pushing a change, bump N everywhere:
 ```bash
-N=47; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
+N=49; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)

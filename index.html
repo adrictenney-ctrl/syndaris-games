@@ -13,19 +13,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=46">
-  <link rel="stylesheet" href="css/chefskiss.css?v=46">
-  <link rel="stylesheet" href="css/insidejob.css?v=46">
-  <link rel="stylesheet" href="css/crown.css?v=46">
-  <link rel="stylesheet" href="css/hollow.css?v=46">
-  <link rel="stylesheet" href="css/casino.css?v=46">
-  <link rel="stylesheet" href="css/checkers.css?v=46">
-  <link rel="stylesheet" href="css/yacht.css?v=46">
-  <link rel="stylesheet" href="css/spoons.css?v=46">
-  <link rel="stylesheet" href="css/doubt.css?v=46">
-  <link rel="stylesheet" href="css/cashout.css?v=46">
-  <link rel="stylesheet" href="css/crazy8.css?v=46">
-  <link rel="stylesheet" href="css/skyline.css?v=46">
+  <link rel="stylesheet" href="css/cards.css?v=48">
+  <link rel="stylesheet" href="css/chefskiss.css?v=48">
+  <link rel="stylesheet" href="css/insidejob.css?v=48">
+  <link rel="stylesheet" href="css/crown.css?v=48">
+  <link rel="stylesheet" href="css/hollow.css?v=48">
+  <link rel="stylesheet" href="css/casino.css?v=48">
+  <link rel="stylesheet" href="css/checkers.css?v=48">
+  <link rel="stylesheet" href="css/yacht.css?v=48">
+  <link rel="stylesheet" href="css/spoons.css?v=48">
+  <link rel="stylesheet" href="css/doubt.css?v=48">
+  <link rel="stylesheet" href="css/cashout.css?v=48">
+  <link rel="stylesheet" href="css/crazy8.css?v=48">
+  <link rel="stylesheet" href="css/skyline.css?v=48">
+  <link rel="stylesheet" href="css/lowtide.css?v=48">
   <style>
     html { background: var(--onyx); }
     body {
@@ -141,7 +142,9 @@
     .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
     .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
     .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; }
-    .t-crazy8 { --tint: #17393b; } .t-skyline { --tint: #1b2740; }
+    .t-crazy8 { --tint: #17393b; } .t-skyline { --tint: #1b2740; } .t-lowtide { --tint: #12304a; }
+    .ltmini { display: flex; align-items: center; justify-content: center; --lw: 50px; }
+    .ltmini .lt-card:nth-child(1) { transform: rotate(-12deg) translate(12px, 6px); } .ltmini .lt-card:nth-child(2) { z-index: 1; transform: translateY(-6px); } .ltmini .lt-card:nth-child(3) { transform: rotate(12deg) translate(-12px, 6px); } .ltmini .lt-card:nth-child(4) { transform: rotate(22deg) translate(-26px, 18px); }
     .skmini2 { width: 170px !important; height: 104px !important; display: grid; place-items: end center; color: rgba(227, 207, 159, .85); }
     .skmini2 svg { width: 100%; }
     .skmini2 .deed { position: absolute; left: 50%; top: 2px; width: 62px; transform: translateX(-50%) rotate(-6deg); background: #f6f0e2; border-radius: 4px; overflow: hidden; box-shadow: 0 8px 16px rgba(0, 0, 0, .5); font-family: var(--display); font-weight: 600; font-size: 10px; color: #23202a; text-align: center; }
@@ -264,23 +267,24 @@
     </div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=46"></script>
+  <script type="module" src="js/tvnav.js?v=48"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=46';
-    import { cardEl } from './js/cards.js?v=46';
-    import { face } from './js/ck-face.js?v=46';
-    import { edict } from './js/table-crown.js?v=46';
-    import { dieHTML } from './js/table-yacht.js?v=46';
-    import { SPOON_SVG } from './js/table-spoons.js?v=46';
-    import { SKYLINE_SVG } from './js/table-skyline.js?v=46';
+    import { GAMES } from './js/games.js?v=48';
+    import { cardEl } from './js/cards.js?v=48';
+    import { face } from './js/ck-face.js?v=48';
+    import { edict } from './js/table-crown.js?v=48';
+    import { dieHTML } from './js/table-yacht.js?v=48';
+    import { SPOON_SVG } from './js/table-spoons.js?v=48';
+    import { SKYLINE_SVG } from './js/table-skyline.js?v=48';
+    import { tideCard } from './js/table-lowtide.js?v=48';
 
-    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'spoons', 'doubt', 'crazy8', 'skyline', 'chess', 'checkers', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'chess', 'checkers', 'backgammon', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
       euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', checkers: 'board',
-      backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards', skyline: 'board',
+      backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards', skyline: 'board', lowtide: 'cards',
     };
     const KIND_NAME = { all: 'All games', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
-    const NEW = new Set(['skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
+    const NEW = new Set(['lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
@@ -308,6 +312,7 @@
         const pc = (c, x, y, k) => `<span class="drp ${c}${k ? ' king' : ''}" style="left:${x}px;top:${y}px"><b class="dcrown">${k ? '♛︎' : ''}</b></span>`;
         fan.innerHTML = pc('d', 12.5, 12.5) + pc('l', 37.5, 37.5) + pc('d', 87.5, 87.5, true) + pc('l', 112.5, 12.5) + pc('d', 62.5, 62.5);
       }
+      else if (id === 'lowtide') { fan.className = 'cards ltmini'; fan.innerHTML = tideCard({ v: -2, up: true }) + tideCard({ v: 0, up: true }) + tideCard({ v: 12, up: true }) + tideCard({ up: false }); }
       else if (id === 'skyline') { fan.className = 'cards skmini2'; fan.innerHTML = `${SKYLINE_SVG}<div class="deed"><i></i><span>The Pinnacle</span></div>`; }
       else if (id === 'spoons') {
         fan.className = 'cards spmini';

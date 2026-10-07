@@ -228,3 +228,13 @@ GAMES.skyline = {
     S(100, 22, 3, 'Right, far'), S(100, 50, 3, 'Right, middle'), S(100, 78, 3, 'Right, near'),
   ],
 };
+
+GAMES.lowtide = {
+  id: 'lowtide',
+  name: 'Low Tide',
+  blurb: '2–8 players · twelve hidden cards, lowest score wins',
+  min: 2,
+  max: 8,
+  startLabel: 'Deal the grids',
+  layout: GAMES.holdem.layout,
+};

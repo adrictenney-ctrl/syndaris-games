@@ -1,0 +1,63 @@
+/* Low Tide: a deep-sea table, tide cards in sea-glass colours, a wave-patterned back. */
+body[data-game="lowtide"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(190, 230, 235, .08), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #12304a 0%, #0c2236 55%, #050f1a 100%);
+}
+body[data-game="lowtide"] #print, body[data-game="lowtide"] .fan, body[data-game="lowtide"] .sizer { display: none; }
+body[data-game="lowtide"] .meta { gap: 1.4vmin; }
+
+.lt-card {
+  position: relative; width: var(--lw); height: calc(var(--lw) * 1.4); border-radius: calc(var(--lw) * .12); flex: none;
+  display: grid; place-items: center; overflow: hidden; color: #fff;
+  box-shadow: 0 calc(var(--lw) * .05) calc(var(--lw) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--lw) * .035) rgba(255, 255, 255, .55);
+}
+.lt-card b { font-family: var(--num); font-weight: 400; font-size: calc(var(--lw) * .6); line-height: 1; text-shadow: 0 calc(var(--lw) * .03) calc(var(--lw) * .05) rgba(0, 0, 0, .35); }
+.lt-card .c { position: absolute; font-family: var(--num); font-size: calc(var(--lw) * .2); line-height: 1; opacity: .85; }
+.lt-card .tl { left: 10%; top: 7%; } .lt-card .br { right: 10%; bottom: 7%; transform: rotate(180deg); }
+.lt-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 90% 60% at 30% 0%, rgba(255, 255, 255, .28), transparent 70%); }
+.lt-card.b-deep { background: linear-gradient(160deg, #4a5aa0, #2c376e); }
+.lt-card.b-aqua { background: linear-gradient(160deg, #4fb3bb, #2c7f88); }
+.lt-card.b-foam { background: linear-gradient(160deg, #6fb08a, #3f7d5e); }
+.lt-card.b-sand { background: linear-gradient(160deg, #d6b26a, #a8833f); }
+.lt-card.b-coral { background: linear-gradient(160deg, #d27560, #9c4434); }
+.lt-card.back {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(205, 180, 135, .9) 0 9%, transparent 10%),
+    repeating-radial-gradient(circle at 50% 120%, transparent 0 calc(var(--lw) * .1), rgba(205, 180, 135, .35) calc(var(--lw) * .1) calc(var(--lw) * .12)),
+    linear-gradient(180deg, #17304f, #0c1d33);
+  box-shadow: 0 calc(var(--lw) * .05) calc(var(--lw) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--lw) * .04) #0c1d33, inset 0 0 0 calc(var(--lw) * .055) rgba(205, 180, 135, .7);
+}
+.lt-card.gone { background: none; box-shadow: inset 0 0 0 1px rgba(205, 180, 135, .2); border-radius: calc(var(--lw) * .12); }
+.lt-card.gone::before { display: none; }
+
+#lowtide { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.lt-mid { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; gap: calc(var(--v) * 2.4); align-items: flex-start; }
+.lt-deck { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .6); }
+.lt-deck small { font-family: var(--ui); font-size: calc(var(--v) * 1.3); font-weight: 700; letter-spacing: .2em; color: var(--gold-ink); }
+.lt-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--lw) * 1.25)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.1); color: var(--ivory); }
+.lt-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.lt-grid { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: calc(var(--lw) * .25); transition: transform .4s; }
+.lt-grid .cells { display: grid; grid-template-columns: repeat(4, var(--lw)); gap: calc(var(--lw) * .1); padding: calc(var(--lw) * .12); border-radius: calc(var(--lw) * .2); background: rgba(0, 0, 0, .18); }
+.lt-grid.now .cells { box-shadow: 0 0 0 calc(var(--lw) * .05) rgba(227, 207, 159, .8), 0 0 calc(var(--lw) * .6) rgba(227, 207, 159, .25); }
+.lt-hold { position: absolute; left: 100%; top: 50%; transform: translate(calc(var(--lw) * .3), -50%) rotate(8deg); display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.lt-hold small { font-family: var(--ui); font-size: calc(var(--lw) * .2); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--champagne); }
+
+/* ---------- phone ---------- */
+body[data-game="lowtide"] { background: linear-gradient(180deg, #11304a, #050f1a); }
+body[data-game="lowtide"] #handWrap, body[data-game="lowtide"] #handHint { display: none; }
+body[data-game="lowtide"] #status { min-height: 0; margin: 8px 0 6px; }
+#ltPhone { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.lt-piles { display: flex; justify-content: center; align-items: flex-end; gap: 16px; --lw: min(15vw, 62px); }
+.lt-pile { display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: 0; padding: 0; cursor: pointer; }
+.lt-pile:disabled { cursor: default; opacity: .7; }
+.lt-pile.tap .lt-card { box-shadow: 0 0 0 3px var(--champagne), 0 6px 14px rgba(0, 0, 0, .5); }
+.lt-pile small, .lt-held small { font-family: var(--ui); font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); }
+.lt-held { display: flex; flex-direction: column; align-items: center; gap: 4px; --lw: min(19vw, 78px); animation: ltUp .35s cubic-bezier(.2, .9, .3, 1.2); }
+@keyframes ltUp { from { transform: translateY(20px) scale(.8); opacity: .3; } }
+.lt-held .lt-card { box-shadow: 0 0 0 3px var(--champagne), 0 10px 22px rgba(0, 0, 0, .55); }
+.lt-toss { max-width: 360px; }
+.lt-mygrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; --lw: min(19vw, 76px); }
+.lt-slot { cursor: pointer; border-radius: 10px; }
+.lt-slot.tap .lt-card { box-shadow: 0 0 0 2px rgba(227, 207, 159, .9), 0 6px 14px rgba(0, 0, 0, .5); }
+.lt-slot.tap:active { transform: scale(.95); }
