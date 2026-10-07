@@ -1,7 +1,7 @@
 // Inside Job on a phone: your two cards, the community cards, and the chips. Tap a chip in
 // the middle, or tap the chip in front of another player to take it from them.
-import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=50';
-import { ROUNDS, ROUND_NAME } from './insidejob.js?v=50';
+import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=51';
+import { ROUNDS, ROUND_NAME } from './insidejob.js?v=51';
 
 let ctx = null;
 let panelKey = '', boardKey = '';

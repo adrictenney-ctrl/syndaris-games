@@ -1,7 +1,7 @@
 // Sketch & Guess: one player draws a secret word on their phone, the drawing appears on
 // the table, and everyone else types their answer on their own phone. When the time runs
 // out (or everyone has it) the table reveals the word and every player's final answer.
-import { LISTS } from './sketch-words.js?v=50';
+import { LISTS } from './sketch-words.js?v=51';
 
 export const PALETTE = ['#1d1b1a', '#e0382c', '#f39a1e', '#f2cf2a', '#36a852', '#2f7de1', '#8b45c8', '#8a5a32', '#f08bb4', '#fbf7ec'];
 export const ERASER = PALETTE.length - 1;           // paints in the paper's own colour

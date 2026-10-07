@@ -1,7 +1,7 @@
 // Sonar: hide your fleet on a 10×10 grid, then take turns pinging the other player's waters.
 // A ping is a hit or a miss; hit every square of a ship and it sinks. Sink the whole fleet to win.
 // Ships are placed on each phone (shuffle, or pick a ship and tap where it goes). Played as a match.
-import { createSeries, gameOver, nextGame, announce } from './duel.js?v=50';
+import { createSeries, gameOver, nextGame, announce } from './duel.js?v=51';
 
 export const N = 10;
 export const FLEET = [

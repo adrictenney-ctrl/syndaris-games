@@ -1,0 +1,48 @@
+/* Milestones: a slate-blue table and our own number cards in four jewel colours. */
+body[data-game="milestones"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 225, 240, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #1e2a3e 0%, #141d2c 55%, #070a10 100%); }
+body[data-game="milestones"] #print { display: none; }
+.ms-stage { color: var(--champagne-hi) !important; border-color: rgba(227, 207, 159, .5) !important; }
+
+.ms-card {
+  position: relative; display: grid; place-items: center; flex: none; width: var(--mw, 46px); height: calc(var(--mw, 46px) * 1.45); border-radius: calc(var(--mw, 46px) * .1);
+  background: linear-gradient(165deg, #fbf7ec, #ece3cd); color: #222; overflow: hidden;
+  box-shadow: 0 calc(var(--mw, 46px) * .04) calc(var(--mw, 46px) * .1) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--mw, 46px) * .06) var(--k, #555), inset 0 0 0 calc(var(--mw, 46px) * .08) #fbf7ec;
+}
+.ms-card b { font-family: var(--num); font-weight: 400; font-size: calc(var(--mw, 46px) * .62); color: var(--k); line-height: 1; }
+.ms-card .c { position: absolute; left: 13%; top: 8%; font-family: var(--num); font-size: calc(var(--mw, 46px) * .2); color: var(--k); }
+.ms-card .c.r { left: auto; top: auto; right: 13%; bottom: 8%; transform: rotate(180deg); }
+.ms-card::after { content: ''; position: absolute; left: 50%; top: 50%; width: 72%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--k) 14%, transparent), transparent 70%); }
+.ms-card.k-S { --k: #2f5ea8; } .ms-card.k-E { --k: #2f8a5a; } .ms-card.k-G { --k: #a8323f; } .ms-card.k-A { --k: #b97a14; }
+.ms-card.wild { --k: #3a2f52; background: conic-gradient(from 45deg, #2f5ea8 0 25%, #2f8a5a 0 50%, #a8323f 0 75%, #b97a14 0); color: #fff; box-shadow: 0 calc(var(--mw, 46px) * .04) calc(var(--mw, 46px) * .1) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--mw, 46px) * .06) #fbf7ec; }
+.ms-card.skip { --k: #23262c; background: linear-gradient(165deg, #2d3038, #15171b); color: var(--champagne-hi); box-shadow: 0 calc(var(--mw, 46px) * .04) calc(var(--mw, 46px) * .1) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--mw, 46px) * .06) rgba(205, 180, 135, .7); }
+.ms-card.wild, .ms-card.skip { display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.ms-card.wild span, .ms-card.skip span { font-size: calc(var(--mw, 46px) * .45); line-height: 1; z-index: 1; }
+.ms-card.wild b, .ms-card.skip b { font-family: var(--ui); font-weight: 800; font-size: calc(var(--mw, 46px) * .17); letter-spacing: .08em; text-transform: uppercase; color: inherit; z-index: 1; }
+.ms-card.back { background: repeating-linear-gradient(45deg, rgba(205, 180, 135, .25) 0 2px, transparent 2px 7px), linear-gradient(165deg, #22324d, #141f33); box-shadow: 0 calc(var(--mw, 46px) * .04) calc(var(--mw, 46px) * .1) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--mw, 46px) * .06) #fbf7ec, inset 0 0 0 calc(var(--mw, 46px) * .085) rgba(205, 180, 135, .8); }
+.ms-card.back i { font-style: normal; font-family: var(--display); font-weight: 600; font-size: calc(var(--mw, 46px) * .5); color: var(--champagne-hi); }
+.ms-card.back::after { display: none; }
+
+#milestones { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.ms-piles { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; gap: 2.4vmin; }
+.ms-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--mw, 46px) * 1.1)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: 2.2vmin; color: var(--ivory); }
+.ms-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.ms-laid { position: absolute; left: 0; top: 0; display: flex; gap: 1.4vmin; transition: transform .4s; }
+.ms-group { display: flex; flex-direction: column; align-items: center; gap: .4vmin; padding: .6vmin .8vmin; border-radius: 1vmin; background: rgba(0, 0, 0, .22); box-shadow: inset 0 0 0 .14vmin rgba(205, 180, 135, .3); }
+.ms-group small { font-family: var(--ui); font-size: 1.2vmin; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); white-space: nowrap; }
+.ms-group > div { display: flex; }
+.ms-group .ms-card { margin-left: calc(var(--mw, 46px) * -.45); }
+.ms-group .ms-card:first-child { margin-left: 0; }
+
+/* ---------- phone ---------- */
+body[data-game="milestones"] { background: linear-gradient(180deg, #1c2638, #070a10); }
+body[data-game="milestones"] #handWrap, body[data-game="milestones"] #handHint { display: none; }
+body[data-game="milestones"] #status { min-height: 0; margin: 8px 0 6px; flex: none; }
+#msPhone { width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; min-height: 0; overflow-y: auto; padding-bottom: 10px; }
+#msPhone > * { flex: none; }
+.ms-top { display: flex; flex-direction: column; align-items: center; gap: 4px; --mw: 52px; }
+.ms-top small { font-family: var(--ui); font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); }
+.ms-hand { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; --mw: min(15vw, 60px); padding-top: 10px; }
+.ms-hand .ms-card { cursor: pointer; transition: transform .15s; }
+.ms-hand .ms-card.picked { transform: translateY(-10px); box-shadow: 0 0 0 3px var(--champagne), 0 10px 20px rgba(0, 0, 0, .5), inset 0 0 0 calc(var(--mw, 46px) * .06) var(--k, #555), inset 0 0 0 calc(var(--mw, 46px) * .08) #fbf7ec; }
+.ms-hits { flex-wrap: wrap; }
+.ms-hits .panel-btn { flex: 1 1 40%; font-size: 14px; padding: 10px; }

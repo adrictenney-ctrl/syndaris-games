@@ -279,3 +279,13 @@ GAMES.sonar = {
   startLabel: 'Hide the fleets',
   layout: GAMES.chess.layout,
 };
+
+GAMES.milestones = {
+  id: 'milestones',
+  name: 'Milestones',
+  blurb: '2–6 players · ten stages of sets and runs',
+  min: 2,
+  max: 6,
+  startLabel: 'Deal the cards',
+  layout: GAMES.holdem.layout,
+};

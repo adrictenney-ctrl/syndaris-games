@@ -1,8 +1,8 @@
 // I Doubt It on the table: the face-down pile in the middle, the rank that's up printed
 // on the felt, the last claim, and a ring that counts down the time to doubt it. When
 // someone doubts, the cards turn over for everyone to see.
-import * as D from './doubt.js?v=50';
-import { cardEl, snap } from './cards.js?v=50';
+import * as D from './doubt.js?v=51';
+import { cardEl, snap } from './cards.js?v=51';
 
 let root = null, lastPlay = -1, pileEls = [], revealKey = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
