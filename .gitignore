@@ -7,3 +7,4 @@ tv-app/keystore.properties
 *.jks
 *.apk
 !tv.apk
+_dev.js

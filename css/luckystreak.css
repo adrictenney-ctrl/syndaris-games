@@ -1,0 +1,64 @@
+/* Lucky Streak: deep bottle-green baize, cream cards with big serif numerals in muted jewel
+   colours, brass bonus cards and black action cards. */
+body[data-game="luckystreak"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 255, 230, .06), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #1b3a2c 0%, #12281e 55%, #07110c 100%);
+}
+body[data-game="luckystreak"] #print, body[data-game="luckystreak"] .fan, body[data-game="luckystreak"] .sizer { display: none; }
+
+.lk-card {
+  --l0: var(--lk, 60px); position: relative; width: var(--l0); height: calc(var(--l0) * 1.4); flex: none; box-sizing: border-box;
+  display: grid; place-items: center; border-radius: calc(var(--l0) * .1); overflow: hidden; text-align: center;
+  background: linear-gradient(160deg, #fbf6e8, #ece2c8); color: var(--h, #333);
+  box-shadow: 0 calc(var(--l0) * .05) calc(var(--l0) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--l0) * .03) #fff, inset 0 0 0 calc(var(--l0) * .045) color-mix(in srgb, var(--h, #a0864a) 50%, transparent);
+}
+.lk-card.num b { font-family: var(--display); font-size: calc(var(--l0) * .72); line-height: 1; }
+.lk-card.num small { position: absolute; left: 9%; top: 5%; font-family: var(--display); font-size: calc(var(--l0) * .2); }
+.lk-card.num small.br { left: auto; top: auto; right: 9%; bottom: 5%; transform: rotate(180deg); }
+.lk-card.mod { --h: #8a6a2a; background: linear-gradient(160deg, #f3dca0, #c9a35a); color: #3a2a0a; align-content: center; gap: 4%; }
+.lk-card.mod b { font-family: var(--display); font-size: calc(var(--l0) * .46); line-height: 1; }
+.lk-card.mod small { font-family: var(--ui); font-weight: 800; font-size: calc(var(--l0) * .1); letter-spacing: .14em; text-transform: uppercase; }
+.lk-card.act { background: radial-gradient(circle at 50% 35%, #2e3a34, #111a15); color: #f3e7c8; align-content: center; gap: 6%; --h: #c9a35a; }
+.lk-card.act i { font-style: normal; font-size: calc(var(--l0) * .42); line-height: 1; }
+.lk-card.act b { font-family: var(--ui); font-weight: 800; font-size: calc(var(--l0) * .11); letter-spacing: .08em; text-transform: uppercase; line-height: 1.1; padding: 0 6%; }
+.lk-card.a-charm { background: radial-gradient(circle at 50% 35%, #2f5a3c, #12281e); }
+.lk-card.back { background: repeating-linear-gradient(45deg, #1d4a35 0 6%, #173d2c 6% 12%); color: #e9d8a6; align-content: center; gap: 4%;
+  box-shadow: 0 calc(var(--l0) * .05) calc(var(--l0) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--l0) * .04) #10281d, inset 0 0 0 calc(var(--l0) * .055) #c9a35a; }
+.lk-card.back i { font-style: normal; font-size: calc(var(--l0) * .4); line-height: 1; }
+.lk-card.back b { font-family: var(--display); font-size: calc(var(--l0) * .15); line-height: 1.05; }
+.lk-card.bad { box-shadow: 0 0 0 calc(var(--l0) * .05) #c0392b, 0 calc(var(--l0) * .05) calc(var(--l0) * .12) rgba(0, 0, 0, .45); }
+.lk-card.bad::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 47%, #c0392b 48% 52%, transparent 53%); }
+.lk-card.flip { animation: lkFlip .45s cubic-bezier(.2, .8, .3, 1.1) both; }
+@keyframes lkFlip { from { transform: rotateY(90deg) translateY(-3vmin); } }
+
+#luckystreak { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.lk-mid { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); }
+.lk-deck { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .8); --lk: calc(var(--v) * 9); }
+.lk-deck small { font-family: var(--ui); font-size: calc(var(--v) * 1.4); font-weight: 700; letter-spacing: .12em; color: var(--gold-ink); white-space: nowrap; }
+.lk-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--v) * 9)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.3); color: var(--ivory); }
+.lk-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.lk-row { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: calc(var(--v) * 1); transition: opacity .3s; }
+.lk-cards { display: flex; }
+.lk-cards .lk-card { margin-right: calc(var(--lk) * -.22); }
+.lk-cards .lk-card:last-child { margin-right: 0; }
+.lk-pts { font-family: var(--display); font-size: calc(var(--v) * 3); color: #fff3d6; min-width: calc(var(--v) * 4); }
+.lk-row.s-stay { opacity: .72; }
+.lk-row.s-stay .lk-pts { color: var(--champagne-hi); }
+.lk-row.s-bust { opacity: .5; filter: saturate(.4); }
+.lk-row.s-bust .lk-pts { font-family: var(--ui); font-size: calc(var(--v) * 1.6); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #ff8a70; }
+.lk-row.now .lk-cards { filter: drop-shadow(0 0 1.2vmin rgba(240, 210, 140, .55)); }
+
+/* ---------- phone ---------- */
+body[data-game="luckystreak"] { background: linear-gradient(180deg, #1b3a2c, #07110c); }
+body[data-game="luckystreak"] #handWrap, body[data-game="luckystreak"] #handHint { display: none; }
+#lkPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
+.lk-mine { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; --lk: min(17vw, 70px); min-height: 100px; align-items: center; }
+.lk-mine em { font-family: var(--serif); color: var(--mute); }
+.lk-mine.s-bust { opacity: .6; }
+.lk-meter { position: relative; height: 26px; border-radius: 99px; background: rgba(0, 0, 0, .35); overflow: hidden; box-shadow: inset 0 0 0 1px var(--gold-faint); }
+.lk-meter i { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #2f6a48, #c9a35a); }
+.lk-meter span { position: relative; z-index: 1; display: block; text-align: center; line-height: 26px; font-family: var(--ui); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #fff3d6; }
+.lk-btns .panel-btn { flex: 1; font-size: 20px; padding: 18px 10px; }
+.lk-targets { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.lk-targets .panel-btn i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }

@@ -1,0 +1,71 @@
+/* Pile Up: a slate-grey games table, cards printed like old letterpress — cream stock, a band
+   of the suit's colour, a drawn suit emblem and a big serif numeral. Wilds are charcoal with
+   a ring of all four suit colours. */
+body[data-game="pileup"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 230, 255, .05), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #2b2f38 0%, #1e2129 55%, #0c0d11 100%);
+}
+body[data-game="pileup"] #print, body[data-game="pileup"] .fan, body[data-game="pileup"] .sizer { display: none; }
+
+.pu-card {
+  --p0: var(--pu, 70px); position: relative; width: var(--p0); height: calc(var(--p0) * 1.45); flex: none; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: calc(var(--p0) * .09); overflow: hidden;
+  background: linear-gradient(180deg, #f7f0df, #e8dcc0); color: var(--sc, #333);
+  box-shadow: 0 calc(var(--p0) * .05) calc(var(--p0) * .12) rgba(0, 0, 0, .5), inset 0 0 0 calc(var(--p0) * .05) var(--sc, #444), inset 0 0 0 calc(var(--p0) * .065) #f7f0df;
+}
+.pu-card .pu-suit { width: 58%; fill: currentColor; color: var(--sc); opacity: .16; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.pu-card b { position: relative; font-family: var(--display); font-size: calc(var(--p0) * .62); line-height: 1; color: var(--sc); text-shadow: 0 1px 0 #fff; }
+.pu-card.act b { font-family: var(--ui); font-weight: 800; font-size: calc(var(--p0) * .4); }
+.pu-card em { position: absolute; left: 10%; top: 6%; font-style: normal; font-family: var(--display); font-size: calc(var(--p0) * .18); line-height: 1; }
+.pu-card em.br { left: auto; top: auto; right: 10%; bottom: 6%; transform: rotate(180deg); }
+.pu-card small { position: relative; font-family: var(--ui); font-weight: 800; font-size: calc(var(--p0) * .085); letter-spacing: .1em; text-transform: uppercase; margin-top: 4%; color: var(--sc); }
+.pu-card.wild { background: radial-gradient(circle at 50% 40%, #3a3d46, #17181d); color: #f3e7c8; box-shadow: 0 calc(var(--p0) * .05) calc(var(--p0) * .12) rgba(0, 0, 0, .5), inset 0 0 0 calc(var(--p0) * .04) #c9a35a; }
+.pu-card.wild b { color: #f3e7c8; text-shadow: 0 2px 4px #000; font-family: var(--ui); font-weight: 800; font-size: calc(var(--p0) * .36); }
+.pu-card.wild.w-roul b { font-size: calc(var(--p0) * .5); }
+.pu-card.wild small { color: #c9a35a; text-align: center; padding: 0 8%; line-height: 1.15; }
+.pu-ring { position: absolute; width: 70%; aspect-ratio: 1; top: 50%; left: 50%; transform: translate(-50%, -54%) rotate(45deg); display: grid; grid-template-columns: 1fr 1fr; border-radius: 50%; overflow: hidden; opacity: .55; }
+.pu-ring i { display: block; }
+.pu-card.back { background: repeating-linear-gradient(135deg, #2b2f38 0 8%, #23262e 8% 16%); box-shadow: 0 calc(var(--p0) * .05) calc(var(--p0) * .12) rgba(0, 0, 0, .5), inset 0 0 0 calc(var(--p0) * .05) #c9a35a; }
+.pu-card.back b { font-family: var(--display); font-size: calc(var(--p0) * .26); line-height: .95; color: #e9d8a6; text-align: center; text-shadow: none; letter-spacing: .06em; }
+
+#pileup { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.pu-mid { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; align-items: center; gap: calc(var(--v) * 4); }
+.pu-deck { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .8); }
+.pu-deck small { font-family: var(--ui); font-size: calc(var(--v) * 1.4); font-weight: 700; letter-spacing: .12em; color: var(--gold-ink); }
+.pu-pile { display: grid; }
+.pu-pile .pu-card { grid-area: 1 / 1; transform: rotate(var(--r, 0deg)); }
+.pu-pile .land { animation: puLand .35s cubic-bezier(.2, .9, .3, 1.15); }
+@keyframes puLand { from { translate: 0 -12vmin; scale: 1.2; opacity: .3; } }
+.pu-info { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * 1.4); width: calc(var(--v) * 16); }
+.pu-color { display: flex; align-items: center; gap: calc(var(--v) * .8); color: var(--sc); padding: calc(var(--v) * .6) calc(var(--v) * 1.4); border-radius: 99px; background: rgba(0, 0, 0, .35); box-shadow: inset 0 0 0 calc(var(--v) * .2) var(--sc); }
+.pu-color svg { width: calc(var(--v) * 3); fill: currentColor; }
+.pu-color span { font-family: var(--ui); font-weight: 800; font-size: calc(var(--v) * 1.5); letter-spacing: .14em; text-transform: uppercase; color: #f3e7c8; }
+.pu-dir { width: calc(var(--v) * 6); color: rgba(240, 220, 170, .55); }
+.pu-dir.ccw svg { transform: scaleX(-1); }
+.pu-stack { text-align: center; }
+.pu-stack b { display: block; font-family: var(--display); font-size: calc(var(--v) * 6); line-height: 1; color: #ff8a70; text-shadow: 0 0 2vmin rgba(255, 90, 60, .6); animation: puThrob 1s infinite; }
+@keyframes puThrob { 50% { transform: scale(1.08); } }
+.pu-stack small { font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.2); letter-spacing: .06em; color: #f3dcb0; }
+.pu-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--pu) * 1.05)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.3); color: var(--ivory); }
+.pu-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+/* ---------- phone ---------- */
+body[data-game="pileup"] { background: linear-gradient(180deg, #2b2f38, #0c0d11); }
+body[data-game="pileup"] #handWrap, body[data-game="pileup"] #handHint { display: none; }
+#puPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 12px; }
+.pu-top { display: flex; align-items: center; justify-content: center; gap: 14px; --pu: 58px; }
+.pu-top small { display: block; font-family: var(--ui); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); }
+.pu-top b { font-family: var(--display); font-size: 22px; }
+.pu-hand { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; padding-top: 12px; }
+.pu-hand button { padding: 0; border: 0; background: none; cursor: pointer; --pu: min(17vw, 70px); opacity: .55; transition: transform .15s, opacity .15s; }
+.pu-hand.tight button { --pu: min(13vw, 54px); }
+.pu-hand button.ok { opacity: 1; transform: translateY(-8px); }
+.pu-hand button.sel .pu-card { box-shadow: 0 0 0 3px var(--champagne), 0 8px 16px rgba(0, 0, 0, .5); }
+.pu-pick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.pu-pick button { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border-radius: 12px; border: 0; cursor: pointer; background: var(--sc); color: #f7f0df; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .25); }
+.pu-pick svg { width: 34px; fill: currentColor; }
+.pu-pick span { font-family: var(--ui); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.pu-take { background: linear-gradient(180deg, #b0403a, #6e1e1a) !important; color: #fff !important; border: 0 !important; font-size: 18px !important; padding: 16px !important; }
+.pu-targets { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.pu-targets .panel-btn i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }

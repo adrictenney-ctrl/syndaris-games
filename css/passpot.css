@@ -1,0 +1,59 @@
+/* Pass the Pot: oxblood leather, a hammered brass bowl, ivory chips with a gold rim and
+   carved bone dice. */
+body[data-game="passpot"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 220, 190, .06), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #4a1d1c 0%, #321212 55%, #160707 100%);
+}
+body[data-game="passpot"] #print, body[data-game="passpot"] .fan, body[data-game="passpot"] .sizer { display: none; }
+
+.pp-die {
+  --d: var(--ppd, 40px); display: inline-grid; place-items: center; width: var(--d); height: var(--d); border-radius: calc(var(--d) * .2);
+  background: radial-gradient(circle at 35% 30%, #fbf4e4, #e3d4b4 70%, #c9b48c); color: #6b1f1c;
+  box-shadow: inset 0 calc(var(--d) * -.05) calc(var(--d) * .08) rgba(80, 50, 20, .35), 0 calc(var(--d) * .08) calc(var(--d) * .14) rgba(0, 0, 0, .45);
+}
+.pp-die svg { width: 82%; height: 82%; fill: currentColor; }
+.pp-die.f-P { color: #8a6a2a; }
+.pp-die.f-K { color: #8a7a5a; }
+.pp-die.roll { animation: ppRoll .55s cubic-bezier(.2, .8, .3, 1.1) both; }
+@keyframes ppRoll { from { transform: translateY(-6vmin) rotate(-200deg) scale(1.2); opacity: .2; } }
+
+.pp-stack { position: relative; display: inline-block; width: var(--pc, 4vmin); height: calc(var(--pc, 4vmin) * 1.6); }
+.pp-stack i {
+  position: absolute; left: 0; bottom: calc(var(--i) * var(--pc, 4vmin) * .1); width: var(--pc, 4vmin); height: calc(var(--pc, 4vmin) * .42); border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 40%, #fbf3df 0 38%, #c9a35a 40% 46%, #f3e7c8 48%);
+  box-shadow: 0 calc(var(--pc, 4vmin) * .05) 0 #a8844a, 0 calc(var(--pc, 4vmin) * .08) calc(var(--pc, 4vmin) * .1) rgba(0, 0, 0, .45);
+}
+.pp-stack.got i:last-child { animation: ppDrop .5s cubic-bezier(.2, .8, .3, 1.2) both; }
+@keyframes ppDrop { from { transform: translateY(-5vmin); opacity: 0; } }
+
+#passpot { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.pp-bowl {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -62%); width: calc(var(--v) * 26); height: calc(var(--v) * 17); border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 40%, #3a2a14 0 50%, #6a4e22 62%, #c9a35a 72%, #8a6a2a 80%, #4a3510 100%);
+  box-shadow: 0 calc(var(--v) * 1.6) calc(var(--v) * 3) rgba(0, 0, 0, .55), inset 0 0 0 calc(var(--v) * .3) rgba(255, 230, 170, .25);
+  display: grid; place-items: center;
+}
+.pp-in { position: absolute; inset: 14% 16%; --pc: calc(var(--v) * 3.2); }
+.pp-in i { position: absolute; width: var(--pc); height: calc(var(--pc) * .5); border-radius: 50%; transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at 50% 40%, #fbf3df 0 38%, #c9a35a 40% 46%, #f3e7c8 48%); box-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
+.pp-bowl b { position: relative; font-family: var(--display); font-size: calc(var(--v) * 6); color: #fff3d6; text-shadow: 0 2px 8px rgba(0, 0, 0, .8); line-height: 1; }
+.pp-bowl small { position: absolute; bottom: calc(var(--v) * -3); font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.3); letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); white-space: nowrap; }
+.pp-throw { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--v) * 11)); display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .8); --ppd: calc(var(--v) * 6.4); }
+.pp-dice { display: flex; gap: calc(var(--v) * 1.2); }
+.pp-throw p { margin: 0; display: flex; gap: calc(var(--v) * 1.4); font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.5); letter-spacing: .06em; color: #f3dcb0; white-space: nowrap; }
+.pp-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--v) * -17)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.3); color: var(--ivory); }
+.pp-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.pp-mine { position: absolute; left: 0; top: 0; display: flex; align-items: flex-end; gap: calc(var(--v) * .8); --pc: calc(var(--v) * 4); }
+.pp-mine b { font-family: var(--display); font-size: calc(var(--v) * 2.6); color: #fff3d6; }
+
+/* ---------- phone ---------- */
+body[data-game="passpot"] { background: linear-gradient(180deg, #3e1817, #160707); }
+body[data-game="passpot"] #handWrap, body[data-game="passpot"] #handHint { display: none; }
+#ppPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 10px; }
+.pp-mypile { display: flex; align-items: flex-end; gap: 12px; --pc: 64px; min-height: 110px; }
+.pp-mypile b { font-family: var(--display); font-size: 44px; color: #fff3d6; }
+.pp-mine-throw { display: flex; gap: 10px; --ppd: 54px; }
+.pp-roll { font-size: 22px !important; padding: 20px 34px !important; }
+.pp-key { display: grid; grid-template-columns: repeat(4, auto auto); align-items: center; gap: 6px 6px; --ppd: 28px; opacity: .85; }
+.pp-key span { font-family: var(--ui); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); margin-right: 8px; }

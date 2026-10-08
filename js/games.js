@@ -441,3 +441,45 @@ GAMES.tessera = {
   startLabel: 'Lay the first tile',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.passpot = {
+  id: 'passpot',
+  name: 'Pass the Pot',
+  blurb: '3–10 players · roll, pass your chips, keep the last one',
+  min: 3,
+  max: 10,
+  startLabel: 'Hand out the chips',
+  layout: GAMES.crown.layout,
+};
+
+GAMES.luckystreak = {
+  id: 'luckystreak',
+  name: 'Lucky Streak',
+  blurb: '2–8 players · flip cards, push your luck, never pair up',
+  min: 2,
+  max: 8,
+  startLabel: 'Deal the first round',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.pileup = {
+  id: 'pileup',
+  name: 'Pile Up',
+  blurb: '2–8 players · stack the draws, no mercy, 25 cards and you are out',
+  min: 2,
+  max: 8,
+  midJoin: false,
+  startLabel: 'Deal the cards',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.dialitin = {
+  id: 'dialitin',
+  name: 'Dial It In',
+  blurb: '2–10 players · give a clue, turn the dial, read their minds',
+  min: 2,
+  max: 10,
+  noBots: true,   // bots can't give or read clues
+  startLabel: 'Spin up the dial',
+  layout: GAMES.crown.layout,
+};
