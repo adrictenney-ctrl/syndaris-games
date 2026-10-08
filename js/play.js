@@ -36,12 +36,13 @@ import * as warfrontUI from './play-warfront.js?v=57';
 import * as ironroutesUI from './play-ironroutes.js?v=57';
 import * as homesteadUI from './play-homestead.js?v=57';
 import * as wordsmithUI from './play-wordsmith.js?v=57';
+import * as redlineUI from './play-redline.js?v=57';
 import * as grandprixUI from './play-grandprix.js?v=57';
 import * as spiresUI from './play-spires.js?v=57';
 import * as kaboomUI from './play-kaboom.js?v=57';
 import * as nesteggUI from './play-nestegg.js?v=57';
 
-const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI, crazy8: crazy8UI, skyline: skylineUI, lowtide: lowtideUI, trio: trioUI, fourup: fourupUI, seedstones: seedstonesUI, sonar: sonarUI, milestones: milestonesUI, wrongnumber: wrongnumberUI, scribble: scribbleUI, manor: manorUI, warfront: warfrontUI, ironroutes: ironroutesUI, homestead: homesteadUI, wordsmith: wordsmithUI, powerup: chessUI, nestegg: nesteggUI, kaboom: kaboomUI, spires: spiresUI, grandprix: grandprixUI };
+const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI, crazy8: crazy8UI, skyline: skylineUI, lowtide: lowtideUI, trio: trioUI, fourup: fourupUI, seedstones: seedstonesUI, sonar: sonarUI, milestones: milestonesUI, wrongnumber: wrongnumberUI, scribble: scribbleUI, manor: manorUI, warfront: warfrontUI, ironroutes: ironroutesUI, homestead: homesteadUI, wordsmith: wordsmithUI, powerup: chessUI, nestegg: nesteggUI, kaboom: kaboomUI, spires: spiresUI, grandprix: grandprixUI, redline: redlineUI };
 const params = new URLSearchParams(location.search);
 
 let pid = null;

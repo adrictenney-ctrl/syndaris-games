@@ -411,3 +411,13 @@ GAMES.grandprix = {
   startLabel: 'Start your engines',
   layout: GAMES.skyline.layout,
 };
+
+GAMES.redline = {
+  id: 'redline',
+  name: 'Redline',
+  blurb: '2–6 players · play speed cards, manage your engine heat',
+  min: 2,
+  max: 6,
+  startLabel: 'Lights out',
+  layout: GAMES.skyline.layout,
+};
