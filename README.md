@@ -384,6 +384,15 @@ loaded by the table (`word-list` on jsDelivr, MIT); if it can't load, every word
 computer finds moves with an anchor/cross-check search. Phones: tap a tile, tap a square; Play, Recall,
 Shuffle, Swap, Pass, Zoom. Code: `js/wordsmith.js`.
 
+## PowerUp Chess
+2 players, or play the computer. Chess where a capture absorbs the piece instead of removing it: the captured
+piece (or whole stack) goes under the capturing piece, and the stack belongs to whoever is on top. A stack can
+move like any piece inside it (a Bishop that took a Rook moves both ways; a Pawn that took a Knight can jump).
+The King stays royal and can gain powers too, but may never move into, slide through or stay in check. Only a
+lone pawn promotes (so a pawn capturing onto the last rank just stacks). Castling, en passant, the 50-move rule
+and threefold repetition work as in chess. Absorbed powers show in a strip under each stack, with the stack
+height. It shares the chess board and phone screens. Code: `js/powerchess.js`.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.

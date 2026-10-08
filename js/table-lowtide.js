@@ -1,8 +1,8 @@
 // Low Tide on the table: every player's 3×4 grid of tide cards sits in front of them; the deck
 // and the discard pile are in the middle. The card someone has just drawn floats beside their
 // grid so everyone can see what they're weighing up.
-import * as T from './lowtide.js?v=56';
-import { snap } from './cards.js?v=56';
+import * as T from './lowtide.js?v=57';
+import { snap } from './cards.js?v=57';
 
 let root = null, grids = {}, lastMove = -1, lastRound = -1;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -596,7 +596,7 @@ body[data-game="gofish"] .plate { background: rgba(4, 38, 46, .5); }
 /* =====================================================================
    Chess: an inlaid board on a dark walnut table
    ===================================================================== */
-body[data-game="chess"] #felt {
+body[data-game="chess"] #felt, body[data-game="powerup"] #felt {
   --seat-w: min(23vmin, 260px);
   --seat-h: 22vmin;
   background:
@@ -605,11 +605,11 @@ body[data-game="chess"] #felt {
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .22' numOctaves='3' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .12 0 0 0 0 .05 0 0 0 0 .02 0 0 0 1.1 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E"),
     linear-gradient(180deg, #4b2a17, #3a1f10);
 }
-body[data-game="chess"] #print { display: none; }
-body[data-game="chess"] .fan { display: none; }
-body[data-game="chess"] .who .name { font-size: 3.4vmin; max-width: 15vmin; }
-body[data-game="chess"] .meta { flex-direction: column; gap: .6vmin; }
-body[data-game="chess"] .plate { min-width: 92%; }
+body[data-game="chess"] #print, body[data-game="powerup"] #print { display: none; }
+body[data-game="chess"] .fan, body[data-game="powerup"] .fan { display: none; }
+body[data-game="chess"] .who .name, body[data-game="powerup"] .who .name { font-size: 3.4vmin; max-width: 15vmin; }
+body[data-game="chess"] .meta, body[data-game="powerup"] .meta { flex-direction: column; gap: .6vmin; }
+body[data-game="chess"] .plate, body[data-game="powerup"] .plate { min-width: 92%; }
 
 .clock { font-family: var(--num); font-size: 4.6vmin; line-height: 1; color: var(--ivory); letter-spacing: .02em; padding: .3vmin 1.2vmin; border-radius: .6vmin; }
 .clock.running { background: rgba(255, 228, 168, .14); box-shadow: inset 0 0 0 .15vmin var(--gold-ink); }
@@ -681,8 +681,16 @@ body.many-seats .fan .card { --cw: calc(4.8vmin * var(--card-scale, 1)); margin-
   font-family: var(--ui); font-size: 1.5vmin; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
 }
 .sizer input { width: 14vmin; accent-color: var(--brass); cursor: pointer; }
-body[data-game="chess"] .sizer { display: none; }
+body[data-game="chess"] .sizer, body[data-game="powerup"] .sizer { display: none; }
 /* Seats grow with the card size so the bigger face-down hands don't push names off the edge. */
 #felt { --seat-h: calc(25vmin + 7.7vmin * (var(--card-scale, 1) - 1)); }
 body.many-seats #felt { --seat-h: calc(21vmin + 6.7vmin * (var(--card-scale, 1) - 1)); }
-body[data-game="chess"] #felt { --seat-h: 22vmin; }
+body[data-game="chess"] #felt, body[data-game="powerup"] #felt { --seat-h: 22vmin; }
+
+/* PowerUp Chess: absorbed pieces ride in a little strip under the piece on top. */
+.pc .stk { position: absolute; left: 50%; bottom: -2%; translate: -50% 0; display: flex; padding: 0 calc(var(--S) * .05); border-radius: calc(var(--S) * .2);
+  font-size: calc(var(--S) * .24); line-height: 1.05; -webkit-text-stroke: 0; text-shadow: none;
+  background: rgba(20, 14, 8, .82); box-shadow: 0 0 0 calc(var(--S) * .02) rgba(227, 200, 140, .75), 0 0 calc(var(--S) * .15) rgba(227, 200, 140, .45); }
+.pc .stk i { font-style: normal; }
+.pc .stk { color: #e9d4a2; gap: calc(var(--S) * .02); align-items: center; }
+.pc .stk b { font-family: var(--num); font-weight: 400; font-size: .8em; color: #fff3d6; margin-left: calc(var(--S) * .03); }

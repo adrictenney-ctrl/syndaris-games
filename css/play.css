@@ -233,7 +233,7 @@ body[data-game="gofish"] {
 }
 
 /* ---------- Chess ---------- */
-body[data-game="chess"] {
+body[data-game="chess"], body[data-game="powerup"] {
   background:
     radial-gradient(ellipse 90% 60% at 50% 100%, rgba(255, 220, 170, .08), transparent 70%),
     linear-gradient(180deg, #4b2a17, #33190c);
@@ -259,5 +259,12 @@ body[data-game="chess"] {
 .row.promo { display: grid; grid-template-columns: repeat(4, 1fr); }
 .panel-btn.piece { min-width: 0; padding: 6px 0; background: var(--stock); border: 0; }
 .panel-btn.piece .pc { font-size: 42px; }
-body[data-game="chess"] #handWrap, body[data-game="chess"] #handHint { display: none; }
+body[data-game="chess"] #handWrap, body[data-game="powerup"] #handWrap, body[data-game="chess"] #handHint, body[data-game="powerup"] #handHint { display: none; }
 body[data-game="backgammon"] { background: linear-gradient(180deg, #7a4322, #4d2812); }
+/* PowerUp Chess stacks on the phone board */
+#chessPhone .pc { position: relative; }
+#chessPhone .pc .stk { position: absolute; left: 50%; bottom: -4%; translate: -50% 0; display: flex; padding: 0 2px; border-radius: 6px; font-size: calc(var(--S) * .26); line-height: 1.05;
+  -webkit-text-stroke: 0; text-shadow: none; background: rgba(20, 14, 8, .85); box-shadow: 0 0 0 1px rgba(227, 200, 140, .8); }
+#chessPhone .pc .stk i { font-style: normal; }
+#chessPhone .pc .stk { color: #e9d4a2; align-items: center; }
+#chessPhone .pc .stk b { font-family: var(--num); font-weight: 400; font-size: .8em; color: #fff3d6; margin-left: 1px; }

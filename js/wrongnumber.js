@@ -2,7 +2,7 @@
 // Receiver: a strange text arrives on the table. Everyone else picks the funniest reply from the
 // seven in their hand. The replies appear anonymously as bubbles; the Receiver picks a favourite,
 // and whoever sent it wins the round's text. First to the target score wins.
-import { PROMPTS, REPLIES } from './wrongnumber-cards.js?v=56';
+import { PROMPTS, REPLIES } from './wrongnumber-cards.js?v=57';
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const HAND = 7;

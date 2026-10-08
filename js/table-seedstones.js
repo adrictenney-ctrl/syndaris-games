@@ -1,8 +1,8 @@
 // Seed Stones on the table: a long carved board with six pits a side and a store at each end.
 // Seat 0 sows along the bottom row (store on the right), seat 1 along the top (store on the left).
-import * as S from './seedstones.js?v=56';
-import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=56';
-import { snap } from './cards.js?v=56';
+import * as S from './seedstones.js?v=57';
+import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=57';
+import { snap } from './cards.js?v=57';
 
 let root = null, gameRef = null, ctxRef = null, lastMove = -1;
 const TONES = ['#d9c7a6', '#b9cfc2', '#c7b1c9', '#d6b08e', '#a9bccf', '#e2d8c3'];

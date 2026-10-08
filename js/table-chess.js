@@ -1,11 +1,20 @@
 // Chess on the table screen: an inlaid board in the middle of a dark wood table.
 // With the tablet flat, Black's pieces are turned to face the player across the table.
 // Moves can be made by tapping the board on the table, or from either phone.
-import * as C from './chess.js?v=56';
-import { snap } from './cards.js?v=56';
+import * as Chess from './chess.js?v=57';
+import { snap } from './cards.js?v=57';
 
 export const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
-const glyph = p => GLYPH[p.toLowerCase()] + '︎';
+const glyph = p => GLYPH[p[0].toLowerCase()] + '︎';
+let C = Chess; // the rules in use (PowerUp Chess swaps in its own engine)
+// A piece, or a PowerUp stack: the top piece big, the pieces it has absorbed in a strip below.
+const pieceHTML = p => {
+  if (p.length < 2) return glyph(p);
+  // Each kind of move the stack has gained, once, strongest first; then how tall it is.
+  const kinds = [...new Set(p.slice(1).toLowerCase())].sort((a, b) => 'qrbnpk'.indexOf(a) - 'qrbnpk'.indexOf(b));
+  return glyph(p) + `<span class="stk">${kinds.map(k => `<i>${glyph(k)}</i>`).join('')}${p.length > kinds.length + 1 ? `<b>${p.length}</b>` : ''}</span>`;
+};
+const kingAt = g => g.board.findIndex(p => p && p[0] === (g.turn === 'w' ? 'K' : 'k'));
 
 let boardEl = null;
 let pieceEls = new Array(64).fill(null);
@@ -75,7 +84,7 @@ function makePiece(p) {
 function setPiece(el, p) {
   el.className = `pc ${C.colorOf(p)}`;
   el.dataset.p = p;
-  el.textContent = glyph(p);
+  el.innerHTML = pieceHTML(p);
 }
 
 function place(el, s) {
@@ -117,7 +126,7 @@ function sync(g) {
 
 function highlight(g) {
   const sqs = boardEl.querySelectorAll('.sq');
-  const check = !g.result && C.inCheck(g) ? g.board.indexOf(g.turn === 'w' ? 'K' : 'k') : -1;
+  const check = !g.result && C.inCheck(g) ? kingAt(g) : -1;
   const targets = selected != null ? C.targetsFrom(g.legal, selected) : new Set();
   sqs.forEach(el => {
     const s = Number(el.dataset.sq);
@@ -168,7 +177,7 @@ function showPromo(from, to, seat) {
   });
 }
 
-export default {
+const mode = {
   defaults: { time: 'none', level: 'normal' },
 
   settingsHTML: s => `
@@ -184,9 +193,9 @@ export default {
   },
 
   create: settings => C.createGame(settings),
-  act: C.applyAction,
-  bot: C.botAction,
-  view: C.viewFor,
+  act: (...a) => C.applyAction(...a),
+  bot: (...a) => C.botAction(...a),
+  view: (...a) => C.viewFor(...a),
   turn: g => (g.result ? -1 : g.turn === 'w' ? 0 : 1),
   timer(g, players) {
     if (g.result || !g.clocks) return null;
@@ -201,7 +210,7 @@ export default {
     const badges = [];
     if (!g.result && g.turn === color && C.inCheck(g)) badges.push('<span class="badge lost">check</span>');
     if (g.drawOffer === color) badges.push('<span class="badge">offers a draw</span>');
-    const taken = g.captured[color].map(p => `<i class="cap ${C.colorOf(p)}">${glyph(p)}</i>`).join('');
+    const taken = g.captured[color].join('').split('').map(p => `<i class="cap ${C.colorOf(p)}">${glyph(p)}</i>`).join('');
     const clock = g.clocks ? `<span class="clock" data-clock="${color}">${fmt(C.clocksNow(g)[color])}</span>` : `<span>${color === 'w' ? 'White' : 'Black'}</span>`;
     return {
       badges,
@@ -252,3 +261,7 @@ export default {
     };
   },
 };
+
+// The same board and controls running another engine with the same interface.
+export const withEngine = E => Object.fromEntries(Object.entries(mode).map(([k, v]) => [k, typeof v === 'function' ? (...a) => { C = E; return v(...a); } : v]));
+export default withEngine(Chess);

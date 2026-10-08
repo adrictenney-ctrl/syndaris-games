@@ -1,7 +1,7 @@
 // Crazy Eights on the table: the stock and the discard pile in the middle, with the suit in
 // play printed large beside them (it changes when someone plays an eight).
-import * as E from './crazy8.js?v=56';
-import { cardEl, snap, SUIT_SYMBOL } from './cards.js?v=56';
+import * as E from './crazy8.js?v=57';
+import { cardEl, snap, SUIT_SYMBOL } from './cards.js?v=57';
 
 let root = null, lastPlay = -1, lastHand = -1;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

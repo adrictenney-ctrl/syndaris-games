@@ -45,6 +45,7 @@ GAMES.chess = {
   id: 'chess',
   name: 'Chess',
   blurb: '2 players · or play the computer',
+  startLabel: 'Start the game',
   min: 2,
   max: 2,
   // Players sit at the two ends of the board, off to the side so the board can be big.
@@ -359,4 +360,14 @@ GAMES.wordsmith = {
   max: 4,
   startLabel: 'Draw the tiles',
   layout: GAMES.homestead.layout,
+};
+
+GAMES.powerup = {
+  id: 'powerup',
+  name: 'PowerUp Chess',
+  blurb: '2 players · captured pieces join your piece and lend it their moves',
+  startLabel: 'Start the game',
+  min: 2,
+  max: 2,
+  layout: GAMES.chess.layout,
 };

@@ -1,8 +1,8 @@
 // Baccarat on the table: the Player and Banker hands dealt one card at a time, the result,
 // the bead road of past results, and everyone's bets in front of their seat.
-import * as Bc from './baccarat.js?v=56';
-import { cardEl, snap } from './cards.js?v=56';
-import { chipStack, money } from './casino.js?v=56';
+import * as Bc from './baccarat.js?v=57';
+import { cardEl, snap } from './cards.js?v=57';
+import { chipStack, money } from './casino.js?v=57';
 
 let root = null, key = '';
 const LABEL = { player: 'P', banker: 'B', tie: 'T', ppair: 'PP', bpair: 'BP' };

@@ -1,10 +1,17 @@
 // Chess on a player's phone: the board turned to your side, tap a piece then a square.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=56';
-import { targetsFrom, tapMoves } from './chess.js?v=56';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=57';
+import { targetsFrom, tapMoves } from './chess.js?v=57';
 
 const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
-const glyph = p => GLYPH[p.toLowerCase()] + '︎';
-const colorOf = p => (p ? (p === p.toUpperCase() ? 'w' : 'b') : null);
+const glyph = p => GLYPH[p[0].toLowerCase()] + '︎';
+const colorOf = p => (p ? (p[0] === p[0].toUpperCase() ? 'w' : 'b') : null);
+// PowerUp Chess stacks: the top piece, with the absorbed pieces in a strip below.
+const pieceHTML = p => {
+  if (p.length < 2) return glyph(p);
+  // Each kind of move the stack has gained, once, strongest first; then how tall it is.
+  const kinds = [...new Set(p.slice(1).toLowerCase())].sort((a, b) => 'qrbnpk'.indexOf(a) - 'qrbnpk'.indexOf(b));
+  return glyph(p) + `<span class="stk">${kinds.map(k => `<i>${glyph(k)}</i>`).join('')}${p.length > kinds.length + 1 ? `<b>${p.length}</b>` : ''}</span>`;
+};
 const NAME = { w: 'White', b: 'Black' };
 
 let ctx = null;
@@ -24,7 +31,7 @@ const fmt = ms => {
 // Clocks count down between updates from the table.
 setInterval(() => {
   const g = ctx?.st?.game;
-  if (!g?.clocks || ctx.st.gameId !== 'chess') return;
+  if (!g?.clocks || !['chess', 'powerup'].includes(ctx.st.gameId)) return;
   const now = c => (!g.result && g.turn === c ? g.clocks[c] - (Date.now() - receivedAt) : g.clocks[c]);
   const mine = g.color, theirs = mine === 'w' ? 'b' : 'w';
   const l = document.querySelector('#hudL b'), r = document.querySelector('#hudR b');
@@ -112,7 +119,7 @@ function drawBoard(g) {
   lastKey = key;
   const flip = g.color === 'b';
   const targets = selected != null ? targetsFrom(g.legal, selected) : new Set();
-  const kingSq = g.check ? g.board.indexOf(g.turn === 'w' ? 'K' : 'k') : -1;
+  const kingSq = g.check ? g.board.findIndex(p => p && p[0] === (g.turn === 'w' ? 'K' : 'k')) : -1;
   let html = '';
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
@@ -124,7 +131,7 @@ function drawBoard(g) {
       if (s === selected) cls.push('sel');
       if (s === kingSq) cls.push('check');
       if (targets.has(s)) cls.push(p ? 'hit' : 'dot');
-      html += `<div class="${cls.join(' ')}" data-sq="${s}">${p ? `<span class="pc ${colorOf(p)}">${glyph(p)}</span>` : ''}</div>`;
+      html += `<div class="${cls.join(' ')}" data-sq="${s}">${p ? `<span class="pc ${colorOf(p)}">${pieceHTML(p)}</span>` : ''}</div>`;
     }
   }
   el.innerHTML = html;
