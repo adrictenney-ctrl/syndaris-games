@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="css/ironroutes.css?v=57">
   <link rel="stylesheet" href="css/homestead.css?v=57">
   <link rel="stylesheet" href="css/wordsmith.css?v=57">
+  <link rel="stylesheet" href="css/spires.css?v=57">
   <link rel="stylesheet" href="css/kaboom.css?v=57">
   <link rel="stylesheet" href="css/nestegg.css?v=57">
   <style>
@@ -154,7 +155,8 @@
     .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
     .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
     .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; }
-    .t-crazy8 { --tint: #17393b; } .t-skyline { --tint: #1b2740; } .t-lowtide { --tint: #12304a; } .t-trio { --tint: #2a2d33; } .t-fourup { --tint: #1d3346; } .t-seedstones { --tint: #3a2a1c; } .t-sonar { --tint: #12282c; } .t-milestones { --tint: #1e2a3e; } .t-wrongnumber { --tint: #2a1f38; } .t-scribble { --tint: #3a2d22; } .t-manor { --tint: #3a1f1c; } .t-warfront { --tint: #162637; } .t-ironroutes { --tint: #1d2f26; } .t-homestead { --tint: #16303a; } .t-wordsmith { --tint: #2c2620; } .t-powerup { --tint: #2f2215; } .t-kaboom { --tint: #3a1f3a; }
+    .t-crazy8 { --tint: #17393b; } .t-skyline { --tint: #1b2740; } .t-lowtide { --tint: #12304a; } .t-trio { --tint: #2a2d33; } .t-fourup { --tint: #1d3346; } .t-seedstones { --tint: #3a2a1c; } .t-sonar { --tint: #12282c; } .t-milestones { --tint: #1e2a3e; } .t-wrongnumber { --tint: #2a1f38; } .t-scribble { --tint: #3a2d22; } .t-manor { --tint: #3a1f1c; } .t-warfront { --tint: #162637; } .t-ironroutes { --tint: #1d2f26; } .t-homestead { --tint: #16303a; } .t-wordsmith { --tint: #2c2620; } .t-powerup { --tint: #2f2215; } .t-spires { --tint: #26304a; }
+    .svmini { display: flex; align-items: center; justify-content: center; gap: 6px; --sv: 54px; } .svmini .svs { width: 84px; height: 84px; } .svmini .sv-card:first-child { transform: rotate(-8deg); } .svmini .sv-card:last-child { transform: rotate(8deg); } .t-kaboom { --tint: #3a1f3a; }
     .kcmini { display: flex; align-items: center; justify-content: center; --kc: 64px; } .kcmini .kc-card { margin: 0 -8px; } .kcmini .kc-card p { display: none; } .kcmini .kc-card:nth-child(1) { transform: rotate(-11deg) translateY(6px); } .kcmini .kc-card:nth-child(3) { transform: rotate(11deg) translateY(6px); } .kcmini .kc-card:nth-child(2) { z-index: 1; transform: translateY(-4px) scale(1.06); } .t-nestegg { --tint: #1f3a2b; }
     .nemini { display: flex; align-items: center; justify-content: center; --ne: 62px; } .nemini .ne-card { margin: 0 -8px; } .nemini .ne-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .nemini .ne-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .nemini .ne-card:nth-child(2) { z-index: 1; transform: translateY(-4px); }
     .t-powerup .cards { background: conic-gradient(#d9c08a 25%, #5e3d22 0 50%, #d9c08a 0 75%, #5e3d22 0) 0 0 / 50px 50px; width: 150px !important; height: 100px !important; border: 4px solid #3d2410; box-shadow: 0 0 0 1px rgba(205, 180, 135, .5), 0 0 26px rgba(227, 200, 140, .35), 0 14px 26px rgba(0, 0, 0, .55); }
@@ -319,19 +321,20 @@
     import { mapSVG as railMap } from './js/table-ironroutes.js?v=57';
     import { neCard } from './js/table-nestegg.js?v=57';
     import { kcCard } from './js/table-kaboom.js?v=57';
+    import { svCard, spireSVG } from './js/table-spires.js?v=57';
     import { boardSVG as islandSVG } from './js/table-homestead.js?v=57';
     import { tileHTML as wsTile } from './js/table-wordsmith.js?v=57';
     import { createGame as hsGame } from './js/homestead.js?v=57';
     const sampleIsland = () => { const g = hsGame({}, [{}, {}]); [[10, 0], [30, 1], [44, 0]].forEach(([v, s]) => { g.vOwner[v] = s; g.vLevel[v] = 1; }); return g; };
     import { boardHTML as seedBoard } from './js/table-seedstones.js?v=57';
 
-    const ids = ['nestegg', 'kaboom', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['nestegg', 'kaboom', 'spires', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
-      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', kaboom: 'party', nestegg: 'cards', checkers: 'board',
+      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
       backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards', skyline: 'board', lowtide: 'cards', trio: 'board', fourup: 'board', seedstones: 'board', sonar: 'board', milestones: 'cards', wrongnumber: 'party', scribble: 'party', manor: 'roles', warfront: 'board', ironroutes: 'board', homestead: 'board', wordsmith: 'board',
     };
     const KIND_NAME = { all: 'All games', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
-    const NEW = new Set(['kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
+    const NEW = new Set(['spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
@@ -350,7 +353,8 @@
     function artFor(id) {
       const fan = document.createElement('div');
       fan.className = 'cards';
-      if (id === 'kaboom') { fan.className = 'cards kcmini'; fan.innerHTML = kcCard('nuhuh.0') + kcCard('kaboom.0') + kcCard('lullaby.0'); }
+      if (id === 'spires') { fan.className = 'cards svmini'; fan.innerHTML = svCard('stone.0') + `<div class="svs">${spireSVG(4, '#e3c88c')}</div>` + svCard('l2o.0'); }
+      else if (id === 'kaboom') { fan.className = 'cards kcmini'; fan.innerHTML = kcCard('nuhuh.0') + kcCard('kaboom.0') + kcCard('lullaby.0'); }
       else if (id === 'nestegg') { fan.className = 'cards nemini'; fan.innerHTML = neCard('ring.0') + neCard('bullion.0') + neCard('ring.1'); }
       else if (id === 'powerup') fan.innerHTML = '<span class="cpc w" style="left:34%">♝︎<span class="stk"><i class="b">♜︎</i><i class="b">♞︎</i></span></span><span class="cpc b" style="left:66%">♛︎<span class="stk"><i class="w">♟︎</i></span></span>';
       else if (id === 'chess') fan.innerHTML = '<span class="cpc w" style="left:34%">♚︎</span><span class="cpc b" style="left:66%">♛︎</span>';

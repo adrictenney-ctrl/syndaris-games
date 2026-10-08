@@ -391,3 +391,13 @@ GAMES.kaboom = {
   startLabel: 'Deal the cards',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.spires = {
+  id: 'spires',
+  name: 'Seven Spires',
+  blurb: '2–7 players · draw, build your spire, win the wars',
+  min: 2,
+  max: 7,
+  startLabel: 'Lay the foundations',
+  layout: GAMES.holdem.layout,
+};
