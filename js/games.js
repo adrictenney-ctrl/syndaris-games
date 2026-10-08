@@ -421,3 +421,13 @@ GAMES.redline = {
   startLabel: 'Lights out',
   layout: GAMES.skyline.layout,
 };
+
+GAMES.gearworks = {
+  id: 'gearworks',
+  name: 'Gearworks',
+  blurb: '2–5 players · pick actions at once, build a robot workshop',
+  min: 2,
+  max: 5,
+  startLabel: 'Open the workshop',
+  layout: GAMES.holdem.layout,
+};

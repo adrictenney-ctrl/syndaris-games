@@ -1,0 +1,80 @@
+/* Gearworks: a brushed-steel workbench, blueprint cards with a robot on each, and five action
+   colours (Recycle green, Design blue, Fabricate copper, Assemble violet, Upgrade gold). */
+body[data-game="gearworks"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 235, 245, .08), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .015) 0 2px, transparent 2px 5px),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #2b3238 0%, #1d2227 55%, #0b0e10 100%);
+}
+body[data-game="gearworks"] #print, body[data-game="gearworks"] .fan, body[data-game="gearworks"] .sizer { display: none; }
+
+.gw-bot { width: 100%; height: auto; display: block; }
+.gw-card {
+  --g0: var(--gw, 80px); position: relative; width: var(--g0); height: calc(var(--g0) * 1.4); flex: none; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; padding: 10% 6% 6%; gap: 2%;
+  border-radius: calc(var(--g0) * .08); overflow: hidden; color: #1b2a3a;
+  background: linear-gradient(180deg, #e9f0f5, #cfdbe4); background-image: linear-gradient(rgba(74, 120, 181, .12) 1px, transparent 1px), linear-gradient(90deg, rgba(74, 120, 181, .12) 1px, transparent 1px), linear-gradient(180deg, #edf3f7, #d3dee7);
+  background-size: calc(var(--g0) * .1) calc(var(--g0) * .1), calc(var(--g0) * .1) calc(var(--g0) * .1), auto;
+  box-shadow: 0 calc(var(--g0) * .05) calc(var(--g0) * .12) rgba(0, 0, 0, .5), inset 0 0 0 calc(var(--g0) * .035) var(--c);
+}
+.gw-card .gw-bot { width: 82%; }
+.gw-card b { font-family: var(--display); font-weight: 600; font-size: calc(var(--g0) * .14); line-height: 1.05; text-align: center; }
+.gw-card small { margin-top: auto; font-family: var(--ui); font-weight: 800; font-size: calc(var(--g0) * .085); letter-spacing: .04em; color: #fff; background: var(--c); padding: 2% 6%; border-radius: 99px; white-space: nowrap; }
+.gw-card .cost, .gw-card .vp { position: absolute; top: 4%; display: grid; place-items: center; width: calc(var(--g0) * .2); height: calc(var(--g0) * .2); border-radius: 50%; font-family: var(--num); font-size: calc(var(--g0) * .14); line-height: 1; }
+.gw-card .cost { left: 4%; color: #fff; background: #5b6470; box-shadow: 0 0 0 calc(var(--g0) * .015) #fff; }
+.gw-card .cost::after { content: '🔩'; position: absolute; font-size: .5em; right: -18%; bottom: -14%; }
+.gw-card .vp { right: 4%; color: #3a2a00; background: #f6d27a; box-shadow: 0 0 0 calc(var(--g0) * .015) #fff; }
+.gw-card.back { justify-content: center; background: linear-gradient(160deg, #3a4550, #1d2227); }
+.gw-card.back i { font-style: normal; font-size: calc(var(--g0) * .5); color: #c9d4dd; }
+
+#gearworks { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.gw-mid { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * 1.4); }
+.gw-rounds { display: flex; gap: calc(var(--v) * .6); }
+.gw-rounds i { font-style: normal; display: grid; place-items: center; width: calc(var(--v) * 3.2); height: calc(var(--v) * 3.2); border-radius: 50%; font-family: var(--num); font-size: calc(var(--v) * 1.6); color: var(--gold-ink); box-shadow: inset 0 0 0 .15vmin rgba(227, 200, 140, .4); }
+.gw-rounds i.done { opacity: .35; } .gw-rounds i.now { color: #1b1b1f; background: var(--champagne); box-shadow: 0 0 1.4vmin rgba(227, 200, 140, .6); }
+.gw-surge { display: flex; align-items: center; gap: calc(var(--v) * 1); }
+.gw-surge small { font-family: var(--ui); font-size: calc(var(--v) * 1.25); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); }
+.gw-sc { font-family: var(--ui); font-weight: 800; font-size: calc(var(--v) * 1.6); color: #fff; padding: calc(var(--v) * .5) calc(var(--v) * 1.2); border-radius: 99px; background: var(--c); box-shadow: 0 0 1.4vmin color-mix(in srgb, var(--c) 60%, transparent); }
+.gw-acts { display: flex; gap: calc(var(--v) * 1); }
+.gw-act { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .3); width: calc(var(--v) * 11); padding: calc(var(--v) * 1) 0; border-radius: calc(var(--v) * 1); background: rgba(0, 0, 0, .3); box-shadow: inset 0 0 0 .2vmin var(--c); transition: transform .3s, opacity .3s; }
+.gw-act i { font-style: normal; font-size: calc(var(--v) * 3.6); line-height: 1; }
+.gw-act b { font-family: var(--display); font-weight: 600; font-size: calc(var(--v) * 1.9); color: var(--ivory); }
+.gw-act .who { display: flex; gap: .4vmin; min-height: 1.4vmin; }
+.gw-act .who i { width: 1.4vmin; height: 1.4vmin; border-radius: 50%; }
+.gw-act.now { background: var(--c); transform: scale(1.1); box-shadow: 0 0 2.4vmin color-mix(in srgb, var(--c) 70%, transparent); }
+.gw-act.off { opacity: .3; }
+.gw-msg { margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.1); color: var(--ivory); }
+.gw-msg b { font-style: normal; font-family: var(--display); color: var(--champagne-hi); }
+.gw-shop { position: absolute; left: 0; top: 0; width: calc(var(--v) * 26); display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .5); transition: transform .4s; }
+.gw-bots { display: flex; flex-wrap: wrap; justify-content: center; gap: calc(var(--v) * .5); max-width: calc(var(--v) * 26); }
+.gw-bots span { position: relative; width: calc(var(--v) * 5.6); padding: .2vmin; border-radius: .8vmin; background: rgba(0, 0, 0, .25); box-shadow: inset 0 0 0 .15vmin var(--c); }
+.gw-bots span b { position: absolute; right: -.4vmin; top: -.4vmin; display: grid; place-items: center; width: 1.8vmin; height: 1.8vmin; border-radius: 50%; font-family: var(--num); font-size: 1.2vmin; color: #3a2a00; background: #f6d27a; }
+.gw-bots em { font-family: var(--serif); font-size: calc(var(--v) * 1.6); color: var(--gold-ink); }
+.gw-res { display: flex; gap: calc(var(--v) * 1.4); font-family: var(--num); font-size: calc(var(--v) * 2); color: var(--ivory); }
+
+/* ---------- phone ---------- */
+body[data-game="gearworks"] { background: linear-gradient(180deg, #2a3138, #0b0e10); }
+body[data-game="gearworks"] #handWrap, body[data-game="gearworks"] #handHint { display: none; }
+#gwPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 10px; }
+.gw-surges { margin: 0; text-align: center; font-family: var(--ui); font-size: 12px; font-weight: 700; color: #f6d27a; }
+.gw-pick { display: flex; flex-direction: column; gap: 6px; }
+.gw-pick button { display: grid; grid-template-columns: 40px 1fr; grid-template-rows: auto auto auto; column-gap: 10px; align-items: center; padding: 8px 12px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--c) 60%, transparent); background: rgba(0, 0, 0, .3); cursor: pointer; text-align: left; color: var(--ivory); }
+.gw-pick button.on { background: var(--c); box-shadow: 0 0 0 2px #fff3d6; }
+.gw-pick i { grid-row: 1 / 4; font-style: normal; font-size: 30px; }
+.gw-pick b { font-family: var(--display); font-size: 19px; }
+.gw-pick span { font-family: var(--ui); font-size: 12px; opacity: .85; }
+.gw-pick em { font-style: normal; font-family: var(--ui); font-size: 11px; font-weight: 800; color: #f6d27a; }
+.gw-pick button.on em { color: #fff; }
+.gw-h { margin: 4px 0 0; font-family: var(--ui); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); }
+.gw-hand { display: flex; flex-wrap: wrap; gap: 6px; }
+.gw-hand button { padding: 0; border: 0; background: none; cursor: pointer; --gw: min(22vw, 84px); transition: transform .15s; }
+.gw-hand button.sel { transform: translateY(-6px); }
+.gw-hand button.sel .gw-card { box-shadow: 0 0 0 3px #ff8a7a, 0 6px 12px rgba(0, 0, 0, .5); }
+.gw-hand button.lit .gw-card { box-shadow: 0 0 0 3px #8fd6a0, 0 6px 12px rgba(0, 0, 0, .5); }
+.gw-hand em, .gw-bots.mine em { font-family: var(--serif); color: var(--gold-ink); }
+.gw-bots.mine { --v: 9px; justify-content: flex-start; }
+.gw-bots.mine span b { width: 16px; height: 16px; font-size: 11px; }
+.gw-up { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.gw-up p { margin: 0; font-family: var(--ui); color: var(--ivory); }
+.gw-up p b { font-family: var(--num); font-size: 28px; color: #f6d27a; }
+.gw-up .panel-btn { min-width: 52px; font-size: 22px; }
