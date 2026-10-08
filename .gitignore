@@ -9,3 +9,4 @@ tv-app/keystore.properties
 !tv.apk
 _dev.js
 _covers.html
+.wrangler/
