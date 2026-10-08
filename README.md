@@ -480,6 +480,11 @@ word cards to make a product ("Bacon" + "Umbrella") and pitches it out loud. The
 seller scores. Everyone is the Customer once (or twice, or three times). Our own 300 words and 70 customers.
 Code: `js/hardsell.js`.
 
+## Card finish
+`css/cardart.css` (loaded after the game styles) gives every custom deck the same printed-card finish: paper grain,
+a sheen and an inner frame, plus round medallions for picture cards. Card sizes there are in card units (`--cs`),
+never percentages.
+
 ## Cover art
 Every game has its own cover, drawn in `js/covers.js` (one SVG scene per game, 600×400, with the title set
 like a box). The home page shows them on the tiles and in the spotlight. A new game needs a cover there too.

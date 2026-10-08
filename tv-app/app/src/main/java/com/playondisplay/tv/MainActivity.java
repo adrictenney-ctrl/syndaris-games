@@ -23,8 +23,8 @@ import android.webkit.WebViewClient;
  */
 public class MainActivity extends Activity {
 
-    private static final String HOME = "https://adrictenney-ctrl.github.io/syndaris-games/?tv=1";
-    private static final String HOST = "adrictenney-ctrl.github.io";
+    private static final String HOME = "https://playondisplay.com/?tv=1";
+    private static final String HOST = "playondisplay.com";
 
     private WebView web;
     private boolean showingError = false;
@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         web = new WebView(this);
-        web.setBackgroundColor(Color.parseColor("#0b2d1e"));
+        web.setBackgroundColor(Color.parseColor("#0c0b0a"));
         web.setFocusable(true);
         web.setFocusableInTouchMode(true);
 
@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
         s.setUseWideViewPort(true);
         s.setCacheMode(WebSettings.LOAD_DEFAULT);
         // Lets the site know it's inside the TV app (TV layout, remote navigation).
-        s.setUserAgentString(s.getUserAgentString() + " PlayOnDisplayTV/1.0");
+        s.setUserAgentString(s.getUserAgentString() + " PlayOnDisplayTV/1.1");
 
         web.setWebChromeClient(new WebChromeClient());
         web.setWebViewClient(new WebViewClient() {
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
     private void showOffline() {
         showingError = true;
         String page = "<html><body style='margin:0;height:100vh;display:grid;place-items:center;"
-                + "background:#0b2d1e;color:#f5eedd;font-family:Georgia,serif;text-align:center'>"
+                + "background:#0c0b0a;color:#f5eedd;font-family:Georgia,serif;text-align:center'>"
                 + "<div><h1 style='font-weight:400;font-size:6vmin;margin:0'>Can't reach the table</h1>"
                 + "<p style='font-size:3vmin;color:#dabc76'>Play On Display needs an internet connection.</p>"
                 + "<button autofocus onclick=\"location.href='" + HOME + "'\" style='margin-top:3vmin;font-size:3vmin;"

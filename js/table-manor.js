@@ -1,8 +1,8 @@
 // Midnight Manor on the table: the floor plan of the house, nine rooms, with every suspect's
 // pawn and every weapon where it currently lies, secret passages in the corners, and a case log
 // of suggestions (never which card was shown).
-import * as M from './manor.js?v=61';
-import { snap } from './cards.js?v=61';
+import * as M from './manor.js?v=62';
+import { snap } from './cards.js?v=62';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

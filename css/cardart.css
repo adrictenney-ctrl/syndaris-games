@@ -1,0 +1,80 @@
+/* Card finish shared by every custom deck (not the standard playing cards): a fine paper grain,
+   a soft sheen across the face and a thin inner frame, so the cards read as printed card stock.
+   Loaded after the game stylesheets. Each deck tells it its card size through --cs. */
+.kc-card { --cs: var(--kc0); } .ne-card { --cs: var(--ne, 70px); } .sv-card { --cs: var(--s0); } .rl-card { --cs: var(--r0); }
+.gw-card { --cs: var(--g0); } .lk-card { --cs: var(--l0); } .pu-card { --cs: var(--p0); } .hr-card { --cs: var(--h0); }
+.ms-card { --cs: var(--mw, 46px); }
+
+.kc-card::before, .ne-card::before, .sv-card::before, .rl-card::before, .gw-card::before, .lk-card::before, .pu-card::before, .hr-card::before, .ms-card::before {
+  content: ''; position: absolute; inset: calc(var(--cs) * .04); z-index: 4; pointer-events: none;
+  border-radius: calc(var(--cs) * .07); border: calc(var(--cs) * .008 + .4px) solid rgba(255, 255, 255, .38);
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, .26) 0%, rgba(255, 255, 255, .06) 22%, transparent 40%, transparent 72%, rgba(255, 255, 255, .07) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+.kc-card.gone::before, .ne-card.gone::before, .sv-card.gone::before, .lk-card.none::before, .hr-card.none::before { display: none; }
+
+/* Paddings in card units (percentages were measured against whatever held the card). */
+.kc-card { padding: calc(var(--kc0) * .09) calc(var(--kc0) * .08) calc(var(--kc0) * .08); }
+.ne-card { padding: calc(var(--ne, 70px) * .1) calc(var(--ne, 70px) * .07) calc(var(--ne, 70px) * .07); }
+.ne-card.wild em { padding: .15em .7em; }
+.sv-card { padding: calc(var(--s0) * .1) calc(var(--s0) * .07); }
+.gw-card { padding: calc(var(--g0) * .13) calc(var(--g0) * .07) calc(var(--g0) * .08); }
+.gw-card small { padding: .2em .7em; }
+.hr-card { padding: calc(var(--h0) * .05) calc(var(--h0) * .08) calc(var(--h0) * .08); }
+
+/* A round medallion for the pictures (critters, valuables, keepers, materials). */
+.kc-card i, .ne-card .ic, .sv-card:not(.k-banner):not(.back) > i, .hr-card.t-keeper > i, .hr-card.t-creeper > i {
+  flex: none; display: grid; place-items: center; width: calc(var(--cs) * .66); height: calc(var(--cs) * .66); border-radius: 50%; margin: calc(var(--cs) * .03) auto;
+  font-style: normal; font-size: calc(var(--cs) * .36); line-height: 1; letter-spacing: 0;
+  background: radial-gradient(circle at 40% 32%, #fffdf6, #f1e5c8 62%, #dcc99e);
+  box-shadow: 0 0 0 calc(var(--cs) * .022) var(--c, #8a7a5a), 0 0 0 calc(var(--cs) * .04) rgba(255, 255, 255, .55), 0 calc(var(--cs) * .03) calc(var(--cs) * .07) rgba(0, 0, 0, .35), inset 0 calc(var(--cs) * -.03) calc(var(--cs) * .06) rgba(120, 90, 40, .25);
+  filter: none;
+}
+.kc-card i { filter: drop-shadow(0 calc(var(--kc0) * .015) 0 rgba(0, 0, 0, .15)); }
+
+/* ---------- Kaboom Critters: cream card stock round a coloured panel, a dark title ribbon, a
+   medallion, and the rule in a cream plate at the foot. ---------- */
+.kc-card {
+  gap: calc(var(--kc0) * .04); justify-content: space-between;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 30%, rgba(255, 255, 255, .22), transparent 70%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 calc(var(--kc0) * .04), transparent calc(var(--kc0) * .04) calc(var(--kc0) * .08)),
+    linear-gradient(180deg, var(--c), color-mix(in srgb, var(--c) 62%, #000));
+  box-shadow: 0 calc(var(--kc0) * .05) calc(var(--kc0) * .12) rgba(0, 0, 0, .5), inset 0 0 0 calc(var(--kc0) * .035) #f3e8cf, inset 0 0 0 calc(var(--kc0) * .045) color-mix(in srgb, var(--c) 70%, #000);
+}
+.kc-card .nm { align-self: stretch; padding: .3em .2em; border-radius: calc(var(--kc0) * .04); background: rgba(20, 10, 15, .32); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18); text-align: center; }
+.kc-card p { align-self: stretch; padding: .35em .3em; border-radius: calc(var(--kc0) * .04); background: rgba(255, 248, 232, .92); color: #3a2a2e; min-height: 0; text-align: center; }
+.kc-card.back { background: radial-gradient(circle at 50% 42%, #6a3564, #2a1228 70%), #2a1228; }
+.kc-card.back::after { content: '💣'; position: absolute; top: 16%; left: 50%; transform: translateX(-50%); font-size: calc(var(--kc0) * .22); opacity: .85; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .5)); }
+.kc-card.back b { margin-top: 30%; }
+
+/* ---------- Nest Egg: a heavier frame and the valuable in its medallion. ---------- */
+.ne-card:not(.back):not(.gone):not(.wild) { box-shadow: 0 calc(var(--ne, 70px) * .05) calc(var(--ne, 70px) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--ne, 70px) * .03) var(--c), inset 0 0 0 calc(var(--ne, 70px) * .045) #fffaf0; }
+.ne-card.wild { box-shadow: 0 calc(var(--ne, 70px) * .05) calc(var(--ne, 70px) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--ne, 70px) * .03) rgba(255, 255, 255, .7); }
+.ne-card.wild::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .55) 45%, transparent 60%); mix-blend-mode: overlay; pointer-events: none; }
+
+/* ---------- Seven Spires: materials, science and laurels in medallions. ---------- */
+.sv-card:not(.back):not(.gone) { box-shadow: 0 calc(var(--s0) * .05) calc(var(--s0) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--s0) * .04) var(--c), inset 0 0 0 calc(var(--s0) * .055) #fffaf0; }
+.sv-card > i { font-size: calc(var(--s0) * .34); }
+
+/* ---------- House Rules: keepers and creepers in medallions, an ornament under the name. ---------- */
+.hr-card > b { position: relative; padding-bottom: .25em; }
+.hr-card:not(.back):not(.none):not(.sm) > b::after { content: '◆'; display: block; font-size: .42em; line-height: 1.4; color: var(--c); opacity: .75; }
+.hr-card.t-creeper > i { background: radial-gradient(circle at 40% 32%, #4a3a34, #2a1d18 70%); box-shadow: 0 0 0 calc(var(--cs) * .022) #c9784a, 0 calc(var(--cs) * .03) calc(var(--cs) * .07) rgba(0, 0, 0, .5); }
+.hr-card.sm > i { width: calc(var(--cs) * .58); height: calc(var(--cs) * .58); font-size: calc(var(--cs) * .32); }
+.hr-card i.pair { padding: calc(var(--cs) * .03) calc(var(--cs) * .06); border-radius: 99px; background: radial-gradient(ellipse at 50% 35%, #fffdf6, #efe2c3); box-shadow: 0 0 0 calc(var(--cs) * .015) var(--c), 0 calc(var(--cs) * .02) calc(var(--cs) * .05) rgba(0, 0, 0, .25); flex: none; margin: auto 0; }
+.hr-card.back { background: radial-gradient(circle at 50% 38%, #6a4a30, #2a1a10 75%); }
+.hr-card.back.d-space { background: radial-gradient(circle at 50% 38%, #34477a, #10162a 75%); }
+.hr-card.back::after { content: '❖'; position: absolute; bottom: 12%; font-size: calc(var(--h0) * .14); color: #c9a35a; opacity: .8; }
+
+/* ---------- Gearworks: let the robot breathe. ---------- */
+.gw-card svg { flex: 1; min-height: 0; }
+.hr-card.t-rule p::before, .hr-card.t-action p::before, .hr-card.t-goal p::before {
+  display: block; margin: 0 auto .35em; font-family: var(--display); font-size: calc(var(--cs) * .26); line-height: 1; color: var(--c);
+}
+.hr-card.t-rule p::before { content: '§'; }
+.hr-card.t-action p::before { content: '✦'; font-family: 'Noto Sans Symbols 2', serif; font-size: calc(var(--cs) * .2); }
+.hr-card.t-goal p::before { content: '★'; font-family: 'Noto Sans Symbols 2', serif; font-size: calc(var(--cs) * .18); }
+.hr-card p { display: flex; flex-direction: column; justify-content: center; }

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=61">
+  <link rel="stylesheet" href="css/cards.css?v=62">
   <style>
     html { background: var(--onyx); }
     body {
@@ -170,7 +170,8 @@
     }
 
     /* ---------- TV: just the library, every game on one screen ---------- */
-    html.tv .join, html.tv .spot, html.tv .filters, html.tv footer, html.tv .hover-play { display: none; }
+    html.tv .join, html.tv .spot, html.tv .filters, html.tv footer .wrap:not(.legal), html.tv .hover-play { display: none; }
+    html.tv footer { border: 0; padding: 1vh 0 3vh; }
     html.tv .bar { position: static; }
     html.tv .wrap { max-width: none; padding: 0 3vw; }
     html.tv .section-head { margin-top: 3vh; }
@@ -212,10 +213,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=61"></script>
+  <script type="module" src="js/tvnav.js?v=62"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=61';
-    import { coverSVG } from './js/covers.js?v=61';
+    import { GAMES } from './js/games.js?v=62';
+    import { coverSVG } from './js/covers.js?v=62';
 
     const ids = ['hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {

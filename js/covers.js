@@ -16,6 +16,7 @@ function shell(id, o, body) {
     <radialGradient id="${id}-bg" cx="${o.cx ?? 50}%" cy="${o.cy ?? 42}%" r="80%"><stop offset="0" stop-color="${c1}"/><stop offset=".55" stop-color="${c2}"/><stop offset="1" stop-color="${c3}"/></radialGradient>
     <radialGradient id="${id}-vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
     <linearGradient id="${id}-scrim" x1="0" y1="0" x2="0" y2="1"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".72"/></linearGradient>
+    <linearGradient id="${id}-foil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf"/><stop offset=".38" stop-color="#e9c77e"/><stop offset=".52" stop-color="#b8893a"/><stop offset=".62" stop-color="#d9b46a"/><stop offset="1" stop-color="#f3dda0"/></linearGradient>
     <linearGradient id="${id}-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e2b0"/><stop offset=".55" stop-color="#d8b46a"/><stop offset="1" stop-color="#a8823c"/></linearGradient>
     <linearGradient id="${id}-card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#e9dfc8"/></linearGradient>
     <filter id="${id}-sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".5"/></filter>
@@ -36,9 +37,19 @@ function titleBlock(id, o) {
   const size = o.size || (n <= 6 ? 66 : n <= 10 ? 58 : n <= 14 ? 50 : n <= 18 ? 42 : 36);
   const lines = o.lines || [t];
   const lh = size * 0.98;
-  const y0 = 372 - (lines.length - 1) * lh;
-  const words = lines.map((l, i) => `<text x="34" y="${y0 + i * lh}" font-family="${SERIF}" font-size="${size}" fill="url(#${id}-gold)" style="paint-order:stroke" stroke="rgba(0,0,0,.35)" stroke-width="1.2" letter-spacing=".5">${esc(l)}</text>`).join('');
-  return `<g filter="url(#${id}-sh)">${o.tag ? `<text x="36" y="${y0 - size * 0.86}" font-family="${UI}" font-weight="800" font-size="12" letter-spacing="3.2" fill="#e9dcc0" opacity=".85">${esc(o.tag.toUpperCase())}</text>` : ''}${words}</g>`;
+  const y0 = 368 - (lines.length - 1) * lh;
+  // The wordmark: a dark offset for depth, metallic foil on top, then a fine highlight edge.
+  const words = lines.map((l, i) => {
+    const y = y0 + i * lh, a = `x="34" y="${y}" font-family="${SERIF}" font-size="${size}" letter-spacing=".6"`;
+    return `<text ${a} dx="0" dy="3" fill="#120c06" opacity=".7">${esc(l)}</text>`
+      + `<text ${a} fill="url(#${id}-foil)" stroke="#5a3f14" stroke-width="1.1" style="paint-order:stroke">${esc(l)}</text>`
+      + `<text ${a} fill="none" stroke="#fff6dc" stroke-opacity=".35" stroke-width=".6" transform="translate(-.5 -.7)">${esc(l)}</text>`;
+  }).join('');
+  // A gilt rule under the name, ending in a small diamond.
+  const ry = y0 + (lines.length - 1) * lh + size * 0.2;
+  const rule = `<path d="M36 ${ry} H190" stroke="#c9a35a" stroke-width="1.2" opacity=".8"/><path d="M196 ${ry - 4} L200 ${ry} L196 ${ry + 4} L192 ${ry} Z" fill="#e3c88c" opacity=".9"/>`;
+  const tag = o.tag ? `<g opacity=".9"><path d="M36 ${y0 - size * 0.9} l4 -4 l4 4 l-4 4 Z" fill="#d8b46a"/><text x="50" y="${y0 - size * 0.86}" font-family="${UI}" font-weight="800" font-size="12" letter-spacing="3.2" fill="#efe3c6">${esc(o.tag.toUpperCase())}</text></g>` : '';
+  return `<g filter="url(#${id}-sh)">${tag}${words}${rule}</g>`;
 }
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

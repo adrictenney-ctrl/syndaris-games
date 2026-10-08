@@ -1,9 +1,9 @@
 // Sonar on a phone. Before the shooting starts: arrange your fleet (shuffle, or pick a ship,
 // set it across or down, and tap where its front goes), then press Ready. During the game: the
 // big grid is the other player's waters — tap to ping; your own fleet is shown underneath.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=61';
-import { FLEET, N } from './sonar.js?v=61';
-import { gridHTML, cellName } from './table-sonar.js?v=61';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=62';
+import { FLEET, N } from './sonar.js?v=62';
+import { gridHTML, cellName } from './table-sonar.js?v=62';
 
 let ctx = null, pick = 0, down = false, wasMyTurn = false;
 export function reset() { pick = 0; down = false; document.getElementById('soPhone')?.remove(); }

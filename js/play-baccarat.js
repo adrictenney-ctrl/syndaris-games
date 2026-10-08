@@ -1,7 +1,7 @@
 // Baccarat on a phone: pick a chip, tap where to bet (Player, Banker, Tie, pairs), then
 // watch the table.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=61';
-import { CHIP_CLASS, money } from './casino.js?v=61';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=62';
+import { CHIP_CLASS, money } from './casino.js?v=62';
 
 let ctx = null, panelKey = '', chip = 25;
 const CHIPS = [5, 25, 100, 500];
