@@ -401,3 +401,13 @@ GAMES.spires = {
   startLabel: 'Lay the foundations',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.grandprix = {
+  id: 'grandprix',
+  name: 'Grand Prix Dice',
+  blurb: '2–6 players · shift gears, roll, and brake for the corners',
+  min: 2,
+  max: 6,
+  startLabel: 'Start your engines',
+  layout: GAMES.skyline.layout,
+};

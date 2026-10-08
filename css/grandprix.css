@@ -1,0 +1,67 @@
+/* Grand Prix Dice: a dark green paddock, charcoal asphalt with white edges, red-and-white kerbs
+   with a stop count on each corner, and gear colours that run from cream (1st) to blue (6th). */
+body[data-game="grandprix"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(210, 240, 200, .07), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #233a26 0%, #18291a 55%, #0a120b 100%);
+}
+body[data-game="grandprix"] #print, body[data-game="grandprix"] .fan, body[data-game="grandprix"] .sizer { display: none; }
+body[data-game="grandprix"] .meta { flex-direction: column; gap: .4vmin; }
+
+.cc-svg { display: block; overflow: visible; }
+.cc-shadow { fill: none; stroke: rgba(0, 0, 0, .45); stroke-linejoin: round; transform: translate(.6px, 1.2px); }
+.cc-edge { fill: none; stroke: #e9e4d6; stroke-linejoin: round; }
+.cc-road { fill: none; stroke: #3a3b3f; stroke-linejoin: round; }
+.cc-tick { stroke: rgba(255, 255, 255, .13); stroke-width: .18; }
+.cc-kerb { fill: none; stroke: #d0393b; stroke-width: 1.3; stroke-dasharray: 1.4 1.4; stroke-linecap: butt; }
+.cc-badge circle { fill: #f3ead2; stroke: #d0393b; stroke-width: .7; }
+.cc-badge text { font-family: var(--num); font-size: 5.4px; text-anchor: middle; fill: #2a1f1a; }
+.cc-badge.s2 circle { fill: #f6d27a; } .cc-badge.s3 circle { fill: #e07a5f; }
+.cc-chk.w { fill: #fff; } .cc-chk.b { fill: #111; }
+.cc-car rect:first-child { stroke: rgba(0, 0, 0, .55); stroke-width: .35; }
+.cc-glass { fill: rgba(20, 30, 40, .75); }
+.cc-car text { font-family: var(--ui); font-weight: 800; font-size: 3.1px; text-anchor: middle; fill: #fff; paint-order: stroke; stroke: rgba(0, 0, 0, .7); stroke-width: .5px; }
+.cc-car.now rect:first-child { stroke: #fff; stroke-width: .6; filter: drop-shadow(0 0 1.2px #fff); }
+.cc-car.me rect:first-child { stroke: #fff3d6; stroke-width: .7; }
+
+#grandprix { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.gp-track { position: absolute; left: 0; top: 0; width: var(--W); transform: translate(-50%, -50%); }
+.gp-track .cc-svg { width: 100%; height: auto; }
+.gp-hud { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%) translate(calc(var(--W) * -.05), calc(var(--W) * -.02)); display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .6); pointer-events: none; }
+.gp-dz { display: grid; place-items: center; width: calc(var(--v) * 11); height: calc(var(--v) * 11); border-radius: 22%; background: radial-gradient(circle at 35% 30%, #fff, var(--gc) 70%); box-shadow: 0 1.2vmin 3vmin rgba(0, 0, 0, .5), inset 0 0 0 .4vmin rgba(255, 255, 255, .5); color: #1b1b1f; }
+.gp-dz b { font-family: var(--num); font-weight: 400; font-size: calc(var(--v) * 5.6); line-height: 1; }
+.gp-dz small { font-family: var(--ui); font-weight: 800; font-size: calc(var(--v) * 1.2); letter-spacing: .14em; text-transform: uppercase; margin-top: -1.2vmin; }
+.gp-dz.idle { opacity: .75; }
+.gp-flag { font-size: calc(var(--v) * 9); }
+.gp-now { margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.2); color: var(--ivory); }
+.gp-now b { font-style: normal; font-family: var(--display); color: var(--champagne-hi); }
+.gp-lap { margin: 0; white-space: nowrap; font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.3); letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); }
+.gp-wear { display: flex; gap: .8vmin; }
+.gp-w { font-style: normal; font-size: 1.3vmin; letter-spacing: -.05em; color: var(--champagne-hi); white-space: nowrap; }
+.gp-w em { font-style: normal; font-family: var(--ui); font-weight: 800; color: var(--gold-ink); margin-right: .2em; letter-spacing: 0; }
+
+/* ---------- phone ---------- */
+body[data-game="grandprix"] { background: linear-gradient(180deg, #1f3322, #0a120b); }
+body[data-game="grandprix"] #handWrap, body[data-game="grandprix"] #handHint { display: none; }
+#gpPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 10px; }
+.gp-mini .cc-svg { width: 100%; height: auto; }
+.gp-wearbox { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.gp-wearbox div { display: flex; flex-direction: column; align-items: center; padding: 6px 2px; border-radius: 8px; background: rgba(0, 0, 0, .25); }
+.gp-wearbox small { font-family: var(--ui); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); }
+.gp-wearbox b { font-size: 12px; color: var(--champagne-hi); letter-spacing: .05em; }
+.gp-wearbox b span { color: rgba(255, 255, 255, .25); }
+.gp-gears { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.gp-gears button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 4px; border-radius: 12px; border: 0; cursor: pointer; color: #1b1b1f; background: radial-gradient(circle at 35% 25%, #fff, var(--gc) 75%); box-shadow: 0 4px 10px rgba(0, 0, 0, .4); }
+.gp-gears button:disabled { opacity: .3; }
+.gp-gears button.cur { box-shadow: 0 0 0 3px #fff3d6, 0 4px 10px rgba(0, 0, 0, .4); }
+.gp-gears b { font-family: var(--num); font-weight: 400; font-size: 30px; line-height: 1; }
+.gp-gears span { font-family: var(--ui); font-weight: 800; font-size: 12px; }
+.gp-gears em { font-style: normal; font-family: var(--ui); font-size: 9px; font-weight: 700; color: #6a1a1a; }
+.gp-gears i, .gp-brakes i { position: absolute; right: 6px; top: 4px; font-style: normal; color: #b8860b; font-size: 14px; }
+.gp-brakes { display: flex; flex-direction: column; gap: 6px; }
+.gp-brakes button { position: relative; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; align-items: center; gap: 0 10px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--gold-faint); cursor: pointer; text-align: left; background: rgba(0, 0, 0, .3); color: var(--ivory); }
+.gp-brakes b { font-family: var(--ui); font-size: 15px; }
+.gp-brakes span { font-family: var(--ui); font-size: 13px; color: var(--gold-ink); }
+.gp-brakes em { grid-column: 1 / -1; font-style: normal; font-family: var(--ui); font-size: 12px; font-weight: 700; }
+.gp-brakes em.bad { color: #ff8a7a; } .gp-brakes em.warn { color: #f6d27a; } .gp-brakes em.ok { color: #8fd6a0; }
+.gp-brakes button { padding-right: 30px; }
