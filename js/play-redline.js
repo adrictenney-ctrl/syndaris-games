@@ -1,8 +1,8 @@
 // Redline on a phone: pick your gear, tap that many cards, maybe Boost, then Lock in. Everyone
 // plans at the same time; the cars move once the last player locks in.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=59';
-import * as R from './redline.js?v=59';
-import { rlCard, trackSVG } from './table-redline.js?v=59';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=60';
+import * as R from './redline.js?v=60';
+import { rlCard, trackSVG } from './table-redline.js?v=60';
 
 let ctx = null, gear = null, sel = [], boost = false, lastRound = -1, wasMyTurn = false;
 

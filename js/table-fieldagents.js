@@ -1,8 +1,8 @@
 // Field Agents on the table: the 5×5 grid of code words on manila cards. A word that's been
 // guessed is covered by its tile — a Brass or Steel agent, a grey bystander, or the black
 // Double Agent. The current clue sits above the grid; each team's agents-left count beside it.
-import * as F from './fieldagents.js?v=59';
-import { snap } from './cards.js?v=59';
+import * as F from './fieldagents.js?v=60';
+import { snap } from './cards.js?v=60';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

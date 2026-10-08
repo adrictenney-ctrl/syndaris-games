@@ -1,9 +1,9 @@
 // Nest Egg on a phone: your four cards. Tap one or two to pick them, then choose what to do:
 // make a set, take the discard, challenge someone's top set, or discard. When you're
 // challenged, the cards you can answer with light up.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=59';
-import * as N from './nestegg.js?v=59';
-import { neCard, stackHTML } from './table-nestegg.js?v=59';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=60';
+import * as N from './nestegg.js?v=60';
+import { neCard, stackHTML } from './table-nestegg.js?v=60';
 
 let ctx = null, sel = [], picking = false, wasMyTurn = false, lastMove = -1;
 

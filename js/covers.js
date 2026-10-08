@@ -437,3 +437,11 @@ cover('deepspace', id => shell(id, { title: 'House Rules: Deep Space', lines: ['
   <g transform="translate(250 150) rotate(35)" filter="url(#${id}-sh)"><path d="M0 -80 Q26 -50 26 10 L26 40 L-26 40 L-26 10 Q-26 -50 0 -80 Z" fill="#e9e4da"/><circle cy="-20" r="12" fill="#3e5f9a" stroke="#c9c0aa" stroke-width="3"/><path d="M-26 20 L-46 50 L-26 44 Z M26 20 L46 50 L26 44 Z" fill="#b8323a"/><path d="M-14 40 L0 76 L14 40 Z" fill="#ffb040" filter="url(#${id}-glow)"/></g>
   <g transform="translate(120 250) rotate(-14)" filter="url(#${id}-sh)"><rect x="-40" y="-56" width="80" height="112" rx="8" fill="#2a1d18"/><path d="M-40 -48 Q-40 -56 -32 -56 H32 Q40 -56 40 -48 V-38 H-40 Z" fill="#7a2e1e"/><text y="14" text-anchor="middle" font-size="40">👾</text></g>
 `));
+
+cover('hardsell', id => shell(id, { title: 'Hard Sell', tag: 'Invent it · pitch it · sell it', bg: ['#2f5a5a', '#1f3a3a', '#061010'], cy: 30 }, `
+  ${glow(id, 300, 120, 150, '#ffdca0', .35)}
+  <g transform="translate(300 88) rotate(-3)" filter="url(#${id}-sh)"><rect x="-120" y="-44" width="240" height="88" rx="8" fill="#f7efdc" stroke="#c9a35a" stroke-width="4"/><text y="-14" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="11" letter-spacing="3" fill="#8a6a2a">TODAY'S CUSTOMER</text><text y="22" text-anchor="middle" font-family="${SERIF}" font-size="34" fill="#2a2018">a Pirate</text></g>
+  ${[['Bacon', 170, 205, -8], ['Umbrella', 400, 210, 6]].map(([w, x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})" filter="url(#${id}-sh)"><path d="M-84 -30 H70 L92 0 L70 30 H-84 Z" fill="#f1e2bf" stroke="#a8823c" stroke-width="2"/><circle cx="72" cy="0" r="6" fill="#1f3a3a"/><text x="-6" y="11" text-anchor="middle" font-family="${SERIF}" font-size="32" fill="#2a2018">${w}</text></g>`).join('')}
+  <text x="288" y="222" text-anchor="middle" font-family="${SERIF}" font-size="44" fill="url(#${id}-gold)" filter="url(#${id}-sh)">+</text>
+  <g transform="translate(520 260) rotate(14)" filter="url(#${id}-sh)"><rect x="-12" y="-46" width="24" height="56" rx="12" fill="#2a2a2e"/><rect x="-16" y="-50" width="32" height="34" rx="16" fill="#8a96a3"/><rect x="-3" y="10" width="6" height="40" fill="#5a5a60"/></g>
+`));

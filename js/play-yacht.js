@@ -1,8 +1,8 @@
 // Yacht Club on a player's phone: your dice (tap to keep), the Roll button (or give the
 // phone a shake), and your score card. Tap an open box, then confirm, to score it.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=59';
-import { UPPER, LOWER, LABEL, HINT } from './yacht.js?v=59';
-import { dieHTML } from './table-yacht.js?v=59';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=60';
+import { UPPER, LOWER, LABEL, HINT } from './yacht.js?v=60';
+import { dieHTML } from './table-yacht.js?v=60';
 
 let ctx = null;
 let pick = null;            // the box picked, waiting for the confirm tap

@@ -1,8 +1,8 @@
 // Dial It In on the table: a big brass-rimmed half dial. The spectrum's two ends sit at its
 // feet, the clue above it, and the needle swings as the guessing team turns it from their
 // phones. At the reveal the shutter opens on the scoring bands.
-import * as D from './dialitin.js?v=59';
-import { snap } from './cards.js?v=59';
+import * as D from './dialitin.js?v=60';
+import { snap } from './cards.js?v=60';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

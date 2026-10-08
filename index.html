@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=59">
+  <link rel="stylesheet" href="css/cards.css?v=60">
   <style>
     html { background: var(--onyx); }
     body {
@@ -138,7 +138,7 @@
     .t-pileup { --tint: #2b2f38; } .t-luckystreak { --tint: #1b3a2c; } .t-passpot { --tint: #4a1d1c; } .t-tessera { --tint: #2c2a33; } 
     .t-gearworks { --tint: #2b3238; } .t-redline { --tint: #2a1d1f; } .t-grandprix { --tint: #233a26; } .t-spires { --tint: #26304a; } 
     .t-kaboom { --tint: #3a1f3a; } .t-nestegg { --tint: #1f3a2b; } .t-spoons { --tint: #3d2818; } .t-doubt { --tint: #34182f; } 
-    .t-cashout { --tint: #24272d; } 
+    .t-cashout { --tint: #24272d; } .t-hardsell { --tint: #1f3a3a; } 
 
 
     footer { border-top: 1px solid var(--hairline); padding: 22px 0 34px; }
@@ -209,18 +209,18 @@
     </div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=59"></script>
+  <script type="module" src="js/tvnav.js?v=60"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=59';
-    import { coverSVG } from './js/covers.js?v=59';
+    import { GAMES } from './js/games.js?v=60';
+    import { coverSVG } from './js/covers.js?v=60';
 
-    const ids = ['pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
-      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', deepspace: 'cards', houserules: 'cards', bannerraid: 'board', fieldagents: 'party', dialitin: 'party', pileup: 'cards', luckystreak: 'cards', passpot: 'dice', tessera: 'board', gearworks: 'cards', redline: 'board', grandprix: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
+      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', hardsell: 'party', deepspace: 'cards', houserules: 'cards', bannerraid: 'board', fieldagents: 'party', dialitin: 'party', pileup: 'cards', luckystreak: 'cards', passpot: 'dice', tessera: 'board', gearworks: 'cards', redline: 'board', grandprix: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
       backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards', skyline: 'board', lowtide: 'cards', trio: 'board', fourup: 'board', seedstones: 'board', sonar: 'board', milestones: 'cards', wrongnumber: 'party', scribble: 'party', manor: 'roles', warfront: 'board', ironroutes: 'board', homestead: 'board', wordsmith: 'board',
     };
     const KIND_NAME = { all: 'All games', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
-    const NEW = new Set(['deepspace', 'houserules', 'bannerraid', 'fieldagents', 'dialitin', 'pileup', 'luckystreak', 'passpot', 'tessera', 'gearworks', 'redline', 'grandprix', 'spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
+    const NEW = new Set(['hardsell', 'deepspace', 'houserules', 'bannerraid', 'fieldagents', 'dialitin', 'pileup', 'luckystreak', 'passpot', 'tessera', 'gearworks', 'redline', 'grandprix', 'spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);

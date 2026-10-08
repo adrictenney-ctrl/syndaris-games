@@ -528,3 +528,14 @@ GAMES.deepspace = {
   startLabel: 'Launch the deck',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.hardsell = {
+  id: 'hardsell',
+  name: 'Hard Sell',
+  blurb: '3–10 players · make silly products, pitch them, make the sale',
+  min: 3,
+  max: 10,
+  noBots: true,   // bots can't pitch
+  startLabel: 'Open for business',
+  layout: GAMES.crown.layout,
+};

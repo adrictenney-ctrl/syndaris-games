@@ -1,7 +1,7 @@
 // House Rules: Deep Space on the table — the same table as House Rules, dealt from the
 // Deep Space deck (with Creepers).
-import * as H from './houserules.js?v=59';
-import HR from './table-houserules.js?v=59';
+import * as H from './houserules.js?v=60';
+import HR from './table-houserules.js?v=60';
 
 export default {
   ...HR,

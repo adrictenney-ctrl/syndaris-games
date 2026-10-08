@@ -1,0 +1,53 @@
+/* Hard Sell: an old-time shop counter — dark teal lacquer, a cream customer card with a gold
+   rule, word cards like price tags, and a warm spotlight on whoever is pitching. */
+body[data-game="hardsell"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 220, 170, .07), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #1f3a3a 0%, #142828 55%, #061010 100%);
+}
+body[data-game="hardsell"] #print, body[data-game="hardsell"] .fan, body[data-game="hardsell"] .sizer { display: none; }
+
+.hs-word {
+  display: inline-block; padding: .35em .7em .4em; border-radius: .35em; white-space: nowrap;
+  font-family: var(--display); font-weight: 600; text-transform: capitalize; color: #2a2018;
+  background: linear-gradient(170deg, #fbf3df, #e8d7b0); box-shadow: 0 .15em .4em rgba(0, 0, 0, .45), inset 0 0 0 .08em rgba(120, 90, 40, .35);
+}
+.hs-prod { display: inline-flex; align-items: center; gap: .3em; flex-wrap: wrap; justify-content: center; }
+.hs-prod em { font-style: normal; font-family: var(--display); color: var(--champagne); }
+.hs-prod.empty { font-family: var(--display); color: var(--mute); }
+.hs-cust { display: inline-flex; flex-direction: column; align-items: center; padding: .6em 1.4em .7em; border-radius: .4em;
+  background: linear-gradient(170deg, #f7efdc, #e4d2a8); color: #2a2018; box-shadow: 0 .3em .8em rgba(0, 0, 0, .5), inset 0 0 0 .12em #c9a35a; }
+.hs-cust small { white-space: nowrap; font-family: var(--ui); font-weight: 800; font-size: .36em; letter-spacing: .2em; text-transform: uppercase; color: #8a6a2a; }
+.hs-cust b { font-family: var(--display); font-size: 1.15em; line-height: 1.1; }
+
+#hardsell { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.hs-top { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--v) * -24)); display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * 1.8); font-size: calc(var(--v) * 4.4); }
+.hs-buyer { font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.4); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); white-space: nowrap; }
+.hs-shelf { position: absolute; left: 0; top: 0; transform: translate(-50%, -30%); width: calc(var(--v) * 110); display: flex; flex-wrap: wrap; justify-content: center; gap: calc(var(--v) * 2.4) calc(var(--v) * 3.4); font-size: calc(var(--v) * 2.9); }
+.hs-item { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .6); padding: calc(var(--v) * 1.2); border-radius: calc(var(--v) * 1.4); transition: transform .3s, opacity .3s; }
+.hs-item small { font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.4); letter-spacing: .08em; color: var(--ivory); }
+.hs-item.now { background: radial-gradient(ellipse at 50% 40%, rgba(255, 220, 150, .22), transparent 70%); transform: scale(1.18); }
+.hs-item.sold { background: radial-gradient(ellipse at 50% 40%, rgba(240, 200, 110, .3), transparent 70%); transform: scale(1.3); }
+.hs-item.sold small { color: var(--champagne-hi); }
+.hs-item.dim { opacity: .4; }
+.hs-wait { display: flex; flex-wrap: wrap; justify-content: center; gap: calc(var(--v) * 1); }
+.hs-wait span { font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.5); padding: calc(var(--v) * .5) calc(var(--v) * 1.2); border-radius: 99px; color: var(--mute); box-shadow: inset 0 0 0 1px var(--hairline-hi); }
+.hs-wait span.on { color: #17130c; background: var(--champagne); box-shadow: none; }
+.hs-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--v) * 17)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.4); color: var(--ivory); }
+.hs-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); text-transform: capitalize; }
+
+/* ---------- phone ---------- */
+body[data-game="hardsell"] { background: linear-gradient(180deg, #1f3a3a, #061010); }
+body[data-game="hardsell"] #handWrap, body[data-game="hardsell"] #handHint { display: none; }
+#hsPhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 18px; }
+#hsPhone .hs-cust.big { font-size: 26px; }
+#hsPhone .hs-prod.big { font-size: 22px; min-height: 50px; }
+#hsPhone .hs-prod.now { filter: drop-shadow(0 0 10px rgba(255, 220, 150, .6)); }
+.hs-hand { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.hs-hand button { padding: 0; border: 0; background: none; cursor: pointer; font-size: 19px; transition: transform .15s; }
+.hs-hand button.sel { transform: translateY(-6px); }
+.hs-hand button.sel .hs-word { box-shadow: 0 0 0 3px var(--champagne), 0 6px 12px rgba(0, 0, 0, .5); }
+.hs-buy { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.hs-buy button { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px; border-radius: 12px; border: 1px solid var(--gold-faint); background: rgba(0, 0, 0, .25); cursor: pointer; font-size: 17px; }
+.hs-buy button:disabled { opacity: .55; }
+.hs-buy small { font-family: var(--ui); font-size: 12px; font-weight: 700; color: var(--gold-ink); }

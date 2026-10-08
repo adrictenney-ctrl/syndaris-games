@@ -474,6 +474,12 @@ attacks. Capture the Banner. Code: `js/bannerraid.js`.
 more. Keepers go on the table; the Goal card says which two win. Actions happen once. Two decks of our own:
 the Home deck and Deep Space (which adds Creepers). Code: `js/houserules.js`.
 
+## Hard Sell
+3–10 players, no bots. One player is the Customer ("a Pirate", "a Retired Astronaut"); everyone else picks two
+word cards to make a product ("Bacon" + "Umbrella") and pitches it out loud. The Customer buys one; that
+seller scores. Everyone is the Customer once (or twice, or three times). Our own 300 words and 70 customers.
+Code: `js/hardsell.js`.
+
 ## Cover art
 Every game has its own cover, drawn in `js/covers.js` (one SVG scene per game, 600×400, with the title set
 like a box). The home page shows them on the tiles and in the spotlight. A new game needs a cover there too.
