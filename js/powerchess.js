@@ -6,7 +6,7 @@
 // Capturing a stack absorbs the whole column. Kings stay royal: the stack with your king on
 // top can't move into, slide through or stay in check. Only a lone pawn promotes.
 // Board index = rank * 8 + file, a1 = 0. Seat 0 plays White.
-import { createGame as createChess, TIME, resultText as chessResult } from './chess.js?v=57';
+import { createGame as createChess, TIME, resultText as chessResult } from './chess.js?v=58';
 export { TIME };
 
 const FILES = 'abcdefgh';
@@ -362,4 +362,4 @@ export function botAction(g, seat) {
   return { type: 'move', from: best.from, to: best.to, promo: best.promo ? best.promo.toLowerCase() : null };
 }
 
-export { targetsFrom, tapMoves } from './chess.js?v=57';
+export { targetsFrom, tapMoves } from './chess.js?v=58';

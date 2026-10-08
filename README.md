@@ -393,6 +393,50 @@ lone pawn promotes (so a pawn capturing onto the last rank just stacks). Castlin
 and threefold repetition work as in chess. Absorbed powers show in a strip under each stack, with the stack
 height. It shares the chess board and phone screens. Code: `js/powerchess.js`.
 
+## Nest Egg
+2–6 players. Our own take on pairing up valuables (Piggy Bank, Comic Hoard, Grand Clock, Wine Cellar,
+Diamond Ring, Old Master, Sailboat, Roadster, Racehorse, Seaside Villa; Gold Bullion and Silver Ingot are
+wild). On your turn: make a set from two matching cards (or one plus the top of the discard), challenge
+another player's top set with a matching card (back and forth until someone lets it go; the winner takes
+everything played), or discard. Refill to four. Your first set is safe. Richest stack wins.
+Code: `js/nestegg.js`.
+
+## Kaboom Critters
+2–5 players. Play as many cards as you like, then draw; draw a Kaboom! without a Lullaby and you're out.
+Our own cards: Nap (skip), Stampede (next player takes two turns), Crystal Ball (peek at three), Shake Up
+(shuffle), Pretty Please (someone gives you a card), Nuh-uh! (cancel anything — after every action there's a
+3½-second window), and five critter pairs that steal a random card. Code: `js/kaboom.js`.
+
+## Seven Spires
+2–7 players. Take a card from the face-up deck you share with either neighbour, or the hidden centre deck.
+Materials build a five-stage spire automatically (Gold is wild); banners and war drums trigger wars between
+neighbours; science pairs or sets buy Boons; laurels score, and the Owl lets you peek at the centre deck.
+First finished spire ends the game. Code: `js/spires.js`.
+
+## Grand Prix Dice
+2–6 players, 1–3 laps of our Monte Vale circuit. Pick a gear (dice 1–2 up to 21–30), roll, brake to shorten
+the move if needed. Each corner needs 1–3 stops; one short burns tyres for every space overshot, two short
+crashes you out. Tyres, brakes, gearbox and engine wear down. Corners are found from the track drawing
+(`js/circuit.js`), so the rules always match the picture. Phones show a ★ suggestion. Code: `js/grandprix.js`.
+
+## Redline
+2–6 players on the Redline Ring. Everyone secretly picks a gear and plays that many speed cards at once;
+cars move leader-first. Corners have speed limits — every point over costs a Heat card from your engine
+(spin out if you can't pay). Heat clogs your hand until you cool down in low gears. Stress cards flip for a
+random speed, Boost adds one more, last place gets Adrenaline, and tucking in behind gives a Slipstream.
+Code: `js/redline.js`.
+
+## Gearworks
+2–5 players, 8 rounds. Everyone secretly picks one of five actions (Recycle, Design, Fabricate, Assemble,
+Upgrade); every picked action happens for everybody, with a bonus for whoever picked it. Two Power Surges a
+round boost actions for all, and each robot you build boosts its action for you. 40 blueprints, each with a
+robot drawn from its number. Code: `js/gearworks.js`.
+
+## Tessera
+2–4 players. Play the top or bottom 2×2 tile of your deck, turned any way, so at least one edge half-shape
+(circle, square, triangle) completes a shape on the table. Tiles may overlap and hide other players' gems,
+but at least one cell must go on empty table. Most gems showing at the end wins. Code: `js/tessera.js`.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.

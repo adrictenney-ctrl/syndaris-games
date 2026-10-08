@@ -1,8 +1,8 @@
 // Sonar on the table: two radar screens, one for each player's waters, showing every ping —
 // hits, misses and sunken ships (never the hidden fleet, until the game is over).
-import * as SO from './sonar.js?v=57';
-import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=57';
-import { snap } from './cards.js?v=57';
+import * as SO from './sonar.js?v=58';
+import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=58';
+import { snap } from './cards.js?v=58';
 
 let root = null, lastMove = -1;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
