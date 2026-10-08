@@ -381,3 +381,13 @@ GAMES.nestegg = {
   startLabel: 'Deal the cards',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.kaboom = {
+  id: 'kaboom',
+  name: 'Kaboom Critters',
+  blurb: '2–5 players · draw, dodge, and try not to go kaboom',
+  min: 2,
+  max: 5,
+  startLabel: 'Deal the cards',
+  layout: GAMES.holdem.layout,
+};
