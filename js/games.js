@@ -431,3 +431,13 @@ GAMES.gearworks = {
   startLabel: 'Open the workshop',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.tessera = {
+  id: 'tessera',
+  name: 'Tessera',
+  blurb: '2–4 players · join the shapes, cover their gems',
+  min: 2,
+  max: 4,
+  startLabel: 'Lay the first tile',
+  layout: GAMES.holdem.layout,
+};

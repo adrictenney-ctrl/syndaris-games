@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="css/ironroutes.css?v=57">
   <link rel="stylesheet" href="css/homestead.css?v=57">
   <link rel="stylesheet" href="css/wordsmith.css?v=57">
+  <link rel="stylesheet" href="css/tessera.css?v=57">
   <link rel="stylesheet" href="css/gearworks.css?v=57">
   <link rel="stylesheet" href="css/redline.css?v=57">
   <link rel="stylesheet" href="css/grandprix.css?v=57">
@@ -158,7 +159,8 @@
     .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
     .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
     .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; }
-    .t-crazy8 { --tint: #17393b; } .t-skyline { --tint: #1b2740; } .t-lowtide { --tint: #12304a; } .t-trio { --tint: #2a2d33; } .t-fourup { --tint: #1d3346; } .t-seedstones { --tint: #3a2a1c; } .t-sonar { --tint: #12282c; } .t-milestones { --tint: #1e2a3e; } .t-wrongnumber { --tint: #2a1f38; } .t-scribble { --tint: #3a2d22; } .t-manor { --tint: #3a1f1c; } .t-warfront { --tint: #162637; } .t-ironroutes { --tint: #1d2f26; } .t-homestead { --tint: #16303a; } .t-wordsmith { --tint: #2c2620; } .t-powerup { --tint: #2f2215; } .t-gearworks { --tint: #2b3238; }
+    .t-crazy8 { --tint: #17393b; } .t-skyline { --tint: #1b2740; } .t-lowtide { --tint: #12304a; } .t-trio { --tint: #2a2d33; } .t-fourup { --tint: #1d3346; } .t-seedstones { --tint: #3a2a1c; } .t-sonar { --tint: #12282c; } .t-milestones { --tint: #1e2a3e; } .t-wrongnumber { --tint: #2a1f38; } .t-scribble { --tint: #3a2d22; } .t-manor { --tint: #3a1f1c; } .t-warfront { --tint: #162637; } .t-ironroutes { --tint: #1d2f26; } .t-homestead { --tint: #16303a; } .t-wordsmith { --tint: #2c2620; } .t-powerup { --tint: #2f2215; } .t-tessera { --tint: #2c2a33; }
+    .tsmini { width: 170px !important; } .tsmini .ts-svg { width: 100%; height: auto; } .t-gearworks { --tint: #2b3238; }
     .gwmini { display: flex; align-items: center; justify-content: center; --gw: 64px; } .gwmini .gw-card { margin: 0 -8px; } .gwmini .gw-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .gwmini .gw-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .gwmini .gw-card:nth-child(2) { z-index: 1; } .t-redline { --tint: #2a1d1f; }
     .rlmini { display: flex; align-items: center; justify-content: center; --rl: 60px; } .rlmini .rl-card { margin: 0 -6px; } .rlmini .rl-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .rlmini .rl-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .rlmini .rl-card:nth-child(2) { z-index: 1; } .t-grandprix { --tint: #233a26; }
     .gpmini { width: 210px !important; } .gpmini .cc-svg { width: 100%; height: auto; } .t-spires { --tint: #26304a; }
@@ -332,19 +334,20 @@
     import { CIRCUIT as gpCircuit, CORNERS as gpCorners } from './js/grandprix.js?v=57';
     import { rlCard } from './js/table-redline.js?v=57';
     import { gwCard } from './js/table-gearworks.js?v=57';
+    import { tileSVGBody } from './js/table-tessera.js?v=57';
     import { boardSVG as islandSVG } from './js/table-homestead.js?v=57';
     import { tileHTML as wsTile } from './js/table-wordsmith.js?v=57';
     import { createGame as hsGame } from './js/homestead.js?v=57';
     const sampleIsland = () => { const g = hsGame({}, [{}, {}]); [[10, 0], [30, 1], [44, 0]].forEach(([v, s]) => { g.vOwner[v] = s; g.vLevel[v] = 1; }); return g; };
     import { boardHTML as seedBoard } from './js/table-seedstones.js?v=57';
 
-    const ids = ['nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
-      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', gearworks: 'cards', redline: 'board', grandprix: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
+      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', tessera: 'board', gearworks: 'cards', redline: 'board', grandprix: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
       backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards', skyline: 'board', lowtide: 'cards', trio: 'board', fourup: 'board', seedstones: 'board', sonar: 'board', milestones: 'cards', wrongnumber: 'party', scribble: 'party', manor: 'roles', warfront: 'board', ironroutes: 'board', homestead: 'board', wordsmith: 'board',
     };
     const KIND_NAME = { all: 'All games', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
-    const NEW = new Set(['gearworks', 'redline', 'grandprix', 'spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
+    const NEW = new Set(['tessera', 'gearworks', 'redline', 'grandprix', 'spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
@@ -363,7 +366,8 @@
     function artFor(id) {
       const fan = document.createElement('div');
       fan.className = 'cards';
-      if (id === 'gearworks') { fan.className = 'cards gwmini'; fan.innerHTML = gwCard(9) + gwCard(26) + gwCard(14); }
+      if (id === 'tessera') { fan.className = 'cards tsmini'; const tl = (o, gems, e) => ({ owner: o, gems, edges: e }); fan.innerHTML = `<svg viewBox="-2 -2 44 34" class="ts-svg">${tileSVGBody(tl(-1, [0, 0, 0, 0], ['c', 's', 't', 'c', 's', 't', 'c', 's']), 0, 0, 0)}${tileSVGBody(tl(0, [1, 0, 0, 1], ['t', null, 'c', 's', null, 't', 's', 't']), 0, 2, 0)}${tileSVGBody(tl(1, [0, 1, 1, 0], ['s', 'c', null, 't', 'c', null, 't', 's']), 1, 1, 1)}</svg>`; }
+      else if (id === 'gearworks') { fan.className = 'cards gwmini'; fan.innerHTML = gwCard(9) + gwCard(26) + gwCard(14); }
       else if (id === 'redline') { fan.className = 'cards rlmini'; fan.innerHTML = rlCard('s4.0') + rlCard('heat.0') + rlCard('s3.0'); }
       else if (id === 'grandprix') { fan.className = 'cards gpmini'; fan.innerHTML = circuitSVG(gpCircuit, { zones: gpCorners.map(z => ({ ...z, label: z.stops, cls: 's' + z.stops })), cars: [{ pos: 2, color: '#c9473a', text: 4 }, { pos: 1, lane: 1, color: '#2f5f9e', text: 3 }, { pos: 92, color: '#e6c25a', text: 2 }] }); }
       else if (id === 'spires') { fan.className = 'cards svmini'; fan.innerHTML = svCard('stone.0') + `<div class="svs">${spireSVG(4, '#e3c88c')}</div>` + svCard('l2o.0'); }
