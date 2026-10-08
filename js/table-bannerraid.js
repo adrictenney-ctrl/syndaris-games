@@ -1,8 +1,8 @@
 // Banner Raid on the table: the field — grass squares, two still lakes — with every piece
 // standing face-down in its side's colour. Only pieces that have fought (or Scouts that ran)
 // show their rank. After each battle both pieces are shown side by side for a moment.
-import * as B from './bannerraid.js?v=60';
-import { snap } from './cards.js?v=60';
+import * as B from './bannerraid.js?v=61';
+import { snap } from './cards.js?v=61';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

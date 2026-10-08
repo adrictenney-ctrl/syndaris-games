@@ -1,6 +1,6 @@
 // Euchre on the table screen: rules hookup, seat plates, trick area, end-of-hand panel.
-import * as E from './euchre.js?v=60';
-import { cardEl, setFace, snap } from './cards.js?v=60';
+import * as E from './euchre.js?v=61';
+import { cardEl, setFace, snap } from './cards.js?v=61';
 
 const DIR = [[0, 1], [-1, 0], [0, -1], [1, 0]]; // toward each side's edge
 
