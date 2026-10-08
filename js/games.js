@@ -483,3 +483,28 @@ GAMES.dialitin = {
   startLabel: 'Spin up the dial',
   layout: GAMES.crown.layout,
 };
+
+GAMES.fieldagents = {
+  id: 'fieldagents',
+  name: 'Field Agents',
+  blurb: '4–8 players · two teams, one-word clues, find your agents',
+  min: 4,
+  max: 8,
+  noBots: true,   // bots can't give or read clues
+  startLabel: 'Open the dossier',
+  // Brass sits down the left side, Steel down the right.
+  layout: [
+    S(0, 80, 1, 'Brass'), S(0, 60, 1, 'Brass'), S(0, 40, 1, 'Brass'), S(0, 20, 1, 'Brass'),
+    S(100, 20, 3, 'Steel'), S(100, 40, 3, 'Steel'), S(100, 60, 3, 'Steel'), S(100, 80, 3, 'Steel'),
+  ],
+};
+
+GAMES.bannerraid = {
+  id: 'bannerraid',
+  name: 'Banner Raid',
+  blurb: '2 players · hidden ranks, bold attacks, capture the Banner',
+  min: 2,
+  max: 2,
+  startLabel: 'Muster the troops',
+  layout: GAMES.chess.layout,
+};

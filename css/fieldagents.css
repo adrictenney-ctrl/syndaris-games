@@ -1,0 +1,60 @@
+/* Field Agents: a dossier desk — dark olive leather, manila word cards with typewriter type,
+   brass and steel agent tiles, a black Double Agent. */
+body[data-game="fieldagents"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(240, 230, 200, .06), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #2d2f22 0%, #202218 55%, #0d0e09 100%);
+}
+body[data-game="fieldagents"] #print, body[data-game="fieldagents"] .fan, body[data-game="fieldagents"] .sizer { display: none; }
+
+.fa-grid { container-type: inline-size; display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--fg, 1.2vmin); width: 100%; }
+.fa-card {
+  position: relative; display: grid; place-items: center; aspect-ratio: 1.7; border-radius: 6%/10%; overflow: hidden;
+  background: linear-gradient(170deg, #efe0bd, #d9c597); box-shadow: 0 .4vmin .8vmin rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(120, 90, 40, .35);
+}
+.fa-card::before { content: ''; position: absolute; left: 8%; right: 8%; top: 56%; height: 30%; border-top: 1px solid rgba(120, 90, 40, .35); background: rgba(255, 255, 255, .25); }
+.fa-card b { position: relative; z-index: 1; font-family: 'Courier New', ui-monospace, monospace; font-weight: 700; font-size: 2.5cqi; letter-spacing: .04em; text-transform: uppercase; color: #2a2318; transform: translateY(18%); }
+.fa-card.hint { background: linear-gradient(170deg, color-mix(in srgb, var(--kc) 42%, #efe0bd), color-mix(in srgb, var(--kc) 55%, #d9c597)); box-shadow: 0 .4vmin .8vmin rgba(0, 0, 0, .45), inset 0 0 0 .9cqi var(--kc); }
+.fa-card.hint::after { content: ''; position: absolute; left: 0; top: 0; width: 22%; height: 34%; background: var(--kc); clip-path: polygon(0 0, 100% 0, 0 100%); }
+.fa-card.k0 { --kc: #b08a3e; } .fa-card.k1 { --kc: #5d7287; } .fa-card.kb { --kc: #9a9282; } .fa-card.kx { --kc: #121212; }
+.fa-card.shown { background: var(--kc); }
+.fa-card.shown.k0 { background: linear-gradient(160deg, #d9b469, #8a6526); }
+.fa-card.shown.k1 { background: linear-gradient(160deg, #8ea2b5, #3f5266); }
+.fa-card.shown.kb { background: linear-gradient(160deg, #c9c0ad, #8f8673); }
+.fa-card.shown.kx { background: radial-gradient(circle at 50% 40%, #3a3a3a, #050505); }
+.fa-card.shown span { width: 42%; display: grid; place-items: center; color: rgba(255, 255, 255, .85); font-size: 6cqi; line-height: 1; }
+.fa-fig { width: 100%; fill: currentColor; }
+.fa-card.shown.k0 span { color: #fff2cc; } .fa-card.shown.k1 span { color: #e8f0f7; }
+.fa-card.shown small { position: absolute; bottom: 5%; font-family: 'Courier New', monospace; font-weight: 700; font-size: 1.6cqi; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
+.fa-card.shown.kb small { color: rgba(40, 30, 20, .6); }
+.fa-card.last { animation: faFlip .5s cubic-bezier(.2, .8, .3, 1.1); }
+@keyframes faFlip { from { transform: rotateX(90deg); } }
+
+#fieldagents { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.fa-board { position: absolute; left: 0; top: 0; width: var(--fw); transform: translate(-50%, -44%); --fg: calc(var(--v) * 1.1); }
+.fa-top { position: absolute; left: 0; top: 0; width: var(--fw); transform: translate(-50%, calc(var(--fw) * -.275 - var(--v) * 7.5)); display: flex; align-items: center; justify-content: space-between; }
+.fa-clue { display: flex; align-items: baseline; gap: calc(var(--v) * 1.6); }
+.fa-clue b { font-family: 'Courier New', monospace; font-weight: 700; font-size: calc(var(--v) * 4.4); letter-spacing: .08em; text-transform: uppercase; color: #fff3d6; }
+.fa-clue span { font-family: var(--display); font-size: calc(var(--v) * 4.4); color: var(--champagne-hi); }
+.fa-clue em { font-family: var(--serif); font-size: calc(var(--v) * 2.4); color: var(--mute); }
+.fa-side { display: flex; align-items: baseline; gap: calc(var(--v) * .8); padding: calc(var(--v) * .5) calc(var(--v) * 1.4); border-radius: 99px; opacity: .65; }
+.fa-side b { font-family: var(--display); font-size: calc(var(--v) * 3.6); }
+.fa-side small { font-family: var(--ui); font-weight: 800; font-size: calc(var(--v) * 1.3); letter-spacing: .14em; text-transform: uppercase; }
+.fa-side.t0 { color: #e3c07a; } .fa-side.t1 { color: #a9bccd; }
+.fa-side.up { opacity: 1; box-shadow: inset 0 0 0 calc(var(--v) * .2) currentColor; }
+.fa-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--fw) * .345 + var(--v) * 1.2)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.2); color: var(--ivory); }
+.fa-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.fa-tm.t0 { color: #e3c07a; } .fa-tm.t1 { color: #a9bccd; }
+
+/* ---------- phone ---------- */
+body[data-game="fieldagents"] { background: linear-gradient(180deg, #2d2f22, #0d0e09); }
+body[data-game="fieldagents"] #handWrap, body[data-game="fieldagents"] #handHint { display: none; }
+#faPhone { width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 10px; --fg: 4px; }
+#faPhone .fa-grid button { padding: 0; border: 0; background: none; cursor: pointer; border-radius: 6px; }
+#faPhone .fa-grid button.sel .fa-card { box-shadow: 0 0 0 3px var(--champagne), 0 4px 10px rgba(0, 0, 0, .5); transform: translateY(-2px); }
+#faPhone .fa-card b { font-size: 2.9cqi; }
+.fa-input input { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 10px; border: 1px solid var(--gold-faint); background: rgba(0, 0, 0, .35); color: var(--ivory); font-size: 18px; font-family: 'Courier New', monospace; text-transform: uppercase; }
+.fa-nums { display: flex; gap: 6px; justify-content: center; }
+.fa-nums button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gold-faint); background: rgba(0, 0, 0, .3); color: var(--ivory); font-family: var(--display); font-size: 18px; cursor: pointer; }
+.fa-nums button.on { background: var(--champagne); color: #17130c; }
+.fa-card.hint.kx b { color: #f3e7c8; } .fa-card.hint.kx { background: linear-gradient(170deg, #3a3a3a, #111); }

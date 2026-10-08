@@ -1,0 +1,63 @@
+/* Banner Raid: a campaign table — the field in muted moss with two pewter lakes, standing
+   wooden pieces lacquered oxblood or indigo, ranks stamped in gold. */
+body[data-game="bannerraid"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 240, 210, .05), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #2a2a20 0%, #1d1d16 55%, #0b0b08 100%);
+}
+body[data-game="bannerraid"] #print, body[data-game="bannerraid"] .fan, body[data-game="bannerraid"] .sizer { display: none; }
+
+.br-field { display: grid; grid-template-columns: repeat(10, 1fr); width: 100%; aspect-ratio: 1; border-radius: 1.2%; overflow: hidden; container-type: inline-size;
+  box-shadow: 0 0 0 .8cqi #5a4a2a, 0 0 0 1.4cqi #2a2214, 0 2cqi 4cqi rgba(0, 0, 0, .55); }
+.br-sq { position: relative; display: grid; place-items: center; }
+.br-sq.a { background: #4d5a3a; } .br-sq.b { background: #56643f; }
+.br-sq.lake { background: radial-gradient(circle at 40% 35%, #6f8a92, #3a5560); }
+.br-sq.lastmv { box-shadow: inset 0 0 0 .4cqi rgba(240, 220, 160, .55); }
+.br-sq.zone { filter: brightness(1.12); }
+.br-sq.sel { box-shadow: inset 0 0 0 .6cqi #f3d68a; }
+.br-dot { position: absolute; width: 28%; height: 28%; border-radius: 50%; background: rgba(243, 214, 138, .8); box-shadow: 0 0 1.4cqi #f3d68a; pointer-events: none; }
+.br-dot.hit { width: 86%; height: 86%; background: none; box-shadow: inset 0 0 0 .5cqi #ff8a70, 0 0 1.4cqi #ff8a70; }
+
+.br-pc {
+  position: relative; width: 82%; height: 82%; border-radius: 12%; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;
+  color: #f3dfa6; box-shadow: 0 .4cqi .6cqi rgba(0, 0, 0, .5), inset 0 -.5cqi 0 rgba(0, 0, 0, .3), inset 0 .3cqi 0 rgba(255, 255, 255, .18);
+}
+.br-pc.o0 { background: linear-gradient(170deg, #94392f, #5e1f19); }
+.br-pc.o1 { background: linear-gradient(170deg, #3e4f7a, #222c48); }
+.br-pc b { font-family: var(--display); font-size: 4.4cqi; }
+.br-pc small { font-family: var(--ui); font-weight: 700; font-size: 1.15cqi; letter-spacing: .02em; text-transform: uppercase; opacity: .85; margin-top: 4%; }
+.br-pc.rM b, .br-pc.rB b { font-size: 4.2cqi; }
+.br-crest { font-style: normal; font-size: 3.2cqi; opacity: .45; }
+.br-pc.known { box-shadow: 0 .4cqi .6cqi rgba(0, 0, 0, .5), inset 0 0 0 .35cqi #e3c88c; }
+.br-pc.fought { animation: brHit .5s; }
+@keyframes brHit { 30% { transform: scale(1.25); } }
+
+#bannerraid { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.br-board { position: absolute; left: 0; top: 0; width: var(--bw); transform: translate(-50%, -50%); }
+.br-fight { position: absolute; left: 0; top: 0; transform: translate(calc(var(--bw) * .5 + var(--v) * 3), -50%); }
+.br-battle { display: flex; align-items: center; gap: calc(var(--v) * 1); padding: calc(var(--v) * 1); border-radius: calc(var(--v) * 1.4); background: rgba(0, 0, 0, .45); box-shadow: inset 0 0 0 1px rgba(227, 200, 140, .35); container-type: inline-size; width: calc(var(--v) * 20); }
+.br-battle .br-pc { width: 40cqi; height: 40cqi; flex: none; }
+.br-battle .br-pc b { font-size: 16cqi; } .br-battle .br-pc small { font-size: 5.5cqi; }
+.br-battle .br-pc.lose { opacity: .45; filter: grayscale(.6); }
+.br-battle > span { font-family: var(--display); font-size: 12cqi; color: #f3dfa6; }
+.br-msg { position: absolute; left: 0; top: 0; transform: translate(calc(-100% - var(--bw) * .5 - var(--v) * 3), -50%); margin: 0; width: calc(var(--v) * 20); text-align: right; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.2); color: var(--ivory); }
+.br-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.br-lost { position: absolute; left: 0; top: 0; display: flex; flex-wrap: wrap; gap: calc(var(--v) * .5); width: calc(var(--v) * 18); font-family: var(--display); font-size: calc(var(--v) * 1.8); color: #f3dfa6; }
+.br-lost small { width: 100%; font-family: var(--ui); font-weight: 800; font-size: calc(var(--v) * 1.1); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); }
+.br-lost span { padding: 0 calc(var(--v) * .5); border-radius: calc(var(--v) * .4); }
+.br-lost sup { font-size: .6em; }
+.br-lost.l0 { transform: translate(calc(var(--bw) * .5 + var(--v) * 3), calc(var(--bw) * .5 - 100%)); }
+.br-lost.l0 span { background: #6e2620; } .br-lost.l1 span { background: #2b3657; }
+.br-lost.l1 { transform: translate(calc(-100% - var(--bw) * .5 - var(--v) * 3), calc(var(--bw) * -.5)); }
+.br-side.o0 { color: #d9776a; } .br-side.o1 { color: #93a6d6; }
+
+/* ---------- phone ---------- */
+body[data-game="bannerraid"] { background: linear-gradient(180deg, #2a2a20, #0b0b08); }
+body[data-game="bannerraid"] #handWrap, body[data-game="bannerraid"] #handHint { display: none; }
+#brPhone { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 12px; }
+.br-wrap { padding: 4px; }
+.br-wrap .br-sq { cursor: pointer; }
+.br-pfight { display: flex; justify-content: center; }
+.br-pfight .br-battle { width: 180px; }
+.br-legend { display: flex; flex-wrap: wrap; gap: 4px 10px; justify-content: center; font-family: var(--ui); font-size: 11px; color: var(--mute); }
+.br-legend b { font-family: var(--display); color: #f3dfa6; margin-right: 3px; }
