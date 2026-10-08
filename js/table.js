@@ -37,8 +37,9 @@ import ironroutes from './table-ironroutes.js?v=57';
 import homestead from './table-homestead.js?v=57';
 import wordsmith from './table-wordsmith.js?v=57';
 import powerup from './table-powerup.js?v=57';
+import nestegg from './table-nestegg.js?v=57';
 
-const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones, wrongnumber, scribble, manor, warfront, ironroutes, homestead, wordsmith, powerup };
+const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones, wrongnumber, scribble, manor, warfront, ironroutes, homestead, wordsmith, powerup, nestegg };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';

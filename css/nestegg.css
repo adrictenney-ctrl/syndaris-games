@@ -1,0 +1,85 @@
+/* Nest Egg: a banker's green leather table, ivory valuables cards with a coloured band for
+   how much each is worth, and gold and silver bars for the wilds. */
+body[data-game="nestegg"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(230, 220, 170, .08), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #1f3a2b 0%, #152a1f 55%, #08120d 100%);
+}
+body[data-game="nestegg"] #print, body[data-game="nestegg"] .fan { display: none; }
+
+.ne-card {
+  --c: #7d8a7a; position: relative; width: var(--ne, 70px); height: calc(var(--ne, 70px) * 1.4); flex: none; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4%; padding: 8% 6% 6%;
+  border-radius: calc(var(--ne, 70px) * .1); overflow: hidden; color: #2a2320; text-align: center;
+  background: linear-gradient(180deg, var(--c) 0 22%, #f8f1e1 22%), #f8f1e1;
+  box-shadow: 0 calc(var(--ne, 70px) * .05) calc(var(--ne, 70px) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--ne, 70px) * .03) rgba(255, 255, 255, .7), inset 0 0 0 calc(var(--ne, 70px) * .045) rgba(150, 120, 70, .5);
+}
+.ne-card .ic { font-style: normal; font-size: calc(var(--ne, 70px) * .42); line-height: 1; margin-top: 6%; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25)); }
+.ne-card b { font-family: var(--num); font-weight: 400; font-size: calc(var(--ne, 70px) * .26); line-height: 1; color: #2a2320; }
+.ne-card small { font-family: var(--ui); font-weight: 700; font-size: calc(var(--ne, 70px) * .095); letter-spacing: .08em; text-transform: uppercase; line-height: 1.1; color: #5d5246; }
+.ne-card.t-piggy, .ne-card.t-comics { --c: #8a9a8c; }
+.ne-card.t-clock, .ne-card.t-wine { --c: #6d8fa8; }
+.ne-card.t-ring, .ne-card.t-art { --c: #9b6b9a; }
+.ne-card.t-boat, .ne-card.t-car { --c: #b5763f; }
+.ne-card.t-horse, .ne-card.t-villa { --c: #a3343c; }
+.ne-card.wild { background: linear-gradient(160deg, #fff7dc, #e8d39a 45%, #b8913f); color: #3a2a10; }
+.ne-card.w-ingot { background: linear-gradient(160deg, #ffffff, #d5d9de 45%, #8f97a0); }
+.ne-card.wild .bar { width: 64%; height: 22%; margin-top: 4%; border-radius: 8%; clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, #ffe9a6, #c9972f); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .2); }
+.ne-card.w-ingot .bar { background: linear-gradient(180deg, #f6f8fa, #9aa3ad); }
+.ne-card.wild em { font-style: normal; font-family: var(--ui); font-weight: 800; font-size: calc(var(--ne, 70px) * .1); letter-spacing: .3em; text-transform: uppercase; color: #fff; padding: 2% 8%; border-radius: 99px; background: rgba(40, 30, 10, .55); }
+.ne-card.back {
+  background: radial-gradient(circle at 50% 50%, #d9bf7f 0 12%, transparent 13%), repeating-linear-gradient(45deg, rgba(217, 191, 127, .25) 0 2px, transparent 2px 9px), linear-gradient(160deg, #23432f, #11251a);
+  box-shadow: 0 calc(var(--ne, 70px) * .05) calc(var(--ne, 70px) * .12) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--ne, 70px) * .04) #11251a, inset 0 0 0 calc(var(--ne, 70px) * .055) rgba(217, 191, 127, .7);
+}
+.ne-card.gone { background: none; box-shadow: inset 0 0 0 1px rgba(217, 191, 127, .25); }
+
+#nestegg { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.ne-mid { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; gap: calc(var(--v) * 3); align-items: center; }
+.ne-deck { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .6); }
+.ne-deck small { font-family: var(--ui); font-size: calc(var(--v) * 1.4); font-weight: 700; letter-spacing: .18em; color: var(--gold-ink); }
+.ne-disc { display: grid; }
+.ne-disc .ne-card { grid-area: 1 / 1; transform: rotate(var(--r, 0deg)); }
+.ne-disc .ne-land { animation: neLand .4s cubic-bezier(.2, .9, .3, 1.15); }
+@keyframes neLand { from { translate: 0 -12vmin; scale: 1.2; opacity: .3; } }
+.ne-fight { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--ne) * -2.9)); display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .8); }
+.ne-fight p { margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2); color: var(--ivory); }
+.ne-fight p b { font-style: normal; font-family: var(--display); color: var(--champagne-hi); }
+.ne-fight .row { display: flex; } .ne-fight .ne-card { --ne: calc(var(--v) * 6); margin: 0 calc(var(--v) * -1); }
+.ne-card.atk { transform: rotate(-6deg); } .ne-card.def { transform: rotate(6deg) translateY(calc(var(--v) * 1)); }
+.ne-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--ne) * 1)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.1); color: var(--ivory); }
+.ne-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+.ne-pile { position: absolute; left: 0; top: 0; transition: transform .4s; }
+.ne-pile .ne-card { --ne: calc(var(--v) * 7); }
+.ne-pile.hot .ne-top { filter: drop-shadow(0 0 1.4vmin rgba(240, 120, 90, .8)); }
+.ne-stack { position: relative; display: flex; flex-direction: column; align-items: center; gap: .4em; min-width: calc(var(--ne, 60px) * 2); }
+.ne-stack .edge { position: absolute; left: 50%; top: 0; transform: translate(-50%, calc(var(--k) * -3px)) rotate(90deg); opacity: .9; }
+.ne-stack .ne-top { position: relative; display: flex; }
+.ne-stack .ne-top .ne-card { margin-left: calc(var(--ne, 60px) * -.62); transform: rotate(calc((var(--i) - .5) * 6deg)); }
+.ne-stack .ne-top .ne-card:first-child { margin-left: 0; }
+.ne-stack small { font-family: var(--ui); font-size: 1.3vmin; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); }
+.ne-stack.empty small { opacity: .7; }
+
+/* ---------- phone ---------- */
+body[data-game="nestegg"] { background: linear-gradient(180deg, #1c3527, #08120d); }
+body[data-game="nestegg"] #handWrap, body[data-game="nestegg"] #handHint { display: none; }
+#nePhone { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 10px; }
+.ne-strip { display: flex; gap: 12px; align-items: flex-start; }
+.ne-dis { display: flex; flex-direction: column; align-items: center; gap: 4px; --ne: 58px; flex: none; }
+.ne-dis small { font-family: var(--ui); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); }
+.ne-others { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+.ne-other, .ne-targets button { display: flex; flex-direction: column; align-items: center; gap: 4px; --ne: 38px; flex: none; }
+.ne-other > b, .ne-targets button > b { display: flex; align-items: center; gap: 5px; font-family: var(--ui); font-size: 12px; color: var(--ivory); white-space: nowrap; }
+.ne-other > b i, .ne-targets button > b i { width: 8px; height: 8px; border-radius: 50%; }
+.ne-other .ne-stack small, .ne-targets .ne-stack small { font-size: 9px; }
+.ne-targets { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.ne-targets button { padding: 8px; border-radius: 10px; border: 1px solid var(--gold-faint); background: rgba(0, 0, 0, .25); cursor: pointer; }
+.ne-fightp { display: flex; justify-content: center; --ne: 56px; padding: 6px 0 10px; }
+.ne-fightp .ne-card { margin: 0 -6px; }
+.ne-hand { display: flex; justify-content: center; gap: 8px; padding-top: 16px; }
+.ne-hand button { padding: 0; border: 0; background: none; cursor: pointer; --ne: min(21vw, 92px); transition: transform .15s; }
+.ne-hand button.sel { transform: translateY(-12px); }
+.ne-hand button.sel .ne-card { box-shadow: 0 0 0 3px var(--champagne), 0 8px 16px rgba(0, 0, 0, .5); }
+.ne-hand button.lit .ne-card { box-shadow: 0 0 0 3px #7fd29a, 0 8px 16px rgba(0, 0, 0, .5); }
+.ne-hand button.dim { opacity: .4; }

@@ -371,3 +371,13 @@ GAMES.powerup = {
   max: 2,
   layout: GAMES.chess.layout,
 };
+
+GAMES.nestegg = {
+  id: 'nestegg',
+  name: 'Nest Egg',
+  blurb: '2–6 players · pair up valuables, steal the top set',
+  min: 2,
+  max: 6,
+  startLabel: 'Deal the cards',
+  layout: GAMES.holdem.layout,
+};
