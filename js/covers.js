@@ -456,3 +456,75 @@ cover('hardsell', id => shell(id, { title: 'Hard Sell', tag: 'Invent it · pitch
   <text x="288" y="222" text-anchor="middle" font-family="${SERIF}" font-size="44" fill="url(#${id}-gold)" filter="url(#${id}-sh)">+</text>
   <g transform="translate(520 260) rotate(14)" filter="url(#${id}-sh)"><rect x="-12" y="-46" width="24" height="56" rx="12" fill="#2a2a2e"/><rect x="-16" y="-50" width="32" height="34" rx="16" fill="#8a96a3"/><rect x="-3" y="10" width="6" height="40" fill="#5a5a60"/></g>
 `));
+
+// A letter tile seen from above (Words 4 Fun, Upwords, Bananagrams…).
+function ltile(x, y, s, ch, o = {}) {
+  return `<g transform="translate(${x} ${y}) rotate(${o.rot || 0})"><rect x="${-s / 2}" y="${-s / 2 + s * .06}" width="${s}" height="${s}" rx="${s * .16}" fill="${o.edge || '#b49a68'}"/><rect x="${-s / 2}" y="${-s / 2}" width="${s}" height="${s}" rx="${s * .16}" fill="${o.fill || '#f6ecd4'}"/><text y="${s * .22}" text-anchor="middle" font-family="${SERIF}" font-size="${s * .62}" fill="${o.ink || '#2a2140'}">${ch}</text>${o.pts ? `<text x="${s * .3}" y="${s * .38}" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="${s * .18}" fill="${o.ink || '#2a2140'}">${o.pts}</text>` : ''}</g>`;
+}
+
+cover('words4fun', id => shell(id, { title: 'Words 4 Fun', tag: 'Two teams · one grid · go!', bg: ['#3a3878', '#22214a', '#0a0a18'], cy: 30 }, `
+  ${glow(id, 300, 140, 160, '#ffd36a', .22)}
+  <circle cx="92" cy="86" r="34" fill="#ffc94a" filter="url(#${id}-glow)"/>${Array.from({ length: 10 }, (_, i) => `<path d="M92 86 m${Math.cos(i * .628) * 44} ${Math.sin(i * .628) * 44} l${Math.cos(i * .628) * 14} ${Math.sin(i * .628) * 14}" stroke="#ffc94a" stroke-width="4" stroke-linecap="round"/>`).join('')}
+  <path d="M528 62 a36 36 0 1 0 22 62 a30 30 0 1 1 -22 -62 Z" fill="#cfe0ff" filter="url(#${id}-glow)"/>
+  <g transform="translate(300 150) rotate(-6)" filter="url(#${id}-sh)">
+    <rect x="-132" y="-110" width="264" height="232" rx="20" fill="#8a5523"/><rect x="-124" y="-102" width="248" height="216" rx="16" fill="#a86a30"/>
+    ${'WORDFUNSTARGAMES'.split('').map((ch, i) => ltile(-90 + (i % 4) * 60, -70 + Math.floor(i / 4) * 52, 48, ch, [0, 1, 2, 3].includes(i) ? { fill: '#ffd36a', edge: '#b07a1a' } : {})).join('')}
+  </g>
+`));
+
+cover('hearts', id => shell(id, { title: 'Hearts', tag: 'Pass three · dodge the Queen', bg: ['#7a2a3c', '#4e1726', '#17060b'], cy: 34 }, `
+  ${glow(id, 300, 150, 160, '#ff8aa0', .22)}
+  ${[[150, 90, 26, -20], [470, 70, 20, 18], [530, 210, 16, -8], [90, 230, 14, 12]].map(([x, y, s, r]) => `<path transform="translate(${x} ${y}) rotate(${r}) scale(${s / 20})" d="M0 8 C-14 -4 -22 -14 -12 -22 C-6 -26 0 -22 0 -16 C0 -22 6 -26 12 -22 C22 -14 14 -4 0 8 Z" fill="#e05a6c" opacity=".55"/>`).join('')}
+  ${card(id, 220, 170, { rank: 'A', suit: '♥', red: true, rot: -18, w: 112 })}
+  ${card(id, 380, 170, { rank: '10', suit: '♥', red: true, rot: 16, w: 112 })}
+  ${card(id, 300, 150, { rank: 'Q', suit: '♠', rot: 0, w: 124, face: queenFace('#1d1b1a', 124) })}
+`));
+function queenFace(col, w) {
+  const h = w * 1.4;
+  return `<g transform="translate(${w / 2} ${h * .58}) scale(${w / 100})"><path d="M-18 -30 L-12 -42 L-4 -32 L0 -46 L4 -32 L12 -42 L18 -30 Z" fill="#d8b46a" stroke="${col}" stroke-width="1.4"/><circle cy="-14" r="13" fill="#f3e2c4" stroke="${col}" stroke-width="1.5"/><path d="M-13 -16 Q-16 0 -10 8 M13 -16 Q16 0 10 8" stroke="#6a4a2a" stroke-width="4" fill="none"/><path d="M-26 32 Q-24 4 0 2 Q24 4 26 32 Z" fill="#3a3a6a"/><circle cy="14" r="3.5" fill="#d8b46a"/></g>`;
+}
+
+cover('spades', id => shell(id, { title: 'Spades', tag: 'Partners · bids · trumps', bg: ['#2c3c64', '#18223e', '#06080f'], cy: 34 }, `
+  ${stars(50, 3, 240, .5)}
+  <text x="470" y="170" text-anchor="middle" font-family="${SYM}" font-size="220" fill="#0c1222" opacity=".55">♠</text>
+  ${card(id, 210, 165, { rank: 'A', suit: '♠', rot: -14, w: 120 })}
+  ${card(id, 320, 155, { rank: 'K', suit: '♠', rot: 6, w: 120, face: kingFace(120) })}
+  <g filter="url(#${id}-sh)"><rect x="410" y="210" width="130" height="44" rx="22" fill="#f3ead6"/><text x="475" y="240" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="20" letter-spacing="2" fill="#18223e">BID 4</text></g>
+`));
+
+cover('war', id => shell(id, { title: 'War', tag: 'Flip · compare · conquer', bg: ['#3e5f86', '#24395a', '#0a1220'], cy: 34 }, `
+  ${glow(id, 300, 160, 140, '#ffb050', .3)}
+  ${card(id, 150, 175, { back: true, rot: -8, w: 96, backFill: '#24395a' })}${card(id, 158, 168, { back: true, rot: -4, w: 96, backFill: '#24395a' })}
+  ${card(id, 450, 175, { back: true, rot: 8, w: 96, backFill: '#6a1f24' })}${card(id, 442, 168, { back: true, rot: 4, w: 96, backFill: '#6a1f24' })}
+  ${card(id, 262, 160, { rank: 'K', suit: '♣', rot: -10, w: 112, face: kingFace(112) })}
+  ${card(id, 340, 160, { rank: 'K', suit: '♦', red: true, rot: 10, w: 112, face: kingFace(112) })}
+  <g transform="translate(300 74)" filter="url(#${id}-sh)"><path d="M-70 -24 L70 -24 L60 0 L70 24 L-70 24 L-60 0 Z" fill="#b8323a"/><text y="11" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="30" letter-spacing="8" fill="#fff3d6">WAR!</text></g>
+`));
+
+cover('oldmaid', id => shell(id, { title: 'Old Maid', tag: 'Pair up · don’t get stuck', bg: ['#5e4580', '#3a2a52', '#120c1c'], cy: 34 }, `
+  ${glow(id, 300, 150, 150, '#e7c4ff', .2)}
+  ${[-2, -1, 0, 1, 2].map(i => card(id, 300 + i * 52, 175 + Math.abs(i) * 8, i === 1 ? { rank: 'Q', suit: '♠', rot: i * 10, w: 104, face: queenFace('#1d1b1a', 104) } : { back: true, rot: i * 10, w: 104, backFill: '#3a2a52' })).join('')}
+  <g transform="translate(352 62)" filter="url(#${id}-sh)"><circle r="24" fill="#f3ead6"/><text y="10" text-anchor="middle" font-size="28">😱</text></g>
+`));
+
+cover('rummy', id => shell(id, { title: 'Rummy', tag: 'Draw · meld · go out', bg: ['#357052', '#1f4a33', '#081a10'], cy: 34 }, `
+  ${[['7', '♥', true], ['7', '♣', false], ['7', '♦', true]].map(([r, s, red], i) => card(id, 130 + i * 44, 165, { rank: r, suit: s, red, w: 88, rot: -6 + i * 3 })).join('')}
+  ${[['4', '♠'], ['5', '♠'], ['6', '♠'], ['7', '♠']].map(([r, s], i) => card(id, 360 + i * 42, 155, { rank: r, suit: s, w: 88, rot: 4 - i * 2 })).join('')}
+`));
+
+cover('gin', id => shell(id, { title: 'Gin Rummy', tag: 'Knock · or go Gin', bg: ['#2a5a40', '#1b3f2c', '#081a10'], cy: 34 }, `
+  ${[-3, -2, -1, 0, 1, 2, 3].map(i => card(id, 300 + i * 44, 180 + Math.abs(i) * 6, { rank: ['9', '9', '9', 'J', 'Q', 'K', 'A'][i + 3], suit: ['♣', '♥', '♠', '♦', '♦', '♦', '♦'][i + 3], red: [0, 1, 0, 1, 1, 1, 1][i + 3], rot: i * 6, w: 92 })).join('')}
+  <g transform="translate(486 80) rotate(10)" filter="url(#${id}-sh)"><circle r="40" fill="#f3ead6"/><circle r="34" fill="none" stroke="#1b3f2c" stroke-width="2"/><text y="12" text-anchor="middle" font-family="${SERIF}" font-size="34" fill="#1b3f2c">GIN</text></g>
+`));
+
+cover('drawpoker', id => shell(id, { title: 'Five-Card Draw', tag: 'Ante · draw · show down', bg: ['#8a2a30', '#5a161c', '#1a0608'], cy: 34 }, `
+  ${stack(id, 110, 250, 38, 6, '#1d1d22', '#d8b46a')}${stack(id, 500, 250, 38, 8, '#2f5a85')}
+  ${[-2, -1, 0, 1, 2].map(i => card(id, 300 + i * 50, 160 + Math.abs(i) * 7, { rank: ['A', 'A', 'K', 'K', 'K'][i + 2], suit: ['♠', '♥', '♣', '♦', '♠'][i + 2], red: [0, 1, 0, 1, 0][i + 2], rot: i * 8, w: 100, face: i >= 0 ? kingFace(100) : '' })).join('')}
+`));
+
+cover('cribbage', id => shell(id, { title: 'Cribbage', tag: 'Fifteen two · peg to 121', bg: ['#46703f', '#2c4a2a', '#0c160c'], cy: 34 }, `
+  <g transform="translate(300 120) rotate(-6)" filter="url(#${id}-sh)"><rect x="-230" y="-40" width="460" height="80" rx="16" fill="#a06a38"/><rect x="-230" y="-40" width="460" height="80" rx="16" fill="none" stroke="#5a3a1a" stroke-width="3"/>
+  ${Array.from({ length: 30 }, (_, i) => [-1, 1].map(r => `<circle cx="${-210 + i * 14.5}" cy="${r * 14 - 6}" r="3" fill="#3a2210"/>`).join('') + `<circle cx="${-210 + i * 14.5}" cy="22" r="3" fill="#3a2210"/>`).join('')}
+  <rect x="-60" y="-34" width="8" height="26" rx="4" fill="#c0392b"/><rect x="40" y="-6" width="8" height="26" rx="4" fill="#2f6fae"/></g>
+  ${card(id, 210, 250, { rank: '5', suit: '♥', red: true, w: 80, rot: -10 })}${card(id, 262, 252, { rank: 'J', suit: '♣', w: 80, rot: 0, face: jackFace('#1d1b1a', 80) })}${card(id, 314, 250, { rank: '5', suit: '♠', w: 80, rot: 10 })}
+`));

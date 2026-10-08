@@ -1,8 +1,8 @@
 // Iron Routes on a phone: your rail cards, the five face-up cards (tap to take) and the deck,
 // the routes you can afford right now (tap to claim), and your destination tickets.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=62';
-import { ROUTES, CITIES, COLORS, HEX, POINTS, payment, routeOpen } from './ironroutes.js?v=62';
-import { railCard, mapSVG } from './table-ironroutes.js?v=62';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=63';
+import { ROUTES, CITIES, COLORS, HEX, POINTS, payment, routeOpen } from './ironroutes.js?v=63';
+import { railCard, mapSVG } from './table-ironroutes.js?v=63';
 
 let ctx = null, keep = new Set(), keepFor = '', grayPick = null, wasMyTurn = false;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -9,7 +9,7 @@
 // cars; if yours is full you stop behind. First across the line after the last lap ends the
 // race once everyone has had that round's turn.
 
-import { makeCircuit, findCorners } from './circuit.js?v=62';
+import { makeCircuit, findCorners } from './circuit.js?v=63';
 
 export const CTRL = [[34, 104], [100, 106], [150, 104], [178, 96], [188, 78], [176, 62], [150, 64], [130, 54], [134, 36], [160, 28], [182, 18], [150, 8], [96, 10], [52, 12], [24, 24], [18, 46], [36, 60], [20, 84]];
 export const L = 96;

@@ -1,8 +1,8 @@
 // Wrong Number on the table: a big phone screen in the middle. The text from the unknown
 // number arrives; once everyone has replied, the replies pop in as anonymous bubbles, and the
 // Receiver's favourite is revealed with who sent it.
-import * as W from './wrongnumber.js?v=62';
-import { snap } from './cards.js?v=62';
+import * as W from './wrongnumber.js?v=63';
+import { snap } from './cards.js?v=63';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -1,6 +1,6 @@
 // Drawing strokes onto a canvas, shared by the table and the drawer's phone.
 // Strokes are in pad units (1000 × 750); the canvas can be any size with that shape.
-import { PALETTE, SIZES, PAD_W, PAD_H } from './sketch.js?v=62';
+import { PALETTE, SIZES, PAD_W, PAD_H } from './sketch.js?v=63';
 
 export function fitCanvas(cv, cssW) {
   const dpr = Math.min(2, window.devicePixelRatio || 1);

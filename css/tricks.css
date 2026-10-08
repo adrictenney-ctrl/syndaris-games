@@ -1,0 +1,34 @@
+/* The trick-taking games: Hearts (deep rose felt), Spades (midnight felt), Bridge (club green
+   with a cream scorepad), Pinochle (old gold). The trick itself uses the shared #trick styles. */
+body[data-game="hearts"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 200, 200, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #5a1e2c 0%, #3e1320 55%, #17060b 100%); }
+body[data-game="spades"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(200, 210, 255, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #1f2a44 0%, #141c30 55%, #070a12 100%); }
+body[data-game="bridge"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 240, 220, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #24503a 0%, #173826 55%, #08160e 100%); }
+body[data-game="pinochle"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 230, 180, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #5a4320 0%, #3d2c13 55%, #160f05 100%); }
+
+.tk-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--card-scale, 1) * 19vmin)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: 2.3vmin; color: var(--ivory); z-index: 2; }
+.tk-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.tk-msg small { font-size: .85em; color: var(--mute); }
+.tk-up { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--card-scale, 1) * -21vmin)); display: flex; gap: 1.2vmin; align-items: center; z-index: 2; font-family: var(--ui); font-size: 1.5vmin; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); white-space: nowrap; }
+.tk-up b { font-family: var(--display); font-size: 2.6vmin; letter-spacing: 0; text-transform: none; color: var(--ivory); }
+.tk-up .red { color: #e0666c; }
+#overlay .scores li span { margin-left: auto; margin-right: 1.2em; font-family: var(--ui); font-size: .8em; opacity: .65; }
+
+/* Bridge: dummy's hand laid face up in front of them. */
+.br-dummy { position: absolute; left: 0; top: 0; display: flex; z-index: 1; }
+.br-dummy .card { --cw: calc(var(--card-scale, 1) * 6.4vmin); margin-left: calc(var(--cw) * -.62); }
+.br-dummy .card:first-child { margin-left: 0; }
+.br-dummy .card.ok { box-shadow: 0 0 0 .3vmin var(--brass-hi); cursor: pointer; }
+.br-dummy .grp { display: flex; margin-right: 1vmin; }
+
+/* ---------- phones ---------- */
+body[data-game="hearts"] { background: linear-gradient(180deg, #4a1724, #17060b); }
+body[data-game="spades"] { background: linear-gradient(180deg, #1a2440, #070a12); }
+body[data-game="bridge"] { background: linear-gradient(180deg, #1d4430, #08160e); }
+body[data-game="pinochle"] { background: linear-gradient(180deg, #4a3818, #160f05); }
+.tk-bids { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; width: 100%; }
+.tk-bids .panel-btn { padding: 12px 0; min-width: 0; }
+.tk-bids .panel-btn.sel { background: var(--champagne); color: #17130c; }
+.tk-bidlog { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; font-family: var(--ui); font-size: 13px; color: var(--ivory); }
+.tk-bidlog span { padding: 3px 9px; border-radius: 99px; background: rgba(255, 255, 255, .08); }
+.tk-bidlog b { color: var(--champagne-hi); }
+#hudC b.red { color: #e0666c; }

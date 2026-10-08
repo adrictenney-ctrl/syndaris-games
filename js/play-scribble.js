@@ -1,9 +1,9 @@
 // Scribble Chain on a phone: pick your word; draw what you're given on the pad (colours, two pen
 // sizes, undo, clear) and tap Done; guess what a drawing shows. Pages hand in by themselves when
 // the clock runs out.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=62';
-import { PALETTE, SIZES, PAD_W, PAD_H } from './sketch.js?v=62';
-import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=62';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=63';
+import { PALETTE, SIZES, PAD_W, PAD_H } from './sketch.js?v=63';
+import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=63';
 
 let ctx = null, stepId = -1, strokes = [], pen = { c: 0, w: 1 }, live = null, autoT = null, clockT = null, endsAt = 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

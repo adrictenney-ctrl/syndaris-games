@@ -1,9 +1,9 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=62';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=62';
-import { movable } from './gesture.js?v=62';
+import * as K from './chefskiss.js?v=63';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=63';
+import { movable } from './gesture.js?v=63';
 
 let root = null, gameRef = null, ctxRef = null, tick = null;
 let subsKey = '', recipeKey = '', chosen = -1, slipOpen = false;

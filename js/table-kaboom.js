@@ -1,7 +1,7 @@
 // Kaboom Critters on the table: the deck (and how many Kaboom!s are still in it), the discard
 // pile, and — after every action — a fuse burning down while anyone can shout Nuh-uh!
-import * as K from './kaboom.js?v=62';
-import { snap } from './cards.js?v=62';
+import * as K from './kaboom.js?v=63';
+import { snap } from './cards.js?v=63';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -1,5 +1,5 @@
 // Shared bits for the phone screens: toasts, the scoreboard header, and the hand of cards.
-import { cardEl, setFace } from './cards.js?v=62';
+import { cardEl, setFace } from './cards.js?v=63';
 
 export const $ = s => document.querySelector(s);
 
@@ -64,7 +64,7 @@ export function layoutHand() {
   cards.forEach((ce, i) => {
     const off = i - (n - 1) / 2;
     const c = ce.dataset.card;
-    const isSel = c === opts.selected;
+    const isSel = Array.isArray(opts.selected) ? opts.selected.includes(c) : c === opts.selected;
     ce.style.position = 'absolute';
     ce.style.bottom = '0';
     ce.style.left = `${i * step}px`;

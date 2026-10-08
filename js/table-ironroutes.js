@@ -1,8 +1,8 @@
 // Iron Routes on the table: the country map with every route drawn as a row of coloured car
 // spaces (double routes side by side); claimed routes fill with the owner's trains. Beside the
 // map: the five face-up rail cards, the deck, and the latest claims.
-import * as I from './ironroutes.js?v=62';
-import { snap } from './cards.js?v=62';
+import * as I from './ironroutes.js?v=63';
+import { snap } from './cards.js?v=63';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

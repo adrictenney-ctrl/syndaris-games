@@ -539,3 +539,90 @@ GAMES.hardsell = {
   startLabel: 'Open for business',
   layout: GAMES.crown.layout,
 };
+
+GAMES.words4fun = {
+  id: 'words4fun',
+  name: 'Words 4 Fun',
+  blurb: '2–8 players · two teams, a grid of letters, find the most words',
+  min: 2,
+  max: 8,
+  startLabel: 'Shake the letters',
+  // Team Sun down the left side, Team Moon down the right.
+  layout: [
+    S(0, 80, 1, 'Sun'), S(0, 60, 1, 'Sun'), S(0, 40, 1, 'Sun'), S(0, 20, 1, 'Sun'),
+    S(100, 20, 3, 'Moon'), S(100, 40, 3, 'Moon'), S(100, 60, 3, 'Moon'), S(100, 80, 3, 'Moon'),
+  ],
+};
+
+GAMES.hearts = {
+  id: 'hearts',
+  name: 'Hearts',
+  blurb: '4 players · pass three, duck the hearts, dodge the Queen',
+  min: 4,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.spades = {
+  id: 'spades',
+  name: 'Spades',
+  blurb: '4 players · partners bid their tricks, spades are trump',
+  min: 4,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.war = {
+  id: 'war',
+  name: 'War',
+  blurb: '2 players · flip, compare, and go to war on a tie',
+  min: 2,
+  max: 2,
+  startLabel: 'Split the deck',
+  layout: [S(50, 100, 0, 'South'), S(50, 0, 2, 'North')],
+};
+
+GAMES.oldmaid = {
+  id: 'oldmaid',
+  name: 'Old Maid',
+  blurb: '2–8 players · pair up, pass it on, don’t get stuck with the queen',
+  min: 2,
+  max: 8,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.rummy = {
+  id: 'rummy',
+  name: 'Rummy',
+  blurb: '2–6 players · draw, meld sets and runs, go out first',
+  min: 2,
+  max: 6,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.gin = {
+  id: 'gin',
+  name: 'Gin Rummy',
+  blurb: '2 players · cut your deadwood, knock, or go Gin',
+  min: 2,
+  max: 2,
+  layout: [S(50, 100, 0, 'South'), S(50, 0, 2, 'North')],
+};
+
+GAMES.drawpoker = {
+  id: 'drawpoker',
+  name: 'Five-Card Draw',
+  blurb: '2–6 players · ante, bet, swap up to three, show down',
+  min: 2,
+  max: 6,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.cribbage = {
+  id: 'cribbage',
+  name: 'Cribbage',
+  blurb: '2 players · fifteens, pairs and runs, peg to 121',
+  min: 2,
+  max: 2,
+  layout: [S(50, 100, 0, 'South'), S(50, 0, 2, 'North')],
+};

@@ -1,6 +1,6 @@
 // Four Up: drop discs into a 7-column, 6-row frame; first to line up four (across, up or
 // diagonally) wins. Seat 0 plays champagne discs, seat 1 plays oxblood. Played as a match.
-import { createSeries, gameOver, nextGame, announce } from './duel.js?v=62';
+import { createSeries, gameOver, nextGame, announce } from './duel.js?v=63';
 
 export const COLS = 7, ROWS = 6;
 export const fresh = g => { g.cols = Array.from({ length: COLS }, () => []); g.line = null; g.last = null; };

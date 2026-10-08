@@ -1,8 +1,8 @@
 // House Rules on the table: the rulebook in the middle — the basic rule (draw N, play N) as
 // it stands right now, every New Rule in play, and the Goal card(s) big and clear. Each
 // player's Keepers (and any Creepers) sit in front of them.
-import * as H from './houserules.js?v=62';
-import { snap } from './cards.js?v=62';
+import * as H from './houserules.js?v=63';
+import { snap } from './cards.js?v=63';
 
 let root = null, mine = {}, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

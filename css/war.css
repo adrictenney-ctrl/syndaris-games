@@ -1,0 +1,21 @@
+/* War: a kitchen table in worn blue oilcloth, two piles squared up to each player. */
+body[data-game="war"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 230, 255, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2f4a6a 0%, #1f3350 55%, #0a1220 100%); }
+body[data-game="war"] #print, body[data-game="war"] .fan { display: none; }
+#war { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.wr-side { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.wr-side.s1 { rotate: 180deg; }
+.wr-pile { position: absolute; left: calc(var(--cw) * -2.2); top: calc(var(--cw) * .75); transform: translate(-50%, -50%); display: grid; }
+.wr-pile .card, .wr-play .card { grid-area: 1 / 1; }
+.wr-pile::after { content: attr(data-n); position: absolute; left: 50%; bottom: calc(var(--cw) * -.32); transform: translateX(-50%); font-family: var(--ui); font-weight: 800; font-size: calc(var(--cw) * .17); color: var(--ivory); }
+.wr-play { position: absolute; left: 0; top: calc(var(--cw) * .75); transform: translate(-50%, -50%); display: flex; }
+.wr-play .card { grid-area: auto; margin-left: calc(var(--cw) * -.55); }
+.wr-play .card:first-child { margin-left: 0; }
+.wr-play .card.wr-down { margin-left: calc(var(--cw) * -.8); }
+
+.wr-flip { width: min(70vw, 260px); aspect-ratio: 1; margin: 10px auto; border-radius: 50%; border: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer;
+  background: radial-gradient(circle at 40% 35%, #f7e6b8, #d7a948 60%, #9a7020); box-shadow: 0 12px 30px rgba(0, 0, 0, .5), inset 0 -6px 0 rgba(0, 0, 0, .2); }
+.wr-flip span { font-family: var(--ui); font-weight: 800; font-size: 44px; letter-spacing: .14em; color: #2a1d08; }
+.wr-flip small { font-family: var(--ui); font-weight: 700; font-size: 14px; color: #4a3610; }
+.wr-flip:disabled { filter: grayscale(.7) brightness(.6); }
+body[data-game="war"] { background: linear-gradient(180deg, #213750, #0a1220); }
+body[data-game="war"] #handWrap, body[data-game="war"] #handHint { display: none; }

@@ -1,0 +1,78 @@
+/* The classic card-table games: Old Maid (lilac parlour cloth), Rummy and Gin (club green),
+   Draw Poker (burgundy), Cribbage (oak with a peg board), Canasta (teal). */
+body[data-game="oldmaid"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 230, 255, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #4a3560 0%, #33244a 55%, #120c1c 100%); }
+body[data-game="oldmaid"] #print { display: none; }
+#oldmaid { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+#oldmaid .card { position: absolute; left: 0; top: 0; --cw: inherit; }
+#oldmaid .card.om-top { transform: translate(-50%, -50%) rotate(-4deg); box-shadow: 0 0 0 .3vmin var(--brass-hi), 0 1vmin 3vmin rgba(0, 0, 0, .5); }
+#omPick { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+#omPick .card { --cw: min(16vw, 70px); transform: rotate(var(--r)); cursor: pointer; transition: transform .15s; }
+#omPick .card:active { transform: translateY(-10px) rotate(var(--r)); }
+body[data-game="oldmaid"] { background: linear-gradient(180deg, #3a2a4e, #120c1c); }
+
+/* ---------- Rummy and Gin ---------- */
+body[data-game="rummy"] #felt, body[data-game="gin"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 255, 230, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2a5a40 0%, #1b3f2c 55%, #081a10 100%); }
+body[data-game="rummy"] #print, body[data-game="gin"] #print { display: none; }
+.rm-wrap { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; align-items: center; gap: calc(var(--cw) * .5); z-index: 2; max-width: 64vw; }
+.rm-piles { display: flex; gap: calc(var(--cw) * .25); flex: none; }
+.rm-stock, .rm-discard { display: grid; position: relative; width: var(--cw); aspect-ratio: 5 / 7; border-radius: calc(var(--cw) * .08); box-shadow: inset 0 0 0 .14vmin var(--gold-faint); }
+.rm-stock .card, .rm-discard .card { grid-area: 1 / 1; }
+.rm-stock::after { content: attr(data-n); position: absolute; left: 50%; bottom: calc(var(--cw) * -.32); transform: translateX(-50%); font-family: var(--ui); font-weight: 800; font-size: calc(var(--cw) * .17); color: var(--gold-ink); }
+.rm-melds { display: flex; flex-wrap: wrap; gap: calc(var(--cw) * .25) calc(var(--cw) * .35); align-content: center; max-width: 46vw; }
+.rm-row { position: relative; display: flex; }
+.rm-row .card { margin-left: calc(var(--cw) * -.62); }
+.rm-row .card:first-child { margin-left: 0; }
+.rm-row::before { content: ''; position: absolute; left: 50%; top: calc(var(--cw) * -.2); width: calc(var(--cw) * .12); height: calc(var(--cw) * .12); border-radius: 50%; background: var(--dot, transparent); transform: translateX(-50%); }
+.rm-row.dead { opacity: .75; filter: saturate(.5); }
+.rm-row.dead::after { content: 'deadwood'; position: absolute; left: 50%; bottom: calc(var(--cw) * -.28); transform: translateX(-50%); font-family: var(--ui); font-size: calc(var(--cw) * .14); color: #ffb0a0; white-space: nowrap; }
+.rm-empty { margin: 0; font-family: var(--serif); font-style: italic; font-size: 2vmin; color: var(--mute); }
+#gin.rm-wrap { flex-direction: column; gap: 3vmin; }
+.gn-show { display: flex; flex-direction: column; align-items: center; gap: 1.6vmin; }
+.gn-show small { font-family: var(--ui); font-weight: 700; font-size: 1.6vmin; letter-spacing: .1em; color: var(--champagne-hi); }
+#rmPhone { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 100%; margin: 4px 0; }
+.rm-mini { display: flex; padding: 4px 6px; border: 0; border-radius: 8px; background: rgba(0, 0, 0, .25); box-shadow: inset 0 0 0 1px var(--hairline); cursor: pointer; }
+.rm-mini .card { --cw: 34px; margin-left: -20px; }
+.rm-mini .card:first-child { margin-left: 0; }
+.rm-mini.ok { box-shadow: 0 0 0 2px var(--champagne), 0 0 14px rgba(232, 219, 189, .5); }
+.rm-take { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.rm-take .card { --cw: 34px; }
+body[data-game="rummy"], body[data-game="gin"] { background: linear-gradient(180deg, #1f4a33, #081a10); }
+
+/* ---------- Five-Card Draw ---------- */
+body[data-game="drawpoker"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 210, 200, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #6a1e24 0%, #4a1418 55%, #1a0608 100%); }
+#drawpoker { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.dp-pot { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; padding: 1.4vmin 3vmin; border-radius: 99px; background: rgba(0, 0, 0, .3); box-shadow: inset 0 0 0 .16vmin var(--gold-faint); }
+.dp-pot small { font-family: var(--ui); font-weight: 800; font-size: 1.3vmin; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); }
+.dp-pot b { font-family: var(--num); font-weight: 400; font-size: 5vmin; color: var(--ivory); }
+.dp-show { position: absolute; left: 0; top: 0; display: flex; flex-wrap: wrap; justify-content: center; width: calc(var(--cw) * 3.4); }
+.dp-show .card { margin-left: calc(var(--cw) * -.5); }
+.dp-show .card:first-child { margin-left: 0; }
+.dp-show small { width: 100%; text-align: center; margin-top: .6vmin; font-family: var(--ui); font-weight: 700; font-size: 1.5vmin; color: var(--ivory); white-space: nowrap; }
+.dp-show.win small { color: var(--champagne-hi); }
+.dp-show.win .card { box-shadow: 0 0 0 .2vmin var(--brass-hi), 0 0 2vmin rgba(255, 222, 150, .5); }
+body[data-game="drawpoker"] { background: linear-gradient(180deg, #4a1418, #1a0608); }
+
+/* ---------- Cribbage ---------- */
+body[data-game="cribbage"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 230, 200, .07), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #3a5a3a 0%, #283f28 55%, #0c160c 100%); }
+body[data-game="cribbage"] #print { display: none; }
+#cribbage { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 1.8vmin; z-index: 2; }
+.cb-board { width: min(54vw, 74vmin); filter: drop-shadow(0 1vmin 2vmin rgba(0, 0, 0, .5)); }
+.cb-mid { display: flex; align-items: flex-start; gap: 3vmin; }
+.cb-starter, .cb-crib { display: flex; flex-direction: column; align-items: center; gap: .6vmin; }
+.cb-starter small, .cb-crib small, .cb-count small { font-family: var(--ui); font-weight: 800; font-size: 1.2vmin; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); }
+.cb-pile { display: flex; flex-direction: column; align-items: center; gap: 1.2vmin; }
+.cb-played { display: flex; }
+.cb-played .card { margin-left: calc(var(--cw) * -.55); box-shadow: 0 -.5vmin 0 var(--dot), 0 .6vmin 1.4vmin rgba(0, 0, 0, .4); }
+.cb-played .card:first-child { margin-left: 0; }
+.cb-played .card.old { filter: brightness(.6) saturate(.5); }
+.cb-count { display: flex; align-items: baseline; gap: 1vmin; }
+.cb-count b { font-family: var(--num); font-weight: 400; font-size: 4.4vmin; color: var(--ivory); }
+.cb-pile:has(.cb-shown) { flex-direction: row; align-items: flex-start; gap: 3vmin; }
+.cb-shown { display: flex; flex-wrap: wrap; justify-content: center; width: calc(var(--cw) * 3.2); opacity: .55; transition: opacity .3s; }
+.cb-shown.done { opacity: .9; } .cb-shown.now { opacity: 1; }
+.cb-shown .card { margin-left: calc(var(--cw) * -.6); }
+.cb-shown .card:first-child { margin-left: 0; }
+.cb-shown small { width: 100%; margin-top: .8vmin; text-align: center; font-family: var(--ui); font-weight: 700; font-size: 1.5vmin; color: var(--ivory); }
+.cb-shown small b { color: var(--champagne-hi); font-size: 1.3em; }
+.cb-shown small em { display: block; font-style: normal; font-weight: 600; font-size: .85em; color: var(--mute); }
+body[data-game="cribbage"] { background: linear-gradient(180deg, #2c442c, #0c160c); }

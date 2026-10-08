@@ -1,8 +1,8 @@
 // Pass the Pot on the table: a brass bowl in the middle that fills up as the game goes, each
 // player's little stack of chips in front of them, and the last throw of the dice — with
 // where every chip went.
-import * as P from './passpot.js?v=62';
-import { snap } from './cards.js?v=62';
+import * as P from './passpot.js?v=63';
+import { snap } from './cards.js?v=63';
 
 let root = null, stacks = {}, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

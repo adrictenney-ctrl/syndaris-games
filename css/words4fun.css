@@ -1,0 +1,90 @@
+/* Words 4 Fun: a sunny letter tray — a deep indigo table, an amber wooden tray, chunky ivory
+   letter tiles. Team Sun in amber, Team Moon in pale blue. */
+body[data-game="words4fun"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 210, 120, .09), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #2c2a5a 0%, #1c1b3c 55%, #0a0a18 100%);
+}
+body[data-game="words4fun"] #print, body[data-game="words4fun"] .fan, body[data-game="words4fun"] .sizer { display: none; }
+
+.wf-tile {
+  position: relative; display: grid; place-items: center; aspect-ratio: 1; padding: 0; border: 0; border-radius: 16%; cursor: pointer;
+  background: linear-gradient(160deg, #fffaf0 0%, #f1e6cc 60%, #dccaa2 100%);
+  box-shadow: 0 .14em .0em #b49a68, 0 .26em .4em rgba(0, 0, 0, .45), inset 0 0 0 .04em rgba(255, 255, 255, .8);
+  transition: transform .08s, background .12s;
+  -webkit-user-select: none; user-select: none; touch-action: none;
+}
+.wf-tile b { font-family: var(--num); font-weight: 400; font-size: .62em; line-height: 1; color: #2a2140; }
+.wf-tile b small { font-size: .55em; }
+.wf-tile.on { background: linear-gradient(160deg, #ffe39a, #f2bd4a 60%, #d99a24); transform: translateY(.06em) scale(.96); box-shadow: 0 .08em 0 #9a6a14, 0 .16em .3em rgba(0, 0, 0, .4); }
+.wf-tile.head { background: linear-gradient(160deg, #fff1c4, #ffcf5a 60%, #f0a830); box-shadow: 0 0 0 .07em #fff6dc, 0 0 .5em rgba(255, 210, 120, .8); }
+
+.wf-grid, .wf-mini { display: grid; gap: .16em; padding: .22em; border-radius: .26em;
+  background: linear-gradient(170deg, #b77b3c, #8a5523 60%, #6a3f17); box-shadow: 0 .3em .9em rgba(0, 0, 0, .55), inset 0 .05em 0 rgba(255, 220, 160, .45), inset 0 0 0 .03em rgba(60, 30, 10, .6); }
+.wf-grid.n4, .wf-mini.n4 { grid-template-columns: repeat(4, 1fr); }
+.wf-grid.n5, .wf-mini.n5 { grid-template-columns: repeat(5, 1fr); }
+.wf-grid.hide .wf-tile b { visibility: hidden; }
+.wf-grid.hide .wf-tile { background: linear-gradient(160deg, #e8dcc0, #cbb88e); }
+
+/* ---------- table ---------- */
+#words4fun { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.wf-head { position: absolute; left: 0; top: 0; width: calc(var(--gw) + var(--v) * 40); transform: translate(-50%, calc(var(--gw) * -.5 - var(--v) * 11.5)); display: flex; align-items: center; justify-content: space-between; }
+.wf-team { display: flex; flex-direction: column; align-items: center; min-width: calc(var(--v) * 16); }
+.wf-team small { font-family: var(--ui); font-weight: 800; font-size: calc(var(--v) * 1.4); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; }
+.wf-team b { font-family: var(--num); font-weight: 400; font-size: calc(var(--v) * 5); line-height: 1; color: var(--ivory); }
+.wf-team.t0 small, .wf-tm.t0 { color: #f3c065; } .wf-team.t1 small, .wf-tm.t1 { color: #9fc3f0; }
+.wf-clock b { font-family: var(--num); font-weight: 400; font-size: calc(var(--v) * 6); color: var(--ivory); letter-spacing: .04em; }
+.wf-clock b.low { color: #ff8a6a; animation: wfPulse 1s infinite; }
+.wf-clock b.cd { display: inline-block; font-size: calc(var(--v) * 8); color: #ffd36a; animation: wfCount 1s infinite; }
+.wf-clock b.done { color: #ffd36a; }
+.wf-clock small { font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.4); color: var(--mute); }
+@keyframes wfPulse { 50% { opacity: .55; } }
+@keyframes wfCount { from { transform: scale(1.35); opacity: .4; } 30% { transform: scale(1); opacity: 1; } }
+.wf-body { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); }
+.wf-body .wf-grid { width: var(--gw); font-size: calc(var(--gw) / 4.3); }
+.wf-body .wf-grid.n5 { font-size: calc(var(--gw) / 5.3); }
+.wf-body .wf-grid .wf-tile { cursor: default; }
+.wf-body.res { display: flex; align-items: flex-start; gap: calc(var(--v) * 2.4); transform: translate(-50%, -46%); }
+.wf-body.res .wf-mini { order: 2; width: calc(var(--gw) * .42); font-size: calc(var(--gw) * .1); align-self: center; }
+.wf-body.res .wf-mini.n5 { font-size: calc(var(--gw) * .08); }
+.wf-list { order: 1; width: calc(var(--gw) * .62); max-height: calc(var(--gw) * 1.05); display: flex; flex-direction: column; padding: calc(var(--v) * 1.4); border-radius: calc(var(--v) * 1.4); background: rgba(10, 10, 30, .55); box-shadow: inset 0 0 0 .14vmin rgba(255, 255, 255, .12); }
+.wf-list.t1 { order: 3; }
+.wf-list h3 { margin: 0 0 calc(var(--v) * .8); display: flex; justify-content: space-between; font-family: var(--ui); font-weight: 800; font-size: calc(var(--v) * 1.6); letter-spacing: .12em; text-transform: uppercase; }
+.wf-list.t0 h3 { color: #f3c065; } .wf-list.t1 h3 { color: #9fc3f0; }
+.wf-list h3 b { font-family: var(--num); font-weight: 400; font-size: 1.5em; letter-spacing: 0; color: var(--ivory); }
+.wf-list ul { margin: 0; padding: 0; list-style: none; overflow: hidden; column-width: calc(var(--v) * 14); column-gap: calc(var(--v) * 1.6); }
+.wf-list li { display: flex; align-items: baseline; gap: .5em; break-inside: avoid; font-size: calc(var(--v) * 1.7); line-height: 1.5; color: var(--ivory); }
+.wf-list li span { font-family: var(--ui); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.wf-list li em { font-style: normal; font-family: var(--ui); font-weight: 800; font-size: .8em; color: #ffd36a; }
+.wf-list li small { margin-left: auto; font-size: .7em; color: var(--mute); white-space: nowrap; }
+.wf-list li.x span { text-decoration: line-through; text-decoration-thickness: .12em; text-decoration-color: #ff7a6a; opacity: .5; }
+.wf-list li.none { color: var(--mute); font-style: italic; }
+.wf-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--gw) * .5 + var(--v) * 4)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.2); color: var(--ivory); }
+.wf-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+
+/* ---------- phone ---------- */
+body[data-game="words4fun"] { background: radial-gradient(ellipse 140% 90% at 50% 20%, #2c2a5a, #0a0a18); }
+body[data-game="words4fun"] #handWrap, body[data-game="words4fun"] #handHint, body[data-game="words4fun"] #panel { display: none; }
+#wfPhone { width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; gap: 10px; min-height: 0; flex: 1; }
+#wfPhone .wf-clock { min-height: 44px; display: grid; place-items: center; }
+#wfPhone .wf-clock b { font-size: 38px; }
+#wfPhone .wf-clock b.cd { font-size: 64px; }
+#wfPhone .wf-clock small { font-size: 18px; }
+#wfPhone .wf-word { min-height: 38px; font-family: var(--ui); font-weight: 800; font-size: 28px; letter-spacing: .12em; color: #ffd36a; }
+#wfPhone .wf-word span { font-weight: 600; font-size: 15px; letter-spacing: .04em; color: var(--mute); }
+#wfPhone .wf-gridwrap { width: min(88vw, 400px, 46vh); touch-action: none; }
+#wfPhone .wf-grid { width: 100%; font-size: min(20vw, 92px, 10.5vh); }
+#wfPhone .wf-grid.n5 { font-size: min(16vw, 74px, 8.4vh); }
+#wfPhone:not(.playing) .wf-tile { cursor: default; }
+.wf-keys { display: flex; gap: 8px; width: 100%; }
+.wf-keys .panel-btn { flex: 1; min-width: 0; padding: 14px 4px; }
+.wf-keys .panel-btn.go { flex: 2; font-size: 15px; }
+.wf-mine { width: 100%; overflow-y: auto; min-height: 0; flex: 1; }
+.wf-sum { margin: 2px 0 6px; font-family: var(--ui); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); text-align: center; }
+.wf-sum b { color: var(--ivory); font-size: 15px; }
+.wf-mine ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.wf-mine li { padding: 4px 10px; border-radius: 99px; background: rgba(255, 255, 255, .07); font-family: var(--ui); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: var(--ivory); }
+.wf-mine li em { font-style: normal; margin-left: 5px; color: #ffd36a; font-size: 12px; }
+.wf-mine li.first { box-shadow: inset 0 0 0 1px rgba(255, 211, 106, .6); }
+.wf-mine li.me { background: rgba(255, 211, 106, .16); }
+.wf-mine li.x { text-decoration: line-through; opacity: .5; }
