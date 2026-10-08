@@ -8,4 +8,5 @@ bash build-cloudflare.sh
 export PATH="/c/Program Files/nodejs:$(cygpath -u "$APPDATA")/npm:$PATH"
 wrangler deploy
 DEST="/c/Users/adric/Dropbox/Play On Display site"
-if [ -d "$(dirname "$DEST")" ]; then rm -rf "$DEST" && mkdir -p "$DEST" && cp -r ../play-on-display-site/. "$DEST"/ && echo "Copied to Dropbox"; fi
+# Overwrite in place (deleting the folder first fights with Dropbox while it syncs).
+if [ -d "$(dirname "$DEST")" ]; then mkdir -p "$DEST" && cp -rf ../play-on-display-site/. "$DEST"/ && echo "Copied to Dropbox"; fi
