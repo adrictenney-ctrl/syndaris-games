@@ -1,7 +1,7 @@
 // Seed Stones on a phone: the board turned so your pits are along the bottom. Tap a pit to sow.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=58';
-import { boardHTML } from './table-seedstones.js?v=58';
-import { STORE } from './seedstones.js?v=58';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=59';
+import { boardHTML } from './table-seedstones.js?v=59';
+import { STORE } from './seedstones.js?v=59';
 
 let ctx = null, wasMyTurn = false;
 export function reset() { document.getElementById('ssPhone')?.remove(); }

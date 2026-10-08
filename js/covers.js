@@ -1,0 +1,439 @@
+// Cover art for every game: a small illustrated scene (inline SVG, 600×400) with the game's
+// title set like the front of a box. Shown on the home page tiles and the spotlight.
+// Every id inside an SVG is prefixed with the game id so the covers can share one page.
+
+const SERIF = "'DM Serif Display', Georgia, serif";
+const CORM = "'Cormorant Garamond', Georgia, serif";
+const UI = "Manrope, 'Segoe UI', sans-serif";
+const SYM = "'Noto Sans Symbols 2', 'Segoe UI Symbol', serif";
+
+// ------------------------------------------------------------------ shared pieces
+
+function shell(id, o, body) {
+  const [c1, c2, c3] = o.bg;
+  return `<svg viewBox="0 0 600 400" class="cover" role="img" aria-label="${o.title}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="${id}-bg" cx="${o.cx ?? 50}%" cy="${o.cy ?? 42}%" r="80%"><stop offset="0" stop-color="${c1}"/><stop offset=".55" stop-color="${c2}"/><stop offset="1" stop-color="${c3}"/></radialGradient>
+    <radialGradient id="${id}-vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+    <linearGradient id="${id}-scrim" x1="0" y1="0" x2="0" y2="1"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".72"/></linearGradient>
+    <linearGradient id="${id}-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e2b0"/><stop offset=".55" stop-color="#d8b46a"/><stop offset="1" stop-color="#a8823c"/></linearGradient>
+    <linearGradient id="${id}-card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#e9dfc8"/></linearGradient>
+    <filter id="${id}-sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".5"/></filter>
+    <filter id="${id}-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="${id}-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    ${o.defs || ''}
+  </defs>
+  <rect width="600" height="400" fill="url(#${id}-bg)"/>
+  ${body}
+  <rect width="600" height="400" fill="url(#${id}-vig)"/>
+  <rect y="190" width="600" height="210" fill="url(#${id}-scrim)"/>
+  ${titleBlock(id, o)}
+</svg>`;
+}
+
+function titleBlock(id, o) {
+  const t = o.title, n = t.length;
+  const size = o.size || (n <= 6 ? 66 : n <= 10 ? 58 : n <= 14 ? 50 : n <= 18 ? 42 : 36);
+  const lines = o.lines || [t];
+  const lh = size * 0.98;
+  const y0 = 372 - (lines.length - 1) * lh;
+  const words = lines.map((l, i) => `<text x="34" y="${y0 + i * lh}" font-family="${SERIF}" font-size="${size}" fill="url(#${id}-gold)" style="paint-order:stroke" stroke="rgba(0,0,0,.35)" stroke-width="1.2" letter-spacing=".5">${esc(l)}</text>`).join('');
+  return `<g filter="url(#${id}-sh)">${o.tag ? `<text x="36" y="${y0 - size * 0.86}" font-family="${UI}" font-weight="800" font-size="12" letter-spacing="3.2" fill="#e9dcc0" opacity=".85">${esc(o.tag.toUpperCase())}</text>` : ''}${words}</g>`;
+}
+
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// A playing card. o: { w, rank, suit, red, back, backFill, face (inner svg), rot }
+function card(id, x, y, o = {}) {
+  const w = o.w || 96, h = w * 1.4, r = w * 0.07;
+  const col = o.red ? '#a3262a' : '#1d1b1a';
+  let inner;
+  if (o.back) inner = `<rect width="${w}" height="${h}" rx="${r}" fill="${o.backFill || '#6a1f24'}"/><rect x="${w * .07}" y="${w * .07}" width="${w * .86}" height="${h - w * .14}" rx="${r * .6}" fill="none" stroke="#e3c88c" stroke-width="${w * .02}"/>
+    <path d="M${w / 2} ${h * .3} L${w * .72} ${h / 2} L${w / 2} ${h * .7} L${w * .28} ${h / 2} Z" fill="none" stroke="#e3c88c" stroke-width="${w * .018}"/>`;
+  else {
+    inner = `<rect width="${w}" height="${h}" rx="${r}" fill="url(#${id}-card)" stroke="rgba(0,0,0,.15)"/>`;
+    if (o.rank) inner += `<text x="${w * .1}" y="${w * .25}" font-family="${SERIF}" font-size="${w * .22}" fill="${col}">${o.rank}</text><text x="${w * .1}" y="${w * .44}" font-family="${SYM}" font-size="${w * .17}" fill="${col}">${o.suit}</text>`;
+    inner += o.face || (o.suit ? `<text x="${w / 2}" y="${h * .62}" text-anchor="middle" font-family="${SYM}" font-size="${w * .52}" fill="${col}">${o.suit}</text>` : '');
+  }
+  return `<g transform="translate(${x} ${y}) rotate(${o.rot || 0})" filter="url(#${id}-sh)"><g transform="translate(${-w / 2} ${-h / 2})">${inner}</g></g>`;
+}
+
+// A casino chip seen from above.
+function chip(id, x, y, r, fill, o = {}) {
+  const marks = Array.from({ length: 8 }, (_, i) => { const a = i * 45; return `<rect x="${-r * .09}" y="${-r}" width="${r * .18}" height="${r * .26}" fill="${o.edge || '#f3ead6'}" transform="rotate(${a})"/>`; }).join('');
+  return `<g transform="translate(${x} ${y})" filter="url(#${id}-sh)"><circle r="${r}" fill="${fill}"/>${marks}<circle r="${r * .66}" fill="none" stroke="${o.edge || '#f3ead6'}" stroke-width="${r * .05}" stroke-dasharray="${r * .12} ${r * .1}"/><circle r="${r * .56}" fill="${fill}" stroke="rgba(255,255,255,.25)"/>${o.label ? `<text y="${r * .2}" text-anchor="middle" font-family="${SERIF}" font-size="${r * .55}" fill="${o.ink || '#f3ead6'}">${o.label}</text>` : ''}</g>`;
+}
+
+// A stack of chips seen from the side.
+function stack(id, x, y, r, n, fill, edge = '#f3ead6') {
+  let h = '';
+  for (let i = 0; i < n; i++) {
+    const yy = y - i * r * 0.22;
+    h += `<ellipse cx="${x}" cy="${yy + r * .12}" rx="${r}" ry="${r * .36}" fill="${fill}" stroke="rgba(0,0,0,.35)" stroke-width="1"/>`;
+    h += `<path d="M${x - r} ${yy} v${r * .12} a${r} ${r * .36} 0 0 0 ${2 * r} 0 v${-r * .12}" fill="${fill}"/>`;
+    for (let k = -2; k <= 2; k++) h += `<rect x="${x + k * r * .38 - r * .06}" y="${yy + r * .02}" width="${r * .12}" height="${r * .14}" fill="${edge}" opacity=".85"/>`;
+    h += `<ellipse cx="${x}" cy="${yy}" rx="${r}" ry="${r * .36}" fill="${fill}" stroke="rgba(255,255,255,.25)"/><ellipse cx="${x}" cy="${yy}" rx="${r * .6}" ry="${r * .2}" fill="none" stroke="${edge}" stroke-width="1.2" stroke-dasharray="4 3" opacity=".8"/>`;
+  }
+  return `<g filter="url(#${id}-sh)">${h}</g>`;
+}
+
+// A die. pips 1–6, or text for custom faces.
+const PIP = { 1: [[.5, .5]], 2: [[.27, .27], [.73, .73]], 3: [[.27, .27], [.5, .5], [.73, .73]], 4: [[.27, .27], [.73, .27], [.27, .73], [.73, .73]], 5: [[.27, .27], [.73, .27], [.5, .5], [.27, .73], [.73, .73]], 6: [[.27, .25], [.73, .25], [.27, .5], [.73, .5], [.27, .75], [.73, .75]] };
+function die(id, x, y, s, v, o = {}) {
+  const pips = typeof v === 'number' ? PIP[v].map(([a, b]) => `<circle cx="${a * s}" cy="${b * s}" r="${s * .085}" fill="${o.pip || '#1d1b1a'}"/>`).join('') : `<text x="${s / 2}" y="${s * .68}" text-anchor="middle" font-family="${SERIF}" font-size="${s * .5}" fill="${o.pip || '#1d1b1a'}">${v}</text>`;
+  return `<g transform="translate(${x} ${y}) rotate(${o.rot || 0})" filter="url(#${id}-sh)"><g transform="translate(${-s / 2} ${-s / 2})"><rect width="${s}" height="${s}" rx="${s * .18}" fill="${o.fill || '#f7f1e3'}"/><rect x="${s * .04}" y="${s * .04}" width="${s * .92}" height="${s * .92}" rx="${s * .15}" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="${s * .02}"/>${pips}</g></g>`;
+}
+
+const glow = (id, x, y, r, color, op = .55) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${color}" opacity="${op}" filter="url(#${id}-soft)"/>`;
+const stars = (n, seed = 1, h = 260, op = .7) => { let s = seed, out = ''; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280; for (let i = 0; i < n; i++) out += `<circle cx="${rnd() * 600}" cy="${rnd() * h}" r="${rnd() * 1.4 + .3}" fill="#fff" opacity="${(rnd() * .6 + .3) * op}"/>`; return out; };
+
+export const COVERS = {};
+const cover = (id, fn) => { COVERS[id] = fn; };
+export function coverSVG(id) { return COVERS[id] ? COVERS[id](id) : ''; }
+
+// ------------------------------------------------------------------ the covers
+
+cover('euchre', id => shell(id, { title: 'Euchre', tag: 'Partners · trumps · bowers', bg: ['#2f6b50', '#1d4433', '#0c1f17'], cy: 35 }, `
+  ${glow(id, 300, 150, 150, '#7fd1a6', .25)}
+  <g opacity=".18" stroke="#c9e8d4" fill="none"><ellipse cx="300" cy="190" rx="250" ry="120"/><ellipse cx="300" cy="190" rx="215" ry="98"/></g>
+  ${card(id, 215, 165, { rank: 'A', suit: '♥', red: true, rot: -24, w: 124 })}
+  ${card(id, 390, 165, { rank: 'J', suit: '♦', red: true, rot: 22, w: 124, face: jackFace('#a3262a', 124) })}
+  ${card(id, 302, 140, { rank: 'J', suit: '♥', red: true, rot: 0, w: 134, face: jackFace('#a3262a', 134) })}
+`));
+function jackFace(col, w) {
+  const h = w * 1.4;
+  return `<g transform="translate(${w / 2} ${h * .58}) scale(${w / 100})"><path d="M-22 -26 L-14 -40 L-6 -30 L0 -44 L6 -30 L14 -40 L22 -26 Z" fill="#d8b46a" stroke="${col}" stroke-width="1.5"/><circle cy="-12" r="13" fill="#f3e2c4" stroke="${col}" stroke-width="1.5"/><path d="M-26 30 Q-24 4 0 2 Q24 4 26 30 Z" fill="${col}"/><path d="M-10 6 L0 22 L10 6" fill="none" stroke="#d8b46a" stroke-width="3"/></g>`;
+}
+
+cover('holdem', id => shell(id, { title: "Texas Hold'em", tag: 'No-limit · chips · nerve', bg: ['#2c4870', '#1c2f4a', '#0a121e'] }, `
+  ${glow(id, 300, 170, 170, '#8fb4e8', .2)}
+  ${stack(id, 120, 230, 40, 9, '#7a1f24')}${stack(id, 200, 250, 40, 6, '#1d1d22', '#d8b46a')}${stack(id, 470, 240, 38, 7, '#2f5a85')}
+  ${card(id, 278, 158, { rank: 'A', suit: '♠', rot: -12, w: 124 })}${card(id, 366, 160, { rank: 'A', suit: '♥', red: true, rot: 10, w: 124 })}
+  ${chip(id, 520, 120, 30, '#d8b46a', { label: '$', ink: '#3a2a0a', edge: '#fff6dc' })}
+`));
+
+cover('veto', id => shell(id, { title: 'Veto', tag: 'Match · block · shed', bg: ['#7a5232', '#4b301c', '#1e120a'] }, `
+  <g opacity=".25" stroke="#2a180c">${Array.from({ length: 12 }, (_, i) => `<path d="M0 ${i * 36 + 10} Q300 ${i * 36 - 6} 600 ${i * 36 + 14}" fill="none"/>`).join('')}</g>
+  ${card(id, 210, 170, { w: 100, rot: -16, face: vetoFace('#3e6b8a', '7') })}
+  ${card(id, 400, 175, { w: 100, rot: 15, face: vetoFace('#4f7a3a', '2') })}
+  ${card(id, 305, 160, { w: 112, rot: -2, face: vetoFace('#9b3b2e', '✕', 112) })}
+  <g transform="translate(400 120) rotate(-14)" opacity=".92"><rect x="-70" y="-26" width="140" height="52" rx="6" fill="none" stroke="#c0392b" stroke-width="6"/><text y="14" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="36" letter-spacing="6" fill="#c0392b">VETO</text></g>
+`));
+function vetoFace(c, mark, w = 100) { const h = w * 1.4; return `<rect x="${w * .1}" y="${w * .1}" width="${w * .8}" height="${h - w * .2}" rx="${w * .06}" fill="${c}" opacity=".9"/><text x="${w / 2}" y="${h * .64}" text-anchor="middle" font-family="${SERIF}" font-size="${w * .62}" fill="#f7f0df">${mark}</text>`; }
+
+cover('gofish', id => shell(id, { title: 'Go Fish', tag: 'Ask · fish · collect', bg: ['#2a6a75', '#173f48', '#08191d'], cy: 35 }, `
+  ${Array.from({ length: 6 }, (_, i) => `<ellipse cx="${150 + (i % 3) * 160}" cy="${90 + Math.floor(i / 3) * 120}" rx="${60 + i * 6}" ry="${16 + i * 2}" fill="none" stroke="#9fd6dc" stroke-opacity=".18" stroke-width="2"/>`).join('')}
+  ${koi(id, 170, 210, -20, '#e07a3c')}${koi(id, 420, 140, 160, '#f3ead6')}${koi(id, 330, 280, 30, '#d9503c')}
+  <path d="M470 0 L470 170" stroke="#e9dcc0" stroke-width="1.5" opacity=".7"/>
+  ${card(id, 470, 215, { rank: '7', suit: '♣', w: 70, rot: 6 })}
+  <path d="M470 170 q8 6 0 14" fill="none" stroke="#c9b48c" stroke-width="3"/>
+  <g fill="#3f7a4a" opacity=".85"><ellipse cx="80" cy="90" rx="44" ry="26"/><ellipse cx="540" cy="300" rx="50" ry="28"/></g>
+`));
+function koi(id, x, y, rot, col) {
+  return `<g transform="translate(${x} ${y}) rotate(${rot})" filter="url(#${id}-sh)"><path d="M-60 0 Q-20 -26 30 -10 Q50 0 30 10 Q-20 26 -60 0 Z" fill="${col}"/><path d="M-58 0 L-86 -18 L-78 0 L-86 18 Z" fill="${col}" opacity=".85"/><path d="M-10 -14 L0 -30 L10 -12 Z M-10 14 L0 30 L10 12 Z" fill="${col}" opacity=".7"/><circle cx="22" cy="-4" r="2.6" fill="#1d1b1a"/><path d="M-30 -8 Q-12 -2 6 -10" fill="none" stroke="#1d1b1a" stroke-opacity=".2" stroke-width="5"/></g>`;
+}
+
+cover('chess', id => shell(id, { title: 'Chess', tag: 'The classic duel', bg: ['#5a3c24', '#33200f', '#110a04'], cy: 30 }, `
+  <g transform="translate(300 300) scale(1 .42) rotate(45)" opacity=".95">${Array.from({ length: 64 }, (_, i) => `<rect x="${(i % 8) * 46 - 184}" y="${Math.floor(i / 8) * 46 - 184}" width="46" height="46" fill="${(i + Math.floor(i / 8)) % 2 ? '#2a1a0c' : '#c9a777'}"/>`).join('')}</g>
+  ${glow(id, 300, 140, 120, '#ffd9a0', .25)}
+  <g filter="url(#${id}-sh)"><text x="235" y="250" text-anchor="middle" font-family="${SYM}" font-size="170" fill="#f3e7d0">♚</text><text x="370" y="262" text-anchor="middle" font-family="${SYM}" font-size="150" fill="#1d1612" stroke="#c9a777" stroke-width="1.5">♛</text></g>
+`));
+
+cover('backgammon', id => shell(id, { title: 'Backgammon', tag: 'Race · hit · double', bg: ['#7a4a26', '#4a2a14', '#1a0d05'] }, `
+  <g filter="url(#${id}-sh)"><rect x="40" y="40" width="520" height="300" rx="10" fill="#2e1a0c"/><rect x="56" y="54" width="232" height="272" fill="#e6d3ad"/><rect x="312" y="54" width="232" height="272" fill="#e6d3ad"/>
+  ${Array.from({ length: 12 }, (_, i) => { const x = (i < 6 ? 56 : 312) + (i % 6) * 38.6; return `<path d="M${x} 54 L${x + 19.3} 180 L${x + 38.6} 54 Z" fill="${i % 2 ? '#7a2b26' : '#2f4a3a'}"/><path d="M${x} 326 L${x + 19.3} 200 L${x + 38.6} 326 Z" fill="${i % 2 ? '#2f4a3a' : '#7a2b26'}"/>`; }).join('')}</g>
+  ${[[75, 72], [75, 104], [75, 136], [500, 308], [500, 276], [380, 72], [380, 104]].map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="15" fill="${i > 2 && i < 5 ? '#1d1b1a' : '#f7f0df'}" stroke="rgba(0,0,0,.3)" filter="url(#${id}-sh)"/>`).join('')}
+  ${die(id, 410, 210, 46, 6, { rot: 12 })}${die(id, 470, 230, 46, 4, { rot: -8 })}
+  <g transform="translate(220 200) rotate(-8)" filter="url(#${id}-sh)"><rect x="-26" y="-26" width="52" height="52" rx="8" fill="#f7f0df"/><text y="14" text-anchor="middle" font-family="${SERIF}" font-size="34" fill="#7a2b26">64</text></g>
+`));
+
+cover('sketch', id => shell(id, { title: 'Sketch & Guess', tag: 'Draw it · guess it', bg: ['#5e5348', '#3a322b', '#141110'], defs: `<pattern id="${id}-lines" width="600" height="22" patternUnits="userSpaceOnUse"><path d="M0 21 H600" stroke="#9fb6d6" stroke-opacity=".5"/></pattern>` }, `
+  <g transform="rotate(-4 300 180)" filter="url(#${id}-sh)"><rect x="110" y="40" width="380" height="270" rx="4" fill="#fbf6ea"/><rect x="110" y="40" width="380" height="270" fill="url(#${id}-lines)"/><path d="M150 40 V310" stroke="#d98a8a" stroke-width="1.5"/>
+  <path d="M200 240 Q210 140 290 130 Q370 120 390 230" fill="none" stroke="#a8322a" stroke-width="7" stroke-linecap="round"/><circle cx="295" cy="200" r="42" fill="none" stroke="#1d1b1a" stroke-width="5"/><path d="M280 190h1M312 190h1M278 216q17 14 34 0" stroke="#1d1b1a" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <text x="420" y="120" font-family="${SERIF}" font-size="64" fill="#2f5a85">?</text></g>
+  <g transform="translate(470 250) rotate(38)" filter="url(#${id}-sh)"><rect x="-8" y="-90" width="16" height="150" fill="#e6b84a"/><path d="M-8 60 L0 84 L8 60 Z" fill="#e9d5b0"/><path d="M-3 76 L0 84 L3 76 Z" fill="#1d1b1a"/><rect x="-8" y="-104" width="16" height="16" fill="#d98a8a"/></g>
+`));
+
+cover('chefskiss', id => shell(id, { title: "Chef's Kiss", tag: 'The party game of taste', bg: ['#7a3a3a', '#4a1f22', '#1a0a0b'] }, `
+  ${glow(id, 300, 160, 140, '#ffb59a', .25)}
+  <g filter="url(#${id}-sh)"><ellipse cx="300" cy="250" rx="170" ry="48" fill="#f3ead6"/><ellipse cx="300" cy="244" rx="128" ry="34" fill="#e3d6bb"/></g>
+  <g transform="translate(300 120)" filter="url(#${id}-sh)"><path d="M-60 40 Q-90 0 -50 -20 Q-40 -60 0 -55 Q40 -60 50 -20 Q90 0 60 40 Z" fill="#fbf6ea"/><rect x="-56" y="34" width="112" height="34" rx="6" fill="#fbf6ea" stroke="#d9cdb2"/></g>
+  <g transform="translate(300 232)"><path d="M-40 0 Q-20 -24 0 -8 Q20 -24 40 0 Q20 18 0 10 Q-20 18 -40 0 Z" fill="#b8323a"/><path d="M-40 0 Q0 6 40 0" stroke="#7a1a22" stroke-width="3" fill="none"/></g>
+  ${[[150, 140], [460, 150], [430, 80]].map(([x, y]) => `<text x="${x}" y="${y}" font-family="${SYM}" font-size="34" fill="#e3c88c" opacity=".8">✦</text>`).join('')}
+`));
+
+cover('insidejob', id => shell(id, { title: 'Inside Job', tag: 'Crack the vault together', bg: ['#2a4a6e', '#1a3050', '#08121f'], defs: `<pattern id="${id}-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#9fc3e6" stroke-opacity=".18"/></pattern>` }, `
+  <rect width="600" height="400" fill="url(#${id}-grid)"/>
+  <g stroke="#cfe2f5" stroke-opacity=".5" fill="none" stroke-width="2"><rect x="60" y="50" width="200" height="140"/><path d="M60 120 H160 V190 M200 50 V120"/><text x="70" y="70" fill="#cfe2f5" stroke="none" font-family="${UI}" font-size="11" letter-spacing="2" opacity=".7">VAULT · LEVEL B</text></g>
+  <g transform="translate(400 150)" filter="url(#${id}-sh)"><circle r="96" fill="#8a96a3"/><circle r="84" fill="#5a6673"/><circle r="70" fill="#9aa6b3" stroke="#3a4450" stroke-width="3"/>${Array.from({ length: 6 }, (_, i) => `<rect x="-5" y="-66" width="10" height="34" rx="4" fill="#3a4450" transform="rotate(${i * 60})"/>`).join('')}<circle r="22" fill="#d8b46a" stroke="#6a4e1a" stroke-width="3"/></g>
+  ${chip(id, 140, 270, 30, '#f3ead6', { label: '100', ink: '#1d1b1a', edge: '#c9b48c' })}${chip(id, 210, 285, 30, '#e6c25a', { label: '200', ink: '#1d1b1a', edge: '#fff' })}${chip(id, 280, 272, 30, '#d9783c', { label: '300', ink: '#1d1b1a', edge: '#fff' })}${chip(id, 350, 290, 30, '#b8323a', { label: '400', ink: '#fff', edge: '#fff' })}
+`));
+
+cover('crown', id => shell(id, { title: 'Crown & Dagger', tag: 'Loyalty is a lie', bg: ['#6a2a24', '#3e1512', '#140605'] }, `
+  ${glow(id, 300, 150, 140, '#ff9a6a', .2)}
+  <g transform="translate(300 160)" filter="url(#${id}-sh)"><path d="M-90 30 L-100 -50 L-50 -10 L0 -70 L50 -10 L100 -50 L90 30 Z" fill="url(#${id}-gold)" stroke="#6a4a1a" stroke-width="3"/><rect x="-92" y="30" width="184" height="26" rx="4" fill="url(#${id}-gold)" stroke="#6a4a1a" stroke-width="3"/>${[-50, 0, 50].map(x => `<circle cx="${x}" cy="43" r="7" fill="#8a1f24"/>`).join('')}<circle cx="0" cy="-74" r="8" fill="#e6c25a"/></g>
+  <g transform="translate(300 175) rotate(35)" filter="url(#${id}-sh)"><path d="M-6 -150 L6 -150 L10 40 L0 60 L-10 40 Z" fill="#d9dde3" stroke="#6a7480" stroke-width="2"/><rect x="-40" y="40" width="80" height="12" rx="4" fill="#3a2a1a"/><rect x="-8" y="52" width="16" height="50" rx="4" fill="#5a3a22"/><circle cy="108" r="10" fill="url(#${id}-gold)"/></g>
+`));
+
+cover('hollow', id => shell(id, { title: 'Hollowmere', tag: 'A village with secrets', bg: ['#2f3a52', '#1a2133', '#070a12'], cy: 25 }, `
+  ${stars(60, 7, 200)}
+  <circle cx="460" cy="90" r="44" fill="#f3ead6"/><circle cx="478" cy="80" r="40" fill="#1d2538" opacity=".95"/>
+  ${glow(id, 300, 300, 200, '#8aa0c0', .2)}
+  <g fill="#0d111c">${[[60, 240, 70, 80], [140, 220, 60, 100], [210, 250, 90, 70], [320, 210, 70, 110], [400, 245, 80, 75], [490, 230, 70, 90]].map(([x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}"/><path d="M${x - 8} ${y} L${x + w / 2} ${y - 40} L${x + w + 8} ${y} Z"/>`).join('')}<path d="M345 210 L355 120 L365 210 Z"/></g>
+  ${[[95, 270], [170, 255], [355, 250], [520, 265], [245, 280]].map(([x, y]) => `<rect x="${x - 6}" y="${y - 8}" width="12" height="16" fill="#f5c46a" filter="url(#${id}-glow)"/>`).join('')}
+  <rect y="300" width="600" height="100" fill="#0a0d16"/><ellipse cx="300" cy="320" rx="320" ry="30" fill="#9fb0c8" opacity=".12" filter="url(#${id}-soft)"/>
+`));
+
+cover('blackjack', id => shell(id, { title: 'Blackjack', tag: 'Twenty-one · beat the house', bg: ['#2f6b50', '#1a4a36', '#0a1f16'] }, `
+  <path d="M60 60 Q300 -20 540 60" fill="none" stroke="#d8b46a" stroke-opacity=".5" stroke-width="2"/><text x="300" y="58" text-anchor="middle" font-family="${UI}" font-weight="700" font-size="11" letter-spacing="4" fill="#d8b46a" opacity=".7">BLACKJACK PAYS 3 TO 2</text>
+  ${card(id, 260, 175, { rank: 'A', suit: '♠', rot: -10, w: 108 })}${card(id, 345, 180, { rank: 'K', suit: '♥', red: true, rot: 8, w: 108, face: kingFace(108) })}
+  ${stack(id, 480, 260, 34, 8, '#1d1d22', '#d8b46a')}${stack(id, 120, 270, 34, 5, '#7a1f24')}
+`));
+function kingFace(w) { const h = w * 1.4; return `<g transform="translate(${w / 2} ${h * .6}) scale(${w / 100})"><path d="M-22 -24 L-22 -42 L-11 -32 L0 -46 L11 -32 L22 -42 L22 -24 Z" fill="#d8b46a" stroke="#a3262a" stroke-width="1.5"/><circle cy="-10" r="13" fill="#f3e2c4" stroke="#a3262a" stroke-width="1.5"/><path d="M-9 0 Q0 14 9 0" fill="#e9dcc0" stroke="#a3262a"/><path d="M-26 32 Q-24 6 0 4 Q24 6 26 32 Z" fill="#a3262a"/></g>`; }
+
+cover('baccarat', id => shell(id, { title: 'Baccarat', tag: 'Player · banker · tie', bg: ['#6a2430', '#43141d', '#16060a'] }, `
+  <g fill="none" stroke="#d8b46a" stroke-opacity=".45" stroke-width="2"><path d="M80 120 Q300 40 520 120"/><path d="M110 170 Q300 100 490 170"/></g>
+  <text x="300" y="98" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="13" letter-spacing="5" fill="#d8b46a" opacity=".75">BANKER</text>
+  <text x="300" y="148" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="13" letter-spacing="5" fill="#d8b46a" opacity=".75">PLAYER</text>
+  ${card(id, 235, 230, { rank: '9', suit: '♦', red: true, rot: -8, w: 96 })}${card(id, 325, 235, { rank: '8', suit: '♣', rot: 6, w: 96 })}
+  ${chip(id, 450, 250, 34, '#d8b46a', { label: '9', ink: '#3a2a0a', edge: '#fff6dc' })}${chip(id, 500, 300, 30, '#1d1d22', { edge: '#d8b46a' })}
+`));
+
+cover('checkers', id => shell(id, { title: 'Checkers', tag: 'Jump · crown · clear', bg: ['#6b3b2a', '#3e2016', '#140906'], cy: 30 }, `
+  <g transform="translate(300 270) scale(1 .45) rotate(45)">${Array.from({ length: 64 }, (_, i) => `<rect x="${(i % 8) * 48 - 192}" y="${Math.floor(i / 8) * 48 - 192}" width="48" height="48" fill="${(i + Math.floor(i / 8)) % 2 ? '#2a1a12' : '#c9a777'}"/>`).join('')}</g>
+  ${[[230, 200, '#9b2a24'], [380, 210, '#1d1b1a'], [300, 150, '#9b2a24', 1], [180, 250, '#1d1b1a'], [430, 260, '#9b2a24']].map(([x, y, c, k]) => `<g filter="url(#${id}-sh)"><ellipse cx="${x}" cy="${y + 10}" rx="44" ry="16" fill="${c}"/><rect x="${x - 44}" y="${y - (k ? 18 : 0)}" width="88" height="${k ? 28 : 10}" fill="${c}"/><ellipse cx="${x}" cy="${y - (k ? 18 : 0)}" rx="44" ry="16" fill="${c}" stroke="rgba(255,255,255,.2)"/><ellipse cx="${x}" cy="${y - (k ? 18 : 0)}" rx="30" ry="10" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2"/>${k ? `<text x="${x}" y="${y - 10}" text-anchor="middle" font-family="${SYM}" font-size="22" fill="#e3c88c">♛</text>` : ''}</g>`).join('')}
+`));
+
+cover('yacht', id => shell(id, { title: 'Yacht Club', tag: 'Five dice · thirteen boxes', bg: ['#2f5a7a', '#1b3a52', '#08141e'], cy: 30 }, `
+  ${glow(id, 420, 80, 80, '#ffe6b0', .35)}
+  <path d="M0 230 Q150 210 300 228 Q450 246 600 222 V400 H0 Z" fill="#12293a"/>
+  <g transform="translate(450 140)" filter="url(#${id}-sh)"><path d="M0 -90 L0 60 L-70 60 Z" fill="#f3ead6"/><path d="M6 -70 L6 60 L56 60 Z" fill="#e6d8b8"/><path d="M-80 66 L70 66 L52 88 L-62 88 Z" fill="#5a2a1a"/><path d="M0 -90 L24 -84 L0 -78 Z" fill="#b8323a"/></g>
+  ${die(id, 120, 250, 64, 6, { rot: -12 })}${die(id, 200, 280, 64, 6, { rot: 8 })}${die(id, 280, 250, 64, 6, { rot: -4 })}${die(id, 165, 190, 56, 6, { rot: 20 })}${die(id, 250, 185, 56, 6, { rot: -18 })}
+`));
+
+cover('spoons', id => shell(id, { title: 'Spoons', tag: 'Four of a kind · grab!', bg: ['#4a5a6a', '#2c3844', '#0e1318'] }, `
+  ${glow(id, 300, 150, 130, '#dfe8f0', .2)}
+  ${[-60, -20, 20, 60].map(a => `<g transform="translate(300 150) rotate(${a}) translate(0 -18)" filter="url(#${id}-sh)"><ellipse cx="0" cy="-92" rx="22" ry="30" fill="#dfe4ea" stroke="#8a96a3" stroke-width="2"/><ellipse cx="-5" cy="-98" rx="9" ry="14" fill="#fff" opacity=".6"/><rect x="-5" y="-64" width="10" height="110" rx="5" fill="#c9d0d8" stroke="#8a96a3"/></g>`).join('')}
+  ${['♠', '♥', '♦', '♣'].map((s, i) => card(id, 210 + i * 60, 262 - Math.abs(i - 1.5) * 10, { rank: '7', suit: s, red: i === 1 || i === 2, rot: (i - 1.5) * 9, w: 84 })).join('')}
+`));
+
+cover('doubt', id => shell(id, { title: 'I Doubt It', tag: 'Bluff · call · deny', bg: ['#4a3a5a', '#2c2238', '#0f0a14'] }, `
+  ${[0, 1, 2, 3, 4].map(i => card(id, 220 + i * 5, 190 - i * 5, { back: true, backFill: '#3e2a52', w: 118, rot: -18 + i * 3 })).join('')}
+  ${card(id, 385, 160, { rank: 'Q', suit: '♠', w: 126, rot: 14 })}
+  <g transform="translate(500 90)" filter="url(#${id}-sh)"><circle r="44" fill="#f3e7d0"/><path d="M-22 -10 q8 -10 16 -2 M8 -16 q10 -8 18 4" stroke="#1d1b1a" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="-14" cy="2" r="4" fill="#1d1b1a"/><circle cx="16" cy="2" r="4" fill="#1d1b1a"/><path d="M-14 22 q14 -8 28 2" stroke="#1d1b1a" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+  <text x="90" y="130" font-family="${SERIF}" font-size="96" fill="#e3c88c" opacity=".85" filter="url(#${id}-sh)">?</text>
+`));
+
+cover('cashout', id => shell(id, { title: 'Cash Out', tag: 'Push your luck · bank it', bg: ['#2f5a3a', '#1a3a24', '#08140c'] }, `
+  ${glow(id, 300, 120, 150, '#d8f0a0', .2)}
+  <text x="300" y="138" text-anchor="middle" font-family="${SERIF}" font-size="110" fill="url(#${id}-gold)" filter="url(#${id}-sh)">1,240</text>
+  ${die(id, 245, 222, 78, 5, { rot: -14 })}${die(id, 350, 228, 78, 2, { rot: 10 })}
+  ${stack(id, 490, 262, 36, 7, '#d8b46a', '#fff6dc')}${stack(id, 110, 250, 32, 4, '#2f5a3a')}
+`));
+
+cover('crazy8', id => shell(id, { title: 'Crazy Eights', tag: 'Match the suit · eights are wild', bg: ['#2a5a5c', '#17393b', '#071314'] }, `
+  <ellipse cx="300" cy="170" rx="170" ry="120" fill="none" stroke="#bfe6e0" stroke-opacity=".15" stroke-width="18"/>
+  ${card(id, 205, 168, { rank: '8', suit: '♣', rot: -24, w: 124, face: eight('#1d1b1a', 124) })}${card(id, 395, 168, { rank: '8', suit: '♦', red: true, rot: 22, w: 124, face: eight('#a3262a', 124) })}${card(id, 300, 148, { rank: '8', suit: '♥', red: true, w: 136, face: eight('#a3262a', 136) })}
+`));
+function eight(c, w) { const h = w * 1.4; return `<text x="${w / 2}" y="${h * .72}" text-anchor="middle" font-family="${SERIF}" font-size="${w * .8}" fill="${c}">8</text>`; }
+
+cover('skyline', id => shell(id, { title: 'Skyline', tag: 'Buy the block · build the city', bg: ['#4a5a8a', '#1b2740', '#090d18'], cy: 20 }, `
+  ${glow(id, 300, 300, 260, '#ffb070', .3)}
+  <g fill="#0e1424">${[[30, 200, 50], [85, 150, 46], [136, 180, 40], [180, 110, 56], [240, 160, 44], [288, 70, 62], [354, 140, 50], [408, 100, 54], [466, 170, 44], [514, 130, 56]].map(([x, y, w]) => `<rect x="${x}" y="${y}" width="${w}" height="${400 - y}"/>`).join('')}<rect x="318" y="30" width="3" height="40"/></g>
+  <g fill="#f5c46a">${Array.from({ length: 80 }, (_, i) => { const x = 36 + (i * 53) % 520, y = 116 + (i * 37) % 200; return `<rect x="${x}" y="${y}" width="6" height="8" opacity="${((i * 7) % 10) / 12 + .1}"/>`; }).join('')}</g>
+  ${die(id, 470, 296, 58, 6, { rot: 14 })}${die(id, 535, 286, 58, 3, { rot: -10 })}
+`));
+
+cover('lowtide', id => shell(id, { title: 'Low Tide', tag: 'Flip · swap · go low', bg: ['#3a7090', '#12304a', '#050f18'], cy: 25 }, `
+  <path d="M0 210 Q100 190 200 210 T400 210 T600 210 V400 H0 Z" fill="#0e2a40"/><path d="M0 240 Q100 222 200 240 T400 240 T600 240" fill="none" stroke="#9fd6dc" stroke-opacity=".35" stroke-width="3"/>
+  ${[[-2, '#2f6a8a'], [0, '#3f8a7a'], [5, '#a0864a'], [12, '#9a4a3a']].map(([v, c], i) => `<g transform="translate(${165 + i * 90} ${160 + Math.abs(i - 1.5) * 14}) rotate(${(i - 1.5) * 9})" filter="url(#${id}-sh)"><rect x="-48" y="-68" width="96" height="136" rx="10" fill="#f7f0df"/><rect x="-41" y="-61" width="82" height="122" rx="7" fill="${c}"/><text y="20" text-anchor="middle" font-family="${SERIF}" font-size="58" fill="#f7f0df">${v}</text></g>`).join('')}
+  <circle cx="520" cy="62" r="28" fill="#f3e7c8" opacity=".9"/>
+`));
+
+cover('trio', id => shell(id, { title: 'Tic Tac Toe', tag: 'Three in a row', bg: ['#4a4e58', '#2a2d33', '#0e0f12'] }, `
+  <g transform="translate(300 160) scale(.95)" filter="url(#${id}-sh)"><rect x="-130" y="-130" width="260" height="260" rx="18" fill="#6a5238"/><rect x="-120" y="-120" width="240" height="240" rx="12" fill="#8a6c4a"/>
+  <g stroke="#4a3622" stroke-width="8" stroke-linecap="round"><path d="M-40 -110 V110 M40 -110 V110 M-110 -40 H110 M-110 40 H110"/></g>
+  ${[[-80, -80, 0], [0, -80, 1], [80, 0, 1], [0, 0, 0], [-80, 80, 1], [80, 80, 0]].map(([x, y, k]) => k ? `<path d="M${x} ${y - 26} L${x + 24} ${y} L${x} ${y + 26} L${x - 24} ${y} Z" fill="#9ec3d8" stroke="#2f4a5e" stroke-width="3"/>` : `<circle cx="${x}" cy="${y}" r="24" fill="none" stroke="#e6c25a" stroke-width="10"/>`).join('')}
+  <path d="M-96 -96 L96 96" stroke="#f3e7c8" stroke-width="5" stroke-opacity=".7" stroke-linecap="round"/></g>
+`));
+
+cover('fourup', id => shell(id, { title: 'Four Up', tag: 'Drop · stack · connect', bg: ['#2f5070', '#1d3346', '#081420'] }, `
+  <g transform="translate(300 172)" filter="url(#${id}-sh)"><rect x="-190" y="-130" width="380" height="270" rx="14" fill="#2f5a85"/>
+  ${Array.from({ length: 42 }, (_, i) => { const c = i % 7, r = Math.floor(i / 7), x = -162 + c * 54, y = -104 + r * 44; const fill = { 35: '#c9473a', 36: '#e6c25a', 37: '#c9473a', 29: '#e6c25a', 30: '#c9473a', 38: '#e6c25a', 23: '#c9473a', 31: '#c9473a', 39: '#e6c25a', 17: '#c9473a', 25: '#e6c25a', 40: '#c9473a' }[i]; return `<circle cx="${x}" cy="${y}" r="18" fill="${fill || '#0f1e2c'}" stroke="rgba(0,0,0,.35)" stroke-width="2"/>`; }).join('')}</g>
+  <circle cx="354" cy="16" r="18" fill="#e6c25a" filter="url(#${id}-sh)"/>
+`));
+
+cover('seedstones', id => shell(id, { title: 'Seed Stones', tag: 'Sow · capture · harvest', bg: ['#6a4a2a', '#3a2a1c', '#140c06'] }, `
+  <g transform="translate(300 170)" filter="url(#${id}-sh)"><rect x="-260" y="-96" width="520" height="192" rx="86" fill="#7a5232"/><rect x="-250" y="-86" width="500" height="172" rx="78" fill="#9a6a40"/>
+  ${[-1, 1].map(row => Array.from({ length: 6 }, (_, i) => `<ellipse cx="${-156 + i * 62}" cy="${row * 38}" rx="25" ry="21" fill="#5a3a20"/>`).join('')).join('')}<ellipse cx="-218" cy="0" rx="23" ry="60" fill="#5a3a20"/><ellipse cx="218" cy="0" rx="23" ry="60" fill="#5a3a20"/>
+  ${Array.from({ length: 40 }, (_, i) => { const pit = i % 12, row = pit < 6 ? -1 : 1, px = -156 + (pit % 6) * 62, k = Math.floor(i / 12); return `<circle cx="${px + (k - 1) * 9}" cy="${row * 38 + ((i * 7) % 3 - 1) * 6}" r="7" fill="${['#cfd8d0', '#9ec3d8', '#e6c25a', '#c9a0a0'][i % 4]}"/>`; }).join('')}
+  ${Array.from({ length: 9 }, (_, i) => `<circle cx="${218 + (i % 3 - 1) * 9}" cy="${-30 + Math.floor(i / 3) * 18}" r="7" fill="${['#cfd8d0', '#9ec3d8', '#e6c25a'][i % 3]}"/>`).join('')}</g>
+`));
+
+cover('sonar', id => shell(id, { title: 'Sonar', tag: 'Hunt the hidden fleet', bg: ['#1e4a4a', '#12282c', '#040c0d'] }, `
+  <g transform="translate(300 160)"><circle r="150" fill="#0c2a26" stroke="#3fae8a" stroke-opacity=".5" stroke-width="2"/>${[110, 70, 30].map(r => `<circle r="${r}" fill="none" stroke="#3fae8a" stroke-opacity=".35"/>`).join('')}<path d="M-150 0 H150 M0 -150 V150" stroke="#3fae8a" stroke-opacity=".3"/>
+  <path d="M0 0 L150 0 A150 150 0 0 0 106 -106 Z" fill="#3fae8a" opacity=".28"/><path d="M0 0 L106 -106" stroke="#7fe8c0" stroke-width="3"/>
+  ${[[60, -70], [-80, 40], [30, 90]].map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="7" fill="${i ? '#3fae8a' : '#ff7a5a'}" filter="url(#${id}-glow)"/>`).join('')}</g>
+  <g transform="translate(490 300)" fill="#0a1a18" stroke="#3fae8a" stroke-opacity=".6" stroke-width="2"><path d="M-80 0 L70 0 L50 18 L-66 18 Z"/><rect x="-30" y="-20" width="40" height="20"/><path d="M-10 -20 V-40"/></g>
+`));
+
+cover('milestones', id => shell(id, { title: 'Milestones', tag: 'Ten phases to the finish', bg: ['#3a4a6a', '#1e2a3e', '#080c16'], cy: 25 }, `
+  <path d="M-20 330 C140 290 120 220 260 205 S420 140 470 90 S560 30 620 40" fill="none" stroke="#c9b48c" stroke-width="34" stroke-linecap="round" opacity=".55"/><path d="M-20 330 C140 290 120 220 260 205 S420 140 470 90 S560 30 620 40" fill="none" stroke="#f3e7c8" stroke-width="3" stroke-dasharray="14 12" opacity=".7"/>
+  ${[[90, 292, 1], [180, 246, 3], [270, 200, 5], [380, 158, 7], [470, 92, 9], [560, 46, 10]].map(([x, y, n]) => `<g transform="translate(${x} ${y - 34}) scale(1.15)" filter="url(#${id}-sh)"><path d="M-18 30 V-12 Q-18 -30 0 -30 Q18 -30 18 -12 V30 Z" fill="#cfc6b2" stroke="#6a6252" stroke-width="2"/><text y="8" text-anchor="middle" font-family="${SERIF}" font-size="${n > 9 ? 18 : 22}" fill="#3a3428">${n}</text></g>`).join('')}
+`));
+
+cover('wrongnumber', id => shell(id, { title: 'Wrong Number', tag: 'New phone, who dis?', bg: ['#4a3a6a', '#2a1f38', '#0e0a14'] }, `
+  <g transform="translate(300 175) rotate(-6)" filter="url(#${id}-sh)"><rect x="-96" y="-170" width="192" height="350" rx="26" fill="#14121a"/><rect x="-86" y="-150" width="172" height="310" rx="10" fill="#f3eee6"/>
+  <g font-family="${UI}" font-size="14"><rect x="-76" y="-128" width="132" height="46" rx="14" fill="#e3dcd0"/><text x="-66" y="-109" fill="#2a2320">URGENT: the goat</text><text x="-66" y="-92" fill="#2a2320">is loose again</text>
+  <rect x="-36" y="-68" width="114" height="32" rx="14" fill="#7a5ab0"/><text x="-26" y="-47" fill="#fff">who is this??</text>
+  <rect x="-76" y="-22" width="140" height="46" rx="14" fill="#e3dcd0"/><text x="-66" y="-3" fill="#2a2320">bring snacks. and</text><text x="-66" y="14" fill="#2a2320">the inflatable duck</text>
+  <rect x="-26" y="38" width="108" height="32" rx="14" fill="#7a5ab0"/><text x="-14" y="59" fill="#fff">wrong number</text></g></g>
+`));
+
+cover('scribble', id => shell(id, { title: 'Scribble Chain', tag: 'Draw · guess · pass it on', bg: ['#6a5a44', '#3a2d22', '#140f0a'] }, `
+  ${[0, 1, 2].map(i => `<g transform="translate(${160 + i * 140} ${160 + (i % 2) * 14}) rotate(${(i - 1) * 8})" filter="url(#${id}-sh)"><rect x="-66" y="-86" width="132" height="172" rx="4" fill="#fbf6ea"/><rect x="-66" y="-86" width="132" height="12" fill="#c9473a" opacity=".5"/>
+  ${i === 0 ? `<text y="10" text-anchor="middle" font-family="${CORM}" font-style="italic" font-size="32" fill="#2a2320">castle</text>` : i === 1 ? `<path d="M-40 50 V0 H-24 V-14 H-12 V0 H12 V-14 H24 V0 H40 V50 Z" fill="none" stroke="#2a2320" stroke-width="3"/><path d="M-8 50 V30 H8 V50" fill="none" stroke="#c9473a" stroke-width="3"/>` : `<text y="10" text-anchor="middle" font-family="${CORM}" font-style="italic" font-size="28" fill="#2a2320">a toaster?</text>`}</g>`).join('')}
+`));
+
+cover('manor', id => shell(id, { title: 'Midnight Manor', tag: 'Who? Where? With what?', bg: ['#4a2a32', '#2a1418', '#0c0507'], cy: 20 }, `
+  ${stars(40, 3, 150, .5)}<circle cx="100" cy="76" r="34" fill="#f3e7c8" opacity=".9"/>
+  <g fill="#120a0c" filter="url(#${id}-sh)"><rect x="150" y="130" width="300" height="200"/><path d="M130 132 L300 50 L470 132 Z"/><rect x="190" y="70" width="24" height="60"/><rect x="390" y="80" width="24" height="50"/></g>
+  ${[[180, 160], [240, 160], [340, 160], [400, 160], [180, 230], [400, 230]].map(([x, y], i) => `<rect x="${x}" y="${y}" width="26" height="36" fill="${i === 3 ? '#f5c46a' : '#3a2a1a'}" ${i === 3 ? `filter="url(#${id}-glow)"` : ''}/>`).join('')}
+  <rect x="280" y="250" width="40" height="80" fill="#2a1a12"/>
+  <g transform="translate(480 250) rotate(-30)" filter="url(#${id}-sh)"><circle r="44" fill="none" stroke="url(#${id}-gold)" stroke-width="11"/><circle r="38" fill="#9ec3d8" opacity=".25"/><rect x="-8" y="48" width="16" height="74" rx="6" fill="#5a3a22"/></g>
+`));
+
+cover('warfront', id => shell(id, { title: 'Warfront', tag: 'Conquer the islands', bg: ['#2a4a6a', '#162637', '#060c14'] }, `
+  <g filter="url(#${id}-sh)"><path d="M90 140 Q120 70 210 80 Q280 50 330 100 Q400 80 440 130 Q520 140 500 210 Q520 280 430 290 Q360 320 290 290 Q200 320 150 280 Q70 250 90 140 Z" fill="#6a7a4a"/>
+  <path d="M210 80 Q230 170 290 290 M330 100 Q320 190 430 290 M90 140 Q200 190 500 210" fill="none" stroke="#3a4a2a" stroke-width="3" opacity=".6"/></g>
+  ${[[180, 150, '#b8323a', 5], [300, 190, '#2f5a85', 3], [420, 180, '#e6c25a', 4], [240, 250, '#b8323a', 2], [380, 260, '#2f5a85', 6]].map(([x, y, c, n]) => `<g filter="url(#${id}-sh)"><circle cx="${x}" cy="${y}" r="22" fill="${c}" stroke="#f3e7c8" stroke-width="3"/><text x="${x}" y="${y + 7}" text-anchor="middle" font-family="${SERIF}" font-size="22" fill="#fff">${n}</text></g>`).join('')}
+  <path d="M202 154 Q250 140 278 180" fill="none" stroke="#f3e7c8" stroke-width="5" stroke-dasharray="10 6"/><path d="M272 168 L282 186 L264 186 Z" fill="#f3e7c8"/>
+`));
+
+cover('ironroutes', id => shell(id, { title: 'Iron Routes', tag: 'Claim the railways', bg: ['#2f4a3a', '#1d2f26', '#09120d'] }, `
+  <g fill="none" stroke-width="10" stroke-linecap="round">${[['M60 290 L200 190 L340 220 L480 110', '#b8323a'], ['M80 110 L200 190', '#2f5a85'], ['M340 220 L470 290', '#e6c25a'], ['M200 190 L300 80 L480 110', '#4a7340']].map(([d, c]) => `<path d="${d}" stroke="#0d1a12" stroke-width="16"/><path d="${d}" stroke="${c}" stroke-dasharray="26 6"/>`).join('')}</g>
+  ${[[60, 290], [200, 190], [340, 220], [480, 110], [80, 110], [470, 290], [300, 80]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="10" fill="#f3e7c8" stroke="#1d2f26" stroke-width="3"/>`).join('')}
+  <g transform="translate(330 160) scale(1.3)" filter="url(#${id}-sh)"><rect x="-50" y="-26" width="70" height="36" rx="4" fill="#2a2a2e"/><rect x="20" y="-40" width="34" height="50" rx="4" fill="#3a3a40"/><rect x="-44" y="-44" width="14" height="20" fill="#2a2a2e"/><circle cx="-36" cy="16" r="10" fill="#b8323a"/><circle cx="-6" cy="16" r="10" fill="#b8323a"/><circle cx="34" cy="16" r="12" fill="#b8323a"/><path d="M-58 10 L-70 22 H-50 Z" fill="#5a5a60"/><rect x="26" y="-34" width="22" height="16" fill="#f5c46a"/></g>
+`));
+
+cover('homestead', id => shell(id, { title: 'Homestead', tag: 'Settle · trade · build', bg: ['#2a5a6a', '#16303a', '#061015'] }, `
+  ${(() => { const T = ['#6a8a3a', '#c9a24a', '#8a6a4a', '#9a9a9a', '#4a6a3a', '#b8783a', '#c9a24a']; let h = ''; const R = 52; const pos = [[0, 0], [1, 0], [-1, 0], [.5, -1], [-.5, -1], [.5, 1], [-.5, 1]]; pos.forEach(([q, r], i) => { const x = 300 + q * R * 1.74, y = 160 + r * R * 1.5; const pts = Array.from({ length: 6 }, (_, k) => { const a = Math.PI / 6 + k * Math.PI / 3; return `${x + R * Math.cos(a)},${y + R * Math.sin(a)}`; }).join(' '); h += `<polygon points="${pts}" fill="${T[i]}" stroke="#e9dcc0" stroke-width="3"/>`; if (i === 0) h += `<circle cx="${x}" cy="${y}" r="17" fill="#f3e7c8"/><text x="${x}" y="${y + 7}" text-anchor="middle" font-family="${SERIF}" font-size="20" fill="#1d1b1a">8</text>`; }); return `<g filter="url(#${id}-sh)">${h}</g>`; })()}
+  ${[[255, 114, '#b8323a'], [390, 206, '#2f5a85']].map(([x, y, c]) => `<g filter="url(#${id}-sh)"><path d="M${x - 15} ${y} V${y - 17} L${x} ${y - 30} L${x + 15} ${y - 17} V${y} Z" fill="${c}" stroke="#fff" stroke-width="2"/></g>`).join('')}
+`));
+
+cover('wordsmith', id => shell(id, { title: 'Wordsmith', tag: 'Tiles · words · triple word', bg: ['#4a4032', '#2c2620', '#0e0c0a'] }, `
+  <g transform="translate(300 145) rotate(-4)">${[...'WORDS'].map((L, i) => { const pts = { W: 4, O: 1, R: 1, D: 2, S: 1 }[L]; return `<g transform="translate(${(i - 2) * 88} ${(i % 2) * 8})" filter="url(#${id}-sh)"><rect x="-39" y="-39" width="78" height="78" rx="8" fill="#f1e2bf"/><rect x="-39" y="-39" width="78" height="78" rx="8" fill="none" stroke="#c9a777" stroke-width="2"/><text y="17" text-anchor="middle" font-family="${SERIF}" font-size="50" fill="#2a2018">${L}</text><text x="27" y="31" text-anchor="end" font-family="${UI}" font-weight="700" font-size="13" fill="#2a2018">${pts}</text></g>`; }).join('')}</g>
+  <g transform="translate(490 270) rotate(6)" filter="url(#${id}-sh)"><rect x="-42" y="-42" width="84" height="84" fill="#9b3b2e"/><text y="-4" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="12" fill="#f7f0df">TRIPLE</text><text y="14" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="12" fill="#f7f0df">WORD</text></g>
+`));
+
+cover('powerup', id => shell(id, { title: 'PowerUp Chess', tag: 'Capture · absorb · power up', bg: ['#5a3a1c', '#2f2215', '#0e0905'], cy: 35 }, `
+  <g transform="translate(300 300) scale(1 .42) rotate(45)" opacity=".9">${Array.from({ length: 64 }, (_, i) => `<rect x="${(i % 8) * 46 - 184}" y="${Math.floor(i / 8) * 46 - 184}" width="46" height="46" fill="${(i + Math.floor(i / 8)) % 2 ? '#2a1a0c' : '#b8955f'}"/>`).join('')}</g>
+  ${glow(id, 300, 130, 110, '#ffcf6a', .45)}
+  <g filter="url(#${id}-sh)"><text x="300" y="250" text-anchor="middle" font-family="${SYM}" font-size="190" fill="#f3e7d0">♝</text></g>
+  ${[['♜', 210, 120, -18], ['♞', 395, 110, 16], ['♟', 300, 60, 0]].map(([p, x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})" opacity=".85"><text text-anchor="middle" font-family="${SYM}" font-size="56" fill="#1d1612" stroke="#ffd98a" stroke-width="1.5">${p}</text></g>`).join('')}
+  <path d="M250 150 L262 132 L256 132 L268 112" fill="none" stroke="#ffd98a" stroke-width="4" stroke-linecap="round" filter="url(#${id}-glow)"/><path d="M350 150 L338 132 L344 132 L332 112" fill="none" stroke="#ffd98a" stroke-width="4" stroke-linecap="round" filter="url(#${id}-glow)"/>
+`));
+
+cover('nestegg', id => shell(id, { title: 'Nest Egg', tag: 'Collect · challenge · steal', bg: ['#5a4a2a', '#2f2618', '#0e0b06'] }, `
+  ${glow(id, 300, 150, 140, '#ffe08a', .35)}
+  <g filter="url(#${id}-sh)">${Array.from({ length: 26 }, (_, i) => `<path d="M${180 + (i * 37) % 240} ${215 + (i % 5) * 5} q${30 + (i % 4) * 8} ${-14 - (i % 3) * 6} ${70 + (i % 5) * 6} ${4 + (i % 3) * 3}" fill="none" stroke="${['#8a6a3a', '#6a4e2a', '#a0804a'][i % 3]}" stroke-width="5" stroke-linecap="round"/>`).join('')}
+  <ellipse cx="300" cy="225" rx="140" ry="40" fill="#5a4220"/><ellipse cx="300" cy="212" rx="118" ry="30" fill="#3a2a14"/></g>
+  <g filter="url(#${id}-sh)"><ellipse cx="300" cy="160" rx="62" ry="78" fill="url(#${id}-gold)"/><ellipse cx="278" cy="130" rx="16" ry="26" fill="#fff6dc" opacity=".55"/></g>
+  ${chip(id, 160, 250, 28, '#d8b46a', { label: '$', ink: '#3a2a0a', edge: '#fff6dc' })}${chip(id, 445, 255, 26, '#d8b46a', { label: '$', ink: '#3a2a0a', edge: '#fff6dc' })}
+  <g transform="translate(470 150) rotate(16)" filter="url(#${id}-sh)"><circle r="22" fill="none" stroke="url(#${id}-gold)" stroke-width="8"/><path d="M-10 -26 L0 -40 L10 -26 Z" fill="#9ec3d8"/></g>
+`));
+
+cover('kaboom', id => shell(id, { title: 'Kaboom Critters', tag: 'Draw · dodge · survive', bg: ['#5a2e55', '#3a1f3a', '#120812'] }, `
+  ${glow(id, 380, 90, 90, '#ffb040', .6)}
+  <g transform="translate(250 190)" filter="url(#${id}-sh)"><ellipse cx="0" cy="40" rx="86" ry="64" fill="#e6a24a"/><circle cx="0" cy="-30" r="70" fill="#f0b25a"/><path d="M-60 -70 L-48 -126 L-14 -92 Z M60 -70 L48 -126 L14 -92 Z" fill="#f0b25a"/><path d="M-50 -80 L-44 -110 L-26 -92 Z M50 -80 L44 -110 L26 -92 Z" fill="#f3c6b0"/>
+  <ellipse cx="-24" cy="-36" rx="14" ry="18" fill="#fff"/><ellipse cx="24" cy="-36" rx="14" ry="18" fill="#fff"/><circle cx="-20" cy="-32" r="8" fill="#1d1b1a"/><circle cx="28" cy="-32" r="8" fill="#1d1b1a"/><path d="M-8 -8 q8 6 16 0" stroke="#1d1b1a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-4 -16 L4 -16 L0 -10 Z" fill="#c9473a"/>
+  <path d="M-90 -10 L-120 -16 M-90 0 L-122 2 M90 -10 L120 -16 M90 0 L122 2" stroke="#1d1b1a" stroke-width="2"/></g>
+  <g transform="translate(370 200)" filter="url(#${id}-sh)"><circle r="56" fill="#26212a"/><circle cx="-18" cy="-18" r="14" fill="#fff" opacity=".18"/><rect x="-14" y="-70" width="28" height="18" rx="4" fill="#3a3440"/><path d="M0 -70 Q10 -100 30 -110" fill="none" stroke="#c9a777" stroke-width="5"/></g>
+  <g transform="translate(400 88)" filter="url(#${id}-glow)"><path d="M0 -22 L6 -6 L22 0 L6 6 L0 22 L-6 6 L-22 0 L-6 -6 Z" fill="#ffdc6a"/></g>
+`));
+
+cover('spires', id => shell(id, { title: 'Seven Spires', tag: 'Build a wonder of the world', bg: ['#c98a5a', '#5a3a4a', '#1a1020'], cy: 60 }, `
+  ${glow(id, 300, 230, 160, '#ffcc88', .5)}
+  <g filter="url(#${id}-sh)">${[[180, 300, 240, 34], [200, 266, 200, 34], [220, 232, 160, 34], [240, 198, 120, 34], [260, 164, 80, 34]].map(([x, y, w, h], i) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${i < 4 ? '#e3c88c' : '#f6e2b0'}" stroke="#7a5a2a" stroke-width="2"/><g fill="#7a5a2a" opacity=".5">${Array.from({ length: Math.floor(w / 26) }, (_, k) => `<rect x="${x + 8 + k * 26}" y="${y + 8}" width="12" height="18" rx="6"/>`).join('')}</g>`).join('')}<path d="M276 164 L300 64 L324 164 Z" fill="#f6e2b0" stroke="#7a5a2a" stroke-width="2"/></g>
+  <path d="M300 64 V36" stroke="#3a2a1a" stroke-width="3"/><path d="M300 36 L332 44 L300 52 Z" fill="#b8323a"/>
+  ${[[110, 120], [480, 100], [520, 180]].map(([x, y]) => `<path d="M${x} ${y} q8 -6 16 0 q8 -6 16 0" fill="none" stroke="#2a1a24" stroke-width="2.5"/>`).join('')}
+`));
+
+cover('grandprix', id => shell(id, { title: 'Grand Prix Dice', tag: 'Shift up · brake late', bg: ['#4a5a6a', '#26303a', '#0c1014'], cy: 30 }, `
+  <path d="M-20 300 Q150 180 300 220 T620 120" fill="none" stroke="#3a3a40" stroke-width="90"/><path d="M-20 300 Q150 180 300 220 T620 120" fill="none" stroke="#f3e7c8" stroke-width="2" stroke-dasharray="20 18" opacity=".6"/>
+  <path d="M-20 300 Q150 180 300 220 T620 120" fill="none" stroke="url(#${id}-kerb)" stroke-width="96" opacity=".0"/>
+  <g transform="translate(330 200) rotate(-12)" filter="url(#${id}-sh)"><path d="M-80 0 Q-70 -20 -30 -22 L20 -22 Q50 -36 80 -14 L96 -4 L96 10 L-84 10 Z" fill="#c9473a"/><rect x="-96" y="-14" width="14" height="24" fill="#a3262a"/><path d="M-20 -22 L0 -40 L24 -22 Z" fill="#1d1b1a" opacity=".8"/><circle cx="-50" cy="12" r="16" fill="#1d1b1a"/><circle cx="56" cy="12" r="16" fill="#1d1b1a"/><circle cx="-50" cy="12" r="6" fill="#8a8a8a"/><circle cx="56" cy="12" r="6" fill="#8a8a8a"/><text x="10" y="2" font-family="${SERIF}" font-size="16" fill="#fff">7</text></g>
+  ${die(id, 150, 110, 58, 6, { rot: -14, fill: '#c9473a', pip: '#fff' })}${die(id, 470, 300, 58, 4, { rot: 12 })}
+  <g transform="translate(470 70)">${Array.from({ length: 24 }, (_, i) => `<rect x="${(i % 6) * 14}" y="${Math.floor(i / 6) * 14}" width="14" height="14" fill="${(i + Math.floor(i / 6)) % 2 ? '#1d1b1a' : '#f3ead6'}"/>`).join('')}<rect x="-4" y="0" width="4" height="110" fill="#c9c0aa"/></g>
+`));
+
+cover('redline', id => shell(id, { title: 'Redline', tag: 'Speed · heat · nerve', bg: ['#3a1a24', '#1a0c14', '#060306'], cy: 30 }, `
+  <g transform="translate(300 190)"><circle r="150" fill="#100a0e" stroke="#3a2a30" stroke-width="6"/>
+  ${Array.from({ length: 11 }, (_, i) => { const a = (-210 + i * 24) * Math.PI / 180; const r1 = 130, r2 = i > 7 ? 104 : 112; return `<line x1="${Math.cos(a) * r1}" y1="${Math.sin(a) * r1}" x2="${Math.cos(a) * r2}" y2="${Math.sin(a) * r2}" stroke="${i > 7 ? '#e0382c' : '#e9dcc0'}" stroke-width="${i % 2 ? 3 : 5}"/><text x="${Math.cos(a) * 88}" y="${Math.sin(a) * 88 + 6}" text-anchor="middle" font-family="${UI}" font-weight="700" font-size="15" fill="${i > 7 ? '#e0382c' : '#e9dcc0'}">${i}</text>`; }).join('')}
+  <path d="M${Math.cos(10 * Math.PI / 180) * 136} ${Math.sin(10 * Math.PI / 180) * 136} A136 136 0 0 0 ${Math.cos(-42 * Math.PI / 180) * 136} ${Math.sin(-42 * Math.PI / 180) * 136}" fill="none" stroke="#e0382c" stroke-width="8" opacity=".85" filter="url(#${id}-glow)"/>
+  <line x1="0" y1="0" x2="${Math.cos(-20 * Math.PI / 180) * 120}" y2="${Math.sin(-20 * Math.PI / 180) * 120}" stroke="#ff5a3c" stroke-width="6" stroke-linecap="round" filter="url(#${id}-glow)"/><circle r="14" fill="#2a2228" stroke="#e9dcc0" stroke-width="2"/></g>
+  ${glow(id, 420, 140, 60, '#ff4a2c', .4)}
+`));
+
+cover('gearworks', id => shell(id, { title: 'Gearworks', tag: 'Pick an action · build robots', bg: ['#4a5a5a', '#283434', '#0a1010'] }, `
+  ${gear(id, 140, 150, 70, 12, '#8a7a5a')}${gear(id, 470, 120, 56, 10, '#6a7a7a')}${gear(id, 470, 250, 40, 8, '#a0864a')}
+  <g transform="translate(300 175)" filter="url(#${id}-sh)"><rect x="-70" y="-60" width="140" height="120" rx="22" fill="#c9d0d0"/><rect x="-56" y="-44" width="112" height="60" rx="12" fill="#1d2a2a"/><circle cx="-26" cy="-14" r="14" fill="#7fe8c0" filter="url(#${id}-glow)"/><circle cx="26" cy="-14" r="14" fill="#7fe8c0" filter="url(#${id}-glow)"/><rect x="-30" y="28" width="60" height="10" rx="5" fill="#5a6a6a"/><path d="M0 -60 V-90" stroke="#5a6a6a" stroke-width="5"/><circle cy="-96" r="9" fill="#e0382c"/><rect x="-92" y="-20" width="22" height="50" rx="10" fill="#9aa6a6"/><rect x="70" y="-20" width="22" height="50" rx="10" fill="#9aa6a6"/></g>
+`));
+function gear(id, x, y, r, n, c) {
+  const pts = []; for (let i = 0; i < n * 2; i++) { const a = (i / (n * 2)) * Math.PI * 2, rr = i % 2 ? r : r * 1.18; pts.push(`${x + Math.cos(a) * rr},${y + Math.sin(a) * rr}`); }
+  return `<g filter="url(#${id}-sh)"><polygon points="${pts.join(' ')}" fill="${c}" stroke="rgba(0,0,0,.3)" stroke-linejoin="round"/><circle cx="${x}" cy="${y}" r="${r * .62}" fill="${c}" stroke="rgba(255,255,255,.18)" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r * .22}" fill="#1d2a2a"/></g>`;
+}
+
+cover('tessera', id => shell(id, { title: 'Tessera', tag: 'Join the shapes · cover the gems', bg: ['#3a3846', '#2c2a33', '#0c0b10'] }, `
+  ${[[200, 110, '#3f6f9a', -6], [330, 130, '#9b3b2e', 8], [255, 230, '#4a7340', -3], [395, 250, '#a8802c', 5]].map(([x, y, c, r]) => `<g transform="translate(${x} ${y}) rotate(${r})" filter="url(#${id}-sh)"><rect x="-62" y="-62" width="124" height="124" rx="10" fill="#34363f"/><rect x="-62" y="-62" width="124" height="124" rx="10" fill="${c}" fill-opacity=".18" stroke="${c}" stroke-width="4"/><path d="M0 -54 V54 M-54 0 H54" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+  <path d="M-31 -46 L-14 -31 L-31 -16 L-48 -31 Z" fill="${c}"/><path d="M-48 -31 H-14 M-31 -46 L-31 -16" stroke="rgba(255,255,255,.3)"/><path d="M31 16 L48 31 L31 46 L14 31 Z" fill="${c}"/>
+  <path d="M-12 -62 A12 12 0 0 0 12 -62 Z" fill="#efe6cf"/><rect x="62" y="-12" width="0.1" height="0.1"/><path d="M62 -12 V12 L50 0 Z" fill="#efe6cf"/></g>`).join('')}
+`));
+
+cover('passpot', id => shell(id, { title: 'Pass the Pot', tag: 'Left · right · centre', bg: ['#6a2a28', '#4a1d1c', '#160707'] }, `
+  ${glow(id, 300, 150, 140, '#ffcc88', .25)}
+  <g filter="url(#${id}-sh)"><ellipse cx="300" cy="150" rx="150" ry="96" fill="#8a6a2a"/><ellipse cx="300" cy="150" rx="140" ry="88" fill="#c9a35a"/><ellipse cx="300" cy="146" rx="118" ry="70" fill="#3a2a14"/></g>
+  ${Array.from({ length: 16 }, (_, i) => { const a = i * 2.4, r = 9 * Math.sqrt(i + .5); return `<ellipse cx="${300 + Math.cos(a) * r * 1.5}" cy="${148 + Math.sin(a) * r * .8}" rx="20" ry="9" fill="#f3e7c8" stroke="#a8844a" stroke-width="2"/>`; }).join('')}
+  ${die(id, 180, 280, 66, '◀', { rot: -14, pip: '#7a1f1c' })}${die(id, 300, 292, 66, '●', { rot: 6, pip: '#8a6a2a' })}${die(id, 420, 280, 66, '▶', { rot: 14, pip: '#7a1f1c' })}
+`));
+
+cover('luckystreak', id => shell(id, { title: 'Lucky Streak', tag: 'Flip · push · never pair up', bg: ['#2f5a44', '#1b3a2c', '#07110c'] }, `
+  ${[1, 2, 3, 4, 5, 6, 7].map((n, i) => { const a = (i - 3) * 15; const col = ['#6b8f71', '#5f7fa0', '#9a6b4f', '#7a5f95', '#a0864a', '#4f8a8a', '#a05f6b'][i]; return `<g transform="translate(300 430) rotate(${a}) translate(0 -250)" filter="url(#${id}-sh)"><rect x="-44" y="-62" width="88" height="124" rx="9" fill="url(#${id}-card)" stroke="${col}" stroke-width="3"/><text y="22" text-anchor="middle" font-family="${SERIF}" font-size="62" fill="${col}">${n}</text></g>`; }).join('')}
+  <g transform="translate(520 70) scale(.9)" filter="url(#${id}-glow)">${[0, 90, 180, 270].map(r => `<path d="M0 0 C-20 -12 -22 -36 0 -34 C22 -36 20 -12 0 0 Z" fill="#6fbf7a" transform="rotate(${r + 45})"/>`).join('')}<path d="M0 0 Q6 22 18 34" stroke="#4a8a50" stroke-width="4" fill="none"/></g>
+`));
+
+cover('pileup', id => shell(id, { title: 'Pile Up', tag: 'Stack the draws · no mercy', bg: ['#3e434e', '#2b2f38', '#0c0d11'] }, `
+  ${[['#9b3b2e', '+2', -26], ['#2f5a85', '+4', -12], ['#4a7340', '+4', 2], ['#a8802c', '+6', 14], ['#1d1d22', '+10', 26]].map(([c, t, r], i) => `<g transform="translate(${180 + i * 62} ${200 - i * 14}) rotate(${r})" filter="url(#${id}-sh)"><rect x="-54" y="-76" width="108" height="152" rx="10" fill="${i === 4 ? '#26282e' : '#f7f0df'}" stroke="${i === 4 ? '#c9a35a' : c}" stroke-width="6"/><text x="-44" y="-38" font-family="${UI}" font-weight="800" font-size="${i === 4 ? 30 : 34}" fill="${i === 4 ? '#f3e7c8' : c}">${t}</text></g>`).join('')}
+  <text x="470" y="96" text-anchor="middle" font-family="${SERIF}" font-size="72" fill="#ff8a70" filter="url(#${id}-glow)">+26</text>
+`));
+
+cover('dialitin', id => shell(id, { title: 'Dial It In', tag: 'One clue · read their minds', bg: ['#255058', '#173338', '#060f11'], cy: 30 }, `
+  <g transform="translate(300 250)" filter="url(#${id}-sh)"><path d="M-196 0 A196 196 0 0 1 196 0 Z" fill="#8a6a2a"/><path d="M-182 0 A182 182 0 0 1 182 0 Z" fill="#f3ead6"/>
+  ${[[34, '#d98a5f'], [21, '#e6c25a'], [7, '#3f8a8a']].map(([w, c]) => { const t = 118, a1 = (180 + t - w) * Math.PI / 180, a2 = (180 + t + w) * Math.PI / 180; return `<path d="M0 0 L${Math.cos(a1) * 182} ${Math.sin(a1) * 182} A182 182 0 0 1 ${Math.cos(a2) * 182} ${Math.sin(a2) * 182} Z" fill="${c}"/>`; }).join('')}
+  <line x1="0" y1="0" x2="${Math.cos((180 + 112) * Math.PI / 180) * 168}" y2="${Math.sin((180 + 112) * Math.PI / 180) * 168}" stroke="#1a1512" stroke-width="8" stroke-linecap="round"/><circle r="18" fill="#c9a35a" stroke="#3a2a10" stroke-width="3"/></g>
+  <text x="300" y="38" text-anchor="middle" font-family="${SERIF}" font-size="28" fill="#fff3d6" opacity=".9">“a warm bath”</text>
+`));
+
+cover('fieldagents', id => shell(id, { title: 'Field Agents', tag: 'One word · find your agents', bg: ['#4a4c34', '#2d2f22', '#0d0e09'] }, `
+  <g transform="translate(150 60) rotate(-6)">${['HARBOR', 'COMET', 'SPY', 'GHOST', 'ANCHOR', 'OPERA'].map((w, i) => `<g transform="translate(${(i % 3) * 112} ${Math.floor(i / 3) * 76})" filter="url(#${id}-sh)"><rect width="104" height="62" rx="5" fill="${i === 2 ? '#b08a3e' : i === 3 ? '#1d1d1d' : '#e6d4a8'}"/><rect x="8" y="34" width="88" height="20" fill="rgba(255,255,255,.3)"/><text x="52" y="49" text-anchor="middle" font-family="'Courier New', monospace" font-weight="700" font-size="15" fill="${i === 3 ? '#e6d4a8' : '#2a2318'}">${w}</text></g>`).join('')}</g>
+  <g transform="translate(470 210)" filter="url(#${id}-sh)"><path d="M-60 0 L60 0 L42 -16 Q0 -30 -42 -16 Z" fill="#1d1b16"/><path d="M-36 -16 Q-30 -60 0 -62 Q30 -60 36 -16 Z" fill="#1d1b16"/><rect x="-36" y="-26" width="72" height="8" fill="#6a5a3a"/><path d="M-50 0 Q-58 70 -40 110 L40 110 Q58 70 50 0 Z" fill="#2a2820"/><path d="M-20 4 L0 50 L20 4" fill="#e6d4a8"/></g>
+`));
+
+cover('bannerraid', id => shell(id, { title: 'Banner Raid', tag: 'Hidden ranks · bold attacks', bg: ['#4a4a34', '#2a2a20', '#0b0b08'], cy: 30 }, `
+  <path d="M0 300 Q160 220 300 240 T600 210 V400 H0 Z" fill="#3a4428"/><path d="M0 330 Q200 280 360 300 T600 290 V400 H0 Z" fill="#2c3420"/>
+  <g filter="url(#${id}-sh)"><path d="M300 238 V70" stroke="#5a4a2a" stroke-width="6"/><path d="M303 74 Q360 64 400 84 Q360 104 303 114 Z" fill="#9b2a24"/><text x="344" y="100" text-anchor="middle" font-family="${SYM}" font-size="22" fill="#e3c88c">⚔</text></g>
+  ${[[150, 250, '#94392f', '10'], [210, 270, '#94392f', '?'], [420, 245, '#3e4f7a', '?'], [480, 262, '#3e4f7a', '7']].map(([x, y, c, t]) => `<g filter="url(#${id}-sh)" transform="translate(${x} ${y}) scale(1.45) translate(${-x} ${-y})"><rect x="${x - 26}" y="${y - 36}" width="52" height="64" rx="7" fill="${c}"/><rect x="${x - 26}" y="${y - 36}" width="52" height="10" rx="5" fill="rgba(255,255,255,.18)"/><text x="${x}" y="${y + 10}" text-anchor="middle" font-family="${SERIF}" font-size="28" fill="#f3dfa6">${t}</text></g>`).join('')}
+`));
+
+cover('houserules', id => shell(id, { title: 'House Rules', tag: 'The rules keep changing', bg: ['#5a4030', '#3a2a1e', '#110b07'] }, `
+  ${[['#4f6f5c', 'KEEPER', '☕', -20, 190], ['#74405e', 'GOAL', '☕ + 📖', -6, 260], ['#9a7a2e', 'NEW RULE', 'Draw 3', 8, 330], ['#3e5470', 'ACTION', 'Snatch', 22, 400]].map(([c, k, t, r, x], i) => `<g transform="translate(${x} ${178 - Math.abs(i - 1.5) * 8}) rotate(${r})" filter="url(#${id}-sh)"><rect x="-56" y="-78" width="112" height="156" rx="9" fill="#f6efdf"/><path d="M-56 -69 Q-56 -78 -47 -78 H47 Q56 -78 56 -69 V-50 H-56 Z" fill="${c}"/><text y="-58" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="10" letter-spacing="2" fill="#fff8ea">${k}</text><text y="${i < 2 ? 18 : 6}" text-anchor="middle" font-family="${i < 2 ? 'inherit' : SERIF}" font-size="${i === 0 ? 46 : i === 1 ? 24 : 20}" fill="#2a2018">${t}</text></g>`).join('')}
+  <path d="M120 80 q40 -40 80 0" fill="none" stroke="#e3c88c" stroke-width="4" stroke-linecap="round" opacity=".7"/><path d="M196 70 l6 12 l-13 0 Z" fill="#e3c88c" opacity=".7"/>
+  <path d="M480 80 q-40 -40 -80 0" fill="none" stroke="#e3c88c" stroke-width="4" stroke-linecap="round" opacity=".7"/><path d="M404 70 l-6 12 l13 0 Z" fill="#e3c88c" opacity=".7"/>
+`));
+
+cover('deepspace', id => shell(id, { title: 'House Rules: Deep Space', lines: ['House Rules:', 'Deep Space'], size: 40, tag: 'Changing rules among the stars', bg: ['#2c3a66', '#18203a', '#05070f'], cy: 30 }, `
+  ${stars(90, 11, 400, .9)}
+  <circle cx="470" cy="110" r="64" fill="#8a6a9a"/><ellipse cx="470" cy="110" rx="110" ry="20" fill="none" stroke="#e3c88c" stroke-width="5" transform="rotate(-18 470 110)" opacity=".85"/><circle cx="450" cy="92" r="18" fill="#fff" opacity=".12"/>
+  <g transform="translate(250 150) rotate(35)" filter="url(#${id}-sh)"><path d="M0 -80 Q26 -50 26 10 L26 40 L-26 40 L-26 10 Q-26 -50 0 -80 Z" fill="#e9e4da"/><circle cy="-20" r="12" fill="#3e5f9a" stroke="#c9c0aa" stroke-width="3"/><path d="M-26 20 L-46 50 L-26 44 Z M26 20 L46 50 L26 44 Z" fill="#b8323a"/><path d="M-14 40 L0 76 L14 40 Z" fill="#ffb040" filter="url(#${id}-glow)"/></g>
+  <g transform="translate(120 250) rotate(-14)" filter="url(#${id}-sh)"><rect x="-40" y="-56" width="80" height="112" rx="8" fill="#2a1d18"/><path d="M-40 -48 Q-40 -56 -32 -56 H32 Q40 -56 40 -48 V-38 H-40 Z" fill="#7a2e1e"/><text y="14" text-anchor="middle" font-size="40">👾</text></g>
+`));

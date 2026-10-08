@@ -1,8 +1,8 @@
 // Crazy Eights on a player's phone: cards you can play stand up, the rest are dimmed.
 // Tap (or swipe up) a card to play it; an eight asks you which suit to call.
-import { $, toast, setHud, setStatus, renderHand, cardEl, flyCard } from './phone-kit.js?v=58';
-import { SUIT_NAME, SUITS } from './crazy8.js?v=58';
-import { SUIT_SYMBOL } from './cards.js?v=58';
+import { $, toast, setHud, setStatus, renderHand, cardEl, flyCard } from './phone-kit.js?v=59';
+import { SUIT_NAME, SUITS } from './crazy8.js?v=59';
+import { SUIT_SYMBOL } from './cards.js?v=59';
 
 let ctx = null, eight = null, panelKey = '', wasMyTurn = false;
 

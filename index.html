@@ -13,44 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=58">
-  <link rel="stylesheet" href="css/chefskiss.css?v=58">
-  <link rel="stylesheet" href="css/insidejob.css?v=58">
-  <link rel="stylesheet" href="css/crown.css?v=58">
-  <link rel="stylesheet" href="css/hollow.css?v=58">
-  <link rel="stylesheet" href="css/casino.css?v=58">
-  <link rel="stylesheet" href="css/checkers.css?v=58">
-  <link rel="stylesheet" href="css/yacht.css?v=58">
-  <link rel="stylesheet" href="css/spoons.css?v=58">
-  <link rel="stylesheet" href="css/doubt.css?v=58">
-  <link rel="stylesheet" href="css/cashout.css?v=58">
-  <link rel="stylesheet" href="css/crazy8.css?v=58">
-  <link rel="stylesheet" href="css/skyline.css?v=58">
-  <link rel="stylesheet" href="css/lowtide.css?v=58">
-  <link rel="stylesheet" href="css/duels.css?v=58">
-  <link rel="stylesheet" href="css/sonar.css?v=58">
-  <link rel="stylesheet" href="css/milestones.css?v=58">
-  <link rel="stylesheet" href="css/wrongnumber.css?v=58">
-  <link rel="stylesheet" href="css/scribble.css?v=58">
-  <link rel="stylesheet" href="css/manor.css?v=58">
-  <link rel="stylesheet" href="css/warfront.css?v=58">
-  <link rel="stylesheet" href="css/ironroutes.css?v=58">
-  <link rel="stylesheet" href="css/homestead.css?v=58">
-  <link rel="stylesheet" href="css/wordsmith.css?v=58">
-  <link rel="stylesheet" href="css/houserules.css?v=58">
-  <link rel="stylesheet" href="css/bannerraid.css?v=58">
-  <link rel="stylesheet" href="css/fieldagents.css?v=58">
-  <link rel="stylesheet" href="css/dialitin.css?v=58">
-  <link rel="stylesheet" href="css/pileup.css?v=58">
-  <link rel="stylesheet" href="css/luckystreak.css?v=58">
-  <link rel="stylesheet" href="css/passpot.css?v=58">
-  <link rel="stylesheet" href="css/tessera.css?v=58">
-  <link rel="stylesheet" href="css/gearworks.css?v=58">
-  <link rel="stylesheet" href="css/redline.css?v=58">
-  <link rel="stylesheet" href="css/grandprix.css?v=58">
-  <link rel="stylesheet" href="css/spires.css?v=58">
-  <link rel="stylesheet" href="css/kaboom.css?v=58">
-  <link rel="stylesheet" href="css/nestegg.css?v=58">
+  <link rel="stylesheet" href="css/cards.css?v=59">
   <style>
     html { background: var(--onyx); }
     body {
@@ -89,8 +52,9 @@
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 30px 60px rgba(0, 0, 0, .45);
     }
     .spot .stage { position: relative; display: grid; place-items: center; }
-    .spot .stage .cards { position: relative; width: 200px; height: 110px; transform: scale(1.75); }
-    .spot .stage .cards.cdmini, .spot .stage .cards.hmmini, .spot .stage .cards.ijmini, .spot .stage .cards.ycmini { transform: scale(1.5); }
+    .spot .stage { padding: 28px 10px 28px 32px; }
+    .spot .stage .cover { width: 100%; max-width: 560px; height: auto; border-radius: 14px; box-shadow: 0 30px 60px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .08); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+    a.spot:hover .stage .cover { transform: translateY(-3px) rotate(-.4deg); }
     .spot .info { display: flex; flex-direction: column; justify-content: center; padding: 40px 48px 40px 10px; }
     .spot .kicker { color: var(--champagne); display: inline-flex; align-items: center; gap: 10px; }
     .spot .kicker::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--champagne); box-shadow: 0 0 12px var(--champagne); }
@@ -139,13 +103,11 @@
     }
     a.box:hover, a.box:focus-visible { transform: translateY(-5px); box-shadow: inset 0 0 0 1px rgba(205, 180, 135, .55), 0 24px 44px rgba(0, 0, 0, .5); outline: none; }
     .art {
-      position: relative; display: grid; place-items: center; height: 196px; overflow: hidden;
+      position: relative; display: grid; place-items: center; aspect-ratio: 3 / 2; overflow: hidden;
       background: radial-gradient(ellipse 80% 80% at 50% 40%, color-mix(in srgb, var(--tint) 100%, #fff 7%), var(--tint) 50%, color-mix(in srgb, var(--tint) 45%, #000) 100%);
     }
-    .art::after { content: ''; position: absolute; inset: auto 0 0; height: 40%; background: linear-gradient(transparent, rgba(0, 0, 0, .25)); pointer-events: none; }
-    .art .cards { position: relative; height: 110px; width: 200px; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
-    a.box:hover .art .cards { transform: scale(1.07) translateY(-4px); }
-    .box .cards .card { --cw: 62px; position: absolute; left: 50%; top: 50%; }
+    .art .cover { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+    a.box:hover .art .cover { transform: scale(1.05); }
     .new { position: absolute; left: 12px; top: 12px; z-index: 2; font-family: var(--ui); font-size: 10px; font-weight: 800; letter-spacing: .18em; padding: 5px 9px; border-radius: 999px; color: #17130c; background: var(--champagne); }
     .hover-play {
       position: absolute; right: 12px; bottom: 12px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
@@ -162,94 +124,22 @@
     .meta .kind { font-family: var(--ui); font-size: 12.5px; color: var(--mute); }
     .empty { grid-column: 1 / -1; padding: 60px 0; text-align: center; font-family: var(--display); font-style: italic; font-size: 22px; color: var(--mute); }
 
-    .t-euchre { --tint: #1d4433; } .t-holdem { --tint: #1c2f4a; } .t-veto { --tint: #4b301c; } .t-gofish { --tint: #173f48; }
-    .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; }
-    .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } .t-baccarat { --tint: #44161e; }
-    .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; }
-    .t-crazy8 { --tint: #17393b; } .t-skyline { --tint: #1b2740; } .t-lowtide { --tint: #12304a; } .t-trio { --tint: #2a2d33; } .t-fourup { --tint: #1d3346; } .t-seedstones { --tint: #3a2a1c; } .t-sonar { --tint: #12282c; } .t-milestones { --tint: #1e2a3e; } .t-wrongnumber { --tint: #2a1f38; } .t-scribble { --tint: #3a2d22; } .t-manor { --tint: #3a1f1c; } .t-warfront { --tint: #162637; } .t-ironroutes { --tint: #1d2f26; } .t-homestead { --tint: #16303a; } .t-wordsmith { --tint: #2c2620; } .t-powerup { --tint: #2f2215; } .t-deepspace { --tint: #18203a; }
-     .t-houserules { --tint: #3a2a1e; }
-    .hrmini { display: flex; align-items: center; justify-content: center; --hr: 66px; } .hrmini .hr-card { margin: 0 -6px; } .hrmini .hr-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .hrmini .hr-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .hrmini .hr-card:nth-child(2) { z-index: 1; transform: translateY(-4px); } .t-bannerraid { --tint: #2a2a20; }
-    .brmini { display: flex; align-items: center; justify-content: center; gap: 10px; container-type: inline-size; } .brmini .br-pc { width: 52px; height: 52px; flex: none; } .brmini .br-pc b { font-size: 12cqi; } .brmini .br-pc small { font-size: 3.4cqi; } .brmini .br-crest { font-size: 10cqi; } .t-fieldagents { --tint: #2d2f22; }
-    .famini { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 180px !important; height: auto !important; } .t-dialitin { --tint: #173338; }
-    .dimini { display: grid; place-items: center; } .dimini .di-svg { width: 190px; } .t-pileup { --tint: #2b2f38; }
-    .pumini { display: flex; align-items: center; justify-content: center; --pu: 62px; } .pumini .pu-card { margin: 0 -6px; } .pumini .pu-card:nth-child(1) { transform: rotate(-11deg) translateY(6px); } .pumini .pu-card:nth-child(3) { transform: rotate(11deg) translateY(6px); } .pumini .pu-card:nth-child(2) { z-index: 1; transform: translateY(-4px); } .t-luckystreak { --tint: #1b3a2c; }
-    .lkmini { display: flex; align-items: center; justify-content: center; --lk: 64px; } .lkmini .lk-card { margin: 0 -6px; } .lkmini .lk-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .lkmini .lk-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .lkmini .lk-card:nth-child(2) { z-index: 1; transform: translateY(-4px); } .t-passpot { --tint: #4a1d1c; }
-    .ppmini { display: flex; align-items: center; justify-content: center; gap: 10px; --ppd: 52px; } .t-tessera { --tint: #2c2a33; }
-    .tsmini { width: 170px !important; } .tsmini .ts-svg { width: 100%; height: auto; } .t-gearworks { --tint: #2b3238; }
-    .gwmini { display: flex; align-items: center; justify-content: center; --gw: 64px; } .gwmini .gw-card { margin: 0 -8px; } .gwmini .gw-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .gwmini .gw-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .gwmini .gw-card:nth-child(2) { z-index: 1; } .t-redline { --tint: #2a1d1f; }
-    .rlmini { display: flex; align-items: center; justify-content: center; --rl: 60px; } .rlmini .rl-card { margin: 0 -6px; } .rlmini .rl-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .rlmini .rl-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .rlmini .rl-card:nth-child(2) { z-index: 1; } .t-grandprix { --tint: #233a26; }
-    .gpmini { width: 210px !important; } .gpmini .cc-svg { width: 100%; height: auto; } .t-spires { --tint: #26304a; }
-    .svmini { display: flex; align-items: center; justify-content: center; gap: 6px; --sv: 54px; } .svmini .svs { width: 84px; height: 84px; } .svmini .sv-card:first-child { transform: rotate(-8deg); } .svmini .sv-card:last-child { transform: rotate(8deg); } .t-kaboom { --tint: #3a1f3a; }
-    .kcmini { display: flex; align-items: center; justify-content: center; --kc: 64px; } .kcmini .kc-card { margin: 0 -8px; } .kcmini .kc-card p { display: none; } .kcmini .kc-card:nth-child(1) { transform: rotate(-11deg) translateY(6px); } .kcmini .kc-card:nth-child(3) { transform: rotate(11deg) translateY(6px); } .kcmini .kc-card:nth-child(2) { z-index: 1; transform: translateY(-4px) scale(1.06); } .t-nestegg { --tint: #1f3a2b; }
-    .nemini { display: flex; align-items: center; justify-content: center; --ne: 62px; } .nemini .ne-card { margin: 0 -8px; } .nemini .ne-card:nth-child(1) { transform: rotate(-10deg) translateY(6px); } .nemini .ne-card:nth-child(3) { transform: rotate(10deg) translateY(6px); } .nemini .ne-card:nth-child(2) { z-index: 1; transform: translateY(-4px); }
-    .t-powerup .cards { background: conic-gradient(#d9c08a 25%, #5e3d22 0 50%, #d9c08a 0 75%, #5e3d22 0) 0 0 / 50px 50px; width: 150px !important; height: 100px !important; border: 4px solid #3d2410; box-shadow: 0 0 0 1px rgba(205, 180, 135, .5), 0 0 26px rgba(227, 200, 140, .35), 0 14px 26px rgba(0, 0, 0, .55); }
-    .cpc .stk { position: absolute; left: 50%; top: 100%; transform: translate(-50%, -2px); display: flex; gap: 0; font-size: 22px; padding: 1px 4px; border-radius: 10px; background: rgba(20, 14, 8, .78); box-shadow: 0 0 0 1px rgba(227, 200, 140, .6); -webkit-text-stroke: 0; }
-    .cpc .stk i { font-style: normal; } .cpc .stk .w { color: #f6efe0; } .cpc .stk .b { color: #8d8274; }
-    .wsmini { display: flex; gap: 3px; align-items: center; justify-content: center; } .wsmini .ws-tile { position: relative; inset: auto; width: 34px; height: 34px; font-size: 22px; } .wsmini .ws-tile:nth-child(odd) { transform: translateY(-6px) rotate(-4deg); }
-    .hsmini { width: 150px !important; height: 130px !important; } .hsmini svg { width: 100%; height: 100%; } .hsmini .hs-port { display: none; }
-    .irmini { width: 172px !important; height: 108px !important; border-radius: 6px; overflow: hidden; background: linear-gradient(170deg, #efe4c9, #ddcca4); box-shadow: 0 10px 20px rgba(0,0,0,.5); } .irmini svg { width: 100%; height: 100%; } .irmini .ir-city text { display: none; }
-    .wfmini { width: 170px !important; height: 116px !important; } .wfmini svg { width: 100%; height: 100%; }
-    .mmmini { --H: 100px; } .mmmini .mm-plan { width: 150px; height: 100px; padding: 3px; gap: 2px; } .mmmini .mm-room { padding: 3px; } .mmmini .mm-room b { font-size: 7px; } .mmmini .mm-pawn { width: 12px; height: 12px; font-size: 7px; } .mmmini .mm-weapon { width: 11px; height: 11px; font-size: 7px; } .mmmini .mm-pass { display: none; }
-    .scmini { display: flex; align-items: center; justify-content: center; gap: 0; }
-    .scmini .pg { width: 76px; height: 58px; border-radius: 4px; background: linear-gradient(170deg, #fdf9ef, #f1e8d4); box-shadow: 0 8px 16px rgba(0,0,0,.5); display: grid; place-items: center; font-family: var(--display); font-weight: 600; font-size: 13px; color: #2a2320; }
-    .scmini .pg:nth-child(1) { transform: rotate(-8deg) translateX(10px); } .scmini .pg:nth-child(2) { z-index: 1; } .scmini .pg:nth-child(3) { transform: rotate(8deg) translateX(-10px); font-style: italic; font-family: var(--serif); }
-    .scmini svg { width: 60px; }
-    .wnmini { display: flex; flex-direction: column; gap: 6px; width: 170px !important; height: 110px !important; justify-content: center; }
-    .wnmini .wn-msg { font-size: 11px; padding: 6px 10px; border-radius: 12px; max-width: 80%; animation: none; }
-    .somini .so-grid { width: 108px; } .msmini { display: flex; align-items: center; justify-content: center; --mw: 48px; }
-    .msmini .ms-card:nth-child(1) { transform: rotate(-12deg) translate(14px, 6px); } .msmini .ms-card:nth-child(2) { z-index: 1; transform: translateY(-6px); } .msmini .ms-card:nth-child(3) { transform: rotate(12deg) translate(-14px, 6px); }
-    .duomini { display: grid; place-items: center; }
-    .duomini .tr-board { --B: 104px; padding: 4px; } .duomini .tr-cell { border-width: 1.5px !important; }
-    .duomini .fu-frame { --S: 13px; padding: 4px; gap: 1px; } .duomini .fu-col { gap: 1px; }
-    .duomini .ss-board { --P: 20px; padding: 5px; gap: 3px; } .duomini .ss-board b { display: none; } .duomini .ss-rows, .duomini .ss-row { gap: 3px; }
-    .ltmini { display: flex; align-items: center; justify-content: center; --lw: 50px; }
-    .ltmini .lt-card:nth-child(1) { transform: rotate(-12deg) translate(12px, 6px); } .ltmini .lt-card:nth-child(2) { z-index: 1; transform: translateY(-6px); } .ltmini .lt-card:nth-child(3) { transform: rotate(12deg) translate(-12px, 6px); } .ltmini .lt-card:nth-child(4) { transform: rotate(22deg) translate(-26px, 18px); }
-    .skmini2 { width: 170px !important; height: 104px !important; display: grid; place-items: end center; color: rgba(227, 207, 159, .85); }
-    .skmini2 svg { width: 100%; }
-    .skmini2 .deed { position: absolute; left: 50%; top: 2px; width: 62px; transform: translateX(-50%) rotate(-6deg); background: #f6f0e2; border-radius: 4px; overflow: hidden; box-shadow: 0 8px 16px rgba(0, 0, 0, .5); font-family: var(--display); font-weight: 600; font-size: 10px; color: #23202a; text-align: center; }
-    .skmini2 .deed i { display: block; height: 14px; background: #c4a050; }
-    .skmini2 .deed span { display: block; padding: 4px 2px 6px; line-height: 1.1; } .t-spoons { --tint: #3d2818; } .t-doubt { --tint: #34182f; } .t-cashout { --tint: #24272d; }
-    .spmini { display: flex; align-items: center; justify-content: center; }
-    .spmini .spoon { --v: 9px; position: absolute; left: 50%; top: 50%; }
-    .spmini .card { --cw: 58px; }
-    .comini { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; --die: 40px; }
-    .comini b { font-family: var(--num); font-weight: 400; font-size: 34px; line-height: 1; color: var(--champagne-hi); padding: 2px 16px; border-radius: 10px; background: #121418; box-shadow: inset 0 0 0 2px #8c7449, 0 8px 18px rgba(0, 0, 0, .5); }
-    .comini div { display: flex; gap: 10px; }
 
-    /* Each game's little still life */
-    .bgmini { width: 170px !important; height: 104px !important; background: radial-gradient(ellipse, #22553c, #163f2b); border: 6px solid #4a2a17; border-radius: 4px; box-shadow: 0 0 0 1px rgba(205, 180, 135, .35), 0 14px 26px rgba(0, 0, 0, .55); overflow: hidden; }
-    .bgmini i { position: absolute; top: 0; width: 14%; height: 45%; background: #e8dcc0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
-    .bgmini i:nth-child(1) { left: 2%; } .bgmini i:nth-child(2) { left: 18%; background: #7f2a26; } .bgmini i:nth-child(3) { left: 34%; }
-    .bgmini i:nth-child(4) { left: 52%; background: #7f2a26; } .bgmini i:nth-child(5) { left: 68%; } .bgmini i:nth-child(6) { left: 84%; background: #7f2a26; }
-    .bgmini b { position: absolute; width: 22px; height: 22px; border-radius: 50%; translate: -50% -50%; }
-    .bgmini b.w { background: radial-gradient(circle at 40% 35%, #fffbf2, #cdbf9f); box-shadow: inset 0 0 0 3px #f7f0e1, 0 2px 3px rgba(0,0,0,.5); }
-    .bgmini b.b { background: radial-gradient(circle at 40% 35%, #4d4549, #0d0b0d); box-shadow: inset 0 0 0 3px #1a171a, 0 2px 3px rgba(0,0,0,.5); }
-    .t-chess .cards { background: conic-gradient(#ddc69a 25%, #7a4f2e 0 50%, #ddc69a 0 75%, #7a4f2e 0) 0 0 / 50px 50px; width: 150px !important; height: 100px !important; border: 4px solid #4a2a15; box-shadow: 0 0 0 1px rgba(205, 180, 135, .5), 0 14px 26px rgba(0, 0, 0, .55); }
-    .cpc { position: absolute; top: 50%; transform: translate(-50%, -50%); font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', serif; font-size: 62px; line-height: 1; }
-    .cpc.w { color: #f6efe0; -webkit-text-stroke: 1.2px #2a2018; text-shadow: 0 3px 5px rgba(0, 0, 0, .55); }
-    .cpc.b { color: #1c1918; -webkit-text-stroke: 1px rgba(245, 232, 205, .65); text-shadow: 0 3px 5px rgba(0, 0, 0, .55); }
-    .skmini { width: 136px !important; height: 84px !important; padding-top: 8px; background: #f4efe2; border-radius: 3px; rotate: -3deg; box-shadow: 0 14px 26px rgba(0, 0, 0, .55); }
-    .skmini::before { content: ""; position: absolute; left: 6px; right: 6px; top: 3px; height: 6px; background: radial-gradient(circle 2.5px at 50% 50%, #3a3a3a 70%, transparent 75%) 0 0 / 12px 100% repeat-x; }
-    .skmini svg { display: block; width: 100%; height: 100%; }
-    .ijmini, .cdmini, .hmmini { display: flex; align-items: center; justify-content: center; }
-    .ijmini .pchip { --chip: 50px; margin: 0 -6px; }
-    .ijmini .pchip:nth-child(odd) { transform: translateY(-10px); }
-    .cdmini { gap: 10px; }
-    .cdmini .edict { --e: 58px; }
-    .cdmini .edict:first-child { transform: rotate(-8deg); } .cdmini .edict:last-child { transform: rotate(8deg); }
-    .hmmini { gap: 18px; font-size: 40px; filter: saturate(.7); }
-    .hmmini span:nth-child(2) { font-size: 52px; transform: translateY(-14px); }
-    .ckmini { --w: 66px; width: 170px !important; height: 104px !important; }
-    .ckmini .ck-card { position: absolute; left: 50%; top: 50%; }
-    .ckmini .ck-card.r { transform: translate(-82%, -50%) rotate(-9deg); }
-    .ckmini .ck-card.i { transform: translate(-18%, -46%) rotate(8deg); }
-    .gfmini { display: flex; align-items: center; justify-content: center; }
-    .drmini { --S: 25px; width: 160px !important; height: 110px !important; border: 5px solid #17110d; box-shadow: 0 0 0 1px rgba(205, 180, 135, .55), 0 14px 26px rgba(0, 0, 0, .55);
-      background: conic-gradient(#e2d3b1 25%, #33251a 0 50%, #e2d3b1 0 75%, #33251a 0) 0 0 / 50px 50px; }
-    .drmini .drp { position: absolute; width: 21px; height: 21px; translate: -50% -50%; }
-    .drmini .drp .dcrown { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; }
-    .ycmini { display: flex; align-items: center; justify-content: center; gap: 10px; --die: 46px; }
-    .ycmini .ydie:nth-child(1) { rotate: -12deg; translate: 0 8px; } .ycmini .ydie:nth-child(2) { rotate: 6deg; translate: 0 -10px; } .ycmini .ydie:nth-child(3) { rotate: 18deg; translate: 0 6px; }
+    /* Each game's colour (behind its cover in the spotlight) */
+    .t-euchre { --tint: #1d4433; } .t-holdem { --tint: #1c2f4a; } .t-veto { --tint: #4b301c; } .t-gofish { --tint: #173f48; } 
+    .t-chess { --tint: #3b2819; } .t-backgammon { --tint: #44291a; } .t-sketch { --tint: #263d32; } .t-chefskiss { --tint: #1b3b42; } 
+    .t-insidejob { --tint: #1b2c45; } .t-crown { --tint: #34203c; } .t-hollow { --tint: #3a2d21; } .t-blackjack { --tint: #173d2c; } 
+    .t-baccarat { --tint: #44161e; } .t-checkers { --tint: #1a372e; } .t-yacht { --tint: #18263d; } .t-crazy8 { --tint: #17393b; } 
+    .t-skyline { --tint: #1b2740; } .t-lowtide { --tint: #12304a; } .t-trio { --tint: #2a2d33; } .t-fourup { --tint: #1d3346; } 
+    .t-seedstones { --tint: #3a2a1c; } .t-sonar { --tint: #12282c; } .t-milestones { --tint: #1e2a3e; } .t-wrongnumber { --tint: #2a1f38; } 
+    .t-scribble { --tint: #3a2d22; } .t-manor { --tint: #3a1f1c; } .t-warfront { --tint: #162637; } .t-ironroutes { --tint: #1d2f26; } 
+    .t-homestead { --tint: #16303a; } .t-wordsmith { --tint: #2c2620; } .t-powerup { --tint: #2f2215; } .t-deepspace { --tint: #18203a; } 
+    .t-houserules { --tint: #3a2a1e; } .t-bannerraid { --tint: #2a2a20; } .t-fieldagents { --tint: #2d2f22; } .t-dialitin { --tint: #173338; } 
+    .t-pileup { --tint: #2b2f38; } .t-luckystreak { --tint: #1b3a2c; } .t-passpot { --tint: #4a1d1c; } .t-tessera { --tint: #2c2a33; } 
+    .t-gearworks { --tint: #2b3238; } .t-redline { --tint: #2a1d1f; } .t-grandprix { --tint: #233a26; } .t-spires { --tint: #26304a; } 
+    .t-kaboom { --tint: #3a1f3a; } .t-nestegg { --tint: #1f3a2b; } .t-spoons { --tint: #3d2818; } .t-doubt { --tint: #34182f; } 
+    .t-cashout { --tint: #24272d; } 
+
 
     footer { border-top: 1px solid var(--hairline); padding: 22px 0 34px; }
     footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-family: var(--ui); font-size: 13px; color: var(--mute); }
@@ -257,8 +147,7 @@
 
     @media (max-width: 860px) {
       .spot { grid-template-columns: 1fr; }
-      .spot .stage { height: 230px; }
-      .spot .stage .cards { transform: scale(1.4); }
+      .spot .stage { padding: 22px 22px 6px; }
       .spot .info { padding: 6px 26px 30px; }
     }
     @media (max-width: 600px) {
@@ -267,16 +156,12 @@
       .join { width: 100%; }
       .join input { flex: 1; width: auto; min-width: 0; }
       .spot { margin-top: 18px; border-radius: 16px; }
-      .spot .stage { height: 190px; }
-      .spot .stage .cards { transform: scale(1.15); }
+      .spot .stage { padding: 16px 16px 4px; }
       .filters { flex-direction: column; align-items: stretch; }
       .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
       .chip { flex: none; }
       .seg { align-self: flex-start; }
       .shelf { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .art { height: 136px; }
-      .art .cards { transform: scale(.68); }
-      a.box:hover .art .cards { transform: scale(.72); }
       .box h3 { font-size: 19px; }
       .info-row { padding: 11px 12px 13px; }
       .meta .dot, .meta .kind { display: none; }
@@ -289,8 +174,6 @@
     html.tv .section-head { margin-top: 3vh; }
     html.tv .section-head h2 { font-size: 5vh; }
     html.tv .shelf { grid-template-columns: repeat(8, 1fr); gap: 1.6vh; }
-    html.tv .art { height: 19vh; }
-    html.tv .art .cards { zoom: .62; }
     html.tv .box h3 { font-size: 3vh; }
     html.tv .meta .kind, html.tv .meta .dot { display: none; }
   </style>
@@ -326,45 +209,12 @@
     </div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=58"></script>
+  <script type="module" src="js/tvnav.js?v=59"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=58';
-    import { cardEl } from './js/cards.js?v=58';
-    import { face } from './js/ck-face.js?v=58';
-    import { edict } from './js/table-crown.js?v=58';
-    import { dieHTML } from './js/table-yacht.js?v=58';
-    import { SPOON_SVG } from './js/table-spoons.js?v=58';
-    import { SKYLINE_SVG } from './js/table-skyline.js?v=58';
-    import { tideCard } from './js/table-lowtide.js?v=58';
-    import { frameHTML } from './js/table-fourup.js?v=58';
-    import { gridHTML as sonarGrid } from './js/table-sonar.js?v=58';
-    import { msCard } from './js/table-milestones.js?v=58';
-    import { planHTML as manorPlan } from './js/table-manor.js?v=58';
-    import { mapSVG as warMap } from './js/table-warfront.js?v=58';
-    import { mapSVG as railMap } from './js/table-ironroutes.js?v=58';
-    import { neCard } from './js/table-nestegg.js?v=58';
-    import { kcCard } from './js/table-kaboom.js?v=58';
-    import { svCard, spireSVG } from './js/table-spires.js?v=58';
-    import { circuitSVG } from './js/circuit.js?v=58';
-    import { CIRCUIT as gpCircuit, CORNERS as gpCorners } from './js/grandprix.js?v=58';
-    import { rlCard } from './js/table-redline.js?v=58';
-    import { gwCard } from './js/table-gearworks.js?v=58';
-    import { tileSVGBody } from './js/table-tessera.js?v=58';
-    import { ppDie } from './js/table-passpot.js?v=58';
-    import { lkCard } from './js/table-luckystreak.js?v=58';
-    import { puCard } from './js/table-pileup.js?v=58';
-    import { dialSVG } from './js/table-dialitin.js?v=58';
-    import { wordCard } from './js/table-fieldagents.js?v=58';
-    import { pieceHTML as brPiece } from './js/table-bannerraid.js?v=58';
-    import { hrCard } from './js/table-houserules.js?v=58';
-    
-    import { boardSVG as islandSVG } from './js/table-homestead.js?v=58';
-    import { tileHTML as wsTile } from './js/table-wordsmith.js?v=58';
-    import { createGame as hsGame } from './js/homestead.js?v=58';
-    const sampleIsland = () => { const g = hsGame({}, [{}, {}]); [[10, 0], [30, 1], [44, 0]].forEach(([v, s]) => { g.vOwner[v] = s; g.vLevel[v] = 1; }); return g; };
-    import { boardHTML as seedBoard } from './js/table-seedstones.js?v=58';
+    import { GAMES } from './js/games.js?v=59';
+    import { coverSVG } from './js/covers.js?v=59';
 
-    const ids = ['nestegg', 'kaboom', 'spires', 'gearworks', 'passpot', 'luckystreak', 'pileup', 'dialitin', 'fieldagents', 'houserules', 'deepspace', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'bannerraid', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
       euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', deepspace: 'cards', houserules: 'cards', bannerraid: 'board', fieldagents: 'party', dialitin: 'party', pileup: 'cards', luckystreak: 'cards', passpot: 'dice', tessera: 'board', gearworks: 'cards', redline: 'board', grandprix: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
       backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards', skyline: 'board', lowtide: 'cards', trio: 'board', fourup: 'board', seedstones: 'board', sonar: 'board', milestones: 'cards', wrongnumber: 'party', scribble: 'party', manor: 'roles', warfront: 'board', ironroutes: 'board', homestead: 'board', wordsmith: 'board',
@@ -383,72 +233,6 @@
     const onTV = /PlayOnDisplayTV/.test(navigator.userAgent) || new URLSearchParams(location.search).has('tv') || document.documentElement.classList.contains('tv') || (() => { try { return sessionStorage.getItem('pod.tv') === '1'; } catch { return false; } })();
     if (onTV) { cat = 'all'; who = 'any'; }
 
-    const art = {
-      blackjack: ['AS', 'KH'], crazy8: ['8S', '8H', '8D'], baccarat: ['9D', '8C', '5S'], euchre: ['JH', 'JD', 'AH'], holdem: ['AS', 'AH', 'KD'], veto: ['R-7-1', 'T-d2-2', 'W-wild-3'], gofish: ['7C', '7H', '7S'],
-    };
-    function artFor(id) {
-      const fan = document.createElement('div');
-      fan.className = 'cards';
-      if (id === 'deepspace') { fan.className = 'cards hrmini'; fan.innerHTML = hrCard('space', 'starship.0') + hrCard('space', 'gLaunch.1') + hrCard('space', 'gremlin.2'); }
-      else if (id === 'houserules') { fan.className = 'cards hrmini'; fan.innerHTML = hrCard('home', 'kettle.0') + hrCard('home', 'gTea.1') + hrCard('home', 'book.2'); }
-      else if (id === 'bannerraid') { fan.className = 'cards brmini'; fan.innerHTML = brPiece({ o: 0, r: '10', known: true }) + brPiece({ o: 1, r: null }) + brPiece({ o: 0, r: 'B', known: true }); }
-      else if (id === 'fieldagents') { fan.className = 'cards famini'; fan.innerHTML = wordCard('harbor', null, false) + wordCard('spy', 0, true) + wordCard('comet', null, false) + wordCard('ghost', 'x', true); }
-      else if (id === 'dialitin') { fan.className = 'cards dimini'; fan.innerHTML = dialSVG({ dial: 118, target: 128, ends: ['Cold', 'Hot'] }); }
-      else if (id === 'pileup') { fan.className = 'cards pumini'; fan.innerHTML = puCard('e-d2.0') + puCard('w-w10.1') + puCard('t-7.2'); }
-      else if (id === 'luckystreak') { fan.className = 'cards lkmini'; fan.innerHTML = lkCard('n7.0') + lkCard('charm.0') + lkCard('n12.0'); }
-      else if (id === 'passpot') { fan.className = 'cards ppmini'; fan.innerHTML = ppDie('L') + ppDie('P') + ppDie('R'); }
-      else if (id === 'tessera') { fan.className = 'cards tsmini'; const tl = (o, gems, e) => ({ owner: o, gems, edges: e }); fan.innerHTML = `<svg viewBox="-2 -2 44 34" class="ts-svg">${tileSVGBody(tl(-1, [0, 0, 0, 0], ['c', 's', 't', 'c', 's', 't', 'c', 's']), 0, 0, 0)}${tileSVGBody(tl(0, [1, 0, 0, 1], ['t', null, 'c', 's', null, 't', 's', 't']), 0, 2, 0)}${tileSVGBody(tl(1, [0, 1, 1, 0], ['s', 'c', null, 't', 'c', null, 't', 's']), 1, 1, 1)}</svg>`; }
-      else if (id === 'gearworks') { fan.className = 'cards gwmini'; fan.innerHTML = gwCard(9) + gwCard(26) + gwCard(14); }
-      else if (id === 'redline') { fan.className = 'cards rlmini'; fan.innerHTML = rlCard('s4.0') + rlCard('heat.0') + rlCard('s3.0'); }
-      else if (id === 'grandprix') { fan.className = 'cards gpmini'; fan.innerHTML = circuitSVG(gpCircuit, { zones: gpCorners.map(z => ({ ...z, label: z.stops, cls: 's' + z.stops })), cars: [{ pos: 2, color: '#c9473a', text: 4 }, { pos: 1, lane: 1, color: '#2f5f9e', text: 3 }, { pos: 92, color: '#e6c25a', text: 2 }] }); }
-      else if (id === 'spires') { fan.className = 'cards svmini'; fan.innerHTML = svCard('stone.0') + `<div class="svs">${spireSVG(4, '#e3c88c')}</div>` + svCard('l2o.0'); }
-      else if (id === 'kaboom') { fan.className = 'cards kcmini'; fan.innerHTML = kcCard('nuhuh.0') + kcCard('kaboom.0') + kcCard('lullaby.0'); }
-      else if (id === 'nestegg') { fan.className = 'cards nemini'; fan.innerHTML = neCard('ring.0') + neCard('bullion.0') + neCard('ring.1'); }
-      else if (id === 'powerup') fan.innerHTML = '<span class="cpc w" style="left:34%">♝︎<span class="stk"><i class="b">♜︎</i><i class="b">♞︎</i></span></span><span class="cpc b" style="left:66%">♛︎<span class="stk"><i class="w">♟︎</i></span></span>';
-      else if (id === 'chess') fan.innerHTML = '<span class="cpc w" style="left:34%">♚︎</span><span class="cpc b" style="left:66%">♛︎</span>';
-      else if (id === 'backgammon') { fan.className = 'cards bgmini'; fan.innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i><b class="w" style="left:16%;top:22%"></b><b class="w" style="left:16%;top:40%"></b><b class="b" style="left:84%;top:78%"></b><b class="b" style="left:84%;top:60%"></b><b class="b" style="left:50%;top:22%"></b>'; }
-      else if (id === 'sketch') { fan.className = 'cards skmini'; fan.innerHTML = '<svg viewBox="0 0 160 104"><path d="M30 78 Q 40 30 80 34 Q 120 38 126 74" fill="none" stroke="#a8322a" stroke-width="5" stroke-linecap="round"/><circle cx="80" cy="60" r="16" fill="none" stroke="#1d1b1a" stroke-width="4"/><path d="M74 56h1M86 56h1M73 66q7 6 14 0" stroke="#1d1b1a" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M22 92 L 140 92" stroke="#2b4f7e" stroke-width="4" stroke-linecap="round"/></svg>'; }
-      else if (id === 'crown') { fan.className = 'cards cdmini'; fan.innerHTML = edict('L') + edict('D'); }
-      else if (id === 'checkers') {
-        fan.className = 'cards drmini';
-        const pc = (c, x, y, k) => `<span class="drp ${c}${k ? ' king' : ''}" style="left:${x}px;top:${y}px"><b class="dcrown">${k ? '♛︎' : ''}</b></span>`;
-        fan.innerHTML = pc('d', 12.5, 12.5) + pc('l', 37.5, 37.5) + pc('d', 87.5, 87.5, true) + pc('l', 112.5, 12.5) + pc('d', 62.5, 62.5);
-      }
-      else if (id === 'wordsmith') { fan.className = 'cards wsmini'; fan.innerHTML = [...'WORDS'].map(L => wsTile(L).replace('ws-tile ', 'ws-tile ')).join(''); }
-      else if (id === 'homestead') { fan.className = 'cards hsmini'; fan.innerHTML = islandSVG(sampleIsland()); }
-      else if (id === 'ironroutes') { fan.className = 'cards irmini'; const own = Array(60).fill(null); [3, 9, 21, 30, 40, 47, 52].forEach((k, i) => { own[k] = i % 3; }); fan.innerHTML = railMap({ owner: own }); }
-      else if (id === 'warfront') { fan.className = 'cards wfmini'; const W = { owner: [0,0,1,0,0, 2,2,2,1,2, 3,3,0,3, 1,1,0,1,2,1, 2,3,2,2,3, 0,1,3,0,1], armies: [3,2,4,1,5, 2,6,3,2,1, 2,3,1,4, 5,2,3,1,2,4, 2,3,1,2,6, 2,4,1,3,2] }; fan.innerHTML = warMap(W); }
-      else if (id === 'manor') { fan.className = 'cards mmmini'; fan.innerHTML = manorPlan({ where: [0, 2, 6, 8, 4, 7], weaponAt: [1, 3, 4, 5, 7, 8] }); }
-      else if (id === 'scribble') { fan.className = 'cards scmini'; fan.innerHTML = '<div class="pg">castle</div><div class="pg"><svg viewBox="0 0 60 40"><path d="M8 36V16h8v-6h6v6h16v-6h6v6h8v20z" fill="none" stroke="#2a2320" stroke-width="2"/><path d="M26 36v-9h8v9" fill="none" stroke="#e0382c" stroke-width="2"/></svg></div><div class="pg">a toaster?</div>'; }
-      else if (id === 'wrongnumber') { fan.className = 'cards wnmini'; fan.innerHTML = '<div class="wn-msg in"><p>URGENT: the goat is loose again</p></div><div class="wn-msg out"><p>New phone, who this?</p></div>'; }
-      else if (id === 'sonar') { fan.className = 'cards duomini somini'; fan.innerHTML = sonarGrid({ 23: 'miss', 44: 'hit', 45: 'hit', 46: 'hit', 71: 'miss', 88: 'miss', 12: 'miss' }, [{ len: 4, down: false, r: 4, c: 3 }], { last: 46 }); }
-      else if (id === 'milestones') { fan.className = 'cards msmini'; fan.innerHTML = msCard('E7.0') + msCard('W.0') + msCard('G9.1'); }
-      else if (id === 'trio') { fan.className = 'cards duomini'; fan.innerHTML = `<div class="tr-board">${[0, null, 1, null, 0, null, 1, null, 0].map(x => `<span class="tr-cell">${x == null ? '' : `<i class="tr-mark ${x ? 'gem' : 'ring'}"></i>`}</span>`).join('')}</div>`; }
-      else if (id === 'fourup') { fan.className = 'cards duomini'; fan.innerHTML = `<div class="fu-frame">${frameHTML({ cols: [[], [1], [0, 1], [0, 0, 1], [1, 0, 0, 1], [0], []], line: null, last: null }, false)}</div>`; }
-      else if (id === 'seedstones') { fan.className = 'cards duomini'; fan.innerHTML = `<div class="ss-board">${seedBoard({ pits: [4, 4, 4, 4, 4, 4, 6, 4, 4, 4, 4, 4, 4, 5], last: null }, 0, false)}</div>`; }
-      else if (id === 'lowtide') { fan.className = 'cards ltmini'; fan.innerHTML = tideCard({ v: -2, up: true }) + tideCard({ v: 0, up: true }) + tideCard({ v: 12, up: true }) + tideCard({ up: false }); }
-      else if (id === 'skyline') { fan.className = 'cards skmini2'; fan.innerHTML = `${SKYLINE_SVG}<div class="deed"><i></i><span>The Pinnacle</span></div>`; }
-      else if (id === 'spoons') {
-        fan.className = 'cards spmini';
-        fan.innerHTML = [-42, -14, 14, 42].map((a, i) => `<div class="spoon" style="transform: translate(-50%, -50%) rotate(${a}deg) translateY(-6px)">${SPOON_SVG}</div>`).join('');
-        ['7S', '7H', '7D', '7C'].forEach((c, i) => { const el = cardEl(c); el.style.position = 'absolute'; el.style.left = '50%'; el.style.top = '50%'; el.style.transform = `translate(-50%, -30%) translateX(${(i - 1.5) * 22}px) rotate(${(i - 1.5) * 8}deg)`; fan.appendChild(el); });
-      }
-      else if (id === 'doubt') {
-        [null, null, null, 'QS'].forEach((c, i) => { const el = c ? cardEl(c) : cardEl(null, true); el.style.transform = `translate(-50%, -50%) translateX(${(i - 1.5) * 30}px) rotate(${(i - 1.5) * 11 + (i === 3 ? 6 : 0)}deg) translateY(${i === 3 ? -10 : Math.abs(i - 1.5) * 5}px)`; fan.appendChild(el); });
-      }
-      else if (id === 'cashout') { fan.className = 'cards comini'; fan.innerHTML = `<b>1,240</b><div>${dieHTML(5)}${dieHTML(5)}</div>`; }
-      else if (id === 'yacht') { fan.className = 'cards ycmini'; fan.innerHTML = dieHTML(6) + dieHTML(6) + dieHTML(6); }
-      else if (id === 'hollow') { fan.className = 'cards hmmini'; fan.innerHTML = '<span>🏮</span><span>🌙</span><span>🏮</span>'; }
-      else if (id === 'insidejob') { fan.className = 'cards ijmini'; fan.innerHTML = '<span class="pchip c-white"><b>100</b></span><span class="pchip c-yellow"><b>200</b></span><span class="pchip c-orange"><b>300</b></span><span class="pchip c-red"><b>400</b></span>'; }
-      else if (id === 'chefskiss') { fan.className = 'cards ckmini'; fan.innerHTML = face({ kind: 'r', t: 'Totally adorable', d: '' }) + face({ kind: 'i', t: 'A goat in pajamas', d: '' }); }
-      else art[id].forEach((c, i, all) => {
-        const el = cardEl(c);
-        const mid = (all.length - 1) / 2;
-        el.style.transform = `translate(-50%, -50%) translateX(${(i - mid) * 34}px) rotate(${(i - mid) * 12}deg) translateY(${Math.abs(i - mid) * 6}px)`;
-        fan.appendChild(el);
-      });
-      return fan;
-    }
 
     // ---- Spotlight: the game this screen last played, otherwise the newest game.
     let last = null;
@@ -466,7 +250,7 @@
         <div class="tags"><span class="tag">${range(S)} players</span><span class="tag">${KIND_NAME[KIND[spotId]]}</span>${S.noBots ? '' : '<span class="tag">Bots welcome</span>'}</div>
         <span class="play-btn">Play</span>
       </div>`;
-    spot.querySelector('.stage').appendChild(artFor(spotId));
+    spot.querySelector('.stage').innerHTML = coverSVG(spotId);
 
     // ---- Filters
     const cats = document.getElementById('cats');
@@ -494,7 +278,7 @@
         <div class="info-row"><h3>${G.name}</h3>
           <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${KIND_NAME[KIND[id]]}</span></div></div>`;
       box.title = desc(G);
-      box.querySelector('.art').prepend(artFor(id));
+      box.querySelector('.art').insertAdjacentHTML('afterbegin', coverSVG(id));
       tiles[id] = box;
     });
 

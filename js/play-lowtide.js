@@ -1,9 +1,9 @@
 // Low Tide on a player's phone: your 3×4 grid, big enough to tap. On your turn, tap the deck
 // to draw or the discard to take it; then tap a card in your grid to swap it in — or, for a
 // card off the deck, throw it away and turn one of your hidden cards up.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=58';
-import { ROWS, COLS, visibleSum } from './lowtide.js?v=58';
-import { tideCard } from './table-lowtide.js?v=58';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=59';
+import { ROWS, COLS, visibleSum } from './lowtide.js?v=59';
+import { tideCard } from './table-lowtide.js?v=59';
 
 let ctx = null, wasMyTurn = false;
 

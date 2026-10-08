@@ -437,6 +437,47 @@ robot drawn from its number. Code: `js/gearworks.js`.
 (circle, square, triangle) completes a shape on the table. Tiles may overlap and hide other players' gems,
 but at least one cell must go on empty table. Most gems showing at the end wins. Code: `js/tessera.js`.
 
+## Pass the Pot
+3–10 players. Everyone starts with 3 chips (or 4 or 5). Roll one die per chip you hold, up to three: each die
+sends a chip left, right or into the pot, or lets you keep it. No chips? You skip your roll but you're still in.
+The last player holding chips wins the pot. Our own dice (arrows, a pot, a star). Code: `js/passpot.js`.
+
+## Lucky Streak
+2–8 players, first to 200 (or 100/300). Flip cards one at a time: hit or stay. A number you already have busts
+you for the round; seven different numbers is a Lucky Streak (+15, round ends). Bonus cards (+2 to +10, ×2)
+and action cards: Halt, Triple Dare and Lucky Charm. Code: `js/luckystreak.js`.
+
+## Pile Up
+2–8 players. Match the suit (Ember, Tide, Moss, Gilt) or the symbol. Draw cards stack: answer a +2 with a +2 or
+bigger or take the whole pile. Can't play? Keep drawing until you can. 25 cards and you're knocked out. Pass,
+Turnabout, Clear Out, Encore, Wild +4/+6/+10 and Roulette; a 7 swaps hands, a 0 passes every hand on. 168
+cards in our own letterpress style. Code: `js/pileup.js`.
+
+## Dial It In
+2–10 players, no bots. A Reader sees where a hidden target sits on a spectrum ("Cold ⟷ Hot") and gives a
+clue; their team turns the dial on their phones and locks it in. 4/3/2 points by closeness; the other team
+bets left or right for 1. Teams with 4+ (first to 10), co-op with 2–3 (7 rounds). 80 of our own spectrums.
+Code: `js/dialitin.js`.
+
+## Field Agents
+4–8 players, no bots. Two teams (Brass down the left, Steel down the right), 25 code words from our own list of
+400. Each Handler sees the key and gives a one-word clue and a number; teammates guess on their phones. Find
+all your agents first; touch the Double Agent and you lose. Code: `js/fieldagents.js`.
+
+## Banner Raid
+2 players (or the computer). 40 hidden pieces each on a 10×10 field with two lakes; set up on your phone. The
+higher rank wins a fight; the Scout runs, the Sapper clears Mines, the Assassin beats the Warlord when it
+attacks. Capture the Banner. Code: `js/bannerraid.js`.
+
+## House Rules and House Rules: Deep Space
+2–6 players. Start with draw 1, play 1; New Rule cards change the draw, the plays, hand and keeper limits and
+more. Keepers go on the table; the Goal card says which two win. Actions happen once. Two decks of our own:
+the Home deck and Deep Space (which adds Creepers). Code: `js/houserules.js`.
+
+## Cover art
+Every game has its own cover, drawn in `js/covers.js` (one SVG scene per game, 600×400, with the title set
+like a box). The home page shows them on the tiles and in the spotlight. A new game needs a cover there too.
+
 ## Go Fish rules
 2–8 players, standard 52-card deck. With 2–3 players everyone is dealt 7 cards; with 4 or more, 5. The rest
 of the deck is the pond.
@@ -522,6 +563,7 @@ and cellular networks block them.
 2. Write a rules engine (see `js/euchre.js` and `js/poker.js`).
 3. Add `js/table-<game>.js`, which draws it on the table, and `js/play-<game>.js`, which draws it on the phone.
 4. Register them in `js/table.js` (`MODES`) and `js/play.js` (`UIS`).
+5. Add it to the home page list in `index.html` and give it a cover in `js/covers.js`.
 
 ## Files
 | File | What it does |
