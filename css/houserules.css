@@ -1,0 +1,82 @@
+/* House Rules: a parlour games table (warm walnut for the Home deck, deep navy for Deep
+   Space). Cards are colour-banded by kind: Keepers sage, Creepers rust-black, Goals plum,
+   New Rules ochre, Actions slate. */
+body[data-game="houserules"] #felt {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 230, 200, .06), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #3a2a1e 0%, #281c13 55%, #110b07 100%);
+}
+body[data-game="deepspace"] #felt {
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255, 255, 255, .5) 0 1px, transparent 1.5px) 0 0 / 190px 170px,
+    radial-gradient(circle at 70% 64%, rgba(255, 255, 255, .35) 0 1px, transparent 1.5px) 0 0 / 230px 210px,
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(160, 180, 255, .07), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, #18203a 0%, #10162a 55%, #05070f 100%);
+}
+body[data-game="houserules"] #print, body[data-game="houserules"] .fan, body[data-game="houserules"] .sizer,
+body[data-game="deepspace"] #print, body[data-game="deepspace"] .fan, body[data-game="deepspace"] .sizer { display: none; }
+
+.hr-card {
+  --h0: var(--hr, 80px); --c: #6a7a6a; position: relative; width: var(--h0); height: calc(var(--h0) * 1.4); flex: none; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; gap: 3%; padding: 6% 7%; border-radius: calc(var(--h0) * .08); overflow: hidden; text-align: center;
+  background: linear-gradient(180deg, var(--c) 0 17%, #f6efdf 17%); color: #2a2018;
+  box-shadow: 0 calc(var(--h0) * .04) calc(var(--h0) * .1) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--h0) * .025) var(--c);
+}
+.hr-card > small { font-family: var(--ui); font-weight: 800; font-size: calc(var(--h0) * .075); letter-spacing: .16em; text-transform: uppercase; color: #fff8ea; line-height: 1.6; }
+.hr-card > b { font-family: var(--display); font-size: calc(var(--h0) * .125); line-height: 1.1; margin-top: 4%; }
+.hr-card i { font-style: normal; font-size: calc(var(--h0) * .38); line-height: 1; flex: 1; display: grid; place-items: center; }
+.hr-card i.pair { display: flex; align-items: center; font-size: calc(var(--h0) * .26); gap: 4%; }
+.hr-card i.pair em { font-style: normal; font-family: var(--display); font-size: calc(var(--h0) * .16); color: var(--c); }
+.hr-card p { margin: 0; font-family: var(--ui); font-weight: 600; font-size: calc(var(--h0) * .075); line-height: 1.25; color: #4a3a2a; flex: 1; display: grid; place-items: center; }
+.hr-card.t-keeper { --c: #4f6f5c; } .hr-card.t-goal { --c: #74405e; } .hr-card.t-rule { --c: #9a7a2e; } .hr-card.t-action { --c: #3e5470; }
+.hr-card.t-creeper { --c: #7a2e1e; background: linear-gradient(180deg, var(--c) 0 17%, #2a1d18 17%); color: #f3dcc8; }
+.hr-card.t-creeper p { color: #d9b8a4; }
+.hr-card.back { background: radial-gradient(circle at 50% 40%, #5a3e2a, #2a1a10); justify-content: center; color: #f0d9a8;
+  box-shadow: 0 calc(var(--h0) * .04) calc(var(--h0) * .1) rgba(0, 0, 0, .45), inset 0 0 0 calc(var(--h0) * .04) #2a1a10, inset 0 0 0 calc(var(--h0) * .055) #c9a35a; }
+.hr-card.back.d-space { background: radial-gradient(circle at 50% 40%, #2c3a66, #10162a); }
+.hr-card.back b { font-family: var(--display); font-size: calc(var(--h0) * .19); line-height: 1; margin: 0; }
+.hr-card.back small { color: #c9a35a; font-size: calc(var(--h0) * .07); }
+.hr-card.none { --c: #5a4a3a; background: none; border: 1px dashed rgba(240, 210, 150, .4); box-shadow: none; justify-content: center; color: var(--mute); }
+.hr-card.none p { color: var(--mute); flex: none; }
+.hr-card.sm { --h0: calc(var(--hr, 80px) * .62); }
+.hr-card.sm p { display: none; }
+.hr-card.sm > b { font-size: calc(var(--h0) * .14); }
+.hr-card.goal-big { --h0: calc(var(--hr, 80px) * 1.35); box-shadow: 0 0 0 calc(var(--h0) * .03) #e3c88c, 0 calc(var(--h0) * .05) calc(var(--h0) * .14) rgba(0, 0, 0, .55); }
+.hr-card.lg { --h0: 150px; }
+
+#houserules { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.hr-mid { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; align-items: center; gap: calc(var(--v) * 3); }
+.hr-pile { display: flex; flex-direction: column; align-items: center; gap: calc(var(--v) * .8); }
+.hr-pile small { font-family: var(--ui); font-size: calc(var(--v) * 1.3); font-weight: 700; letter-spacing: .12em; color: var(--gold-ink); }
+.hr-goals { display: flex; gap: calc(var(--v) * 1.4); }
+.hr-book { display: flex; flex-direction: column; gap: calc(var(--v) * 1.2); max-width: calc(var(--hr) * 2.5); }
+.hr-basic { display: flex; gap: calc(var(--v) * 1.6); }
+.hr-basic span { display: flex; flex-direction: column; align-items: center; font-family: var(--ui); font-weight: 700; font-size: calc(var(--v) * 1.1); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); }
+.hr-basic b { font-family: var(--display); font-size: calc(var(--v) * 4); line-height: 1; color: #fff3d6; }
+.hr-rules { display: flex; flex-wrap: wrap; gap: calc(var(--v) * .6); }
+.hr-msg { position: absolute; left: 0; top: 0; transform: translate(-50%, calc(var(--hr) * 1.25)); margin: 0; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: calc(var(--v) * 2.2); color: var(--ivory); }
+.hr-msg b { font-style: normal; font-family: var(--display); font-weight: 600; color: var(--champagne-hi); }
+.hr-mine { position: absolute; left: 0; top: 0; display: flex; gap: calc(var(--v) * .5); }
+.hr-mine .hr-card.sm { --h0: calc(var(--hr, 80px) * .7); }
+.hr-rules .hr-card.sm { --h0: calc(var(--hr, 80px) * .78); }
+
+/* ---------- phone ---------- */
+body[data-game="houserules"] { background: linear-gradient(180deg, #3a2a1e, #110b07); }
+body[data-game="deepspace"] { background: linear-gradient(180deg, #18203a, #05070f); }
+body[data-game="houserules"] #handWrap, body[data-game="houserules"] #handHint, body[data-game="deepspace"] #handWrap, body[data-game="deepspace"] #handHint { display: none; }
+#hrPhone { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 10px; --hr: min(22vw, 92px); }
+.hr-goalbar, .hr-mykeep { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.hr-goalbar small, .hr-mykeep small { width: 100%; text-align: center; font-family: var(--ui); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); }
+.hr-goalbar em, .hr-mykeep em { font-family: var(--serif); color: var(--mute); }
+.hr-hand { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.hr-hand button, .hr-row button, .hr-who button { padding: 0; border: 0; background: none; cursor: pointer; transition: transform .15s; }
+.hr-hand button.sel { transform: translateY(-8px); }
+.hr-hand button.sel .hr-card { box-shadow: 0 0 0 3px var(--champagne), 0 8px 16px rgba(0, 0, 0, .5); }
+.hr-hand.dim { opacity: .5; }
+.hr-big { display: flex; justify-content: center; }
+.hr-row, .hr-who > div { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.hr-who small { display: block; text-align: center; font-family: var(--ui); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--gold-ink); margin: 4px 0; }
+.hr-players { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.hr-players .panel-btn i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.hr-card.sm > small { display: none; }
+.hr-card.sm > b { margin-top: 20%; }

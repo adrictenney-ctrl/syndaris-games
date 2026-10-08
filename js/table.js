@@ -37,6 +37,8 @@ import ironroutes from './table-ironroutes.js?v=58';
 import homestead from './table-homestead.js?v=58';
 import wordsmith from './table-wordsmith.js?v=58';
 import powerup from './table-powerup.js?v=58';
+import deepspace from './table-deepspace.js?v=58';
+import houserules from './table-houserules.js?v=58';
 import bannerraid from './table-bannerraid.js?v=58';
 import fieldagents from './table-fieldagents.js?v=58';
 import dialitin from './table-dialitin.js?v=58';
@@ -51,7 +53,7 @@ import spires from './table-spires.js?v=58';
 import kaboom from './table-kaboom.js?v=58';
 import nestegg from './table-nestegg.js?v=58';
 
-const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones, wrongnumber, scribble, manor, warfront, ironroutes, homestead, wordsmith, powerup, nestegg, kaboom, spires, grandprix, redline, gearworks, tessera, passpot, luckystreak, pileup, dialitin, fieldagents, bannerraid };
+const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones, wrongnumber, scribble, manor, warfront, ironroutes, homestead, wordsmith, powerup, nestegg, kaboom, spires, grandprix, redline, gearworks, tessera, passpot, luckystreak, pileup, dialitin, fieldagents, bannerraid, houserules, deepspace };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';

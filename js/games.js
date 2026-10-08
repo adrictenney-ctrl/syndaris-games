@@ -508,3 +508,23 @@ GAMES.bannerraid = {
   startLabel: 'Muster the troops',
   layout: GAMES.chess.layout,
 };
+
+GAMES.houserules = {
+  id: 'houserules',
+  name: 'House Rules',
+  blurb: '2–6 players · the rules change every time someone plays a card',
+  min: 2,
+  max: 6,
+  startLabel: 'Deal three each',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.deepspace = {
+  id: 'deepspace',
+  name: 'House Rules: Deep Space',
+  blurb: '2–6 players · ever-changing rules among the stars, with Creepers',
+  min: 2,
+  max: 6,
+  startLabel: 'Launch the deck',
+  layout: GAMES.holdem.layout,
+};
