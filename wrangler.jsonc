@@ -1,0 +1,7 @@
+// Cloudflare deploy settings for playondisplay.com (an assets-only Worker).
+// Deploy with:  bash deploy-cloudflare.sh
+{
+  "name": "playondisplay",
+  "compatibility_date": "2026-10-08",
+  "assets": { "directory": "../play-on-display-site" }
+}

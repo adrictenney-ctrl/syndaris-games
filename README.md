@@ -522,6 +522,10 @@ N=49; sed -i -E "s#\?v=[0-9]+#?v=$N#g" js/*.js *.html
 ```
 
 ### Cloudflare (playondisplay.com)
+`bash deploy-cloudflare.sh` builds the flat site, publishes it straight to the Cloudflare Worker `playondisplay`
+(playondisplay.com) with Wrangler, and copies the same files to the Dropbox folder. Needs Node.js and a one-time
+`wrangler login`. Settings are in `wrangler.jsonc`.
+
 playondisplay.com is a Cloudflare Pages upload. Run `bash build-cloudflare.sh` to build a flat folder
 (`../play-on-display-site`, no sub-folders), then drag all of its files into a new Cloudflare deployment.
 
