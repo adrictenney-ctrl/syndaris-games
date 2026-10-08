@@ -1,8 +1,8 @@
 // Sketch & Guess on the table: a sketch pad in the middle shows the drawing as it's made,
 // with the word's blanks and the clock above it. At the end of each turn the answers card
 // shows every player's final answer.
-import * as S from './sketch.js?v=63';
-import { fitCanvas, paint } from './sketch-pad.js?v=63';
+import * as S from './sketch.js?v=64';
+import { fitCanvas, paint } from './sketch-pad.js?v=64';
 
 let root = null, cv = null;
 let gameRef = null, ctxRef = null;

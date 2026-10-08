@@ -2,9 +2,9 @@
 // Payday is the top-left corner and play runs clockwise. Each lot carries its district's
 // colour as a ribbon on the inside edge, the owner's colour as a flag, and its floors.
 // The centre of the board shows the skyline, the dice, the latest Fortune card and news.
-import * as K from './skyline.js?v=63';
-import { snap } from './cards.js?v=63';
-import { dieHTML } from './table-yacht.js?v=63';
+import * as K from './skyline.js?v=64';
+import { snap } from './cards.js?v=64';
+import { dieHTML } from './table-yacht.js?v=64';
 
 let root = null, tokenAt = {}, hopTimers = {}, lastRoll = -1, lastCard = 0, B = 0, U = 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

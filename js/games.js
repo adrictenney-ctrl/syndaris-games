@@ -626,3 +626,87 @@ GAMES.cribbage = {
   max: 2,
   layout: [S(50, 100, 0, 'South'), S(50, 0, 2, 'North')],
 };
+
+GAMES.stackup = {
+  id: 'stackup',
+  name: 'Stack Up',
+  blurb: '2–6 players · build 1 to 12, empty your stock pile first',
+  min: 2,
+  max: 6,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.rackem = {
+  id: 'rackem',
+  name: 'Rack ’Em',
+  blurb: '2–4 players · put ten cards in order, lowest to highest',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.bento = {
+  id: 'bento',
+  name: 'Bento Box',
+  blurb: '2–5 players · pick a card, pass the rest, pack the best lunch',
+  min: 2,
+  max: 5,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.dealmaker = {
+  id: 'dealmaker',
+  name: 'Deal Maker',
+  blurb: '2–5 players · charge rent, steal deals, complete three sets',
+  min: 2,
+  max: 5,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.roadrally = {
+  id: 'roadrally',
+  name: 'Road Rally',
+  blurb: '2–4 players · drive 1000 miles, hit rivals with hazards',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.unicorns = {
+  id: 'unicorns',
+  name: 'Unicorn Chaos',
+  blurb: '2–6 players · build a stable of seven unicorns, sabotage everyone else',
+  min: 2,
+  max: 6,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.powergrab = {
+  id: 'powergrab',
+  name: 'Power Grab',
+  blurb: '2–6 players · claim any role, call bluffs, be the last one standing',
+  min: 2,
+  max: 6,
+  startLabel: 'Deal the roles',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.rebelcell = {
+  id: 'rebelcell',
+  name: 'Rebel Cell',
+  blurb: '5–10 players · five missions, hidden spies, trust no one',
+  min: 5,
+  max: 10,
+  startLabel: 'Deal the roles',
+  layout: GAMES.crown.layout,
+};
+
+GAMES.roundtable = {
+  id: 'roundtable',
+  name: 'Round Table',
+  blurb: '5–10 players · loyal knights, hidden traitors, and a Seer to protect',
+  min: 5,
+  max: 10,
+  startLabel: 'Deal the roles',
+  layout: GAMES.crown.layout,
+};

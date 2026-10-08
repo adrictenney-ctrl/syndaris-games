@@ -1,7 +1,7 @@
 // The trick on the table for the trick-taking games: each card slides in from its player's
 // edge, the winning card glows, and the finished trick sweeps off toward whoever won it.
 // (Euchre has its own copy of this; the newer games share this one.)
-import { cardEl, setFace, snap } from './cards.js?v=63';
+import { cardEl, setFace, snap } from './cards.js?v=64';
 
 const DIR = [[0, 1], [-1, 0], [0, -1], [1, 0]];
 

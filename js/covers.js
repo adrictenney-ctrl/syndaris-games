@@ -528,3 +528,58 @@ cover('cribbage', id => shell(id, { title: 'Cribbage', tag: 'Fifteen two · peg 
   <rect x="-60" y="-34" width="8" height="26" rx="4" fill="#c0392b"/><rect x="40" y="-6" width="8" height="26" rx="4" fill="#2f6fae"/></g>
   ${card(id, 210, 250, { rank: '5', suit: '♥', red: true, w: 80, rot: -10 })}${card(id, 262, 252, { rank: 'J', suit: '♣', w: 80, rot: 0, face: jackFace('#1d1b1a', 80) })}${card(id, 314, 250, { rank: '5', suit: '♠', w: 80, rot: 10 })}
 `));
+
+cover('stackup', id => shell(id, { title: 'Stack Up', tag: 'Build 1 to 12 · empty your stock', bg: ['#5e4a86', '#3a2c54', '#110c1a'], cy: 32 }, `
+  ${glow(id, 300, 150, 150, '#ffd36a', .2)}
+  ${[1, 2, 3, 4, 5, 6].map((v, i) => `<g transform="translate(${200 + i * 26} ${210 - i * 22}) rotate(${-14 + i * 5})" filter="url(#${id}-sh)"><rect x="-44" y="-62" width="88" height="124" rx="9" fill="#fffaf0" stroke="${v <= 4 ? '#2f7a8a' : '#c27a1e'}" stroke-width="5"/><text y="20" text-anchor="middle" font-family="${SERIF}" font-size="58" fill="${v <= 4 ? '#2f7a8a' : '#c27a1e'}">${v}</text></g>`).join('')}
+  <g transform="translate(480 150) rotate(12)" filter="url(#${id}-sh)"><rect x="-44" y="-62" width="88" height="124" rx="9" fill="#f0c75a" stroke="#b8892a" stroke-width="5"/><text y="22" text-anchor="middle" font-size="56" fill="#5a3a08">★</text></g>
+`));
+
+cover('rackem', id => shell(id, { title: 'Rack ’Em', tag: 'Low to high · ten slots', bg: ['#357078', '#1f4a52', '#081619'], cy: 32 }, `
+  <g transform="translate(300 150) rotate(-8)" filter="url(#${id}-sh)"><rect x="-160" y="-120" width="320" height="230" rx="16" fill="#8a5a32"/>
+  ${[4, 11, 17, 23, 30, 36, 42, 49].map((v, i) => `<g transform="translate(0 ${-102 + i * 26})"><rect x="-140" y="0" width="280" height="22" rx="4" fill="#fbf5e6"/><rect x="-140" y="0" width="60" height="22" rx="4" fill="hsl(${200 - v * 3} 55% 45%)"/><text x="-110" y="17" text-anchor="middle" font-family="${SERIF}" font-size="18" fill="#fff">${v}</text><rect x="${-70 + v * 3.6}" y="6" width="22" height="10" rx="5" fill="hsl(${200 - v * 3} 55% 45%)" opacity=".7"/></g>`).join('')}</g>
+`));
+
+cover('bento', id => shell(id, { title: 'Bento Box', tag: 'Pick one · pass the rest', bg: ['#9a4a3e', '#5a2a22', '#1c0b08'], cy: 32 }, `
+  <g transform="translate(300 140) rotate(-5)" filter="url(#${id}-sh)"><rect x="-170" y="-90" width="340" height="190" rx="18" fill="#1a0f0a"/><rect x="-160" y="-80" width="320" height="170" rx="12" fill="#2a1a12" stroke="#c9853a" stroke-width="3"/>
+  <path d="M0 -80 V90 M-160 5 H0" stroke="#c9853a" stroke-width="3"/>
+  <text x="-80" y="-12" text-anchor="middle" font-size="56">🍣</text><text x="80" y="20" text-anchor="middle" font-size="80">🍙</text><text x="-120" y="70" text-anchor="middle" font-size="44">🥟</text><text x="-50" y="70" text-anchor="middle" font-size="44">🍡</text></g>
+  <text x="520" y="90" font-size="56" transform="rotate(20 520 90)">🥢</text>
+`));
+
+cover('dealmaker', id => shell(id, { title: 'Deal Maker', tag: 'Rent · steal · three sets', bg: ['#3a8a72', '#1f5a4a', '#081a15'], cy: 32 }, `
+  ${[['#c8323a', 'Theatre Lane', -18, 200], ['#e6c23a', 'Sunny Heights', -4, 280], ['#3a9a5a', 'Park Avenue', 10, 360]].map(([c, n, r, x]) => `<g transform="translate(${x} 160) rotate(${r})" filter="url(#${id}-sh)"><rect x="-58" y="-82" width="116" height="164" rx="9" fill="#fffaf0"/><rect x="-58" y="-82" width="116" height="52" rx="9" fill="${c}"/><rect x="-58" y="-42" width="116" height="12" fill="${c}"/><text y="10" text-anchor="middle" font-family="${SERIF}" font-size="13.5" fill="#2a2018">${n}</text><text y="40" text-anchor="middle" font-family="${UI}" font-size="11" fill="#5a4a3a">rent 2 · 4 · 7</text></g>`).join('')}
+  <g transform="translate(500 120) rotate(14)" filter="url(#${id}-sh)"><rect x="-50" y="-70" width="100" height="140" rx="9" fill="#b8d4a0" stroke="#5a8a4a" stroke-width="5"/><text y="18" text-anchor="middle" font-family="${SERIF}" font-size="56" fill="#2a5a2a">5</text></g>
+`));
+
+cover('roadrally', id => shell(id, { title: 'Road Rally', tag: 'A thousand miles · watch for hazards', bg: ['#76884e', '#4a5a30', '#141a0c'], cy: 30 }, `
+  <path d="M-20 300 Q200 180 300 200 T640 120" stroke="#3a3a3a" stroke-width="70" fill="none"/><path d="M-20 300 Q200 180 300 200 T640 120" stroke="#f3d67a" stroke-width="4" stroke-dasharray="22 18" fill="none"/>
+  <g transform="translate(300 196) scale(-1 1)"><text text-anchor="middle" font-size="64">🚗</text></g>
+  ${[['100', '#3a6a9a', 120, 110, -10], ['💥', '#b8323a', 470, 70, 12]].map(([t, c, x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})" filter="url(#${id}-sh)"><rect x="-42" y="-58" width="84" height="116" rx="8" fill="#fffaf0" stroke="${c}" stroke-width="5"/><text y="${t.length > 2 ? 14 : 18}" text-anchor="middle" font-family="${SERIF}" font-size="${t.length > 2 ? 38 : 44}" fill="${c}">${t}</text></g>`).join('')}
+`));
+
+cover('unicorns', id => shell(id, { title: 'Unicorn Chaos', tag: 'Seven unicorns · zero mercy', bg: ['#8a4aa0', '#4a2656', '#1a0c20'], cy: 30, defs: `<linearGradient id="${id}-rb" x1="0" x2="1"><stop offset="0" stop-color="#ff5a5a"/><stop offset=".3" stop-color="#ffd36a"/><stop offset=".6" stop-color="#6ae08a"/><stop offset="1" stop-color="#6ab0ff"/></linearGradient>` }, `
+  ${stars(60, 7, 300, .8)}
+  ${glow(id, 300, 140, 150, '#ffb0f0', .3)}
+  <path d="M0 260 Q150 200 300 230 T600 210" stroke="url(#${id}-rb)" stroke-width="26" fill="none" opacity=".55"/>
+  ${[[180, 160, -14, 290, '🦄'], [300, 140, 0, 200, '✨'], [420, 160, 14, 330, '🦄']].map(([x, y, r, h, e]) => `<g transform="translate(${x} ${y}) rotate(${r})" filter="url(#${id}-sh)"><rect x="-54" y="-76" width="108" height="152" rx="10" fill="hsl(${h} 70% 94%)" stroke="hsl(${h} 50% 55%)" stroke-width="5"/><text y="18" text-anchor="middle" font-size="58">${e}</text></g>`).join('')}
+`));
+
+cover('powergrab', id => shell(id, { title: 'Power Grab', tag: 'Claim it · bluff it · seize it', bg: ['#6a3a52', '#3a2030', '#12080e'], cy: 30 }, `
+  ${glow(id, 300, 130, 140, '#ffd38a', .3)}
+  ${[['👑', '#a8323a', 'Duchess', -14, 230], ['🗡️', '#2a2a2a', 'Shadow', 12, 370]].map(([e, c, n, r, x]) => `<g transform="translate(${x} 150) rotate(${r})" filter="url(#${id}-sh)"><rect x="-60" y="-84" width="120" height="168" rx="10" fill="#fffaf0" stroke="${c}" stroke-width="6"/><rect x="-52" y="-76" width="104" height="152" rx="6" fill="none" stroke="${c}" stroke-width="1.5"/><text y="14" text-anchor="middle" font-size="58">${e}</text><text y="56" text-anchor="middle" font-family="${SERIF}" font-size="20" fill="${c}">${n}</text></g>`).join('')}
+  ${[100, 130, 160].map((x, i) => `<circle cx="${x}" cy="${250 - i * 6}" r="16" fill="#e8c35a" stroke="#9a7020" stroke-width="2"/>`).join('')}
+`));
+
+cover('rebelcell', id => shell(id, { title: 'Rebel Cell', tag: 'Five missions · hidden spies', bg: ['#3a5050', '#1c2828', '#080e0e'], cy: 30 }, `
+  <g opacity=".2" stroke="#9fd6dc">${Array.from({ length: 10 }, (_, i) => `<path d="M0 ${i * 40} H600 M${i * 64} 0 V400"/>`).join('')}</g>
+  ${[0, 1, 2, 3, 4].map(i => `<g filter="url(#${id}-sh)"><circle cx="${140 + i * 80}" cy="130" r="30" fill="${['#2f8a4a', '#b8323a', '#2f8a4a', 'none', 'none'][i]}" stroke="#e3d2ab" stroke-width="3"/><text x="${140 + i * 80}" y="141" text-anchor="middle" font-family="${SERIF}" font-size="30" fill="#fff">${['✓', '✗', '✓', '4', '5'][i]}</text></g>`).join('')}
+  <text x="300" y="235" text-anchor="middle" font-size="60">🕵️</text>
+`));
+
+cover('roundtable', id => shell(id, { title: 'Round Table', tag: 'Knights · traitors · a hidden Seer', bg: ['#7a5228', '#3e2814', '#140c06'], cy: 30 }, `
+  ${glow(id, 300, 140, 150, '#ffd38a', .25)}
+  <g filter="url(#${id}-sh)"><ellipse cx="300" cy="160" rx="170" ry="70" fill="#6a4220" stroke="#c9a35a" stroke-width="4"/><ellipse cx="300" cy="155" rx="150" ry="58" fill="#7a5028"/></g>
+  ${['🛡️', '🔮', '🛡️', '🔪', '🛡️', '🐎', '🧙'].map((e, i) => { const a = Math.PI * (1.08 + i * 0.14); return `<text x="${300 + Math.cos(a) * 205}" y="${172 + Math.sin(a) * 100}" text-anchor="middle" font-size="34">${e}</text>`; }).join('')}
+  <text x="300" y="175" text-anchor="middle" font-size="50">🗡️</text>
+`));

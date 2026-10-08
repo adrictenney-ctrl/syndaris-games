@@ -1,9 +1,9 @@
 // Warfront on a phone: the map, small enough to hold, big enough to tap. Reinforce by tapping
 // your territories; attack by tapping one of yours and then an enemy next to it; fortify by
 // tapping where troops come from and where they go.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=63';
-import { MAP, ADJ, isSet, tradeValue, SYMBOLS, connected } from './warfront.js?v=63';
-import { mapSVG } from './table-warfront.js?v=63';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=64';
+import { MAP, ADJ, isSet, tradeValue, SYMBOLS, connected } from './warfront.js?v=64';
+import { mapSVG } from './table-warfront.js?v=64';
 
 let ctx = null, sel = null, tgt = null, amount = 1, moveN = 1, wasMyTurn = false;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

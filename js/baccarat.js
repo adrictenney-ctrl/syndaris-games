@@ -3,7 +3,7 @@
 // by the fixed drawing rules. Closest to 9 wins.
 // Pays: Player 1:1, Banker 0.95:1 (5% commission), Tie 8:1 (Player and Banker bets push),
 // Player Pair / Banker Pair 11:1.
-import { makeShoe, syncStacks } from './casino.js?v=63';
+import { makeShoe, syncStacks } from './casino.js?v=64';
 
 export const SPOTS = ['player', 'banker', 'tie', 'ppair', 'bpair'];
 export const PAYS = { player: 1, banker: 0.95, tie: 8, ppair: 11, bpair: 11 };

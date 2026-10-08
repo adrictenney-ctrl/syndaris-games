@@ -5,9 +5,9 @@
 // deadwood at all for Gin (+25, no laying off). Get undercut (their deadwood is as low as
 // yours) and they score the difference +25. First to the target wins (+100 game bonus).
 // If the stock runs down to two cards the hand is a wash.
-import { fullDeck, shuffle, announce } from './tricks.js?v=63';
-import { bestMelds, val, layOffAll, sortMeld } from './rummycore.js?v=63';
-import { handSort } from './rummy.js?v=63';
+import { fullDeck, shuffle, announce } from './tricks.js?v=64';
+import { bestMelds, val, layOffAll, sortMeld } from './rummycore.js?v=64';
+import { handSort } from './rummy.js?v=64';
 
 export function createGame(settings) {
   const g = { settings: { target: 100, ...settings }, scores: [0, 0], dealer: Math.floor(Math.random() * 2), handNo: 0, annId: 0, moveId: 0 };

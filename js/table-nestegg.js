@@ -1,8 +1,8 @@
 // Nest Egg on the table: the deck and the discard pile in the middle, each player's stack of
 // sets in front of them (only the top set shows — that's the one that can be stolen), and any
 // challenge being fought out between the two piles.
-import * as N from './nestegg.js?v=63';
-import { snap } from './cards.js?v=63';
+import * as N from './nestegg.js?v=64';
+import { snap } from './cards.js?v=64';
 
 let root = null, piles = {}, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
