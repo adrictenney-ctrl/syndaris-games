@@ -1222,3 +1222,233 @@ GAMES.faceoff = {
   startLabel: "Hand out prompts",
   layout: GAMES.holdem.layout,
 };
+
+GAMES.flagfrenzy = {
+  id: 'flagfrenzy',
+  name: "Flag Frenzy",
+  blurb: "1–10 players · flags on the big screen, answers on your phone",
+  min: 1,
+  max: 10,
+  startLabel: "Raise the flags",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.capitalquest = {
+  id: 'capitalquest',
+  name: "Capital Quest",
+  blurb: "1–10 players · name the capital city before everyone else",
+  min: 1,
+  max: 10,
+  startLabel: "Start the tour",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.trueorfalse = {
+  id: 'trueorfalse',
+  name: "True or False?",
+  blurb: "1–10 players · surprising facts — tap true or false, fast",
+  min: 1,
+  max: 10,
+  startLabel: "First fact",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.emojiphrase = {
+  id: 'emojiphrase',
+  name: "Emoji Phrase",
+  blurb: "1–10 players · decode the emoji on the table, type the phrase",
+  min: 1,
+  max: 10,
+  startLabel: "Show the first puzzle",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.numbercrunch = {
+  id: 'numbercrunch',
+  name: "Number Crunch",
+  blurb: "1–10 players · mental maths race on the big screen",
+  min: 1,
+  max: 10,
+  startLabel: "Crunch!",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.whichismore = {
+  id: 'whichismore',
+  name: "Which Is More?",
+  blurb: "1–10 players · two choices, one is bigger, faster, older…",
+  min: 1,
+  max: 10,
+  startLabel: "First face-off",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.missingvowels = {
+  id: 'missingvowels',
+  name: "Missing Vowels",
+  blurb: "1–10 players · the vowels vanished — type the word",
+  min: 1,
+  max: 10,
+  startLabel: "Remove the vowels",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.wordscramble = {
+  id: 'wordscramble',
+  name: "Word Scramble",
+  blurb: "1–10 players · unscramble the letters before the clock runs out",
+  min: 1,
+  max: 10,
+  startLabel: "Scramble!",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.riddleme = {
+  id: 'riddleme',
+  name: "Riddle Me This",
+  blurb: "1–10 players · classic riddles — type the answer",
+  min: 1,
+  max: 10,
+  startLabel: "First riddle",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.doesntbelong = {
+  id: 'doesntbelong',
+  name: "Doesn’t Belong",
+  blurb: "1–10 players · four things, one is the odd one out",
+  min: 1,
+  max: 10,
+  startLabel: "Spot the odd one",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.wildfacts = {
+  id: 'wildfacts',
+  name: "Wild Facts",
+  blurb: "1–10 players · animal trivia for the whole room",
+  min: 1,
+  max: 10,
+  startLabel: "Into the wild",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.finishthesaying = {
+  id: 'finishthesaying',
+  name: "Finish the Saying",
+  blurb: "1–10 players · complete the proverb, fastest wins",
+  min: 1,
+  max: 10,
+  startLabel: "Begin",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.continentquest = {
+  id: 'continentquest',
+  name: "Continent Quest",
+  blurb: "1–10 players · which continent is that country in?",
+  min: 1,
+  max: 10,
+  startLabel: "Spin the globe",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.colorclash = {
+  id: 'colorclash',
+  name: "Colour Clash",
+  blurb: "1–10 players · tap the colour of the ink, not the word",
+  min: 1,
+  max: 10,
+  startLabel: "Clash!",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.countit = {
+  id: 'countit',
+  name: "Count It",
+  blurb: "1–10 players · a flash of pictures on the table — how many?",
+  min: 1,
+  max: 10,
+  startLabel: "Ready… look!",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.lastonestanding = {
+  id: 'lastonestanding',
+  name: "Last One Standing",
+  blurb: "2–10 players · trivia elimination — one wrong and you’re out",
+  min: 2,
+  max: 10,
+  startLabel: "Everyone stand",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.buzzin = {
+  id: 'buzzin',
+  name: "Buzz In",
+  blurb: "2–10 players · first right answer takes the points — wrong costs you",
+  min: 2,
+  max: 10,
+  startLabel: "Fingers on buzzers",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.whatyear = {
+  id: 'whatyear',
+  name: "What Year?",
+  blurb: "1–10 players · guess the year of famous events, closest wins",
+  min: 1,
+  max: 10,
+  startLabel: "Turn back time",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.nextinline = {
+  id: 'nextinline',
+  name: "Next in Line",
+  blurb: "1–10 players · number patterns — what comes next?",
+  min: 1,
+  max: 10,
+  startLabel: "First pattern",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.opposites = {
+  id: 'opposites',
+  name: "Opposites",
+  blurb: "1–10 players · pick the word that means the opposite",
+  min: 1,
+  max: 10,
+  startLabel: "Flip it",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.cluecrack = {
+  id: 'cluecrack',
+  name: "Clue Crack",
+  blurb: "1–10 players · crossword clues on the big screen",
+  min: 1,
+  max: 10,
+  startLabel: "Read the first clue",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.sortitout = {
+  id: 'sortitout',
+  name: "Sort It Out",
+  blurb: "1–10 players · put four things in the right order on your phone",
+  min: 1,
+  max: 10,
+  startLabel: "Shuffle the cards",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.flashmemory = {
+  id: 'flashmemory',
+  name: "Flash Memory",
+  blurb: "1–10 players · pictures flash on the table — which one wasn’t there?",
+  min: 1,
+  max: 10,
+  startLabel: "Memorise!",
+  layout: GAMES.crown.layout,
+};

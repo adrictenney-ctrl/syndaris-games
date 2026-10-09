@@ -823,3 +823,45 @@ cover('faceoff', id => shell(id, { title: 'Face Off', tag: 'Two answers enter ·
   ${pc(id, 410, 165, 5, 190, 110, '#fffaf0', `<text y="-6" text-anchor="middle" font-family="${SERIF}" font-style="italic" font-size="20" fill="#2a1a10">“a tiny horse”</text><text y="30" text-anchor="middle" font-size="22">👍</text>`)}
   <text x="300" y="80" text-anchor="middle" font-family="${UI}" font-weight="900" font-size="44" fill="#ffd070" stroke="#5a2010" stroke-width="2">VS</text>
 `));
+
+// ---- Family covers: a big emoji emblem over a backdrop that says what kind of game it is
+// (quiz-show lights, casino felt, fanned cards, dice, a board grid, party confetti, a phone + screen).
+const motif = (id, kind, c) => {
+  if (kind === 'quiz') return `${[0, 1, 2, 3, 4, 5, 6].map(i => `<path d="M300 -20 L${60 + i * 80} 260" stroke="#fff" stroke-opacity=".06" stroke-width="40"/>`).join('')}<ellipse cx="300" cy="250" rx="230" ry="40" fill="#000" opacity=".25"/>${Array.from({ length: 16 }, (_, i) => `<circle cx="${40 + i * 35}" cy="30" r="5" fill="#ffe8a0" opacity="${i % 2 ? .9 : .4}"/>`).join('')}`;
+  if (kind === 'casino') return `<ellipse cx="300" cy="190" rx="290" ry="150" fill="#0e3a24" opacity=".55"/><ellipse cx="300" cy="190" rx="270" ry="135" fill="none" stroke="#e8c35a" stroke-opacity=".35" stroke-width="3"/>${[[110, 250, '#b8232a'], [130, 236, '#1d1b1a'], [480, 250, '#2a5ad8'], [500, 236, '#e8c35a']].map(([x, y, f]) => `<g transform="translate(${x} ${y})"><ellipse rx="26" ry="10" fill="${f}" stroke="#fff" stroke-dasharray="6 5" stroke-width="2"/></g>`).join('')}`;
+  if (kind === 'cards') return [-28, -12, 4, 20].map((r, i) => `<g transform="translate(${170 + i * 18} 200) rotate(${r})" filter="url(#${id}-sh)"><rect x="-50" y="-72" width="100" height="144" rx="9" fill="url(#${id}-card)"/><text x="-40" y="-48" font-family="${SERIF}" font-size="22" fill="${i % 2 ? '#a3262a' : '#1d1b1a'}">${['A', 'K', 'Q', 'J'][i]}</text></g>`).join('') + [-20, 0, 20].map((r, i) => `<g transform="translate(${430 + i * 14} 210) rotate(${r})" filter="url(#${id}-sh)"><rect x="-44" y="-64" width="88" height="128" rx="8" fill="#6a1f24"/><rect x="-36" y="-56" width="72" height="112" rx="5" fill="none" stroke="#e3c88c" stroke-width="2"/></g>`).join('');
+  if (kind === 'dice') return `${die(id, 140, 230, 70, 6, { rot: -16 })}${die(id, 470, 225, 64, 3, { rot: 14 })}${die(id, 520, 120, 44, 5, { rot: -8 })}${die(id, 90, 120, 40, 2, { rot: 10 })}`;
+  if (kind === 'board') return `<g opacity=".28">${Array.from({ length: 9 }, (_, i) => `<path d="M${60 + i * 60} 20 V380 M60 ${20 + i * 45} H540" stroke="#fff" stroke-width="1.5"/>`).join('')}</g>${[[150, 110, '#e8473c'], [450, 290, '#3d8be8'], [480, 110, '#f2c230'], [120, 290, '#3fb35c']].map(([x, y, f]) => `<circle cx="${x}" cy="${y}" r="20" fill="${f}" filter="url(#${id}-sh)"/>`).join('')}`;
+  if (kind === 'phone') return `<g filter="url(#${id}-sh)"><rect x="70" y="120" width="90" height="160" rx="16" fill="#111" stroke="#555" stroke-width="3"/><rect x="78" y="134" width="74" height="126" rx="6" fill="${c[0]}"/><rect x="440" y="110" width="90" height="160" rx="16" fill="#111" stroke="#555" stroke-width="3"/><rect x="448" y="124" width="74" height="126" rx="6" fill="${c[0]}"/></g>`;
+  return Array.from({ length: 40 }, (_, i) => `<rect x="${(i * 97) % 600}" y="${(i * 53) % 260}" width="10" height="5" rx="2" fill="${['#f2c230', '#e8473c', '#3d8be8', '#3fb35c', '#a05ad8'][i % 5]}" opacity=".55" transform="rotate(${(i * 37) % 180} ${(i * 97) % 600} ${(i * 53) % 260})"/>`).join('');
+};
+export const emblemCover = (id, o) => shell(id, { title: o.title, tag: o.tag, bg: o.bg, cy: 30 }, `
+  ${motif(id, o.kind, o.bg)}
+  ${glow(id, 300, 150, 120, '#fff4d0', .28)}
+  <circle cx="300" cy="150" r="92" fill="#000" opacity=".25"/>
+  <circle cx="300" cy="150" r="84" fill="none" stroke="url(#${id}-gold)" stroke-width="5"/>
+  <text x="300" y="${150 + 38}" text-anchor="middle" font-size="104">${o.emoji}</text>
+`);
+cover('flagfrenzy', id => emblemCover(id, {"title":"Flag Frenzy","tag":"Flags on the big screen, answers on your phone","bg":["#2a5aa8","#142c58","#060c1c"],"emoji":"🏳️‍🌈","kind":"party"}));
+cover('capitalquest', id => emblemCover(id, {"title":"Capital Quest","tag":"Name the capital city before everyone else","bg":["#5a3a8a","#2c1c48","#0c0818"],"emoji":"🏛️","kind":"party"}));
+cover('trueorfalse', id => emblemCover(id, {"title":"True or False?","tag":"Surprising facts — tap true or false, fast","bg":["#2a7a5a","#143e2e","#06140e"],"emoji":"✅","kind":"party"}));
+cover('emojiphrase', id => emblemCover(id, {"title":"Emoji Phrase","tag":"Decode the emoji on the table, type the phrase","bg":["#8a5a2a","#4a2e14","#180e06"],"emoji":"🧩","kind":"party"}));
+cover('numbercrunch', id => emblemCover(id, {"title":"Number Crunch","tag":"Mental maths race on the big screen","bg":["#2a5a6a","#142e38","#060e14"],"emoji":"🧮","kind":"party"}));
+cover('whichismore', id => emblemCover(id, {"title":"Which Is More?","tag":"Two choices, one is bigger, faster, older…","bg":["#7a2e5a","#401834","#16060f"],"emoji":"⚖️","kind":"party"}));
+cover('missingvowels', id => emblemCover(id, {"title":"Missing Vowels","tag":"The vowels vanished — type the word","bg":["#3e6a2a","#203814","#0a1406"],"emoji":"🔤","kind":"party"}));
+cover('wordscramble', id => emblemCover(id, {"title":"Word Scramble","tag":"Unscramble the letters before the clock…","bg":["#7a6028","#3e3014","#161006"],"emoji":"🔀","kind":"party"}));
+cover('riddleme', id => emblemCover(id, {"title":"Riddle Me This","tag":"Classic riddles — type the answer","bg":["#44307a","#22183e","#0a0616"],"emoji":"❓","kind":"party"}));
+cover('doesntbelong', id => emblemCover(id, {"title":"Doesn’t Belong","tag":"Four things, one is the odd one out","bg":["#7a4228","#3e2014","#160a06"],"emoji":"🧐","kind":"party"}));
+cover('wildfacts', id => emblemCover(id, {"title":"Wild Facts","tag":"Animal trivia for the whole room","bg":["#3e7a3e","#1e3e1e","#081608"],"emoji":"🦁","kind":"party"}));
+cover('finishthesaying', id => emblemCover(id, {"title":"Finish the Saying","tag":"Complete the proverb, fastest wins","bg":["#7a6044","#3e3022","#16100a"],"emoji":"📜","kind":"party"}));
+cover('continentquest', id => emblemCover(id, {"title":"Continent Quest","tag":"Which continent is that country in?","bg":["#2a7a7a","#143e3e","#061616"],"emoji":"🗺️","kind":"party"}));
+cover('colorclash', id => emblemCover(id, {"title":"Colour Clash","tag":"Tap the colour of the ink, not the word","bg":["#6a2a6a","#361436","#120612"],"emoji":"🎨","kind":"party"}));
+cover('countit', id => emblemCover(id, {"title":"Count It","tag":"A flash of pictures on the table — how many?","bg":["#7a7a28","#3e3e14","#161606"],"emoji":"👀","kind":"party"}));
+cover('lastonestanding', id => emblemCover(id, {"title":"Last One Standing","tag":"Trivia elimination — one wrong and you’re out","bg":["#7a2a2a","#3e1414","#160606"],"emoji":"🏆","kind":"party"}));
+cover('buzzin', id => emblemCover(id, {"title":"Buzz In","tag":"First right answer takes the points — wrong…","bg":["#8a5010","#462808","#180e02"],"emoji":"🔔","kind":"party"}));
+cover('whatyear', id => emblemCover(id, {"title":"What Year?","tag":"Guess the year of famous events, closest wins","bg":["#3e3e7a","#1e1e3e","#080816"],"emoji":"📅","kind":"party"}));
+cover('nextinline', id => emblemCover(id, {"title":"Next in Line","tag":"Number patterns — what comes next?","bg":["#28447a","#14223e","#060a16"],"emoji":"🔢","kind":"party"}));
+cover('opposites', id => emblemCover(id, {"title":"Opposites","tag":"Pick the word that means the opposite","bg":["#6a2a48","#361424","#12060c"],"emoji":"↔️","kind":"party"}));
+cover('cluecrack', id => emblemCover(id, {"title":"Clue Crack","tag":"Crossword clues on the big screen","bg":["#4a4a4a","#262626","#0c0c0c"],"emoji":"✏️","kind":"party"}));
+cover('sortitout', id => emblemCover(id, {"title":"Sort It Out","tag":"Put four things in the right order on your…","bg":["#2a6a48","#143624","#06120c"],"emoji":"📶","kind":"party"}));
+cover('flashmemory', id => emblemCover(id, {"title":"Flash Memory","tag":"Pictures flash on the table — which one…","bg":["#5e447a","#2e223e","#0e0a16"],"emoji":"🧠","kind":"party"}));

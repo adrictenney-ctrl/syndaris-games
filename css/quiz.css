@@ -1,0 +1,42 @@
+/* Quiz-show games (quiz-games.js + table-quiz.js): a studio stage with spotlights. */
+body[data-game="flagfrenzy"] #felt,
+body[data-game="capitalquest"] #felt,
+body[data-game="trueorfalse"] #felt,
+body[data-game="emojiphrase"] #felt,
+body[data-game="numbercrunch"] #felt,
+body[data-game="whichismore"] #felt,
+body[data-game="missingvowels"] #felt,
+body[data-game="wordscramble"] #felt,
+body[data-game="riddleme"] #felt,
+body[data-game="doesntbelong"] #felt,
+body[data-game="wildfacts"] #felt,
+body[data-game="finishthesaying"] #felt,
+body[data-game="continentquest"] #felt,
+body[data-game="colorclash"] #felt,
+body[data-game="countit"] #felt,
+body[data-game="lastonestanding"] #felt,
+body[data-game="buzzin"] #felt,
+body[data-game="whatyear"] #felt,
+body[data-game="nextinline"] #felt,
+body[data-game="opposites"] #felt,
+body[data-game="cluecrack"] #felt,
+body[data-game="sortitout"] #felt,
+body[data-game="flashmemory"] #felt { background: radial-gradient(ellipse 70% 50% at 50% 38%, rgba(255, 236, 190, .12), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2a2448 0%, #17132c 55%, #07060f 100%); }
+.qz-q { max-width: 74vmin; }
+.qz-big { font-family: var(--ui); font-weight: 800; font-size: 9vmin; line-height: 1.1; color: #fff3d6; letter-spacing: .04em; text-align: center; }
+.qz-flag { display: block; width: 30vmin; height: auto; filter: drop-shadow(0 1.4vmin 2.4vmin rgba(0, 0, 0, .5)); }
+.qz-stroop { font-family: var(--ui); font-weight: 900; font-size: 13vmin; letter-spacing: .06em; }
+.qz-show { position: relative; display: grid; place-items: center; width: 70vmin; min-height: 30vmin; border-radius: 2vmin; background: rgba(255, 250, 240, .95); box-shadow: 0 2vmin 4vmin rgba(0, 0, 0, .5); }
+.qz-show.flash { animation: trPop .3s; }
+.qz-show.gone { min-height: 14vmin; width: 30vmin; background: rgba(255, 255, 255, .06); font-size: 7vmin; box-shadow: inset 0 0 0 .2vmin rgba(255, 255, 255, .15); }
+.qz-scatter { position: relative; width: 100%; height: 36vmin; }
+.qz-scatter span { position: absolute; font-size: 4.6vmin; line-height: 1; }
+.qz-row { display: flex; gap: 2.4vmin; padding: 3vmin; font-size: 8vmin; flex-wrap: wrap; justify-content: center; }
+.qz-ans { margin: 0; padding: 1vmin 3vmin; border-radius: 1.4vmin; background: #b8f0c4; color: #12361e; font-family: var(--display); font-weight: 700; font-size: 5vmin; box-shadow: 0 0 3vmin rgba(54, 168, 82, .5); }
+.qz-guesses { display: flex; flex-wrap: wrap; gap: .8vmin; justify-content: center; max-width: 80vmin; }
+.qz-guesses span { display: inline-flex; align-items: center; gap: .6vmin; padding: .4vmin 1.2vmin; border-radius: 99px; background: rgba(0, 0, 0, .3); font-family: var(--ui); font-size: 1.6vmin; color: var(--mute); }
+.qz-guesses span.ok { color: #c8f5d0; box-shadow: inset 0 0 0 .2vmin #6ad08a; }
+.qz-guesses i { width: 1.1vmin; height: 1.1vmin; border-radius: 50%; }
+.qz-guesses b { color: var(--ivory); }
+.tw-choices.two { grid-template-columns: 1fr 1fr; }
+.tw-choices.two li { font-size: 3vmin; justify-content: center; }
