@@ -54,6 +54,20 @@ export function bestHand(cards) {
   return best;
 }
 
+// Omaha (Four-Hole Hold'em): exactly two of your hole cards with exactly three from the board.
+export function bestOmaha(hole, board) {
+  let best = null;
+  for (let a = 0; a < hole.length; a++) for (let b = a + 1; b < hole.length; b++) {
+    const pick = (start, chosen) => {
+      if (chosen.length === 3) { const e = eval5([hole[a], hole[b], ...chosen]); if (!best || e.score > best.score) best = e; return; }
+      for (let i = start; i < board.length; i++) pick(i + 1, [...chosen, board[i]]);
+    };
+    pick(0, []);
+  }
+  return best;
+}
+const handOf = (g, hole, board) => (g.settings.omaha && board.length >= 3 ? bestOmaha(hole, board) : bestHand([...hole, ...board]));
+
 export function describe(h) {
   const t = h.tb;
   switch (h.cat) {
@@ -158,7 +172,7 @@ export function startHand(g) {
   put(g.seats[g.bbSeat], g.settings.bb);
   g.seats[g.sbSeat].last = 'Small blind';
   g.seats[g.bbSeat].last = 'Big blind';
-  for (let round = 0; round < 2; round++) {
+  for (let round = 0; round < (g.settings.hole || 2); round++) {
     let i = g.button;
     do {
       i = nextSeat(g, i, inHand);
@@ -279,7 +293,7 @@ function showdown(g) {
   const contenders = live(g);
   const hands = {};
   for (const i of contenders) {
-    const h = bestHand([...g.seats[i].cards, ...g.board]);
+    const h = handOf(g, g.seats[i].cards, g.board);
     hands[i] = { cards: g.seats[i].cards, name: describe(h), score: h.score, best: h.cards };
   }
   // Side pots: each all-in amount caps what that player can win.
@@ -362,9 +376,9 @@ function preflopScore(cards) {
   return s;
 }
 
-function postflopStrength(cards, board) {
-  const h = bestHand([...cards, ...board]);
-  const boardOnly = board.length >= 5 ? bestHand(board) : null;
+function postflopStrength(cards, board, omaha) {
+  const h = omaha ? bestOmaha(cards, board) : bestHand([...cards, ...board]);
+  const boardOnly = !omaha && board.length >= 5 ? bestHand(board) : null;
   let s = [0.12, 0.42, 0.66, 0.76, 0.83, 0.87, 0.94, 0.99, 1][h.cat];
   if (h.cat === 1) {
     const top = Math.max(...board.map(rv));
@@ -392,7 +406,8 @@ export function botAction(g, seat) {
   const r = Math.random();
 
   if (g.phase === 'preflop') {
-    const c = preflopScore(s.cards);
+    // With four hole cards, judge the best two of them (plus a little for the extra chances).
+    const c = s.cards.length > 2 ? Math.max(...s.cards.flatMap((x, i) => s.cards.slice(i + 1).map(y => preflopScore([x, y])))) - 1 : preflopScore(s.cards);
     if (c >= 10 && r < 0.8) return raiseTo(g.currentBet * (g.currentBet > bb ? 2.5 : 3));
     if (c >= 7 || (c >= 5 && toCall <= bb) || (toCall <= 0)) {
       return toCall > s.chips * 0.35 && c < 12 ? passive : { type: toCall > 0 ? 'call' : 'check' };
@@ -400,7 +415,7 @@ export function botAction(g, seat) {
     return r < 0.04 ? { type: 'call' } : passive;
   }
 
-  const str = postflopStrength(s.cards, g.board);
+  const str = postflopStrength(s.cards, g.board, g.settings.omaha);
   const odds = toCall > 0 ? toCall / (pot + toCall) : 0;
   if (str >= 0.8 && r < 0.75) return raiseTo(g.currentBet + pot * 0.7);
   if (str >= 0.6 && toCall === 0 && r < 0.6) return raiseTo(pot * 0.5);

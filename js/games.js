@@ -1452,3 +1452,153 @@ GAMES.flashmemory = {
   startLabel: "Memorise!",
   layout: GAMES.crown.layout,
 };
+
+GAMES.roulette = {
+  id: 'roulette',
+  name: "Roulette",
+  blurb: "1–10 players · bet on your phone, the wheel spins on the table",
+  min: 1,
+  max: 10,
+  startLabel: "Spin the wheel",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.tripledice = {
+  id: 'tripledice',
+  name: "Triple Dice",
+  blurb: "1–10 players · three dice, big or small, totals and triples",
+  min: 1,
+  max: 10,
+  startLabel: "Shake the dice",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.luckynumbers = {
+  id: 'luckynumbers',
+  name: "Lucky Numbers",
+  blurb: "1–10 players · pick your numbers, watch ten get drawn",
+  min: 1,
+  max: 10,
+  startLabel: "Start the draw",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.moneywheel = {
+  id: 'moneywheel',
+  name: "Money Wheel",
+  blurb: "1–10 players · bet on the number the big wheel lands on",
+  min: 1,
+  max: 10,
+  startLabel: "Spin it",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.derbyday = {
+  id: 'derbyday',
+  name: "Derby Day",
+  blurb: "1–10 players · back a horse on your phone, watch the race on the table",
+  min: 1,
+  max: 10,
+  startLabel: "Saddle up",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.oddoreven = {
+  id: 'oddoreven',
+  name: "Odd or Even",
+  blurb: "1–10 players · two dice under the cup — odd or even?",
+  min: 1,
+  max: 10,
+  startLabel: "Shake the cup",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.dicepit = {
+  id: 'dicepit',
+  name: "Dice Pit",
+  blurb: "1–10 players · pass line, field and long-shot dice bets",
+  min: 1,
+  max: 10,
+  startLabel: "Come out roll",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.pegdrop = {
+  id: 'pegdrop',
+  name: "Peg Drop",
+  blurb: "1–10 players · drop your ball through the pegs — edges pay big",
+  min: 1,
+  max: 10,
+  startLabel: "Drop the balls",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.inbetween = {
+  id: 'inbetween',
+  name: "In Between",
+  blurb: "1–10 players · two cards on the table — will the next land between?",
+  min: 1,
+  max: 10,
+  startLabel: "Deal the gate",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.casinowar = {
+  id: 'casinowar',
+  name: "Casino War",
+  blurb: "1–10 players · your card against the dealer’s, high card wins",
+  min: 1,
+  max: 10,
+  startLabel: "Deal",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.liftoff = {
+  id: 'liftoff',
+  name: "Liftoff",
+  blurb: "1–10 players · ride the rocket and cash out before it crashes",
+  min: 1,
+  max: 10,
+  startLabel: "Count down",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.ridethebus = {
+  id: 'ridethebus',
+  name: "Ride the Bus",
+  blurb: "1–10 players · red or black, higher or lower… cash out or keep riding",
+  min: 1,
+  max: 10,
+  startLabel: "All aboard",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.threecard = {
+  id: 'threecard',
+  name: "Three Card Showdown",
+  blurb: "1–7 players · three cards on your phone — play or fold against the dealer",
+  min: 1,
+  max: 7,
+  startLabel: "Deal the cards",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.islandstud = {
+  id: 'islandstud',
+  name: "Island Stud",
+  blurb: "1–7 players · five-card stud against the dealer, big bonus payouts",
+  min: 1,
+  max: 7,
+  startLabel: "Deal the cards",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.omaha = {
+  id: 'omaha',
+  name: 'Four-Hole Hold’em',
+  blurb: '2–8 players · four hole cards on your phone, use exactly two',
+  min: 2,
+  max: 8,
+  midJoin: true,
+  layout: GAMES.holdem.layout,
+};

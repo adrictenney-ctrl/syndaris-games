@@ -64,8 +64,8 @@ button:disabled { opacity: .4; }
   background: rgba(255, 248, 230, .04); color: var(--ivory); font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1.15; cursor: pointer; padding: 4px;
 }
 .seatbtn small { display: block; font-family: var(--ui); font-size: 10.5px; letter-spacing: .08em; color: var(--gold-ink); margin-top: 2px; }
-.minitable[data-game="holdem"] .seatbtn, .minitable[data-game="veto"] .seatbtn { font-size: 14px; }
-.minitable[data-game="holdem"] .mt-felt, .minitable[data-game="veto"] .mt-felt { inset: 22% 22%; }
+.minitable[data-game="holdem"] .seatbtn, .minitable[data-game="omaha"] .seatbtn, .minitable[data-game="veto"] .seatbtn { font-size: 14px; }
+.minitable[data-game="holdem"] .mt-felt, .minitable[data-game="omaha"] .mt-felt, .minitable[data-game="veto"] .mt-felt { inset: 22% 22%; }
 .seatbtn::before {
   content: ''; display: block; width: 12px; height: 12px; margin: 0 auto 3px; border-radius: 50%;
   background: radial-gradient(circle, var(--dot, var(--brass)) 0 50%, transparent 51%), repeating-conic-gradient(var(--ivory) 0 11deg, var(--dot, var(--brass)) 11deg 45deg);
@@ -144,11 +144,11 @@ body.myturn #statusMain { color: var(--brass-hi); }
 
 /* ---------- Hold'em ---------- */
 #board { display: none; gap: 6px; justify-content: center; margin-top: 12px; }
-body[data-game="holdem"] #board, body[data-game="veto"] #board { display: flex; }
+body[data-game="holdem"] #board, body[data-game="omaha"] #board, body[data-game="veto"] #board { display: flex; }
 #board .card, #board .slot { --cw: min(15vw, 64px); }
 #board .slot { width: var(--cw); height: calc(var(--cw) * 1.4); border-radius: 5px; border: 1px dashed var(--gold-faint); }
 #myHand { text-align: center; font-family: var(--serif); font-style: italic; color: var(--brass-hi); min-height: 20px; margin-top: 8px; font-size: 16px; }
-body[data-game="holdem"] #status { margin-top: 6px; min-height: 56px; }
+body[data-game="holdem"] #status, body[data-game="omaha"] #status { margin-top: 6px; min-height: 56px; }
 #hand.big .card { --cw: min(38vw, 170px); }
 #hand.big { height: calc(min(38vw, 170px) * 1.4 + 40px); }
 .raise-amt { display: flex; flex-direction: column; align-items: center; }

@@ -74,7 +74,7 @@ export default {
     return {
       badges,
       meta: `<span class="chips-count"><i class="chip-dot"></i><b>${s.chips.toLocaleString()}</b></span>`,
-      cards: s.inHand && !s.folded && !revealed ? 2 : 0,
+      cards: s.inHand && !s.folded && !revealed ? (s.cards?.length || 2) : 0,
       turn: g.toAct === seat && !g.runout && ['preflop', 'flop', 'turn', 'river'].includes(g.phase),
       out: s.folded || !s.inHand,
     };
