@@ -1,0 +1,51 @@
+/* Word games (word-games.js / table-words.js): a slate-blue study. */
+body[data-game="fiveletters"] #felt, body[data-game="wordgallows"] #felt, body[data-game="longword"] #felt, body[data-game="targetnumber"] #felt, body[data-game="speedtypist"] #felt, body[data-game="wordchain"] #felt, body[data-game="ghostletters"] #felt, body[data-game="slowreveal"] #felt, body[data-game="acrorace"] #felt, body[data-game="fibfinder"] #felt { background: radial-gradient(ellipse 60% 45% at 50% 40%, rgba(200, 220, 255, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #26344a 0%, #172030 55%, #070a10 100%); }
+.wd-tiles { display: flex; flex-wrap: wrap; gap: .6vmin; justify-content: center; max-width: 90vmin; }
+.wd-tiles i { display: grid; place-items: center; width: 5.4vmin; height: 6.6vmin; border-radius: .6vmin; font-style: normal; font-family: var(--ui); font-weight: 900; font-size: 3.6vmin; color: #1a1a2a; background: #fbf6ea; box-shadow: 0 .5vmin 1vmin rgba(0, 0, 0, .4); }
+.wd-tiles i.blank { background: rgba(255, 255, 255, .12); box-shadow: inset 0 -.4vmin 0 rgba(255, 255, 255, .3); }
+.wd-tiles i.sp { width: 2.4vmin; background: none; box-shadow: none; }
+.wd-tiles.big i { width: 8vmin; height: 9.6vmin; font-size: 5.4vmin; }
+/* Five Letters */
+.fl-grid { display: flex; flex-direction: column; gap: 3px; }
+.fl-grid div { display: flex; gap: 3px; justify-content: center; }
+.fl-grid i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 4px; font-style: normal; font-family: var(--ui); font-weight: 900; font-size: 18px; color: #fff; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .15); }
+.fl-grid i.g { background: #3a9a4a; box-shadow: none; } .fl-grid i.y { background: #c8a222; box-shadow: none; } .fl-grid i.x { background: #3a3a44; box-shadow: none; }
+.fl-keys { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; max-width: 340px; }
+.fl-keys i { display: grid; place-items: center; width: 24px; height: 30px; border-radius: 4px; font-style: normal; font-family: var(--ui); font-weight: 800; font-size: 13px; text-transform: uppercase; color: #fff; background: rgba(255, 255, 255, .14); }
+.fl-keys i.g { background: #3a9a4a; } .fl-keys i.y { background: #c8a222; } .fl-keys i.x { background: #222; color: #666; }
+.fl-boards { display: flex; flex-wrap: wrap; gap: 2vmin; justify-content: center; }
+.fl-boards > div { display: flex; flex-direction: column; align-items: center; gap: .6vmin; padding: 1vmin; border-radius: 1vmin; background: rgba(0, 0, 0, .25); }
+.fl-boards > div.won { box-shadow: inset 0 0 0 .25vmin #6ad08a; }
+.fl-boards p { margin: 0; display: flex; align-items: center; gap: .6vmin; font-family: var(--ui); font-size: 1.6vmin; color: var(--ivory); }
+.fl-boards p i { width: 1.1vmin; height: 1.1vmin; border-radius: 50%; }
+.fl-boards .fl-grid i { width: 3vmin; height: 3vmin; font-size: 1.8vmin; }
+/* Word Gallows */
+.wd-row { display: flex; gap: 3vmin; align-items: center; }
+.wd-gallows { width: 22vmin; height: 22vmin; }
+.wd-gallows path, .wd-gallows circle { fill: none; stroke: #fbf6ea; stroke-width: 3; stroke-linecap: round; }
+.wd-gallows .frame { stroke: #b8935a; stroke-width: 4; }
+.ss-used i.miss { color: #ff8a8a; }
+/* Target Number, Speed Typist, Word Chain, Ghost */
+.wd-target { font-family: var(--num); font-size: 14vmin; line-height: 1; color: #ffe08a; text-shadow: 0 0 3vmin rgba(255, 220, 120, .4); }
+.wd-nums { display: flex; gap: 1.4vmin; }
+.wd-nums span { display: grid; place-items: center; min-width: 9vmin; height: 9vmin; padding: 0 1vmin; border-radius: 1vmin; background: #1e3a6a; color: #fff; font-family: var(--num); font-size: 4.4vmin; box-shadow: inset 0 0 0 .2vmin #6a9ae8; }
+.wd-sentence { margin: 0; max-width: 80vmin; padding: 2.4vmin 3vmin; border-radius: 1.4vmin; background: #fbf6ea; color: #1a1a2a; font-family: var(--serif); font-size: 4vmin; line-height: 1.35; text-align: center; box-shadow: 0 1.6vmin 3vmin rgba(0, 0, 0, .5); }
+.wd-chain { display: flex; flex-wrap: wrap; align-items: center; gap: .8vmin; justify-content: center; max-width: 90vmin; font-family: var(--ui); font-size: 2.4vmin; color: var(--ivory); }
+.wd-chain span { display: inline-flex; align-items: center; gap: .6vmin; padding: .5vmin 1.2vmin; border-radius: 99px; background: rgba(0, 0, 0, .3); }
+.wd-chain span i { width: 1.1vmin; height: 1.1vmin; border-radius: 50%; }
+.wd-chain b { color: #ffe08a; } .wd-chain em { font-style: normal; color: var(--gold-ink); }
+.wd-letter { display: grid; place-items: center; width: 16vmin; height: 16vmin; border-radius: 2vmin; background: linear-gradient(160deg, #ffe08a, #e8b923); color: #2a1a08; font-family: var(--display); font-weight: 700; font-size: 11vmin; box-shadow: 0 1.6vmin 3vmin rgba(0, 0, 0, .5); }
+.wd-ghosts { display: flex; flex-wrap: wrap; gap: 1vmin; justify-content: center; }
+.wd-ghosts span { display: inline-flex; align-items: center; gap: .8vmin; padding: .6vmin 1.4vmin; border-radius: 99px; background: rgba(0, 0, 0, .3); font-family: var(--ui); font-size: 1.8vmin; color: var(--ivory); }
+.wd-ghosts span.out { opacity: .4; }
+.wd-ghosts span i { width: 1.1vmin; height: 1.1vmin; border-radius: 50%; }
+.wd-ghosts u { text-decoration: none; color: rgba(255, 255, 255, .2); font-weight: 900; } .wd-ghosts u.on { color: #c8b8ff; }
+/* Slow Reveal */
+.sr-pic { position: relative; width: 40vmin; height: 40vmin; border-radius: 2vmin; overflow: hidden; background: #fbf6ea; box-shadow: 0 1.6vmin 3vmin rgba(0, 0, 0, .5); }
+.sr-pic span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 30vmin; line-height: 1; }
+.sr-pic div { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+.sr-pic div i { background: linear-gradient(160deg, #3a4a7a, #24305a); box-shadow: inset 0 0 0 .2vmin rgba(255, 255, 255, .15); transition: opacity .5s, transform .5s; }
+.sr-pic div i.off { opacity: 0; transform: scale(.6); }
+/* Acro Race */
+.wd-acro { display: flex; gap: 1.4vmin; }
+.wd-acro span { display: grid; place-items: center; width: 11vmin; height: 11vmin; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #e8d8b0); color: #5a1a3a; font-family: var(--display); font-weight: 700; font-size: 7vmin; box-shadow: 0 1vmin 2vmin rgba(0, 0, 0, .5); }

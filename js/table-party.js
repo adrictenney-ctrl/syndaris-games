@@ -28,11 +28,13 @@ export function partyTable(E, o) {
     // Computer players: any bot that has something to do (E.pending lists the seats that do)
     // moves after a short pause, before the game's own clocks are looked at.
     timer: (g, players) => {
+      // The game's own clock and the bots' thinking time: whichever is due first.
+      let botT = null;
       if (players && E.pending && g.phase !== 'over') {
         const bots = E.pending(g).filter(x => players[x]?.bot), s = bots[0];
         // When everyone decides at once, the bots all decide together too.
         const all = E.collecting?.(g) ? bots : [s];
-        if (s != null) return { ms: E.botDelay ? E.botDelay(g, s) : g.sel ? 500 : 900 + Math.random() * 700, run: () => {
+        if (s != null) botT = { ms: E.botDelay ? E.botDelay(g, s) : g.sel ? 500 : 900 + Math.random() * 700, run: () => {
           for (const b of all) {
             if (!E.pending(g).includes(b)) continue;
             // A bot may need a few taps (e.g. aim, then load) — keep going while it's still its move.
@@ -40,7 +42,8 @@ export function partyTable(E, o) {
           }
         } };
       }
-      return E.tick(g, players);
+      const t = E.tick(g, players);
+      return botT && (!t || botT.ms <= t.ms) ? botT : t;
     },
     ink: (g, seat, msg) => (msg.draft && E.draft ? E.draft(g, seat, msg.draft) : false),
     joinMidGame: () => false,

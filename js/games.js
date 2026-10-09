@@ -1722,3 +1722,103 @@ GAMES.standoff = {
   startLabel: "Draw!",
   layout: GAMES.crown.layout,
 };
+
+GAMES.fiveletters = {
+  id: 'fiveletters',
+  name: "Five Letters",
+  blurb: "1–10 players · everyone guesses the same secret word on their own phone",
+  min: 1,
+  max: 10,
+  startLabel: "Pick the word",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.wordgallows = {
+  id: 'wordgallows',
+  name: "Word Gallows",
+  blurb: "2–10 players · everyone picks a letter at once — fill the word before the gallows",
+  min: 2,
+  max: 10,
+  startLabel: "Hang the word",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.longword = {
+  id: 'longword',
+  name: "Long Word",
+  blurb: "1–10 players · nine letters on the table, longest word wins",
+  min: 1,
+  max: 10,
+  startLabel: "Deal the letters",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.targetnumber = {
+  id: 'targetnumber',
+  name: "Target Number",
+  blurb: "1–10 players · six numbers, one target, any sums you like",
+  min: 1,
+  max: 10,
+  startLabel: "Show the target",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.speedtypist = {
+  id: 'speedtypist',
+  name: "Speed Typist",
+  blurb: "1–10 players · type the sentence on the table fastest",
+  min: 1,
+  max: 10,
+  startLabel: "Ready, set, type",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.wordchain = {
+  id: 'wordchain',
+  name: "Word Chain",
+  blurb: "2–10 players · each word starts with the last letter of the one before",
+  min: 2,
+  max: 10,
+  startLabel: "First word",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.ghostletters = {
+  id: 'ghostletters',
+  name: "Ghost Letters",
+  blurb: "2–10 players · add a letter, don’t finish a word, or you’re a GHOST",
+  min: 2,
+  max: 10,
+  startLabel: "First letter",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.slowreveal = {
+  id: 'slowreveal',
+  name: "Slow Reveal",
+  blurb: "1–10 players · a picture appears tile by tile — guess it first",
+  min: 1,
+  max: 10,
+  startLabel: "Start revealing",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.acrorace = {
+  id: 'acrorace',
+  name: "Acro Race",
+  blurb: "3–10 players · write a phrase from random letters, vote for the funniest",
+  min: 3,
+  max: 10,
+  startLabel: "Roll the letters",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.fibfinder = {
+  id: 'fibfinder',
+  name: "Fib Finder",
+  blurb: "3–10 players · strange true facts with a blank — write fibs, find the truth",
+  min: 3,
+  max: 10,
+  startLabel: "First fact",
+  layout: GAMES.crown.layout,
+};
