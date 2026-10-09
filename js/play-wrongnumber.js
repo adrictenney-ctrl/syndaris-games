@@ -1,6 +1,6 @@
 // Wrong Number on a phone: your seven replies as message bubbles — tap one, then Send. When
 // you're the Receiver, you pick your favourite of everyone's replies here.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=68';
 
 let ctx = null, sel = null, wasMyTurn = false;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

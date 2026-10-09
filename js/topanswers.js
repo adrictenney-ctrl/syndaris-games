@@ -2,8 +2,8 @@
 // control types guesses on any of their phones; every hit flips that answer on the board, every
 // miss is a strike. Three strikes and the other team gets ONE guess to steal all the points on the
 // board. Find every answer and you keep them. The last round is worth double.
-import { base, teams, deal, same, cleanText, sfx, left, announce } from './party.js?v=67';
-import { SURVEYS } from './topanswers-surveys.js?v=67';
+import { base, teams, deal, same, cleanText, sfx, left, announce } from './party.js?v=68';
+import { SURVEYS } from './topanswers-surveys.js?v=68';
 
 export function createGame(settings, players) {
   const g = base(settings, players, { rounds: 5, secs: 30 });

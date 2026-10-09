@@ -3,7 +3,7 @@
 // five forbidden words (or any part of them). Tap Got it for a point, or Skip. The other team
 // sees the forbidden words too and can hit Buzz! if you slip: that card goes to them. When the
 // timer runs out, the other team goes. Everyone takes turns as clue-giver; most points wins.
-import { CARDS } from './dontsay-cards.js?v=67';
+import { CARDS } from './dontsay-cards.js?v=68';
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const announce = (g, seat, text) => { g.announce = { id: ++g.annId, seat, text }; };

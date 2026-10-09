@@ -1,8 +1,8 @@
 // Power Grab on the table: in front of each player their two role cards (face down until lost)
 // and their coins; in the middle the treasury and what's being claimed right now.
-import * as P from './powergrab.js?v=67';
-import { snap } from './cards.js?v=67';
-import { centerMsg, clearMsg } from './table-hearts.js?v=67';
+import * as P from './powergrab.js?v=68';
+import { snap } from './cards.js?v=68';
+import { centerMsg, clearMsg } from './table-hearts.js?v=68';
 
 let root = null, key = '';
 export const roleCard = (r, cls = '') => r ? `<div class="pg-card ${cls}" style="--c:${P.ROLES[r].col}"><b>${P.ROLES[r].ic}</b><strong>${P.ROLES[r].name}</strong><em>${P.ROLES[r].text}</em></div>` : `<div class="pg-card back ${cls}"><b>⚜️</b></div>`;

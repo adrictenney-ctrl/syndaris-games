@@ -1,8 +1,8 @@
 // Line Up 5 on the table: the 10×10 card board on green felt, chips in team colours (chips in a
 // finished line get a gold ring), the last chip pulsing.
-import * as L from './lineup5.js?v=67';
-import { snap, SUIT_SYMBOL } from './cards.js?v=67';
-import { centerMsg, clearMsg } from './table-hearts.js?v=67';
+import * as L from './lineup5.js?v=68';
+import { snap, SUIT_SYMBOL } from './cards.js?v=68';
+import { centerMsg, clearMsg } from './table-hearts.js?v=68';
 
 let root = null, key = '';
 const label = c => (c === '*' ? '★' : `${c[0] === 'T' ? '10' : c[0]}<i>${SUIT_SYMBOL[c[1]]}</i>`);

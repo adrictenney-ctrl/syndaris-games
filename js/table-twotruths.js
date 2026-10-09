@@ -1,7 +1,7 @@
 // Two Truths & a Lie on the table: who's in the hot seat and their three statements; then the lie
 // is stamped and everyone's votes appear under each statement.
-import * as E from './twotruths.js?v=67';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=67';
+import * as E from './twotruths.js?v=68';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=68';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {

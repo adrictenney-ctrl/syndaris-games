@@ -2,7 +2,7 @@
 // rest. Everyone throws away their pairs (two cards of the same rank). On your turn, take one
 // face-down card from the next player who still has cards; pair it if you can. Empty your hand
 // and you're safe. Whoever is left holding the Old Maid loses.
-import { fullDeck, shuffle, rankOf } from './tricks.js?v=67';
+import { fullDeck, shuffle, rankOf } from './tricks.js?v=68';
 
 export const MAID = 'QS';
 

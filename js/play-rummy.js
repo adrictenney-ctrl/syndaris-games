@@ -1,7 +1,7 @@
 // Rummy on a phone: draw from the stock or take the discard; then tap cards to select them and
 // Meld, tap one card and a meld on the table to lay it off, or tap one card and Discard.
-import { $, toast, setHud, setStatus, renderHand, cardEl, flyCard } from './phone-kit.js?v=67';
-import { isMeld, fits } from './rummycore.js?v=67';
+import { $, toast, setHud, setStatus, renderHand, cardEl, flyCard } from './phone-kit.js?v=68';
+import { isMeld, fits } from './rummycore.js?v=68';
 
 let sel = [], wasMyTurn = false, lastHand = -1;
 export function reset() { sel = []; lastHand = -1; document.getElementById('rmPhone')?.remove(); }

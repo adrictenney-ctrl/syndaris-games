@@ -5,7 +5,7 @@
 // line). A line is five in a row — across, down or diagonally; corners count for everyone.
 // Two teams need two lines to win; three teams need one. A card whose spaces are both taken is
 // dead: trade it in for a new one (once a turn). Our own board layout.
-import { fullDeck, shuffle, announce } from './tricks.js?v=67';
+import { fullDeck, shuffle, announce } from './tricks.js?v=68';
 
 export const N = 10;
 // Our own fixed layout: both decks without Jacks, dealt into the board by a seeded shuffle.

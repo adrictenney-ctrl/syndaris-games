@@ -1,8 +1,8 @@
 // Spin & Solve on the table: the puzzle board of letter tiles (blank green until called), the
 // category, the 24-wedge wheel that spins to its result, the letters already called and
 // everyone's money.
-import * as E from './spinsolve.js?v=67';
-import { partyTable, esc, clock, who } from './table-party.js?v=67';
+import * as E from './spinsolve.js?v=68';
+import { partyTable, esc, clock, who } from './table-party.js?v=68';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const COLS = ['#e0382c', '#f39a1e', '#f2cf2a', '#36a852', '#2f7de1', '#8b45c8', '#e05aa0', '#1fb5a8'];

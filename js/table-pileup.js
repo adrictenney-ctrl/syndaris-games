@@ -1,8 +1,8 @@
 // Pile Up on the table: the draw deck, the growing pile (each card landing a little askew), the
 // suit to match, the direction of play — and, when draw cards are stacking, how big the pile
 // of punishment has grown.
-import * as U from './pileup.js?v=67';
-import { snap } from './cards.js?v=67';
+import * as U from './pileup.js?v=68';
+import { snap } from './cards.js?v=68';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

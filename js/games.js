@@ -935,16 +935,6 @@ GAMES.wordbluff = {
   layout: GAMES.crown.layout,
 };
 
-GAMES.quickthree = {
-  id: 'quickthree',
-  name: "Quick Three",
-  blurb: "2–10 players · name three things in five seconds — out loud",
-  min: 2,
-  max: 10,
-  noBots: true,
-  startLabel: "Start the clock",
-  layout: GAMES.crown.layout,
-};
 
 GAMES.topanswers = {
   id: 'topanswers',
@@ -1023,24 +1013,212 @@ GAMES.twotruths = {
   layout: GAMES.crown.layout,
 };
 
-GAMES.blurtit = {
-  id: 'blurtit',
-  name: "Blurt It",
-  blurb: "4–10 players · two teams shout out ten answers before time runs out",
-  min: 4,
+
+
+GAMES.bluffdice = {
+  id: 'bluffdice',
+  name: "Bluff Dice",
+  blurb: "2–6 players · secret dice under your cup, bid big, call Liar",
+  min: 2,
+  max: 6,
+  startLabel: "Shake the cups",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.petals = {
+  id: 'petals',
+  name: "Petals & Thorns",
+  blurb: "3–6 players · stack discs, bid, and pray you don’t flip a Thorn",
+  min: 3,
+  max: 6,
+  startLabel: "Lay your discs",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.sealed = {
+  id: 'sealed',
+  name: "Sealed Letter",
+  blurb: "2–6 players · one secret card each, last letter standing wins",
+  min: 2,
+  max: 6,
+  startLabel: "Seal the letters",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.insync = {
+  id: 'insync',
+  name: "In Sync",
+  blurb: "2–4 players · a silent team game: play your numbers in order",
+  min: 2,
+  max: 4,
+  startLabel: "Begin level 1",
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.nightlights = {
+  id: 'nightlights',
+  name: "Night Lights",
+  blurb: "2–5 players · team fireworks — see every hand except your own",
+  min: 2,
+  max: 5,
+  startLabel: "Light the fuse",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.nope = {
+  id: 'nope',
+  name: "Nope!",
+  blurb: "3–7 players · take the card or pay a secret chip to pass it on",
+  min: 3,
+  max: 7,
+  startLabel: "Deal the cards",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.bullpen = {
+  id: 'bullpen',
+  name: "Bull Pen",
+  blurb: "2–10 players · everyone picks a card at once — dodge the sixth spot",
+  min: 2,
   max: 10,
-  noBots: true,
-  startLabel: "Pick a topic",
+  startLabel: "Open the pen",
   layout: GAMES.crown.layout,
 };
 
-GAMES.actitout = {
-  id: 'actitout',
-  name: "Act It Out",
-  blurb: "4–10 players · charades for two teams, no talking allowed",
-  min: 4,
+GAMES.openhouse = {
+  id: 'openhouse',
+  name: "Open House",
+  blurb: "3–6 players · bid on properties, then sell them for cheques",
+  min: 3,
+  max: 6,
+  startLabel: "Open the market",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.bugbluff = {
+  id: 'bugbluff',
+  name: "Bug Bluff",
+  blurb: "3–6 players · pass bugs with a claim — believe it or call it",
+  min: 3,
+  max: 6,
+  startLabel: "Deal the bugs",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.snapmatch = {
+  id: 'snapmatch',
+  name: "Snap Match",
+  blurb: "2–8 players · your card vs the table’s — tap the match first",
+  min: 2,
+  max: 8,
+  startLabel: "Flip the first card",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.whoswho = {
+  id: 'whoswho',
+  name: "Who’s Who",
+  blurb: "2 players · ask yes-or-no questions, guess their secret face",
+  min: 2,
+  max: 2,
+  startLabel: "Pick the faces",
+  layout: GAMES.chess.layout,
+};
+
+GAMES.throwdown = {
+  id: 'throwdown',
+  name: "Throwdown",
+  blurb: "2–10 players · a rock-paper-scissors tournament bracket",
+  min: 2,
+  max: 10,
+  startLabel: "Draw the bracket",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.oneclue = {
+  id: 'oneclue',
+  name: "One Clue",
+  blurb: "3–10 players · team game: one-word clues, duplicates cancel",
+  min: 3,
   max: 10,
   noBots: true,
-  startLabel: "Raise the curtain",
+  startLabel: "Deal the first card",
   layout: GAMES.crown.layout,
+};
+
+GAMES.samebrain = {
+  id: 'samebrain',
+  name: "Same Brain",
+  blurb: "3–10 players · give the answer everyone else gives",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Ask the herd",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.closecall = {
+  id: 'closecall',
+  name: "Close Call",
+  blurb: "2–10 players · guess numbers, then bet on the closest guess",
+  min: 2,
+  max: 10,
+  noBots: true,
+  startLabel: "First question",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.doodlebluff = {
+  id: 'doodlebluff',
+  name: "Doodle Bluff",
+  blurb: "3–8 players · draw a weird prompt, fake titles for the others",
+  min: 3,
+  max: 8,
+  noBots: true,
+  startLabel: "Hand out the prompts",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.dreamcards = {
+  id: 'dreamcards',
+  name: "Dreamcards",
+  blurb: "3–8 players · a dreamy clue — which picture was it?",
+  min: 3,
+  max: 8,
+  noBots: true,
+  startLabel: "Deal the dreams",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.knowme = {
+  id: 'knowme',
+  name: "Know Me",
+  blurb: "3–10 players · guess what the hot seat really answered",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Take the hot seat",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.thisorthat = {
+  id: 'thisorthat',
+  name: "This or That",
+  blurb: "3–10 players · pick a side, then predict the room",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "First dilemma",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.faceoff = {
+  id: 'faceoff',
+  name: "Face Off",
+  blurb: "3–8 players · funny answers go head to head, everyone votes",
+  min: 3,
+  max: 8,
+  noBots: true,
+  startLabel: "Hand out prompts",
+  layout: GAMES.holdem.layout,
 };

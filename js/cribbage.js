@@ -4,7 +4,7 @@
 // more, 1 for a "go" or the last card. Then the show: the non-dealer's hand, the dealer's hand
 // and the crib, each with the starter: fifteens 2, pairs 2, runs, a flush (4, or 5 with the
 // starter — the crib needs all 5) and the Jack of the starter's suit 1 ("nobs"). First to 121.
-import { fullDeck, shuffle, announce } from './tricks.js?v=67';
+import { fullDeck, shuffle, announce } from './tricks.js?v=68';
 
 export const ORDER = 'A23456789TJQK';
 export const pip = c => Math.min(10, ORDER.indexOf(c[0]) + 1);

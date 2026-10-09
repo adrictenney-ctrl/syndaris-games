@@ -1,9 +1,9 @@
 // Wordsmith on a phone: the board (tap "Zoom" for a closer look) and your rack. Tap a tile,
 // then a square to put it there; tap a placed tile to take it back. The phone shows what the
 // word would score; the table checks it against the dictionary when you press Play.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
-import { evaluate, tileValue } from './wordsmith.js?v=67';
-import { boardHTML, tileHTML } from './table-wordsmith.js?v=67';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=68';
+import { evaluate, tileValue } from './wordsmith.js?v=68';
+import { boardHTML, tileHTML } from './table-wordsmith.js?v=68';
 
 let ctx = null, pending = {}, pendingBlank = {}, sel = null, zoom = false, swapping = false, swapSel = new Set(), order = null, blankFor = null, lastMove = -1, wasMyTurn = false;
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

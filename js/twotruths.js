@@ -2,7 +2,7 @@
 // made up — and marks the lie. Then, one player at a time, their three statements go up on the
 // table and everyone else votes for the one they think is the lie. 1 point for spotting it; the
 // writer gets 1 point for every player they fooled.
-import { base, shuffle, cleanText, sfx, left, waiting, finish } from './party.js?v=67';
+import { base, shuffle, cleanText, sfx, left, waiting, finish } from './party.js?v=68';
 
 export function createGame(settings, players) {
   const g = base(settings, players, { secs: 180, vote: 30 });

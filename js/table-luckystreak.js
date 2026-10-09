@@ -1,8 +1,8 @@
 // Lucky Streak on the table: the deck and discard in the middle, and in front of each player
 // the row of cards they've flipped this round — glowing while they're still in, dimmed when
 // they stay, cracked through when they bust.
-import * as L from './luckystreak.js?v=67';
-import { snap } from './cards.js?v=67';
+import * as L from './luckystreak.js?v=68';
+import { snap } from './cards.js?v=68';
 
 let root = null, rows = {}, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -1,9 +1,9 @@
 // Code Breaker on the table: a walnut board with ten rows of guesses (oldest at the bottom),
 // gold and silver key pegs beside each, and the secret code under a brass shield until it's
 // cracked.
-import * as C from './codebreaker.js?v=67';
-import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=67';
-import { snap } from './cards.js?v=67';
+import * as C from './codebreaker.js?v=68';
+import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=68';
+import { snap } from './cards.js?v=68';
 
 let root = null, lastMove = -1;
 export const peg = (c, cls = '') => `<i class="cb2-peg ${c == null ? 'empty' : ''} ${cls}" style="${c == null ? '' : `--pc:${C.COLORS[c]}`}"></i>`;

@@ -1,7 +1,7 @@
 // Answer Board on the table: the blue board of categories and values; a picked clue fills the
 // screen with its four answers, then the right one lights up.
-import * as E from './answerboard.js?v=67';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=67';
+import * as E from './answerboard.js?v=68';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=68';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {

@@ -2,9 +2,9 @@
 // and a center(g, ctx) that returns the middle of the table as HTML; this handles the rest —
 // redrawing when something changes, the shared clock (.pt-clock, from g.endAt), sounds
 // (g.sfx), scores on the name plates and the end-of-game card.
-import { ding, buzzer, chime, sad, thud } from './sfx.js?v=67';
-import { partyClock } from './table-dontsay.js?v=67';
-import { esc, TEAMS } from './party.js?v=67';
+import { ding, buzzer, chime, sad, thud } from './sfx.js?v=68';
+import { partyClock } from './table-dontsay.js?v=68';
+import { esc, TEAMS } from './party.js?v=68';
 
 const SFX = { ding, buzzer, chime, sad, thud };
 export { esc, TEAMS };
@@ -25,7 +25,15 @@ export function partyTable(E, o) {
     bot: E.botAction,
     view: E.viewFor,
     turn: g => (E.turnSeat ? E.turnSeat(g) : -1),
-    timer: g => E.tick(g),
+    // Computer players: any bot that has something to do (E.pending lists the seats that do)
+    // moves after a short pause, before the game's own clocks are looked at.
+    timer: (g, players) => {
+      if (players && E.pending && g.phase !== 'over') {
+        const s = E.pending(g).find(x => players[x]?.bot);
+        if (s != null) return { ms: E.botDelay ? E.botDelay(g, s) : g.sel ? 500 : 900 + Math.random() * 700, run: () => { const a = E.botAction(g, s); const err = a && E.applyAction(g, s, a); if (err) console.warn('bot move rejected:', err, a); } };
+      }
+      return E.tick(g, players);
+    },
     ink: (g, seat, msg) => (msg.draft && E.draft ? E.draft(g, seat, msg.draft) : false),
     joinMidGame: () => false,
     plate(g, s) {
@@ -37,7 +45,7 @@ export function partyTable(E, o) {
       const meta = g.team ? `<span class="pt-team t${g.team[s]}">● ${TEAMS[g.team[s]]}</span>` : `<span class="pt-pts">${g.score[s]} pt${g.score[s] === 1 ? '' : 's'}</span>`;
       return { badges, meta, cards: 0, turn: E.turnSeat ? E.turnSeat(g) === s && g.phase !== 'over' : false, out: false };
     },
-    reset() { root?.remove(); root = null; key = ''; clearInterval(clockT); clockT = null; },
+    reset() { document.body.classList.remove('party-game'); root?.remove(); root = null; key = ''; clearInterval(clockT); clockT = null; },
     renderCenter(g, ctx) {
       gref = g;
       document.getElementById('watermark').textContent = '';
@@ -45,6 +53,7 @@ export function partyTable(E, o) {
         root = document.createElement('div');
         root.id = 'partyT';
         root.className = 'pt-wrap pt-' + o.id;
+        document.body.classList.add('party-game');
         document.getElementById('center').appendChild(root);
         clockT = partyClock(() => gref);
       }
@@ -64,7 +73,7 @@ export function partyTable(E, o) {
         body = `<p>${TEAMS[0]} ${g.scores[0]} · ${TEAMS[1]} ${g.scores[1]}</p>`;
       } else {
         head = g.winners.length > 1 ? `${g.winners.map(s => esc(ctx.nameOf(s))).join(' & ')} tie!` : `${esc(ctx.nameOf(g.winner))} wins!`;
-        body = `<ol class="scores">${[...g.order].sort((a, b) => g.score[b] - g.score[a]).map(s => `<li>${esc(ctx.nameOf(s))} <b>${g.score[s]}</b></li>`).join('')}</ol>`;
+        body = `<ol class="scores">${[...g.order].sort((a, b) => (o.low ? g.score[a] - g.score[b] : g.score[b] - g.score[a])).map(s => `<li>${esc(ctx.nameOf(s))} <b>${g.score[s]}</b></li>`).join('')}</ol>`;
       }
       return { key: 'over' + g.moveId, html: `<h2>${head}</h2>${body}<div class="buttons"><button class="big" data-do="again">Play again</button><button class="big ghost" data-do="lobby">Back to lobby</button></div>` };
     },

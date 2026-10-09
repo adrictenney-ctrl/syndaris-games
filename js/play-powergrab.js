@@ -1,9 +1,9 @@
 // Power Grab on a phone: your two secret roles and your coins. On your turn pick an action (a
 // role action is a claim — you can bluff). When someone else claims something, you get a few
 // seconds to call the bluff or block.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
-import { roleCard, claimText } from './table-powergrab.js?v=67';
-import { ROLES, ACTS } from './powergrab.js?v=67';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=68';
+import { roleCard, claimText } from './table-powergrab.js?v=68';
+import { ROLES, ACTS } from './powergrab.js?v=68';
 
 let ctx = null, pick = null, keep = [], wasMyTurn = false, cdT = null, until = 0;
 export function reset() { pick = null; keep = []; clearInterval(cdT); document.getElementById('pgPhone')?.remove(); }

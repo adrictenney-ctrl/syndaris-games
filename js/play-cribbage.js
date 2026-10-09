@@ -1,6 +1,6 @@
 // Cribbage on a phone: choose two cards for the crib, then peg — tap a bright card to lay it
 // (the count is shown), or say Go when nothing fits.
-import { $, setHud, setStatus, renderHand, flyCard } from './phone-kit.js?v=67';
+import { $, setHud, setStatus, renderHand, flyCard } from './phone-kit.js?v=68';
 
 let pick = [], wasMyTurn = false, lastHand = -1;
 export function reset() { pick = []; lastHand = -1; }

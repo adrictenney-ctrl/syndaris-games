@@ -3,7 +3,7 @@
 // everyone types ONE word as a clue (subtle enough not to give it away to the Odd One). Then
 // everybody votes on who the Odd One is. Catch them and they get one guess at the secret word;
 // if they're wrong, everyone else scores. Escape (or guess it) and the Odd One scores.
-import { base, shuffle, pick, deal, cleanText, sfx, left, announce, waiting, finish } from './party.js?v=67';
+import { base, shuffle, pick, deal, cleanText, sfx, left, announce, waiting, finish } from './party.js?v=68';
 
 export const TOPICS = [
   ['Food', 'Pizza|Burger|Sushi|Pasta|Tacos|Salad|Soup|Steak|Curry|Pancakes|Sandwich|Hot dog|Noodles|Burrito|Omelette|Lasagne'],

@@ -2,8 +2,8 @@
 // own phone at the same time — get it right and you win that category's wedge (and points, more
 // for being quick). The first player to collect the wedges they need wins; if nobody has after
 // the last spin, most wedges (then points) wins.
-import { base, shuffle, deal, sfx, left, announce, waiting } from './party.js?v=67';
-import { CATS, Q } from './trivia-bank.js?v=67';
+import { base, shuffle, deal, sfx, left, announce, waiting } from './party.js?v=68';
+import { CATS, Q } from './trivia-bank.js?v=68';
 
 export function createGame(settings, players) {
   const g = base(settings, players, { need: 6, secs: 20, spins: 24 });

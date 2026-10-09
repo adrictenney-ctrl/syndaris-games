@@ -701,11 +701,6 @@ cover('wordbluff', id => shell(id, { title: 'Word Bluff', tag: 'Fake the meaning
   ${['a. A clever, unprincipled person', 'b. A pastry shaped like a ghost', 'c. A snow-covered hillside'].map((t, i) => `<text x="-150" y="${18 + i * 26}" font-family="${SERIF}" font-style="italic" font-size="17" fill="#3a2a1a">${t}</text>`).join('')}`, '#f6ecd4')}
   <text x="500" y="250" font-size="60">🤥</text>
 `));
-cover('quickthree', id => shell(id, { title: 'Quick Three', tag: 'Name three · five seconds', bg: ['#c84a2a', '#6a2414', '#200a04'], cy: 30 }, `
-  ${glow(id, 300, 140, 130, '#ffb070', .35)}
-  <g transform="translate(300 150)" filter="url(#${id}-sh)"><circle r="100" fill="#fffaf0"/><circle r="100" fill="none" stroke="#e0382c" stroke-width="14" stroke-dasharray="470 628" transform="rotate(-90)"/><text y="38" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="110" fill="#2a1a10">5</text></g>
-  ${['1', '2', '3'].map((n, i) => `<g transform="translate(${470 + (i % 2) * 30} ${80 + i * 70})" filter="url(#${id}-sh)"><circle r="26" fill="#f2cf2a"/><text y="9" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="26" fill="#2a1a10">${n}</text></g>`).join('')}
-`));
 cover('topanswers', id => shell(id, { title: 'Top Answers', tag: 'Survey says · three strikes', bg: ['#2a4aaa', '#14245a', '#060a1e'], cy: 30 }, `
   <g transform="translate(300 152)" filter="url(#${id}-sh)"><rect x="-200" y="-100" width="400" height="200" rx="14" fill="#0e1a4a" stroke="#e8c35a" stroke-width="5"/>
   ${[0, 1, 2, 3].map(i => `<g transform="translate(${i % 2 ? 6 : -190} ${-84 + Math.floor(i / 2) * 84})"><rect width="184" height="72" rx="6" fill="${i < 2 ? '#2a5ad8' : '#1a2e6a'}" stroke="#7aa0ff"/>${i < 2 ? `<text x="12" y="46" font-family="${UI}" font-weight="800" font-size="22" fill="#fff">${['KEYS', 'PHONE'][i]}</text><text x="170" y="46" text-anchor="end" font-family="${UI}" font-weight="800" font-size="24" fill="#f2cf2a">${[45, 20][i]}</text>` : `<circle cx="92" cy="36" r="20" fill="#2a5ad8"/><text x="92" y="44" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="22" fill="#fff">${i + 1}</text>`}</g>`).join('')}</g>
@@ -736,12 +731,95 @@ cover('mostlikely', id => shell(id, { title: 'Most Likely To', tag: 'Vote with t
 cover('twotruths', id => shell(id, { title: 'Two Truths & a Lie', tag: 'Two are true · spot the fib', bg: ['#2a5a8a', '#142e48', '#060e18'], cy: 30 }, `
   ${['I’ve met a penguin', 'I can juggle', 'I’ve been to the Moon'].map((t, i) => partyCard(id, 300, 82 + i * 70, i - 1, 360, 56, `<text x="-160" y="8" font-family="${SERIF}" font-style="italic" font-size="22" fill="#2a2a3a">${t}</text><text x="160" y="10" text-anchor="end" font-family="${UI}" font-weight="900" font-size="26" fill="${i === 2 ? '#e0382c' : '#36a852'}">${i === 2 ? '✗' : '✓'}</text>`)).join('')}
 `));
-cover('blurtit', id => shell(id, { title: 'Blurt It', tag: 'Ten answers · one minute · shout!', bg: ['#d8862a', '#7a4414', '#241404'], cy: 30 }, `
-  ${partyCard(id, 220, 150, -6, 220, 230, `<text y="-82" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="16" fill="#7a4414">THINGS IN A FRIDGE</text>${['Milk', 'Eggs', 'Butter', 'Cheese', 'Juice'].map((w, i) => `<text x="-80" y="${-46 + i * 30}" font-family="${SERIF}" font-size="20" fill="#2a1a10">${i < 3 ? '✓' : '·'} ${w}</text>`).join('')}`)}
-  <text x="440" y="190" text-anchor="middle" font-size="110">📣</text>
+
+// ---- Phone + table games batch 4
+const emo = (x, y, s, e, rot = 0) => `<text x="${x}" y="${y}" text-anchor="middle" font-size="${s}" transform="rotate(${rot} ${x} ${y})">${e}</text>`;
+const pc = (id, x, y, rot, w, h, fill, body) => `<g transform="translate(${x} ${y}) rotate(${rot})" filter="url(#${id}-sh)"><rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="${Math.min(w, h) * .1}" fill="${fill}"/>${body}</g>`;
+cover('bluffdice', id => shell(id, { title: 'Bluff Dice', tag: 'Secret dice · bold bids · call Liar', bg: ['#7a2a2a', '#401414', '#160606'], cy: 30 }, `
+  ${glow(id, 300, 150, 140, '#ff8a5a', .25)}
+  ${[[150, 190, -14], [450, 190, 12]].map(([x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})" filter="url(#${id}-sh)"><path d="M-60 -70 L60 -70 L46 60 L-46 60 Z" fill="#5a2a1a"/><path d="M-60 -70 L60 -70 L58 -52 L-58 -52 Z" fill="#7a3a24"/></g>`).join('')}
+  ${die(id, 270, 175, 66, 5, { rot: -8 })}${die(id, 335, 190, 66, 5, { rot: 10 })}${die(id, 300, 120, 60, 1, { rot: 4 })}
+  <text x="300" y="70" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="40" fill="#ffd6a8">LIAR!</text>
 `));
-cover('actitout', id => shell(id, { title: 'Act It Out', tag: 'No words · just moves', bg: ['#8a2a3a', '#4a141e', '#18060a'], cy: 30 }, `
-  ${glow(id, 300, 120, 140, '#ff9aa8', .3)}
-  <text x="300" y="200" text-anchor="middle" font-size="150">🎭</text>
-  <g transform="translate(470 90) rotate(10)" filter="url(#${id}-sh)"><rect x="-56" y="-36" width="112" height="72" rx="8" fill="#fffaf0"/><text y="-8" text-anchor="middle" font-family="${UI}" font-size="12" letter-spacing="2" fill="#8a2a3a">ANIMAL</text><text y="20" text-anchor="middle" font-family="${SERIF}" font-size="22" fill="#2a1a10">Penguin</text></g>
+cover('petals', id => shell(id, { title: 'Petals & Thorns', tag: 'Stack · bid · don’t flip the thorn', bg: ['#4a2a4a', '#2a142a', '#0e060e'], cy: 30 }, `
+  ${[0, 1, 2, 3].map(i => `<g transform="translate(${180 + i * 80} ${210 - i * 8})" filter="url(#${id}-sh)"><ellipse rx="44" ry="16" fill="#2a1a10"/><ellipse cy="-6" rx="44" ry="16" fill="#5a3a24"/></g>`).join('')}
+  ${pc(id, 230, 120, -12, 96, 96, '#f6e8d0', emo(0, 22, 58, '🌸'))}${pc(id, 370, 115, 10, 96, 96, '#f6e8d0', emo(0, 22, 58, '🌵'))}
+`));
+cover('sealed', id => shell(id, { title: 'Sealed Letter', tag: 'One card · one secret · one heir', bg: ['#6a3a2a', '#3a1c12', '#140806'], cy: 30 }, `
+  ${glow(id, 300, 140, 120, '#ffb070', .25)}
+  ${pc(id, 230, 160, -10, 120, 170, '#f3e4c4', `${emo(0, 10, 64, '👑')}<text y="62" text-anchor="middle" font-family="${SERIF}" font-size="20" fill="#5a2a1a">6 · Regent</text>`)}
+  ${pc(id, 370, 150, 9, 120, 170, '#f3e4c4', `${emo(0, 10, 64, '💌')}<text y="62" text-anchor="middle" font-family="${SERIF}" font-size="20" fill="#5a2a1a">8 · Heir</text>`)}
+  <circle cx="300" cy="225" r="26" fill="#a8232a" filter="url(#${id}-sh)"/><text x="300" y="234" text-anchor="middle" font-family="${SERIF}" font-size="26" fill="#f3c8b0">S</text>
+`));
+cover('insync', id => shell(id, { title: 'In Sync', tag: 'No talking · play in order', bg: ['#2a4a6a', '#142638', '#060c14'], cy: 30 }, `
+  ${[12, 37, 58, 81].map((n, i) => pc(id, 160 + i * 95, 175 - i * 18, -10 + i * 7, 92, 128, '#eef3fa', `<text y="18" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="52" fill="#1d3a6a">${n}</text>`)).join('')}
+  <text x="520" y="80" font-size="38">🤫</text>
+`));
+cover('nightlights', id => shell(id, { title: 'Night Lights', tag: 'See every hand but your own', bg: ['#1a1a3a', '#0c0c22', '#04040e'], cy: 30 }, `
+  ${stars(60, 7, 260, .8)}
+  ${[['#e8473c', 150, 90], ['#f2c230', 260, 70], ['#3fb35c', 360, 100], ['#3d8be8', 460, 80], ['#a05ad8', 300, 150]].map(([c, x, y]) => `<g transform="translate(${x} ${y})">${Array.from({ length: 12 }, (_, k) => `<path d="M0 0 L${(Math.cos(k * Math.PI / 6) * 40).toFixed(1)} ${(Math.sin(k * Math.PI / 6) * 40).toFixed(1)}" stroke="${c}" stroke-width="3" stroke-linecap="round"/>`).join('')}<circle r="6" fill="#fff"/></g>`).join('')}
+  ${[1, 2, 3, 4, 5].map((n, i) => pc(id, 190 + i * 55, 250, -8 + i * 4, 46, 64, ['#e8473c', '#f2c230', '#3fb35c', '#3d8be8', '#a05ad8'][i], `<text y="12" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="30" fill="#fff">${n}</text>`)).join('')}
+`));
+cover('nope', id => shell(id, { title: 'Nope!', tag: 'Take it… or pay a chip to pass', bg: ['#2a6a5a', '#143a30', '#06140e'], cy: 30 }, `
+  ${pc(id, 260, 160, -6, 150, 200, '#fbf6ea', `<text y="30" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="96" fill="#b8323a">27</text>`)}
+  ${[0, 1, 2, 3, 4].map(i => `<circle cx="${400 + (i % 3) * 30}" cy="${150 + Math.floor(i / 3) * 30}" r="18" fill="#e8b923" stroke="#8a6a1a" stroke-width="3" filter="url(#${id}-sh)"/>`).join('')}
+  <text x="450" y="245" text-anchor="middle" font-family="${UI}" font-weight="900" font-size="36" fill="#ffe0a0">NOPE!</text>
+`));
+cover('bullpen', id => shell(id, { title: 'Bull Pen', tag: 'Pick at once · dodge the sixth card', bg: ['#6a4a1a', '#3a280c', '#140c04'], cy: 30 }, `
+  ${[0, 1, 2].map(r => [0, 1, 2, 3, 4].map(k => (k < 3 + r % 2 ? pc(id, 140 + k * 70, 90 + r * 70, 0, 58, 60, '#fbf6ea', `<text y="0" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="20" fill="#3a2a10">${[12, 23, 31, 44, 47, 55, 61, 66, 70, 78, 85, 90, 99, 101, 104][r * 5 + k]}</text><text y="20" text-anchor="middle" font-size="12">🐂</text>`) : '')).join('')).join('')}
+  <text x="520" y="160" text-anchor="middle" font-size="80">🐂</text>
+`));
+cover('openhouse', id => shell(id, { title: 'Open House', tag: 'Bid on homes · sell for cheques', bg: ['#2a5a8a', '#142e48', '#060e18'], cy: 30 }, `
+  ${[['📦', 1], ['🏡', 12], ['🏰', 30]].map(([e, n], i) => pc(id, 180 + i * 120, 150 + (i === 1 ? -14 : 0), -8 + i * 8, 104, 140, '#fbf6ea', `${emo(0, 4, 56, e)}<text y="52" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="24" fill="#2a3a5a">${n}</text>`)).join('')}
+  ${pc(id, 470, 250, 6, 130, 50, '#d8f0d0', `<text y="10" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="26" fill="#2a6a3a">$15,000</text>`)}
+`));
+cover('bugbluff', id => shell(id, { title: 'Bug Bluff', tag: '“This is a spider.” Is it?', bg: ['#4a5a1a', '#28300c', '#0c1004'], cy: 30 }, `
+  ${pc(id, 220, 160, -10, 120, 170, '#2a3a1a', '<rect x="-48" y="-73" width="96" height="146" rx="8" fill="none" stroke="#9ab84a" stroke-width="3"/><text y="18" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="70" fill="#9ab84a">?</text>')}
+  ${emo(380, 130, 70, '🕷️', 10)}${emo(460, 210, 54, '🪳', -12)}${emo(360, 240, 46, '🐸', 6)}
+`));
+cover('snapmatch', id => shell(id, { title: 'Snap Match', tag: 'Two cards · one match · be quickest', bg: ['#8a2a6a', '#4a1438', '#180612'], cy: 30 }, `
+  ${[[210, 160, ['🍎', '🚀', '🐱', '⭐', '🎸']], [400, 160, ['🐢', '⭐', '🔑', '🌵', '🎈']]].map(([x, y, s]) => `<g transform="translate(${x} ${y})" filter="url(#${id}-sh)"><circle r="92" fill="#fffaf0"/>${s.map((e, i) => emo(i ? Math.cos(i * 1.6) * 52 : 0, (i ? Math.sin(i * 1.6) * 52 : 0) + 14, i ? 34 : 44, e, i * 25)).join('')}</g>`).join('')}
+`));
+cover('whoswho', id => shell(id, { title: 'Who’s Who', tag: 'Yes-or-no questions · one guess', bg: ['#3a6a9a', '#1c3a58', '#08121c'], cy: 30 }, `
+  <g transform="translate(300 160)" filter="url(#${id}-sh)"><rect x="-210" y="-100" width="420" height="200" rx="14" fill="#c8302a"/>
+  ${Array.from({ length: 10 }, (_, i) => `<g transform="translate(${-180 + (i % 5) * 80} ${-82 + Math.floor(i / 5) * 92})"><rect width="62" height="76" rx="6" fill="${[2, 7].includes(i) ? '#8a2420' : '#fffaf0'}"/>${[2, 7].includes(i) ? '' : `<circle cx="31" cy="34" r="17" fill="${['#f3d2b5', '#c68a5e', '#e0b08a', '#8d5a3a', '#f3d2b5'][i % 5]}"/><path d="M14 30 Q31 6 48 30" fill="${['#2a211c', '#e3bf5a', '#c4502a', '#7a4a26', '#e6e2da'][i % 5]}"/><path d="M8 76 Q31 54 54 76" fill="#3d6ab0"/>`}</g>`).join('')}</g>
+`));
+cover('throwdown', id => shell(id, { title: 'Throwdown', tag: 'Rock · paper · scissors · bracket', bg: ['#8a5a1a', '#4a300c', '#1a1004'], cy: 30 }, `
+  ${glow(id, 300, 150, 140, '#ffd070', .3)}
+  ${emo(170, 190, 96, '🪨', -10)}${emo(300, 170, 96, '📄', 6)}${emo(430, 190, 96, '✂️', 14)}
+  <path d="M120 60 h60 v30 h60 M120 120 h60 v-30 M480 60 h-60 v30 h-60 M480 120 h-60 v-30" stroke="#ffe0a0" stroke-width="3" fill="none" opacity=".6"/>
+`));
+cover('oneclue', id => shell(id, { title: 'One Clue', tag: 'Same clue? It’s gone', bg: ['#2a7a7a', '#143e3e', '#061616'], cy: 30 }, `
+  ${['RIVER', 'BANK', 'SALMON', 'BANK'].map((w, i) => pc(id, 140 + i * 105, 170 - (i % 2) * 20, -6 + i * 4, 96, 70, '#fffaf0', `<text y="8" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="18" fill="${w === 'BANK' ? '#b8323a' : '#1a3a3a'}">${w}</text>${w === 'BANK' ? '<path d="M-40 -26 L40 26 M40 -26 L-40 26" stroke="#b8323a" stroke-width="4"/>' : ''}`)).join('')}
+  <text x="300" y="80" text-anchor="middle" font-size="44">🙈</text>
+`));
+cover('samebrain', id => shell(id, { title: 'Same Brain', tag: 'Think like the herd', bg: ['#5a8a3a', '#2e481c', '#0e1808'], cy: 30 }, `
+  ${[0, 1, 2, 3].map(i => emo(170 + i * 70, 200 - (i % 2) * 14, 70, '🐑')).join('')}${emo(470, 140, 64, '🐄', 10)}${emo(500, 230, 40, '🧦', -20)}
+`));
+cover('closecall', id => shell(id, { title: 'Close Call', tag: 'Guess a number · bet on the closest', bg: ['#2a4a2a', '#142614', '#060e06'], cy: 30 }, `
+  <g transform="translate(300 170)" filter="url(#${id}-sh)"><rect x="-250" y="-50" width="500" height="100" rx="12" fill="#1e5a32" stroke="#e8c35a" stroke-width="3"/>
+  ${['⬇', '67', '88', '120', '300'].map((t, i) => `<g transform="translate(${-200 + i * 100} 0)"><rect x="-42" y="-38" width="84" height="76" rx="8" fill="${i === 2 ? '#e8c35a' : '#2a7a48'}"/><text y="10" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="28" fill="${i === 2 ? '#1a3a1a' : '#fff'}">${t}</text></g>`).join('')}</g>
+  <text x="300" y="80" text-anchor="middle" font-family="${SERIF}" font-size="30" fill="#e8f4d8">How many keys on a piano?</text>
+`));
+cover('doodlebluff', id => shell(id, { title: 'Doodle Bluff', tag: 'Draw it · fake the title · find the real one', bg: ['#7a4a8a', '#3e2448', '#140a18'], cy: 30 }, `
+  ${pc(id, 230, 160, -5, 220, 170, '#fdf9ef', '<path d="M-60 30 Q-40 -50 0 -30 Q40 -60 60 20 Q20 50 -60 30 Z" fill="none" stroke="#3a7a3a" stroke-width="6"/><circle cx="-10" cy="-5" r="6" fill="#222"/><circle cx="20" cy="-8" r="6" fill="#222"/><path d="M-10 15 Q5 5 20 15" stroke="#222" stroke-width="4" fill="none"/>')}
+  ${['a nervous cactus?', 'a sad pickle?', 'grumpy broccoli?'].map((t, i) => `<text x="${370}" y="${120 + i * 40}" font-family="${SERIF}" font-style="italic" font-size="22" fill="#f3e2f8">${t}</text>`).join('')}
+`));
+cover('dreamcards', id => shell(id, { title: 'Dreamcards', tag: 'A clue, a dream, a guess', bg: ['#3a2a6a', '#1e1438', '#0a0616'], cy: 30 }, `
+  ${[['#2b1d52', '#e07a5f', '🐋', '🌙'], ['#0b3d5c', '#7ad0c4', '🏰', '☁️'], ['#3a0d3a', '#f2b5d4', '🦉', '⭐']].map(([a, b, e, s], i) => `<g transform="translate(${190 + i * 110} ${160 + (i === 1 ? -14 : 0)}) rotate(${-10 + i * 10})" filter="url(#${id}-sh)"><defs><linearGradient id="${id}-dc${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect x="-55" y="-80" width="110" height="160" rx="10" fill="url(#${id}-dc${i})" stroke="#fff" stroke-width="4"/>${emo(0, 20, 60, e)}${emo(-26, -42, 26, s)}</g>`).join('')}
+`));
+cover('knowme', id => shell(id, { title: 'Know Me', tag: 'How well do you know them?', bg: ['#aa3a5a', '#5a1c2e', '#1e080e'], cy: 30 }, `
+  ${glow(id, 300, 140, 120, '#ff9ab0', .3)}
+  <text x="300" y="150" text-anchor="middle" font-size="90">🔥</text>
+  ${['A', 'B', 'C', 'D'].map((l, i) => pc(id, 165 + i * 90, 245, 0, 76, 40, ['#e0382c', '#2f7de1', '#f2cf2a', '#36a852'][i], `<text y="9" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="22" fill="#fff">${l}</text>`)).join('')}
+`));
+cover('thisorthat', id => shell(id, { title: 'This or That', tag: 'Choose · then guess the room', bg: ['#3a5a9a', '#1c2e50', '#080e1c'], cy: 30 }, `
+  ${pc(id, 200, 160, -6, 170, 120, '#e0382c', `<text y="10" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="34" fill="#fff">Fly</text>`)}
+  ${pc(id, 400, 160, 6, 170, 120, '#2f7de1', `<text y="10" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="28" fill="#fff">Invisible</text>`)}
+  <circle cx="300" cy="160" r="30" fill="#fffaf0" filter="url(#${id}-sh)"/><text x="300" y="168" text-anchor="middle" font-family="${UI}" font-weight="900" font-size="20" fill="#2a2a3a">OR</text>
+`));
+cover('faceoff', id => shell(id, { title: 'Face Off', tag: 'Two answers enter · one wins', bg: ['#c8562a', '#6a2a14', '#200a04'], cy: 30 }, `
+  ${pc(id, 190, 165, -5, 190, 110, '#fffaf0', `<text y="-6" text-anchor="middle" font-family="${SERIF}" font-style="italic" font-size="20" fill="#2a1a10">“free soup”</text><text y="30" text-anchor="middle" font-size="22">👍👍👍</text>`)}
+  ${pc(id, 410, 165, 5, 190, 110, '#fffaf0', `<text y="-6" text-anchor="middle" font-family="${SERIF}" font-style="italic" font-size="20" fill="#2a1a10">“a tiny horse”</text><text y="30" text-anchor="middle" font-size="22">👍</text>`)}
+  <text x="300" y="80" text-anchor="middle" font-family="${UI}" font-weight="900" font-size="44" fill="#ffd070" stroke="#5a2010" stroke-width="2">VS</text>
 `));

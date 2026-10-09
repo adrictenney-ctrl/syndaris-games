@@ -519,8 +519,6 @@ forgives small typos). Anything typed is sent to the table as a draft, so the cl
   else's score nothing, and the others can vote down anything silly. `js/listoff.js`
 - **Word Bluff** (Balderdash/Fibbage), 3–10: write a fake meaning for a real, strange word; vote for the real
   one. 2 points for finding it, 1 for each player your fake fools. `js/wordbluff.js` (+ `wordbluff-words.js`)
-- **Quick Three** (5 Second Rule), 2–10: name three things in five seconds, out loud; the others vote
-  thumbs up or down. `js/quickthree.js`
 - **Top Answers** (Family Feud), 4–10 in two teams: guess the survey answers; three strikes and the other
   team can steal; last round double. Surveys are from our own panel. `js/topanswers.js`
 - **Trivia Wheel** (Trivial Pursuit), 1–10: the wheel picks one of six categories; everyone answers at once
@@ -534,9 +532,36 @@ forgives small typos). Anything typed is sent to the table as a draft, so the cl
 - **Most Likely To**, 3–10: vote who's most likely to…; a point for voting with the crowd. `js/mostlikely.js`
 - **Two Truths & a Lie**, 3–10: write three statements and mark the lie; everyone guesses each player's.
   `js/twotruths.js`
-- **Blurt It** (Outburst), 4–10 in two teams: shout out the ten answers on the card while someone from the
-  other team ticks them off. `js/blurtit.js`
-- **Act It Out** (charades), 4–10 in two teams. `js/actitout.js`
+
+
+## Phone + table games
+Games picked because they need both screens: something secret on every phone (a hand, dice, a word, a
+vote) and something shared on the table (a board, a pile, a reveal). They run on the party kit
+(`js/play-party.js` now also draws card hands, other players' hands, number boxes and a sketch pad;
+`js/table-party.js` runs computer players for any seat listed by the engine's `pending()`).
+- **Bluff Dice** (Liar's Dice idea), 2–6, bots: dice hidden on phones, bids and the cup lift on the table. `js/bluffdice.js`
+- **Petals & Thorns** (Skull idea), 3–6, bots: secret discs, bid how many you can flip. `js/petals.js`
+- **Sealed Letter** (Love Letter idea, our own cards: Watch, Seer, Duelist, Shield, Herald, Regent, Lady, Heir), 2–6, bots. `js/sealed.js`
+- **In Sync** (The Mind idea), 2–4, bots, co-op: play numbers in order with no talking; lives and stars. `js/insync.js`
+- **Night Lights** (Hanabi idea), 2–5, bots, co-op: your phone shows everyone's cards except yours. `js/nightlights.js`
+- **Nope!** (No Thanks! idea), 3–7, bots: take the card or pay a hidden chip. `js/nope.js`
+- **Bull Pen** (6 nimmt! idea), 2–10, bots: everyone picks at once; the sixth card takes the row. `js/bullpen.js`
+- **Open House** (For Sale idea), 3–6, bots: auction properties, then sell them for cheques. `js/openhouse.js`
+- **Bug Bluff** (Cockroach Poker idea), 3–6, bots: pass a bug with a claim; call it or peek and pass. `js/bugbluff.js`
+- **Snap Match** (Spot It idea), 2–8, bots: a real 57-card projective-plane deck; tap the shared picture. `js/snapmatch.js`
+- **Who's Who** (Guess Who idea), 2, bots: 24 drawn faces (all distinguishable), auto-answered questions. `js/whoswho.js`
+- **Throwdown**, 2–10, bots: rock-paper-scissors tournament bracket. `js/throwdown.js`
+- **One Clue** (Just One idea), 3–10, co-op: one-word clues, duplicates cancel. `js/oneclue.js`
+- **Same Brain** (Herd Mentality idea), 3–10: match the most popular answer; dodge the Odd Sock. `js/samebrain.js`
+- **Close Call** (Wits & Wagers idea), 2–10: guess a number, bet on the closest guess. `js/closecall.js`
+- **Doodle Bluff** (Drawful idea), 3–8: draw a prompt, others fake titles, vote. `js/doodlebluff.js`
+- **Dreamcards** (Dixit idea), 3–8: 96 emoji-scene picture cards; storyteller clue and vote. `js/dreamcards.js`
+- **Know Me**, 3–10: guess what the hot seat really answered. `js/knowme.js`
+- **This or That**, 3–10: pick a side, then predict the room. `js/thisorthat.js`
+- **Face Off** (Quiplash idea), 3–8: answers go head to head, everyone votes; a final round for all. `js/faceoff.js`
+
+Act It Out (charades), Quick Three and Blurt It were taken out: they were shout-out-loud games where the
+phones barely did anything.
 
 ## Home page
 Search box (name, description or kind of game; press / to jump to it, Enter opens the first result) and a ☆

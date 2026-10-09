@@ -4,7 +4,7 @@
 // have nothing else; hearts can't be led until one has been thrown (unless that's all you have).
 // Take all 26 points ("shoot the moon") and everyone else gets 26 instead. When someone reaches
 // the target the lowest score wins.
-import { fullDeck, shuffle, sortCards, followable, trickWinner, suitOf, rankOf, RANKS, announce } from './tricks.js?v=67';
+import { fullDeck, shuffle, sortCards, followable, trickWinner, suitOf, rankOf, RANKS, announce } from './tricks.js?v=68';
 
 export const PASS_DIR = ['left', 'right', 'across', 'none'];
 const QS = 'QS';

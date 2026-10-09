@@ -3,7 +3,7 @@
 // that's the right colour in the right place, a silver one for a right colour in the wrong place.
 // Then swap. The code-maker scores one point per guess the breaker needed (+1 if never broken);
 // more points after both rounds wins the game. Colours can repeat.
-import { createSeries, gameOver, nextGame, announce } from './duel.js?v=67';
+import { createSeries, gameOver, nextGame, announce } from './duel.js?v=68';
 
 export const COLORS = ['#d8443a', '#e8a33a', '#e6d84a', '#4aa85a', '#3a7ad8', '#9a5ad0', '#f0f0e8', '#2a2a2a'];
 export const NAMES = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white', 'black'];

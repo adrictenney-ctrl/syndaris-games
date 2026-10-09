@@ -1,7 +1,7 @@
 // Top Answers on the table: the survey question over a board of numbered tiles that flip to show
 // each answer and its points, the strikes, and the points banked so far.
-import * as E from './topanswers.js?v=67';
-import { partyTable, esc, clock, teamScores, TEAMS } from './table-party.js?v=67';
+import * as E from './topanswers.js?v=68';
+import { partyTable, esc, clock, teamScores, TEAMS } from './table-party.js?v=68';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {

@@ -3,8 +3,8 @@
 // this round's money; Lose a Turn passes the wheel. Buy a vowel for 250, or solve the puzzle to
 // bank your round money. Miss a letter or a solve and the next player spins. Most banked after the
 // last round wins.
-import { base, deal, norm, cleanText, sfx, left, announce } from './party.js?v=67';
-import { PUZZLES } from './spinsolve-puzzles.js?v=67';
+import { base, deal, norm, cleanText, sfx, left, announce } from './party.js?v=68';
+import { PUZZLES } from './spinsolve-puzzles.js?v=68';
 
 export const WHEEL = [2500, 350, 450, 700, 300, 600, 'BANKRUPT', 500, 300, 550, 800, 'LOSE A TURN', 300, 900, 500, 400, 650, 'BANKRUPT', 500, 450, 750, 350, 600, 1000];
 export const VOWELS = 'AEIOU', CONS = 'BCDFGHJKLMNPQRSTVWXYZ';

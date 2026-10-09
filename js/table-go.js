@@ -1,9 +1,9 @@
 // Go on the table: a kaya-wood board with black ink lines and star points; slate and shell
 // stones. Tap a point on the table or on your phone. After two passes, tap stones to mark them
 // dead; the territory is shaded and the score shown until both players accept.
-import * as G from './go.js?v=67';
-import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=67';
-import { snap } from './cards.js?v=67';
+import * as G from './go.js?v=68';
+import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=68';
+import { snap } from './cards.js?v=68';
 
 let root = null, gameRef = null, ctxRef = null, lastMove = -1;
 export const stone = (who, cls = '') => (who == null ? '' : `<i class="go-stone s${who} ${cls}"></i>`);
