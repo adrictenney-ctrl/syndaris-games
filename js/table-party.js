@@ -16,7 +16,7 @@ export const clock = () => '<div class="pt-clock"></div>';
 export const doneRow = (g, ctx, set = g.order) => `<div class="pt-done">${set.map(s => `<span class="${g.done?.[s] ? 'on' : ''}"><i style="background:var(--seat-${s})"></i>${esc(ctx.nameOf(s))}</span>`).join('')}</div>`;
 
 export function partyTable(E, o) {
-  let root = null, key = '', gref = null, clockT = null, lastSfx = 0;
+  let root = null, key = '', gref = null, clockT = null, lastSfx = 0, liveT = null;
   return {
     defaults: o.defaults || {},
     settingsHTML: o.settingsHTML || (() => ''),
@@ -56,7 +56,7 @@ export function partyTable(E, o) {
       const meta = g.team ? `<span class="pt-team t${g.team[s]}">● ${TEAMS[g.team[s]]}</span>` : `<span class="pt-pts">${g.score[s]} pt${g.score[s] === 1 ? '' : 's'}</span>`;
       return { badges, meta, cards: 0, turn: E.turnSeat ? E.turnSeat(g) === s && g.phase !== 'over' : false, out: false };
     },
-    reset() { document.body.classList.remove('party-game'); root?.remove(); root = null; key = ''; clearInterval(clockT); clockT = null; },
+    reset() { document.body.classList.remove('party-game'); clearInterval(liveT); root?.remove(); root = null; key = ''; clearInterval(clockT); clockT = null; },
     renderCenter(g, ctx) {
       gref = g;
       document.getElementById('watermark').textContent = '';
@@ -74,6 +74,9 @@ export function partyTable(E, o) {
       key = k;
       root.innerHTML = o.center(g, ctx);
       o.after?.(root, g, ctx);
+      // Fast-moving games (races, ropes, moles) redraw from the live state between updates.
+      clearInterval(liveT);
+      if (o.live?.(g)) liveT = setInterval(() => { if (!root || !o.live(gref)) return clearInterval(liveT); root.innerHTML = o.center(gref, ctx); o.after?.(root, gref, ctx); }, o.liveMs || 150);
     },
     overlay(g, ctx) {
       if (g.phase !== 'over') return null;

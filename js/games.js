@@ -1931,3 +1931,103 @@ GAMES.mafianight = {
   startLabel: "Night falls",
   layout: GAMES.crown.layout,
 };
+
+GAMES.tugofwar = {
+  id: 'tugofwar',
+  name: "Tug of War",
+  blurb: "2–10 players · two teams tap like mad to drag the rope over the line",
+  min: 2,
+  max: 10,
+  startLabel: "Grab the rope",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.tapderby = {
+  id: 'tapderby',
+  name: "Tap Derby",
+  blurb: "1–10 players · tap your horse to the finish line on the big screen",
+  min: 1,
+  max: 10,
+  startLabel: "Under starter’s orders",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.redlight = {
+  id: 'redlight',
+  name: "Red Light, Green Light",
+  blurb: "1–10 players · run on green, freeze on red — or back to the start",
+  min: 1,
+  max: 10,
+  startLabel: "Green light!",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.musicalchairs = {
+  id: 'musicalchairs',
+  name: "Musical Chairs",
+  blurb: "3–10 players · when the music stops, tap SIT — one chair short",
+  min: 3,
+  max: 10,
+  startLabel: "Start the music",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.quickdraw = {
+  id: 'quickdraw',
+  name: "Quick Draw",
+  blurb: "2–10 players · wait for DRAW, then tap fastest — too early costs you",
+  min: 2,
+  max: 10,
+  startLabel: "Take ten paces",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.echo = {
+  id: 'echo',
+  name: "Echo",
+  blurb: "1–10 players · watch the colours on the table, repeat them on your phone",
+  min: 1,
+  max: 10,
+  startLabel: "Watch closely",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.simonsays = {
+  id: 'simonsays',
+  name: "Simon Says",
+  blurb: "2–10 players · only tap when Simon says so",
+  min: 2,
+  max: 10,
+  startLabel: "Simon says start",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.memorygrid = {
+  id: 'memorygrid',
+  name: "Memory Grid",
+  blurb: "1–10 players · squares light up on the table — mark them from memory",
+  min: 1,
+  max: 10,
+  startLabel: "Light the grid",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.whackamole = {
+  id: 'whackamole',
+  name: "Whack-a-Mole",
+  blurb: "1–10 players · moles pop up on the table — whack the hole on your phone",
+  min: 1,
+  max: 10,
+  startLabel: "Moles incoming",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.counttogether = {
+  id: 'counttogether',
+  name: "Count Together",
+  blurb: "2–10 players · count to the target as a team — never two at once, no talking",
+  min: 2,
+  max: 10,
+  startLabel: "Begin counting",
+  layout: GAMES.crown.layout,
+};

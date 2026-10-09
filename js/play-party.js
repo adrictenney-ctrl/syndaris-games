@@ -7,6 +7,8 @@
 //   k: 'toggles'  — a list you can tick on and off, then Done
 //   k: 'buttons'  — a row of big buttons
 //   k: 'draw'     — a sketch pad with colours, Undo/Clear and Done (strokes are drafted too)
+//   k: 'tap'      — one huge button for mashing: taps are counted on the phone and sent in small
+//                   batches (as drafts, so the whole room isn't re-sent every tap)
 // Shared extras: title/sub (the status lines), card {kicker, big, small, list}, hands [{name, cards}]
 // (other players' cards to look at), html (ready-made markup from the engine), hud [[label, value, sub], …],
 // left (ms on the clock), myturn, buzz (vibrate on a new key), buttons (under a pick).
@@ -19,6 +21,8 @@ import { PAD_W, PAD_H } from './sketch.js?v=68';
 
 let ctx = null, key = null, clockT = null, endAt = 0, draftT = null, radio = -1;
 let strokes = [], pen = { c: 0, w: 1 }, live = null;
+let taps = 0, tapT = null;
+function flushTaps() { tapT = null; if (taps) { ctx.raw({ t: 'ink', draft: { taps } }); taps = 0; } }
 export function reset() { document.body.classList.remove('party-game'); key = null; strokes = []; clearInterval(clockT); clockT = null; document.getElementById('ptPhone')?.remove(); }
 export function renderLobby(c) {
   $('#whoami').innerHTML = `<i style="background:var(--seat-${c.st.you})"></i>${c.nameOf(c.st.you)}`;
@@ -101,6 +105,16 @@ export function render(c) {
         draftDraw();
       }
     });
+    el.addEventListener('pointerdown', e => {
+      const b = e.target.closest('[data-tap]');
+      if (!b) return;
+      e.preventDefault();
+      taps++;
+      b.classList.remove('hit'); void b.offsetWidth; b.classList.add('hit');
+      const n = el.querySelector('.pp-tapn'); if (n) n.textContent = String(Number(n.textContent || 0) + 1);
+      navigator.vibrate?.(8);
+      if (!tapT) tapT = setTimeout(flushTaps, 250);
+    });
     el.addEventListener('input', e => {
       if (!e.target.closest('.pp-field')) return;
       clearTimeout(draftT);
@@ -133,6 +147,8 @@ export function render(c) {
     const T = u.k === 'toggles';
     h += `<div class="pp-opts ${u.grid ? 'grid' : ''} ${u.cards ? 'cards' : ''} ${u.big ? 'big' : ''}" style="${u.grid ? `--cols:${u.grid}` : ''}">${u.options.map(o => `<button class="pp-opt ${o.on ? 'on' : ''} ${o.cls || ''}" style="${o.color ? `--c:${o.color}` : ''}" ${T ? `data-t="${o.v}"` : `data-v="${esc(o.v)}"`} ${o.dis ? 'disabled' : ''}>${o.dot != null ? `<i style="background:var(--seat-${o.dot})"></i>` : ''}${o.art || `<span>${E(o.label)}</span>`}${o.sub ? `<small>${E(o.sub)}</small>` : ''}</button>`).join('')}</div>`;
     if (u.buttons) h += `<div class="pp-btns">${u.buttons.map((b, i) => `<button class="panel-btn ${b.go ? 'go' : ''} ${b.cls || ''}" data-b="${i}" ${b.dis ? 'disabled' : ''}>${E(b.label)}</button>`).join('')}</div>`;
+  } else if (u.k === 'tap') {
+    h += `<button class="pp-tap ${u.cls || ''}" data-tap style="${u.color ? `--c:${u.color}` : ''}"><b>${u.icon || '👆'}</b><span>${E(u.label || 'TAP!')}</span><em class="pp-tapn">${u.count ?? ''}</em></button>`;
   } else if (u.k === 'buttons') {
     h += `<div class="pp-btns ${u.stack ? 'stack' : ''}">${u.buttons.map((b, i) => `<button class="panel-btn ${b.go ? 'go' : ''} ${b.cls || ''}" data-b="${i}" ${b.dis ? 'disabled' : ''}>${b.icon ? `<b>${b.icon}</b>` : ''}${E(b.label)}</button>`).join('')}</div>`;
   } else if (u.note) h += `<p class="pp-note">${E(u.note)}</p>`;
