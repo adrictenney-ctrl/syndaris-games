@@ -1,9 +1,9 @@
 // Cribbage on the table: an oak peg board along the middle (two tracks of 120 holes in three
 // rows each, front and back pegs), the starter and crib beside it, the pegging pile with its
 // running count, and in the show each hand laid out with its points.
-import * as C from './cribbage.js?v=64';
-import { cardEl, snap } from './cards.js?v=64';
-import { centerMsg, clearMsg } from './table-hearts.js?v=64';
+import * as C from './cribbage.js?v=65';
+import { cardEl, snap } from './cards.js?v=65';
+import { centerMsg, clearMsg } from './table-hearts.js?v=65';
 
 let root = null, key = '';
 
@@ -23,7 +23,7 @@ function boardSVG(g, ctx) {
     for (const [v, op] of [[g.prev[t], 0.55], [g.scores[t], 1]]) {
       if (!v) continue;
       const [x, y] = v >= 121 ? [W / 2, H / 2] : hole(t, v, W, H);
-      h += `<circle cx="${x}" cy="${y}" r="10" fill="${col}" opacity="${op}" stroke="#fff" stroke-width="2.4"/>`;
+      h += `<circle cx="${x}" cy="${y}" r="10" style="fill:${col}" opacity="${op}" stroke="#fff" stroke-width="2.4"/>`;
     }
   }
   return `<svg viewBox="0 0 ${W} ${H}" class="cb-board"><defs><linearGradient id="cbWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c08a52"/><stop offset=".5" stop-color="#a06a38"/><stop offset="1" stop-color="#7a4a22"/></linearGradient></defs>${h}</svg>`;

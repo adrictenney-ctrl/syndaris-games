@@ -25,7 +25,7 @@ body[data-game="hearts"] { background: linear-gradient(180deg, #4a1724, #17060b)
 body[data-game="spades"] { background: linear-gradient(180deg, #1a2440, #070a12); }
 body[data-game="bridge"] { background: linear-gradient(180deg, #1d4430, #08160e); }
 body[data-game="pinochle"] { background: linear-gradient(180deg, #4a3818, #160f05); }
-.tk-bids { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; width: 100%; }
+.tk-bids { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; width: 100%; }
 .tk-bids .panel-btn { padding: 12px 0; min-width: 0; }
 .tk-bids .panel-btn.sel { background: var(--champagne); color: #17130c; }
 .tk-bidlog { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; font-family: var(--ui); font-size: 13px; color: var(--ivory); }

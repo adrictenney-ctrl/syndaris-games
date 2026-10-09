@@ -1,6 +1,6 @@
 // Trio: three in a row on a 3×3 board (the classic noughts-and-crosses game). Seat 0 plays
 // the gold rings, seat 1 the ivory diamonds. Played as a match (best of 1/3/5/7).
-import { createSeries, gameOver, nextGame, announce } from './duel.js?v=64';
+import { createSeries, gameOver, nextGame, announce } from './duel.js?v=65';
 
 export const LINES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 export const fresh = g => { g.board = Array(9).fill(null); g.line = null; g.last = null; };

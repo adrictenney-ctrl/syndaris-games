@@ -96,7 +96,7 @@ body[data-game="bento"] #print, body[data-game="bento"] .fan { display: none; }
 .bn-mytray .bn-chip { font-size: 20px; padding: 3px 7px; }
 .bn-mytray i { font-family: var(--serif); color: var(--mute); }
 .bn-tally { margin: 0; font-family: var(--ui); font-size: 11px; color: var(--gold-ink); }
-.bn-hand { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; width: 100%; }
+.bn-hand { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; width: 100%; }
 .bn-hand button { padding: 0; border: 0; background: none; cursor: pointer; transition: transform .15s; }
 .bn-hand button.sel { transform: translateY(-8px); }
 .bn-hand button.sel .bn-card { box-shadow: inset 0 0 0 4px var(--c), 0 0 0 3px var(--champagne), 0 8px 16px rgba(0, 0, 0, .5); }
@@ -146,7 +146,7 @@ body[data-game="dealmaker"] #print { display: none; }
 .dm-mine { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; justify-content: center; }
 .dm-mine em { font-family: var(--serif); color: var(--mute); }
 .dm-bank { font-family: var(--ui); font-weight: 800; font-size: 12px; color: #b8e0a0; padding: 3px 8px; border-radius: 99px; background: rgba(0, 0, 0, .3); }
-.dm-hand { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+.dm-hand { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
 .dm-hand button, .dm-paylist button { padding: 0; border: 0; background: none; cursor: pointer; transition: transform .15s; }
 .dm-hand button.sel, .dm-paylist button.sel { transform: translateY(-6px); }
 .dm-hand button.sel .dm-card, .dm-paylist button.sel .dm-card { outline: 3px solid var(--champagne); }
@@ -194,7 +194,7 @@ body[data-game="roadrally"] #print { display: none; }
 .rr-opts { display: flex; flex-direction: column; gap: 6px; } .rr-opts .panel-btn { padding: 11px; }
 .rr-why { margin: 0; text-align: center; font-family: var(--serif); font-style: italic; color: #ffb0a0; }
 .rr-coup { text-align: center; font-family: var(--ui); font-weight: 700; color: var(--ivory); }
-.rr-hand { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.rr-hand { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
 .rr-hand button { padding: 0; border: 0; background: none; cursor: pointer; transition: transform .15s; }
 .rr-hand button.sel { transform: translateY(-8px); } .rr-hand button.sel .rr-card { outline: 3px solid var(--champagne); }
 .rr-hand button:disabled { opacity: .75; }
@@ -227,7 +227,7 @@ body[data-game="unicorns"] #print { display: none; }
 #ucPhone { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 8px; }
 #ucPhone .uc-mini { width: 30px; height: 30px; font-size: 17px; }
 .uc-mine { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; min-height: 30px; }
-.uc-hand { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+.uc-hand { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
 .uc-hand button { padding: 0; border: 0; background: none; cursor: pointer; transition: transform .15s; }
 .uc-hand button.sel { transform: translateY(-6px); } .uc-hand button.sel .uc-card { outline: 3px solid var(--champagne); }
 .uc-sheet { display: flex; gap: 10px; align-items: flex-start; padding: 8px; border-radius: 12px; background: rgba(0, 0, 0, .3); }

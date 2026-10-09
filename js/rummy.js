@@ -4,8 +4,8 @@
 // and scores what everyone else is still holding (aces 1, pictures 10, the rest face value);
 // going out all at once, without having melded before, is "Rummy" and scores double.
 // A card taken from the discard pile can't be thrown straight back.
-import { fullDeck, shuffle, announce } from './tricks.js?v=64';
-import { isMeld, sortMeld, val, bestMelds, fits, allMelds } from './rummycore.js?v=64';
+import { fullDeck, shuffle, announce } from './tricks.js?v=65';
+import { isMeld, sortMeld, val, bestMelds, fits, allMelds } from './rummycore.js?v=65';
 
 export const handSort = h => h.slice().sort((a, b) => 'SHDC'.indexOf(a[1]) - 'SHDC'.indexOf(b[1]) || 'A23456789TJQK'.indexOf(a[0]) - 'A23456789TJQK'.indexOf(b[0]));
 

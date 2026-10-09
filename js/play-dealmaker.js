@@ -1,9 +1,9 @@
 // Deal Maker on a phone: your hand, your sets and bank. Tap a card to see what you can do with
 // it (bank it, lay it down, or play it — then pick who and what). When someone acts against you
 // you can say Nope!; when you owe, tick the cards to pay with.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=64';
-import { dmCard, setsHTML, bankTotal, pendingText } from './table-dealmaker.js?v=64';
-import { CARDS, COLORS, ACTIONS, setSize } from './dealmaker.js?v=64';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=65';
+import { dmCard, setsHTML, bankTotal, pendingText } from './table-dealmaker.js?v=65';
+import { CARDS, COLORS, ACTIONS, setSize } from './dealmaker.js?v=65';
 
 let ctx = null, sel = null, step = null, picks = [], wasMyTurn = false;
 const C = CARDS;

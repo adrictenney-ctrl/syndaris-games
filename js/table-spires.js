@@ -1,8 +1,8 @@
 // Seven Spires on the table: the central deck with the war drums and the Boons on offer in the
 // middle; a face-up deck between each pair of neighbours; and in front of every player their
 // spire rising stage by stage, with what they've collected beneath it.
-import * as S from './spires.js?v=64';
-import { snap } from './cards.js?v=64';
+import * as S from './spires.js?v=65';
+import { snap } from './cards.js?v=65';
 
 let root = null, decks = [], spires = {}, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

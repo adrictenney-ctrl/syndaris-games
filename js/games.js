@@ -710,3 +710,83 @@ GAMES.roundtable = {
   startLabel: 'Deal the roles',
   layout: GAMES.crown.layout,
 };
+
+GAMES.reversi = {
+  id: 'reversi',
+  name: 'Reversi',
+  blurb: '2 players · trap and flip, own the board',
+  startLabel: 'Start the game',
+  min: 2,
+  max: 2,
+  layout: GAMES.chess.layout,
+};
+
+GAMES.go = {
+  id: 'go',
+  name: 'Go',
+  blurb: '2 players · surround territory, capture stones',
+  startLabel: 'Start the game',
+  min: 2,
+  max: 2,
+  layout: GAMES.chess.layout,
+};
+
+GAMES.codebreaker = {
+  id: 'codebreaker',
+  name: 'Code Breaker',
+  blurb: '2 players · set a secret code, crack theirs',
+  startLabel: 'Start the game',
+  min: 2,
+  max: 2,
+  layout: GAMES.chess.layout,
+};
+
+GAMES.starjump = {
+  id: 'starjump',
+  name: 'Star Jump',
+  blurb: '2–6 players · hop and jump your marbles across the star',
+  startLabel: 'Start the game',
+  min: 2,
+  max: 6,
+  // One seat at each point of the star, clockwise from the bottom.
+  layout: [S(50, 100, 0, 'South'), S(0, 74, 1, 'South-west'), S(0, 26, 1, 'North-west'), S(50, 0, 2, 'North'), S(100, 26, 3, 'North-east'), S(100, 74, 3, 'South-east')],
+};
+
+GAMES.dominoes = {
+  id: 'dominoes',
+  name: 'Dominoes',
+  blurb: '2–4 players · match the ends, empty your hand',
+  min: 2,
+  max: 4,
+  startLabel: 'Shuffle the tiles',
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.cornerstones = {
+  id: 'cornerstones',
+  name: 'Cornerstones',
+  blurb: '2–4 players · fit your pieces corner to corner, block everyone else',
+  startLabel: 'Start the game',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.shapeshade = {
+  id: 'shapeshade',
+  name: 'Shape & Shade',
+  blurb: '2–4 players · line up colours and shapes, score big with six',
+  startLabel: 'Fill the bag',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.lineup5 = {
+  id: 'lineup5',
+  name: 'Line Up 5',
+  blurb: '2–8 players · play a card, place a chip, get five in a row',
+  min: 2,
+  max: 8,
+  layout: GAMES.holdem.layout,
+};

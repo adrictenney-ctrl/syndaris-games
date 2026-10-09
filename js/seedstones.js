@@ -5,7 +5,7 @@
 // side runs out, the other player stores what's left. Most stones in store wins.
 //
 // Pits 0–5 and store 6 belong to seat 0; pits 7–12 and store 13 to seat 1. Pit i faces 12 − i.
-import { createSeries, gameOver, nextGame, announce } from './duel.js?v=64';
+import { createSeries, gameOver, nextGame, announce } from './duel.js?v=65';
 
 export const STORE = [6, 13];
 export const pitsOf = s => (s === 0 ? [0, 1, 2, 3, 4, 5] : [7, 8, 9, 10, 11, 12]);

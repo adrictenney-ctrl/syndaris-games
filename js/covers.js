@@ -583,3 +583,46 @@ cover('roundtable', id => shell(id, { title: 'Round Table', tag: 'Knights · tra
   ${['🛡️', '🔮', '🛡️', '🔪', '🛡️', '🐎', '🧙'].map((e, i) => { const a = Math.PI * (1.08 + i * 0.14); return `<text x="${300 + Math.cos(a) * 205}" y="${172 + Math.sin(a) * 100}" text-anchor="middle" font-size="34">${e}</text>`; }).join('')}
   <text x="300" y="175" text-anchor="middle" font-size="50">🗡️</text>
 `));
+
+cover('reversi', id => shell(id, { title: 'Reversi', tag: 'Trap · flip · take the board', bg: ['#3a8a5a', '#215c39', '#08180e'], cy: 32 }, `
+  <g transform="translate(300 150) rotate(-8)" filter="url(#${id}-sh)"><rect x="-150" y="-110" width="300" height="220" rx="10" fill="#1a1410"/>
+  ${Array.from({ length: 30 }, (_, i) => { const r = Math.floor(i / 6), c = i % 6; const v = [1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, null, 1, null, 1, 0, null, 0, 1][i]; return `<rect x="${-142 + c * 47.5}" y="${-102 + r * 41}" width="45" height="39" rx="3" fill="#2f7a4e"/>${v == null ? '' : `<ellipse cx="${-119.5 + c * 47.5}" cy="${-82.5 + r * 41}" rx="17" ry="15" fill="${v ? '#f6efe0' : '#151515'}" stroke="${v ? '#c8bfae' : '#444'}"/>`}`; }).join('')}</g>
+`));
+
+cover('go', id => shell(id, { title: 'Go', tag: 'Surround · capture · territory', bg: ['#c8964e', '#8a5a26', '#2a1a08'], cy: 30 }, `
+  <g transform="translate(300 160) rotate(-6)" filter="url(#${id}-sh)"><rect x="-170" y="-130" width="340" height="260" rx="6" fill="#e0b06a"/>
+  ${Array.from({ length: 9 }, (_, i) => `<path d="M${-150 + i * 37.5} -110 V110 M-150 ${-110 + i * 27.5} H150" stroke="#3a2210" stroke-width="1.5"/>`).join('')}
+  ${[[2, 2, 0], [3, 2, 1], [3, 3, 0], [4, 3, 1], [4, 4, 0], [5, 4, 1], [2, 5, 0], [6, 2, 1], [5, 5, 0], [6, 6, 1], [3, 6, 1], [4, 6, 0]].map(([c, r, w]) => `<circle cx="${-150 + c * 37.5}" cy="${-110 + r * 27.5}" r="15" fill="${w ? '#f6f1e4' : '#151515'}" stroke="${w ? '#bdb4a2' : '#000'}"/>`).join('')}</g>
+`));
+
+cover('codebreaker', id => shell(id, { title: 'Code Breaker', tag: 'Four pegs · ten tries', bg: ['#7a5232', '#4a2e16', '#140a04'], cy: 30 }, `
+  <g transform="translate(300 150) rotate(-10)" filter="url(#${id}-sh)"><rect x="-170" y="-80" width="340" height="170" rx="14" fill="#6a4424"/>
+  ${[[0, 4, 1, 2], [3, 3, 5, 0], [1, 4, 3, 2], [2, 4, 1, 3]].map((row, r) => row.map((c, k) => `<circle cx="${-130 + k * 42}" cy="${-50 + r * 38}" r="14" fill="${['#d8443a', '#e8a33a', '#e6d84a', '#4aa85a', '#3a7ad8', '#9a5ad0'][c]}"/>`).join('') + [0, 1, 2, 3].map(k => `<circle cx="${60 + (k % 2) * 16}" cy="${-58 + r * 38 + Math.floor(k / 2) * 16}" r="5.5" fill="${k < r ? '#e8c35a' : k < r + 1 ? '#e8e8f0' : '#2a1a10'}"/>`).join('')).join('')}
+  <rect x="110" y="-70" width="50" height="150" rx="8" fill="#c9a35a"/><text x="135" y="12" text-anchor="middle" font-size="28">🔒</text></g>
+`));
+
+cover('starjump', id => shell(id, { title: 'Star Jump', tag: 'Hop · jump · race across', bg: ['#3a3a5a', '#1c1c2c', '#0a0a12'], cy: 34 }, `
+  ${stars(50, 5, 400, .5)}
+  <g transform="translate(300 170)" filter="url(#${id}-sh)"><circle r="150" fill="#5a3a20"/>
+  ${(() => { let h = ''; for (let q = -8; q <= 8; q++) for (let r = -8; r <= 8; r++) { const s = -q - r; if (Math.abs(s) > 8) continue; if (!((q >= -4 && r >= -4 && s >= -4) || (q <= 4 && r <= 4 && s <= 4))) continue; const x = 8.6 * Math.sqrt(3) * (q + r / 2), y = 8.6 * 1.5 * r; const col = r > 4 ? '#3a7ad8' : r < -4 ? '#d8443a' : q > 4 ? '#e8c23a' : q < -4 ? '#4aa85a' : s > 4 ? '#9a5ad0' : s < -4 ? '#e8892a' : null; h += col ? `<circle cx="${x}" cy="${y}" r="5.5" fill="${col}"/><circle cx="${x - 1.5}" cy="${y - 1.8}" r="1.8" fill="#fff" opacity=".6"/>` : `<circle cx="${x}" cy="${y}" r="2.6" fill="#2a1a08"/>`; } return h; })()}</g>
+`));
+
+cover('dominoes', id => shell(id, { title: 'Dominoes', tag: 'Match the ends', bg: ['#2a6070', '#15343f', '#071418'], cy: 32 }, `
+  ${[[[6, 6], 150, 120, 90], [[6, 3], 215, 150, 0], [[3, 5], 300, 150, 0], [[5, 5], 365, 150, 90], [[5, 2], 430, 150, 0], [[2, 1], 500, 120, -30]].map(([[a, b], x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})" filter="url(#${id}-sh)"><rect x="-40" y="-20" width="80" height="40" rx="6" fill="#fbf6ea" stroke="#b8ad96"/><path d="M0 -15 V15" stroke="#8a7a5a" stroke-width="1.5"/>${[[a, -20], [b, 20]].map(([n, ox]) => ({ 0: [], 1: [[0, 0]], 2: [[-1, -1], [1, 1]], 3: [[-1, -1], [0, 0], [1, 1]], 4: [[-1, -1], [1, -1], [-1, 1], [1, 1]], 5: [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]], 6: [[-1, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [1, 1]] })[n].map(([px, py]) => `<circle cx="${ox + px * 10}" cy="${py * 10}" r="3.4" fill="#1a1612"/>`).join('')).join('')}</g>`).join('')}
+`));
+
+cover('cornerstones', id => shell(id, { title: 'Cornerstones', tag: 'Corner to corner · never side by side', bg: ['#4a4e5a', '#262a32', '#0c0d10'], cy: 32 }, `
+  <g transform="translate(300 150) rotate(-12)" filter="url(#${id}-sh)"><rect x="-140" y="-120" width="280" height="240" rx="8" fill="#2a2e36"/>
+  ${(() => { const P = { '#3a7ad8': [[0, 9], [1, 9], [1, 8], [2, 7], [3, 7], [3, 6], [4, 5], [4, 4]], '#e8c23a': [[0, 0], [0, 1], [1, 2], [2, 2], [2, 3], [3, 4]], '#d8443a': [[11, 0], [10, 0], [10, 1], [9, 2], [8, 2], [8, 3], [7, 4], [7, 5]], '#4aa85a': [[11, 9], [11, 8], [10, 7], [9, 7], [9, 6], [8, 5]] }; let h = ''; for (const [c, cells] of Object.entries(P)) for (const [x, y] of cells) h += `<rect x="${-132 + x * 22}" y="${-112 + y * 22.5}" width="20" height="20.5" rx="3" fill="${c}"/>`; return h; })()}</g>
+`));
+
+cover('shapeshade', id => shell(id, { title: 'Shape & Shade', tag: 'One colour or one shape', bg: ['#4a4a52', '#232328', '#0b0b0d'], cy: 32 }, `
+  ${[[0, 0, 0], [1, 0, 1], [2, 0, 2], [3, 0, 3], [0, 1, 6], [0, 2, 12], [1, 2, 13], [2, 2, 14], [3, -1, 9], [3, 1, 21], [4, 0, 4]].map(([x, y, k]) => { const c = ['#d8443a', '#e8892a', '#e6c83a', '#4aa85a', '#3a7ad8', '#9a5ad0'][Math.floor(k / 6)], s = ['●', '■', '◆', '✚', '★', '✿'][k % 6]; return `<g transform="translate(${170 + x * 62} ${100 + y * 62}) rotate(-6)" filter="url(#${id}-sh)"><rect x="-28" y="-28" width="56" height="56" rx="8" fill="#16161a"/><text y="13" text-anchor="middle" font-family="${SYM}" font-size="36" fill="${c}">${s}</text></g>`; }).join('')}
+`));
+
+cover('lineup5', id => shell(id, { title: 'Line Up 5', tag: 'Play a card · place a chip', bg: ['#357052', '#1b3f2c', '#081a10'], cy: 32 }, `
+  <g transform="translate(300 150) rotate(-8)" filter="url(#${id}-sh)"><rect x="-160" y="-110" width="320" height="220" rx="8" fill="#3a2414"/>
+  ${Array.from({ length: 35 }, (_, i) => { const r = Math.floor(i / 7), c = i % 7; const lab = ['7♥', 'K♠', '2♦', '9♣', 'A♥', '4♠', 'Q♦'][(i * 3) % 7]; return `<rect x="${-152 + c * 43.5}" y="${-102 + r * 41}" width="41" height="39" rx="3" fill="#fbf5e6"/><text x="${-131.5 + c * 43.5}" y="${-78 + r * 41}" text-anchor="middle" font-family="${SERIF}" font-size="14" fill="${/[♥♦]/.test(lab) ? '#a8222b' : '#1c1a1f'}">${lab}</text>`; }).join('')}
+  ${[0, 1, 2, 3, 4].map(k => `<circle cx="${-131.5 + (k + 1) * 43.5}" cy="${-81.5 + k * 41}" r="15" fill="#3a7ad8" stroke="#f3d67a" stroke-width="3"/>`).join('')}
+  ${[[0, 3], [5, 1], [6, 3]].map(([c, r]) => `<circle cx="${-131.5 + c * 43.5}" cy="${-81.5 + r * 41}" r="15" fill="#4aa85a"/>`).join('')}</g>
+`));
