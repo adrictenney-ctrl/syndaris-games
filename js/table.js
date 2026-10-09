@@ -37,6 +37,8 @@ import ironroutes from './table-ironroutes.js?v=66';
 import homestead from './table-homestead.js?v=66';
 import wordsmith from './table-wordsmith.js?v=66';
 import powerup from './table-powerup.js?v=66';
+import passphrase from './table-passphrase.js?v=66';
+import dontsay from './table-dontsay.js?v=66';
 import pardon from './table-pardon.js?v=66';
 import marblerush from './table-marblerush.js?v=66';
 import poprace from './table-poprace.js?v=66';
@@ -90,7 +92,7 @@ import spires from './table-spires.js?v=66';
 import kaboom from './table-kaboom.js?v=66';
 import nestegg from './table-nestegg.js?v=66';
 
-const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones, wrongnumber, scribble, manor, warfront, ironroutes, homestead, wordsmith, powerup, nestegg, kaboom, spires, grandprix, redline, gearworks, tessera, passpot, luckystreak, pileup, dialitin, fieldagents, bannerraid, houserules, deepspace, hardsell, words4fun, hearts, spades, war, oldmaid, rummy, gin, drawpoker, cribbage, stackup, rackem, bento, dealmaker, roadrally, unicorns, powergrab, rebelcell, roundtable, reversi, go, codebreaker, starjump, dominoes, cornerstones, shapeshade, lineup5, hotdice, hogtoss, bingo, snakes, sweettrail, orchard, ludo, poprace, marblerush, pardon };
+const MODES = { euchre, holdem, veto, gofish, chess, backgammon, sketch, chefskiss, insidejob, crown, hollow, blackjack, baccarat, checkers, yacht, spoons, doubt, cashout, crazy8, skyline, lowtide, trio, fourup, seedstones, sonar, milestones, wrongnumber, scribble, manor, warfront, ironroutes, homestead, wordsmith, powerup, nestegg, kaboom, spires, grandprix, redline, gearworks, tessera, passpot, luckystreak, pileup, dialitin, fieldagents, bannerraid, houserules, deepspace, hardsell, words4fun, hearts, spades, war, oldmaid, rummy, gin, drawpoker, cribbage, stackup, rackem, bento, dealmaker, roadrally, unicorns, powergrab, rebelcell, roundtable, reversi, go, codebreaker, starjump, dominoes, cornerstones, shapeshade, lineup5, hotdice, hogtoss, bingo, snakes, sweettrail, orchard, ludo, poprace, marblerush, pardon, dontsay, passphrase };
 const STORE = 'syndaris.table.v2';
 const BOT_NAMES = ['Dot', 'Rook', 'Bixby', 'Clank', 'Pixel', 'Gizmo', 'Sprocket', 'Widget'];
 const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';

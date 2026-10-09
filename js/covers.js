@@ -680,3 +680,12 @@ cover('marblerush', id => raceCover(id, { title: 'Marble Rush', tag: 'Shortcuts 
 cover('pardon', id => shell(id, { title: 'Pardon Me!', tag: 'Draw · slide · bump them back', bg: ['#3a6aaa', '#1c3256', '#080e1a'], cy: 30 }, `
   ${[['11', -16, 200], ['🎩', 0, 300], ['4', 16, 400]].map(([t, r, x]) => `<g transform="translate(${x} 150) rotate(${r})" filter="url(#${id}-sh)"><rect x="-58" y="-80" width="116" height="160" rx="10" fill="#fffaf0" stroke="${t === '🎩' ? '#b8323a' : '#2a4a7a'}" stroke-width="6"/><text y="${t === '🎩' ? 22 : 26}" text-anchor="middle" font-family="${SERIF}" font-size="${t === '🎩' ? 64 : 80}" fill="#2a4a7a">${t}</text></g>`).join('')}
 `));
+
+cover('dontsay', id => shell(id, { title: 'Don’t Say It', tag: 'Describe it · don’t slip', bg: ['#5a3a8a', '#261c3e', '#0c0814'], cy: 30 }, `
+  <g transform="translate(300 150) rotate(-6)" filter="url(#${id}-sh)"><rect x="-110" y="-110" width="220" height="210" rx="14" fill="#fffaf0"/><text y="-60" text-anchor="middle" font-family="${SERIF}" font-size="38" fill="#2a1a40">Pizza</text><path d="M-80 -40 H80" stroke="#c0392b" stroke-width="3"/>
+  ${['cheese', 'slice', 'Italy', 'pepperoni'].map((w, i) => `<text y="${-8 + i * 28}" text-anchor="middle" font-family="${UI}" font-weight="700" font-size="20" fill="#a8323a">${w}</text>`).join('')}</g>
+  <text x="470" y="110" font-size="70">🚨</text>
+`));
+cover('passphrase', id => shell(id, { title: 'Pass the Phrase', tag: 'Hot potato · ticking bomb', bg: ['#7a3a6a', '#4a2a4a', '#140814'], cy: 30 }, `
+  ${glow(id, 300, 140, 140, '#ffb050', .35)}<text x="300" y="200" text-anchor="middle" font-size="150">💣</text>
+`));

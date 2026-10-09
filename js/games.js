@@ -890,3 +890,25 @@ GAMES.pardon = {
   max: 4,
   layout: GAMES.euchre.layout,
 };
+
+GAMES.dontsay = {
+  id: 'dontsay',
+  name: 'Don’t Say It',
+  blurb: '4–8 players · two teams, describe the word, avoid the forbidden ones',
+  min: 4,
+  max: 8,
+  noBots: true,
+  startLabel: 'Shuffle the cards',
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.passphrase = {
+  id: 'passphrase',
+  name: 'Pass the Phrase',
+  blurb: '4–8 players · describe, pass it on, don’t get caught holding it',
+  min: 4,
+  max: 8,
+  noBots: true,
+  startLabel: 'Light the fuse',
+  layout: GAMES.holdem.layout,
+};

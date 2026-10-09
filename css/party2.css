@@ -1,0 +1,25 @@
+/* Team party games: Don't Say It, Pass the Phrase. */
+body[data-game="dontsay"] #felt, body[data-game="passphrase"] #felt { background: radial-gradient(ellipse 120% 100% at 50% 50%, #3a2a5a 0%, #261c3e 55%, #0c0814 100%); }
+body[data-game="dontsay"] #print, body[data-game="passphrase"] #print, body[data-game="dontsay"] .fan, body[data-game="passphrase"] .fan, body[data-game="dontsay"] .tk-msg, body[data-game="passphrase"] .tk-msg { display: none; }
+.pt-wrap { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 2vmin; z-index: 2; text-align: center; width: 60vmin; }
+.pt-scores { display: flex; gap: 6vmin; }
+.pt-score { display: flex; flex-direction: column; align-items: center; opacity: .7; }
+.pt-score.up { opacity: 1; }
+.pt-score small { font-family: var(--ui); font-weight: 800; font-size: 1.5vmin; letter-spacing: .14em; text-transform: uppercase; }
+.pt-score b { font-family: var(--num); font-weight: 400; font-size: 8vmin; color: var(--ivory); }
+.pt-score.t0 small, .pt-team.t0 { color: #ff8a8a; } .pt-score.t1 small, .pt-team.t1 { color: #6ad0c8; }
+.pt-big { margin: 0; font-family: var(--display); font-size: 4vmin; color: var(--ivory); }
+.pt-sub { margin: 0; font-family: var(--serif); font-style: italic; font-size: 2.2vmin; color: var(--mute); }
+.pt-clock { font-family: var(--num); font-size: 9vmin; color: var(--ivory); }
+.pt-clock.low { color: #ff8a6a; }
+.pt-log { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1vmin; justify-content: center; font-family: var(--ui); font-size: 2vmin; color: var(--ivory); }
+.pt-log li.skip { opacity: .5; } .pt-log li.buzz { color: #ff8a8a; }
+.pp-bomb { font-size: 14vmin; animation: wfPulse .8s infinite; } .pp-bomb.boom { animation: trPop .4s; }
+#dsPhone, #ppPhone { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.ds-card { width: 100%; padding: 18px; border-radius: 14px; background: linear-gradient(170deg, #fffaf0, #efe4cc); text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,.5); }
+.ds-card b { display: block; font-family: var(--display); font-size: 34px; color: #2a1a40; }
+.ds-card ul { list-style: none; margin: 10px 0 0; padding: 10px 0 0; border-top: 2px solid #c0392b; font-family: var(--ui); font-weight: 700; font-size: 18px; color: #a8323a; }
+.ds-buzz { width: 100%; padding: 26px; border: 0; border-radius: 16px; font-family: var(--ui); font-weight: 800; font-size: 34px; color: #fff; background: linear-gradient(180deg, #e8506a, #b8323a); cursor: pointer; }
+.ds-shout { font-family: var(--display); font-size: 28px; color: var(--ivory); text-align: center; }
+body[data-game="dontsay"], body[data-game="passphrase"] { background: linear-gradient(180deg, #261c3e, #0c0814); }
+body[data-game="dontsay"] #handWrap, body[data-game="passphrase"] #handWrap, body[data-game="dontsay"] #handHint, body[data-game="passphrase"] #handHint { display: none; }
