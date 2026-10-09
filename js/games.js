@@ -2031,3 +2031,183 @@ GAMES.counttogether = {
   startLabel: "Begin counting",
   layout: GAMES.crown.layout,
 };
+
+GAMES.whist = {
+  id: 'whist',
+  name: "Whist",
+  blurb: "4 players · the classic partnership trick game — take more than six",
+  min: 4,
+  max: 4,
+  startLabel: "Deal 13 each",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.exactly = {
+  id: 'exactly',
+  name: "Exactly",
+  blurb: "3–7 players · bid the exact number of tricks you’ll take — no more, no less",
+  min: 3,
+  max: 7,
+  startLabel: "Deal",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.setback = {
+  id: 'setback',
+  name: "Setback",
+  blurb: "4 players · bid for High, Low, Jack and Game — the first card led is trump",
+  min: 4,
+  max: 4,
+  startLabel: "Pitch",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.raven = {
+  id: 'raven',
+  name: "Raven",
+  blurb: "4 players · bid for the nest, name trump, and beware the Raven card",
+  min: 4,
+  max: 4,
+  startLabel: "Deal the nest",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.missiontricks = {
+  id: 'missiontricks',
+  name: "Mission Tricks",
+  blurb: "3–5 players · co-op: win the right cards with the right player to clear missions",
+  min: 3,
+  max: 5,
+  startLabel: "Launch mission 1",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.schnapsen = {
+  id: 'schnapsen',
+  name: "Schnapsen",
+  blurb: "2 players · fast two-player duel to 66 card points with marriages",
+  min: 2,
+  max: 2,
+  startLabel: "Deal five",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.pinochle = {
+  id: 'pinochle',
+  name: "Pinochle",
+  blurb: "4 players · bid, meld and take tricks in partnerships",
+  min: 4,
+  max: 4,
+  startLabel: "Deal",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.bridge = {
+  id: 'bridge',
+  name: "Bridge",
+  blurb: "4 players · the great partnership game: auction a contract, then make it — dummy face up on the table",
+  min: 4,
+  max: 4,
+  startLabel: "Deal the first board",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.topdog = {
+  id: 'topdog',
+  name: "Top Dog",
+  blurb: "3–7 players · shed your cards first to become Top Dog — the Underdog pays tribute",
+  min: 3,
+  max: 7,
+  startLabel: "Deal",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.bigdeuce = {
+  id: 'bigdeuce',
+  name: "Big Deuce",
+  blurb: "2–4 players · beat the pile with singles, pairs and poker hands — 2s are king",
+  min: 2,
+  max: 4,
+  startLabel: "Deal 13 each",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.foolsdefense = {
+  id: 'foolsdefense',
+  name: "Fool's Defense",
+  blurb: "2–6 players · attack and defend in turn — the last player holding cards is the Fool",
+  min: 2,
+  max: 6,
+  startLabel: "Deal six",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.thirtyone = {
+  id: 'thirtyone',
+  name: "Thirty-One",
+  blurb: "2–8 players · draw and discard toward 31 in one suit — knock when you dare",
+  min: 2,
+  max: 8,
+  startLabel: "Deal three",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.tonk = {
+  id: 'tonk',
+  name: "Tonk",
+  blurb: "2–5 players · quick rummy: spread sets and runs, or drop if you’re lowest",
+  min: 2,
+  max: 5,
+  startLabel: "Deal five",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.slapstack = {
+  id: 'slapstack',
+  name: "Slap Stack",
+  blurb: "2–6 players · flip to the pile and slap doubles and sandwiches first",
+  min: 2,
+  max: 6,
+  startLabel: "Split the deck",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.speed = {
+  id: 'speed',
+  name: "Speed",
+  blurb: "2 players · no turns — play one higher or lower as fast as you can",
+  min: 2,
+  max: 2,
+  startLabel: "Ready, set…",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.pairs = {
+  id: 'pairs',
+  name: "Pairs",
+  blurb: "2–6 players · flip or fold — pair your own card and you score its value",
+  min: 2,
+  max: 6,
+  startLabel: "Shuffle the triangle deck",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.cardgolf = {
+  id: 'cardgolf',
+  name: "Card Golf",
+  blurb: "2–6 players · six cards face down — swap your way to the lowest score",
+  min: 2,
+  max: 6,
+  startLabel: "Tee off",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.cornerkings = {
+  id: 'cornerkings',
+  name: "Corner Kings",
+  blurb: "2–4 players · build down in alternating colours — kings claim the corners",
+  min: 2,
+  max: 4,
+  startLabel: "Deal seven",
+  layout: GAMES.crown.layout,
+};
