@@ -1822,3 +1822,112 @@ GAMES.fibfinder = {
   startLabel: "First fact",
   layout: GAMES.crown.layout,
 };
+
+GAMES.storychain = {
+  id: 'storychain',
+  name: "Story Chain",
+  blurb: "3–10 players · add a line seeing only the one before — then read the chaos aloud",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Start the stories",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.rateit = {
+  id: 'rateit',
+  name: "Rate It",
+  blurb: "3–10 players · guess how the hot seat rates things from 1 to 10",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Take the hot seat",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.topfive = {
+  id: 'topfive',
+  name: "Top Five",
+  blurb: "3–10 players · guess how the hot seat ranks five things",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Take the hot seat",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.mindmeld = {
+  id: 'mindmeld',
+  name: "Mind Meld",
+  blurb: "2–10 players · pairs try to say the same word at the same time",
+  min: 2,
+  max: 10,
+  noBots: true,
+  startLabel: "Pair up",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.captionit = {
+  id: 'captionit',
+  name: "Caption It",
+  blurb: "3–10 players · a strange picture on the table — write the funniest caption",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Show a picture",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.fakeartist = {
+  id: 'fakeartist',
+  name: "Fake Artist",
+  blurb: "3–10 players · one line each on a shared drawing — one artist doesn’t know the word",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Hand out the word",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.copycat = {
+  id: 'copycat',
+  name: "Copy Cat",
+  blurb: "2–10 players · a picture flashes on the table — draw it from memory",
+  min: 2,
+  max: 10,
+  noBots: true,
+  startLabel: "Show the picture",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.codecrack = {
+  id: 'codecrack',
+  name: "Code Crack",
+  blurb: "4–10 players · two teams, secret keywords, coded clues — and interceptions",
+  min: 4,
+  max: 10,
+  noBots: true,
+  startLabel: "Deal the keywords",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.undercover = {
+  id: 'undercover',
+  name: "Undercover Spy",
+  blurb: "3–10 players · everyone knows the location except the spy",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Deal the secrets",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.mafianight = {
+  id: 'mafianight',
+  name: "Mafia Night",
+  blurb: "5–10 players · Mafia, Doctor, Detective — secret roles and night moves on your phone",
+  min: 5,
+  max: 10,
+  startLabel: "Night falls",
+  layout: GAMES.crown.layout,
+};

@@ -50,7 +50,7 @@ export function partyTable(E, o) {
     plate(g, s) {
       if (!g.seats[s]) return { badges: [], meta: '', cards: 0 };
       const badges = o.badges ? o.badges(g, s) : [];
-      if (g.done && E.collecting?.(g) && g.order.includes(s)) badges.push(g.done[s] ? '<span class="badge got">✓ in</span>' : '<span class="badge">thinking…</span>');
+      if (g.done && E.collecting?.(g) && g.order.includes(s)) { if (g.done[s]) badges.push('<span class="badge got">✓ in</span>'); else if (!E.pending || E.pending(g).includes(s)) badges.push('<span class="badge">thinking…</span>'); }
       if (g.phase === 'over' && (g.winners || []).includes(s)) badges.push('<span class="badge got">🏆</span>');
       if (g.phase === 'over' && g.team && g.winner === g.team[s]) badges.push('<span class="badge got">🏆 winners</span>');
       const meta = g.team ? `<span class="pt-team t${g.team[s]}">● ${TEAMS[g.team[s]]}</span>` : `<span class="pt-pts">${g.score[s]} pt${g.score[s] === 1 ? '' : 's'}</span>`;
