@@ -2,7 +2,7 @@
 // both (aces high). A tie is a war: each lays three cards face down and flips a fourth, and the
 // winner takes the whole pile. Play until one player has every card, or the length chosen in
 // the lobby (most cards after so many battles).
-import { fullDeck, shuffle, rankOf, RANKS } from './tricks.js?v=65';
+import { fullDeck, shuffle, rankOf, RANKS } from './tricks.js?v=66';
 
 export function createGame(settings) {
   const deck = shuffle(fullDeck());

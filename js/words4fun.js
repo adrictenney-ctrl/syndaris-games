@@ -5,7 +5,7 @@
 // both. Every other word scores (3–4 letters 2, five 3, six 4, seven 6, eight or more 12 — or
 // one point per letter), and the player who found a word first earns 2 more. Play one round,
 // or rounds until a team reaches the target. Runs on the table (the host), which checks words.
-import { isWord, hasPrefix, dictReady } from './dict.js?v=65';
+import { isWord, hasPrefix, dictReady } from './dict.js?v=66';
 
 export const COUNT_MS = 10000;
 export const team = s => (s < 4 ? 0 : 1);

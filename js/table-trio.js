@@ -1,8 +1,8 @@
 // Trio on the table: a slate board with gold lines. Tap a square on the table, or play from
 // your phone. Gold rings (seat 0) against ivory diamonds (seat 1).
-import * as T from './trio.js?v=65';
-import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=65';
-import { snap } from './cards.js?v=65';
+import * as T from './trio.js?v=66';
+import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=66';
+import { snap } from './cards.js?v=66';
 
 let root = null, gameRef = null, ctxRef = null, lastMove = -1;
 export const mark = (who, cls = '') => (who == null ? '' : `<i class="tr-mark ${who === 0 ? 'ring' : 'gem'} ${cls}"></i>`);

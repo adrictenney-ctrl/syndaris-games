@@ -1,9 +1,9 @@
 // Road Rally on a phone: your car's status and your hand. Tap a card: play it on yourself, pick
 // a rival for a hazard, or discard it. When you're hit and hold the right Ace, a Counter-Move
 // button appears.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=65';
-import { rrCard, status } from './table-roadrally.js?v=65';
-import { KINDS, canPlay } from './roadrally.js?v=65';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
+import { rrCard, status } from './table-roadrally.js?v=66';
+import { KINDS, canPlay } from './roadrally.js?v=66';
 
 let sel = null, wasMyTurn = false;
 export function reset() { sel = null; document.getElementById('rrPhone')?.remove(); }

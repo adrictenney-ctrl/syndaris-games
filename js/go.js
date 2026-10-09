@@ -4,7 +4,7 @@
 // the board position from just before your opponent's move (ko). Pass when you're done; after two
 // passes in a row both players mark any dead stones, then the game is scored by area: your stones
 // plus the empty points only you surround, with komi (extra points) for White.
-import { createSeries, gameOver, nextGame, announce } from './duel.js?v=65';
+import { createSeries, gameOver, nextGame, announce } from './duel.js?v=66';
 
 export const fresh = g => {
   const n = g.settings.size;

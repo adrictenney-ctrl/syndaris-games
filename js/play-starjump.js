@@ -1,8 +1,8 @@
 // Star Jump on a phone: the star turned so your point is at the bottom. Tap one of your marbles,
 // then one of the glowing holes it can reach (steps or chains of jumps).
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=65';
-import { starSVG } from './table-starjump.js?v=65';
-import { reach, ARMS, opposite } from './starjump.js?v=65';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
+import { starSVG } from './table-starjump.js?v=66';
+import { reach, ARMS, opposite } from './starjump.js?v=66';
 
 let ctx = null, sel = null, wasMyTurn = false;
 export function reset() { sel = null; document.getElementById('sjPhone')?.remove(); }

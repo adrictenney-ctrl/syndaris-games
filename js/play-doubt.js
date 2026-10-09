@@ -1,7 +1,7 @@
 // I Doubt It on a player's phone: on your turn, tap 1–4 cards and lay them down as the rank
 // that's up (true or not). When someone else lays cards, a big "I doubt it!" button counts down.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=65';
-import { claimText, plural } from './doubt.js?v=65';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
+import { claimText, plural } from './doubt.js?v=66';
 
 let ctx = null, picked = [], panelKey = '', wasMyTurn = false, tick = null;
 let localFor = null, localDeadline = 0;   // the doubt clock, counted on this phone

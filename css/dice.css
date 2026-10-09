@@ -1,0 +1,70 @@
+/* Dice and luck games: Hot Dice (red felt tray), Hog Toss (a straw mat), Bingo (a church-hall
+   caller's board). The dice themselves are the shared .ydie from yacht.css. */
+
+/* ---------- Hot Dice ---------- */
+body[data-game="hotdice"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 210, 200, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #7a2228 0%, #55161b 55%, #1c0608 100%); }
+body[data-game="hotdice"] #print, body[data-game="hotdice"] .fan, body[data-game="hotdice"] .sizer { display: none; }
+#hotdice { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 3vmin; z-index: 2; }
+.hd-rail { display: flex; gap: 1vmin; min-height: calc(var(--die) * .7); padding: 1vmin 2vmin; border-radius: 99px; background: linear-gradient(180deg, #c9a35a, #8a6a2a); box-shadow: 0 1vmin 2vmin rgba(0, 0, 0, .4); --die: 5vmin; }
+.hd-rail:empty { opacity: .35; }
+.hd-tray { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.4vmin; width: 60vmin; min-height: calc(var(--die) * 2.4); padding: 3vmin; border-radius: 3vmin; background: radial-gradient(ellipse at 50% 40%, #a8323a, #6a1820); box-shadow: inset 0 1vmin 3vmin rgba(0, 0, 0, .5), 0 0 0 .8vmin #3a1a10, 0 2vmin 4vmin rgba(0, 0, 0, .5); }
+#hotdice.bust .hd-tray { filter: grayscale(.6) brightness(.7); }
+.hd-total { display: flex; align-items: baseline; gap: 1.4vmin; }
+.hd-total small { font-family: var(--ui); font-weight: 800; font-size: 1.4vmin; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); }
+.hd-total b { font-family: var(--num); font-weight: 400; font-size: 6vmin; color: var(--ivory); }
+.hd-total b.bust { color: #ff8a7a; letter-spacing: .1em; }
+#hdPhone { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 12px; --die: 50px; }
+.hd-kept { display: flex; gap: 6px; padding: 6px 12px; border-radius: 99px; background: rgba(201, 163, 90, .25); --die: 30px; }
+.hd-roll { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; min-height: 60px; }
+.hd-roll button { padding: 0; border: 0; background: none; cursor: pointer; transition: transform .15s; }
+.hd-roll button.kept { transform: translateY(-10px); }
+.hd-roll button.kept .ydie { box-shadow: 0 0 0 3px #cdb487, 0 8px 12px rgba(0, 0, 0, .55); }
+.hd-pts { margin: 0; font-family: var(--ui); font-weight: 700; font-size: 15px; color: var(--champagne-hi); }
+body[data-game="hotdice"] { background: linear-gradient(180deg, #55161b, #1c0608); }
+
+/* ---------- Hog Toss ---------- */
+body[data-game="hogtoss"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 240, 200, .1), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #6a7a3a 0%, #4a5628 55%, #161a0a 100%); }
+body[data-game="hogtoss"] #print, body[data-game="hogtoss"] .fan, body[data-game="hogtoss"] .sizer { display: none; }
+#hogtoss { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 2.4vmin; z-index: 2; }
+.hog-mat { display: flex; gap: 4vmin; padding: 3vmin 5vmin; border-radius: 50%; background: repeating-linear-gradient(80deg, #d8b860 0 .6vmin, #c9a64a .6vmin 1.2vmin); box-shadow: inset 0 0 3vmin rgba(90, 60, 10, .5), 0 2vmin 4vmin rgba(0, 0, 0, .5); }
+.hog { width: 22vmin; height: auto; filter: drop-shadow(0 1vmin .8vmin rgba(0, 0, 0, .35)); }
+.hog-mat.land .hog { animation: hogLand .6s cubic-bezier(.2, .8, .3, 1.2); }
+.hog-mat.land .hog:last-child { animation-delay: .08s; }
+@keyframes hogLand { from { transform: translateY(-14vmin) rotate(200deg) scale(.7); opacity: .4; } }
+.hog-name { margin: 0; font-family: var(--display); font-weight: 600; font-size: 4vmin; color: var(--ivory); }
+.hog-name.bad { color: #ffb0a0; }
+.hog-turn { display: flex; align-items: baseline; gap: 1.2vmin; } .hog-turn small { font-family: var(--ui); font-weight: 800; font-size: 1.4vmin; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); } .hog-turn b { font-family: var(--num); font-weight: 400; font-size: 5vmin; color: var(--ivory); }
+#hgPhone { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+#hgPhone .hog-mat { padding: 14px 24px; gap: 14px; } #hgPhone .hog { width: 120px; }
+#hgPhone .hog-name { font-size: 24px; }
+body[data-game="hogtoss"] { background: linear-gradient(180deg, #4a5628, #161a0a); }
+
+/* ---------- Bingo ---------- */
+body[data-game="bingo"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(220, 230, 255, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2a3a6a 0%, #1c284a 55%, #080c1a 100%); }
+body[data-game="bingo"] #print, body[data-game="bingo"] .fan, body[data-game="bingo"] .sizer { display: none; }
+#bingo { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; gap: 2vmin 4vmin; align-items: center; z-index: 2; }
+.bg-ball { grid-row: span 2; width: 24vmin; aspect-ratio: 1; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 35% 30%, #ffffff, #f0e8d4 50%, #c8b890); box-shadow: 0 2vmin 4vmin rgba(0, 0, 0, .5), inset 0 -1vmin 2vmin rgba(120, 90, 40, .35); animation: bgDrop .5s cubic-bezier(.2, .9, .3, 1.3); }
+.bg-ball small { font-family: var(--ui); font-weight: 800; font-size: 4vmin; color: #b8323a; }
+.bg-ball b { font-family: var(--num); font-weight: 400; font-size: 10vmin; line-height: 1; color: #1a1a2a; }
+.bg-ball.empty small { font-size: 2.4vmin; color: #6a6a7a; }
+@keyframes bgDrop { from { transform: translateY(-10vmin) scale(.6); opacity: 0; } }
+.bg-board { display: flex; flex-direction: column; gap: .5vmin; }
+.bg-col { display: flex; gap: .4vmin; align-items: center; }
+.bg-col b { width: 3.6vmin; font-family: var(--display); font-weight: 700; font-size: 3vmin; color: #ffd36a; text-align: center; }
+.bg-col i { width: 3.4vmin; height: 3.4vmin; display: grid; place-items: center; border-radius: 50%; font-style: normal; font-family: var(--ui); font-weight: 700; font-size: 1.4vmin; color: rgba(255, 255, 255, .25); background: rgba(255, 255, 255, .04); }
+.bg-col i.on { color: #1a1a2a; background: radial-gradient(circle at 35% 30%, #fff8e0, #ffd36a); }
+.bg-col i.last { box-shadow: 0 0 0 .3vmin #fff, 0 0 2vmin #ffd36a; }
+.bg-info { font-family: var(--ui); font-weight: 700; font-size: 1.6vmin; letter-spacing: .08em; color: var(--gold-ink); }
+#bgPhone { width: 100%; max-width: 400px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.bg-card { width: 100%; padding: 10px; border-radius: 14px; background: #f7f0de; box-shadow: 0 8px 20px rgba(0, 0, 0, .5); }
+.bg-head, .bg-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+.bg-head b { text-align: center; font-family: var(--display); font-weight: 700; font-size: 26px; color: #b8323a; }
+.bg-grid button, .bg-grid span { aspect-ratio: 1; display: grid; place-items: center; border: 0; border-radius: 8px; background: #fff; box-shadow: inset 0 0 0 1px #d8ccb0; font-family: var(--num); font-size: 22px; color: #1a1a2a; cursor: pointer; }
+.bg-grid button.daub { background: radial-gradient(circle, #e8506a 0 55%, #fff 56%); color: #fff; }
+.bg-grid span.free { background: radial-gradient(circle, #ffd36a 0 55%, #fff 56%); color: #5a3a08; font-size: 20px; }
+.bg-btn { width: 100%; padding: 22px; border: 0; border-radius: 16px; font-family: var(--ui); font-weight: 800; font-size: 32px; letter-spacing: .14em; color: #fff; background: linear-gradient(180deg, #e8506a, #b8323a); box-shadow: 0 8px 20px rgba(184, 50, 58, .45); cursor: pointer; }
+.bg-btn:disabled { filter: grayscale(.8); opacity: .5; }
+body[data-game="bingo"] { background: linear-gradient(180deg, #1c284a, #080c1a); }
+body[data-game="hotdice"] #handWrap, body[data-game="hogtoss"] #handWrap, body[data-game="bingo"] #handWrap,
+body[data-game="hotdice"] #handHint, body[data-game="hogtoss"] #handHint, body[data-game="bingo"] #handHint { display: none; }
+body[data-game="hogtoss"] .tk-msg, body[data-game="hotdice"] .tk-msg, body[data-game="bingo"] .tk-msg { display: none; }

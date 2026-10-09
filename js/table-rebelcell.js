@@ -1,10 +1,10 @@
 // Rebel Cell on the table: the five missions along the middle (team sizes, then a green or red
 // seal once played), the rejected-teams counter, the team on the table right now, and how
 // everyone voted. Round Table (table-roundtable.js) is the same table with its characters.
-import * as R from './rebel.js?v=65';
-import { snap } from './cards.js?v=65';
-import { chime, sad } from './sfx.js?v=65';
-import { centerMsg, clearMsg } from './table-hearts.js?v=65';
+import * as R from './rebel.js?v=66';
+import { snap } from './cards.js?v=66';
+import { chime, sad } from './sfx.js?v=66';
+import { centerMsg, clearMsg } from './table-hearts.js?v=66';
 
 export function rebelMode(avalon) {
   let root = null, key = '';

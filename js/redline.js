@@ -14,7 +14,7 @@
 // Heat in your hand is dead weight, so manage your engine. First over the line after the last
 // lap wins once the round is finished.
 
-import { makeCircuit, findCorners } from './circuit.js?v=65';
+import { makeCircuit, findCorners } from './circuit.js?v=66';
 
 export const CTRL = [[40, 104], [100, 108], [150, 104], [182, 90], [186, 62], [166, 48], [176, 26], [150, 10], [112, 16], [96, 40], [74, 52], [56, 34], [36, 14], [16, 32], [22, 62], [16, 86]];
 export const L = 64;

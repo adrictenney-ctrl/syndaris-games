@@ -1,0 +1,80 @@
+/* Roll-and-move games: Snakes & Ladders, Sweet Trail, Orchard, and the race-home games. */
+body[data-game="snakes"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 240, 200, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #3a5a3a 0%, #283f28 55%, #0c160c 100%); }
+body[data-game="sweettrail"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 230, 255, .12), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #7a4a8a 0%, #55306a 55%, #1c0c24 100%); }
+body[data-game="orchard"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 250, 200, .1), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #4a7a3a 0%, #34582a 55%, #10200c 100%); }
+body[data-game="snakes"] #print, body[data-game="sweettrail"] #print, body[data-game="orchard"] #print,
+body[data-game="snakes"] .fan, body[data-game="sweettrail"] .fan, body[data-game="orchard"] .fan,
+body[data-game="snakes"] .sizer, body[data-game="sweettrail"] .sizer, body[data-game="orchard"] .sizer,
+body[data-game="snakes"] .tk-msg, body[data-game="sweettrail"] .tk-msg, body[data-game="orchard"] .tk-msg { display: none; }
+
+.race-wrap { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 3vmin; z-index: 2; --die: 10vmin; }
+.race-board { width: var(--B); filter: drop-shadow(0 2vmin 4vmin rgba(0, 0, 0, .55)); }
+.race-board svg { display: block; width: 100%; height: auto; }
+.race-side { width: 18vmin; display: flex; flex-direction: column; align-items: center; gap: 1.6vmin; text-align: center; }
+.race-side p { margin: 0; font-family: var(--serif); font-size: 2.2vmin; color: var(--ivory); line-height: 1.3; }
+.race-side p b { font-family: var(--display); color: var(--champagne-hi); }
+
+/* Sweet Trail cards */
+.st-card { width: 14vmin; aspect-ratio: 5 / 7; border-radius: 1.4vmin; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.4vmin; background: linear-gradient(170deg, #fff, #f6eef8); box-shadow: 0 1vmin 2vmin rgba(0, 0, 0, .45), inset 0 0 0 .4vmin #f0a0c0; animation: trPop .4s cubic-bezier(.2, .9, .3, 1.4); }
+.st-card i { width: 60%; aspect-ratio: 1.6; border-radius: 1vmin; box-shadow: inset 0 -.4vmin 0 rgba(0, 0, 0, .15); }
+.st-card.treat b { font-size: 7vmin; } .st-card.treat small { font-family: var(--ui); font-weight: 800; font-size: 1.3vmin; color: #9a3a6a; }
+.st-card.back { background: radial-gradient(circle, #f6b0d0, #c86aa0); font-size: 6vmin; }
+
+/* Orchard */
+#orchard { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2; }
+.oc-mid { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 1.4vmin; }
+.oc-mid p { margin: 0; font-family: var(--serif); font-size: 2.4vmin; color: var(--ivory); white-space: nowrap; }
+.oc-mid p b { font-family: var(--display); color: var(--champagne-hi); }
+.oc-spin { width: 30vmin; filter: drop-shadow(0 1.4vmin 2.4vmin rgba(0, 0, 0, .5)); }
+.oc-arrow { transition: transform 1.2s cubic-bezier(.2, .8, .3, 1); transform-origin: 0 0; }
+.oc-seat { position: absolute; left: 0; top: 0; }
+.oc-tree { width: 18vmin; display: block; filter: drop-shadow(0 1vmin 1.4vmin rgba(0, 0, 0, .4)); }
+
+/* Phones */
+#rcPhone { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 16px; --die: 72px; }
+.rc-last { display: flex; flex-direction: column; align-items: center; gap: 10px; min-height: 100px; text-align: center; }
+.rc-last p { margin: 0; font-family: var(--serif); font-size: 18px; color: var(--ivory); }
+.rc-last .st-card { width: 110px; border-radius: 12px; } .rc-last .st-card.treat b { font-size: 54px; } .rc-last .st-card.treat small { font-size: 11px; }
+.oc-mine .oc-tree { width: 180px; }
+.rc-go { width: min(70vw, 240px); aspect-ratio: 1; border-radius: 50%; border: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; font-family: var(--ui); font-weight: 800; font-size: 26px; letter-spacing: .08em; color: #2a1d08;
+  background: radial-gradient(circle at 40% 35%, #f7e6b8, #d7a948 60%, #9a7020); box-shadow: 0 12px 30px rgba(0, 0, 0, .5), inset 0 -6px 0 rgba(0, 0, 0, .2); }
+.rc-go b { font-size: 54px; line-height: 1; }
+.rc-go:disabled { filter: grayscale(.7) brightness(.6); }
+body[data-game="snakes"] { background: linear-gradient(180deg, #283f28, #0c160c); }
+body[data-game="sweettrail"] { background: linear-gradient(180deg, #55306a, #1c0c24); }
+body[data-game="orchard"] { background: linear-gradient(180deg, #34582a, #10200c); }
+body[data-game="snakes"] #handWrap, body[data-game="sweettrail"] #handWrap, body[data-game="orchard"] #handWrap,
+body[data-game="snakes"] #handHint, body[data-game="sweettrail"] #handHint, body[data-game="orchard"] #handHint { display: none; }
+
+/* ---------- Ludo, Pop-Up Race, Marble Rush ---------- */
+body[data-game="ludo"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 240, 200, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #3a4a6a 0%, #28344a 55%, #0c1018 100%); }
+body[data-game="poprace"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 240, 200, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #6a2a4a 0%, #4a1c34 55%, #180810 100%); }
+body[data-game="marblerush"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 240, 200, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2a5a5a 0%, #1c3e3e 55%, #081616 100%); }
+body[data-game="ludo"] #print, body[data-game="poprace"] #print, body[data-game="marblerush"] #print,
+body[data-game="ludo"] .fan, body[data-game="poprace"] .fan, body[data-game="marblerush"] .fan,
+body[data-game="ludo"] .sizer, body[data-game="poprace"] .sizer, body[data-game="marblerush"] .sizer,
+body[data-game="ludo"] .tk-msg, body[data-game="poprace"] .tk-msg, body[data-game="marblerush"] .tk-msg { display: none; }
+.rh-board { display: block; width: 100%; height: auto; }
+.rh-mv { cursor: pointer; animation: wfPulse 1s infinite; }
+#rhPhone { width: min(96vw, 440px); display: flex; flex-direction: column; align-items: center; gap: 12px; --die: 56px; }
+#rhPhone .row { width: 100%; } #rhPhone .row .panel-btn { flex: 1; min-width: 0; padding: 10px 4px; font-size: 14px; }
+body[data-game="ludo"] { background: linear-gradient(180deg, #28344a, #0c1018); }
+body[data-game="poprace"] { background: linear-gradient(180deg, #4a1c34, #180810); }
+body[data-game="marblerush"] { background: linear-gradient(180deg, #1c3e3e, #081616); }
+body[data-game="ludo"] #handWrap, body[data-game="poprace"] #handWrap, body[data-game="marblerush"] #handWrap,
+body[data-game="ludo"] #handHint, body[data-game="poprace"] #handHint, body[data-game="marblerush"] #handHint { display: none; }
+
+/* ---------- Pardon Me! ---------- */
+body[data-game="pardon"] #felt { background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(255, 240, 200, .08), transparent 70%), radial-gradient(ellipse 120% 100% at 50% 50%, #2a4a7a 0%, #1c3256 55%, #080e1a 100%); }
+body[data-game="pardon"] #print, body[data-game="pardon"] .fan, body[data-game="pardon"] .sizer, body[data-game="pardon"] .tk-msg, body[data-game="pardon"] #handWrap, body[data-game="pardon"] #handHint { display: none; }
+.pm-card { width: 15vmin; aspect-ratio: 5 / 7; border-radius: 1.4vmin; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1vmin; padding: 1vmin; box-sizing: border-box; text-align: center; background: linear-gradient(170deg, #fffaf0, #efe4cc); box-shadow: inset 0 0 0 .5vmin #2a4a7a, 0 1vmin 2vmin rgba(0, 0, 0, .5); animation: trPop .4s cubic-bezier(.2, .9, .3, 1.4); }
+.pm-card b { font-family: var(--num); font-weight: 400; font-size: 7vmin; line-height: 1; color: #2a4a7a; }
+.pm-card small { font-family: var(--ui); font-weight: 700; font-size: 1.2vmin; color: #3a3a4a; }
+.pm-card.pardon { box-shadow: inset 0 0 0 .5vmin #b8323a, 0 1vmin 2vmin rgba(0, 0, 0, .5); }
+.pm-card.back { background: radial-gradient(circle, #3a6aaa, #1c3256); font-size: 6vmin; }
+#pmPhone { width: min(96vw, 440px); display: flex; flex-direction: column; gap: 10px; }
+.pm-row { display: flex; gap: 10px; align-items: flex-start; }
+.pm-row .pm-card { width: 90px; flex: none; border-radius: 10px; } .pm-row .pm-card b { font-size: 40px; } .pm-row .pm-card small { font-size: 9px; }
+.pm-opts { flex: 1; display: flex; flex-direction: column; gap: 6px; max-height: 34vh; overflow-y: auto; }
+.pm-opts .panel-btn { padding: 10px; font-size: 14px; text-align: left; }
+body[data-game="pardon"] { background: linear-gradient(180deg, #1c3256, #080e1a); }

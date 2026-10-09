@@ -2,7 +2,7 @@
 // the other player's discs between it and one of yours; the trapped discs flip to your colour.
 // If you can't trap anything you pass. When neither player can move, the most discs wins.
 // Dark (seat 0) moves first. Played as a match (best of 1/3/5/7).
-import { createSeries, gameOver, nextGame, announce } from './duel.js?v=65';
+import { createSeries, gameOver, nextGame, announce } from './duel.js?v=66';
 
 const DIRS = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 export const fresh = g => {

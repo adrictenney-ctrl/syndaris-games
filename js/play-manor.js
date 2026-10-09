@@ -2,9 +2,9 @@
 // and a weapon (the room is where you are). When someone asks you, pick which card to show.
 // Underneath: your detective notebook — your own cards and cards you've been shown are
 // filled in for you; tap any row to mark it ✗ / ? yourself.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=65';
-import { SUSPECTS, WEAPONS, ROOMS, ALL, cardName, neighbours } from './manor.js?v=65';
-import { planHTML, pawn, weapon, logLine } from './table-manor.js?v=65';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
+import { SUSPECTS, WEAPONS, ROOMS, ALL, cardName, neighbours } from './manor.js?v=66';
+import { planHTML, pawn, weapon, logLine } from './table-manor.js?v=66';
 
 let ctx = null, pickS = null, pickW = null, accusing = false, aS = null, aW = null, aR = null, notes = {}, notesKey = '', wasMyTurn = false;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

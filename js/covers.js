@@ -626,3 +626,57 @@ cover('lineup5', id => shell(id, { title: 'Line Up 5', tag: 'Play a card · plac
   ${[0, 1, 2, 3, 4].map(k => `<circle cx="${-131.5 + (k + 1) * 43.5}" cy="${-81.5 + k * 41}" r="15" fill="#3a7ad8" stroke="#f3d67a" stroke-width="3"/>`).join('')}
   ${[[0, 3], [5, 1], [6, 3]].map(([c, r]) => `<circle cx="${-131.5 + c * 43.5}" cy="${-81.5 + r * 41}" r="15" fill="#4aa85a"/>`).join('')}</g>
 `));
+
+// A plain die face for covers.
+function die6(id, x, y, s, v, rot = 0, fill = '#f7f1e3') { return die(id, x, y, s, v, { rot, fill }); }
+
+cover('hotdice', id => shell(id, { title: 'Hot Dice', tag: 'Keep the scorers · bank or bust', bg: ['#a8323a', '#55161b', '#1c0608'], cy: 32 }, `
+  ${glow(id, 300, 150, 150, '#ff8a3a', .35)}
+  ${[[180, 120, 1, -14], [260, 160, 5, 10], [340, 110, 1, -6], [420, 170, 1, 18], [220, 230, 3, 30], [380, 240, 6, -22]].map(([x, y, v, r]) => die6(id, x, y, 70, v, r)).join('')}
+  <text x="470" y="96" font-size="54" filter="url(#${id}-glow)">🔥</text>
+`));
+
+cover('hogtoss', id => shell(id, { title: 'Hog Toss', tag: 'Two pigs · push your luck', bg: ['#8a9a4a', '#4a5628', '#161a0a'], cy: 32 }, `
+  <ellipse cx="300" cy="170" rx="210" ry="90" fill="#d8b860" opacity=".9"/><ellipse cx="300" cy="170" rx="210" ry="90" fill="none" stroke="#a8862a" stroke-width="4" stroke-dasharray="10 6"/>
+  ${[[230, 160, 'rotate(-35)'], [380, 150, 'scale(-1 1) rotate(55)']].map(([x, y, t]) => `<g transform="translate(${x} ${y}) scale(1.8)" filter="url(#${id}-sh)"><g transform="${t}"><ellipse rx="30" ry="20" fill="#f4a6b4" stroke="#c96a80" stroke-width="2"/><circle cx="27" cy="-8" r="15" fill="#f4a6b4" stroke="#c96a80" stroke-width="2"/><ellipse cx="40" cy="-5" rx="6" ry="7" fill="#f7bcc8" stroke="#c96a80"/><path d="M20 -20 L26 -32 L31 -20 Z" fill="#e88aa0"/><circle cx="30" cy="-12" r="2" fill="#2a1a1a"/>${[-18, -6, 8, 18].map(lx => `<rect x="${lx - 3.5}" y="14" width="7" height="12" rx="3" fill="#f4a6b4" stroke="#c96a80" stroke-width="1.5"/>`).join('')}</g></g>`).join('')}
+`));
+
+cover('bingo', id => shell(id, { title: 'Bingo', tag: 'The table calls · your phone daubs', bg: ['#3a4a8a', '#1c284a', '#080c1a'], cy: 32 }, `
+  <g transform="translate(220 150) rotate(-8)" filter="url(#${id}-sh)"><rect x="-110" y="-110" width="220" height="210" rx="12" fill="#f7f0de"/>
+  ${'BINGO'.split('').map((L, c) => `<text x="${-84 + c * 42}" y="-80" text-anchor="middle" font-family="${SERIF}" font-size="24" fill="#b8323a">${L}</text>`).join('')}
+  ${Array.from({ length: 20 }, (_, i) => { const r = Math.floor(i / 5), c = i % 5; const n = [7, 22, 41, 53, 68, 3, 19, 0, 50, 72, 12, 27, 35, 47, 61, 9, 30, 44, 58, 66][i]; const daub = [0, 6, 7, 12, 18].includes(i); return `<rect x="${-102 + c * 42}" y="${-66 + r * 40}" width="36" height="34" rx="5" fill="#fff" stroke="#d8ccb0"/>${daub ? `<circle cx="${-84 + c * 42}" cy="${-49 + r * 40}" r="14" fill="#e8506a" opacity=".85"/>` : ''}<text x="${-84 + c * 42}" y="${-42 + r * 40}" text-anchor="middle" font-family="${SERIF}" font-size="18" fill="${daub ? '#fff' : '#1a1a2a'}">${n || '★'}</text>`; }).join('')}</g>
+  <g transform="translate(450 120)" filter="url(#${id}-sh)"><circle r="62" fill="#fffaf0"/><circle r="62" fill="none" stroke="#c8b890" stroke-width="3"/><text y="-14" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="22" fill="#b8323a">G</text><text y="34" text-anchor="middle" font-family="${SERIF}" font-size="50" fill="#1a1a2a">52</text></g>
+`));
+
+cover('snakes', id => shell(id, { title: 'Snakes & Ladders', lines: ['Snakes &', 'Ladders'], size: 44, tag: 'Climb up · slide down', bg: ['#4a7a4a', '#283f28', '#0c160c'], cy: 30 }, `
+  <g transform="translate(300 150) rotate(-6)" filter="url(#${id}-sh)">${Array.from({ length: 48 }, (_, i) => { const r = Math.floor(i / 8), c = i % 8; return `<rect x="${-160 + c * 40}" y="${-120 + r * 40}" width="40" height="40" fill="${(r + c) % 2 ? '#e9dcb8' : '#b8c99a'}"/>`; }).join('')}
+  <g stroke="#8a5a2a" stroke-width="5" stroke-linecap="round"><path d="M-100 100 L-40 -90 M-80 106 L-20 -84"/>${[0.15, 0.3, 0.45, 0.6, 0.75, 0.9].map(t => `<path d="M${-100 + 60 * t} ${100 - 190 * t} L${-80 + 60 * t} ${106 - 190 * t}" stroke-width="3.5"/>`).join('')}</g>
+  <path d="M110 -100 C 170 -40, 40 0, 100 90" stroke="#2f6a3a" stroke-width="16" fill="none" stroke-linecap="round"/><path d="M110 -100 C 170 -40, 40 0, 100 90" stroke="#6ab04a" stroke-width="9" fill="none" stroke-dasharray="9 7" stroke-linecap="round"/><circle cx="110" cy="-100" r="13" fill="#2f6a3a"/></g>
+`));
+
+cover('sweettrail', id => shell(id, { title: 'Sweet Trail', tag: 'Draw a colour · follow the path', bg: ['#a86ab8', '#55306a', '#1c0c24'], cy: 30 }, `
+  <path d="M40 260 C 160 300, 120 160, 260 180 S 420 280, 470 150 S 540 60, 580 70" stroke="#fff8ea" stroke-width="40" fill="none" stroke-linecap="round"/>
+  ${Array.from({ length: 16 }, (_, i) => { const t = i / 15; const x = 40 + t * 540, y = 260 - Math.sin(t * Math.PI * 1.6) * 70 - t * 120; return `<rect x="${x - 15}" y="${y - 15}" width="30" height="30" rx="7" fill="${['#e0505a', '#9a5ad0', '#f0cc3a', '#4a90e0', '#f08a2a', '#4ab060'][i % 6]}" stroke="#fff" stroke-width="3" transform="rotate(${i * 7} ${x} ${y})"/>`; }).join('')}
+  <text x="545" y="80" font-size="60">🏰</text><text x="120" y="110" font-size="46">🍭</text><text x="330" y="90" font-size="42">🧁</text>
+`));
+
+cover('orchard', id => shell(id, { title: 'Orchard', tag: 'Spin · pick · don’t spill', bg: ['#6a9a4a', '#34582a', '#10200c'], cy: 32 }, `
+  <g transform="translate(220 140) scale(4)" filter="url(#${id}-sh)"><rect x="-4" y="0" width="8" height="24" rx="2" fill="#7a4a24"/><circle cx="0" cy="-12" r="22" fill="#3f8a3a"/><circle cx="-12" cy="-6" r="13" fill="#4a9a44"/><circle cx="12" cy="-6" r="13" fill="#4a9a44"/>
+  ${[[0, -22], [-14, -16], [14, -16], [-20, -4], [20, -4], [-9, -8], [9, -8]].map(([x, y]) => `<text x="${x}" y="${y + 3}" text-anchor="middle" font-size="9">🍒</text>`).join('')}</g>
+  <g transform="translate(450 150)" filter="url(#${id}-sh)">${[0, 1, 2, 3, 4, 5, 6].map(k => { const a0 = (k / 7) * 6.283 - 1.57, a1 = ((k + 1) / 7) * 6.283 - 1.57; return `<path d="M0 0 L${Math.cos(a0) * 80} ${Math.sin(a0) * 80} A80 80 0 0 1 ${Math.cos(a1) * 80} ${Math.sin(a1) * 80} Z" fill="${['#f3d67a', '#9ad0f0', '#f0a0b8', '#b8e0a0', '#2a2a2a', '#c9a35a', '#d8443a'][k]}" stroke="#fff" stroke-width="2"/>`; }).join('')}<path d="M0 -66 L8 0 L-8 0 Z" fill="#1a1a1a" transform="rotate(40)"/><circle r="8" fill="#c9a35a"/></g>
+`));
+
+function raceCover(id, o) {
+  return shell(id, o, `
+  <g transform="translate(300 150) rotate(-8)" filter="url(#${id}-sh)"><rect x="-140" y="-120" width="280" height="240" rx="14" fill="#f3ead6"/>
+  ${Array.from({ length: o.n }, (_, k) => { const per = 4 * 200, u = (k / o.n) * per; let x, y; if (u < 200) { x = 100 - u; y = 100; } else if (u < 400) { x = -100; y = 100 - (u - 200); } else if (u < 600) { x = -100 + (u - 400); y = -100; } else { x = 100; y = -100 + (u - 600); } return `<circle cx="${x}" cy="${y}" r="${o.n > 40 ? 5.5 : 8}" fill="${o.corner && k % (o.n / 4) === o.n / 8 ? '#e8c35a' : '#fffaf0'}" stroke="#8a7a5a"/>`; }).join('')}
+  ${['#3a7ad8', '#e8c23a', '#d8443a', '#4aa85a'].map((c, s) => { const ang = s * 90; return `<g transform="rotate(${ang})">${[0, 1, 2, 3].map(j => `<circle cx="0" cy="${80 - j * 18}" r="7" fill="${c}" opacity="${j === 3 ? .9 : .35}"/>`).join('')}<circle cx="${-30}" cy="112" r="8" fill="${c}"/><circle cx="${-14}" cy="112" r="8" fill="${c}"/></g>`; }).join('')}
+  ${o.center || ''}</g>
+  ${die(id, 500, 260, 70, 6, { rot: 16 })}`);
+}
+cover('ludo', id => raceCover(id, { title: 'Ludo', tag: 'Roll a six · race them home', bg: ['#4a5a8a', '#28344a', '#0c1018'], cy: 30, n: 52 }));
+cover('poprace', id => raceCover(id, { title: 'Pop-Up Race', tag: 'Pop · chase · bump', bg: ['#8a3a5a', '#4a1c34', '#180810'], cy: 30, n: 28, center: '<circle r="34" fill="#fff" opacity=".35" stroke="#fff" stroke-width="3"/>' }));
+cover('marblerush', id => raceCover(id, { title: 'Marble Rush', tag: 'Shortcuts · hubs · aggravation', bg: ['#3a7a7a', '#1c3e3e', '#081616'], cy: 30, n: 56, corner: true, center: '<circle r="20" fill="#e8c35a" stroke="#8a6a2a" stroke-width="3"/>' }));
+cover('pardon', id => shell(id, { title: 'Pardon Me!', tag: 'Draw · slide · bump them back', bg: ['#3a6aaa', '#1c3256', '#080e1a'], cy: 30 }, `
+  ${[['11', -16, 200], ['🎩', 0, 300], ['4', 16, 400]].map(([t, r, x]) => `<g transform="translate(${x} 150) rotate(${r})" filter="url(#${id}-sh)"><rect x="-58" y="-80" width="116" height="160" rx="10" fill="#fffaf0" stroke="${t === '🎩' ? '#b8323a' : '#2a4a7a'}" stroke-width="6"/><text y="${t === '🎩' ? 22 : 26}" text-anchor="middle" font-family="${SERIF}" font-size="${t === '🎩' ? 64 : 80}" fill="#2a4a7a">${t}</text></g>`).join('')}
+`));

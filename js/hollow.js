@@ -3,7 +3,7 @@
 // works out poison and false information, and announces who died. By day the village
 // talks, nominates and votes on the table; the player on the block is executed at dusk.
 // Good wins when the Shade dies. Evil wins when only two players are left alive.
-import { CHARS, TEAM, BY_KIND, SETUP } from './hollow-chars.js?v=65';
+import { CHARS, TEAM, BY_KIND, SETUP } from './hollow-chars.js?v=66';
 
 const rnd = n => Math.floor(Math.random() * n);
 const pick = a => a[rnd(a.length)];

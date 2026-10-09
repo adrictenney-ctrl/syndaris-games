@@ -1,8 +1,8 @@
 // Tessera on the table: the growing mosaic in the middle — slate tiles with gems in each
 // player's colour and half-shapes on their edges that join into whole circles, squares and
 // triangles. The tile just played glows.
-import * as T from './tessera.js?v=65';
-import { snap } from './cards.js?v=65';
+import * as T from './tessera.js?v=66';
+import { snap } from './cards.js?v=66';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -790,3 +790,103 @@ GAMES.lineup5 = {
   max: 8,
   layout: GAMES.holdem.layout,
 };
+
+GAMES.hotdice = {
+  id: 'hotdice',
+  name: 'Hot Dice',
+  blurb: '2–8 players · roll six, keep the scorers, bank before you bust',
+  startLabel: 'Grab the dice',
+  min: 2,
+  max: 8,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.hogtoss = {
+  id: 'hogtoss',
+  name: 'Hog Toss',
+  blurb: '2–8 players · toss two pigs, push your luck, first to 100',
+  startLabel: 'Toss the pigs',
+  min: 2,
+  max: 8,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.bingo = {
+  id: 'bingo',
+  name: 'Bingo',
+  blurb: '2–10 players · the table calls, your phone is your card',
+  startLabel: 'Deal the cards',
+  min: 1,
+  max: 10,
+  layout: GAMES.crown.layout,
+};
+
+GAMES.snakes = {
+  id: 'snakes',
+  name: 'Snakes & Ladders',
+  blurb: '2–6 players · roll, climb the ladders, dodge the snakes',
+  startLabel: 'Start the race',
+  min: 2,
+  max: 6,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.sweettrail = {
+  id: 'sweettrail',
+  name: 'Sweet Trail',
+  blurb: '2–6 players · draw a colour, hop along the candy path',
+  startLabel: 'Start the race',
+  min: 2,
+  max: 6,
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.orchard = {
+  id: 'orchard',
+  name: 'Orchard',
+  blurb: '2–4 players · spin, pick your fruit, watch out for the crow',
+  startLabel: 'Start picking',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.ludo = {
+  id: 'ludo',
+  name: 'Ludo',
+  blurb: '2–4 players · roll a six to get out, race all four pieces home',
+  startLabel: 'Start the race',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.poprace = {
+  id: 'poprace',
+  name: 'Pop-Up Race',
+  blurb: '2–4 players · pop the die, chase your pegs home, bump the others back',
+  startLabel: 'Start the race',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.marblerush = {
+  id: 'marblerush',
+  name: 'Marble Rush',
+  blurb: '2–4 players · race your marbles home, take the shortcuts, aggravate everyone',
+  startLabel: 'Start the race',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};
+
+GAMES.pardon = {
+  id: 'pardon',
+  name: 'Pardon Me!',
+  blurb: '2–4 players · draw cards, slide, swap, and bump rivals back to Start',
+  startLabel: 'Start the race',
+  min: 2,
+  max: 4,
+  layout: GAMES.euchre.layout,
+};

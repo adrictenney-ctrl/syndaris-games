@@ -1,9 +1,9 @@
 // Unicorn Chaos on a phone: your hand and your stable. Tap a card to play it (then pick its
 // target), or draw instead. When someone plays a card and you hold Hold Your Horses!, you get a
 // few seconds to stop it.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=65';
-import { ucCard, ucMini, describe } from './table-unicorns.js?v=65';
-import { card, def, cardName, DEF } from './unicorns.js?v=65';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
+import { ucCard, ucMini, describe } from './table-unicorns.js?v=66';
+import { card, def, cardName, DEF } from './unicorns.js?v=66';
 
 let ctx = null, sel = null, twoSac = null, twoT = [], picks = [], wasMyTurn = false, cdT = null, until = 0;
 export function reset() { sel = null; twoSac = null; twoT = []; picks = []; clearInterval(cdT); cdT = null; document.getElementById('ucPhone')?.remove(); }

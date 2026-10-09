@@ -4,7 +4,7 @@
 // 100. Missing the bid loses 10 a trick bid. Nil is worth 100 if kept, -100 if not. Spades
 // can't be led until one has been played (unless you hold only spades). First team to the
 // target wins; a team that falls to -200 loses.
-import { fullDeck, shuffle, sortCards, followable, trickWinner, suitOf, rankOf, RANKS, announce } from './tricks.js?v=65';
+import { fullDeck, shuffle, sortCards, followable, trickWinner, suitOf, rankOf, RANKS, announce } from './tricks.js?v=66';
 
 export const teamOf = s => s % 2;
 export const partnerOf = s => (s + 2) % 4;
