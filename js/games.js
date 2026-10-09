@@ -1602,3 +1602,123 @@ GAMES.omaha = {
   midJoin: true,
   layout: GAMES.holdem.layout,
 };
+
+GAMES.lowestunique = {
+  id: 'lowestunique',
+  name: "Lowest Unique",
+  blurb: "2–10 players · pick the lowest number nobody else picks",
+  min: 2,
+  max: 10,
+  startLabel: "Pick a number",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.splitsteal = {
+  id: 'splitsteal',
+  name: "Split or Steal",
+  blurb: "2–10 players · share the pot with your partner… or take it all",
+  min: 2,
+  max: 10,
+  startLabel: "Pair up",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.twothirds = {
+  id: 'twothirds',
+  name: "Two-Thirds",
+  blurb: "2–10 players · guess two-thirds of everyone’s average guess",
+  min: 2,
+  max: 10,
+  startLabel: "Guess away",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.vulturebids = {
+  id: 'vulturebids',
+  name: "Vulture Bids",
+  blurb: "2–10 players · secret card bids for prizes — ties cancel out",
+  min: 2,
+  max: 10,
+  startLabel: "Reveal the first prize",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.treasurerun = {
+  id: 'treasurerun',
+  name: "Treasure Run",
+  blurb: "2–10 players · go deeper for gems or head home before the cave collapses",
+  min: 2,
+  max: 10,
+  startLabel: "Enter the cave",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.ticker = {
+  id: 'ticker',
+  name: "Ticker",
+  blurb: "2–10 players · a secret tip on your phone, one trade a day, richest wins",
+  min: 2,
+  max: 10,
+  startLabel: "Open the market",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.galaauction = {
+  id: 'galaauction',
+  name: "Gala Auction",
+  blurb: "3–10 players · bid money cards on luxuries — but don’t end up the poorest",
+  min: 3,
+  max: 10,
+  startLabel: "Start the gala",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.threefronts = {
+  id: 'threefronts',
+  name: "Three Fronts",
+  blurb: "2–10 players · split your troops across three battlefields",
+  min: 2,
+  max: 10,
+  startLabel: "Deploy",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.lemonade = {
+  id: 'lemonade',
+  name: "Lemonade Stand",
+  blurb: "2–10 players · set your price, make your cups, read the weather",
+  min: 2,
+  max: 10,
+  startLabel: "Open the stands",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.fishpond = {
+  id: 'fishpond',
+  name: "Fish Pond",
+  blurb: "2–10 players · take fish from a shared pond — or ruin it for everyone",
+  min: 2,
+  max: 10,
+  startLabel: "Cast off",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.mysteryboxes = {
+  id: 'mysteryboxes',
+  name: "Mystery Boxes",
+  blurb: "2–10 players · a secret hint, a sealed bid, three boxes",
+  min: 2,
+  max: 10,
+  startLabel: "Bring out the boxes",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.standoff = {
+  id: 'standoff',
+  name: "Standoff",
+  blurb: "3–10 players · aim, load a bullet or a bluff, and grab the loot",
+  min: 3,
+  max: 10,
+  startLabel: "Draw!",
+  layout: GAMES.crown.layout,
+};

@@ -29,8 +29,16 @@ export function partyTable(E, o) {
     // moves after a short pause, before the game's own clocks are looked at.
     timer: (g, players) => {
       if (players && E.pending && g.phase !== 'over') {
-        const s = E.pending(g).find(x => players[x]?.bot);
-        if (s != null) return { ms: E.botDelay ? E.botDelay(g, s) : g.sel ? 500 : 900 + Math.random() * 700, run: () => { const a = E.botAction(g, s); const err = a && E.applyAction(g, s, a); if (err) console.warn('bot move rejected:', err, a); } };
+        const bots = E.pending(g).filter(x => players[x]?.bot), s = bots[0];
+        // When everyone decides at once, the bots all decide together too.
+        const all = E.collecting?.(g) ? bots : [s];
+        if (s != null) return { ms: E.botDelay ? E.botDelay(g, s) : g.sel ? 500 : 900 + Math.random() * 700, run: () => {
+          for (const b of all) {
+            if (!E.pending(g).includes(b)) continue;
+            // A bot may need a few taps (e.g. aim, then load) — keep going while it's still its move.
+            for (let k = 0; k < 4 && E.pending(g).includes(b) && (k === 0 || E.collecting?.(g) || g.sel); k++) { const a = E.botAction(g, b); const err = a && E.applyAction(g, b, a); if (err || !a) { if (err) console.warn('bot move rejected:', err, a); break; } }
+          }
+        } };
       }
       return E.tick(g, players);
     },
