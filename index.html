@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=66">
+  <link rel="stylesheet" href="css/cards.css?v=67">
   <style>
     html { background: var(--onyx); }
     body {
@@ -90,6 +90,34 @@
     }
     .seg button.on { color: #17130c; background: var(--champagne); }
 
+    /* ---------- search + favourites ---------- */
+    .search { position: relative; flex: 1 1 260px; max-width: 380px; }
+    .search svg { position: absolute; left: 14px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); color: var(--mute); pointer-events: none; }
+    .search input {
+      width: 100%; font-family: var(--ui); font-size: 14px; padding: 10px 36px 10px 40px; border-radius: 999px; outline: none;
+      color: var(--ivory); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline); transition: border-color .2s, background .2s;
+    }
+    .search input:focus { border-color: var(--champagne); background: rgba(255, 248, 230, .08); }
+    .search input::placeholder { color: var(--mute); }
+    .search input::-webkit-search-cancel-button { display: none; }
+    .search .clear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border: 0; border-radius: 50%; cursor: pointer; color: var(--mute); background: rgba(255, 248, 230, .08); font-size: 13px; line-height: 1; }
+    .search .clear[hidden] { display: none; }
+    .chip.fav-chip::before { content: '★ '; color: #f2c14e; }
+    .chip.fav-chip.on::before { color: #17130c; }
+    .fav {
+      position: absolute; right: 10px; top: 10px; z-index: 3; width: 36px; height: 36px; border-radius: 50%; border: 0; cursor: pointer;
+      display: grid; place-items: center; font-size: 19px; line-height: 1; color: rgba(255, 255, 255, .85);
+      background: rgba(10, 8, 6, .45); backdrop-filter: blur(4px); opacity: 0; transition: opacity .2s, transform .15s, color .2s;
+    }
+    .fav::before { content: '☆'; }
+    a.box:hover .fav, a.box:focus-visible .fav, .fav.on { opacity: 1; }
+    .fav.on { color: #f2c14e; }
+    .fav.on::before { content: '★'; }
+    .fav:hover { transform: scale(1.12); }
+    .fav.pop { animation: favPop .35s ease; }
+    @keyframes favPop { 50% { transform: scale(1.4); } }
+    @media (hover: none) { .fav { opacity: .8; } }
+
     /* ---------- the library ---------- */
     .section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 16px; }
     .section-head h2 { font-family: var(--display); font-weight: 600; font-size: 30px; margin: 0; }
@@ -138,7 +166,7 @@
     .t-pileup { --tint: #2b2f38; } .t-luckystreak { --tint: #1b3a2c; } .t-passpot { --tint: #4a1d1c; } .t-tessera { --tint: #2c2a33; } 
     .t-gearworks { --tint: #2b3238; } .t-redline { --tint: #2a1d1f; } .t-grandprix { --tint: #233a26; } .t-spires { --tint: #26304a; } 
     .t-kaboom { --tint: #3a1f3a; } .t-nestegg { --tint: #1f3a2b; } .t-spoons { --tint: #3d2818; } .t-doubt { --tint: #34182f; } 
-    .t-cashout { --tint: #24272d; } .t-passphrase { --tint: #4a2a4a; } .t-dontsay { --tint: #3a2a5a; } .t-pardon { --tint: #2a4a7a; } .t-marblerush { --tint: #2a5a5a; } .t-poprace { --tint: #6a2a4a; } .t-ludo { --tint: #3a4a6a; } .t-orchard { --tint: #4a7a3a; } .t-sweettrail { --tint: #7a4a8a; } .t-snakes { --tint: #3a5a3a; } .t-bingo { --tint: #2a3a6a; } .t-hogtoss { --tint: #6a7a3a; } .t-hotdice { --tint: #7a2228; } .t-lineup5 { --tint: #2a5a40; } .t-shapeshade { --tint: #34343a; } .t-cornerstones { --tint: #3a3e48; } .t-dominoes { --tint: #1f4a5a; } .t-starjump { --tint: #2a2a3e; } .t-codebreaker { --tint: #6a4424; } .t-go { --tint: #a07a40; } .t-reversi { --tint: #215c39; } .t-roundtable { --tint: #5a3a1e; } .t-rebelcell { --tint: #2a3a3a; } .t-powergrab { --tint: #4a2a3a; } .t-unicorns { --tint: #6a3a7a; } .t-roadrally { --tint: #5a6a3a; } .t-dealmaker { --tint: #2a6a5a; } .t-bento { --tint: #7a3a32; } .t-rackem { --tint: #2a5a62; } .t-stackup { --tint: #4a3a6a; } .t-cribbage { --tint: #3a5a3a; } .t-drawpoker { --tint: #6a1e24; } .t-gin { --tint: #1b3f2c; } .t-rummy { --tint: #2a5a40; } .t-oldmaid { --tint: #4a3560; } .t-war { --tint: #2f4a6a; } .t-spades { --tint: #1f2a44; } .t-hearts { --tint: #5a1e2c; } .t-words4fun { --tint: #2c2a5a; } .t-hardsell { --tint: #1f3a3a; } 
+    .t-cashout { --tint: #24272d; } .t-actitout { --tint: #4a141e; } .t-blurtit { --tint: #7a4414; } .t-twotruths { --tint: #142e48; } .t-mostlikely { --tint: #5a2414; } .t-oddoneout { --tint: #3a142e; } .t-spinsolve { --tint: #144038; } .t-answerboard { --tint: #0e1e5a; } .t-triviawheel { --tint: #241c40; } .t-topanswers { --tint: #14245a; } .t-quickthree { --tint: #6a2414; } .t-wordbluff { --tint: #3a2814; } .t-listoff { --tint: #1c4030; } .t-passphrase { --tint: #4a2a4a; } .t-dontsay { --tint: #3a2a5a; } .t-pardon { --tint: #2a4a7a; } .t-marblerush { --tint: #2a5a5a; } .t-poprace { --tint: #6a2a4a; } .t-ludo { --tint: #3a4a6a; } .t-orchard { --tint: #4a7a3a; } .t-sweettrail { --tint: #7a4a8a; } .t-snakes { --tint: #3a5a3a; } .t-bingo { --tint: #2a3a6a; } .t-hogtoss { --tint: #6a7a3a; } .t-hotdice { --tint: #7a2228; } .t-lineup5 { --tint: #2a5a40; } .t-shapeshade { --tint: #34343a; } .t-cornerstones { --tint: #3a3e48; } .t-dominoes { --tint: #1f4a5a; } .t-starjump { --tint: #2a2a3e; } .t-codebreaker { --tint: #6a4424; } .t-go { --tint: #a07a40; } .t-reversi { --tint: #215c39; } .t-roundtable { --tint: #5a3a1e; } .t-rebelcell { --tint: #2a3a3a; } .t-powergrab { --tint: #4a2a3a; } .t-unicorns { --tint: #6a3a7a; } .t-roadrally { --tint: #5a6a3a; } .t-dealmaker { --tint: #2a6a5a; } .t-bento { --tint: #7a3a32; } .t-rackem { --tint: #2a5a62; } .t-stackup { --tint: #4a3a6a; } .t-cribbage { --tint: #3a5a3a; } .t-drawpoker { --tint: #6a1e24; } .t-gin { --tint: #1b3f2c; } .t-rummy { --tint: #2a5a40; } .t-oldmaid { --tint: #4a3560; } .t-war { --tint: #2f4a6a; } .t-spades { --tint: #1f2a44; } .t-hearts { --tint: #5a1e2c; } .t-words4fun { --tint: #2c2a5a; } .t-hardsell { --tint: #1f3a3a; } 
 
 
     footer { border-top: 1px solid var(--hairline); padding: 22px 0 34px; }
@@ -163,6 +191,7 @@
       .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
       .chip { flex: none; }
       .seg { align-self: flex-start; }
+      .search { max-width: none; flex-basis: auto; }
       .shelf { grid-template-columns: 1fr 1fr; gap: 12px; }
       .box h3 { font-size: 19px; }
       .info-row { padding: 11px 12px 13px; }
@@ -197,6 +226,7 @@
     <a class="spot" id="spot"></a>
 
     <div class="filters">
+      <label class="search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg><input id="q" type="search" placeholder="Search games" autocomplete="off" spellcheck="false" aria-label="Search games"><button class="clear" id="qClear" type="button" aria-label="Clear search" hidden>✕</button></label>
       <div class="chips" id="cats"></div>
       <div class="count"><span class="caps">Players</span><div class="seg" id="players"></div></div>
     </div>
@@ -213,18 +243,18 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=66"></script>
+  <script type="module" src="js/tvnav.js?v=67"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=66';
-    import { coverSVG } from './js/covers.js?v=66';
+    import { GAMES } from './js/games.js?v=67';
+    import { coverSVG } from './js/covers.js?v=67';
 
-    const ids = ['passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
+    const ids = ['actitout', 'blurtit', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'quickthree', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
-      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', passphrase: 'party', dontsay: 'party', pardon: 'board', marblerush: 'board', poprace: 'board', ludo: 'board', orchard: 'board', sweettrail: 'board', snakes: 'board', bingo: 'party', hogtoss: 'dice', hotdice: 'dice', lineup5: 'board', shapeshade: 'board', cornerstones: 'board', dominoes: 'board', starjump: 'board', codebreaker: 'board', go: 'board', reversi: 'board', roundtable: 'roles', rebelcell: 'roles', powergrab: 'roles', unicorns: 'cards', roadrally: 'cards', dealmaker: 'cards', bento: 'cards', rackem: 'cards', stackup: 'cards', cribbage: 'cards', drawpoker: 'casino', gin: 'cards', rummy: 'cards', oldmaid: 'cards', war: 'cards', spades: 'cards', hearts: 'cards', words4fun: 'party', hardsell: 'party', deepspace: 'cards', houserules: 'cards', bannerraid: 'board', fieldagents: 'party', dialitin: 'party', pileup: 'cards', luckystreak: 'cards', passpot: 'dice', tessera: 'board', gearworks: 'cards', redline: 'board', grandprix: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
+      euchre: 'cards', holdem: 'casino', blackjack: 'casino', baccarat: 'casino', yacht: 'dice', chess: 'board', powerup: 'board', actitout: 'party', blurtit: 'party', twotruths: 'party', mostlikely: 'party', oddoneout: 'party', spinsolve: 'party', answerboard: 'party', triviawheel: 'party', topanswers: 'party', quickthree: 'party', wordbluff: 'party', listoff: 'party', passphrase: 'party', dontsay: 'party', pardon: 'board', marblerush: 'board', poprace: 'board', ludo: 'board', orchard: 'board', sweettrail: 'board', snakes: 'board', bingo: 'party', hogtoss: 'dice', hotdice: 'dice', lineup5: 'board', shapeshade: 'board', cornerstones: 'board', dominoes: 'board', starjump: 'board', codebreaker: 'board', go: 'board', reversi: 'board', roundtable: 'roles', rebelcell: 'roles', powergrab: 'roles', unicorns: 'cards', roadrally: 'cards', dealmaker: 'cards', bento: 'cards', rackem: 'cards', stackup: 'cards', cribbage: 'cards', drawpoker: 'casino', gin: 'cards', rummy: 'cards', oldmaid: 'cards', war: 'cards', spades: 'cards', hearts: 'cards', words4fun: 'party', hardsell: 'party', deepspace: 'cards', houserules: 'cards', bannerraid: 'board', fieldagents: 'party', dialitin: 'party', pileup: 'cards', luckystreak: 'cards', passpot: 'dice', tessera: 'board', gearworks: 'cards', redline: 'board', grandprix: 'board', spires: 'cards', kaboom: 'party', nestegg: 'cards', checkers: 'board',
       backgammon: 'board', crown: 'roles', hollow: 'roles', insidejob: 'party', sketch: 'party', chefskiss: 'party', veto: 'cards', gofish: 'cards', spoons: 'party', doubt: 'party', cashout: 'dice', crazy8: 'cards', skyline: 'board', lowtide: 'cards', trio: 'board', fourup: 'board', seedstones: 'board', sonar: 'board', milestones: 'cards', wrongnumber: 'party', scribble: 'party', manor: 'roles', warfront: 'board', ironroutes: 'board', homestead: 'board', wordsmith: 'board',
     };
-    const KIND_NAME = { all: 'All games', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
-    const NEW = new Set(['passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'deepspace', 'houserules', 'bannerraid', 'fieldagents', 'dialitin', 'pileup', 'luckystreak', 'passpot', 'tessera', 'gearworks', 'redline', 'grandprix', 'spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
+    const KIND_NAME = { all: 'All games', fav: 'Favorites', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', roles: 'Hidden roles' };
+    const NEW = new Set(['actitout', 'blurtit', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'quickthree', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'deepspace', 'houserules', 'bannerraid', 'fieldagents', 'dialitin', 'pileup', 'luckystreak', 'passpot', 'tessera', 'gearworks', 'redline', 'grandprix', 'spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
@@ -256,9 +286,24 @@
       </div>`;
     spot.querySelector('.stage').innerHTML = coverSVG(spotId);
 
+    // ---- Favorites (starred on this device)
+    let favs = [];
+    try { favs = JSON.parse(localStorage.getItem('pod.favs')) || []; } catch {}
+    favs = favs.filter(id => GAMES[id]);
+    const isFav = id => favs.includes(id);
+    function toggleFav(id) {
+      favs = isFav(id) ? favs.filter(x => x !== id) : [id, ...favs];
+      try { localStorage.setItem('pod.favs', JSON.stringify(favs)); } catch {}
+      const b = tiles[id].querySelector('.fav');
+      b.classList.toggle('on', isFav(id));
+      b.setAttribute('aria-pressed', isFav(id));
+      b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
+      draw();
+    }
+
     // ---- Filters
     const cats = document.getElementById('cats');
-    cats.innerHTML = Object.entries(KIND_NAME).map(([k, t]) => `<button class="chip" data-cat="${k}" type="button">${t}</button>`).join('');
+    cats.innerHTML = Object.entries(KIND_NAME).map(([k, t]) => `<button class="chip${k === 'fav' ? ' fav-chip' : ''}" data-cat="${k}" type="button">${t}</button>`).join('');
     const seg = document.getElementById('players');
     seg.innerHTML = PLAYERS.map(([k, t]) => `<button data-who="${k}" type="button">${t}</button>`).join('');
     cats.onclick = e => { const b = e.target.closest('[data-cat]'); if (b) { cat = b.dataset.cat; draw(); } };
@@ -269,6 +314,21 @@
       const [a, b = a] = who.split('-').map(Number);
       return G.min <= b && G.max >= a;
     };
+
+    // ---- Search: by name, description or kind of game, across the whole library.
+    let q = '';
+    const qEl = document.getElementById('q'), qClear = document.getElementById('qClear');
+    const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’'&!.,]/g, '').replace(/\s+/g, ' ').trim();
+    const hay = id => norm(`${GAMES[id].name} ${GAMES[id].blurb} ${KIND_NAME[KIND[id]]} ${id}`);
+    const matches = id => !q.trim() || norm(q).split(' ').every(w => hay(id).includes(w));
+    const setQ = v => { qEl.value = q = v; qClear.hidden = !q; draw(); };
+    qEl.addEventListener('input', () => setQ(qEl.value));
+    qEl.addEventListener('keydown', e => {
+      if (e.key === 'Escape') setQ('');
+      if (e.key === 'Enter') { const first = shelf.querySelector('a.box'); if (first) location.href = first.href; }
+    });
+    qClear.onclick = () => { setQ(''); qEl.focus(); };
+    document.addEventListener('keydown', e => { if (e.key === '/' && !/INPUT|TEXTAREA/.test(document.activeElement?.tagName || '')) { e.preventDefault(); qEl.focus(); } });
 
     // ---- Library
     const shelf = document.getElementById('shelf');
@@ -283,17 +343,35 @@
           <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${KIND_NAME[KIND[id]]}</span></div></div>`;
       box.title = desc(G);
       box.querySelector('.art').insertAdjacentHTML('afterbegin', coverSVG(id));
+      const star = document.createElement('button');
+      star.type = 'button';
+      star.className = 'fav' + (isFav(id) ? ' on' : '');
+      star.title = 'Favorite';
+      star.setAttribute('aria-label', `Favorite ${G.name}`);
+      star.setAttribute('aria-pressed', isFav(id));
+      star.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); toggleFav(id); });
+      box.querySelector('.art').appendChild(star);
       tiles[id] = box;
     });
 
     function draw() {
       try { localStorage.setItem('pod.home.filters', JSON.stringify({ cat, who })); } catch {}
-      cats.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', b.dataset.cat === cat));
+      cats.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', !q.trim() && b.dataset.cat === cat));
       seg.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.who === who));
-      const show = ids.filter(id => (cat === 'all' || KIND[id] === cat) && fits(GAMES[id]));
+      const searching = !!q.trim();
+      const inCat = id => searching || cat === 'all' || (cat === 'fav' ? isFav(id) : KIND[id] === cat);
+      let show = ids.filter(id => inCat(id) && matches(id) && fits(GAMES[id]));
+      // Starred games come first (in Favorites, in the order they were starred).
+      if (cat === 'fav' && !searching) show = favs.filter(id => show.includes(id));
+      else show = [...show.filter(isFav), ...show.filter(id => !isFav(id))];
       shelf.replaceChildren(...show.map(id => tiles[id]));
-      if (!show.length) shelf.innerHTML = '<p class="empty">No games match — try another filter.</p>';
-      document.getElementById('libTitle').textContent = KIND_NAME[cat];
+      if (!show.length) {
+        const p = document.createElement('p');
+        p.className = 'empty';
+        p.textContent = searching ? `No games match “${q.trim()}”.` : cat === 'fav' ? 'No favorites yet — tap the ☆ on any game to star it.' : 'No games match — try another filter.';
+        shelf.replaceChildren(p);
+      }
+      document.getElementById('libTitle').textContent = searching ? 'Search results' : KIND_NAME[cat];
       document.getElementById('libCount').textContent = `${show.length} ${show.length === 1 ? 'game' : 'games'}${who !== 'any' ? ` · ${PLAYERS.find(p => p[0] === who)[1]} players` : ''}`;
     }
     draw();

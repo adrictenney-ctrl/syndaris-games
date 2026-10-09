@@ -1,13 +1,13 @@
 // Scribble Chain on a phone: pick your word; draw what you're given on the pad (colours, two pen
 // sizes, undo, clear) and tap Done; guess what a drawing shows. Pages hand in by themselves when
 // the clock runs out.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { PALETTE, SIZES, PAD_W, PAD_H } from './sketch.js?v=66';
-import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=66';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { PALETTE, SIZES, PAD_W, PAD_H } from './sketch.js?v=67';
+import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=67';
 
 let ctx = null, stepId = -1, strokes = [], pen = { c: 0, w: 1 }, live = null, autoT = null, clockT = null, endsAt = 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-const COLORS = [0, 1, 2, 4, 5, 6, 7];      // a handful of the shared palette
+const COLORS = PALETTE.map((_, i) => i);   // the whole shared palette (the last one is the eraser)
 
 export function reset() { stepId = -1; strokes = []; clearTimeout(autoT); clearInterval(clockT); document.getElementById('scPhone')?.remove(); }
 export function renderLobby(c) {
@@ -31,6 +31,10 @@ function submit() {
   navigator.vibrate?.(20);
 }
 
+// Quietly keep the table up to date with the page in progress, so the clock never hands in a blank.
+let draftT = null;
+function sendDraft(d) { clearTimeout(draftT); draftT = setTimeout(() => ctx.raw({ t: 'ink', draft: d() }), 350); }
+
 function padSetup(cv) {
   const pt = e => { const r = cv.getBoundingClientRect(); return [Math.round(((e.clientX - r.left) / r.width) * PAD_W), Math.round(((e.clientY - r.top) / r.height) * PAD_H)]; };
   cv.addEventListener('pointerdown', e => { e.preventDefault(); cv.setPointerCapture(e.pointerId); live = { c: pen.c, w: pen.w, p: pt(e) }; strokes.push(live); drawStroke(cv.getContext('2d'), live); });
@@ -41,7 +45,7 @@ function padSetup(cv) {
     p.push(x, y);
     drawStroke(cv.getContext('2d'), live, p.length - 4);
   });
-  const end = () => { live = null; };
+  const end = () => { if (live) sendDraft(() => ({ strokes })); live = null; };
   cv.addEventListener('pointerup', end);
   cv.addEventListener('pointercancel', end);
 }
@@ -61,9 +65,9 @@ export function render(c) {
   document.body.classList.toggle('myturn', !g.done && ['write', 'draw', 'guess'].includes(g.phase));
 
   if (g.phase === 'reveal' || g.phase === 'over') {
-    setStatus(g.phase === 'over' ? 'All done!' : 'Watch the table', g.phase === 'over' ? 'Look at the table to play again' : g.revealOwner === you ? "It's your book — tap Next when everyone's laughed enough" : 'The books are being revealed');
-    e.innerHTML = g.phase === 'reveal' && g.revealOwner === you ? '<button class="panel-btn go wide" id="scNext">Next page ›</button>' : '';
-    document.getElementById('scNext')?.addEventListener('click', () => ctx.send({ type: 'next' }));
+    setStatus(g.phase === 'over' ? 'All done!' : 'Watch the table', g.phase === 'over' ? 'Look at the table to play again' : g.revealOwner === you ? "It's your book — Back, Pause or Next whenever you like" : 'Missed a page? Tap Back');
+    e.innerHTML = g.phase === 'reveal' ? `<div class="row sc-navp"><button class="panel-btn" data-x="back" ${g.canBack ? '' : 'disabled'}>‹ Back</button><button class="panel-btn" data-x="pause">${g.paused ? '▶ Play' : '❚❚ Pause'}</button><button class="panel-btn go" data-x="next">Next ›</button></div>` : '';
+    e.querySelectorAll('[data-x]').forEach(b => { b.onclick = () => ctx.send({ type: b.dataset.x }); });
     return;
   }
   if (g.done) {
@@ -72,9 +76,10 @@ export function render(c) {
     return;
   }
   // Hand in automatically just before the table's clock runs out.
+  // (The table's own clock is used — the phone's may not agree with it.)
   if (g.deadline && fresh) {
-    endsAt = Date.now() + Math.max(0, g.deadline - Date.now());
-    autoT = setTimeout(submit, Math.max(0, endsAt - Date.now() - 800));
+    endsAt = Date.now() + Math.max(0, g.left ?? g.deadline - Date.now());
+    autoT = setTimeout(submit, Math.max(0, endsAt - Date.now() - 600));
     clockT = setInterval(() => { const k = document.getElementById('scClock'); if (k) k.textContent = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000)) + 's'; }, 250);
   }
   if (g.phase === 'write') {
@@ -92,6 +97,7 @@ export function render(c) {
       fitCanvas(cv, Math.min(window.innerWidth - 36, 420));
       paint(cv, g.prev?.strokes || []);
       e.querySelector('#scDone').onclick = () => { if (!document.getElementById('scGuess').value.trim()) return toast('Type a guess first'); submit(); };
+      e.querySelector('#scGuess').oninput = ev => sendDraft(() => ({ text: ev.target.value }));
     }
     return;
   }
@@ -112,8 +118,8 @@ export function render(c) {
       if (!b) return;
       if (b.dataset.c) pen.c = Number(b.dataset.c);
       if (b.dataset.s) pen.w = Number(b.dataset.s);
-      if (b.dataset.x === 'undo') strokes.pop();
-      if (b.dataset.x === 'clear') strokes = [];
+      if (b.dataset.x === 'undo') { strokes.pop(); sendDraft(() => ({ strokes })); }
+      if (b.dataset.x === 'clear') { strokes = []; sendDraft(() => ({ strokes })); }
       e.querySelectorAll('.sc-tools button').forEach(x => x.classList.toggle('on', (x.dataset.c && Number(x.dataset.c) === pen.c) || (x.dataset.s && Number(x.dataset.s) === pen.w)));
       paint(cv, strokes);
     };

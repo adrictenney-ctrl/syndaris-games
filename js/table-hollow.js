@@ -1,7 +1,7 @@
 // Hollowmere on the table: night and day, who died, nominations and votes, who is about to
 // be executed, and the list of every character that could be in the village.
-import * as H from './hollow.js?v=66';
-import { CHARS, KIND_NAME } from './hollow-chars.js?v=66';
+import * as H from './hollow.js?v=67';
+import { CHARS, KIND_NAME } from './hollow-chars.js?v=67';
 
 let root = null, key = '', sheetOpen = false;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

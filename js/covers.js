@@ -689,3 +689,59 @@ cover('dontsay', id => shell(id, { title: 'Don’t Say It', tag: 'Describe it ·
 cover('passphrase', id => shell(id, { title: 'Pass the Phrase', tag: 'Hot potato · ticking bomb', bg: ['#7a3a6a', '#4a2a4a', '#140814'], cy: 30 }, `
   ${glow(id, 300, 140, 140, '#ffb050', .35)}<text x="300" y="200" text-anchor="middle" font-size="150">💣</text>
 `));
+
+// ---- Party games batch 3
+const partyCard = (id, x, y, rot, w, h, body, fill = '#fffaf0') => `<g transform="translate(${x} ${y}) rotate(${rot})" filter="url(#${id}-sh)"><rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="12" fill="${fill}"/>${body}</g>`;
+cover('listoff', id => shell(id, { title: 'List Off', tag: 'One letter · ten categories', bg: ['#3a7a5a', '#1c4030', '#08160e'], cy: 30 }, `
+  ${partyCard(id, 250, 150, -5, 230, 230, `${['A fruit', 'A city', 'An animal', 'Something cold', 'A job'].map((c, i) => `<text x="-96" y="${-74 + i * 38}" font-family="${UI}" font-size="13" fill="#6a5a3a">${i + 1}. ${c}</text><path d="M-96 ${-66 + i * 38} H96" stroke="#c8b88a" stroke-dasharray="3 3"/><text x="96" y="${-74 + i * 38}" text-anchor="end" font-family="${SERIF}" font-style="italic" font-size="18" fill="#2a4a8a">${['Mango', 'Madrid', 'Moose', 'Milkshake', 'Mechanic'][i]}</text>`).join('')}`)}
+  ${die(id, 455, 130, 104, 'M', { rot: 12, fill: '#f2cf2a' })}
+`));
+cover('wordbluff', id => shell(id, { title: 'Word Bluff', tag: 'Fake the meaning · find the real one', bg: ['#6a4a2a', '#3a2814', '#140c06'], cy: 30 }, `
+  ${partyCard(id, 300, 150, -3, 360, 200, `<text y="-46" text-anchor="middle" font-family="${SERIF}" font-weight="600" font-size="44" fill="#3a2410">Snollygoster</text><text y="-14" text-anchor="middle" font-family="${UI}" font-size="14" letter-spacing="3" fill="#8a6a3a">WHICH MEANING IS REAL?</text>
+  ${['a. A clever, unprincipled person', 'b. A pastry shaped like a ghost', 'c. A snow-covered hillside'].map((t, i) => `<text x="-150" y="${18 + i * 26}" font-family="${SERIF}" font-style="italic" font-size="17" fill="#3a2a1a">${t}</text>`).join('')}`, '#f6ecd4')}
+  <text x="500" y="250" font-size="60">🤥</text>
+`));
+cover('quickthree', id => shell(id, { title: 'Quick Three', tag: 'Name three · five seconds', bg: ['#c84a2a', '#6a2414', '#200a04'], cy: 30 }, `
+  ${glow(id, 300, 140, 130, '#ffb070', .35)}
+  <g transform="translate(300 150)" filter="url(#${id}-sh)"><circle r="100" fill="#fffaf0"/><circle r="100" fill="none" stroke="#e0382c" stroke-width="14" stroke-dasharray="470 628" transform="rotate(-90)"/><text y="38" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="110" fill="#2a1a10">5</text></g>
+  ${['1', '2', '3'].map((n, i) => `<g transform="translate(${470 + (i % 2) * 30} ${80 + i * 70})" filter="url(#${id}-sh)"><circle r="26" fill="#f2cf2a"/><text y="9" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="26" fill="#2a1a10">${n}</text></g>`).join('')}
+`));
+cover('topanswers', id => shell(id, { title: 'Top Answers', tag: 'Survey says · three strikes', bg: ['#2a4aaa', '#14245a', '#060a1e'], cy: 30 }, `
+  <g transform="translate(300 152)" filter="url(#${id}-sh)"><rect x="-200" y="-100" width="400" height="200" rx="14" fill="#0e1a4a" stroke="#e8c35a" stroke-width="5"/>
+  ${[0, 1, 2, 3].map(i => `<g transform="translate(${i % 2 ? 6 : -190} ${-84 + Math.floor(i / 2) * 84})"><rect width="184" height="72" rx="6" fill="${i < 2 ? '#2a5ad8' : '#1a2e6a'}" stroke="#7aa0ff"/>${i < 2 ? `<text x="12" y="46" font-family="${UI}" font-weight="800" font-size="22" fill="#fff">${['KEYS', 'PHONE'][i]}</text><text x="170" y="46" text-anchor="end" font-family="${UI}" font-weight="800" font-size="24" fill="#f2cf2a">${[45, 20][i]}</text>` : `<circle cx="92" cy="36" r="20" fill="#2a5ad8"/><text x="92" y="44" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="22" fill="#fff">${i + 1}</text>`}</g>`).join('')}</g>
+  <text x="520" y="90" font-family="${UI}" font-weight="900" font-size="64" fill="#e0382c" stroke="#fff" stroke-width="3">✗</text>
+`));
+cover('triviawheel', id => shell(id, { title: 'Trivia Wheel', tag: 'Spin · answer · collect all six', bg: ['#4a3a7a', '#241c40', '#0a0816'], cy: 30 }, `
+  <g transform="translate(300 152)" filter="url(#${id}-sh)">${['#3b82d6', '#e0559a', '#e8b923', '#9a6a3a', '#3aa856', '#ee7a2a'].map((c, i) => { const a0 = (i / 6) * 2 * Math.PI - Math.PI / 2, a1 = ((i + 1) / 6) * 2 * Math.PI - Math.PI / 2; return `<path d="M0 0L${(110 * Math.cos(a0)).toFixed(1)} ${(110 * Math.sin(a0)).toFixed(1)}A110 110 0 0 1 ${(110 * Math.cos(a1)).toFixed(1)} ${(110 * Math.sin(a1)).toFixed(1)}Z" fill="${c}" stroke="#fffaf0" stroke-width="4"/>`; }).join('')}<circle r="26" fill="#fffaf0"/><text y="12" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="36" fill="#2a1a40">?</text></g>
+  <path d="M300 40 l-14 -22 h28z" fill="#fffaf0"/>
+`));
+cover('answerboard', id => shell(id, { title: 'Answer Board', tag: 'Pick a clue · answer fastest', bg: ['#1a3aa8', '#0e1e5a', '#04081e'], cy: 30 }, `
+  <g transform="translate(300 152)" filter="url(#${id}-sh)"><rect x="-230" y="-110" width="460" height="220" rx="8" fill="#050a2a"/>
+  ${[0, 1, 2, 3, 4].map(c => [0, 1, 2, 3].map(r => `<rect x="${-222 + c * 89}" y="${-102 + r * 53}" width="85" height="49" fill="${r === 0 ? '#1a2aa0' : '#1636c8'}"/>${r === 0 ? `<rect x="${-214 + c * 89}" y="-80" width="69" height="6" rx="3" fill="#fff" opacity=".7"/>` : (c + r) % 3 === 0 ? '' : `<text x="${-180 + c * 89}" y="${-68 + r * 53}" text-anchor="middle" font-family="${UI}" font-weight="900" font-size="22" fill="#f2cf2a">${r * 100}</text>`}`).join('')).join('')}</g>
+`));
+cover('spinsolve', id => shell(id, { title: 'Spin & Solve', tag: 'Spin · call a letter · solve it', bg: ['#2a7a6a', '#144038', '#061814'], cy: 30 }, `
+  <g transform="translate(150 160)" filter="url(#${id}-sh)">${Array.from({ length: 12 }, (_, i) => { const a0 = (i / 12) * 2 * Math.PI, a1 = ((i + 1) / 12) * 2 * Math.PI; return `<path d="M0 0L${(90 * Math.cos(a0)).toFixed(1)} ${(90 * Math.sin(a0)).toFixed(1)}A90 90 0 0 1 ${(90 * Math.cos(a1)).toFixed(1)} ${(90 * Math.sin(a1)).toFixed(1)}Z" fill="${['#e0382c', '#f39a1e', '#f2cf2a', '#36a852', '#2f7de1', '#8b45c8'][i % 6]}"/>`; }).join('')}<circle r="14" fill="#2a2320"/></g>
+  <g transform="translate(410 150)" filter="url(#${id}-sh)">${[...'S_IN_'].map((c, i) => `<rect x="${-140 + i * 56}" y="-30" width="50" height="62" rx="4" fill="${c === '_' ? '#2a8a5a' : '#fffaf0'}" stroke="#0a3a2a" stroke-width="3"/>${c === '_' ? '' : `<text x="${-115 + i * 56}" y="16" text-anchor="middle" font-family="${UI}" font-weight="900" font-size="38" fill="#1a1a1a">${c}</text>`}`).join('')}</g>
+`));
+cover('oddoneout', id => shell(id, { title: 'Odd One Out', tag: 'Everyone knows the word — but one', bg: ['#6a2a5a', '#3a142e', '#14060f'], cy: 30 }, `
+  <g transform="translate(300 150) rotate(-4)" filter="url(#${id}-sh)"><rect x="-150" y="-110" width="300" height="220" rx="12" fill="#fffaf0"/>
+  ${['Pizza', 'Sushi', 'Tacos', 'Soup', 'Curry', 'Steak', 'Pasta', 'Salad', 'Noodles'].map((w, i) => `<rect x="${-138 + (i % 3) * 94}" y="${-98 + Math.floor(i / 3) * 68}" width="88" height="60" rx="6" fill="${i === 4 ? '#f2cf2a' : '#efe4cc'}"/><text x="${-94 + (i % 3) * 94}" y="${-62 + Math.floor(i / 3) * 68}" text-anchor="middle" font-family="${SERIF}" font-size="19" fill="#3a2410">${w}</text>`).join('')}</g>
+  <text x="510" y="250" font-size="64">🕵️</text>
+`));
+cover('mostlikely', id => shell(id, { title: 'Most Likely To', tag: 'Vote with the crowd', bg: ['#aa4a2a', '#5a2414', '#1e0a04'], cy: 30 }, `
+  ${glow(id, 300, 120, 120, '#ffd070', .35)}
+  ${[0, 1, 2, 3, 4].map(i => `<g transform="translate(${140 + i * 80} ${210 - (i === 2 ? 40 : 0)})" filter="url(#${id}-sh)"><circle r="${i === 2 ? 34 : 26}" fill="${['#e0382c', '#2f7de1', '#f2cf2a', '#36a852', '#8b45c8'][i]}"/><circle cy="${i === 2 ? -6 : -4}" r="${i === 2 ? 14 : 10}" fill="#fffaf0" opacity=".85"/></g>`).join('')}
+  <text x="300" y="132" text-anchor="middle" font-size="56">👑</text>
+`));
+cover('twotruths', id => shell(id, { title: 'Two Truths & a Lie', tag: 'Two are true · spot the fib', bg: ['#2a5a8a', '#142e48', '#060e18'], cy: 30 }, `
+  ${['I’ve met a penguin', 'I can juggle', 'I’ve been to the Moon'].map((t, i) => partyCard(id, 300, 82 + i * 70, i - 1, 360, 56, `<text x="-160" y="8" font-family="${SERIF}" font-style="italic" font-size="22" fill="#2a2a3a">${t}</text><text x="160" y="10" text-anchor="end" font-family="${UI}" font-weight="900" font-size="26" fill="${i === 2 ? '#e0382c' : '#36a852'}">${i === 2 ? '✗' : '✓'}</text>`)).join('')}
+`));
+cover('blurtit', id => shell(id, { title: 'Blurt It', tag: 'Ten answers · one minute · shout!', bg: ['#d8862a', '#7a4414', '#241404'], cy: 30 }, `
+  ${partyCard(id, 220, 150, -6, 220, 230, `<text y="-82" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="16" fill="#7a4414">THINGS IN A FRIDGE</text>${['Milk', 'Eggs', 'Butter', 'Cheese', 'Juice'].map((w, i) => `<text x="-80" y="${-46 + i * 30}" font-family="${SERIF}" font-size="20" fill="#2a1a10">${i < 3 ? '✓' : '·'} ${w}</text>`).join('')}`)}
+  <text x="440" y="190" text-anchor="middle" font-size="110">📣</text>
+`));
+cover('actitout', id => shell(id, { title: 'Act It Out', tag: 'No words · just moves', bg: ['#8a2a3a', '#4a141e', '#18060a'], cy: 30 }, `
+  ${glow(id, 300, 120, 140, '#ff9aa8', .3)}
+  <text x="300" y="200" text-anchor="middle" font-size="150">🎭</text>
+  <g transform="translate(470 90) rotate(10)" filter="url(#${id}-sh)"><rect x="-56" y="-36" width="112" height="72" rx="8" fill="#fffaf0"/><text y="-8" text-anchor="middle" font-family="${UI}" font-size="12" letter-spacing="2" fill="#8a2a3a">ANIMAL</text><text y="20" text-anchor="middle" font-family="${SERIF}" font-size="22" fill="#2a1a10">Penguin</text></g>
+`));

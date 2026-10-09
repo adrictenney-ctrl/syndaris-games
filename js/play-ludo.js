@@ -1,9 +1,9 @@
 // The race-home games on a phone: Roll, then tap one of your glowing pieces on the board to move
 // it. In Marble Rush, landing on a ⚡ corner asks whether to take the shortcut.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { boardSVG } from './table-ludo.js?v=66';
-import { dieHTML } from './table-yacht.js?v=66';
-import { moves, dest, startOf } from './racehome.js?v=66';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { boardSVG } from './table-ludo.js?v=67';
+import { dieHTML } from './table-yacht.js?v=67';
+import { moves, dest, startOf } from './racehome.js?v=67';
 
 let ctx = null, wasMyTurn = false, ask = null;
 export function reset() { ask = null; document.getElementById('rhPhone')?.remove(); }

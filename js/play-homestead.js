@@ -1,8 +1,8 @@
 // Homestead on a phone: your resources, the island (legal spots glow when you're building),
 // and the buttons for this moment — roll, build, trade, play a charter, end your turn.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { RES, RES_NAME, RES_ICON, COST, CHARTERS, cabinSpots, roadSpots, manorSpots, HEXES, total } from './homestead.js?v=66';
-import { boardSVG } from './table-homestead.js?v=66';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { RES, RES_NAME, RES_ICON, COST, CHARTERS, cabinSpots, roadSpots, manorSpots, HEXES, total } from './homestead.js?v=67';
+import { boardSVG } from './table-homestead.js?v=67';
 
 let ctx = null, mode = null, give = null, get = null, offer = null, disc = null, pick = [], wasMyTurn = false;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

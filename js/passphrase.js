@@ -3,7 +3,7 @@
 // rhyming, no "sounds like", no saying the word. As soon as their own team guesses it, tap
 // Got it and it jumps to the next player with a new phrase. A hidden timer is ticking: when the
 // buzzer goes, the team NOT holding the phrase scores a point. First to the target wins.
-import { LISTS } from './sketch-words.js?v=66';
+import { LISTS } from './sketch-words.js?v=67';
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const announce = (g, seat, text) => { g.announce = { id: ++g.annId, seat, text }; };

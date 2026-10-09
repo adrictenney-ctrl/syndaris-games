@@ -912,3 +912,135 @@ GAMES.passphrase = {
   startLabel: 'Light the fuse',
   layout: GAMES.holdem.layout,
 };
+
+GAMES.listoff = {
+  id: 'listoff',
+  name: "List Off",
+  blurb: "2–10 players · one letter, ten categories, beat the clock",
+  min: 2,
+  max: 10,
+  noBots: true,
+  startLabel: "Roll the letter",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.wordbluff = {
+  id: 'wordbluff',
+  name: "Word Bluff",
+  blurb: "3–10 players · fake the meaning of a strange word, spot the real one",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Open the dictionary",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.quickthree = {
+  id: 'quickthree',
+  name: "Quick Three",
+  blurb: "2–10 players · name three things in five seconds — out loud",
+  min: 2,
+  max: 10,
+  noBots: true,
+  startLabel: "Start the clock",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.topanswers = {
+  id: 'topanswers',
+  name: "Top Answers",
+  blurb: "4–10 players · two teams guess the most popular survey answers",
+  min: 4,
+  max: 10,
+  noBots: true,
+  startLabel: "Survey says…",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.triviawheel = {
+  id: 'triviawheel',
+  name: "Trivia Wheel",
+  blurb: "1–10 players · spin, answer fast, collect every wedge",
+  min: 1,
+  max: 10,
+  noBots: true,
+  startLabel: "Spin the wheel",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.answerboard = {
+  id: 'answerboard',
+  name: "Answer Board",
+  blurb: "1–8 players · pick a clue, answer fastest, watch for the Double Down",
+  min: 1,
+  max: 8,
+  noBots: true,
+  startLabel: "Light up the board",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.spinsolve = {
+  id: 'spinsolve',
+  name: "Spin & Solve",
+  blurb: "1–6 players · spin the wheel, call letters, solve the puzzle",
+  min: 1,
+  max: 6,
+  noBots: true,
+  startLabel: "Spin the wheel",
+  layout: GAMES.holdem.layout,
+};
+
+GAMES.oddoneout = {
+  id: 'oddoneout',
+  name: "Odd One Out",
+  blurb: "3–10 players · everyone knows the secret word except one",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Deal the secret",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.mostlikely = {
+  id: 'mostlikely',
+  name: "Most Likely To",
+  blurb: "3–10 players · vote who’s most likely to… and agree with the crowd",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Ask the first question",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.twotruths = {
+  id: 'twotruths',
+  name: "Two Truths & a Lie",
+  blurb: "3–10 players · three facts about you, one is made up",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Start writing",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.blurtit = {
+  id: 'blurtit',
+  name: "Blurt It",
+  blurb: "4–10 players · two teams shout out ten answers before time runs out",
+  min: 4,
+  max: 10,
+  noBots: true,
+  startLabel: "Pick a topic",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.actitout = {
+  id: 'actitout',
+  name: "Act It Out",
+  blurb: "4–10 players · charades for two teams, no talking allowed",
+  min: 4,
+  max: 10,
+  noBots: true,
+  startLabel: "Raise the curtain",
+  layout: GAMES.crown.layout,
+};

@@ -1,7 +1,7 @@
 // Wordsmith on the table: the 15×15 board in walnut and cream with our bonus squares, the
 // tiles in play (the latest word lit up), the bag, and a list of the words played.
-import * as W from './wordsmith.js?v=66';
-import { snap } from './cards.js?v=66';
+import * as W from './wordsmith.js?v=67';
+import { snap } from './cards.js?v=67';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

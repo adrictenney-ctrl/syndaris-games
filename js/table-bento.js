@@ -1,8 +1,8 @@
 // Bento Box on the table: each player's lunch spread out in front of them (cards grouped by
 // kind), who has picked this turn, and the scores after each round.
-import * as B from './bento.js?v=66';
-import { snap } from './cards.js?v=66';
-import { centerMsg, clearMsg } from './table-hearts.js?v=66';
+import * as B from './bento.js?v=67';
+import { snap } from './cards.js?v=67';
+import { centerMsg, clearMsg } from './table-hearts.js?v=67';
 
 let root = null, key = '';
 export const bnCard = (k, cls = '', extra = '') => { const c = B.CARDS[k]; return `<div class="bn-card ${cls}" style="--c:${c.col}"><small>${c.name}</small><b>${c.ic}${c.lan > 1 ? `<sup>×${c.lan}</sup>` : ''}</b><em>${c.tip}</em>${extra}</div>`; };

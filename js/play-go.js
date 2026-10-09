@@ -1,7 +1,7 @@
 // Go on a phone: the board (tap a point to play), Pass and Resign. When scoring, tap stones to
 // mark them dead and accept the count.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { stone, goSVG } from './table-go.js?v=66';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { stone, goSVG } from './table-go.js?v=67';
 
 let ctx = null, wasMyTurn = false;
 export function reset() { document.getElementById('goPhone')?.remove(); }

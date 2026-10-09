@@ -52,3 +52,9 @@ body[data-game="scribble"] #status { flex: none; min-height: 0; margin: 8px 0 6p
 .sc-words { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 340px; margin-top: 10px; }
 .sc-words .panel-btn { font-family: var(--display); font-weight: 600; font-size: 22px; padding: 16px; }
 .sc-wait { margin-top: 30px; font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--gold-ink); }
+.sc-nav { display: flex; justify-content: center; gap: 1.4vmin; margin-top: 1.4vmin; }
+.sc-nav .tool[disabled], .sc-navp .panel-btn[disabled] { opacity: .35; pointer-events: none; }
+.sc-navp { width: 100%; max-width: 380px; margin-top: 18px; }
+.sc-tools { max-width: 400px; gap: 5px; }
+.sc-tools button { width: 30px; height: 30px; }
+.sc-tools button[data-c="19"] { background: repeating-linear-gradient(45deg, #fbf7ec 0 4px, #d9cfb8 4px 8px) !important; }

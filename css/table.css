@@ -694,3 +694,15 @@ body[data-game="chess"] #felt, body[data-game="powerup"] #felt { --seat-h: 22vmi
 .pc .stk i { font-style: normal; }
 .pc .stk { color: #e9d4a2; gap: calc(var(--S) * .02); align-items: center; }
 .pc .stk b { font-family: var(--num); font-weight: 400; font-size: .8em; color: #fff3d6; margin-left: calc(var(--S) * .03); }
+
+/* In-game rejoin QR, tucked above the room code */
+#toolbar { opacity: 1; }
+#toolbar > :not(#qrMini) { opacity: .6; transition: opacity .3s; }
+#toolbar:hover > * { opacity: 1; }
+#qrMini { display: none; flex-direction: column; align-items: center; gap: .5vmin; padding: .9vmin; border-radius: .8vmin; background: #fbf7ec; box-shadow: 0 .6vmin 1.8vmin rgba(0, 0, 0, .45); }
+body.in-game #qrMini { display: flex; }
+#qrMini .qr { width: 11vmin; height: 11vmin; }
+#qrMini .qr svg { width: 100%; height: 100%; display: block; }
+#qrMini .qr svg path, #qrMini .qr svg rect[fill="black"] { fill: #1d1b1a; }
+#qrMini span { font-family: var(--ui); font-size: 1.2vmin; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #3a3029; white-space: nowrap; }
+#qrMini b { font-family: var(--num); font-weight: 400; font-size: 1.3em; letter-spacing: .12em; }

@@ -1,8 +1,8 @@
 // Shape & Shade on a phone: tap a tile in your hand, then a glowing square on the board; repeat
 // for more tiles in the same line, then Play. Or tick tiles and Swap them with the bag.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { qTile, boardHTML } from './table-shapeshade.js?v=66';
-import { checkMove, spots } from './shapeshade.js?v=66';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { qTile, boardHTML } from './table-shapeshade.js?v=67';
+import { checkMove, spots } from './shapeshade.js?v=67';
 
 let ctx = null, sel = null, staged = [], swapMode = false, swapSel = [], wasMyTurn = false, lastMove = -1;
 export function reset() { sel = null; staged = []; swapSel = []; swapMode = false; document.getElementById('qsPhone')?.remove(); }

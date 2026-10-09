@@ -1,8 +1,8 @@
 // Rummy on the table: the stock and discard pile, and every meld laid down so far (with a dot
 // in the colour of whoever laid it).
-import * as R from './rummy.js?v=66';
-import { cardEl, snap } from './cards.js?v=66';
-import { centerMsg, clearMsg } from './table-hearts.js?v=66';
+import * as R from './rummy.js?v=67';
+import { cardEl, snap } from './cards.js?v=67';
+import { centerMsg, clearMsg } from './table-hearts.js?v=67';
 
 let root = null, key = '';
 

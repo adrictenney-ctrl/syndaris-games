@@ -2,9 +2,9 @@
 // it, each team's score at the sides. Countdown 10 → 1, a buzzer, then a ding whenever anyone
 // finds a word nobody had yet. At time up the two teams' lists are laid out side by side, with
 // cancelled words struck through.
-import * as W from './words4fun.js?v=66';
-import { loadDict, dictFailed } from './dict.js?v=66';
-import { ding, buzzer, beep, chime } from './sfx.js?v=66';
+import * as W from './words4fun.js?v=67';
+import { loadDict, dictFailed } from './dict.js?v=67';
+import { ding, buzzer, beep, chime } from './sfx.js?v=67';
 
 let root = null, key = '', gameRef = null, clockT = null, lastAnn = 0, lastBeep = -1;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

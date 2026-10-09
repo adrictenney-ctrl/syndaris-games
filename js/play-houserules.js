@@ -1,8 +1,8 @@
 // House Rules on a phone: your hand. Tap a card to read it, then Play. Cards that need a
 // choice (whose Keeper, which player, which rule) ask for it before they go.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import * as H from './houserules.js?v=66';
-import { hrCard } from './table-houserules.js?v=66';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import * as H from './houserules.js?v=67';
+import { hrCard } from './table-houserules.js?v=67';
 
 let ctx = null, sel = null, mineK = null, picks = [], wasMyTurn = false, lastMove = -1;
 

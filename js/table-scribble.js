@@ -1,9 +1,9 @@
 // Scribble Chain on the table. While everyone works: which step it is, the clock, and who's
 // finished. Then the reveal: each sketchbook opens on the table, page by page — the word, the
 // drawing, the guess, the next drawing… — with who did each page.
-import * as C from './scribble.js?v=66';
-import { fitCanvas, paint } from './sketch-pad.js?v=66';
-import { snap } from './cards.js?v=66';
+import * as C from './scribble.js?v=67';
+import { fitCanvas, paint } from './sketch-pad.js?v=67';
+import { snap } from './cards.js?v=67';
 
 let root = null, key = '', tick = null, gref = null;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -27,6 +27,7 @@ export default {
   view: C.viewFor,
   turn: () => -1,
   timer: g => C.timer(g),
+  ink: (g, seat, msg) => (msg.draft ? C.draft(g, seat, msg.draft) : false),
   joinMidGame: () => false,
 
   plate(g, seat) {
@@ -48,7 +49,7 @@ export default {
     const W = Math.min(felt.width - v * 60, (felt.height - v * 36) * 1.33);
     root.style.setProperty('--W', W + 'px');
     const status = root.querySelector('.sc-status'), book = root.querySelector('.sc-book');
-    const k = JSON.stringify([g.phase, g.step, Object.keys(g.done).length, g.revealBook, g.revealPage, Math.round(W)]);
+    const k = JSON.stringify([g.phase, g.step, Object.keys(g.done).length, g.revealBook, g.revealPage, !!g.paused, Math.round(W)]);
     if (k === key) return;
     key = k;
     if (g.phase !== 'reveal' && g.phase !== 'over') {
@@ -63,9 +64,10 @@ export default {
     const b = g.books[g.revealBook], p = b.pages[g.revealPage];
     book.innerHTML = `<header><b>${esc(ctx.nameOf(b.owner))}'s book</b><span>${b.pages.map((_, i) => `<i class="${i === g.revealPage ? 'on' : i < g.revealPage ? 'past' : ''}"></i>`).join('')}</span></header>
       <div class="sc-page ${p.type}">${p.type === 'draw' ? '<canvas></canvas>' : `<p class="${p.type}">${p.text ? esc(p.text) : '<em>(no answer)</em>'}</p>`}</div>
-      <footer>${p.type === 'word' ? 'The word was chosen by' : p.type === 'draw' ? 'Drawn by' : 'Guessed by'} <b>${esc(ctx.nameOf(p.by))}</b><button class="tool" data-next>Next page ›</button></footer>`;
+      <footer>${p.type === 'word' ? 'The word was chosen by' : p.type === 'draw' ? 'Drawn by' : 'Guessed by'} <b>${esc(ctx.nameOf(p.by))}</b></footer>
+      <div class="sc-nav"><button class="tool" data-x="back" ${g.revealBook || g.revealPage ? '' : 'disabled'}>‹ Back</button><button class="tool" data-x="pause">${g.paused ? '▶ Play' : '❚❚ Pause'}</button><button class="tool" data-x="next">Next page ›</button></div>`;
     if (p.type === 'draw') { const cv = book.querySelector('canvas'); fitCanvas(cv, Math.floor(W * 0.92)); paint(cv, p.strokes); }
-    book.querySelector('[data-next]').onclick = () => ctx.act(b.owner, { type: 'next' });
+    book.querySelectorAll('[data-x]').forEach(x => { x.onclick = () => ctx.act(b.owner, { type: x.dataset.x }); });
     snap(0.3);
   },
 

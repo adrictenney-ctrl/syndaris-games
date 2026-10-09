@@ -1,8 +1,8 @@
 // Bingo on a phone: your card (tap numbers to daub them if auto-daub is off) and a big BINGO
 // button for when your pattern is complete.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { LETTER } from './bingo.js?v=66';
-import { ding } from './sfx.js?v=66';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { LETTER } from './bingo.js?v=67';
+import { ding } from './sfx.js?v=67';
 
 let lastBall = null;
 export function reset() { document.getElementById('bgPhone')?.remove(); lastBall = null; }

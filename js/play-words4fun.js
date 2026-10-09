@@ -1,10 +1,10 @@
 // Words 4 Fun on a phone: the letter grid. Drag a finger across touching tiles (or tap them one
 // by one) to spell a word, then press Enter to score it and start the next. A ding means you're
 // the first to find that word. Your words are listed underneath.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { tile, fmt } from './table-words4fun.js?v=66';
-import { adjacent, team, TEAM_NAME } from './words4fun.js?v=66';
-import { ding, buzzer, beep } from './sfx.js?v=66';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { tile, fmt } from './table-words4fun.js?v=67';
+import { adjacent, team, TEAM_NAME } from './words4fun.js?v=67';
+import { ding, buzzer, beep } from './sfx.js?v=67';
 
 let ctx = null, path = [], tracing = false, gridKey = '', clockT = null, goAt = 0, endAt = 0, lastMine = 0, lastPhase = '', lastBeep = -1;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

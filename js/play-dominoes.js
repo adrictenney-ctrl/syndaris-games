@@ -1,8 +1,8 @@
 // Dominoes on a phone: your tiles; the ones that fit are bright. Tap one to play it (pick the
 // end if it fits both), or draw from the boneyard / pass when you can't.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=66';
-import { domino } from './table-dominoes.js?v=66';
-import { TILES } from './dominoes.js?v=66';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=67';
+import { domino } from './table-dominoes.js?v=67';
+import { TILES } from './dominoes.js?v=67';
 
 let ctx = null, sel = null, wasMyTurn = false;
 export function reset() { sel = null; document.getElementById('doPhone')?.remove(); }

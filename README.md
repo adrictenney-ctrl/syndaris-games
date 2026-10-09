@@ -96,7 +96,7 @@ name so it stays clear of anyone's trademark.) Everyone takes turns drawing.
 
 - **Picking:** the drawer's phone offers three words (easy, medium and hard, or all from one level, set in the lobby).
   Only the drawer sees them. If they don't pick within 20 seconds, one is picked for them.
-- **Drawing:** the drawer draws on their phone, with nine colours, an eraser, three pen sizes, Undo and Clear. The
+- **Drawing:** the drawer draws on their phone, with 19 colours, an eraser, three pen sizes, Undo and Clear. The
   drawing appears on the table's sketch pad as it's drawn. The table also shows the word as blanks and a clock.
 - **Guessing:** everyone else types answers on their own phone, as many times as they like. A phone says "so close!"
   for near misses. Small typos, plurals and "a/the" are accepted. The table only marks who got it, not what anyone
@@ -353,7 +353,9 @@ funniest anonymous reply; first to 3/5/7/10 points. One "new phone" (fresh hand)
 ## Scribble Chain
 3–8 players, no bots. Sketchbooks pass round the table: secret word, drawing, guess, drawing… (the
 Telestrations idea). Everyone works at once on their phone with a timer; the table then reveals each
-book page by page. With an even number of players the owner makes the final guess. Code: `js/scribble.js`.
+book page by page, with Back, Pause and Next so nobody misses a page. With an even number of players everyone
+draws their own word first, so nobody guesses their own book at the end. When the clock runs out, whatever is on
+the page (drawing or half-typed guess) is handed in. The pen has 19 colours plus an eraser. Code: `js/scribble.js`.
 
 ## Midnight Manor
 3–6 players. A deduction mystery (the Clue idea) with our own six suspects, six weapons and nine-room
@@ -479,6 +481,71 @@ the Home deck and Deep Space (which adds Creepers). Code: `js/houserules.js`.
 word cards to make a product ("Bacon" + "Umbrella") and pitches it out loud. The Customer buys one; that
 seller scores. Everyone is the Customer once (or twice, or three times). Our own 300 words and 70 customers.
 Code: `js/hardsell.js`.
+
+## Words 4 Fun
+4–8 players in two teams (Sun and Moon). A 4×4 or 5×5 letter grid; trace words of 3+ touching letters on
+your phone and press Enter, with a ding for a word your team found first. After the 10-to-1 countdown and the
+buzzer, words both teams found cancel out. Scoring by length (3–4 letters 2, 5 → 3, 6 → 4, 7 → 6, 8+ → 12) or
+one point per letter, +2 for finding a word first; timer and target set in the lobby. Code: `js/words4fun.js`.
+
+## Classic card games
+Hearts, Spades, War, Old Maid, Rummy, Gin Rummy, Five-Card Draw and Cribbage, with the standard rules and
+computer players. Shared pieces: `js/tricks.js` and `js/trickview.js` (trick taking), `js/rummycore.js` (melds).
+Stack Up (the Skip-Bo idea), Rack 'Em (Rack-O), Bento Box (Sushi Go), Deal Maker (Monopoly Deal), Road Rally
+(Mille Bornes) and Unicorn Chaos (Unstable Unicorns) use our own decks and names.
+
+## Bluffing and hidden roles
+Power Grab (the Coup idea), Rebel Cell (The Resistance) and Round Table (Avalon, sharing Rebel Cell's engine
+in `js/rebel.js`).
+
+## Board games
+Reversi, Go, Code Breaker (Mastermind), Star Jump (Chinese Checkers), Dominoes, Cornerstones (Blokus),
+Shape & Shade (Qwirkle) and Line Up 5 (Sequence), all with computer players.
+
+## Dice and roll-and-move
+Hot Dice (Farkle), Hog Toss (Pass the Pigs), Bingo, Snakes & Ladders, Sweet Trail (Candy Land), Orchard
+(Hi Ho! Cherry-O), Ludo, Pop-Up Race (Trouble), Marble Rush (Aggravation) and Pardon Me! (Sorry!). Ludo,
+Pop-Up Race and Marble Rush share `js/racehome.js`.
+
+## Team word games
+Don't Say It (the Taboo idea: describe the word without the five forbidden ones; the other team can buzz) and
+Pass the Phrase (Catch Phrase: describe, pass it on, don't be holding it when the hidden timer goes off).
+
+## Party games (phones only)
+These share one phone screen (`js/play-party.js`, driven by a description each engine puts in its view),
+one table frame (`js/table-party.js`) and helpers (`js/party.js`: teams, decks, answer matching that
+forgives small typos). Anything typed is sent to the table as a draft, so the clock never hands in a blank.
+- **List Off** (the Scattergories idea), 2–10: a letter and 6–12 categories; answers that match someone
+  else's score nothing, and the others can vote down anything silly. `js/listoff.js`
+- **Word Bluff** (Balderdash/Fibbage), 3–10: write a fake meaning for a real, strange word; vote for the real
+  one. 2 points for finding it, 1 for each player your fake fools. `js/wordbluff.js` (+ `wordbluff-words.js`)
+- **Quick Three** (5 Second Rule), 2–10: name three things in five seconds, out loud; the others vote
+  thumbs up or down. `js/quickthree.js`
+- **Top Answers** (Family Feud), 4–10 in two teams: guess the survey answers; three strikes and the other
+  team can steal; last round double. Surveys are from our own panel. `js/topanswers.js`
+- **Trivia Wheel** (Trivial Pursuit), 1–10: the wheel picks one of six categories; everyone answers at once
+  and right answers win that wedge. `js/triviawheel.js`, questions in `js/trivia-bank.js`
+- **Answer Board** (Jeopardy), 1–8: pick a clue on your phone; fastest right answer scores it and picks next,
+  wrong answers lose half; one Double Down. Same question bank.
+- **Spin & Solve** (Wheel of Fortune), 1–6: spin, call consonants, buy vowels (250), solve. Bankrupt and
+  Lose a Turn on the wheel. `js/spinsolve.js`
+- **Odd One Out** (the Chameleon/Imposter idea), 3–10: everyone but one knows the secret word; one-word clues,
+  then vote. `js/oddoneout.js`
+- **Most Likely To**, 3–10: vote who's most likely to…; a point for voting with the crowd. `js/mostlikely.js`
+- **Two Truths & a Lie**, 3–10: write three statements and mark the lie; everyone guesses each player's.
+  `js/twotruths.js`
+- **Blurt It** (Outburst), 4–10 in two teams: shout out the ten answers on the card while someone from the
+  other team ticks them off. `js/blurtit.js`
+- **Act It Out** (charades), 4–10 in two teams. `js/actitout.js`
+
+## Home page
+Search box (name, description or kind of game; press / to jump to it, Enter opens the first result) and a ☆
+on every tile to star favourites. Starred games come first, and the Favorites chip shows only them. Both are
+kept per device.
+
+## Rejoining
+During a game the table shows a small QR code above the room code. Anyone who dropped out can scan it; if they
+use the same name as before, they go straight back into their seat.
 
 ## Card finish
 `css/cardart.css` (loaded after the game styles) gives every custom deck the same printed-card finish: paper grain,

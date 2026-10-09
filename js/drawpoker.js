@@ -3,8 +3,8 @@
 // replacements, then a second betting round at double the bet size, then the showdown. Bets
 // come in fixed steps (10 before the draw, 20 after) with at most four bets a round. Players
 // who run out of chips are out; last one with chips wins. Side pots handle all-ins.
-import { fullDeck, shuffle, announce } from './tricks.js?v=66';
-import { bestHand, describe } from './poker.js?v=66';
+import { fullDeck, shuffle, announce } from './tricks.js?v=67';
+import { bestHand, describe } from './poker.js?v=67';
 
 export const ANTE = 5, SMALL = 10, BIG = 20, CAP = 4;
 
