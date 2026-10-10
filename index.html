@@ -49,12 +49,12 @@
     .spot {
       position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; min-height: 420px; margin: 30px 0 34px;
       border-radius: 20px; overflow: hidden; text-decoration: none; color: var(--ivory);
-      background: radial-gradient(ellipse 70% 90% at 28% 50%, color-mix(in srgb, var(--tint) 100%, #fff 6%), var(--tint) 45%, color-mix(in srgb, var(--tint) 35%, #000) 100%);
+      background: #110e0b;
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 30px 60px rgba(0, 0, 0, .45);
     }
     .spot .pic { position: absolute; inset: 0 0 0 36%; overflow: hidden; }
     .spot .pic .cover { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); }
-    .spot .pic::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--tint) 0%, color-mix(in srgb, var(--tint) 70%, transparent) 30%, transparent 62%), linear-gradient(0deg, rgba(0, 0, 0, .55), transparent 45%); }
+    .spot .pic::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #110e0b 0%, rgba(17, 14, 11, .7) 22%, transparent 55%), linear-gradient(0deg, rgba(0, 0, 0, .5), transparent 40%); }
     a.spot:hover .spot-pic .cover, a.spot:hover .pic .cover { transform: scale(1.03); }
     .spot .stage { position: relative; z-index: 1; padding: 40px 34px 40px 56px; --s: 230px; }
     a.spot:hover .box3d { transform: rotateX(-12deg) rotateY(-36deg) translateY(-4px); }
@@ -183,7 +183,7 @@
     @media (max-width: 860px) {
       .spot { grid-template-columns: 1fr; }
       .spot .pic { inset: 0; }
-      .spot .pic::after { background: linear-gradient(0deg, var(--tint) 30%, color-mix(in srgb, var(--tint) 50%, transparent) 60%, transparent); }
+      .spot .pic::after { background: linear-gradient(0deg, #110e0b 30%, rgba(17, 14, 11, .5) 60%, transparent); }
       .spot .stage { padding: 30px 26px 0; --s: 170px; }
       .spot .info { padding: 18px 26px 30px; }
     }
