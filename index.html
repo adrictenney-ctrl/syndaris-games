@@ -57,6 +57,9 @@
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 30px 60px rgba(0, 0, 0, .45);
     }
     .spot .pic { position: absolute; inset: 0 0 0 36%; overflow: hidden; }
+    .spot-wrap { position: relative; margin: 30px 0 34px; }
+    .spot-wrap .spot { margin: 0; }
+    .spot-nav, .spot-dots, .spot-meta { display: none; }
     .spot .pic .cover { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); }
     .spot .pic::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #110e0b 0%, rgba(17, 14, 11, .7) 22%, transparent 55%), linear-gradient(0deg, rgba(0, 0, 0, .5), transparent 40%); }
     a.spot:hover .spot-pic .cover, a.spot:hover .pic .cover { transform: scale(1.03); }
@@ -196,7 +199,8 @@
       .bar .wrap { height: auto; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; gap: 12px; }
       .join { width: 100%; order: 3; }
       .join input { flex: 1; width: auto; min-width: 0; }
-      .spot { margin-top: 18px; border-radius: 16px; }
+      .spot { border-radius: 16px; }
+      .spot-wrap { margin-top: 18px; }
       .spot .stage { padding: 24px 20px 0; --s: 140px; }
       .filters { flex-direction: column; align-items: stretch; }
       .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
@@ -257,7 +261,7 @@
     @media (max-width: 600px) { .gear span { display: none; } .gear { padding: 0 10px; } .styles { gap: 8px; } }
 
     /* ---------- TV: just the library, every game on one screen ---------- */
-    html.tv .join, html.tv .spot, html.tv .filters, html.tv footer .wrap:not(.legal), html.tv .hover-play { display: none; }
+    html.tv .join, html.tv .spot-wrap, html.tv .spot, html.tv .filters, html.tv footer .wrap:not(.legal), html.tv .hover-play { display: none; }
     html.tv footer { border: 0; padding: 1vh 0 3vh; }
     html.tv .bar { position: static; }
     html.tv .wrap { max-width: none; padding: 0 3vw; }
@@ -269,7 +273,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=73">
+  <link rel="stylesheet" href="css/vibrant.css?v=74">
 </head>
 <body class="home">
   <header class="bar">
@@ -303,7 +307,12 @@
   </dialog>
 
   <main class="wrap">
-    <a class="spot" id="spot"></a>
+    <div class="spot-wrap" id="spotWrap">
+      <a class="spot" id="spot"></a>
+      <button class="spot-nav prev" id="spotPrev" type="button" aria-label="Previous game"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="spot-nav next" id="spotNext" type="button" aria-label="Next game"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="spot-dots" id="spotDots" role="tablist" aria-label="Featured games"></div>
+    </div>
 
     <div class="filters">
       <label class="search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg><input id="q" type="search" placeholder="Search games" autocomplete="off" spellcheck="false" aria-label="Search games"><button class="clear" id="qClear" type="button" aria-label="Clear search" hidden>✕</button></label>
@@ -326,7 +335,7 @@
   <script type="module" src="js/tvnav.js?v=69"></script>
   <script type="module">
     import { GAMES } from './js/games.js?v=69';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=73';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=74';
 
     const ids = ['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -352,27 +361,67 @@
     // ---- Spotlight: the game this screen last played, otherwise the newest game.
     let last = null;
     try { last = JSON.parse(localStorage.getItem('syndaris.table.v2'))?.gameId; } catch {}
-    const spotId = GAMES[last] ? last : 'yacht';
-    const S = GAMES[spotId];
+    // In the Vibrant style the spotlight is a carousel of featured games (arrows, dots, turns by itself).
+    const FEATURED = [...new Set([GAMES[last] ? last : 'yacht', 'crazy8', 'holdem', 'gofish', 'chess', 'yacht'])].filter(id => GAMES[id]).slice(0, 5);
+    let spotIdx = 0, spotId = FEATURED[0], artReady = false;
+    // Roughly how long a game takes, for the banner.
+    const MINS = { cards: 15, casino: 20, board: 25, dice: 15, party: 20, quiz: 15, word: 10, action: 5, roles: 30 };
+    const LONG = { chess: 30, backgammon: 30, go: 40, bridge: 30, holdem: 30, homestead: 45, ironroutes: 45, warfront: 45, skyline: 40, spires: 30 };
+    const minsOf = id => LONG[id] || MINS[KIND[id]] || 15;
+    const clock = '<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M8 4v4.4l2.6 1.6" fill="none" stroke="#2a1a6a" stroke-width="1.8" stroke-linecap="round"/></svg>';
     const spot = document.getElementById('spot');
-    spot.className = `spot t-${spotId}`;
-    spot.href = `table.html?game=${spotId}`;
-    spot.innerHTML = `<div class="pic"></div><div class="stage box-stage"></div>
+    function fillSpot() {
+      const S = GAMES[spotId];
+      spot.className = `spot t-${spotId}`;
+      spot.href = `table.html?game=${spotId}`;
+      spot.innerHTML = `<div class="pic"></div><div class="stage box-stage"></div>
       <div class="info">
-        <span class="caps kicker">${GAMES[last] ? 'Jump back in' : 'New on the table'}</span>
+        <span class="caps kicker">${spotIdx ? 'Featured game' : GAMES[last] ? 'Jump back in' : 'New on the table'}</span>
         <h1>${S.name}</h1>
         <p>${desc(S)}.</p>
         <div class="tags"><span class="tag">${range(S)} players</span><span class="tag">${KIND_NAME[KIND[spotId]]}</span>${S.noBots ? '' : '<span class="tag">Bots welcome</span>'}</div>
         <span class="play-btn">Play</span>
+        <div class="spot-meta"><span>${people}${range(S)} Players</span><span>${clock}~${minsOf(spotId)} min</span></div>
       </div>`;
+      if (artReady) {
+        spot.querySelector('.pic').innerHTML = spotPic(spotId);
+        // On the banner the whole scene shows (nothing behind the props to crop away).
+        if (isVibrant()) spot.querySelector('.pic svg')?.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        spot.querySelector('.stage').innerHTML = boxFor(spotId);
+      }
+      dots.querySelectorAll('button').forEach((b, i) => { b.classList.toggle('on', i === spotIdx); b.setAttribute('aria-selected', i === spotIdx); });
+    }
+    const dots = document.getElementById('spotDots');
+    dots.innerHTML = FEATURED.map((id, i) => `<button type="button" role="tab" aria-label="${GAMES[id].name}"></button>`).join('');
+    const goSpot = i => {
+      spotIdx = (i + FEATURED.length) % FEATURED.length; spotId = FEATURED[spotIdx];
+      fillSpot();
+      spot.classList.remove('swap'); void spot.offsetWidth; spot.classList.add('swap');
+    };
+    document.getElementById('spotPrev').onclick = () => { goSpot(spotIdx - 1); restartSpin(); };
+    document.getElementById('spotNext').onclick = () => { goSpot(spotIdx + 1); restartSpin(); };
+    dots.onclick = e => { const b = e.target.closest('button'); if (b) { goSpot([...dots.children].indexOf(b)); restartSpin(); } };
+    // Turns every 7 seconds while nobody is pointing at it.
+    let spin = null, hovering = false;
+    const wrap = document.getElementById('spotWrap');
+    wrap.addEventListener('mouseenter', () => { hovering = true; });
+    wrap.addEventListener('mouseleave', () => { hovering = false; });
+    function restartSpin() {
+      clearInterval(spin);
+      spin = setInterval(() => { if (!hovering && !document.hidden && document.documentElement.dataset.style === 'vibrant') goSpot(spotIdx + 1); }, 7000);
+    }
+    fillSpot();
+    restartSpin();
     // Vibrant style: every game has its own bright printed colour (tile and box); Classic ignores these.
     const VIVID = [['#ef4a4f', '#a8203a'], ['#22b97a', '#0d7a50'], ['#3f86f2', '#1c4fc0'], ['#ff8f2e', '#c4501c'], ['#8a55ef', '#5528b8'], ['#f0509c', '#a8216a'], ['#18b2c9', '#0d6f8a']];
     const vividOf = id => VIVID[Math.max(0, ids.indexOf(id)) % VIVID.length];
     const isVibrant = () => document.documentElement.dataset.style === 'vibrant';
     const boxFor = id => boxHTML(id, GAMES[id], isVibrant() ? vividOf(id) : null);
     const picFor = (id, pre) => sceneSVG(id, pre, isVibrant() ? vividOf(id) : null);
-    spot.querySelector('.pic').innerHTML = picFor(spotId, spotId + '-sp');
-    spot.querySelector('.stage').innerHTML = boxFor(spotId);
+    // The spotlight's props sit straight on the banner (no backdrop of their own) in the Vibrant style.
+    const spotPic = id => sceneSVG(id, id + '-sp', isVibrant() ? ['#d8304a', '#7a1240', 'bare'] : null);
+    artReady = true;
+    fillSpot();
 
     // ---- Favorites (starred on this device)
     let favs = [];
@@ -445,8 +494,8 @@
     }), { rootMargin: '600px 0px' });
     // Switching style redraws the pictures and boxes already drawn, in the new style (on-screen ones first).
     const redrawBoxes = () => {
-      spot.querySelector('.pic').innerHTML = picFor(spotId, spotId + '-sp');
-      spot.querySelector('.stage').innerHTML = boxFor(spotId);
+      if (!isVibrant()) { spotIdx = 0; spotId = FEATURED[0]; }
+      fillSpot();
       const onScreen = id => { const r = tiles[id].getBoundingClientRect(); return r.bottom > -200 && r.top < innerHeight + 200; };
       const all = [...drawn];
       [...all.filter(onScreen), ...all.filter(id => !onScreen(id))].forEach(enqueue);

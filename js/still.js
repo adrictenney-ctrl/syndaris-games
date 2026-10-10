@@ -62,7 +62,9 @@ export function makeStill(K) {
   const band = (y, t, tilt = 170, amp = 46) => `M-30 ${y} C170 ${y - amp - tilt * .33} 400 ${y + amp - tilt * .66} 630 ${y - tilt} L630 ${y - tilt + t} C400 ${y + amp - tilt * .66 + t * 1.25} 170 ${y - amp - tilt * .33 + t * .8} -30 ${y + t} Z`;
   const WAVES = [[70, 46, '#000', .1], [150, 70, '#fff', .15], [250, 34, '#000', .1], [330, 96, '#fff', .11], [440, 60, '#000', .09], [560, 80, '#fff', .1]];
   function vividSurface(id, hz) {
-    const [m, d] = T.vivid;
+    const [m, d, bare] = T.vivid;
+    // 'bare': no set at all — the props sit straight on whatever is behind the picture (the banner).
+    if (bare) return '<!--/surface-->';
     const bits = [[38, 52, 20, '#fff'], [560, 70, -30, '#ffd84a'], [520, 360, 45, '#fff'], [70, 350, 10, '#ffd84a'], [300, 24, 70, '#fff'], [590, 230, -12, '#fff']]
       .map(([x, y, r, c], i) => i % 2 ? `<path d="M${x} ${y} l7 -12 l7 12z" fill="${c}" opacity=".55" transform="rotate(${r} ${x} ${y})"/>` : `<rect x="${x}" y="${y}" width="12" height="5" rx="2" fill="${c}" opacity=".55" transform="rotate(${r} ${x} ${y})"/>`).join('');
     return `<defs><pattern id="${id}-vdots" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="5" cy="5" r="1.9" fill="#fff"/></pattern>
