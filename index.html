@@ -18,7 +18,7 @@
     try { if (localStorage.getItem('pod.style') === 'vibrant') document.documentElement.dataset.style = 'vibrant'; } catch {}
   </script>
   <link rel="stylesheet" href="css/cards.css?v=69">
-  <link rel="stylesheet" href="css/boxes.css?v=69">
+  <link rel="stylesheet" href="css/boxes.css?v=70">
   <style>
     html { background: var(--onyx); }
     body {
@@ -256,103 +256,6 @@
     .set-note { margin: 16px 2px 0; font-family: var(--ui); font-size: 12.5px; color: var(--mute); }
     @media (max-width: 600px) { .gear span { display: none; } .gear { padding: 0 10px; } .styles { gap: 8px; } }
 
-    /* ================= VIBRANT STYLE: bright game-night colours ================= */
-    html[data-style="vibrant"] {
-      --vdisp: 'Lilita One', 'Nunito', system-ui, sans-serif; --vui: 'Nunito', system-ui, sans-serif;
-      --vmute: rgba(226, 224, 255, .74); --vglass: rgba(22, 16, 92, .55); --vline: rgba(255, 255, 255, .13);
-      --vlav: #8f86ff; --vgo: #3ae6a0; --vgo2: #1fc283; --vsun: #ffd84a;
-      background: #231a86;
-    }
-    html[data-style="vibrant"] body {
-      color: #fff; font-family: var(--vui);
-      background:
-        radial-gradient(900px 600px at 8% -8%, rgba(110, 90, 255, .55), transparent 60%),
-        radial-gradient(800px 600px at 100% 0%, rgba(150, 60, 230, .45), transparent 60%),
-        radial-gradient(1000px 700px at 50% 110%, rgba(40, 90, 230, .45), transparent 60%),
-        linear-gradient(165deg, #2c1f9a, #1f1878 50%, #2b1780);
-      background-attachment: fixed;
-    }
-    html[data-style="vibrant"] .caps { font-family: var(--vui); font-weight: 800; letter-spacing: .12em; }
-    html[data-style="vibrant"] .bar { background: rgba(28, 20, 112, .72); border-bottom-color: var(--vline); }
-    html[data-style="vibrant"] .brand span { font-family: var(--vdisp); font-weight: 400; font-size: 22px; letter-spacing: .02em; text-transform: none; color: #fff; text-shadow: 0 3px 0 rgba(10, 6, 60, .55); }
-    html[data-style="vibrant"] .join, html[data-style="vibrant"] .gear { background: var(--vglass); border-color: var(--vline); }
-    html[data-style="vibrant"] .join label, html[data-style="vibrant"] .gear { font-family: var(--vui); font-weight: 800; letter-spacing: .08em; color: var(--vmute); }
-    html[data-style="vibrant"] .gear:hover { color: #fff; border-color: var(--vlav); }
-    html[data-style="vibrant"] .join input { color: #fff; }
-    html[data-style="vibrant"] .join button, html[data-style="vibrant"] .play-btn, html[data-style="vibrant"] .hover-play {
-      font-family: var(--vui); font-weight: 900; letter-spacing: .06em; color: #08321f;
-      background: linear-gradient(180deg, var(--vgo), var(--vgo2)); box-shadow: 0 4px 0 #11885a, 0 10px 24px rgba(0, 0, 0, .3);
-    }
-    html[data-style="vibrant"] .play-btn { font-size: 17px; letter-spacing: .04em; text-transform: none; border-radius: 16px; padding: 15px 40px; }
-
-    html[data-style="vibrant"] .spot {
-      background: linear-gradient(105deg, #4a1c9a 0%, #8a1f7a 38%, #e0303f 70%, #ff8a2a 100%);
-      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .14), 0 26px 50px rgba(10, 6, 60, .55); border-radius: 26px;
-    }
-    html[data-style="vibrant"] .spot { grid-template-columns: auto minmax(0, 1fr) 44%; }
-    html[data-style="vibrant"] .spot .pic { inset: 18px 18px 18px 56%; border-radius: 18px; box-shadow: 0 18px 40px rgba(20, 0, 40, .45); }
-    html[data-style="vibrant"] .spot .pic::after { background: linear-gradient(0deg, rgba(0, 0, 0, .2), transparent 40%); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .22); border-radius: inherit; }
-    html[data-style="vibrant"] .spot .pic .cover { filter: saturate(1.25) brightness(1.06); }
-    html[data-style="vibrant"] .spot .kicker { color: var(--vsun); }
-    html[data-style="vibrant"] .spot .kicker::before { background: var(--vsun); box-shadow: 0 0 12px var(--vsun); }
-    html[data-style="vibrant"] .spot h1 { font-family: var(--vdisp); font-weight: 400; letter-spacing: .01em; text-shadow: 0 5px 0 rgba(40, 0, 50, .45); }
-    html[data-style="vibrant"] .spot p { color: rgba(255, 255, 255, .9); font-weight: 700; }
-    html[data-style="vibrant"] .tag { font-family: var(--vui); font-weight: 800; letter-spacing: .06em; background: rgba(30, 0, 50, .35); color: #fff; border-color: rgba(255, 255, 255, .18); }
-
-    html[data-style="vibrant"] .chip, html[data-style="vibrant"] .seg { font-family: var(--vui); font-weight: 800; font-size: 14px; color: #e8e6ff; background: var(--vglass); border-color: var(--vline); }
-    html[data-style="vibrant"] .chip { padding: 10px 20px; border-radius: 14px; }
-    html[data-style="vibrant"] .seg { border-radius: 14px; }
-    html[data-style="vibrant"] .seg button { font-family: var(--vui); font-weight: 800; color: #e8e6ff; border-radius: 10px; }
-    html[data-style="vibrant"] .chip:hover { color: #fff; border-color: var(--vlav); }
-    html[data-style="vibrant"] .chip.on, html[data-style="vibrant"] .seg button.on { color: #fff; background: linear-gradient(180deg, #a49cff, #7d72ff); border-color: transparent; box-shadow: 0 3px 0 #5247d6; }
-    html[data-style="vibrant"] .chip.fav-chip.on::before { color: var(--vsun); }
-    html[data-style="vibrant"] .search input { font-family: var(--vui); font-weight: 700; color: #fff; background: var(--vglass); border-color: var(--vline); border-radius: 14px; }
-    html[data-style="vibrant"] .search input:focus { border-color: var(--vlav); }
-    html[data-style="vibrant"] .search input::placeholder, html[data-style="vibrant"] .search svg { color: var(--vmute); }
-    html[data-style="vibrant"] .count .caps, html[data-style="vibrant"] .section-head span { color: var(--vmute); }
-    html[data-style="vibrant"] .section-head h2 { font-family: var(--vdisp); font-weight: 400; font-size: 34px; text-shadow: 0 4px 0 rgba(10, 6, 60, .5); }
-
-    html[data-style="vibrant"] .shelf { gap: 20px; }
-    html[data-style="vibrant"] .box {
-      border-radius: 20px; color: #fff; background: linear-gradient(165deg, var(--va, #4a95ff), var(--vb, #1f4fd6));
-      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .16), 0 8px 0 -2px rgba(10, 6, 60, .4), 0 16px 30px rgba(10, 6, 60, .35);
-    }
-    html[data-style="vibrant"] a.box:hover, html[data-style="vibrant"] a.box:focus-visible {
-      transform: translateY(-6px); box-shadow: inset 0 0 0 3px #fff, 0 12px 0 -2px rgba(10, 6, 60, .4), 0 26px 44px rgba(10, 6, 60, .5);
-    }
-    html[data-style="vibrant"] .art { margin: 10px 10px 0; border-radius: 14px; box-shadow: 0 6px 14px rgba(0, 0, 0, .25); }
-    html[data-style="vibrant"] .art .cover { filter: saturate(1.25) brightness(1.06); }
-    html[data-style="vibrant"] .box h3 { font-family: var(--vdisp); font-weight: 400; font-size: 24px; letter-spacing: .01em; text-shadow: 0 3px 0 rgba(0, 0, 0, .28); }
-    html[data-style="vibrant"] .meta .who, html[data-style="vibrant"] .meta .kind { font-family: var(--vui); font-weight: 800; color: rgba(255, 255, 255, .92); }
-    html[data-style="vibrant"] .meta .dot { background: rgba(255, 255, 255, .6); }
-    html[data-style="vibrant"] .new { font-family: var(--vui); font-weight: 900; color: #3a2400; background: var(--vsun); box-shadow: 0 2px 0 #c99a10; }
-    html[data-style="vibrant"] .empty { font-family: var(--vdisp); font-style: normal; color: var(--vmute); }
-    html[data-style="vibrant"] footer { border-top-color: var(--vline); }
-    html[data-style="vibrant"] footer .wrap { font-family: var(--vui); font-weight: 700; color: var(--vmute); }
-    html[data-style="vibrant"] footer a { color: var(--vsun); }
-
-    html[data-style="vibrant"] .settings { color: #fff; background: linear-gradient(165deg, #3a2bc8, #241a8a); border-color: rgba(255, 255, 255, .18); border-radius: 24px; }
-    html[data-style="vibrant"] .settings::backdrop { background: rgba(14, 8, 60, .55); }
-    html[data-style="vibrant"] .set-head h2 { font-family: var(--vdisp); font-weight: 400; text-shadow: 0 4px 0 rgba(10, 6, 60, .5); }
-    html[data-style="vibrant"] .set-x { color: #fff; border-color: var(--vline); }
-    html[data-style="vibrant"] .set-label, html[data-style="vibrant"] .style-opt small, html[data-style="vibrant"] .set-note { color: var(--vmute); }
-    html[data-style="vibrant"] .style-opt { color: #fff; background: var(--vglass); border-color: var(--vline); }
-    html[data-style="vibrant"] .style-opt strong { font-family: var(--vui); font-weight: 900; }
-    html[data-style="vibrant"] .style-opt[aria-checked="true"] { border-color: var(--vsun); background: rgba(255, 216, 74, .1); }
-    html[data-style="vibrant"] .style-opt[aria-checked="true"] strong::after { color: var(--vsun); }
-    @media (max-width: 860px) {
-      html[data-style="vibrant"] .spot { grid-template-columns: 1fr; }
-      html[data-style="vibrant"] .spot .pic { inset: 12px; }
-      html[data-style="vibrant"] .spot .pic::after { background: linear-gradient(0deg, #8a1f5a 25%, rgba(138, 31, 90, .55) 55%, transparent); }
-    }
-    @media (max-width: 600px) {
-      html[data-style="vibrant"] .shelf { gap: 12px; }
-      html[data-style="vibrant"] .art { margin: 7px 7px 0; border-radius: 12px; }
-      html[data-style="vibrant"] .box { border-radius: 16px; }
-      html[data-style="vibrant"] .box h3 { font-size: 19px; }
-      html[data-style="vibrant"] .brand span { font-size: 18px; }
-    }
-
     /* ---------- TV: just the library, every game on one screen ---------- */
     html.tv .join, html.tv .spot, html.tv .filters, html.tv footer .wrap:not(.legal), html.tv .hover-play { display: none; }
     html.tv footer { border: 0; padding: 1vh 0 3vh; }
@@ -366,8 +269,9 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
+  <link rel="stylesheet" href="css/vibrant.css?v=70">
 </head>
-<body>
+<body class="home">
   <header class="bar">
     <div class="wrap">
       <a class="brand" href="index.html"><img src="icon.svg" alt=""><span>Play On Display<sup class="tm">™</sup></span></a>
@@ -422,7 +326,7 @@
   <script type="module" src="js/tvnav.js?v=69"></script>
   <script type="module">
     import { GAMES } from './js/games.js?v=69';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=69';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=70';
 
     const ids = ['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -462,7 +366,12 @@
         <span class="play-btn">Play</span>
       </div>`;
     spot.querySelector('.pic').innerHTML = sceneSVG(spotId, spotId + '-sp');
-    spot.querySelector('.stage').innerHTML = boxHTML(spotId, S);
+    // Vibrant style: every game has its own bright printed colour (tile and box); Classic ignores these.
+    const VIVID = [['#ef4a4f', '#a8203a'], ['#22b97a', '#0d7a50'], ['#3f86f2', '#1c4fc0'], ['#ff8f2e', '#c4501c'], ['#8a55ef', '#5528b8'], ['#f0509c', '#a8216a'], ['#18b2c9', '#0d6f8a']];
+    const vividOf = id => VIVID[Math.max(0, ids.indexOf(id)) % VIVID.length];
+    const isVibrant = () => document.documentElement.dataset.style === 'vibrant';
+    const boxFor = id => boxHTML(id, GAMES[id], isVibrant() ? vividOf(id) : null);
+    spot.querySelector('.stage').innerHTML = boxFor(spotId);
 
     // ---- Favorites (starred on this device)
     let favs = [];
@@ -516,16 +425,20 @@
       const t = e.target, id = t.dataset.id;
       lazy.unobserve(t);
       t.querySelector('.art').insertAdjacentHTML('afterbegin', sceneSVG(id));
-      if (!onTV) t.querySelector('.info-row .box-stage').innerHTML = boxHTML(id, GAMES[id]);
+      if (!onTV) { t.querySelector('.info-row .box-stage').innerHTML = boxFor(id); drawn.add(id); }
     }), { rootMargin: '600px 0px' });
-    // Vibrant style: each tile gets a bright colour (the classic style ignores these).
-    const VIVID = [['#ff5f52', '#d0243c'], ['#33d18f', '#0f8c5c'], ['#4a95ff', '#1f4fd6'], ['#ff9d3c', '#e2522a'], ['#a066ff', '#6a2fd6'], ['#ff5fae', '#c4247a'], ['#26c6da', '#127a9e']];
+    const drawn = new Set();
+    // Switching style redraws the boxes already on screen in the new style.
+    const redrawBoxes = () => {
+      spot.querySelector('.stage').innerHTML = boxFor(spotId);
+      drawn.forEach(id => { tiles[id].querySelector('.info-row .box-stage').innerHTML = boxFor(id); });
+    };
     ids.forEach((id, i) => {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;
       const [va, vb] = VIVID[i % VIVID.length];
-      box.style.setProperty('--va', va); box.style.setProperty('--vb', vb);
+      box.style.setProperty('--va', va); box.style.setProperty('--vb', vb); box.style.setProperty('--vf', `var(--v-facet-${i % 3})`);
       box.dataset.id = id;
       box.href = `table.html?game=${id}`;
       box.innerHTML = `<div class="art">${NEW.has(id) ? '<span class="new">NEW</span>' : ''}<span class="hover-play" aria-hidden="true"></span></div>
@@ -580,6 +493,7 @@
       if (st === 'vibrant') document.documentElement.dataset.style = st; else delete document.documentElement.dataset.style;
       try { localStorage.setItem('pod.style', st); } catch {}
       markStyle();
+      redrawBoxes();
     }
     opts.forEach(o => o.addEventListener('click', () => setStyle(o.dataset.style)));
     document.getElementById('openSettings').onclick = () => { markStyle(); dlg.showModal(); (opts.find(o => o.getAttribute('aria-checked') === 'true') || opts[0]).focus(); };

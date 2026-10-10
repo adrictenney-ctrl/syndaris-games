@@ -164,8 +164,56 @@ export function boxFrontSVG(id, G) {
   <rect width="400" height="400" fill="url(#${pre}-sheen)"/>
 </svg>`;
 }
+// The Vibrant style's box: printed like a bright family card-game box. Solid colour with a printed
+// sunburst and halftone, the art in a white-rimmed window, a chunky outlined title, a yellow
+// players badge. `col` is [main, deep].
+const FUN = "'Lilita One', 'Nunito', sans-serif";
+export function boxFrontVivid(id, G, col) {
+  const pre = id + '-v';
+  const scene = sceneSVG(id, pre);
+  if (!scene) return '';
+  const o = LAST, [m, d] = col, ink = '#1b1352';
+  const { lines, size } = fitTitle(o.title, 350, 66);
+  const lh = size * .98, by = 352 - (lines.length - 1) * lh;
+  const rays = Array.from({ length: 18 }, (_, i) => {
+    const a0 = (i * 20) * Math.PI / 180, a1 = (i * 20 + 10) * Math.PI / 180, R = 520;
+    return `M200 150 L${200 + R * Math.cos(a0)} ${150 + R * Math.sin(a0)} L${200 + R * Math.cos(a1)} ${150 + R * Math.sin(a1)} Z`;
+  }).join(' ');
+  const title = lines.map((l, i) => {
+    const y = by + i * lh, a = `x="200" y="${y}" text-anchor="middle" font-family="${FUN}" font-size="${size}"`;
+    return `<text ${a} dy="6" fill="${ink}" stroke="${ink}" stroke-width="10" stroke-linejoin="round">${esc(l)}</text><text ${a} fill="#fff" stroke="${ink}" stroke-width="9" stroke-linejoin="round" style="paint-order:stroke">${esc(l)}</text>`;
+  }).join('');
+  const win = { x: 30, y: 56, w: 340, h: lines.length > 1 ? 172 : 206 };
+  return `<svg viewBox="0 0 400 400" class="boxart" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(o.title)} box">
+  <defs>
+    <clipPath id="${pre}-win"><rect x="${win.x}" y="${win.y}" width="${win.w}" height="${win.h}" rx="16"/></clipPath>
+    <pattern id="${pre}-dots" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="4.5" cy="4.5" r="1.7" fill="#fff"/></pattern>
+    <linearGradient id="${pre}-fade" x1="0" y1="0" x2="1" y2="1"><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient>
+    <mask id="${pre}-dm"><rect width="400" height="400" fill="url(#${pre}-fade)"/></mask>
+  </defs>
+  <rect width="400" height="400" fill="${m}"/>
+  <path d="${rays}" fill="#fff" opacity=".09"/>
+  <rect width="400" height="400" fill="url(#${pre}-dots)" opacity=".16" mask="url(#${pre}-dm)"/>
+  <path d="M0 ${by - size - 8} Q200 ${by - size - 30} 400 ${by - size - 8} V400 H0 Z" fill="${d}" opacity=".55"/>
+  <rect x="${win.x}" y="${win.y + 7}" width="${win.w}" height="${win.h}" rx="16" fill="${ink}" opacity=".45"/>
+  <g clip-path="url(#${pre}-win)">${scene.replace('<svg ', `<svg x="${win.x}" y="${win.y}" width="${win.w}" height="${win.h}" `)}</g>
+  <rect x="${win.x}" y="${win.y}" width="${win.w}" height="${win.h}" rx="16" fill="none" stroke="#fff" stroke-width="7"/>
+  <rect x="${win.x - 3.5}" y="${win.y - 3.5}" width="${win.w + 7}" height="${win.h + 7}" rx="19" fill="none" stroke="${ink}" stroke-width="2.5"/>
+  <g transform="translate(30 16)"><rect width="128" height="26" rx="13" fill="#fff" stroke="${ink}" stroke-width="2.5"/><text x="64" y="17.5" text-anchor="middle" font-family="'Nunito', sans-serif" font-weight="900" font-size="11" letter-spacing="1.2" fill="${d}">PLAY ON DISPLAY</text></g>
+  <g transform="rotate(-3 200 ${by})">${title}</g>
+  ${G ? `<g transform="translate(352 54) rotate(10)"><circle r="34" fill="${ink}" opacity=".45" cy="5"/><path d="${Array.from({ length: 24 }, (_, i) => { const a = i * 15 * Math.PI / 180, r = i % 2 ? 29 : 35; return `${i ? 'L' : 'M'}${(r * Math.cos(a)).toFixed(1)} ${(r * Math.sin(a)).toFixed(1)}`; }).join(' ')}Z" fill="#ffd84a" stroke="${ink}" stroke-width="2.5" stroke-linejoin="round"/><text y="6" text-anchor="middle" font-family="${FUN}" font-size="${playersTxt(G).length > 3 ? 17 : 22}" fill="${ink}">${playersTxt(G)}</text><text y="17" text-anchor="middle" font-family="'Nunito', sans-serif" font-weight="900" font-size="7" letter-spacing=".8" fill="${ink}">PLAYERS</text></g>` : ''}
+  <rect x="2" y="2" width="396" height="396" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="4"/>
+</svg>`;
+}
+
 // The whole box as HTML: front, right side (spine) and lid top, put in 3D by CSS (.box3d).
-export function boxHTML(id, G) {
+// `vivid` = [main, deep] colours gives the Vibrant style's box instead of the classic one.
+export function boxHTML(id, G, vivid) {
+  if (vivid) {
+    const front = boxFrontVivid(id, G, vivid);
+    if (!front) return '';
+    return `<div class="box3d vivid" style="--b1:${vivid[0]};--b2:${vivid[0]};--b3:${vivid[1]}"><div class="bx-front">${front}</div><div class="bx-side"><span>${esc(LAST.title)}</span></div><div class="bx-top"></div></div>`;
+  }
   const front = boxFrontSVG(id, G);
   if (!front) return '';
   const [c1, c2, c3] = LAST.bg;
