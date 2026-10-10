@@ -12,9 +12,13 @@
   <title>Play On Display</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cards.css?v=68">
-  <link rel="stylesheet" href="css/boxes.css?v=68">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    // The home page style (Settings): classic black-and-gold, or vibrant game-night colours.
+    try { if (localStorage.getItem('pod.style') === 'vibrant') document.documentElement.dataset.style = 'vibrant'; } catch {}
+  </script>
+  <link rel="stylesheet" href="css/cards.css?v=69">
+  <link rel="stylesheet" href="css/boxes.css?v=69">
   <style>
     html { background: var(--onyx); }
     body {
@@ -190,7 +194,7 @@
     @media (max-width: 600px) {
       .wrap { padding: 0 16px; }
       .bar .wrap { height: auto; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; gap: 12px; }
-      .join { width: 100%; }
+      .join { width: 100%; order: 3; }
       .join input { flex: 1; width: auto; min-width: 0; }
       .spot { margin-top: 18px; border-radius: 16px; }
       .spot .stage { padding: 24px 20px 0; --s: 140px; }
@@ -204,6 +208,149 @@
       .info-row { padding: 9px 10px 11px 74px; min-height: 58px; }
       .info-row .box-stage { --s: 56px; left: 9px; bottom: 10px; }
       .meta .dot, .meta .kind { display: none; }
+    }
+
+    /* ---------- settings ---------- */
+    .gear {
+      display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px 0 11px; cursor: pointer;
+      font-family: var(--ui); font-size: 11.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--mute); background: rgba(255, 248, 230, .03); border: 1px solid var(--hairline-hi); border-radius: 999px; transition: color .2s, border-color .2s;
+    }
+    .gear svg { width: 18px; height: 18px; transition: transform .6s; }
+    .gear:hover { color: var(--ivory); border-color: var(--champagne); }
+    .gear:hover svg { transform: rotate(60deg); }
+    .settings {
+      width: min(560px, calc(100vw - 32px)); padding: 26px 26px 22px; border-radius: 20px; color: var(--ivory);
+      background: var(--onyx-2); border: 1px solid var(--hairline-hi); box-shadow: 0 40px 90px rgba(0, 0, 0, .6);
+    }
+    .settings::backdrop { background: rgba(5, 4, 3, .62); backdrop-filter: blur(4px); }
+    .settings[open] { animation: setIn .28s cubic-bezier(.2, .7, .2, 1); }
+    @keyframes setIn { from { opacity: 0; transform: translateY(14px) scale(.98); } }
+    .set-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .set-head h2 { font-family: var(--display); font-weight: 600; font-size: 32px; margin: 0; }
+    .set-x { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--hairline); background: none; color: var(--mute); cursor: pointer; font-size: 14px; }
+    .set-x:hover { color: var(--ivory); }
+    .set-label { color: var(--mute); margin: 0 0 10px; }
+    .styles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .style-opt {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 10px 14px; text-align: left; cursor: pointer;
+      border-radius: 14px; color: var(--ivory); background: rgba(255, 248, 230, .03); border: 2px solid var(--hairline); transition: border-color .2s, transform .2s;
+    }
+    .style-opt:hover { transform: translateY(-2px); }
+    .style-opt[aria-checked="true"] { border-color: var(--champagne); background: rgba(205, 180, 135, .08); }
+    .style-opt strong { font-family: var(--ui); font-size: 15px; font-weight: 800; margin: 8px 4px 0; }
+    .style-opt small { font-family: var(--ui); font-size: 12.5px; color: var(--mute); margin: 0 4px; line-height: 1.4; }
+    .style-opt[aria-checked="true"] strong::after { content: ' ✓'; color: var(--champagne); }
+    /* little previews of each style: a banner over three tiles */
+    .sw { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 5px; width: 100%; aspect-ratio: 16 / 9; padding: 8px; border-radius: 9px; overflow: hidden; }
+    .sw b { grid-column: 1 / -1; border-radius: 5px; }
+    .sw i { border-radius: 5px; }
+    .sw-classic { background: #0c0b0a; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06); }
+    .sw-classic b { background: linear-gradient(90deg, #110e0b 40%, #3b2819); box-shadow: inset 0 0 0 1px rgba(205, 180, 135, .35); }
+    .sw-classic i { background: #14120f; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06); border-top: 12px solid #1d4433; }
+    .sw-classic i:nth-of-type(2) { border-top-color: #44161e; } .sw-classic i:nth-of-type(3) { border-top-color: #1c2f4a; }
+    .sw-vibrant { background: linear-gradient(150deg, #3a2bc8, #241a8a 55%, #3b1a9a); }
+    .sw-vibrant b { background: linear-gradient(100deg, #5a1fa0, #e0303f 60%, #ff8a2a); }
+    .sw-vibrant i { background: linear-gradient(160deg, #ff5a4e, #c8203a); }
+    .sw-vibrant i:nth-of-type(2) { background: linear-gradient(160deg, #2fd08f, #0e8a5a); } .sw-vibrant i:nth-of-type(3) { background: linear-gradient(160deg, #4a95ff, #1f4fd6); }
+    .set-note { margin: 16px 2px 0; font-family: var(--ui); font-size: 12.5px; color: var(--mute); }
+    @media (max-width: 600px) { .gear span { display: none; } .gear { padding: 0 10px; } .styles { gap: 8px; } }
+
+    /* ================= VIBRANT STYLE: bright game-night colours ================= */
+    html[data-style="vibrant"] {
+      --vdisp: 'Lilita One', 'Nunito', system-ui, sans-serif; --vui: 'Nunito', system-ui, sans-serif;
+      --vmute: rgba(226, 224, 255, .74); --vglass: rgba(22, 16, 92, .55); --vline: rgba(255, 255, 255, .13);
+      --vlav: #8f86ff; --vgo: #3ae6a0; --vgo2: #1fc283; --vsun: #ffd84a;
+      background: #231a86;
+    }
+    html[data-style="vibrant"] body {
+      color: #fff; font-family: var(--vui);
+      background:
+        radial-gradient(900px 600px at 8% -8%, rgba(110, 90, 255, .55), transparent 60%),
+        radial-gradient(800px 600px at 100% 0%, rgba(150, 60, 230, .45), transparent 60%),
+        radial-gradient(1000px 700px at 50% 110%, rgba(40, 90, 230, .45), transparent 60%),
+        linear-gradient(165deg, #2c1f9a, #1f1878 50%, #2b1780);
+      background-attachment: fixed;
+    }
+    html[data-style="vibrant"] .caps { font-family: var(--vui); font-weight: 800; letter-spacing: .12em; }
+    html[data-style="vibrant"] .bar { background: rgba(28, 20, 112, .72); border-bottom-color: var(--vline); }
+    html[data-style="vibrant"] .brand span { font-family: var(--vdisp); font-weight: 400; font-size: 22px; letter-spacing: .02em; text-transform: none; color: #fff; text-shadow: 0 3px 0 rgba(10, 6, 60, .55); }
+    html[data-style="vibrant"] .join, html[data-style="vibrant"] .gear { background: var(--vglass); border-color: var(--vline); }
+    html[data-style="vibrant"] .join label, html[data-style="vibrant"] .gear { font-family: var(--vui); font-weight: 800; letter-spacing: .08em; color: var(--vmute); }
+    html[data-style="vibrant"] .gear:hover { color: #fff; border-color: var(--vlav); }
+    html[data-style="vibrant"] .join input { color: #fff; }
+    html[data-style="vibrant"] .join button, html[data-style="vibrant"] .play-btn, html[data-style="vibrant"] .hover-play {
+      font-family: var(--vui); font-weight: 900; letter-spacing: .06em; color: #08321f;
+      background: linear-gradient(180deg, var(--vgo), var(--vgo2)); box-shadow: 0 4px 0 #11885a, 0 10px 24px rgba(0, 0, 0, .3);
+    }
+    html[data-style="vibrant"] .play-btn { font-size: 17px; letter-spacing: .04em; text-transform: none; border-radius: 16px; padding: 15px 40px; }
+
+    html[data-style="vibrant"] .spot {
+      background: linear-gradient(105deg, #4a1c9a 0%, #8a1f7a 38%, #e0303f 70%, #ff8a2a 100%);
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .14), 0 26px 50px rgba(10, 6, 60, .55); border-radius: 26px;
+    }
+    html[data-style="vibrant"] .spot { grid-template-columns: auto minmax(0, 1fr) 44%; }
+    html[data-style="vibrant"] .spot .pic { inset: 18px 18px 18px 56%; border-radius: 18px; box-shadow: 0 18px 40px rgba(20, 0, 40, .45); }
+    html[data-style="vibrant"] .spot .pic::after { background: linear-gradient(0deg, rgba(0, 0, 0, .2), transparent 40%); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .22); border-radius: inherit; }
+    html[data-style="vibrant"] .spot .pic .cover { filter: saturate(1.25) brightness(1.06); }
+    html[data-style="vibrant"] .spot .kicker { color: var(--vsun); }
+    html[data-style="vibrant"] .spot .kicker::before { background: var(--vsun); box-shadow: 0 0 12px var(--vsun); }
+    html[data-style="vibrant"] .spot h1 { font-family: var(--vdisp); font-weight: 400; letter-spacing: .01em; text-shadow: 0 5px 0 rgba(40, 0, 50, .45); }
+    html[data-style="vibrant"] .spot p { color: rgba(255, 255, 255, .9); font-weight: 700; }
+    html[data-style="vibrant"] .tag { font-family: var(--vui); font-weight: 800; letter-spacing: .06em; background: rgba(30, 0, 50, .35); color: #fff; border-color: rgba(255, 255, 255, .18); }
+
+    html[data-style="vibrant"] .chip, html[data-style="vibrant"] .seg { font-family: var(--vui); font-weight: 800; font-size: 14px; color: #e8e6ff; background: var(--vglass); border-color: var(--vline); }
+    html[data-style="vibrant"] .chip { padding: 10px 20px; border-radius: 14px; }
+    html[data-style="vibrant"] .seg { border-radius: 14px; }
+    html[data-style="vibrant"] .seg button { font-family: var(--vui); font-weight: 800; color: #e8e6ff; border-radius: 10px; }
+    html[data-style="vibrant"] .chip:hover { color: #fff; border-color: var(--vlav); }
+    html[data-style="vibrant"] .chip.on, html[data-style="vibrant"] .seg button.on { color: #fff; background: linear-gradient(180deg, #a49cff, #7d72ff); border-color: transparent; box-shadow: 0 3px 0 #5247d6; }
+    html[data-style="vibrant"] .chip.fav-chip.on::before { color: var(--vsun); }
+    html[data-style="vibrant"] .search input { font-family: var(--vui); font-weight: 700; color: #fff; background: var(--vglass); border-color: var(--vline); border-radius: 14px; }
+    html[data-style="vibrant"] .search input:focus { border-color: var(--vlav); }
+    html[data-style="vibrant"] .search input::placeholder, html[data-style="vibrant"] .search svg { color: var(--vmute); }
+    html[data-style="vibrant"] .count .caps, html[data-style="vibrant"] .section-head span { color: var(--vmute); }
+    html[data-style="vibrant"] .section-head h2 { font-family: var(--vdisp); font-weight: 400; font-size: 34px; text-shadow: 0 4px 0 rgba(10, 6, 60, .5); }
+
+    html[data-style="vibrant"] .shelf { gap: 20px; }
+    html[data-style="vibrant"] .box {
+      border-radius: 20px; color: #fff; background: linear-gradient(165deg, var(--va, #4a95ff), var(--vb, #1f4fd6));
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .16), 0 8px 0 -2px rgba(10, 6, 60, .4), 0 16px 30px rgba(10, 6, 60, .35);
+    }
+    html[data-style="vibrant"] a.box:hover, html[data-style="vibrant"] a.box:focus-visible {
+      transform: translateY(-6px); box-shadow: inset 0 0 0 3px #fff, 0 12px 0 -2px rgba(10, 6, 60, .4), 0 26px 44px rgba(10, 6, 60, .5);
+    }
+    html[data-style="vibrant"] .art { margin: 10px 10px 0; border-radius: 14px; box-shadow: 0 6px 14px rgba(0, 0, 0, .25); }
+    html[data-style="vibrant"] .art .cover { filter: saturate(1.25) brightness(1.06); }
+    html[data-style="vibrant"] .box h3 { font-family: var(--vdisp); font-weight: 400; font-size: 24px; letter-spacing: .01em; text-shadow: 0 3px 0 rgba(0, 0, 0, .28); }
+    html[data-style="vibrant"] .meta .who, html[data-style="vibrant"] .meta .kind { font-family: var(--vui); font-weight: 800; color: rgba(255, 255, 255, .92); }
+    html[data-style="vibrant"] .meta .dot { background: rgba(255, 255, 255, .6); }
+    html[data-style="vibrant"] .new { font-family: var(--vui); font-weight: 900; color: #3a2400; background: var(--vsun); box-shadow: 0 2px 0 #c99a10; }
+    html[data-style="vibrant"] .empty { font-family: var(--vdisp); font-style: normal; color: var(--vmute); }
+    html[data-style="vibrant"] footer { border-top-color: var(--vline); }
+    html[data-style="vibrant"] footer .wrap { font-family: var(--vui); font-weight: 700; color: var(--vmute); }
+    html[data-style="vibrant"] footer a { color: var(--vsun); }
+
+    html[data-style="vibrant"] .settings { color: #fff; background: linear-gradient(165deg, #3a2bc8, #241a8a); border-color: rgba(255, 255, 255, .18); border-radius: 24px; }
+    html[data-style="vibrant"] .settings::backdrop { background: rgba(14, 8, 60, .55); }
+    html[data-style="vibrant"] .set-head h2 { font-family: var(--vdisp); font-weight: 400; text-shadow: 0 4px 0 rgba(10, 6, 60, .5); }
+    html[data-style="vibrant"] .set-x { color: #fff; border-color: var(--vline); }
+    html[data-style="vibrant"] .set-label, html[data-style="vibrant"] .style-opt small, html[data-style="vibrant"] .set-note { color: var(--vmute); }
+    html[data-style="vibrant"] .style-opt { color: #fff; background: var(--vglass); border-color: var(--vline); }
+    html[data-style="vibrant"] .style-opt strong { font-family: var(--vui); font-weight: 900; }
+    html[data-style="vibrant"] .style-opt[aria-checked="true"] { border-color: var(--vsun); background: rgba(255, 216, 74, .1); }
+    html[data-style="vibrant"] .style-opt[aria-checked="true"] strong::after { color: var(--vsun); }
+    @media (max-width: 860px) {
+      html[data-style="vibrant"] .spot { grid-template-columns: 1fr; }
+      html[data-style="vibrant"] .spot .pic { inset: 12px; }
+      html[data-style="vibrant"] .spot .pic::after { background: linear-gradient(0deg, #8a1f5a 25%, rgba(138, 31, 90, .55) 55%, transparent); }
+    }
+    @media (max-width: 600px) {
+      html[data-style="vibrant"] .shelf { gap: 12px; }
+      html[data-style="vibrant"] .art { margin: 7px 7px 0; border-radius: 12px; }
+      html[data-style="vibrant"] .box { border-radius: 16px; }
+      html[data-style="vibrant"] .box h3 { font-size: 19px; }
+      html[data-style="vibrant"] .brand span { font-size: 18px; }
     }
 
     /* ---------- TV: just the library, every game on one screen ---------- */
@@ -229,8 +376,27 @@
         <input id="code" name="room" maxlength="4" placeholder="CODE" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Room code">
         <button type="submit">Join</button>
       </form>
+      <button class="gear" id="openSettings" type="button" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></button>
     </div>
   </header>
+
+  <dialog class="settings" id="settings" aria-labelledby="setTitle">
+    <form method="dialog">
+      <div class="set-head"><h2 id="setTitle">Settings</h2><button class="set-x" value="close" aria-label="Close">✕</button></div>
+      <p class="caps set-label">Style</p>
+      <div class="styles" role="radiogroup" aria-label="Style">
+        <button type="button" class="style-opt" data-style="classic" role="radio">
+          <span class="sw sw-classic"><b></b><i></i><i></i><i></i></span>
+          <strong>Classic</strong><small>Black and gold, an old card room</small>
+        </button>
+        <button type="button" class="style-opt" data-style="vibrant" role="radio">
+          <span class="sw sw-vibrant"><b></b><i></i><i></i><i></i></span>
+          <strong>Vibrant</strong><small>Bright, bold game-night colours</small>
+        </button>
+      </div>
+      <p class="set-note">Saved on this device. The game boxes stay in both styles.</p>
+    </form>
+  </dialog>
 
   <main class="wrap">
     <a class="spot" id="spot"></a>
@@ -253,10 +419,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=68"></script>
+  <script type="module" src="js/tvnav.js?v=69"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=68';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=68';
+    import { GAMES } from './js/games.js?v=69';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=69';
 
     const ids = ['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -352,10 +518,14 @@
       t.querySelector('.art').insertAdjacentHTML('afterbegin', sceneSVG(id));
       if (!onTV) t.querySelector('.info-row .box-stage').innerHTML = boxHTML(id, GAMES[id]);
     }), { rootMargin: '600px 0px' });
-    ids.forEach(id => {
+    // Vibrant style: each tile gets a bright colour (the classic style ignores these).
+    const VIVID = [['#ff5f52', '#d0243c'], ['#33d18f', '#0f8c5c'], ['#4a95ff', '#1f4fd6'], ['#ff9d3c', '#e2522a'], ['#a066ff', '#6a2fd6'], ['#ff5fae', '#c4247a'], ['#26c6da', '#127a9e']];
+    ids.forEach((id, i) => {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;
+      const [va, vb] = VIVID[i % VIVID.length];
+      box.style.setProperty('--va', va); box.style.setProperty('--vb', vb);
       box.dataset.id = id;
       box.href = `table.html?game=${id}`;
       box.innerHTML = `<div class="art">${NEW.has(id) ? '<span class="new">NEW</span>' : ''}<span class="hover-play" aria-hidden="true"></span></div>
@@ -396,6 +566,25 @@
       document.getElementById('libCount').textContent = `${show.length} ${show.length === 1 ? 'game' : 'games'}${who !== 'any' ? ` · ${PLAYERS.find(p => p[0] === who)[1]} players` : ''}`;
     }
     draw();
+
+    // ---- Settings: pick the page style (saved per device).
+    const dlg = document.getElementById('settings');
+    const theme = document.querySelector('meta[name="theme-color"]');
+    const opts = [...dlg.querySelectorAll('.style-opt')];
+    const curStyle = () => document.documentElement.dataset.style === 'vibrant' ? 'vibrant' : 'classic';
+    const markStyle = () => {
+      opts.forEach(o => o.setAttribute('aria-checked', o.dataset.style === curStyle()));
+      theme.content = curStyle() === 'vibrant' ? '#231a86' : '#0c0b0a';
+    };
+    function setStyle(st) {
+      if (st === 'vibrant') document.documentElement.dataset.style = st; else delete document.documentElement.dataset.style;
+      try { localStorage.setItem('pod.style', st); } catch {}
+      markStyle();
+    }
+    opts.forEach(o => o.addEventListener('click', () => setStyle(o.dataset.style)));
+    document.getElementById('openSettings').onclick = () => { markStyle(); dlg.showModal(); (opts.find(o => o.getAttribute('aria-checked') === 'true') || opts[0]).focus(); };
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    markStyle();
 
     // ---- Quick join: four letters straight to the phone page.
     const code = document.getElementById('code');
