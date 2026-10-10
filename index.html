@@ -269,7 +269,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=72">
+  <link rel="stylesheet" href="css/vibrant.css?v=73">
 </head>
 <body class="home">
   <header class="bar">
@@ -326,7 +326,7 @@
   <script type="module" src="js/tvnav.js?v=69"></script>
   <script type="module">
     import { GAMES } from './js/games.js?v=69';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=72';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=73';
 
     const ids = ['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -421,32 +421,42 @@
     // ---- Library
     const shelf = document.getElementById('shelf');
     const tiles = {};
-    const lazy = new IntersectionObserver(es => es.forEach(e => {
-      if (!e.isIntersecting) return;
-      const t = e.target, id = t.dataset.id;
-      lazy.unobserve(t);
+    // A tile's picture and box are drawn when it scrolls near the screen. Drawing is spread over
+    // frames (a few milliseconds each), so scrolling never stalls while a row of art is built.
+    const drawn = new Set(), queue = [];
+    let pumping = false;
+    const drawTile = id => {
+      const t = tiles[id];
+      t.querySelector('.art svg.cover')?.remove();
       t.querySelector('.art').insertAdjacentHTML('afterbegin', picFor(id));
       if (!onTV) t.querySelector('.info-row .box-stage').innerHTML = boxFor(id);
       drawn.add(id);
+    };
+    const pump = () => {
+      const until = performance.now() + 6;
+      while (queue.length && performance.now() < until) drawTile(queue.shift());
+      if (queue.length) requestAnimationFrame(pump); else pumping = false;
+    };
+    const enqueue = id => { if (!queue.includes(id)) queue.push(id); if (!pumping) { pumping = true; requestAnimationFrame(pump); } };
+    const lazy = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      lazy.unobserve(e.target);
+      enqueue(e.target.dataset.id);
     }), { rootMargin: '600px 0px' });
-    const drawn = new Set();
-    // Switching style redraws the pictures and boxes already drawn, in the new style.
+    // Switching style redraws the pictures and boxes already drawn, in the new style (on-screen ones first).
     const redrawBoxes = () => {
       spot.querySelector('.pic').innerHTML = picFor(spotId, spotId + '-sp');
       spot.querySelector('.stage').innerHTML = boxFor(spotId);
-      drawn.forEach(id => {
-        const t = tiles[id];
-        t.querySelector('.art svg.cover')?.remove();
-        t.querySelector('.art').insertAdjacentHTML('afterbegin', picFor(id));
-        if (!onTV) t.querySelector('.info-row .box-stage').innerHTML = boxFor(id);
-      });
+      const onScreen = id => { const r = tiles[id].getBoundingClientRect(); return r.bottom > -200 && r.top < innerHeight + 200; };
+      const all = [...drawn];
+      [...all.filter(onScreen), ...all.filter(id => !onScreen(id))].forEach(enqueue);
     };
     ids.forEach((id, i) => {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;
       const [va, vb] = VIVID[i % VIVID.length];
-      box.style.setProperty('--va', va); box.style.setProperty('--vb', vb); box.style.setProperty('--vf', `var(--v-facet-${i % 3})`);
+      box.style.setProperty('--va', va); box.style.setProperty('--vb', vb); box.style.setProperty('--vf', `var(--v-facet-${i % 3})`); box.style.setProperty('--vw', `var(--v-waves-${(i + 1) % 3})`);
       box.dataset.id = id;
       box.href = `table.html?game=${id}`;
       box.innerHTML = `<div class="art">${NEW.has(id) ? '<span class="new">NEW</span>' : ''}<span class="hover-play" aria-hidden="true"></span></div>

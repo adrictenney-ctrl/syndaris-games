@@ -53,20 +53,23 @@ export function makeStill(K) {
   };
 
   // The Vibrant style's set (T.vivid = [main, deep]): the same props shot on a bright printed
-  // backdrop like the game boxes — flat colour, a soft sunburst from the key light, printed facets,
+  // backdrop like the game boxes — flat colour, flowing wavy bands, printed facets,
   // a darker sweep for the table the props sit on, a corner of halftone and a few bits of confetti.
   T.vivid = null;
   const FACETS = [['0,0 210,0 70,170', '#fff', .07], ['210,0 420,0 300,140', '#000', .06], ['420,0 600,0 600,180 520,90', '#fff', .05],
     ['70,170 300,140 170,400 0,400 0,240', '#000', .05], ['300,140 600,180 500,400', '#fff', .07], ['0,0 70,170 0,240', '#fff', .04], ['500,400 600,180 600,400', '#000', .06]];
+  // Flowing wavy bands, lower left to upper right (same shapes as the Vibrant tiles behind them).
+  const band = (y, t, tilt = 170, amp = 46) => `M-30 ${y} C170 ${y - amp - tilt * .33} 400 ${y + amp - tilt * .66} 630 ${y - tilt} L630 ${y - tilt + t} C400 ${y + amp - tilt * .66 + t * 1.25} 170 ${y - amp - tilt * .33 + t * .8} -30 ${y + t} Z`;
+  const WAVES = [[70, 46, '#000', .1], [150, 70, '#fff', .15], [250, 34, '#000', .1], [330, 96, '#fff', .11], [440, 60, '#000', .09], [560, 80, '#fff', .1]];
   function vividSurface(id, hz) {
     const [m, d] = T.vivid;
-    const rays = Array.from({ length: 14 }, (_, i) => { const a0 = (i * 26 - 10) * Math.PI / 180, a1 = a0 + 11 * Math.PI / 180, R = 900; return `M150 -40 L${150 + R * Math.cos(a0)} ${-40 + R * Math.sin(a0)} L${150 + R * Math.cos(a1)} ${-40 + R * Math.sin(a1)} Z`; }).join(' ');
     const bits = [[38, 52, 20, '#fff'], [560, 70, -30, '#ffd84a'], [520, 360, 45, '#fff'], [70, 350, 10, '#ffd84a'], [300, 24, 70, '#fff'], [590, 230, -12, '#fff']]
       .map(([x, y, r, c], i) => i % 2 ? `<path d="M${x} ${y} l7 -12 l7 12z" fill="${c}" opacity=".55" transform="rotate(${r} ${x} ${y})"/>` : `<rect x="${x}" y="${y}" width="12" height="5" rx="2" fill="${c}" opacity=".55" transform="rotate(${r} ${x} ${y})"/>`).join('');
     return `<defs><pattern id="${id}-vdots" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="5" cy="5" r="1.9" fill="#fff"/></pattern>
       <linearGradient id="${id}-vfade" x1="0" y1="0" x2="1" y2="1"><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="${id}-vm"><rect width="600" height="400" fill="url(#${id}-vfade)"/></mask></defs>
       <rect width="600" height="400" fill="${shade(m, .14)}"/>
-      <path d="${rays}" fill="#fff" opacity=".08"/>
+      ${WAVES.map(([y, t, c, a]) => `<path d="${band(y, t)}" fill="${c}" fill-opacity="${a}"/>`).join('')}
+      <path d="M-30 205 C170 132 400 138 630 35" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="3"/>
       ${FACETS.map(([p, c, a]) => `<polygon points="${p}" fill="${c}" fill-opacity="${a}"/>`).join('')}
       <path d="M0 ${hz + 46} Q300 ${hz - 4} 600 ${hz + 46} V400 H0 Z" fill="${d}" opacity=".32"/>
       <path d="M0 ${hz + 46} Q300 ${hz - 4} 600 ${hz + 46}" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3"/>

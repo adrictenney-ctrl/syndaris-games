@@ -4,7 +4,7 @@
 
 import { makeKit } from './art-kit.js?v=70';
 import { ART } from './art-index.js?v=70';
-import { makeStill } from './still.js?v=71';
+import { makeStill } from './still.js?v=72';
 
 const SERIF = "'DM Serif Display', Georgia, serif";
 const CORM = "'Cormorant Garamond', Georgia, serif";

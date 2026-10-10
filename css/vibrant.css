@@ -45,7 +45,7 @@ html[data-style="vibrant"] {
   --v-go-edge: #11885a;
   --v-sun: #ffd84a;
   --v-lav: #8f86ff;
-  /* @tex — generated textures (scratchpad tex.cjs) */
+  /* @tex — generated textures (tools/vibrant-textures.cjs) */
   --v-grain: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27180%27%20height%3D%27180%27%3E%3Cfilter%20id%3D%27n%27%20x%3D%270%27%20y%3D%270%27%20width%3D%271%27%20height%3D%271%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.85%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20values%3D%271%200%200%200%200%201%200%200%200%200%201%200%200%200%200%200%200%200%200%20.4%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27180%27%20height%3D%27180%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");
   --v-speck: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%20x%3D%270%27%20y%3D%270%27%20width%3D%271%27%20height%3D%271%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.75%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27saturate%27%20values%3D%270%27%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%27table%27%20tableValues%3D%27.0%20.0%20.18%20.0%20.0%20.22%200%27%2F%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3Crect%20width%3D%27160%27%20height%3D%27160%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");
   --v-mottle: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27700%27%20height%3D%27700%27%3E%3Cfilter%20id%3D%27m%27%20x%3D%270%27%20y%3D%270%27%20width%3D%271%27%20height%3D%271%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.005714286%27%20numOctaves%3D%274%27%20seed%3D%277%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20values%3D%270%200%200%200%20.55%200%200%200%200%20.5%200%200%200%200%201%200%200%20.85%200%20-.47%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27700%27%20height%3D%27700%27%20filter%3D%27url%28%23m%29%27%2F%3E%3C%2Fsvg%3E");
@@ -55,6 +55,11 @@ html[data-style="vibrant"] {
   --v-facet-1: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20400%27%20preserveAspectRatio%3D%27none%27%3E%3Cg%20transform%3D%27translate%28600%200%29%20scale%28-1%201%29%27%3E%3Cpolygon%20points%3D%270%2C0%20210%2C0%2070%2C170%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.08%27%2F%3E%3Cpolygon%20points%3D%27210%2C0%20420%2C0%20300%2C140%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.08%27%2F%3E%3Cpolygon%20points%3D%27420%2C0%20600%2C0%20600%2C180%20520%2C90%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.06%27%2F%3E%3Cpolygon%20points%3D%2770%2C170%20300%2C140%20170%2C400%200%2C400%200%2C240%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.06%27%2F%3E%3Cpolygon%20points%3D%27300%2C140%20600%2C180%20500%2C400%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.09%27%2F%3E%3Cpolygon%20points%3D%27170%2C400%20300%2C140%20500%2C400%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.05%27%2F%3E%3Cpolygon%20points%3D%270%2C0%2070%2C170%200%2C240%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.04%27%2F%3E%3Cpolygon%20points%3D%27520%2C90%20600%2C180%20300%2C140%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.04%27%2F%3E%3Cpolygon%20points%3D%27500%2C400%20600%2C180%20600%2C400%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.07%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   --v-facet-2: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20400%27%20preserveAspectRatio%3D%27none%27%3E%3Cg%20transform%3D%27translate%280%20400%29%20scale%281%20-1%29%27%3E%3Cpolygon%20points%3D%270%2C0%20210%2C0%2070%2C170%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.08%27%2F%3E%3Cpolygon%20points%3D%27210%2C0%20420%2C0%20300%2C140%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.08%27%2F%3E%3Cpolygon%20points%3D%27420%2C0%20600%2C0%20600%2C180%20520%2C90%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.06%27%2F%3E%3Cpolygon%20points%3D%2770%2C170%20300%2C140%20170%2C400%200%2C400%200%2C240%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.06%27%2F%3E%3Cpolygon%20points%3D%27300%2C140%20600%2C180%20500%2C400%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.09%27%2F%3E%3Cpolygon%20points%3D%27170%2C400%20300%2C140%20500%2C400%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.05%27%2F%3E%3Cpolygon%20points%3D%270%2C0%2070%2C170%200%2C240%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.04%27%2F%3E%3Cpolygon%20points%3D%27520%2C90%20600%2C180%20300%2C140%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.04%27%2F%3E%3Cpolygon%20points%3D%27500%2C400%20600%2C180%20600%2C400%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.07%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   --v-confetti: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27600%27%20height%3D%27400%27%20opacity%3D%27.8%27%3E%3Crect%20x%3D%27390%27%20y%3D%27362%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ffd84a%27%20transform%3D%27rotate%28107%20390%20362%29%27%2F%3E%3Crect%20x%3D%27137%27%20y%3D%27304%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ff5fae%27%20transform%3D%27rotate%2870%20137%20304%29%27%2F%3E%3Ccircle%20cx%3D%27481%27%20cy%3D%27136%27%20r%3D%274%27%20fill%3D%27%234ad6ff%27%2F%3E%3Cpath%20d%3D%27M572%20208%20l9%20-15%20l9%2015z%27%20fill%3D%27%237cf5b8%27%20transform%3D%27rotate%28107%20572%20208%29%27%2F%3E%3Ccircle%20cx%3D%27267%27%20cy%3D%27234%27%20r%3D%274%27%20fill%3D%27%23ffffff%27%2F%3E%3Crect%20x%3D%2771%27%20y%3D%27312%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ff9d3c%27%20transform%3D%27rotate%2814%2071%20312%29%27%2F%3E%3Cpath%20d%3D%27M264%20216%20l9%20-15%20l9%2015z%27%20fill%3D%27%23ffd84a%27%20transform%3D%27rotate%28214%20264%20216%29%27%2F%3E%3Crect%20x%3D%27441%27%20y%3D%27149%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ff5fae%27%20transform%3D%27rotate%28302%20441%20149%29%27%2F%3E%3Crect%20x%3D%2737%27%20y%3D%27163%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%234ad6ff%27%20transform%3D%27rotate%28312%2037%20163%29%27%2F%3E%3Crect%20x%3D%27468%27%20y%3D%27255%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%237cf5b8%27%20transform%3D%27rotate%28308%20468%20255%29%27%2F%3E%3Cpath%20d%3D%27M460%20315%20l9%20-15%20l9%2015z%27%20fill%3D%27%23ffffff%27%20transform%3D%27rotate%28217%20460%20315%29%27%2F%3E%3Ccircle%20cx%3D%27182%27%20cy%3D%27354%27%20r%3D%274%27%20fill%3D%27%23ff9d3c%27%2F%3E%3Crect%20x%3D%27383%27%20y%3D%27190%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ffd84a%27%20transform%3D%27rotate%28268%20383%20190%29%27%2F%3E%3Crect%20x%3D%27123%27%20y%3D%27201%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ff5fae%27%20transform%3D%27rotate%2880%20123%20201%29%27%2F%3E%3Crect%20x%3D%27305%27%20y%3D%27353%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%234ad6ff%27%20transform%3D%27rotate%28148%20305%20353%29%27%2F%3E%3Crect%20x%3D%27410%27%20y%3D%27287%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%237cf5b8%27%20transform%3D%27rotate%28334%20410%20287%29%27%2F%3E%3Ccircle%20cx%3D%27431%27%20cy%3D%2771%27%20r%3D%274%27%20fill%3D%27%23ffffff%27%2F%3E%3Ccircle%20cx%3D%27205%27%20cy%3D%2726%27%20r%3D%274%27%20fill%3D%27%23ff9d3c%27%2F%3E%3Crect%20x%3D%27347%27%20y%3D%2714%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ffd84a%27%20transform%3D%27rotate%2828%20347%2014%29%27%2F%3E%3Cpath%20d%3D%27M583%20194%20l9%20-15%20l9%2015z%27%20fill%3D%27%23ff5fae%27%20transform%3D%27rotate%28244%20583%20194%29%27%2F%3E%3Cpath%20d%3D%27M283%2040%20l9%20-15%20l9%2015z%27%20fill%3D%27%234ad6ff%27%20transform%3D%27rotate%28210%20283%2040%29%27%2F%3E%3Cpath%20d%3D%27M595%2038%20l9%20-15%20l9%2015z%27%20fill%3D%27%237cf5b8%27%20transform%3D%27rotate%28308%20595%2038%29%27%2F%3E%3Cpath%20d%3D%27M379%2034%20l9%20-15%20l9%2015z%27%20fill%3D%27%23ffffff%27%20transform%3D%27rotate%28307%20379%2034%29%27%2F%3E%3Cpath%20d%3D%27M339%20261%20l9%20-15%20l9%2015z%27%20fill%3D%27%23ff9d3c%27%20transform%3D%27rotate%28161%20339%20261%29%27%2F%3E%3Crect%20x%3D%27355%27%20y%3D%27225%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ffd84a%27%20transform%3D%27rotate%28335%20355%20225%29%27%2F%3E%3Crect%20x%3D%27220%27%20y%3D%27261%27%20width%3D%2714%27%20height%3D%276%27%20rx%3D%272%27%20fill%3D%27%23ff5fae%27%20transform%3D%27rotate%28196%20220%20261%29%27%2F%3E%3C%2Fsvg%3E");
+  --v-waves-0: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20400%27%20preserveAspectRatio%3D%27none%27%3E%3Cg%20%3E%3Cpath%20d%3D%27M-30%2070%20C170%20-32.1%20400%203.799999999999997%20630%20-100%20L630%20-54%20C400%2061.3%20170%204.700000000000003%20-30%20116%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20150%20C170%2047.9%20400%2083.8%20630%20-20%20L630%2050%20C400%20171.3%20170%20103.9%20-30%20220%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.15%27%2F%3E%3Cpath%20d%3D%27M-30%20250%20C170%20147.9%20400%20183.8%20630%2080%20L630%20114%20C400%20226.3%20170%20175.10000000000002%20-30%20284%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20330%20C170%20227.9%20400%20263.8%20630%20160%20L630%20256%20C400%20383.8%20170%20304.70000000000005%20-30%20426%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.11%27%2F%3E%3Cpath%20d%3D%27M-30%20440%20C170%20337.9%20400%20373.8%20630%20270%20L630%20330%20C400%20448.8%20170%20385.9%20-30%20500%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.09%27%2F%3E%3Cpath%20d%3D%27M-30%20560%20C170%20457.9%20400%20493.8%20630%20390%20L630%20470%20C400%20593.8%20170%20521.9%20-30%20640%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20205%20C170%20102.9%20400%20138.8%20630%2035%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.24%27%20stroke-width%3D%273%27%2F%3E%3Cpath%20d%3D%27M-30%20400%20C170%20297.9%20400%20333.8%20630%20230%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.1%27%20stroke-width%3D%272%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --v-waves-1: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20400%27%20preserveAspectRatio%3D%27none%27%3E%3Cg%20transform%3D%27translate%28600%200%29%20scale%28-1%201%29%27%3E%3Cpath%20d%3D%27M-30%2070%20C170%20-32.1%20400%203.799999999999997%20630%20-100%20L630%20-54%20C400%2061.3%20170%204.700000000000003%20-30%20116%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20150%20C170%2047.9%20400%2083.8%20630%20-20%20L630%2050%20C400%20171.3%20170%20103.9%20-30%20220%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.15%27%2F%3E%3Cpath%20d%3D%27M-30%20250%20C170%20147.9%20400%20183.8%20630%2080%20L630%20114%20C400%20226.3%20170%20175.10000000000002%20-30%20284%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20330%20C170%20227.9%20400%20263.8%20630%20160%20L630%20256%20C400%20383.8%20170%20304.70000000000005%20-30%20426%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.11%27%2F%3E%3Cpath%20d%3D%27M-30%20440%20C170%20337.9%20400%20373.8%20630%20270%20L630%20330%20C400%20448.8%20170%20385.9%20-30%20500%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.09%27%2F%3E%3Cpath%20d%3D%27M-30%20560%20C170%20457.9%20400%20493.8%20630%20390%20L630%20470%20C400%20593.8%20170%20521.9%20-30%20640%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20205%20C170%20102.9%20400%20138.8%20630%2035%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.24%27%20stroke-width%3D%273%27%2F%3E%3Cpath%20d%3D%27M-30%20400%20C170%20297.9%20400%20333.8%20630%20230%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.1%27%20stroke-width%3D%272%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --v-waves-2: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20400%27%20preserveAspectRatio%3D%27none%27%3E%3Cg%20transform%3D%27translate%280%2060%29%27%3E%3Cpath%20d%3D%27M-30%2070%20C170%20-32.1%20400%203.799999999999997%20630%20-100%20L630%20-54%20C400%2061.3%20170%204.700000000000003%20-30%20116%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20150%20C170%2047.9%20400%2083.8%20630%20-20%20L630%2050%20C400%20171.3%20170%20103.9%20-30%20220%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.15%27%2F%3E%3Cpath%20d%3D%27M-30%20250%20C170%20147.9%20400%20183.8%20630%2080%20L630%20114%20C400%20226.3%20170%20175.10000000000002%20-30%20284%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20330%20C170%20227.9%20400%20263.8%20630%20160%20L630%20256%20C400%20383.8%20170%20304.70000000000005%20-30%20426%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.11%27%2F%3E%3Cpath%20d%3D%27M-30%20440%20C170%20337.9%20400%20373.8%20630%20270%20L630%20330%20C400%20448.8%20170%20385.9%20-30%20500%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%270.09%27%2F%3E%3Cpath%20d%3D%27M-30%20560%20C170%20457.9%20400%20493.8%20630%20390%20L630%20470%20C400%20593.8%20170%20521.9%20-30%20640%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%270.1%27%2F%3E%3Cpath%20d%3D%27M-30%20205%20C170%20102.9%20400%20138.8%20630%2035%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.24%27%20stroke-width%3D%273%27%2F%3E%3Cpath%20d%3D%27M-30%20400%20C170%20297.9%20400%20333.8%20630%20230%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.1%27%20stroke-width%3D%272%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --v-waves-spot: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20400%27%20preserveAspectRatio%3D%27none%27%3E%20%3Cpath%20d%3D%27M-30%2040%20C170%20-86%20400%20-32%20630%20-160%20L630%20-40%20C400%20118%20170%2010%20-30%20160%20Z%27%20fill%3D%27%237a1a6a%27%20fill-opacity%3D%27.6%27%2F%3E%20%3Cpath%20d%3D%27M-30%20200%20C170%2074%20400%20128%20630%200%20L630%2070%20C400%20215.5%20170%20130%20-30%20270%20Z%27%20fill%3D%27%23ff6a2e%27%20fill-opacity%3D%27.7%27%2F%3E%20%3Cpath%20d%3D%27M-30%20290%20C170%20164%20400%20218%20630%2090%20L630%20136%20C400%20275.5%20170%20200.8%20-30%20336%20Z%27%20fill%3D%27%23ffad2e%27%20fill-opacity%3D%27.55%27%2F%3E%20%3Cpath%20d%3D%27M-30%20360%20C170%20234%20400%20288%20630%20160%20L630%20220%20C400%20363%20170%20282%20-30%20420%20Z%27%20fill%3D%27%23ff6a2e%27%20fill-opacity%3D%27.45%27%2F%3E%20%3Cpath%20d%3D%27M-30%20470%20C170%20344%20400%20398%20630%20270%20L630%20410%20C400%20573%20170%20456%20-30%20610%20Z%27%20fill%3D%27%23a3164a%27%20fill-opacity%3D%27.55%27%2F%3E%20%3Cpath%20d%3D%27M-30%20180%20C170%2054%20400%20108%20630%20-20%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.25%27%20stroke-width%3D%273%27%2F%3E%20%3Cpath%20d%3D%27M-30%20345%20C170%20219%20400%20273%20630%20145%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.18%27%20stroke-width%3D%272%27%2F%3E%20%3C%2Fsvg%3E");
+  --v-waves-bar: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20100%27%20preserveAspectRatio%3D%27none%27%3E%20%3Cpath%20d%3D%27M-10%2070%20C150%2030%20300%20100%20610%2020%20V-10%20H-10%20Z%27%20fill%3D%27%23fff%27%20fill-opacity%3D%27.05%27%2F%3E%20%3Cpath%20d%3D%27M-10%20100%20C200%2060%20380%20110%20610%2050%20V110%20H-10%20Z%27%20fill%3D%27%23000%27%20fill-opacity%3D%27.18%27%2F%3E%20%3Cpath%20d%3D%27M-10%2062%20C160%2024%20310%2092%20610%2014%27%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.1%27%20stroke-width%3D%271.5%27%2F%3E%20%3C%2Fsvg%3E");
   /* @tex-end */
 }
 html[data-style="vibrant"] body { font-family: var(--ui); }
@@ -62,8 +67,12 @@ html[data-style="vibrant"] body { font-family: var(--ui); }
 html[data-style="vibrant"] .card { --display: 'Cormorant Garamond', Georgia, serif; --num: 'DM Serif Display', Georgia, serif; --serif: 'Cormorant Garamond', Georgia, serif; --ivory: #efe9dc; }
 
 /* ================================================================ TABLE SCREEN */
-html[data-style="vibrant"] #felt {
-  /* the play area: the same textured room, with a lighter printed oval where the cards land */
+html[data-style="vibrant"] #felt { background: #221882 !important; }
+/* the play area: the same textured room, with a lighter printed oval where the cards land.
+   It sits on its own layer (painted once), so cards moving over it don't make it repaint. */
+html[data-style="vibrant"] #felt::before {
+  content: ''; display: block; position: absolute; inset: 0; opacity: 1; mix-blend-mode: normal; pointer-events: none;
+  transform: translateZ(0); will-change: transform;
   background:
     var(--v-grain) 0 0 / 180px,
     radial-gradient(ellipse 50% 44% at 50% 51%, rgba(150, 140, 255, .1) 0 97%, rgba(255, 255, 255, .12) 97.5% 98.6%, transparent 99%),
@@ -75,7 +84,6 @@ html[data-style="vibrant"] #felt {
     #221882 !important;
   background-blend-mode: overlay, normal, normal, normal, normal, normal, normal !important;
 }
-html[data-style="vibrant"] #felt::before { display: none; }
 /* the rail: a clean rounded frame instead of leather and brass */
 html[data-style="vibrant"] #rail::before { display: none; }
 html[data-style="vibrant"] #rail::after { border: 0; box-shadow: none; }
@@ -174,14 +182,21 @@ html[data-style="vibrant"] #overlay .tool { color: #fff; border-color: var(--v-l
 html[data-style="vibrant"] .pill { font-weight: 900; color: var(--mute); }
 
 /* ================================================================ PHONE */
-html[data-style="vibrant"] body:has(#app) { background-attachment: fixed; background:
+/* The room behind the home page and the phone: one fixed layer, painted once and kept on the GPU,
+   so scrolling only moves the page over it (instead of repainting a fixed background every frame). */
+html[data-style="vibrant"] body.home, html[data-style="vibrant"] body.phone { color: #fff; background: transparent; }
+html[data-style="vibrant"] body.home::before, html[data-style="vibrant"] body.phone::before {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 1; mix-blend-mode: normal;
+  transform: translateZ(0); will-change: transform;
+  background:
     var(--v-grain) 0 0 / 180px,
     var(--v-doodles) 0 0 / 520px,
     var(--v-mottle) 0 0 / 700px,
     var(--v-mottle-dark) 230px 140px / 800px,
     radial-gradient(ellipse 120% 90% at 50% 30%, transparent 45%, rgba(6, 3, 34, .55)),
-    #221882; background-blend-mode: overlay, normal, normal, normal, normal, normal; }
-html[data-style="vibrant"] body:has(#app)::before { display: none; }
+    #221882;
+  background-blend-mode: overlay, normal, normal, normal, normal, normal;
+}
 html[data-style="vibrant"] #app h1, html[data-style="vibrant"] #app h2 { font-weight: 400; text-shadow: 0 4px 0 rgba(10, 6, 60, .45); }
 html[data-style="vibrant"] #app .sub, html[data-style="vibrant"] #waitMsg { font-style: normal; font-weight: 700; color: var(--mute); }
 html[data-style="vibrant"] #app .eyebrow { font-weight: 900; color: var(--v-sun); letter-spacing: .18em; }
@@ -221,15 +236,11 @@ html[data-style="vibrant"] #toast { font-family: var(--ui); font-weight: 800; bo
 
 /* ================================================================ HOME PAGE */
 html[data-style="vibrant"] { background: #221882; }
-html[data-style="vibrant"] body.home { color: #fff; background:
-    var(--v-grain) 0 0 / 180px,
-    var(--v-doodles) 0 0 / 520px,
-    var(--v-mottle) 0 0 / 700px,
-    var(--v-mottle-dark) 230px 140px / 800px,
-    radial-gradient(ellipse 120% 90% at 50% 30%, transparent 45%, rgba(6, 3, 34, .55)),
-    #221882; background-blend-mode: overlay, normal, normal, normal, normal, normal; background-attachment: fixed; }
 html[data-style="vibrant"] .caps { font-family: var(--ui); font-weight: 800; letter-spacing: .12em; }
-html[data-style="vibrant"] .bar { background: var(--v-grain) 0 0 / 180px, rgba(14, 9, 60, .86); background-blend-mode: overlay, normal; border-bottom: 2px solid rgba(255, 255, 255, .08); }
+html[data-style="vibrant"] .bar {
+  background: var(--v-grain) 0 0 / 180px, var(--v-waves-bar) 0 0 / 100% 100%, #160f5c; background-blend-mode: overlay, normal, normal;
+  backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 2px solid rgba(255, 255, 255, .08); box-shadow: 0 6px 0 rgba(6, 3, 34, .35);
+}
 html[data-style="vibrant"] .brand span { font-family: var(--display); font-weight: 400; font-size: 23px; letter-spacing: .02em; text-transform: none; color: #fff; text-shadow: 0 3px 0 #120c4a; }
 html[data-style="vibrant"] .join, html[data-style="vibrant"] .gear { background: rgba(8, 5, 44, .55); border: 2px solid rgba(255, 255, 255, .1); }
 html[data-style="vibrant"] .join label, html[data-style="vibrant"] .gear { font-family: var(--ui); font-weight: 800; letter-spacing: .08em; color: var(--mute); }
@@ -248,8 +259,8 @@ html[data-style="vibrant"] .spot {
   background:
     var(--v-grain) 0 0 / 180px,
     var(--v-confetti) 0 0 / 600px 400px,
-    var(--v-facet-0) 0 0 / 100% 100%,
-    linear-gradient(90deg, rgba(40, 6, 70, .5), transparent 60%),
+    var(--v-waves-spot) 0 0 / 100% 100%,
+    linear-gradient(90deg, rgba(40, 6, 70, .45), transparent 55%),
     #d8304a;
   background-blend-mode: overlay, normal, normal, normal, normal;
   box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .16), 0 8px 0 rgba(6, 3, 34, .45), 0 26px 50px rgba(6, 3, 34, .5);
@@ -281,8 +292,8 @@ html[data-style="vibrant"] .section-head h2 { font-family: var(--display); font-
 html[data-style="vibrant"] .shelf { gap: 20px; }
 html[data-style="vibrant"] .box {
   border-radius: 20px; color: #fff;
-  background: var(--v-grain) 0 0 / 180px, var(--vf, var(--v-facet-0)) 0 0 / 100% 100%, var(--va, #3f7df0);
-  background-blend-mode: overlay, normal, normal;
+  background: var(--v-grain) 0 0 / 180px, var(--vw, var(--v-waves-0)) 0 0 / 100% 100%, var(--vf, var(--v-facet-0)) 0 0 / 100% 100%, var(--va, #3f7df0);
+  background-blend-mode: overlay, normal, normal, normal;
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .14), 0 7px 0 var(--vb, #1f4fd6), 0 16px 26px rgba(6, 3, 34, .45);
 }
 html[data-style="vibrant"] a.box:hover, html[data-style="vibrant"] a.box:focus-visible {
@@ -338,20 +349,14 @@ html[data-style="vibrant"] .brand span {
 html[data-style="vibrant"] #app h1 {
   text-shadow: 2.5px 0 0 #1b1352, -2.5px 0 0 #1b1352, 0 2.5px 0 #1b1352, 0 -2.5px 0 #1b1352, 2px 2px 0 #1b1352, -2px -2px 0 #1b1352, 2px -2px 0 #1b1352, -2px 2px 0 #1b1352, 0 6px 0 #0c0840;
 }
-/* the whole page, edge to edge: the room sits on the root too, so nothing flat ever shows behind it */
-html[data-style="vibrant"]:has(body.home), html[data-style="vibrant"]:has(#app) {
-  background:
-    var(--v-grain) 0 0 / 180px,
-    var(--v-doodles) 0 0 / 520px,
-    var(--v-mottle) 0 0 / 700px,
-    var(--v-mottle-dark) 230px 140px / 800px,
-    #221882;
-  background-blend-mode: overlay, normal, normal, normal, normal;
-  background-attachment: fixed;
-}
+html[data-style="vibrant"] { background: #221882; }
 
 /* the game pictures: printed grain over the bright set, same as the tiles and boxes */
 html[data-style="vibrant"] .art::before, html[data-style="vibrant"] .spot .pic::before {
   content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit;
   background: var(--v-grain) 0 0 / 180px; mix-blend-mode: overlay;
 }
+
+/* ================================================================ SPEED (looks identical) */
+/* Tiles far off screen are skipped entirely (no layout or painting) until they scroll near. */
+.shelf > .box { content-visibility: auto; contain-intrinsic-size: auto 300px; }
