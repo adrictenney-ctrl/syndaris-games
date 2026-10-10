@@ -2,6 +2,9 @@
 // title set like the front of a box. Shown on the home page tiles and the spotlight.
 // Every id inside an SVG is prefixed with the game id so the covers can share one page.
 
+import { makeKit } from './art-kit.js?v=68';
+import { ART } from './art-index.js?v=68';
+
 const SERIF = "'DM Serif Display', Georgia, serif";
 const CORM = "'Cormorant Garamond', Georgia, serif";
 const UI = "Manrope, 'Segoe UI', sans-serif";
@@ -9,8 +12,11 @@ const SYM = "'Noto Sans Symbols 2', 'Segoe UI Symbol', serif";
 
 // ------------------------------------------------------------------ shared pieces
 
+// Scene mode draws just the illustration, with no title: the picture on a tile, and the art on a box front.
+let SCENE = false, LAST = null;
 function shell(id, o, body) {
   const [c1, c2, c3] = o.bg;
+  LAST = o;
   return `<svg viewBox="0 0 600 400" class="cover" role="img" aria-label="${o.title}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="${id}-bg" cx="${o.cx ?? 50}%" cy="${o.cy ?? 42}%" r="80%"><stop offset="0" stop-color="${c1}"/><stop offset=".55" stop-color="${c2}"/><stop offset="1" stop-color="${c3}"/></radialGradient>
@@ -27,8 +33,7 @@ function shell(id, o, body) {
   <rect width="600" height="400" fill="url(#${id}-bg)"/>
   ${body}
   <rect width="600" height="400" fill="url(#${id}-vig)"/>
-  <rect y="190" width="600" height="210" fill="url(#${id}-scrim)"/>
-  ${titleBlock(id, o)}
+  ${SCENE ? '' : `<rect y="190" width="600" height="210" fill="url(#${id}-scrim)"/>${titleBlock(id, o)}`}
 </svg>`;
 }
 
@@ -101,6 +106,70 @@ const stars = (n, seed = 1, h = 260, op = .7) => { let s = seed, out = ''; const
 export const COVERS = {};
 const cover = (id, fn) => { COVERS[id] = fn; };
 export function coverSVG(id) { return COVERS[id] ? COVERS[id](id) : ''; }
+
+// ------------------------------------------------------------------ the boxes
+// The illustration alone (no title), for the picture beside the box. `pre` keeps ids unique.
+export function sceneSVG(id, pre = id + '-s') {
+  if (!COVERS[id]) return '';
+  SCENE = true;
+  try { return COVERS[id](pre); } finally { SCENE = false; }
+}
+const fitTitle = (t, w, max) => {
+  // DM Serif runs about .5em a character; long names go onto two lines.
+  const words = t.split(' ');
+  let lines = [t];
+  if (t.length > 13 && words.length > 1) {
+    let best = null;
+    for (let i = 1; i < words.length; i++) { const a = words.slice(0, i).join(' '), b = words.slice(i).join(' '); const m = Math.max(a.length, b.length); if (!best || m < best.m) best = { m, l: [a, b] }; }
+    lines = best.l;
+  }
+  const longest = Math.max(...lines.map(l => l.length));
+  return { lines, size: Math.min(max, w / (longest * 0.52)) };
+};
+const playersTxt = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
+// The front of the box: the art full-bleed inside a double gilt frame, a lacquered title plaque,
+// the maker's mark and a players seal. 400 × 400.
+export function boxFrontSVG(id, G) {
+  const pre = id + '-b';
+  const scene = sceneSVG(id, pre);
+  if (!scene) return '';
+  const o = LAST, [c1, c2, c3] = o.bg;
+  const { lines, size } = fitTitle(o.title, 330, 58);
+  const lh = size * 1.0, by = 362 - (lines.length - 1) * lh;
+  const plaqueTop = by - size - 34;
+  const title = lines.map((l, i) => { const y = by + i * lh, a = `x="200" y="${y}" text-anchor="middle" font-family="${SERIF}" font-size="${size}"`; return `<text ${a} dy="3" fill="#000" opacity=".6">${esc(l)}</text><text ${a} fill="url(#${pre}-bf)" stroke="#4a3210" stroke-width="1" style="paint-order:stroke">${esc(l)}</text>`; }).join('');
+  const tag = (o.tag || '').toUpperCase();
+  const corner = (x, y, r) => `<g transform="translate(${x} ${y}) rotate(${r})"><path d="M0 0 h26 M0 0 v26" stroke="url(#${pre}-bf)" stroke-width="3"/><path d="M6 6 h12 M6 6 v12" stroke="url(#${pre}-bf)" stroke-width="1.2"/><path d="M0 -5 L5 0 L0 5 L-5 0 Z" fill="url(#${pre}-bf)" transform="translate(6 6)"/></g>`;
+  return `<svg viewBox="0 0 400 400" class="boxart" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(o.title)} box">
+  <defs>
+    <linearGradient id="${pre}-bf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4d2"/><stop offset=".4" stop-color="#e6c47c"/><stop offset=".55" stop-color="#b08436"/><stop offset=".68" stop-color="#d8b268"/><stop offset="1" stop-color="#f4dfa4"/></linearGradient>
+    <linearGradient id="${pre}-pl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c3}" stop-opacity="0"/><stop offset=".28" stop-color="${c3}" stop-opacity=".86"/><stop offset="1" stop-color="#050403" stop-opacity=".96"/></linearGradient>
+    <linearGradient id="${pre}-tp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050403" stop-opacity=".8"/><stop offset="1" stop-color="#050403" stop-opacity="0"/></linearGradient>
+    <linearGradient id="${pre}-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="${c3}"/>
+  ${scene.replace('<svg ', '<svg x="0" y="0" width="400" height="400" ')}
+  <rect y="0" width="400" height="74" fill="url(#${pre}-tp)"/>
+  <rect y="${plaqueTop - 40}" width="400" height="${440 - plaqueTop}" fill="url(#${pre}-pl)"/>
+  <rect x="9" y="9" width="382" height="382" fill="none" stroke="url(#${pre}-bf)" stroke-width="3"/>
+  <rect x="17" y="17" width="366" height="366" fill="none" stroke="url(#${pre}-bf)" stroke-width="1" opacity=".8"/>
+  ${corner(17, 17, 0)}${corner(383, 17, 90)}${corner(383, 383, 180)}${corner(17, 383, 270)}
+  <text x="200" y="40" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="10.5" letter-spacing="4.5" fill="#ecdcb4">PLAY ON DISPLAY</text>
+  <path d="M120 36 H140 M260 36 H280" stroke="#c9a35a" stroke-width="1"/>
+  ${tag ? `<text x="200" y="${plaqueTop + 6}" text-anchor="middle" font-family="${UI}" font-weight="700" font-size="${tag.length > 40 ? 8.5 : 10}" letter-spacing="2.2" fill="#e9d7ae" opacity=".9">${esc(tag.length > 52 ? tag.slice(0, 50).replace(/\s+\S*$/, '') + '…' : tag)}</text>` : ''}
+  ${title}
+  <path d="M150 ${by + (lines.length - 1) * lh + 14} H190 M210 ${by + (lines.length - 1) * lh + 14} H250" stroke="#c9a35a" stroke-width="1.2"/><path d="M200 ${by + (lines.length - 1) * lh + 9} l5 5 l-5 5 l-5 -5 Z" fill="url(#${pre}-bf)"/>
+  ${G ? `<g transform="translate(340 82)"><circle r="31" fill="${c2}" stroke="url(#${pre}-bf)" stroke-width="2.5"/><circle r="25" fill="none" stroke="url(#${pre}-bf)" stroke-width=".8" stroke-dasharray="2 2.6"/><text y="5" text-anchor="middle" font-family="${SERIF}" font-size="${playersTxt(G).length > 3 ? 17 : 21}" fill="url(#${pre}-bf)">${playersTxt(G)}</text><text y="17" text-anchor="middle" font-family="${UI}" font-weight="800" font-size="6.5" letter-spacing="1.6" fill="#ecdcb4">PLAYERS</text></g>` : ''}
+  <rect width="400" height="400" fill="url(#${pre}-sheen)"/>
+</svg>`;
+}
+// The whole box as HTML: front, right side (spine) and lid top, put in 3D by CSS (.box3d).
+export function boxHTML(id, G) {
+  const front = boxFrontSVG(id, G);
+  if (!front) return '';
+  const [c1, c2, c3] = LAST.bg;
+  return `<div class="box3d" style="--b1:${c1};--b2:${c2};--b3:${c3}"><div class="bx-front">${front}</div><div class="bx-side"><span>${esc(LAST.title)}</span></div><div class="bx-top"></div></div>`;
+}
 
 // ------------------------------------------------------------------ the covers
 
@@ -842,101 +911,7 @@ export const emblemCover = (id, o) => shell(id, { title: o.title, tag: o.tag, bg
   <circle cx="300" cy="150" r="84" fill="none" stroke="url(#${id}-gold)" stroke-width="5"/>
   <text x="300" y="${150 + 38}" text-anchor="middle" font-size="104">${o.emoji}</text>
 `);
-cover('flagfrenzy', id => emblemCover(id, {"title":"Flag Frenzy","tag":"Flags on the big screen, answers on your phone","bg":["#2a5aa8","#142c58","#060c1c"],"emoji":"🏳️‍🌈","kind":"party"}));
-cover('capitalquest', id => emblemCover(id, {"title":"Capital Quest","tag":"Name the capital city before everyone else","bg":["#5a3a8a","#2c1c48","#0c0818"],"emoji":"🏛️","kind":"party"}));
-cover('trueorfalse', id => emblemCover(id, {"title":"True or False?","tag":"Surprising facts — tap true or false, fast","bg":["#2a7a5a","#143e2e","#06140e"],"emoji":"✅","kind":"party"}));
-cover('emojiphrase', id => emblemCover(id, {"title":"Emoji Phrase","tag":"Decode the emoji on the table, type the phrase","bg":["#8a5a2a","#4a2e14","#180e06"],"emoji":"🧩","kind":"party"}));
-cover('numbercrunch', id => emblemCover(id, {"title":"Number Crunch","tag":"Mental maths race on the big screen","bg":["#2a5a6a","#142e38","#060e14"],"emoji":"🧮","kind":"party"}));
-cover('whichismore', id => emblemCover(id, {"title":"Which Is More?","tag":"Two choices, one is bigger, faster, older…","bg":["#7a2e5a","#401834","#16060f"],"emoji":"⚖️","kind":"party"}));
-cover('missingvowels', id => emblemCover(id, {"title":"Missing Vowels","tag":"The vowels vanished — type the word","bg":["#3e6a2a","#203814","#0a1406"],"emoji":"🔤","kind":"party"}));
-cover('wordscramble', id => emblemCover(id, {"title":"Word Scramble","tag":"Unscramble the letters before the clock…","bg":["#7a6028","#3e3014","#161006"],"emoji":"🔀","kind":"party"}));
-cover('riddleme', id => emblemCover(id, {"title":"Riddle Me This","tag":"Classic riddles — type the answer","bg":["#44307a","#22183e","#0a0616"],"emoji":"❓","kind":"party"}));
-cover('doesntbelong', id => emblemCover(id, {"title":"Doesn’t Belong","tag":"Four things, one is the odd one out","bg":["#7a4228","#3e2014","#160a06"],"emoji":"🧐","kind":"party"}));
-cover('wildfacts', id => emblemCover(id, {"title":"Wild Facts","tag":"Animal trivia for the whole room","bg":["#3e7a3e","#1e3e1e","#081608"],"emoji":"🦁","kind":"party"}));
-cover('finishthesaying', id => emblemCover(id, {"title":"Finish the Saying","tag":"Complete the proverb, fastest wins","bg":["#7a6044","#3e3022","#16100a"],"emoji":"📜","kind":"party"}));
-cover('continentquest', id => emblemCover(id, {"title":"Continent Quest","tag":"Which continent is that country in?","bg":["#2a7a7a","#143e3e","#061616"],"emoji":"🗺️","kind":"party"}));
-cover('colorclash', id => emblemCover(id, {"title":"Colour Clash","tag":"Tap the colour of the ink, not the word","bg":["#6a2a6a","#361436","#120612"],"emoji":"🎨","kind":"party"}));
-cover('countit', id => emblemCover(id, {"title":"Count It","tag":"A flash of pictures on the table — how many?","bg":["#7a7a28","#3e3e14","#161606"],"emoji":"👀","kind":"party"}));
-cover('lastonestanding', id => emblemCover(id, {"title":"Last One Standing","tag":"Trivia elimination — one wrong and you’re out","bg":["#7a2a2a","#3e1414","#160606"],"emoji":"🏆","kind":"party"}));
-cover('buzzin', id => emblemCover(id, {"title":"Buzz In","tag":"First right answer takes the points — wrong…","bg":["#8a5010","#462808","#180e02"],"emoji":"🔔","kind":"party"}));
-cover('whatyear', id => emblemCover(id, {"title":"What Year?","tag":"Guess the year of famous events, closest wins","bg":["#3e3e7a","#1e1e3e","#080816"],"emoji":"📅","kind":"party"}));
-cover('nextinline', id => emblemCover(id, {"title":"Next in Line","tag":"Number patterns — what comes next?","bg":["#28447a","#14223e","#060a16"],"emoji":"🔢","kind":"party"}));
-cover('opposites', id => emblemCover(id, {"title":"Opposites","tag":"Pick the word that means the opposite","bg":["#6a2a48","#361424","#12060c"],"emoji":"↔️","kind":"party"}));
-cover('cluecrack', id => emblemCover(id, {"title":"Clue Crack","tag":"Crossword clues on the big screen","bg":["#4a4a4a","#262626","#0c0c0c"],"emoji":"✏️","kind":"party"}));
-cover('sortitout', id => emblemCover(id, {"title":"Sort It Out","tag":"Put four things in the right order on your…","bg":["#2a6a48","#143624","#06120c"],"emoji":"📶","kind":"party"}));
-cover('flashmemory', id => emblemCover(id, {"title":"Flash Memory","tag":"Pictures flash on the table — which one…","bg":["#5e447a","#2e223e","#0e0a16"],"emoji":"🧠","kind":"party"}));
-cover('roulette', id => emblemCover(id, {"title":"Roulette","tag":"Bet on your phone, the wheel spins on the…","bg":["#1e6a3a","#0e3a1e","#04140a"],"emoji":"🎡","kind":"casino"}));
-cover('tripledice', id => emblemCover(id, {"title":"Triple Dice","tag":"Three dice, big or small, totals and triples","bg":["#7a2a2a","#401414","#160606"],"emoji":"🎲","kind":"casino"}));
-cover('luckynumbers', id => emblemCover(id, {"title":"Lucky Numbers","tag":"Pick your numbers, watch ten get drawn","bg":["#3a2a7a","#1e1440","#0a0616"],"emoji":"🔮","kind":"casino"}));
-cover('moneywheel', id => emblemCover(id, {"title":"Money Wheel","tag":"Bet on the number the big wheel lands on","bg":["#8a6a1a","#4a380c","#1a1404"],"emoji":"💰","kind":"casino"}));
-cover('derbyday', id => emblemCover(id, {"title":"Derby Day","tag":"Back a horse on your phone, watch the race…","bg":["#3a6a2a","#1e3a14","#0a1406"],"emoji":"🏇","kind":"casino"}));
-cover('oddoreven', id => emblemCover(id, {"title":"Odd or Even","tag":"Two dice under the cup — odd or even?","bg":["#6a3a1a","#3a1e0c","#140a04"],"emoji":"🥣","kind":"casino"}));
-cover('dicepit', id => emblemCover(id, {"title":"Dice Pit","tag":"Pass line, field and long-shot dice bets","bg":["#1a5a4a","#0e3028","#04100c"],"emoji":"🎰","kind":"casino"}));
-cover('pegdrop', id => emblemCover(id, {"title":"Peg Drop","tag":"Drop your ball through the pegs — edges pay…","bg":["#5a2a7a","#2e1440","#0e0616"],"emoji":"🔻","kind":"casino"}));
-cover('inbetween', id => emblemCover(id, {"title":"In Between","tag":"Two cards on the table — will the next land…","bg":["#2a4a7a","#142640","#060c16"],"emoji":"🃏","kind":"casino"}));
-cover('casinowar', id => emblemCover(id, {"title":"Casino War","tag":"Your card against the dealer’s, high card wins","bg":["#7a1a2a","#400c14","#160406"],"emoji":"⚔️","kind":"casino"}));
-cover('liftoff', id => emblemCover(id, {"title":"Liftoff","tag":"Ride the rocket and cash out before it crashes","bg":["#1a2a5a","#0c1430","#04060f"],"emoji":"🚀","kind":"casino"}));
-cover('ridethebus', id => emblemCover(id, {"title":"Ride the Bus","tag":"Red or black, higher or lower… cash out or…","bg":["#7a5a1a","#40300c","#161004"],"emoji":"🚌","kind":"casino"}));
-cover('threecard', id => emblemCover(id, {"title":"Three Card Showdown","tag":"Three cards on your phone — play or fold…","bg":["#1e5a3a","#0e301e","#04100a"],"emoji":"♠️","kind":"casino"}));
-cover('islandstud', id => emblemCover(id, {"title":"Island Stud","tag":"Five-card stud against the dealer, big…","bg":["#1a6a7a","#0c3640","#041216"],"emoji":"🏝️","kind":"casino"}));
-cover('omaha', id => emblemCover(id, {"title":"Four-Hole Hold’em","tag":"Four hole cards, use exactly two","bg":["#6a2440","#3a1424","#140610"],"emoji":"♦️","kind":"casino"}));
-cover('lowestunique', id => emblemCover(id, {"title":"Lowest Unique","tag":"Pick the lowest number nobody else picks","bg":["#2a4a7a","#142640","#060c16"],"emoji":"1️⃣","kind":"phone"}));
-cover('splitsteal', id => emblemCover(id, {"title":"Split or Steal","tag":"Share the pot with your partner… or take it…","bg":["#7a5a1a","#40300c","#161004"],"emoji":"🤝","kind":"phone"}));
-cover('twothirds', id => emblemCover(id, {"title":"Two-Thirds","tag":"Guess two-thirds of everyone’s average guess","bg":["#3a2a6a","#1e1438","#0a0616"],"emoji":"🧠","kind":"phone"}));
-cover('vulturebids', id => emblemCover(id, {"title":"Vulture Bids","tag":"Secret card bids for prizes — ties cancel out","bg":["#6a3a1a","#3a1e0c","#140a04"],"emoji":"🦅","kind":"phone"}));
-cover('treasurerun', id => emblemCover(id, {"title":"Treasure Run","tag":"Go deeper for gems or head home before the…","bg":["#2a4a5a","#142630","#060c10"],"emoji":"💎","kind":"phone"}));
-cover('ticker', id => emblemCover(id, {"title":"Ticker","tag":"A secret tip on your phone, one trade a…","bg":["#1a4a3a","#0e281e","#04100a"],"emoji":"📈","kind":"phone"}));
-cover('galaauction', id => emblemCover(id, {"title":"Gala Auction","tag":"Bid money cards on luxuries — but don’t end…","bg":["#6a2a4a","#3a1428","#14060c"],"emoji":"🖼️","kind":"phone"}));
-cover('threefronts', id => emblemCover(id, {"title":"Three Fronts","tag":"Split your troops across three battlefields","bg":["#4a4a2a","#262614","#0e0e06"],"emoji":"🪖","kind":"phone"}));
-cover('lemonade', id => emblemCover(id, {"title":"Lemonade Stand","tag":"Set your price, make your cups, read the…","bg":["#8a7a1a","#48400c","#181404"],"emoji":"🍋","kind":"phone"}));
-cover('fishpond', id => emblemCover(id, {"title":"Fish Pond","tag":"Take fish from a shared pond — or ruin it…","bg":["#1a5a7a","#0e3040","#041016"],"emoji":"🎣","kind":"phone"}));
-cover('mysteryboxes', id => emblemCover(id, {"title":"Mystery Boxes","tag":"A secret hint, a sealed bid, three boxes","bg":["#7a1a5a","#400c30","#160410"],"emoji":"🎁","kind":"phone"}));
-cover('standoff', id => emblemCover(id, {"title":"Standoff","tag":"Aim, load a bullet or a bluff, and grab the…","bg":["#7a4a1a","#40260c","#160c04"],"emoji":"🤠","kind":"phone"}));
-cover('fiveletters', id => emblemCover(id, {"title":"Five Letters","tag":"Everyone guesses the same secret word on…","bg":["#2a6a3a","#14361e","#06120a"],"emoji":"🟩","kind":"quiz"}));
-cover('wordgallows', id => emblemCover(id, {"title":"Word Gallows","tag":"Everyone picks a letter at once — fill the…","bg":["#5a4a2a","#2e2614","#0e0c06"],"emoji":"🪢","kind":"quiz"}));
-cover('longword', id => emblemCover(id, {"title":"Long Word","tag":"Nine letters on the table, longest word wins","bg":["#2a3a6a","#141e38","#060a14"],"emoji":"🔠","kind":"quiz"}));
-cover('targetnumber', id => emblemCover(id, {"title":"Target Number","tag":"Six numbers, one target, any sums you like","bg":["#6a2a2a","#381414","#120606"],"emoji":"🎯","kind":"quiz"}));
-cover('speedtypist', id => emblemCover(id, {"title":"Speed Typist","tag":"Type the sentence on the table fastest","bg":["#2a2a4a","#161626","#06060c"],"emoji":"⌨️","kind":"quiz"}));
-cover('wordchain', id => emblemCover(id, {"title":"Word Chain","tag":"Each word starts with the last letter of…","bg":["#3a4a5a","#1e2630","#0a0c10"],"emoji":"⛓️","kind":"quiz"}));
-cover('ghostletters', id => emblemCover(id, {"title":"Ghost Letters","tag":"Add a letter, don’t finish a word, or…","bg":["#3a3a5a","#1e1e30","#0a0a10"],"emoji":"👻","kind":"quiz"}));
-cover('slowreveal', id => emblemCover(id, {"title":"Slow Reveal","tag":"A picture appears tile by tile — guess it…","bg":["#6a4a1a","#3a260c","#140c04"],"emoji":"🧩","kind":"quiz"}));
-cover('acrorace', id => emblemCover(id, {"title":"Acro Race","tag":"Write a phrase from random letters, vote…","bg":["#7a2a5a","#40142e","#16060f"],"emoji":"🔤","kind":"quiz"}));
-cover('fibfinder', id => emblemCover(id, {"title":"Fib Finder","tag":"Strange true facts with a blank — write…","bg":["#4a2a6a","#261438","#0e0614"],"emoji":"🤥","kind":"quiz"}));
-cover('storychain', id => emblemCover(id, {"title":"Story Chain","tag":"Add a line seeing only the one before —…","bg":["#5a3a6a","#2e1e38","#0e0814"],"emoji":"📖","kind":"phone"}));
-cover('rateit', id => emblemCover(id, {"title":"Rate It","tag":"Guess how the hot seat rates things from 1…","bg":["#8a3a2a","#481e14","#180a06"],"emoji":"🌡️","kind":"phone"}));
-cover('topfive', id => emblemCover(id, {"title":"Top Five","tag":"Guess how the hot seat ranks five things","bg":["#7a6a1a","#40380c","#161404"],"emoji":"🥇","kind":"phone"}));
-cover('mindmeld', id => emblemCover(id, {"title":"Mind Meld","tag":"Pairs try to say the same word at the same…","bg":["#3a2a7a","#1e1440","#0a0616"],"emoji":"🧠","kind":"phone"}));
-cover('captionit', id => emblemCover(id, {"title":"Caption It","tag":"A strange picture on the table — write the…","bg":["#2a5a7a","#142e40","#060e16"],"emoji":"💬","kind":"phone"}));
-cover('fakeartist', id => emblemCover(id, {"title":"Fake Artist","tag":"One line each on a shared drawing — one…","bg":["#7a2a3a","#40141e","#16060a"],"emoji":"🎨","kind":"phone"}));
-cover('copycat', id => emblemCover(id, {"title":"Copy Cat","tag":"A picture flashes on the table — draw it…","bg":["#6a5a2a","#383014","#141006"],"emoji":"🐱","kind":"phone"}));
-cover('codecrack', id => emblemCover(id, {"title":"Code Crack","tag":"Two teams, secret keywords, coded clues —…","bg":["#1a4a5a","#0e2630","#040c10"],"emoji":"🔐","kind":"phone"}));
-cover('undercover', id => emblemCover(id, {"title":"Undercover Spy","tag":"Everyone knows the location except the spy","bg":["#2a2a3a","#16161e","#06060a"],"emoji":"🕵️","kind":"phone"}));
-cover('mafianight', id => emblemCover(id, {"title":"Mafia Night","tag":"Mafia, Doctor, Detective — secret roles and…","bg":["#4a1a2a","#280c16","#0e0406"],"emoji":"🔪","kind":"phone"}));
-cover('tugofwar', id => emblemCover(id, {"title":"Tug of War","tag":"Two teams tap like mad to drag the rope…","bg":["#7a4a1a","#40260c","#160c04"],"emoji":"🪢","kind":"phone"}));
-cover('tapderby', id => emblemCover(id, {"title":"Tap Derby","tag":"Tap your horse to the finish line on the…","bg":["#2a6a2a","#143614","#061206"],"emoji":"🏇","kind":"phone"}));
-cover('redlight', id => emblemCover(id, {"title":"Red Light, Green Light","tag":"Run on green, freeze on red — or back to…","bg":["#6a1a1a","#360c0c","#120404"],"emoji":"🚦","kind":"phone"}));
-cover('musicalchairs', id => emblemCover(id, {"title":"Musical Chairs","tag":"When the music stops, tap SIT — one chair…","bg":["#6a2a6a","#381438","#120612"],"emoji":"🪑","kind":"phone"}));
-cover('quickdraw', id => emblemCover(id, {"title":"Quick Draw","tag":"Wait for DRAW, then tap fastest — too early…","bg":["#8a5a2a","#482e14","#180e06"],"emoji":"🤠","kind":"phone"}));
-cover('echo', id => emblemCover(id, {"title":"Echo","tag":"Watch the colours on the table, repeat them…","bg":["#2a2a7a","#141440","#060616"],"emoji":"🎵","kind":"phone"}));
-cover('simonsays', id => emblemCover(id, {"title":"Simon Says","tag":"Only tap when Simon says so","bg":["#1a6a5a","#0e3830","#041410"],"emoji":"🙋","kind":"phone"}));
-cover('memorygrid', id => emblemCover(id, {"title":"Memory Grid","tag":"Squares light up on the table — mark them…","bg":["#3a4a7a","#1e2640","#0a0c16"],"emoji":"🔲","kind":"phone"}));
-cover('whackamole', id => emblemCover(id, {"title":"Whack-a-Mole","tag":"Moles pop up on the table — whack the hole…","bg":["#5a4a1a","#2e260c","#100c04"],"emoji":"🐹","kind":"phone"}));
-cover('counttogether', id => emblemCover(id, {"title":"Count Together","tag":"Count to the target as a team — never two…","bg":["#2a5a7a","#142e40","#060e16"],"emoji":"🔢","kind":"phone"}));
-cover('whist', id => emblemCover(id, {"title":"Whist","tag":"The classic partnership trick game — take…","bg":["#1f3a6a","#0f1e38","#050a14"],"emoji":"♠️","kind":"cards"}));
-cover('exactly', id => emblemCover(id, {"title":"Exactly","tag":"Bid the exact number of tricks you’ll take…","bg":["#6a2a5a","#38142e","#140610"],"emoji":"🎯","kind":"cards"}));
-cover('setback', id => emblemCover(id, {"title":"Setback","tag":"Bid for High, Low, Jack and Game — the…","bg":["#7a4a1a","#40260c","#160c04"],"emoji":"🃏","kind":"cards"}));
-cover('raven', id => emblemCover(id, {"title":"Raven","tag":"Bid for the nest, name trump, and beware…","bg":["#2a2a3a","#14141e","#06060a"],"emoji":"🐦‍⬛","kind":"cards"}));
-cover('missiontricks', id => emblemCover(id, {"title":"Mission Tricks","tag":"Co-op: win the right cards with the right…","bg":["#1a3a6a","#0c1e38","#040a14"],"emoji":"🚀","kind":"cards"}));
-cover('schnapsen', id => emblemCover(id, {"title":"Schnapsen","tag":"Fast two-player duel to 66 card points with…","bg":["#6a1a2a","#380c14","#140406"],"emoji":"👑","kind":"cards"}));
-cover('pinochle', id => emblemCover(id, {"title":"Pinochle","tag":"Bid, meld and take tricks in partnerships","bg":["#5a3a1a","#2e1e0c","#100a04"],"emoji":"💍","kind":"cards"}));
-cover('bridge', id => emblemCover(id, {"title":"Bridge","tag":"The great partnership game: auction a…","bg":["#1a4a4a","#0c2626","#040e0e"],"emoji":"🌉","kind":"cards"}));
-cover('topdog', id => emblemCover(id, {"title":"Top Dog","tag":"Shed your cards first to become Top Dog —…","bg":["#7a5a1a","#402e0c","#160e04"],"emoji":"🐶","kind":"cards"}));
-cover('bigdeuce', id => emblemCover(id, {"title":"Big Deuce","tag":"Beat the pile with singles, pairs and poker…","bg":["#6a1a1a","#380c0c","#140404"],"emoji":"2️⃣","kind":"cards"}));
-cover('foolsdefense', id => emblemCover(id, {"title":"Fool's Defense","tag":"Attack and defend in turn — the last player…","bg":["#4a1a6a","#260c38","#0c0414"],"emoji":"🤡","kind":"cards"}));
-cover('thirtyone', id => emblemCover(id, {"title":"Thirty-One","tag":"Draw and discard toward 31 in one suit —…","bg":["#1a5a3a","#0c2e1e","#04100a"],"emoji":"3️⃣","kind":"cards"}));
-cover('tonk', id => emblemCover(id, {"title":"Tonk","tag":"Quick rummy: spread sets and runs, or drop…","bg":["#5a2a1a","#2e140c","#100604"],"emoji":"🎴","kind":"cards"}));
-cover('slapstack', id => emblemCover(id, {"title":"Slap Stack","tag":"Flip to the pile and slap doubles and…","bg":["#7a2a2a","#401414","#160606"],"emoji":"🖐️","kind":"cards"}));
-cover('speed', id => emblemCover(id, {"title":"Speed","tag":"No turns — play one higher or lower as fast…","bg":["#6a5a1a","#382e0c","#141004"],"emoji":"⚡","kind":"cards"}));
-cover('pairs', id => emblemCover(id, {"title":"Pairs","tag":"Flip or fold — pair your own card and you…","bg":["#4a6a1a","#26380c","#0c1404"],"emoji":"🍐","kind":"cards"}));
-cover('cardgolf', id => emblemCover(id, {"title":"Card Golf","tag":"Six cards face down — swap your way to the…","bg":["#2a6a2a","#143814","#061406"],"emoji":"⛳","kind":"cards"}));
-cover('cornerkings', id => emblemCover(id, {"title":"Corner Kings","tag":"Build down in alternating colours — kings…","bg":["#6a4a1a","#38260c","#140c04"],"emoji":"🤴","kind":"cards"}));
+
+// ---- The painted covers (art-*.js) replace the older emblem covers.
+const KIT = makeKit({ cover, shell, card, chip, stack, die, glow, stars, esc, ltile, kingFace, queenFace, jackFace, SERIF, CORM, UI, SYM });
+for (const paint of ART) paint(KIT);

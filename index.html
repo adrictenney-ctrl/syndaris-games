@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/cards.css?v=68">
+  <link rel="stylesheet" href="css/boxes.css?v=68">
   <style>
     html { background: var(--onyx); }
     body {
@@ -46,16 +47,18 @@
 
     /* ---------- spotlight ---------- */
     .spot {
-      position: relative; display: grid; grid-template-columns: 1.15fr 1fr; min-height: 340px; margin: 30px 0 34px;
+      position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; min-height: 420px; margin: 30px 0 34px;
       border-radius: 20px; overflow: hidden; text-decoration: none; color: var(--ivory);
       background: radial-gradient(ellipse 70% 90% at 28% 50%, color-mix(in srgb, var(--tint) 100%, #fff 6%), var(--tint) 45%, color-mix(in srgb, var(--tint) 35%, #000) 100%);
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 30px 60px rgba(0, 0, 0, .45);
     }
-    .spot .stage { position: relative; display: grid; place-items: center; }
-    .spot .stage { padding: 28px 10px 28px 32px; }
-    .spot .stage .cover { width: 100%; max-width: 560px; height: auto; border-radius: 14px; box-shadow: 0 30px 60px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .08); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
-    a.spot:hover .stage .cover { transform: translateY(-3px) rotate(-.4deg); }
-    .spot .info { display: flex; flex-direction: column; justify-content: center; padding: 40px 48px 40px 10px; }
+    .spot .pic { position: absolute; inset: 0 0 0 36%; overflow: hidden; }
+    .spot .pic .cover { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); }
+    .spot .pic::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--tint) 0%, color-mix(in srgb, var(--tint) 70%, transparent) 30%, transparent 62%), linear-gradient(0deg, rgba(0, 0, 0, .55), transparent 45%); }
+    a.spot:hover .spot-pic .cover, a.spot:hover .pic .cover { transform: scale(1.03); }
+    .spot .stage { position: relative; z-index: 1; padding: 40px 34px 40px 56px; --s: 230px; }
+    a.spot:hover .box3d { transform: rotateX(-12deg) rotateY(-36deg) translateY(-4px); }
+    .spot .info { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 48px 40px 10px; text-shadow: 0 2px 12px rgba(0, 0, 0, .6); }
     .spot .kicker { color: var(--champagne); display: inline-flex; align-items: center; gap: 10px; }
     .spot .kicker::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--champagne); box-shadow: 0 0 12px var(--champagne); }
     .spot h1 { font-family: var(--display); font-weight: 600; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin: 14px 0 12px; }
@@ -143,7 +146,9 @@
     }
     .hover-play::before { content: ''; margin-left: 3px; border-left: 11px solid currentColor; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
     a.box:hover .hover-play, a.box:focus-visible .hover-play { opacity: 1; transform: none; }
-    .info-row { padding: 14px 16px 16px; }
+    .info-row { position: relative; min-height: 76px; padding: 13px 14px 15px 124px; }
+    .info-row .box-stage { --s: 92px; position: absolute; left: 16px; bottom: 14px; z-index: 2; pointer-events: none; }
+    a.box:hover .box3d, a.box:focus-visible .box3d { transform: rotateX(-12deg) rotateY(-38deg) translateY(-6px); }
     .box h3 { font-family: var(--display); font-weight: 600; font-size: 23px; line-height: 1.1; margin: 0 0 8px; }
     .meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .meta .who { display: inline-flex; align-items: center; gap: 6px; font-family: var(--ui); font-size: 12.5px; font-weight: 600; color: rgba(239, 233, 220, .78); }
@@ -177,8 +182,10 @@
 
     @media (max-width: 860px) {
       .spot { grid-template-columns: 1fr; }
-      .spot .stage { padding: 22px 22px 6px; }
-      .spot .info { padding: 6px 26px 30px; }
+      .spot .pic { inset: 0; }
+      .spot .pic::after { background: linear-gradient(0deg, var(--tint) 30%, color-mix(in srgb, var(--tint) 50%, transparent) 60%, transparent); }
+      .spot .stage { padding: 30px 26px 0; --s: 170px; }
+      .spot .info { padding: 18px 26px 30px; }
     }
     @media (max-width: 600px) {
       .wrap { padding: 0 16px; }
@@ -186,7 +193,7 @@
       .join { width: 100%; }
       .join input { flex: 1; width: auto; min-width: 0; }
       .spot { margin-top: 18px; border-radius: 16px; }
-      .spot .stage { padding: 16px 16px 4px; }
+      .spot .stage { padding: 24px 20px 0; --s: 140px; }
       .filters { flex-direction: column; align-items: stretch; }
       .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
       .chip { flex: none; }
@@ -194,7 +201,8 @@
       .search { max-width: none; flex-basis: auto; }
       .shelf { grid-template-columns: 1fr 1fr; gap: 12px; }
       .box h3 { font-size: 19px; }
-      .info-row { padding: 11px 12px 13px; }
+      .info-row { padding: 9px 10px 11px 74px; min-height: 58px; }
+      .info-row .box-stage { --s: 56px; left: 9px; bottom: 10px; }
       .meta .dot, .meta .kind { display: none; }
     }
 
@@ -208,6 +216,8 @@
     html.tv .shelf { grid-template-columns: repeat(8, 1fr); gap: 1.6vh; }
     html.tv .box h3 { font-size: 3vh; }
     html.tv .meta .kind, html.tv .meta .dot { display: none; }
+    html.tv .info-row { padding-left: 14px; min-height: 0; }
+    html.tv .info-row .box-stage { display: none; }
   </style>
 </head>
 <body>
@@ -246,7 +256,7 @@
   <script type="module" src="js/tvnav.js?v=68"></script>
   <script type="module">
     import { GAMES } from './js/games.js?v=68';
-    import { coverSVG } from './js/covers.js?v=68';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=68';
 
     const ids = ['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -266,6 +276,7 @@
     // The TV shows the whole library (no filter bar there).
     const onTV = /PlayOnDisplayTV/.test(navigator.userAgent) || new URLSearchParams(location.search).has('tv') || document.documentElement.classList.contains('tv') || (() => { try { return sessionStorage.getItem('pod.tv') === '1'; } catch { return false; } })();
     if (onTV) { cat = 'all'; who = 'any'; }
+    if (!KIND_NAME[cat]) cat = 'all';
 
 
     // ---- Spotlight: the game this screen last played, otherwise the newest game.
@@ -276,7 +287,7 @@
     const spot = document.getElementById('spot');
     spot.className = `spot t-${spotId}`;
     spot.href = `table.html?game=${spotId}`;
-    spot.innerHTML = `<div class="stage"></div>
+    spot.innerHTML = `<div class="pic"></div><div class="stage box-stage"></div>
       <div class="info">
         <span class="caps kicker">${GAMES[last] ? 'Jump back in' : 'New on the table'}</span>
         <h1>${S.name}</h1>
@@ -284,7 +295,8 @@
         <div class="tags"><span class="tag">${range(S)} players</span><span class="tag">${KIND_NAME[KIND[spotId]]}</span>${S.noBots ? '' : '<span class="tag">Bots welcome</span>'}</div>
         <span class="play-btn">Play</span>
       </div>`;
-    spot.querySelector('.stage').innerHTML = coverSVG(spotId);
+    spot.querySelector('.pic').innerHTML = sceneSVG(spotId, spotId + '-sp');
+    spot.querySelector('.stage').innerHTML = boxHTML(spotId, S);
 
     // ---- Favorites (starred on this device)
     let favs = [];
@@ -333,16 +345,25 @@
     // ---- Library
     const shelf = document.getElementById('shelf');
     const tiles = {};
+    const lazy = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const t = e.target, id = t.dataset.id;
+      lazy.unobserve(t);
+      t.querySelector('.art').insertAdjacentHTML('afterbegin', sceneSVG(id));
+      if (!onTV) t.querySelector('.info-row .box-stage').innerHTML = boxHTML(id, GAMES[id]);
+    }), { rootMargin: '600px 0px' });
     ids.forEach(id => {
       const G = GAMES[id];
       const box = document.createElement('a');
       box.className = `box t-${id}`;
+      box.dataset.id = id;
       box.href = `table.html?game=${id}`;
       box.innerHTML = `<div class="art">${NEW.has(id) ? '<span class="new">NEW</span>' : ''}<span class="hover-play" aria-hidden="true"></span></div>
-        <div class="info-row"><h3>${G.name}</h3>
+        <div class="info-row"><div class="box-stage"></div><h3>${G.name}</h3>
           <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${KIND_NAME[KIND[id]]}</span></div></div>`;
       box.title = desc(G);
-      box.querySelector('.art').insertAdjacentHTML('afterbegin', coverSVG(id));
+      // The picture and the box are drawn when the tile scrolls near the screen.
+      lazy.observe(box);
       const star = document.createElement('button');
       star.type = 'button';
       star.className = 'fav' + (isFav(id) ? ' on' : '');

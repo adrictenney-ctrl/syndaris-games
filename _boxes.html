@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Boxes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/boxes.css">
+<style>body{background:#0c0b0a;margin:0;padding:30px;display:grid;grid-template-columns:repeat(var(--cols,4),1fr);gap:40px 30px;color:#eee;font:11px sans-serif}
+.c{display:flex;flex-direction:column;align-items:center;gap:8px}.c .box-stage{padding:10px}
+.flat{display:grid;grid-template-columns:repeat(var(--cols,4),1fr);gap:10px;grid-column:1/-1}.flat svg{width:100%;height:auto;display:block}</style></head>
+<body><script type="module">
+const q = new URLSearchParams(location.search);
+const C = await import('./js/covers.js?t=' + Date.now());
+const { GAMES } = await import('./js/games.js?v=68');
+const ids = (q.get('ids') || 'euchre,holdem,veto,chess').split(',');
+document.body.style.setProperty('--cols', q.get('cols') || 4);
+await document.fonts.ready;
+const size = q.get('s') || 160;
+document.body.innerHTML = ids.map(id => `<div class="c"><div class="box-stage" style="--s:${size}px">${C.boxHTML(id, GAMES[id])}</div><b>${id}</b></div>`).join('')
+  + (q.has('flat') ? `<div class="flat">${ids.map(id => C.boxFrontSVG(id, GAMES[id])).join('')}</div>` : '');
+</script></body></html>
