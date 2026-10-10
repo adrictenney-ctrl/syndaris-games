@@ -3,9 +3,12 @@
 // that guess, and so on — everyone working at once — until each book comes home. Then the
 // table reveals every chain, page by page, to see how far the word drifted.
 import { LISTS } from './sketch-words.js?v=68';
+import { SCRIBBLE_WORDS } from './scribble-words.js?v=1';
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-const pickWords = n => shuffle([...LISTS.easy, ...LISTS.medium]).slice(0, n);
+// Scribble Chain draws from the shared easy and medium lists plus its own big list (no repeats).
+const POOL = [...new Set([...LISTS.easy, ...LISTS.medium, ...SCRIBBLE_WORDS])];
+const pickWords = n => shuffle([...POOL]).slice(0, n);
 
 export function createGame(settings, players) {
   const g = { settings: { draw: 80, guess: 45, ...settings }, seats: players.map(p => !!p), annId: 0, stepId: 0 };
