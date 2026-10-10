@@ -118,33 +118,6 @@
     @keyframes favPop { 50% { transform: scale(1.4); } }
     @media (hover: none) { .fav { opacity: .8; } }
 
-    /* ---------- game packs ---------- */
-    .packs { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 40px; }
-    .pack {
-      position: relative; display: flex; flex-direction: column; min-height: 178px; padding: 18px 18px 16px; border: 0; border-radius: 18px; overflow: hidden; cursor: pointer; text-align: left; color: var(--ivory);
-      background: radial-gradient(ellipse 90% 90% at 18% 10%, color-mix(in srgb, var(--pc) 100%, #fff 10%), var(--pc) 45%, color-mix(in srgb, var(--pc) 30%, #000) 100%);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 14px 30px rgba(0, 0, 0, .35); transition: transform .25s cubic-bezier(.2, .7, .2, 1), box-shadow .25s;
-    }
-    .pack:hover, .pack:focus-visible { transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(205, 180, 135, .6), 0 22px 40px rgba(0, 0, 0, .5); outline: none; }
-    .pack.on { box-shadow: inset 0 0 0 2px var(--champagne), 0 22px 40px rgba(0, 0, 0, .5); }
-    .pack .emo { font-size: 30px; line-height: 1; }
-    .pack h3 { position: relative; z-index: 1; margin: 10px 0 6px; font-family: var(--display); font-weight: 600; font-size: 25px; line-height: 1.05; max-width: 56%; text-shadow: 0 2px 8px rgba(0, 0, 0, .5); }
-    .pack p { position: relative; z-index: 1; margin: 0 0 12px; max-width: 56%; font-size: 13px; line-height: 1.45; color: rgba(239, 233, 220, .72); }
-    .pack .n { position: relative; z-index: 1; margin-top: auto; align-self: flex-start; font-family: var(--ui); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; padding: 6px 11px; border-radius: 999px; background: rgba(0, 0, 0, .3); color: var(--champagne-hi); }
-    .pack .fan { position: absolute; right: -6px; top: 50%; width: 38%; height: 0; pointer-events: none; }
-    .pack .fan .cover { top: -40px; }
-    .pack .fan .cover { position: absolute; right: 0; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 22px rgba(0, 0, 0, .5); transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
-    .pack .fan .cover:nth-child(1) { transform: translate(-34%, 30px) rotate(-12deg); }
-    .pack .fan .cover:nth-child(2) { transform: translate(-14%, 14px) rotate(-4deg); }
-    .pack .fan .cover:nth-child(3) { transform: translate(4%, 0) rotate(6deg); }
-    .pack:hover .fan .cover:nth-child(1) { transform: translate(-44%, 34px) rotate(-16deg); }
-    .pack:hover .fan .cover:nth-child(3) { transform: translate(10%, -4px) rotate(10deg); }
-    .lib-blurb { margin: -8px 0 18px; color: var(--mute); font-size: 14.5px; }
-    .lib-blurb:empty { display: none; }
-    .section-head button.back { font-family: var(--ui); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 7px 13px; margin-left: 12px; border-radius: 999px; border: 1px solid var(--hairline-hi); background: none; color: var(--champagne); cursor: pointer; vertical-align: middle; }
-    .section-head button.back[hidden] { display: none; }
-    html.tv .packs, html.tv #packsHead { display: none; }
-
     /* ---------- the library ---------- */
     .section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 16px; }
     .section-head h2 { font-family: var(--display); font-weight: 600; font-size: 30px; margin: 0; }
@@ -223,12 +196,6 @@
       .box h3 { font-size: 19px; }
       .info-row { padding: 11px 12px 13px; }
       .meta .dot, .meta .kind { display: none; }
-      .packs { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
-      .pack { min-height: 112px; padding: 13px 13px 12px; border-radius: 14px; }
-      .pack .emo { font-size: 22px; }
-      .pack h3 { font-size: 18px; max-width: none; margin: 7px 0 8px; }
-      .pack p, .pack .fan { display: none; }
-      .pack .n { font-size: 9.5px; padding: 4px 8px; }
     }
 
     /* ---------- TV: just the library, every game on one screen ---------- */
@@ -258,17 +225,13 @@
   <main class="wrap">
     <a class="spot" id="spot"></a>
 
-    <div class="section-head" id="packsHead"><h2>Game packs</h2><span class="caps" id="packCount"></span></div>
-    <div class="packs" id="packs"></div>
-
     <div class="filters">
       <label class="search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg><input id="q" type="search" placeholder="Search games" autocomplete="off" spellcheck="false" aria-label="Search games"><button class="clear" id="qClear" type="button" aria-label="Clear search" hidden>✕</button></label>
       <div class="chips" id="cats"></div>
       <div class="count"><span class="caps">Players</span><div class="seg" id="players"></div></div>
     </div>
 
-    <div class="section-head" id="libHead"><h2><span id="libTitle">All games</span><button class="back" id="allBtn" type="button" hidden>All games</button></h2><span class="caps" id="libCount"></span></div>
-    <p class="lib-blurb" id="libBlurb"></p>
+    <div class="section-head"><h2 id="libTitle">All games</h2><span class="caps" id="libCount"></span></div>
     <div class="shelf" id="shelf"></div>
   </main>
 
@@ -284,7 +247,6 @@
   <script type="module">
     import { GAMES } from './js/games.js?v=68';
     import { coverSVG } from './js/covers.js?v=68';
-    import { PACKS, PACK, packOf } from './js/packs.js?v=68';
 
     const ids = ['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -293,9 +255,6 @@
     };
     const KIND_NAME = { all: 'All games', fav: 'Favorites', cards: 'Card games', casino: 'Casino', board: 'Board games', dice: 'Dice', party: 'Party', quiz: 'Quiz shows', word: 'Word games', action: 'Action', roles: 'Hidden roles' };
     const NEW = new Set(['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'deepspace', 'houserules', 'bannerraid', 'fieldagents', 'dialitin', 'pileup', 'luckystreak', 'passpot', 'tessera', 'gearworks', 'redline', 'grandprix', 'spires', 'kaboom', 'nestegg', 'powerup', 'wordsmith', 'homestead', 'ironroutes', 'warfront', 'manor', 'scribble', 'wrongnumber', 'sonar', 'milestones', 'trio', 'fourup', 'seedstones', 'lowtide', 'skyline', 'crazy8', 'spoons', 'doubt', 'cashout', 'yacht', 'checkers']);
-    // The filter chips: everything, favourites, then each game pack.
-    const CAT_NAME = { all: 'All games', fav: 'Favorites', ...Object.fromEntries(PACKS.map(P => [P.id, P.name])) };
-    const packName = id => PACK[packOf(id, KIND[id])].name;
     const PLAYERS = [['any', 'Any'], ['1', '1'], ['2', '2'], ['3-4', '3–4'], ['5-8', '5–8'], ['9-10', '9+']];
     const people = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.6"/><path d="M1 14c0-3 2.2-5 5-5s5 2 5 5z"/><circle cx="11.5" cy="5.5" r="2.1" opacity=".6"/><path d="M11 9.2c2.4.2 4 2 4 4.8h-3c0-1.9-.4-3.5-1-4.8z" opacity=".6"/></svg>';
     const range = G => (G.min === G.max ? `${G.min}` : `${G.min}–${G.max}`);
@@ -307,7 +266,6 @@
     // The TV shows the whole library (no filter bar there).
     const onTV = /PlayOnDisplayTV/.test(navigator.userAgent) || new URLSearchParams(location.search).has('tv') || document.documentElement.classList.contains('tv') || (() => { try { return sessionStorage.getItem('pod.tv') === '1'; } catch { return false; } })();
     if (onTV) { cat = 'all'; who = 'any'; }
-    if (!CAT_NAME[cat]) cat = 'all';
 
 
     // ---- Spotlight: the game this screen last played, otherwise the newest game.
@@ -323,7 +281,7 @@
         <span class="caps kicker">${GAMES[last] ? 'Jump back in' : 'New on the table'}</span>
         <h1>${S.name}</h1>
         <p>${desc(S)}.</p>
-        <div class="tags"><span class="tag">${range(S)} players</span><span class="tag">${packName(spotId)}</span>${S.noBots ? '' : '<span class="tag">Bots welcome</span>'}</div>
+        <div class="tags"><span class="tag">${range(S)} players</span><span class="tag">${KIND_NAME[KIND[spotId]]}</span>${S.noBots ? '' : '<span class="tag">Bots welcome</span>'}</div>
         <span class="play-btn">Play</span>
       </div>`;
     spot.querySelector('.stage').innerHTML = coverSVG(spotId);
@@ -345,22 +303,11 @@
 
     // ---- Filters
     const cats = document.getElementById('cats');
-    cats.innerHTML = Object.entries(CAT_NAME).map(([k, t]) => `<button class="chip${k === 'fav' ? ' fav-chip' : ''}" data-cat="${k}" type="button">${t}</button>`).join('');
+    cats.innerHTML = Object.entries(KIND_NAME).map(([k, t]) => `<button class="chip${k === 'fav' ? ' fav-chip' : ''}" data-cat="${k}" type="button">${t}</button>`).join('');
     const seg = document.getElementById('players');
     seg.innerHTML = PLAYERS.map(([k, t]) => `<button data-who="${k}" type="button">${t}</button>`).join('');
     cats.onclick = e => { const b = e.target.closest('[data-cat]'); if (b) { cat = b.dataset.cat; draw(); } };
     seg.onclick = e => { const b = e.target.closest('[data-who]'); if (b) { who = b.dataset.who; draw(); } };
-
-    // ---- Packs: a card per pack with a fan of three of its covers.
-    const packsEl = document.getElementById('packs');
-    const packGames = P => ids.filter(id => packOf(id, KIND[id]) === P.id);
-    document.getElementById('packCount').textContent = `${PACKS.length} packs · ${ids.length} games`;
-    packsEl.innerHTML = PACKS.map(P => { const g = packGames(P); return `<button class="pack" type="button" data-pack="${P.id}" style="--pc:${P.color}">
-        <span class="fan">${[g[2], g[1], g[0]].filter(Boolean).map(id => coverSVG(id)).join('')}</span>
-        <span class="emo">${P.emoji}</span><h3>${P.name}</h3><p>${P.blurb}</p><span class="n">${g.length} games</span></button>`; }).join('');
-    const libHead = document.getElementById('libHead');
-    packsEl.onclick = e => { const b = e.target.closest('[data-pack]'); if (!b) return; cat = b.dataset.pack; if (q) setQ(''); draw(); libHead.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-    document.getElementById('allBtn').onclick = () => { cat = 'all'; draw(); };
 
     const fits = G => {
       if (who === 'any') return true;
@@ -372,7 +319,7 @@
     let q = '';
     const qEl = document.getElementById('q'), qClear = document.getElementById('qClear');
     const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’'&!.,]/g, '').replace(/\s+/g, ' ').trim();
-    const hay = id => norm(`${GAMES[id].name} ${GAMES[id].blurb} ${KIND_NAME[KIND[id]]} ${packName(id)} ${id}`);
+    const hay = id => norm(`${GAMES[id].name} ${GAMES[id].blurb} ${KIND_NAME[KIND[id]]} ${id}`);
     const matches = id => !q.trim() || norm(q).split(' ').every(w => hay(id).includes(w));
     const setQ = v => { qEl.value = q = v; qClear.hidden = !q; draw(); };
     qEl.addEventListener('input', () => setQ(qEl.value));
@@ -393,7 +340,7 @@
       box.href = `table.html?game=${id}`;
       box.innerHTML = `<div class="art">${NEW.has(id) ? '<span class="new">NEW</span>' : ''}<span class="hover-play" aria-hidden="true"></span></div>
         <div class="info-row"><h3>${G.name}</h3>
-          <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${packName(id)}</span></div></div>`;
+          <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${KIND_NAME[KIND[id]]}</span></div></div>`;
       box.title = desc(G);
       box.querySelector('.art').insertAdjacentHTML('afterbegin', coverSVG(id));
       const star = document.createElement('button');
@@ -412,10 +359,8 @@
       cats.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', !q.trim() && b.dataset.cat === cat));
       seg.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.who === who));
       const searching = !!q.trim();
-      const inCat = id => searching || cat === 'all' || (cat === 'fav' ? isFav(id) : packOf(id, KIND[id]) === cat);
+      const inCat = id => searching || cat === 'all' || (cat === 'fav' ? isFav(id) : KIND[id] === cat);
       let show = ids.filter(id => inCat(id) && matches(id) && fits(GAMES[id]));
-      // Inside a pack, games keep the pack's own order (the headline games first).
-      if (PACK[cat] && !searching) { const at = id => { const i = PACK[cat].games.indexOf(id); return i < 0 ? 999 : i; }; show.sort((x, y) => at(x) - at(y)); }
       // Starred games come first (in Favorites, in the order they were starred).
       if (cat === 'fav' && !searching) show = favs.filter(id => show.includes(id));
       else show = [...show.filter(isFav), ...show.filter(id => !isFav(id))];
@@ -426,10 +371,7 @@
         p.textContent = searching ? `No games match “${q.trim()}”.` : cat === 'fav' ? 'No favorites yet — tap the ☆ on any game to star it.' : 'No games match — try another filter.';
         shelf.replaceChildren(p);
       }
-      document.getElementById('libTitle').textContent = searching ? 'Search results' : CAT_NAME[cat];
-      document.getElementById('allBtn').hidden = searching || cat === 'all';
-      document.getElementById('libBlurb').textContent = !searching && PACK[cat] ? PACK[cat].blurb : '';
-      packsEl.querySelectorAll('.pack').forEach(b => b.classList.toggle('on', !searching && b.dataset.pack === cat));
+      document.getElementById('libTitle').textContent = searching ? 'Search results' : KIND_NAME[cat];
       document.getElementById('libCount').textContent = `${show.length} ${show.length === 1 ? 'game' : 'games'}${who !== 'any' ? ` · ${PLAYERS.find(p => p[0] === who)[1]} players` : ''}`;
     }
     draw();
