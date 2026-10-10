@@ -18,7 +18,7 @@
     try {
       const look = new URLSearchParams(location.search).get('look');
       if (look === 'vibrant' || look === 'classic') localStorage.setItem('pod.style', look);
-      if (localStorage.getItem('pod.style') === 'vibrant') document.documentElement.dataset.style = 'vibrant';
+      if (localStorage.getItem('pod.style') === 'vibrant') { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
     } catch {}
   </script>
   <link rel="stylesheet" href="css/cards.css?v=69">
@@ -82,13 +82,13 @@
   <link rel="stylesheet" href="css/kaboom.css?v=69">
   <link rel="stylesheet" href="css/nestegg.css?v=69">
   <link rel="stylesheet" href="css/cardart.css?v=69">
-  <link rel="stylesheet" href="css/vibrant.css?v=70">
+  <link rel="stylesheet" href="css/vibrant.css?v=71">
   <script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.1/dist/mqtt.min.js"></script>
 </head>
 <body>
   <main id="app">
     <section id="s-join" class="screen">
-      <img class="mark" src="icon.svg" alt="">
+      <img class="mark logo-c" src="icon.svg" alt=""><img class="mark logo-v" src="icon-vibrant.svg" alt="">
       <h1>Play On Display</h1>
       <p class="sub">Your phone is your private hand.</p>
       <label class="field">Your name

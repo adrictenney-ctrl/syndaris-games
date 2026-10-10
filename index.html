@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <script>
     // The home page style (Settings): classic black-and-gold, or vibrant game-night colours.
-    try { if (localStorage.getItem('pod.style') === 'vibrant') document.documentElement.dataset.style = 'vibrant'; } catch {}
+    try { if (localStorage.getItem('pod.style') === 'vibrant') { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; } } catch {}
   </script>
   <link rel="stylesheet" href="css/cards.css?v=69">
   <link rel="stylesheet" href="css/boxes.css?v=70">
@@ -269,12 +269,12 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=70">
+  <link rel="stylesheet" href="css/vibrant.css?v=71">
 </head>
 <body class="home">
   <header class="bar">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="icon.svg" alt=""><span>Play On Display<sup class="tm">™</sup></span></a>
+      <a class="brand" href="index.html"><img class="logo-c" src="icon.svg" alt=""><img class="logo-v" src="icon-vibrant.svg" alt=""><span>Play On Display<sup class="tm">™</sup></span></a>
       <form class="join" id="joinForm" action="play.html">
         <label for="code">Join a game</label>
         <input id="code" name="room" maxlength="4" placeholder="CODE" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Room code">
@@ -492,6 +492,7 @@
     function setStyle(st) {
       if (st === 'vibrant') document.documentElement.dataset.style = st; else delete document.documentElement.dataset.style;
       try { localStorage.setItem('pod.style', st); } catch {}
+      document.querySelector('link[rel="icon"]').href = st === 'vibrant' ? 'icon-vibrant.svg' : 'icon.svg';
       markStyle();
       redrawBoxes();
     }

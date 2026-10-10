@@ -77,12 +77,12 @@ html[data-style="vibrant"] #felt {
 }
 html[data-style="vibrant"] #felt::before { display: none; }
 /* the rail: a clean rounded frame instead of leather and brass */
-html[data-style="vibrant"] #rail::before { background: #140e58; }
+html[data-style="vibrant"] #rail::before { display: none; }
 html[data-style="vibrant"] #rail::after { border: 0; box-shadow: none; }
 html[data-style="vibrant"] #rail .stitch { display: none; }
 html[data-style="vibrant"] #rail .brass {
   border: .35vmin solid rgba(255, 255, 255, .16); border-radius: 3vmin;
-  box-shadow: 0 0 0 3vmin #140e58, inset 0 0 6vmin rgba(10, 6, 60, .35);
+  box-shadow: none;
 }
 html[data-style="vibrant"] #print { color: rgba(255, 255, 255, .5); }
 html[data-style="vibrant"] #print text { font-family: 'Nunito', sans-serif !important; font-weight: 900; }
@@ -174,7 +174,7 @@ html[data-style="vibrant"] #overlay .tool { color: #fff; border-color: var(--v-l
 html[data-style="vibrant"] .pill { font-weight: 900; color: var(--mute); }
 
 /* ================================================================ PHONE */
-html[data-style="vibrant"] body:has(#app) { background:
+html[data-style="vibrant"] body:has(#app) { background-attachment: fixed; background:
     var(--v-grain) 0 0 / 180px,
     var(--v-doodles) 0 0 / 520px,
     var(--v-mottle) 0 0 / 700px,
@@ -322,4 +322,30 @@ html[data-style="vibrant"] .style-opt[aria-checked="true"] strong::after { color
   html[data-style="vibrant"] .box { border-radius: 16px; }
   html[data-style="vibrant"] .box h3 { font-size: 19px; }
   html[data-style="vibrant"] .brand span { font-size: 18px; }
+}
+
+/* ================================================================ LOGOS */
+img.logo-v { display: none; }
+html[data-style="vibrant"] img.logo-c { display: none; }
+html[data-style="vibrant"] img.logo-v { display: block; }
+html[data-style="vibrant"] .brand img.logo-v { width: 38px; height: 38px; filter: drop-shadow(0 3px 0 #0c0840); }
+html[data-style="vibrant"] img.mark.logo-v { width: 78px; height: 78px; filter: drop-shadow(0 5px 0 #0c0840); }
+/* the wordmark: chunky white letters with a dark outline, like the box titles */
+html[data-style="vibrant"] .brand span {
+  color: #fff; -webkit-text-stroke: 0; paint-order: stroke fill;
+  text-shadow: 2px 0 0 #1b1352, -2px 0 0 #1b1352, 0 2px 0 #1b1352, 0 -2px 0 #1b1352, 1.5px 1.5px 0 #1b1352, -1.5px -1.5px 0 #1b1352, 1.5px -1.5px 0 #1b1352, -1.5px 1.5px 0 #1b1352, 0 5px 0 #0c0840;
+}
+html[data-style="vibrant"] #app h1 {
+  text-shadow: 2.5px 0 0 #1b1352, -2.5px 0 0 #1b1352, 0 2.5px 0 #1b1352, 0 -2.5px 0 #1b1352, 2px 2px 0 #1b1352, -2px -2px 0 #1b1352, 2px -2px 0 #1b1352, -2px 2px 0 #1b1352, 0 6px 0 #0c0840;
+}
+/* the whole page, edge to edge: the room sits on the root too, so nothing flat ever shows behind it */
+html[data-style="vibrant"]:has(body.home), html[data-style="vibrant"]:has(#app) {
+  background:
+    var(--v-grain) 0 0 / 180px,
+    var(--v-doodles) 0 0 / 520px,
+    var(--v-mottle) 0 0 / 700px,
+    var(--v-mottle-dark) 230px 140px / 800px,
+    #221882;
+  background-blend-mode: overlay, normal, normal, normal, normal;
+  background-attachment: fixed;
 }
