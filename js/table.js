@@ -505,8 +505,9 @@ function drawPrint() {
 
 function renderLobbyInfo() {
   document.querySelectorAll('.roomcode').forEach(el => { el.textContent = session.room; });
-  const url = new URL('play.html?room=' + session.room, location.href).href;
-  $('#joinUrl').textContent = url.replace(/^https?:\/\//, '');
+  const look = '&look=' + (document.documentElement.dataset.style === 'vibrant' ? 'vibrant' : 'classic');
+  const url = new URL('play.html?room=' + session.room + look, location.href).href;
+  $('#joinUrl').textContent = url.replace(/^https?:\/\//, '').replace(look, '');
   const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) || location.protocol === 'file:';
   $('#localWarn').hidden = !local;
   const qrEl = $('#qr');

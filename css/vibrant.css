@@ -1,0 +1,204 @@
+/* Vibrant: the bright game-night style (Settings on the home page). Loaded last on the table and
+   phone pages; everything here is scoped to html[data-style="vibrant"], so Classic is untouched.
+   One purple room: glassy panels, chunky rounded type, green go-buttons, sunshine highlights. */
+
+html[data-style="vibrant"] {
+  --baize-hi: #4c3ee0;
+  --baize: #3326b4;
+  --baize-deep: #1c157a;
+  --walnut: #6a5cf0;
+  --walnut-dark: #1a136e;
+  --leather: #221a8c;
+  --brass: #ffd84a;
+  --brass-hi: #ffe98c;
+  --ivory: #ffffff;
+  --ink: #ffffff;
+  --ink-dim: rgba(232, 230, 255, .72);
+  --gold-ink: rgba(232, 230, 255, .82);
+  --gold-faint: rgba(255, 255, 255, .22);
+  --onyx: #231a86;
+  --onyx-2: #2c2196;
+  --onyx-3: #3a2bb0;
+  --champagne: #2fd08f;
+  --champagne-hi: #6ff2bd;
+  --hairline: rgba(255, 255, 255, .14);
+  --hairline-hi: rgba(255, 255, 255, .3);
+  --mute: rgba(232, 230, 255, .72);
+  --display: 'Lilita One', 'Nunito', system-ui, sans-serif;
+  --serif: 'Nunito', system-ui, sans-serif;
+  --num: 'Lilita One', 'Nunito', system-ui, sans-serif;
+  --ui: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --seat-0: #4a95ff;
+  --seat-1: #ff9d3c;
+  --seat-2: #a066ff;
+  --seat-3: #33d18f;
+  --seat-4: #ff5f52;
+  --seat-5: #26c6da;
+  --seat-6: #ffd84a;
+  --seat-7: #ff5fae;
+  /* the glass the panels are made of */
+  --v-glass: rgba(18, 12, 88, .5);
+  --v-glass-hi: rgba(255, 255, 255, .1);
+  --v-line: rgba(255, 255, 255, .16);
+  --v-go: #3ae6a0;
+  --v-go2: #1fc283;
+  --v-go-edge: #11885a;
+  --v-sun: #ffd84a;
+  --v-lav: #8f86ff;
+  /* faint doodles of cards and dice in the background, like a game-night tablecloth */
+  --v-doodles: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'%3E%3Crect x='40' y='36' width='58' height='80' rx='9' transform='rotate(-14 69 76)'/%3E%3Cpath d='M62 68l7-10 7 10-7 10z' transform='rotate(-14 69 76)'/%3E%3Crect x='232' y='60' width='58' height='58' rx='12' transform='rotate(18 261 89)'/%3E%3Ccircle cx='248' cy='76' r='5' fill='%23fff' transform='rotate(18 261 89)'/%3E%3Ccircle cx='261' cy='89' r='5' fill='%23fff' transform='rotate(18 261 89)'/%3E%3Ccircle cx='274' cy='102' r='5' fill='%23fff' transform='rotate(18 261 89)'/%3E%3Cpath d='M150 250l14-14m-14 0l14 14' stroke-linecap='round'/%3E%3Crect x='262' y='236' width='58' height='80' rx='9' transform='rotate(12 291 276)'/%3E%3Cpath d='M291 262c-9-10-20 2-11 10l11 10 11-10c9-8-2-20-11-10z' transform='rotate(12 291 276)'/%3E%3Crect x='44' y='240' width='54' height='54' rx='12' transform='rotate(-22 71 267)'/%3E%3Ccircle cx='71' cy='267' r='5' fill='%23fff' transform='rotate(-22 71 267)'/%3E%3Cpath d='M176 120l6 13 14 2-10 10 2 14-12-7-12 7 2-14-10-10 14-2z'/%3E%3C/svg%3E");
+}
+html[data-style="vibrant"] body { font-family: var(--ui); }
+/* playing cards keep their printed faces */
+html[data-style="vibrant"] .card { --display: 'Cormorant Garamond', Georgia, serif; --num: 'DM Serif Display', Georgia, serif; --serif: 'Cormorant Garamond', Georgia, serif; --ivory: #efe9dc; }
+
+/* ================================================================ TABLE SCREEN */
+html[data-style="vibrant"] #felt {
+  background:
+    radial-gradient(ellipse 58% 50% at 50% 52%, rgba(150, 140, 255, .32), rgba(120, 100, 255, .12) 60%, transparent 75%),
+    radial-gradient(ellipse 90% 70% at 15% 0%, rgba(140, 90, 255, .35), transparent 60%),
+    radial-gradient(ellipse 90% 70% at 100% 100%, rgba(40, 110, 255, .3), transparent 60%),
+    linear-gradient(160deg, #3a2cc4, #2a1f9e 50%, #301a9a) !important;
+}
+html[data-style="vibrant"] #felt::before { opacity: .06; mix-blend-mode: normal; background-image: var(--v-doodles); background-size: 360px 360px; }
+/* the rail: a clean rounded frame instead of leather and brass */
+html[data-style="vibrant"] #rail::before { background: #1c1578; }
+html[data-style="vibrant"] #rail::after { border: 0; box-shadow: none; }
+html[data-style="vibrant"] #rail .stitch { display: none; }
+html[data-style="vibrant"] #rail .brass {
+  border: .35vmin solid rgba(255, 255, 255, .16); border-radius: 3vmin;
+  box-shadow: 0 0 0 3vmin #1c1578, inset 0 0 6vmin rgba(10, 6, 60, .35);
+}
+html[data-style="vibrant"] #print { color: rgba(255, 255, 255, .5); }
+html[data-style="vibrant"] #print text { font-family: 'Nunito', sans-serif !important; font-weight: 900; }
+
+/* seats: glassy name cards */
+html[data-style="vibrant"] .plate {
+  background: var(--v-glass); border: .22vmin solid var(--v-line); outline: 0; border-radius: 2.2vmin;
+  box-shadow: 0 .8vmin 0 -.2vmin rgba(10, 6, 60, .35), 0 1.4vmin 3vmin rgba(10, 6, 60, .3);
+  backdrop-filter: blur(6px);
+}
+html[data-style="vibrant"] .seat.turn .plate { border-color: var(--v-sun); box-shadow: 0 0 0 .3vmin rgba(255, 216, 74, .35), 0 0 4vmin rgba(255, 216, 74, .35); }
+html[data-style="vibrant"] .who .name { letter-spacing: .01em; text-shadow: 0 .35vmin 0 rgba(10, 6, 60, .45); }
+html[data-style="vibrant"] .seat.turn .who .name { color: #fff; text-shadow: 0 .35vmin 0 rgba(10, 6, 60, .45), 0 0 2.4vmin rgba(255, 216, 74, .6); }
+html[data-style="vibrant"] .who .dot { width: 2.8vmin; height: 2.8vmin; background: var(--seat-color); box-shadow: inset 0 -.35vmin 0 rgba(0, 0, 0, .25), 0 0 0 .3vmin rgba(255, 255, 255, .85); }
+html[data-style="vibrant"] .seat.empty .who .name { font-style: normal; font-weight: 800; color: var(--mute); text-shadow: none; }
+html[data-style="vibrant"] .seat.empty .who .dot { border-color: rgba(255, 255, 255, .4); box-shadow: none; background: transparent; }
+html[data-style="vibrant"] .badge { border-radius: 99px; font-weight: 900; letter-spacing: .08em; }
+html[data-style="vibrant"] .badge.dealer { color: #3a2400; background: linear-gradient(180deg, #ffe680, var(--v-sun)); box-shadow: 0 .3vmin 0 #c99a10; }
+html[data-style="vibrant"] .meta { font-weight: 800; }
+html[data-style="vibrant"] .seat-actions button, html[data-style="vibrant"] .tool {
+  border-radius: 99px; font-weight: 800; letter-spacing: .08em; color: #fff; background: var(--v-glass-hi); border-color: var(--v-line);
+}
+html[data-style="vibrant"] .seat-actions button:hover, html[data-style="vibrant"] .tool:hover { color: #fff; border-color: var(--v-lav); background: rgba(143, 134, 255, .3); }
+html[data-style="vibrant"] .bubble {
+  font-family: var(--ui); font-style: normal; font-weight: 900; color: #241a7a; border-radius: 99px;
+  background: linear-gradient(180deg, #fff, #eeeaff); box-shadow: 0 .4vmin 0 #c9c2ff, 0 1vmin 2.4vmin rgba(10, 6, 60, .4);
+}
+html[data-style="vibrant"] #watermark { color: #ff5fae; opacity: .14; }
+html[data-style="vibrant"] #felt .card.win { box-shadow: 0 0 0 .4vmin var(--v-sun), 0 0 4.5vmin rgba(255, 216, 74, .7); }
+
+/* lobby: a white join card and a glass panel of game info */
+html[data-style="vibrant"] .tent {
+  border-radius: 2.6vmin; color: #241a7a; transform: rotate(-1.5deg);
+  background: linear-gradient(180deg, #ffffff, #eeeaff);
+  box-shadow: 0 1vmin 0 -.2vmin #c9c2ff, 0 2.4vmin 5vmin rgba(10, 6, 60, .5);
+}
+html[data-style="vibrant"] #qr svg path, html[data-style="vibrant"] #qr svg rect[fill="black"] { fill: #241a7a; }
+html[data-style="vibrant"] .tent-cap { font-family: var(--display); font-weight: 400; }
+html[data-style="vibrant"] .tent-room, html[data-style="vibrant"] .tent-note { color: #6a64a8; font-style: normal; font-weight: 800; }
+html[data-style="vibrant"] .tent-room b { color: #241a7a; }
+html[data-style="vibrant"] .lobby-info {
+  padding: 3vmin 3.4vmin; border-radius: 3vmin; background: var(--v-glass); border: .22vmin solid var(--v-line);
+  box-shadow: 0 1vmin 0 -.2vmin rgba(10, 6, 60, .4), 0 2.4vmin 5vmin rgba(10, 6, 60, .4); backdrop-filter: blur(8px);
+}
+html[data-style="vibrant"] .game-title { font-weight: 400; letter-spacing: .01em; text-shadow: 0 .6vmin 0 rgba(10, 6, 60, .5); }
+html[data-style="vibrant"] .game-blurb { font-style: normal; font-weight: 700; color: var(--mute); }
+html[data-style="vibrant"] .back { font-weight: 800; color: var(--mute); }
+html[data-style="vibrant"] .eyebrow { font-weight: 900; color: var(--v-sun); letter-spacing: .2em; }
+html[data-style="vibrant"] .gp::before { content: ''; width: 1.6vmin; height: 1.6vmin; border-radius: 50%; border: .25vmin solid rgba(255, 255, 255, .4); align-self: center; }
+html[data-style="vibrant"] .gp.on::before { content: ''; background: var(--v-sun); border-color: var(--v-sun); }
+html[data-style="vibrant"] .gp b { font-weight: 400; }
+html[data-style="vibrant"] .settings { font-weight: 700; color: #fff; }
+html[data-style="vibrant"] .settings select { color: #fff; background: var(--v-glass-hi); border: .15vmin solid var(--v-line); border-radius: 99px; padding: .4vmin 1.4vmin; }
+html[data-style="vibrant"] .settings input { accent-color: var(--v-go2); }
+html[data-style="vibrant"] .url { color: var(--mute); }
+html[data-style="vibrant"] .mirror { font-weight: 900; color: rgba(255, 255, 255, .6); }
+
+/* the big go-button */
+html[data-style="vibrant"] button.big {
+  font-family: var(--ui); font-weight: 900; letter-spacing: .08em; border-radius: 1.8vmin; color: #08321f;
+  background: linear-gradient(180deg, var(--v-go), var(--v-go2));
+  box-shadow: 0 .6vmin 0 var(--v-go-edge), 0 1.6vmin 3vmin rgba(10, 6, 60, .35);
+}
+html[data-style="vibrant"] button.big:active { transform: translateY(.5vmin); box-shadow: 0 .1vmin 0 var(--v-go-edge); }
+html[data-style="vibrant"] button.big:disabled { color: rgba(255, 255, 255, .75); background: var(--v-glass-hi); border: .2vmin solid var(--v-line); box-shadow: none; }
+html[data-style="vibrant"] button.big.ghost { color: #fff; background: var(--v-glass-hi); border: .2vmin solid var(--v-line); box-shadow: none; opacity: 1; }
+
+/* end of hand / winner: a bright card instead of a paper slip */
+html[data-style="vibrant"] #overlay {
+  color: #fff; border-radius: 3.4vmin; transform: translate(-50%, -50%);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 216, 74, .22), transparent 70%),
+    linear-gradient(165deg, #5141e6, #2f229e);
+  border: .3vmin solid rgba(255, 255, 255, .2);
+  box-shadow: 0 1.2vmin 0 -.3vmin rgba(10, 6, 60, .5), 0 3vmin 7vmin rgba(10, 6, 60, .6);
+  animation: vPop .5s cubic-bezier(.2, 1.4, .4, 1);
+}
+@keyframes vPop { from { transform: translate(-50%, -50%) scale(.85); opacity: 0; } }
+html[data-style="vibrant"] #overlay h2 { color: #fff; font-weight: 400; font-size: 6.4vmin; text-shadow: 0 .6vmin 0 rgba(10, 6, 60, .5); }
+html[data-style="vibrant"] #overlay p { font-weight: 700; }
+html[data-style="vibrant"] #overlay .scoreline, html[data-style="vibrant"] #overlay .scores { border-top-color: rgba(255, 255, 255, .2); font-weight: 800; }
+html[data-style="vibrant"] #overlay .scores li { padding: .7vmin 1.4vmin; margin-bottom: .6vmin; border-radius: 1.4vmin; background: rgba(255, 255, 255, .1); }
+html[data-style="vibrant"] #overlay .scores li:first-child { background: rgba(255, 216, 74, .22); box-shadow: inset 0 0 0 .2vmin rgba(255, 216, 74, .6); }
+html[data-style="vibrant"] #overlay .scores li::after { border-bottom-color: rgba(255, 255, 255, .25); }
+html[data-style="vibrant"] #overlay .scores li b { color: var(--v-sun); }
+html[data-style="vibrant"] #overlay .hint { color: var(--mute); font-weight: 700; }
+html[data-style="vibrant"] #overlay .tool { color: #fff; border-color: var(--v-line); }
+
+html[data-style="vibrant"] .pill { font-weight: 900; color: var(--mute); }
+
+/* ================================================================ PHONE */
+html[data-style="vibrant"] body:has(#app) {
+  background:
+    radial-gradient(ellipse 120% 50% at 20% 0%, rgba(140, 100, 255, .5), transparent 65%),
+    radial-gradient(ellipse 120% 60% at 100% 100%, rgba(40, 110, 255, .4), transparent 65%),
+    linear-gradient(170deg, #3a2cc4, #2a1f9e 55%, #2b1780);
+}
+html[data-style="vibrant"] body:has(#app)::before { opacity: .06; mix-blend-mode: normal; background-image: var(--v-doodles); background-size: 300px 300px; }
+html[data-style="vibrant"] #app h1, html[data-style="vibrant"] #app h2 { font-weight: 400; text-shadow: 0 4px 0 rgba(10, 6, 60, .45); }
+html[data-style="vibrant"] #app .sub, html[data-style="vibrant"] #waitMsg { font-style: normal; font-weight: 700; color: var(--mute); }
+html[data-style="vibrant"] #app .eyebrow { font-weight: 900; color: var(--v-sun); letter-spacing: .18em; }
+html[data-style="vibrant"] .field { font-weight: 900; letter-spacing: .14em; color: var(--mute); }
+html[data-style="vibrant"] .field input {
+  font-family: var(--ui); font-weight: 800; font-size: 22px; color: #fff; padding: 12px 16px;
+  background: var(--v-glass); border: 2px solid var(--v-line); border-radius: 16px;
+}
+html[data-style="vibrant"] .field input::placeholder { color: rgba(232, 230, 255, .4); }
+html[data-style="vibrant"] .field input:focus { border-color: var(--v-lav); }
+html[data-style="vibrant"] #room { font-family: var(--num); letter-spacing: .3em; }
+html[data-style="vibrant"] button.primary, html[data-style="vibrant"] .panel-btn.go {
+  font-family: var(--ui); font-weight: 900; letter-spacing: .08em; color: #08321f; border-radius: 16px;
+  background: linear-gradient(180deg, var(--v-go), var(--v-go2)); box-shadow: 0 5px 0 var(--v-go-edge), 0 12px 24px rgba(10, 6, 60, .35);
+}
+html[data-style="vibrant"] button.primary { font-size: 16px; }
+html[data-style="vibrant"] button.primary:active, html[data-style="vibrant"] .panel-btn.go:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--v-go-edge); }
+html[data-style="vibrant"] button.ghost, html[data-style="vibrant"] .panel-btn {
+  font-family: var(--ui); font-weight: 800; color: #fff; border-radius: 14px; background: var(--v-glass); border: 2px solid var(--v-line);
+  box-shadow: 0 4px 0 rgba(10, 6, 60, .35);
+}
+html[data-style="vibrant"] .panel-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(10, 6, 60, .35); }
+html[data-style="vibrant"] .panel-btn.on, html[data-style="vibrant"] .panel-btn.rank.on, html[data-style="vibrant"] .panel-btn.who.on {
+  color: #fff; background: linear-gradient(180deg, #a49cff, #7d72ff); border-color: transparent; box-shadow: 0 4px 0 #5247d6;
+}
+html[data-style="vibrant"] .spinner { border-color: rgba(255, 255, 255, .2); border-top-color: var(--v-sun); border-width: 4px; }
+html[data-style="vibrant"] .mt-felt {
+  font-family: var(--display); letter-spacing: .12em; color: rgba(255, 255, 255, .7); border-radius: 22px;
+  background: radial-gradient(ellipse at center, #5a4cf0, #3428b8); border: 4px solid rgba(255, 255, 255, .2);
+  box-shadow: 0 6px 0 rgba(10, 6, 60, .4), 0 14px 30px rgba(10, 6, 60, .4);
+}
+html[data-style="vibrant"] .seatbtn { font-family: var(--ui); font-weight: 900; border-radius: 16px; }
+html[data-style="vibrant"] #statusMain { font-family: var(--display); font-weight: 400; text-shadow: 0 3px 0 rgba(10, 6, 60, .4); }
+html[data-style="vibrant"] #statusSub, html[data-style="vibrant"] #handHint { font-style: normal; font-weight: 700; color: var(--mute); }
+html[data-style="vibrant"] .hud .team, html[data-style="vibrant"] .hud .trump { font-weight: 800; }
+html[data-style="vibrant"] #toast { font-family: var(--ui); font-weight: 800; border-radius: 16px; }
