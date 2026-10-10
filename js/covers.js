@@ -2,9 +2,9 @@
 // title set like the front of a box. Shown on the home page tiles and the spotlight.
 // Every id inside an SVG is prefixed with the game id so the covers can share one page.
 
-import { makeKit } from './art-kit.js?v=68';
-import { ART } from './art-index.js?v=68';
-import { makeStill } from './still.js?v=68';
+import { makeKit } from './art-kit.js?v=70';
+import { ART } from './art-index.js?v=70';
+import { makeStill } from './still.js?v=71';
 
 const SERIF = "'DM Serif Display', Georgia, serif";
 const CORM = "'Cormorant Garamond', Georgia, serif";
@@ -21,7 +21,7 @@ function shell(id, o, body) {
   return `<svg viewBox="0 0 600 400" class="cover" role="img" aria-label="${o.title}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="${id}-bg" cx="${o.cx ?? 50}%" cy="${o.cy ?? 42}%" r="80%"><stop offset="0" stop-color="${c1}"/><stop offset=".55" stop-color="${c2}"/><stop offset="1" stop-color="${c3}"/></radialGradient>
-    <radialGradient id="${id}-vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+    <radialGradient id="${id}-vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="${KIT.T.vivid ? .18 : .55}"/></radialGradient>
     <linearGradient id="${id}-scrim" x1="0" y1="0" x2="0" y2="1"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".72"/></linearGradient>
     <linearGradient id="${id}-foil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf"/><stop offset=".38" stop-color="#e9c77e"/><stop offset=".52" stop-color="#b8893a"/><stop offset=".62" stop-color="#d9b46a"/><stop offset="1" stop-color="#f3dda0"/></linearGradient>
     <linearGradient id="${id}-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e2b0"/><stop offset=".55" stop-color="#d8b46a"/><stop offset="1" stop-color="#a8823c"/></linearGradient>
@@ -110,10 +110,11 @@ export function coverSVG(id) { return COVERS[id] ? COVERS[id](id) : ''; }
 
 // ------------------------------------------------------------------ the boxes
 // The illustration alone (no title), for the picture beside the box. `pre` keeps ids unique.
-export function sceneSVG(id, pre = id + '-s') {
+// `vivid` = [main, deep] shoots the same props on the Vibrant style's bright printed backdrop.
+export function sceneSVG(id, pre = id + '-s', vivid = null) {
   if (!COVERS[id]) return '';
-  SCENE = true;
-  try { return COVERS[id](pre); } finally { SCENE = false; }
+  SCENE = true; KIT.T.vivid = vivid;
+  try { return COVERS[id](pre); } finally { SCENE = false; KIT.T.vivid = null; }
 }
 const fitTitle = (t, w, max) => {
   // DM Serif runs about .5em a character; long names go onto two lines.
@@ -170,7 +171,7 @@ export function boxFrontSVG(id, G) {
 const FUN = "'Lilita One', 'Nunito', sans-serif";
 export function boxFrontVivid(id, G, col) {
   const pre = id + '-v';
-  const scene = sceneSVG(id, pre);
+  const scene = sceneSVG(id, pre, col);
   if (!scene) return '';
   const o = LAST, [m, d] = col, ink = '#1b1352';
   const { lines, size } = fitTitle(o.title, 350, 66);

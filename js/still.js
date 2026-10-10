@@ -10,9 +10,13 @@ export function makeStill(K) {
 
   // ---------------------------------------------------------------- the set
   // Filters and gradients every still-life cover uses.
+  // In the Vibrant style the shadows take the backdrop's deep colour instead of black.
+  const castShadow = (id, sfx, blur, dx, dy, a) => T.vivid
+    ? `<filter id="${id}-${sfx}" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="${blur}"/><feOffset dx="${dx}" dy="${dy}" result="o"/><feFlood flood-color="${shade(T.vivid[1], -.55)}" flood-opacity="${a + .1}"/><feComposite in2="o" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>`
+    : `<filter id="${id}-${sfx}" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="${blur}"/><feOffset dx="${dx}" dy="${dy}"/><feComponentTransfer><feFuncA type="linear" slope="${a}"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
   T.defs = id => `<defs>
-    <filter id="${id}-cs" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="5"/><feOffset dx="7" dy="9"/><feComponentTransfer><feFuncA type="linear" slope=".55"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <filter id="${id}-cs2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="2"/><feOffset dx="2" dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    ${castShadow(id, 'cs', 5, 7, 9, .55)}
+    ${castShadow(id, 'cs2', 2, 2, 3, .5)}
     <filter id="${id}-b2"><feGaussianBlur stdDeviation="2"/></filter>
     <filter id="${id}-b4"><feGaussianBlur stdDeviation="4.5"/></filter>
     <filter id="${id}-b8" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="9"/></filter>
@@ -24,6 +28,7 @@ export function makeStill(K) {
   // A surface seen from above at an angle. kind: wood | felt | leather | marble | linen | slate.
   // The far edge sits at `hz` (the back wall above it falls into shadow); a pool of warm light lands at (lx, ly).
   T.surface = (id, kind = 'wood', o = {}) => {
+    if (T.vivid) return vividSurface(id, o.hz ?? 70);
     const hz = o.hz ?? 70, lx = o.lx ?? 250, ly = o.ly ?? 190;
     const base = o.color || { wood: '#5a3418', felt: '#1f5a36', leather: '#5a1a1e', marble: '#d8d2c6', linen: '#d9cdb4', slate: '#2a2e33' }[kind];
     let tex = '';
@@ -46,6 +51,28 @@ export function makeStill(K) {
       <rect y="${hz}" width="600" height="${400 - hz}" fill="url(#${id}-pool)"/>
       ${kind === 'wood' || kind === 'slate' ? `<rect y="${hz}" width="600" height="3" fill="#fff" opacity=".08"/>` : ''}<!--/surface-->`;
   };
+
+  // The Vibrant style's set (T.vivid = [main, deep]): the same props shot on a bright printed
+  // backdrop like the game boxes — flat colour, a soft sunburst from the key light, printed facets,
+  // a darker sweep for the table the props sit on, a corner of halftone and a few bits of confetti.
+  T.vivid = null;
+  const FACETS = [['0,0 210,0 70,170', '#fff', .07], ['210,0 420,0 300,140', '#000', .06], ['420,0 600,0 600,180 520,90', '#fff', .05],
+    ['70,170 300,140 170,400 0,400 0,240', '#000', .05], ['300,140 600,180 500,400', '#fff', .07], ['0,0 70,170 0,240', '#fff', .04], ['500,400 600,180 600,400', '#000', .06]];
+  function vividSurface(id, hz) {
+    const [m, d] = T.vivid;
+    const rays = Array.from({ length: 14 }, (_, i) => { const a0 = (i * 26 - 10) * Math.PI / 180, a1 = a0 + 11 * Math.PI / 180, R = 900; return `M150 -40 L${150 + R * Math.cos(a0)} ${-40 + R * Math.sin(a0)} L${150 + R * Math.cos(a1)} ${-40 + R * Math.sin(a1)} Z`; }).join(' ');
+    const bits = [[38, 52, 20, '#fff'], [560, 70, -30, '#ffd84a'], [520, 360, 45, '#fff'], [70, 350, 10, '#ffd84a'], [300, 24, 70, '#fff'], [590, 230, -12, '#fff']]
+      .map(([x, y, r, c], i) => i % 2 ? `<path d="M${x} ${y} l7 -12 l7 12z" fill="${c}" opacity=".55" transform="rotate(${r} ${x} ${y})"/>` : `<rect x="${x}" y="${y}" width="12" height="5" rx="2" fill="${c}" opacity=".55" transform="rotate(${r} ${x} ${y})"/>`).join('');
+    return `<defs><pattern id="${id}-vdots" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="5" cy="5" r="1.9" fill="#fff"/></pattern>
+      <linearGradient id="${id}-vfade" x1="0" y1="0" x2="1" y2="1"><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="${id}-vm"><rect width="600" height="400" fill="url(#${id}-vfade)"/></mask></defs>
+      <rect width="600" height="400" fill="${shade(m, .14)}"/>
+      <path d="${rays}" fill="#fff" opacity=".08"/>
+      ${FACETS.map(([p, c, a]) => `<polygon points="${p}" fill="${c}" fill-opacity="${a}"/>`).join('')}
+      <path d="M0 ${hz + 46} Q300 ${hz - 4} 600 ${hz + 46} V400 H0 Z" fill="${d}" opacity=".32"/>
+      <path d="M0 ${hz + 46} Q300 ${hz - 4} 600 ${hz + 46}" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3"/>
+      <rect width="600" height="400" fill="url(#${id}-vdots)" opacity=".13" mask="url(#${id}-vm)"/>
+      ${bits}<!--/surface-->`;
+  }
 
   // Move the camera in: everything after the surface is scaled about (cx, cy).
   T.zoom = (body, z = 1.35, cx = 300, cy = 175, lift = 36) => { const i = body.indexOf('<!--/surface-->'); return i < 0 ? body : body.slice(0, i) + `<g transform="translate(${cx} ${cy - lift}) scale(${z}) translate(${-cx} ${-cy})">${body.slice(i)}</g>`; };

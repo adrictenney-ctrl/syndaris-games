@@ -349,3 +349,9 @@ html[data-style="vibrant"]:has(body.home), html[data-style="vibrant"]:has(#app) 
   background-blend-mode: overlay, normal, normal, normal, normal;
   background-attachment: fixed;
 }
+
+/* the game pictures: printed grain over the bright set, same as the tiles and boxes */
+html[data-style="vibrant"] .art::before, html[data-style="vibrant"] .spot .pic::before {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit;
+  background: var(--v-grain) 0 0 / 180px; mix-blend-mode: overlay;
+}
