@@ -14,16 +14,6 @@ export const GALLOWS = [
   ['Sport', 'basketball'], ['Sport', 'badminton'], ['Sport', 'snowboarding'], ['Sport', 'gymnastics'], ['Sport', 'volleyball'], ['Sport', 'skateboarding'], ['Sport', 'table tennis'], ['Sport', 'archery'],
 ];
 
-// Speed Typist sentences.
-export const SENTENCES = [
-  'The quick brown fox jumps over the lazy dog.', 'A journey of a thousand miles begins with a single step.', 'Pack my box with five dozen liquor jugs.', 'Every cloud has a silver lining.',
-  'The early bird catches the worm.', 'Two wrongs do not make a right.', 'Better late than never, but never late is better.', 'Practice makes progress, not perfect.',
-  'The penguin waddled across the frozen lake.', 'My grandmother keeps a parrot that sings opera.', 'Seven sleepy sloths slowly sipped soup.', 'The robot forgot where it parked the spaceship.',
-  'Never trust a cat with a calendar.', 'Pancakes taste better on a rainy Sunday.', 'The lighthouse blinked twice and went quiet.', 'A wizard never arrives late to dinner.',
-  'Bring an umbrella in case of meatballs.', 'The dragon only eats pizza on Fridays.', 'She sells sea shells by the sea shore.', 'How much wood would a woodchuck chuck?',
-  'The museum of socks is closed for repairs.', 'Jellyfish have no brains but plenty of style.', 'Our teacher brought a llama to class.', 'The volcano sneezed and everyone cheered.',
-  'Five frogs formed a very fancy band.', 'Do not feed the vending machine after midnight.', 'The moon is made of extremely old cheese.', 'Pirates prefer treasure maps with snacks.',
-];
 
 // Fib Finder: [fact with ___ , real answer, other accepted spellings]
 export const FIBS = [

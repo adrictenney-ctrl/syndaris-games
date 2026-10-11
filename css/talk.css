@@ -1,0 +1,39 @@
+/* Talk-and-laugh party games (table-talk.js): quotes, the hot take card, the case file, the emoji
+   story and a few counters. The shared pieces (.wb-opts, .so-gallery, .pt-*) come from the other
+   party stylesheets. */
+.tk-quote {
+  margin: 1.6vmin auto 2vmin; max-width: 70vmin; padding: 2.4vmin 3.4vmin; border-radius: 1.6vmin;
+  font-family: var(--serif); font-size: 3.6vmin; line-height: 1.3; text-align: center; color: var(--paper-ink);
+  background: var(--stock); box-shadow: 0 1vmin 3vmin rgba(0, 0, 0, .35); transform: rotate(-.6deg);
+}
+.tk-take {
+  margin: 1vmin auto 2.2vmin; max-width: 72vmin; padding: 3vmin 4vmin 3.4vmin; border-radius: 2vmin; text-align: center;
+  background: linear-gradient(160deg, #e8473c, #a8202a); color: #fff; box-shadow: 0 1.2vmin 3vmin rgba(0, 0, 0, .4); transform: rotate(-1deg);
+}
+.tk-take small { display: block; font-family: var(--ui); font-size: 1.8vmin; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
+.tk-take b { display: block; margin-top: 1vmin; font-family: var(--display); font-size: 5.4vmin; line-height: 1.1; }
+.tk-meter { width: 60vmin; height: 2.4vmin; margin: 0 auto 1.6vmin; border-radius: 99px; background: rgba(255, 255, 255, .15); overflow: hidden; }
+.tk-meter i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #4fc27a, #a8e05a); transition: width .8s; }
+.tk-file {
+  margin: 1vmin auto 2vmin; max-width: 66vmin; padding: 2.4vmin 3.2vmin; text-align: left; border-radius: .8vmin;
+  background: #e8d7a8; color: #3a2a14; box-shadow: 0 1vmin 3vmin rgba(0, 0, 0, .4); transform: rotate(.8deg);
+  border-top: 2.4vmin solid #c9a35a;
+}
+.tk-file small { display: block; font-family: var(--ui); font-size: 1.6vmin; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #8a2a1e; }
+.tk-file b { display: block; margin: .8vmin 0; font-family: var(--display); font-size: 3.6vmin; line-height: 1.15; }
+.tk-file p { margin: 0; font-family: var(--ui); font-size: 2.2vmin; }
+.tk-verdict { font-size: 6vmin !important; }
+.tk-verdict.lie { color: #ff7a6a; }
+.tk-verdict.true { color: #7ae0a0; }
+.tk-lips { font-size: 16vmin; line-height: 1; margin: 1vmin 0; animation: tkTalk 1.2s ease-in-out infinite; }
+@keyframes tkTalk { 50% { transform: scale(1.08, .9); } }
+.tk-guesses li.ok { box-shadow: inset 0 0 0 .3vmin #4fc27a; }
+.tk-count { display: flex; align-items: baseline; justify-content: center; gap: 1.4vmin; margin: 1vmin 0 1.6vmin; }
+.tk-count b { font-family: var(--num); font-size: 14vmin; line-height: 1; color: var(--brass-hi); }
+.tk-count span { font-family: var(--ui); font-size: 2.6vmin; font-weight: 700; }
+.tk-emoji { margin: 1vmin auto 2vmin; max-width: 80vmin; font-size: 9vmin; line-height: 1.2; letter-spacing: .1em; word-break: break-word; }
+.tk-words { display: flex; flex-wrap: wrap; gap: 1.2vmin; justify-content: center; margin: 1vmin 0 1.6vmin; }
+.tk-words span { padding: .8vmin 1.6vmin; border-radius: 99px; font-family: var(--ui); font-weight: 800; font-size: 2vmin; background: rgba(255, 255, 255, .1); }
+.tk-words small { margin-left: .8vmin; opacity: .7; font-weight: 600; }
+.so-gallery figure.win { box-shadow: 0 0 0 .4vmin var(--brass-hi); border-radius: 1vmin; }
+.pt-drawpartner .so-gallery figcaption small, .pt-worstgift .so-gallery figcaption small { display: block; margin-top: .4vmin; opacity: .75; }

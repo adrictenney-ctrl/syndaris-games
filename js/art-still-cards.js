@@ -214,20 +214,6 @@ export default function paint(K) {
     ${T.coinsLay ? '' : ''}
   `));
 
-  cover('slapstack', id => C(id, 'Slap Stack', 'Slap the doubles first', ['#7a2a2a', '#401414', '#160606'], `
-    ${T.surface(id, 'wood', { hz: 30, color: '#4a2a14', lx: 300 })}
-    ${Array.from({ length: 7 }, (_, i) => back(id, 300 + (i * 17) % 30 - 15, 180 - i * 2, (i * 47) % 70 - 35, 100, '#6a1a24')).join('')}
-    ${card(id, 290, 170, -18, '7', '♠', 108)}${card(id, 316, 164, 12, '7', '♥', 108)}
-    ${deck(id, 110, 300, -14, 84, '#1d3a5a')}${deck(id, 490, 300, 14, 84, '#2a5a2a')}
-  `));
-
-  cover('speed', id => C(id, 'Speed', 'No turns, just hands', ['#6a5a1a', '#382e0c', '#141004'], `
-    ${T.surface(id, 'felt', { hz: 30, color: '#2a4a2a', lx: 300 })}
-    ${card(id, 240, 160, -6, '8', '♣', 108)}${card(id, 360, 160, 6, '9', '♥', 108)}
-    ${T.soft(id, 4, `<g transform="translate(150 320) scale(1 .64) rotate(-20)">${T.pcard(id, '7', '♦', 100)}</g><g transform="translate(450 320) scale(1 .64) rotate(24)">${T.pcard(id, '10', '♠', 100)}</g>`)}
-    ${deck(id, 80, 140, -10, 70, '#6a1a24')}${deck(id, 520, 140, 10, 70, '#1d3a5a')}
-  `));
-
   cover('pairs', id => {
     const num = (n, c) => `<rect x="-38" y="-54" width="76" height="108" rx="7" fill="url(#${id}-paper)" stroke="rgba(0,0,0,.2)"/><rect x="-32" y="-48" width="64" height="96" rx="4" fill="none" stroke="${c}" stroke-width="1.4"/>${T.word(n, 0, 16, 50, { weight: 700, fill: c })}`;
     const pear = `<path d="M0 -40 Q-14 -30 -14 -10 Q-34 10 -30 34 Q-24 56 0 56 Q24 56 30 34 Q34 10 14 -10 Q14 -30 0 -40 Z" fill="#b8b83a"/><path d="M0 -40 Q-14 -30 -14 -10 Q-34 10 -30 34 Q-24 56 0 56" fill="#8a9a2a" opacity=".5"/><path d="M0 -40 Q2 -54 8 -60" stroke="#5a3a1a" stroke-width="4" fill="none"/><path d="M6 -54 q16 -10 24 -2 q-12 8 -24 2 Z" fill="#4a7a2a"/><ellipse cx="-10" cy="10" rx="6" ry="14" fill="#fff" opacity=".25"/>`;

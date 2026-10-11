@@ -1,9 +1,9 @@
 // Social games: Story Chain, Rate It, Top Five, Mind Meld, Caption It, Fake Artist, Copy Cat,
 // Code Crack, Undercover Spy, Mafia Night. Secrets and private input on phones; the shared story,
 // drawing, board or verdict on the table.
-import { base, shuffle, pick, same, core, cleanText, sfx, left, waiting, announce, finish, teams, TEAMS } from './party.js?v=68';
-import { art as dreamArt, CARDS as DREAMS } from './dreamcards.js?v=68';
-import { LISTS } from './sketch-words.js?v=68';
+import { base, shuffle, pick, same, core, cleanText, sfx, left, waiting, announce, finish, teams, TEAMS } from './party.js?v=80';
+import { art as dreamArt, CARDS as DREAMS } from './dreamcards.js?v=80';
+import { LISTS } from './sketch-words.js?v=80';
 
 const R = n => Math.floor(Math.random() * n);
 const topWin = g => { const top = Math.max(...g.order.map(s => g.score[s])); g.winners = g.order.filter(s => g.score[s] === top); g.winner = g.winners[0]; g.phase = 'over'; g.moveId++; };

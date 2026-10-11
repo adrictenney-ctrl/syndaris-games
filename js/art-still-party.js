@@ -39,12 +39,6 @@ export default function paint(K) {
     ${['100', '75', '6', '9', '3', '2'].map((n, i) => T.lay(id, 125 + i * 70, 270, (i - 2.5) * 3, `<rect x="-30" y="-40" width="60" height="80" rx="6" fill="url(#${id}-paper)" stroke="rgba(0,0,0,.2)"/>${T.word(n, 0, 10, n.length > 2 ? 22 : 30, { weight: 700, fill: '#2a3a6a' })}`)).join('')}
   `));
 
-  cover('speedtypist', id => C(id, 'Speed Typist', 'Type it fastest', ['#2a2a4a', '#161626', '#06060e'], `
-    ${T.surface(id, 'wood', { hz: 26, color: '#3a2414', lx: 300 })}
-    ${T.stand(id, 300, 300, 260, T.strip(K.T ? `<g transform="translate(300 240)"><rect x="-80" y="-170" width="160" height="80" fill="#fbf8ee"/><text x="-66" y="-140" font-family="'Courier New', monospace" font-size="12" fill="#2a2018">The quick brown fox</text><text x="-66" y="-122" font-family="'Courier New', monospace" font-size="12" fill="#2a2018">jumps over the la_</text><rect x="-110" y="-96" width="220" height="20" rx="10" fill="#2a2a2e"/><path d="M-160 -70 L160 -70 L180 40 L-180 40 Z" fill="#1d1d22"/><path d="M-160 -70 L160 -70 L164 -58 L-164 -58 Z" fill="url(#${id}-brass)"/>${[0, 1, 2].map(r => Array.from({ length: 10 - r }, (_, c) => `<circle cx="${-128 + r * 14 + c * 29}" cy="${-38 + r * 26}" r="11" fill="#f4eee0" stroke="url(#${id}-brass)" stroke-width="2.5"/><text x="${-128 + r * 14 + c * 29}" y="${-34 + r * 26}" text-anchor="middle" font-family="${K.UI}" font-weight="800" font-size="10" fill="#2a2018">${['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'][r][c] || ''}</text>`).join('')).join('')}</g>` : ''))}
-    ${T.stand(id, 500, 300, 40, T.strip(K.stopwatch(id, 500, 260, .45, { hand: 140 })).replace(/url\(#[^)]*-gold\)/g, `url(#${id}-brass)`))}
-  `));
-
   cover('wordchain', id => C(id, 'Word Chain', 'The last letter starts the next', ['#4a4a2a', '#262614', '#0e0e06'], `
     ${T.surface(id, 'linen', { hz: 26, color: '#c8bc9c', lx: 300 })}
     ${[['APPLE', -12], ['EAGLE', 6], ['EMBER', -8], ['RIVER', 10]].map(([w, r], i) => T.lay(id, 140 + i * 110, 170 + (i % 2) * 70, r, `<rect x="-56" y="-26" width="112" height="52" rx="4" fill="#fbf8ee" stroke="rgba(0,0,0,.18)"/>${T.word(`<tspan fill="#a8242a">${w[0]}</tspan>${w.slice(1, -1)}<tspan fill="#a8242a">${w.slice(-1)}</tspan>`, 0, 9, 24, { weight: 700 })}`)).join('')}

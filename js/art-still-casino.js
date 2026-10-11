@@ -44,18 +44,6 @@ export default function paint(K) {
     `);
   });
 
-  cover('quickdraw', id => {
-    const watch = `<circle r="78" fill="url(#${id}-brass)"/><circle r="70" fill="#7a5a1e"/><circle r="66" fill="#f7f1e2"/>${Array.from({ length: 60 }, (_, i) => `<path d="M0 -62 V${i % 5 ? -58 : -52}" stroke="#2a2018" stroke-width="${i % 5 ? 1 : 2.4}" transform="rotate(${i * 6})"/>`).join('')}${['XII', 'III', 'VI', 'IX'].map((n, i) => `<text transform="rotate(${i * 90}) translate(0 -38) rotate(${-i * 90})" y="6" text-anchor="middle" font-family="${T.DISPLAY}" font-weight="700" font-size="16" fill="#2a2018">${n}</text>`).join('')}<path d="M0 6 L-3 0 L0 -48 L3 0 Z" fill="#1d1b1a"/><path d="M0 6 L-2.4 0 L0 -36 L2.4 0 Z" fill="#1d1b1a" transform="rotate(2)"/><circle r="4" fill="url(#${id}-brass)"/><circle cy="-92" r="12" fill="none" stroke="url(#${id}-brass)" stroke-width="5"/><rect x="-8" y="-84" width="16" height="10" rx="2" fill="url(#${id}-brass)"/><circle r="66" fill="url(#${id}-glass)"/><defs><linearGradient id="${id}-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".35" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
-    const chain = Array.from({ length: 22 }, (_, i) => { const t = i / 21, cx = -8 - t * 190, cy = -104 + Math.sin(t * Math.PI) * 70 + t * 40; return `<ellipse cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" rx="6" ry="3.4" fill="none" stroke="url(#${id}-brass)" stroke-width="2" transform="rotate(${i % 2 ? 70 : -10} ${cx.toFixed(1)} ${cy.toFixed(1)})"/>`; }).join('');
-    const star = K.star(id, 0, 0, 1).replace(`filter="url(#${id}-sh)"`, '').replace(/url\(#[^)]*-gold\)/g, `url(#${id}-silver)`);
-    return shell(id, S('Quick Draw', 'Wait for it, then tap', ['#8a5a2a', '#482e14', '#180e06']), `${T.defs(id)}
-      ${T.surface(id, 'wood', { hz: 26, lx: 300, ly: 180, color: '#6a3c1c' })}
-      ${T.lay(id, 300, 180, -8, `${chain}${watch}`, { s: 1.05, tilt: .7 })}
-      ${T.lay(id, 470, 290, 16, star, { tilt: .66, s: .85 })}
-      ${T.lay(id, 120, 300, -30, `<rect x="-60" y="-8" width="120" height="16" rx="8" fill="#5a3418"/><rect x="-60" y="-8" width="40" height="16" rx="8" fill="#3a2010"/>`, { blur: 2 })}
-    `);
-  });
-
   cover('mafianight', id => {
     const role = (t, c) => T.sheet(id, 110, 154, `<rect x="-47" y="-69" width="94" height="138" rx="4" fill="none" stroke="${c}" stroke-width="1.5"/><rect x="-42" y="-64" width="84" height="128" rx="3" fill="none" stroke="${c}" stroke-width=".6"/>${T.word(t, 0, 6, t.length > 6 ? 15 : 19, { weight: 700, fill: c, ls: 2.5 })}<path d="M-26 20 H26" stroke="${c}" stroke-width="1"/>`, { r: 6, fill: '#f3ead6' });
     const rose = `<path d="M-120 20 C-60 14 -10 4 30 -2" stroke="#2a4a1a" stroke-width="5" fill="none"/>${[[-80, 14, -30], [-40, 8, 30]].map(([x, y, r]) => `<path d="M${x} ${y} q16 -20 34 -10 q-14 18 -34 10 Z" fill="#2e5a22" transform="rotate(${r} ${x} ${y})"/>`).join('')}<g transform="translate(40 -4)">${[[0, 0, 26, '#6a0a1a'], [-6, -4, 20, '#8a1424'], [4, -6, 16, '#a81c2c'], [-2, -2, 10, '#c42a38'], [1, -3, 5, '#7a0e1c']].map(([dx, dy, r, c]) => `<ellipse cx="${dx}" cy="${dy}" rx="${r}" ry="${r * .82}" fill="${c}"/>`).join('')}<path d="M-14 -6 Q0 -22 16 -8" stroke="#5a0814" stroke-width="2" fill="none"/></g>`;

@@ -1,7 +1,7 @@
 // Card games where your hand lives on your phone: Top Dog (President), Big Deuce (Big Two),
 // Fool's Defense (Durak), Tonk, Thirty-One, Slap Stack, Speed, Pairs, Card Golf, Corner Kings.
-import { base, shuffle, sfx, announce, left } from './party.js?v=68';
-import { deck52, deckOf, SYM, SUITS, isRed, txt, cardEl, cardOpt } from './cardkit.js?v=68';
+import { base, shuffle, sfx, announce, left } from './party.js?v=80';
+import { deck52, deckOf, SYM, SUITS, isRed, txt, cardEl, cardOpt } from './cardkit.js?v=80';
 
 const R = n => Math.floor(Math.random() * n);
 const nextOf = (g, s, skip = () => false) => { const o = g.order; let i = o.indexOf(s); for (let k = 0; k < o.length; k++) { i = (i + 1) % o.length; if (!skip(o[i])) return o[i]; } return s; };
@@ -363,106 +363,6 @@ tonk.viewFor = (g, seat) => {
   else if (g.turn !== seat) v.ui = { k: 'wait', title: `@${g.turn}@’s turn`, sub: '', html: handHTML(h) };
   else if (!g.drawn) v.ui = { k: 'buttons', key: 'd' + g.moveId, title: 'Draw — or drop if you think you’re lowest', sub: `Discard: ${top ? txt(top) : '—'}`, myturn: true, buzz: true, html: handHTML(h), buttons: [{ type: 'deck', label: 'Draw from deck', go: true }, { type: 'discard', label: `Take ${top ? txt(top) : ''}`, dis: !top }, { type: 'drop', label: 'Drop (call lowest)' }] };
   else v.ui = { k: 'toggles', key: 't' + g.round + ':' + h.length + ':' + g.spreads.length + ':' + g.sel.join(''), title: 'Spread, hit, then discard one', sub: 'Tap cards to select', myturn: true, cards: true, grid: 6, options: h.map((c, i) => cardOpt(c, { v: i, on: g.sel.includes(c) })), buttons: [{ type: 'spread', label: 'Spread' }, { type: 'hit', label: 'Hit a spread' }, { type: 'throw', label: 'Discard ✓', go: true }] };
-  return v;
-};
-
-// ---------------------------------------------------------------- Slap Stack (Egyptian Ratscrew)
-const FACE_CH = { J: 1, Q: 2, K: 3, A: 4 };
-export const slapstack = {
-  createGame(s, p) {
-    const g = base(s, p, {});
-    const d = deck52(); g.pile = g.seats.map(() => []);
-    let i = 0; while (d.length) g.pile[g.order[i++ % g.order.length]].push(d.pop());
-    g.center = []; g.turn = g.order[0]; g.challenge = null; g.phase = 'play'; g.lastSlap = null;
-    return g;
-  },
-  collecting: () => false,
-  turnSeat: g => (g.phase === 'play' ? g.turn : -1),
-};
-const liveSS = g => g.order.filter(s => g.pile[s].length > 0);
-slapstack.slappable = g => { const c = g.center, n = c.length; return n >= 2 && (c[n - 1][0] === c[n - 2][0] || (n >= 3 && c[n - 1][0] === c[n - 3][0])); };
-slapstack.pending = g => (g.phase !== 'play' ? [] : slapstack.slappable(g) ? liveSS(g) : [g.turn]);
-slapstack.current = g => slapstack.pending(g)[0] ?? -1;
-slapstack.botDelay = g => (slapstack.slappable(g) ? 700 + Math.random() * 1500 : 900);
-function takeCenter(g, s, why) { g.pile[s].unshift(...g.center.reverse()); g.center = []; g.challenge = null; g.turn = s; announce(g, s, why); sfx(g, 'chime'); checkSS(g); }
-function checkSS(g) { const L = liveSS(g); if (L.length <= 1) { g.order.forEach(s => { g.score[s] = g.pile[s].length; }); g.winners = L; g.winner = L[0]; g.phase = 'over'; } g.moveId++; }
-slapstack.applyAction = (g, seat, a) => {
-  if (!a || g.phase !== 'play') return 'Not now';
-  if (a.type === 'slap') {
-    if (!g.pile[seat].length && !slapstack.slappable(g)) return 'You’re out';
-    if (slapstack.slappable(g)) { g.lastSlap = { s: seat, ok: true }; return takeCenter(g, seat, 'SLAP! 🖐️'), null; }
-    // A wrong slap burns a card to the bottom of the pile.
-    if (g.pile[seat].length) { g.center.unshift(g.pile[seat].pop()); g.lastSlap = { s: seat, ok: false }; announce(g, seat, 'Bad slap — burn!'); g.moveId++; }
-    return null;
-  }
-  if (a.type !== 'flip' || seat !== g.turn) return "It's not your turn";
-  const c = g.pile[seat].pop();
-  g.center.push(c);
-  sfx(g, 'thud');
-  if (FACE_CH[c[0]]) { g.challenge = { s: seat, left: FACE_CH[c[0]] }; g.turn = nextOf(g, seat, x => !g.pile[x].length); }
-  else if (g.challenge) { g.challenge.left--; if (g.challenge.left <= 0) { g.collectAt = Date.now(); g.collector = g.challenge.s; } }
-  else g.turn = nextOf(g, seat, x => !g.pile[x].length);
-  if (!g.pile[seat].length && g.turn === seat) g.turn = nextOf(g, seat, x => !g.pile[x].length);
-  checkSS(g);
-  return null;
-};
-slapstack.tick = g => (g.phase === 'play' && g.collector != null ? { ms: Math.max(0, g.collectAt + 1600 - Date.now()), run: () => { const s = g.collector; g.collector = null; if (g.challenge && g.challenge.left <= 0) takeCenter(g, s, 'Takes the pile'); } } : null);
-slapstack.botAction = (g, s) => (slapstack.slappable(g) ? { type: 'slap' } : s === g.turn && g.collector == null ? { type: 'flip' } : null);
-slapstack.viewFor = (g, seat) => {
-  const v = { phase: g.phase, moveId: g.moveId, hud: [['Your cards', g.pile[seat]?.length ?? 0], ['Pile', g.center.length]] };
-  if (g.phase === 'over') v.ui = { k: 'wait', title: (g.winners || []).includes(seat) ? '🏆 You won every card!' : 'Game over', sub: '' };
-  else if (!g.pile[seat].length) v.ui = { k: 'buttons', key: 'out', title: 'Out of cards!', sub: 'Slap your way back in on a double or sandwich', buttons: [{ type: 'slap', label: 'SLAP!', icon: '🖐️', cls: 'pp-huge' }] };
-  else v.ui = { k: 'buttons', key: 'ss' + (g.turn === seat ? 't' : 'w'), title: g.turn === seat ? (g.challenge ? `Face card! ${g.challenge.left} chance${g.challenge.left > 1 ? 's' : ''} to beat it` : 'Your flip') : `@${g.turn}@ is flipping`, sub: 'Slap doubles (7-7) or sandwiches (7-K-7)!', myturn: g.turn === seat, buttons: [{ type: 'flip', label: 'Flip', icon: '🂠', go: true, dis: g.turn !== seat || g.collector != null }, { type: 'slap', label: 'SLAP!', icon: '🖐️', cls: 'ss-slap' }] };
-  return v;
-};
-
-// ---------------------------------------------------------------- Speed (two players, real time)
-const SPO = 'A23456789TJQK', sp = c => SPO.indexOf(c[0]);
-const adj = (a, b) => { const d = Math.abs(sp(a) - sp(b)); return d === 1 || d === 12; };
-export const speed = {
-  createGame(s, p) {
-    const g = base(s, p, {});
-    const d = deck52();
-    g.stock = g.seats.map(() => []); g.hand = g.seats.map(() => []);
-    for (const x of g.order) { g.stock[x] = d.splice(0, 15); g.hand[x] = g.stock[x].splice(0, 5); }
-    g.side = [d.splice(0, 5), d.splice(0, 5)]; g.center = [g.side[0].pop(), g.side[1].pop()];
-    g.phase = 'ready'; g.readyAt = Date.now();
-    return g;
-  },
-  collecting: () => false, turnSeat: () => -1,
-};
-const canPlay = (g, s) => g.hand[s].some(c => g.center.some(t => adj(c, t)));
-speed.pending = g => (g.phase === 'play' ? g.order.filter(s => canPlay(g, s)) : []);
-speed.current = g => speed.pending(g)[0] ?? -1;
-speed.botDelay = () => 1300 + Math.random() * 1800;
-function speedStuck(g) {
-  if (g.order.some(s => canPlay(g, s))) return;
-  // Nobody can move: turn over a new card from each side stack (reshuffle if needed).
-  if (!g.side[0].length) { const all = shuffle(g.center.slice(0)); g.side = [all.slice(0, Math.ceil(all.length / 2)), all.slice(Math.ceil(all.length / 2))]; }
-  g.center = [g.side[0].pop() || g.center[0], g.side[1].pop() || g.center[1]];
-  announce(g, -1, 'Stuck — new cards!');
-}
-speed.applyAction = (g, seat, a) => {
-  if (!a || g.phase !== 'play' || a.type !== 'pick') return 'Not now';
-  const [c, pile] = String(a.v).split('@');
-  const i = Number(pile);
-  if (!g.hand[seat].includes(c)) return 'Play from your hand';
-  if (!(i === 0 || i === 1) || !adj(c, g.center[i])) return 'Must be one higher or lower';
-  g.hand[seat].splice(g.hand[seat].indexOf(c), 1); g.center[i] = c;
-  if (g.stock[seat].length && g.hand[seat].length < 5) g.hand[seat].push(g.stock[seat].pop());
-  sfx(g, 'thud');
-  if (!g.hand[seat].length) { g.order.forEach(s => { g.score[s] = s === seat ? 1 : 0; }); g.winners = [seat]; g.winner = seat; g.phase = 'over'; g.moveId++; return null; }
-  speedStuck(g);
-  g.moveId++;
-  return null;
-};
-speed.tick = g => (g.phase === 'ready' ? { ms: Math.max(0, g.readyAt + 3000 - Date.now()), run: () => { g.phase = 'play'; speedStuck(g); g.moveId++; } } : null);
-speed.botAction = (g, s) => { for (const c of g.hand[s]) for (const i of [0, 1]) if (adj(c, g.center[i])) return { type: 'pick', v: `${c}@${i}` }; return null; };
-speed.viewFor = (g, seat) => {
-  const v = { phase: g.phase, moveId: g.moveId, hud: [['Left', (g.hand[seat]?.length ?? 0) + (g.stock[seat]?.length ?? 0)], ['Piles', g.center.map(txt).join(' ')]] };
-  if (g.phase === 'over') v.ui = { k: 'wait', title: g.winner === seat ? '🏆 Fastest hands!' : 'Too slow!', sub: '' };
-  else if (g.phase === 'ready') v.ui = { k: 'wait', key: 'r', buzz: true, title: 'Ready… set…', sub: 'Play cards one higher or lower onto either pile — no turns!' };
-  else v.ui = { k: 'pick', key: 'sp' + g.moveId, title: 'GO!', sub: `Piles: ${txt(g.center[0])} and ${txt(g.center[1])}`, myturn: true, grid: 2, cards: true, options: g.hand[seat].flatMap(c => [0, 1].map(i => cardOpt(c, { v: `${c}@${i}`, sub: `→ ${txt(g.center[i])}`, dis: !adj(c, g.center[i]) }))).filter(o => !o.dis).concat(g.hand[seat].filter(c => !g.center.some(t => adj(c, t))).map(c => cardOpt(c, { v: `${c}@0`, dis: true }))) };
   return v;
 };
 

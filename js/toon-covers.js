@@ -1,6 +1,6 @@
 // The Vibrant style's cover art: a cartoon picture for every game, drawn from the kit in toon.js.
 // Each recipe returns the objects (in a 600 × 400 frame; the title sits over the bottom left on a tile).
-import { K, P, fan, backdrop, shadowDef, INK } from './toon.js?v=1';
+import { K, P, fan, backdrop, shadowDef, INK } from './toon.js?v=80';
 
 const R = '#e8303c', Y = '#ffc93a', G = '#22b97a', B = '#3f86f2', V = '#8a55ef', O = '#ff8f2e', PK = '#f0509c', T = '#18b2c9', D = '#2f2950', WH = '#ffffff';
 const c = (rank, suit) => ['card', { rank, suit }];
@@ -58,8 +58,6 @@ export const RECIPES = {
   foolsdefense: () => P('shield', 230, 180, 1.8, -10, { color: B }) + P('card', 410, 170, 1.7, 14, { rank: 'K', suit: 'club' }),
   thirtyone: () => cards([c('A', 'club'), c('K', 'club'), c('10', 'club')], 260) + P('number', 470, 160, .8, 10, { n: '31', color: Y }),
   tonk: () => cards([c('5', 'spade'), c('5', 'club'), c('5', 'heart')]) + P('hammer', 470, 150, 1, 10),
-  slapstack: () => P('card', 300, 210, 2, -6, { rank: '6', suit: 'heart' }) + P('rps', 330, 120, 1.4, 160),
-  speed: () => cards([c('4', 'diamond'), c('5', 'spade'), c('6', 'heart')], 270) + P('bolt', 480, 150, 1.2, 10),
   pairs: () => P('card', 220, 185, 1.85, -12, { rank: '9', suit: 'club' }) + P('card', 390, 175, 1.85, 12, { rank: '9', suit: 'heart' }),
   cardgolf: () => [0, 1, 2].map(i => P('back', 200 + i * 100, 140, 1.15, -6 + i * 6, { color: G })).join('') + [0, 1, 2].map(i => P(i === 1 ? 'card' : 'back', 200 + i * 100, 280, 1.15, 4 - i * 4, i === 1 ? { rank: 'A', suit: 'club' } : { color: G })).join('') + P('checkflag', 520, 120, .8, 10),
   cornerkings: () => [[160, 120, 'K', 'heart', -20], [440, 120, 'K', 'spade', 20], [160, 290, 'K', 'club', 20], [440, 290, 'K', 'diamond', -20]].map(([x, y, r, s, a]) => P('card', x, y, 1.15, a, { rank: r, suit: s })).join('') + P('crown', 300, 200, 1.3, 0),
@@ -209,7 +207,6 @@ export const RECIPES = {
   wordgallows: () => [['_', 0], ['A', 1], ['_', 0], ['E', 1]].map(([l, n], i) => P('tile', 160 + i * 95, 190, 1.3, -6 + i * 4, { l, n, color: n ? '#ffe2a0' : '#d8d4ee' })).join(''),
   longword: () => ['L', 'O', 'N', 'G', 'E', 'S', 'T'].map((l, i) => P('tile', 110 + i * 64, 190 + (i % 2) * 20, .95, -6 + i * 2, { l, n: i + 1 })).join(''),
   targetnumber: () => P('target', 250, 180, 1.8, -6) + P('number', 450, 200, .8, 10, { n: '24', color: Y }),
-  speedtypist: () => P('controller', 240, 190, 1.6, -8) + P('bolt', 440, 170, 1.2, 10),
   wordchain: () => [['C', 3], ['A', 1], ['T', 1]].map(([l, n], i) => P('tile', 160 + i * 80, 170, 1.15, -6, { l, n })).join('') + [['E', 1], ['N', 1]].map(([l, n], i) => P('tile', 400 + i * 80, 240, 1.15, 6, { l, n, color: '#bfe8ff' })).join(''),
   ghostletters: () => P('ghost', 250, 180, 1.9, -8) + P('tile', 440, 210, 1.3, 10, { l: 'G', n: 2 }),
   slowreveal: () => `<g transform="translate(300 185) rotate(-4)">${[0, 1, 2].map(r => [0, 1, 2, 3].map(cl => `<rect x="${-120 + cl * 60}" y="${-90 + r * 60}" width="60" height="60" fill="${(r * 4 + cl) % 3 ? '#5a4cf0' : '#bfe8ff'}" stroke="${INK}" stroke-width="5"/>`).join('')).join('')}</g>` + P('magnifier', 470, 270, .9, 0),
@@ -226,16 +223,20 @@ export const RECIPES = {
   undercover: () => P('spy', 260, 180, 2, -6) + P('map', 460, 240, .9, 10),
   mafianight: () => P('tophat', 240, 180, 1.6, -8) + P('moon', 440, 140, 1, 10) + P('mask', 440, 270, .8, 6, { color: R }),
   // ---------------- action
-  tugofwar: () => one(['rope', {}, 1.15, -6]),
-  tapderby: () => P('horse', 250, 185, 1.9, 0, { color: '#7a4a2a' }) + P('checkflag', 460, 160, 1.2, 10),
-  redlight: () => `<g transform="translate(300 185) rotate(-6)"><rect x="-42" y="-100" width="84" height="200" rx="16" fill="${D}" stroke="${INK}" stroke-width="6"/><circle cy="-60" r="26" fill="${R}" stroke="${INK}" stroke-width="5"/><circle cy="0" r="26" fill="#6a648a" stroke="${INK}" stroke-width="5"/><circle cy="60" r="26" fill="${G}" stroke="${INK}" stroke-width="5"/></g>`,
-  musicalchairs: () => P('chair', 230, 190, 1.6, -10, { color: R }) + P('chair', 400, 190, 1.6, 10, { color: B }) + P('star', 315, 90, .6, 0),
-  quickdraw: () => P('clock', 250, 180, 1.8, -8) + P('burst', 440, 170, 1.2, 10, { color: Y, t: 'GO' }),
-  echo: () => [R, Y, G, B].map((col, i) => `<path d="M300 200 L${300 + 130 * Math.cos((i * 90 - 135) * Math.PI / 180)} ${200 + 130 * Math.sin((i * 90 - 135) * Math.PI / 180)} A130 130 0 0 1 ${300 + 130 * Math.cos((i * 90 - 45) * Math.PI / 180)} ${200 + 130 * Math.sin((i * 90 - 45) * Math.PI / 180)}Z" fill="${col}" stroke="${INK}" stroke-width="7"/>`).join('') + `<circle cx="300" cy="200" r="34" fill="${D}" stroke="${INK}" stroke-width="7"/>`,
-  simonsays: () => P('bubble', 260, 170, 1.8, -8, { t: 'TAP!' }) + P('rps', 460, 230, 1, 170),
-  memorygrid: () => `<g transform="translate(300 190) rotate(-6)">${[0, 1, 2].map(r => [0, 1, 2].map(cl => `<rect x="${-105 + cl * 72}" y="${-105 + r * 72}" width="64" height="64" rx="10" fill="${[1, 3, 8].includes(r * 3 + cl) ? '#ffd84a' : '#5a4cf0'}" stroke="${INK}" stroke-width="5"/>`).join('')).join('')}</g>`,
-  whackamole: () => P('mole', 260, 200, 1.8, -4) + P('hammer', 440, 150, 1.4, 0),
-  counttogether: () => P('number', 200, 200, 1, -10, { n: '1', color: Y }) + P('number', 310, 180, 1, 0, { n: '2', color: '#7cf5b8' }) + P('number', 420, 200, 1, 10, { n: '3', color: '#ff9ac0' }),
+  // ---------------- talk and laugh
+  emojistory: () => P('phone', 230, 185, 1.9, -12, { color: V, screen: '#ffe066' }) + P('sun', 210, 175, .55, 0) + P('bubble', 440, 150, 1.25, 10, { t: '?!' }),
+  fakepitch: () => P('tv', 250, 180, 1.8, -6) + P('star', 455, 120, .9, 12) + P('ticket', 440, 270, 1.1, -10),
+  hottakes: () => P('burst', 260, 180, 1.9, -8, { color: R, t: 'HOT' }) + P('mic', 450, 200, 1.3, 12),
+  whosaidthat: () => P('bubble', 220, 160, 1.4, -10, { t: '?' }) + P('bubble', 400, 200, 1.4, 10, { color: B, t: '!' }) + P('magnifier', 500, 120, .8, 0),
+  worstgift: () => P('gift', 260, 190, 1.9, -8, { color: G, ribbon: PK }) + P('burst', 450, 140, 1, 10, { color: Y, t: '?!' }),
+  interrogation: () => P('lantern', 230, 170, 1.7, -6) + P('magnifier', 420, 210, 1.5, 0) + P('scroll', 520, 120, .7, 12),
+  translatethis: () => P('scroll', 230, 190, 1.6, -10) + P('bubble', 430, 160, 1.4, 10, { color: T, t: 'ARR' }),
+  drawpartner: () => P('frame', 220, 190, 1.5, -10, { color: Y }) + P('frame', 400, 180, 1.5, 10, { color: PK }) + P('pencil', 510, 270, .9, 0),
+  excuses: () => P('bubble', 250, 170, 1.8, -8, { t: 'ERM' }) + P('house', 450, 230, 1.1, 10, { color: O }),
+  lipreader: () => P('mask', 300, 180, 2.1, -4, { color: PK }) + P('bubble', 480, 110, .9, 12, { t: '?' }),
+  twowords: () => P('tile', 210, 190, 1.5, -12, { l: 'A', n: 1, color: Y }) + P('number', 305, 205, .6, 0, { n: '+', color: WH }) + P('tile', 400, 180, 1.5, 12, { l: 'B', n: 3, color: B }) + P('bulb', 520, 120, .8, 10),
+  guilty: () => P('ccard', 220, 190, 1.7, -12, { color: R, n: '✓' }) + P('ccard', 390, 180, 1.7, 12, { color: G, n: '✗' }) + P('qmark', 505, 110, .6, 10),
+  plottwist: () => P('book', 250, 190, 1.9, -8, { color: V }) + P('burst', 450, 140, 1.1, 10, { color: Y, t: '!?' }),
 };
 
 // Draw the whole cover: background (unless bare), then the objects with one cartoon shadow.

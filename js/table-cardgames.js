@@ -1,9 +1,9 @@
 // Table screens for the card-kit games (trick-games.js, shed-games.js). Hands stay on the
 // phones; the table shows the trick, the pile, trump, bids, the dummy and the scores.
-import { partyTable, esc, sc, who, teamScores, TEAMS } from './table-party.js?v=68';
-import * as T from './trick-games.js?v=68';
-import * as S from './shed-games.js?v=68';
-import { cardEl, SYM, txt } from './cardkit.js?v=68';
+import { partyTable, esc, sc, who, teamScores, TEAMS } from './table-party.js?v=80';
+import * as T from './trick-games.js?v=80';
+import * as S from './shed-games.js?v=80';
+import { cardEl, SYM, txt } from './cardkit.js?v=80';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${String(v) === String(s[k]) ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const nm = (ctx, s) => esc(ctx.nameOf(s));
@@ -146,25 +146,6 @@ export const tonkT = partyTable(S.tonk, {
     return `${head}<div class="cdk-row">${cardEl(null, 'cdk-big')}${g.discard.length ? big(g.discard[g.discard.length - 1]) : ''}</div>${spreads}<p class="pt-big">${who(ctx, g.turn)}’s turn</p>`;
   },
   badges: (g, s) => (g.hand[s] && g.phase === 'play' ? [`<span class="badge">${g.hand[s].length} 🂠</span>`] : []),
-});
-export const slapstackT = partyTable(S.slapstack, {
-  id: 'slapstack', defaults: {},
-  center(g, ctx) {
-    if (g.phase === 'over') return sc(g, ctx);
-    const c = g.center, top = c.slice(-3);
-    const slap = g.lastSlap ? `<p class="pt-kicker">${g.lastSlap.ok ? '🖐️' : '❌'} ${nm(ctx, g.lastSlap.s)} ${g.lastSlap.ok ? 'slapped first!' : 'slapped wrong'}</p>` : '';
-    return `<div class="cdk-stack">${top.map((x, i) => big(x, `st${i + 3 - top.length}`)).join('') || '<em>Empty pile</em>'}</div><p class="pt-kicker">${c.length} card${c.length === 1 ? '' : 's'} in the pile</p>${g.challenge ? `<p class="pt-big">${who(ctx, g.turn)} has ${g.challenge.left} chance${g.challenge.left === 1 ? '' : 's'} to hit a face card</p>` : `<p class="pt-big">${who(ctx, g.turn)} flips</p>`}${slap}`;
-  },
-  badges: (g, s) => (g.pile[s] ? [`<span class="badge ${g.pile[s].length ? '' : 'alone'}">${g.pile[s].length} 🂠</span>`] : []),
-});
-export const speedT = partyTable(S.speed, {
-  id: 'speed', defaults: {},
-  center(g, ctx) {
-    if (g.phase === 'over') return `<p class="pt-big">${who(ctx, g.winner)} emptied their hand first!</p>`;
-    if (g.phase === 'ready') return `<p class="pt-big">Ready… set…</p><div class="cdk-row">${big(g.center[0])}${big(g.center[1])}</div>`;
-    return `<div class="cdk-row cdk-speed">${big(g.center[0])}${big(g.center[1])}</div><div class="pt-done">${g.order.map(s => `<span class="on"><i style="background:var(--seat-${s})"></i>${nm(ctx, s)} · ${g.hand[s].length + g.stock[s].length} left</span>`).join('')}</div>`;
-  },
-  overlay(g, ctx) { return { key: 'over' + g.moveId, html: `<h2>${nm(ctx, g.winner)} wins!</h2><div class="buttons"><button class="big" data-do="again">Play again</button><button class="big ghost" data-do="lobby">Back to lobby</button></div>` }; },
 });
 export const pairsT = partyTable(S.pairs, {
   id: 'pairs', low: true, defaults: {},

@@ -1,9 +1,9 @@
 // Word games: Five Letters, Word Gallows, Long Word, Target Number, Speed Typist, Word Chain,
 // Ghost Letters, Slow Reveal, Acro Race, Fib Finder. Phones hold your guesses and answers; the
 // table shows the board, the clock and the reveal. The word list (dict.js) is loaded by the table.
-import { base, shuffle, pick, same, core, norm, cleanText, sfx, left, waiting, announce, finish } from './party.js?v=68';
-import { loadDict, isWord, hasPrefix, randomWord } from './dict.js?v=68';
-import { FIVE, GALLOWS, SENTENCES, FIBS, REVEAL } from './word-data.js?v=68';
+import { base, shuffle, pick, same, core, norm, cleanText, sfx, left, waiting, announce, finish } from './party.js?v=80';
+import { loadDict, isWord, hasPrefix, randomWord } from './dict.js?v=80';
+import { FIVE, GALLOWS, FIBS, REVEAL } from './word-data.js?v=80';
 
 const R = n => Math.floor(Math.random() * n);
 const ABC = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -233,16 +233,6 @@ export const targetnumber = answerGame({
   bot: g => `${g.nums[0]} + ${g.nums[2]} * ${g.nums[3]}`,
   ui: g => ({ k: 'fields', title: `Make ${g.target}`, sub: `Use ${g.nums.join(', ')} — each once, + − × ÷ ( )`, card: { kicker: 'Target', big: String(g.target), small: g.nums.join('  ·  ') }, fields: [{ ph: 'e.g. (100 - 4) * 3', max: 60 }], submit: 'Submit', need: 1 }),
   after: (g, s) => (g.ans[s] ? `${g.ans[s].t} = ${g.ans[s].v} (target ${g.target})` : `Target was ${g.target}`),
-});
-const tidy = t => String(t).toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
-export const speedtypist = answerGame({
-  defaults: { rounds: 6, secs: 30 },
-  setup(g) { g.text = pick(SENTENCES); },
-  check(g, t) { return tidy(t) === tidy(g.text) ? 1 : 0; },
-  score(g) { const right = Object.keys(g.ans).filter(s => g.ans[s].v).sort((a, b) => g.ans[a].at - g.ans[b].at); right.forEach((s, i) => { g.gain[s] = [5, 3, 2][i] || 1; }); g.order2 = right.map(Number); },
-  bot: g => (Math.random() < 0.7 ? g.text : 'oops'),
-  ui: () => ({ k: 'fields', title: 'Type the sentence on the table!', sub: 'Exactly — fastest wins (capitals and punctuation don’t matter)', fields: [{ ph: 'Type here…', max: 120 }], submit: 'Done!', need: 1 }),
-  after: (g, s) => (g.ans[s]?.v ? `#${g.order2.indexOf(s) + 1} to finish` : 'Not quite right'),
 });
 
 // ---------------------------------------------------------------- Word Chain (turns; three lives)

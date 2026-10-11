@@ -5,7 +5,7 @@
 // redraw, the Regent swaps hands, the Lady must be played if you hold the Regent or Herald, and
 // whoever discards the Heir is out. Last one in — or the highest card when the deck runs out —
 // wins a seal. First to the seal target wins.
-import { base, shuffle, sfx, announce } from './party.js?v=68';
+import { base, shuffle, sfx, announce } from './party.js?v=80';
 
 export const CARDS = [null,
   { n: 'Watch', p: 'Name a card (not a Watch). If that player holds it, they’re out.', c: 5, e: '🔦' },

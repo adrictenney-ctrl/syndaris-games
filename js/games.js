@@ -1763,15 +1763,6 @@ GAMES.targetnumber = {
   layout: GAMES.crown.layout,
 };
 
-GAMES.speedtypist = {
-  id: 'speedtypist',
-  name: "Speed Typist",
-  blurb: "1–10 players · type the sentence on the table fastest",
-  min: 1,
-  max: 10,
-  startLabel: "Ready, set, type",
-  layout: GAMES.crown.layout,
-};
 
 GAMES.wordchain = {
   id: 'wordchain',
@@ -1932,105 +1923,15 @@ GAMES.mafianight = {
   layout: GAMES.crown.layout,
 };
 
-GAMES.tugofwar = {
-  id: 'tugofwar',
-  name: "Tug of War",
-  blurb: "2–10 players · two teams tap like mad to drag the rope over the line",
-  min: 2,
-  max: 10,
-  startLabel: "Grab the rope",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.tapderby = {
-  id: 'tapderby',
-  name: "Tap Derby",
-  blurb: "1–10 players · tap your horse to the finish line on the big screen",
-  min: 1,
-  max: 10,
-  startLabel: "Under starter’s orders",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.redlight = {
-  id: 'redlight',
-  name: "Red Light, Green Light",
-  blurb: "1–10 players · run on green, freeze on red — or back to the start",
-  min: 1,
-  max: 10,
-  startLabel: "Green light!",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.musicalchairs = {
-  id: 'musicalchairs',
-  name: "Musical Chairs",
-  blurb: "3–10 players · when the music stops, tap SIT — one chair short",
-  min: 3,
-  max: 10,
-  startLabel: "Start the music",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.quickdraw = {
-  id: 'quickdraw',
-  name: "Quick Draw",
-  blurb: "2–10 players · wait for DRAW, then tap fastest — too early costs you",
-  min: 2,
-  max: 10,
-  startLabel: "Take ten paces",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.echo = {
-  id: 'echo',
-  name: "Echo",
-  blurb: "1–10 players · watch the colours on the table, repeat them on your phone",
-  min: 1,
-  max: 10,
-  startLabel: "Watch closely",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.simonsays = {
-  id: 'simonsays',
-  name: "Simon Says",
-  blurb: "2–10 players · only tap when Simon says so",
-  min: 2,
-  max: 10,
-  startLabel: "Simon says start",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.memorygrid = {
-  id: 'memorygrid',
-  name: "Memory Grid",
-  blurb: "1–10 players · squares light up on the table — mark them from memory",
-  min: 1,
-  max: 10,
-  startLabel: "Light the grid",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.whackamole = {
-  id: 'whackamole',
-  name: "Whack-a-Mole",
-  blurb: "1–10 players · moles pop up on the table — whack the hole on your phone",
-  min: 1,
-  max: 10,
-  startLabel: "Moles incoming",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.counttogether = {
-  id: 'counttogether',
-  name: "Count Together",
-  blurb: "2–10 players · count to the target as a team — never two at once, no talking",
-  min: 2,
-  max: 10,
-  startLabel: "Begin counting",
-  layout: GAMES.crown.layout,
-};
 
 GAMES.whist = {
   id: 'whist',
@@ -2162,25 +2063,7 @@ GAMES.tonk = {
   layout: GAMES.crown.layout,
 };
 
-GAMES.slapstack = {
-  id: 'slapstack',
-  name: "Slap Stack",
-  blurb: "2–6 players · flip to the pile and slap doubles and sandwiches first",
-  min: 2,
-  max: 6,
-  startLabel: "Split the deck",
-  layout: GAMES.crown.layout,
-};
 
-GAMES.speed = {
-  id: 'speed',
-  name: "Speed",
-  blurb: "2 players · no turns — play one higher or lower as fast as you can",
-  min: 2,
-  max: 2,
-  startLabel: "Ready, set…",
-  layout: GAMES.crown.layout,
-};
 
 GAMES.pairs = {
   id: 'pairs',
@@ -2209,5 +2092,148 @@ GAMES.cornerkings = {
   min: 2,
   max: 4,
   startLabel: "Deal seven",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.emojistory = {
+  id: 'emojistory',
+  name: "Emoji Story",
+  blurb: "3–10 players · tell a story in emoji only — everyone guesses what it means",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "First storyteller",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.fakepitch = {
+  id: 'fakepitch',
+  name: "Fake Movie Pitch",
+  blurb: "3–10 players · a random title, genre and star — pitch it like a trailer",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Roll the cameras",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.hottakes = {
+  id: 'hottakes',
+  name: "Hot Takes",
+  blurb: "3–10 players · defend a ridiculous opinion for 30 seconds — did you convince the room?",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Serve the first take",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.whosaidthat = {
+  id: 'whosaidthat',
+  name: "Who Said That?",
+  blurb: "3–10 players · answer in secret, then guess who wrote each answer",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "First question",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.worstgift = {
+  id: 'worstgift',
+  name: "Worst Gift",
+  blurb: "3–10 players · everyone invents the worst gift for the hot seat — they pick a favourite",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Wrap the first gift",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.interrogation = {
+  id: 'interrogation',
+  name: "Interrogation",
+  blurb: "3–10 players · grill the suspect about their alibi, then vote: lying or not?",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Bring in the suspect",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.translatethis = {
+  id: 'translatethis',
+  name: "Translate This",
+  blurb: "3–10 players · rewrite a normal sentence like a pirate, a toddler or Shakespeare",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "First sentence",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.drawpartner = {
+  id: 'drawpartner',
+  name: "Draw Your Partner",
+  blurb: "3–10 players · secretly draw another player, then vote for the best likeness",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Sharpen the pencils",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.excuses = {
+  id: 'excuses',
+  name: "Excuses, Excuses",
+  blurb: "3–10 players · a ridiculous situation — write the most believable excuse",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "First situation",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.lipreader = {
+  id: 'lipreader',
+  name: "Lip Reader",
+  blurb: "3–10 players · mouth a secret phrase silently — everyone types their guess",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Read my lips",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.twowords = {
+  id: 'twowords',
+  name: "Two Words",
+  blurb: "3–10 players · two random words — invent a product, band or superhero with both",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Deal the words",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.guilty = {
+  id: 'guilty',
+  name: "Guilty Conscience",
+  blurb: "3–10 players · anonymous “have you ever” — see how many said yes, guess who",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "First confession",
+  layout: GAMES.crown.layout,
+};
+
+GAMES.plottwist = {
+  id: 'plottwist',
+  name: "Plot Twist",
+  blurb: "3–10 players · the table starts a story, you write the twist ending",
+  min: 3,
+  max: 10,
+  noBots: true,
+  startLabel: "Once upon a time",
   layout: GAMES.crown.layout,
 };

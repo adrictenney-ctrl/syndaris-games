@@ -2,8 +2,8 @@
 // table: the next player draws the word, the next guesses what the drawing is, the next draws
 // that guess, and so on — everyone working at once — until each book comes home. Then the
 // table reveals every chain, page by page, to see how far the word drifted.
-import { LISTS } from './sketch-words.js?v=68';
-import { SCRIBBLE_WORDS } from './scribble-words.js?v=1';
+import { LISTS } from './sketch-words.js?v=80';
+import { SCRIBBLE_WORDS } from './scribble-words.js?v=80';
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // Scribble Chain draws from the shared easy and medium lists plus its own big list (no repeats).

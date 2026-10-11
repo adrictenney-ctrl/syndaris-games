@@ -1,6 +1,6 @@
 // Table screens for the word games (word-games.js).
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=68';
-import * as W from './word-games.js?v=68';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=80';
+import * as W from './word-games.js?v=80';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const rounds = (list, label = 'Rounds') => s => `<label>${label} ${opt('rounds', s, list.map(n => [n, String(n)]))}</label>`;
@@ -41,13 +41,6 @@ export const targetnumberT = partyTable(W.targetnumber, {
     if (g.phase === 'over') return sc(g, ctx);
     const nums = `<div class="wd-nums">${g.nums.map(n => `<span>${n}</span>`).join('')}</div>`;
     return `<p class="pt-kicker">Round ${g.round} of ${g.settings.rounds}</p><div class="wd-target">${g.target}</div>${nums}${g.phase === 'play' ? `<p class="pt-sub">Use each number once with + − × ÷ — get as close as you can</p>${clock()}${doneRow(g, ctx)}` : answers(g, ctx, a => `${a.t} = ${a.v}`)}${sc(g, ctx)}`;
-  },
-});
-export const speedtypistT = partyTable(W.speedtypist, {
-  id: 'speedtypist', defaults: { rounds: 6, secs: 30 }, settingsHTML: rounds([4, 6, 10]),
-  center(g, ctx) {
-    if (g.phase === 'over') return sc(g, ctx);
-    return `<p class="pt-kicker">Round ${g.round} of ${g.settings.rounds}</p><p class="wd-sentence">${esc(g.text)}</p>${g.phase === 'play' ? `${clock()}${doneRow(g, ctx)}` : `<div class="qz-guesses">${g.order2.map((s, i) => `<span class="ok">#${i + 1} ${nm(ctx, s)} +${g.gain[s]}</span>`).join('') || '<span>Nobody typed it exactly!</span>'}</div>`}${sc(g, ctx)}`;
   },
 });
 export const wordchainT = partyTable(W.wordchain, {

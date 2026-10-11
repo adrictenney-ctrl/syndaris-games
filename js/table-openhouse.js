@@ -1,7 +1,7 @@
 // Open House on the table: the row of properties up for auction with everyone's bids, then the row
 // of cheques and the properties flipped against them. Coins and hands stay on the phones.
-import * as E from './openhouse.js?v=68';
-import { partyTable, esc, who, doneRow } from './table-party.js?v=68';
+import * as E from './openhouse.js?v=80';
+import { partyTable, esc, who, doneRow } from './table-party.js?v=80';
 
 const prop = p => `<span class="oh-card"><b>${E.ICON[p]}</b><em>${p}</em><small>${E.PROPS[p]}</small></span>`;
 const cheque = c => `<span class="oh-cheque">💵<b>${c}</b></span>`;

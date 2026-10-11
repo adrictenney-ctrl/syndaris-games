@@ -4,7 +4,7 @@
 // everyone votes for the storyteller's card. If EVERYONE or NOBODY finds it, the storyteller scores 0
 // and the others 2; otherwise the storyteller and each finder score 3. Players also score 1 for each
 // vote their card fooled. First to the target wins.
-import { base, shuffle, cleanText, sfx, left, waiting } from './party.js?v=68';
+import { base, shuffle, cleanText, sfx, left, waiting } from './party.js?v=80';
 
 // 96 cards, each a little scene: a big subject, two smaller things and a sky.
 const BIG = '🐋 🦉 🏰 🌙 🎈 🦊 🗝️ 🐢 🍄 🚂 🪐 🦋 ⛵ 🌋 🐘 🎭 🕰️ 🦩 🌵 🐙 🚪 🪁 🧸 🕯️'.split(' ');
