@@ -11,15 +11,17 @@ export function makeStill(K) {
   // ---------------------------------------------------------------- the set
   // Filters and gradients every still-life cover uses.
   // In the Vibrant style the shadows take the backdrop's deep colour instead of black.
+  // In the Vibrant style everything is drawn as a cartoon: no soft shadows and no focus blur here
+  // (covers.js wraps the props in one sticker filter: a bold outline and a cartoon drop shadow).
   const castShadow = (id, sfx, blur, dx, dy, a) => T.vivid
-    ? `<filter id="${id}-${sfx}" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="${blur}"/><feOffset dx="${dx}" dy="${dy}" result="o"/><feFlood flood-color="${shade(T.vivid[1], -.55)}" flood-opacity="${a + .1}"/><feComposite in2="o" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>`
+    ? `<filter id="${id}-${sfx}"><feOffset dx="0" dy="0"/></filter>`
     : `<filter id="${id}-${sfx}" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="${blur}"/><feOffset dx="${dx}" dy="${dy}"/><feComponentTransfer><feFuncA type="linear" slope="${a}"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
   T.defs = id => `<defs>
     ${castShadow(id, 'cs', 5, 7, 9, .55)}
     ${castShadow(id, 'cs2', 2, 2, 3, .5)}
-    <filter id="${id}-b2"><feGaussianBlur stdDeviation="2"/></filter>
-    <filter id="${id}-b4"><feGaussianBlur stdDeviation="4.5"/></filter>
-    <filter id="${id}-b8" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="${id}-b2"><feGaussianBlur stdDeviation="${T.vivid ? 0 : 2}"/></filter>
+    <filter id="${id}-b4"><feGaussianBlur stdDeviation="${T.vivid ? 0 : 4.5}"/></filter>
+    <filter id="${id}-b8" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="${T.vivid ? 0 : 9}"/></filter>
     <linearGradient id="${id}-paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf7"/><stop offset=".6" stop-color="#f6f0e2"/><stop offset="1" stop-color="#e8dfcb"/></linearGradient>
     <linearGradient id="${id}-brass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0c0"/><stop offset=".3" stop-color="#d9b25c"/><stop offset=".55" stop-color="#9a7228"/><stop offset=".8" stop-color="#d2aa58"/><stop offset="1" stop-color="#7a5a1e"/></linearGradient>
     <linearGradient id="${id}-silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#c9ced6"/><stop offset=".6" stop-color="#7c838e"/><stop offset=".85" stop-color="#d4d8de"/><stop offset="1" stop-color="#6a707a"/></linearGradient>
@@ -56,8 +58,9 @@ export function makeStill(K) {
   // backdrop like the game boxes — flat colour, flowing wavy bands, printed facets,
   // a darker sweep for the table the props sit on, a corner of halftone and a few bits of confetti.
   T.vivid = null;
-  const FACETS = [['0,0 210,0 70,170', '#fff', .07], ['210,0 420,0 300,140', '#000', .06], ['420,0 600,0 600,180 520,90', '#fff', .05],
-    ['70,170 300,140 170,400 0,400 0,240', '#000', .05], ['300,140 600,180 500,400', '#fff', .07], ['0,0 70,170 0,240', '#fff', .04], ['500,400 600,180 600,400', '#000', .06]];
+  const FACETS = [['0,0 230,0 60,190', '#fff', .16], ['230,0 430,0 310,150', '#000', .1], ['430,0 600,0 600,170 540,70', '#fff', .12],
+    ['60,190 310,150 190,400 0,400 0,260', '#000', .09], ['310,150 600,170 520,400', '#fff', .14], ['0,0 60,190 0,260', '#fff', .08],
+    ['520,400 600,170 600,400', '#000', .12], ['190,400 310,150 360,400', '#fff', .06], ['360,400 310,150 520,400', '#000', .05]];
   // Flowing wavy bands, lower left to upper right (same shapes as the Vibrant tiles behind them).
   const band = (y, t, tilt = 170, amp = 46) => `M-30 ${y} C170 ${y - amp - tilt * .33} 400 ${y + amp - tilt * .66} 630 ${y - tilt} L630 ${y - tilt + t} C400 ${y + amp - tilt * .66 + t * 1.25} 170 ${y - amp - tilt * .33 + t * .8} -30 ${y + t} Z`;
   const WAVES = [[70, 46, '#000', .1], [150, 70, '#fff', .15], [250, 34, '#000', .1], [330, 96, '#fff', .11], [440, 60, '#000', .09], [560, 80, '#fff', .1]];
@@ -70,22 +73,21 @@ export function makeStill(K) {
     return `<defs><pattern id="${id}-vdots" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="5" cy="5" r="1.9" fill="#fff"/></pattern>
       <linearGradient id="${id}-vfade" x1="0" y1="0" x2="1" y2="1"><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="${id}-vm"><rect width="600" height="400" fill="url(#${id}-vfade)"/></mask></defs>
       <rect width="600" height="400" fill="${shade(m, .14)}"/>
-      ${WAVES.map(([y, t, c, a]) => `<path d="${band(y, t)}" fill="${c}" fill-opacity="${a}"/>`).join('')}
+      ${WAVES.map(([y, t, c, a]) => `<path d="${band(y, t)}" fill="${c}" fill-opacity="${a * .5}"/>`).join('')}
       <path d="M-30 205 C170 132 400 138 630 35" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="3"/>
       ${FACETS.map(([p, c, a]) => `<polygon points="${p}" fill="${c}" fill-opacity="${a}"/>`).join('')}
-      <path d="M0 ${hz + 46} Q300 ${hz - 4} 600 ${hz + 46} V400 H0 Z" fill="${d}" opacity=".32"/>
-      <path d="M0 ${hz + 46} Q300 ${hz - 4} 600 ${hz + 46}" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3"/>
+
       <rect width="600" height="400" fill="url(#${id}-vdots)" opacity=".13" mask="url(#${id}-vm)"/>
       ${bits}<!--/surface-->`;
   }
 
   // Move the camera in: everything after the surface is scaled about (cx, cy).
-  T.zoom = (body, z = 1.35, cx = 300, cy = 175, lift = 36) => { const i = body.indexOf('<!--/surface-->'); return i < 0 ? body : body.slice(0, i) + `<g transform="translate(${cx} ${cy - lift}) scale(${z}) translate(${-cx} ${-cy})">${body.slice(i)}</g>`; };
+  T.zoom = (body, z = 1.35, cx = 300, cy = 175, lift = 36) => { if (T.vivid && !T.vivid[2]) { z *= 1.1; lift += 44; } const i = body.indexOf('<!--/surface-->'); return i < 0 ? body : body.slice(0, i) + `<g transform="translate(${cx} ${cy - lift}) scale(${z}) translate(${-cx} ${-cy})">${body.slice(i)}</g>`; };
 
   // Lay something flat on the table (foreshortened), with its shadow falling down and right.
   T.lay = (id, x, y, rot, inner, o = {}) => `<g filter="url(#${id}-${o.thin ? 'cs2' : 'cs'})" ${o.blur ? `opacity="${o.op ?? 1}"` : ''}><g ${o.blur ? `filter="url(#${id}-b${o.blur})"` : ''}><g transform="translate(${x} ${y}) scale(${o.s ?? 1} ${(o.s ?? 1) * (o.tilt ?? .64)}) rotate(${rot})">${inner}</g></g></g>`;
   // Stand something upright on the table (contact shadow under it, cast shadow to the right).
-  T.stand = (id, x, y, w, inner, o = {}) => `<g>${o.noShadow ? '' : `<ellipse cx="${x + w * .18}" cy="${y + 2}" rx="${w * .62}" ry="${w * .14}" fill="#000" opacity=".45" filter="url(#${id}-b4)"/>`}<g ${o.blur ? `filter="url(#${id}-b${o.blur})"` : ''}>${inner}</g></g>`;
+  T.stand = (id, x, y, w, inner, o = {}) => `<g>${o.noShadow || T.vivid ? '' : `<ellipse cx="${x + w * .18}" cy="${y + 2}" rx="${w * .62}" ry="${w * .14}" fill="#000" opacity=".45" filter="url(#${id}-b4)"/>`}<g ${o.blur ? `filter="url(#${id}-b${o.blur})"` : ''}>${inner}</g></g>`;
   // Out-of-focus wrapper.
   T.soft = (id, n, inner) => `<g filter="url(#${id}-b${n})">${inner}</g>`;
 

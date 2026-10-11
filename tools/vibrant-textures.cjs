@@ -78,50 +78,44 @@ const wavesBar = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 100' 
 // swooshes of orange and yellow sweeping up to the right, light streaks, a glow in the top corner.
 const fire = (() => {
   const W = 1200, H = 360;
-  // a tapered swoosh from (x0,y0) to (x1,y1), bulging by b and thickness t
-  const swoosh = (x0, y0, x1, y1, t, b, fill, op = 1) => {
-    const mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
-    return `<path d='M${x0} ${y0} C${mx - b} ${my + b * .6} ${mx + b * .4} ${my - t - b * .2} ${x1} ${y1} C${mx + b * .5} ${my + t * .3 - b * .2} ${mx - b * .6} ${my + t + b * .6} ${x0 + t * .6} ${y0} Z' fill='${fill}' opacity='${op}'/>`;
+  // A streak of fire: a smooth band that sweeps from the lower middle up to the top right.
+  const streak = (x0, y0, x1, y1, t, bend, fill, op) => {
+    const c1x = x0 + (x1 - x0) * .35, c1y = y0 - bend, c2x = x0 + (x1 - x0) * .7, c2y = y1 + bend * .55;
+    return `<path d='M${x0} ${y0} C${c1x} ${c1y} ${c2x} ${c2y} ${x1} ${y1} L${x1} ${y1 + t} C${c2x} ${c2y + t * 1.35} ${c1x + 10} ${c1y + t * 1.6} ${x0 + t * .9} ${y0} Z' fill='${fill}' opacity='${op}'/>`;
   };
-  // flame tongues licking up along a curve
-  let tongues = '';
-  for (let i = 0; i < 9; i++) {
-    const x = 560 + i * 72, y = 330 - i * 30, h = 70 + (i % 3) * 26, w = 46;
-    tongues += `<path d='M${x} ${y} C${x + w * .2} ${y - h * .5} ${x + w * .9} ${y - h * .55} ${x + w * 1.25} ${y - h} C${x + w * 1.15} ${y - h * .45} ${x + w * 1.6} ${y - h * .3} ${x + w * 1.7} ${y + 6} Z' fill='url(#tg)' opacity='${.55 + (i % 2) * .25}'/>`;
+  const cols = ['#c0142e', '#ff4421', '#ff7a1c', '#ffb22a', '#e8222c', '#ff9a24', '#ffd04a', '#d81c2c', '#ff6a1e', '#ffc23a', '#ff5420', '#ffe27a'];
+  let streaks = '';
+  for (let k = 0; k < 12; k++) {
+    const x0 = 360 + k * 62, y0 = 400, x1 = 1240, y1 = -40 + k * 34, t = 16 + ((k * 7) % 5) * 9, bend = 70 + (k % 3) * 30;
+    streaks += streak(x0, y0, x1, y1, t, bend, cols[k], (.62 + (k % 4) * .1).toFixed(2));
   }
   return `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${W} ${H}' preserveAspectRatio='xMidYMid slice'>
   <defs>
-    <linearGradient id='base' x1='0' y1='0' x2='1' y2='0'><stop offset='0' stop-color='#2b0f4e'/><stop offset='.22' stop-color='#4f1352'/><stop offset='.42' stop-color='#a81c42'/><stop offset='.58' stop-color='#e0242f'/><stop offset='.8' stop-color='#ec3424'/><stop offset='1' stop-color='#ff6a22'/></linearGradient>
-    <linearGradient id='o' x1='0' y1='1' x2='1' y2='0'><stop offset='0' stop-color='#ff3a2a' stop-opacity='0'/><stop offset='.35' stop-color='#ff4f22'/><stop offset='.75' stop-color='#ff8a1e'/><stop offset='1' stop-color='#ffc23a'/></linearGradient>
-    <linearGradient id='y' x1='0' y1='1' x2='1' y2='0'><stop offset='0' stop-color='#ffb02a' stop-opacity='0'/><stop offset='.5' stop-color='#ffc53a'/><stop offset='1' stop-color='#fff0a0'/></linearGradient>
-    <linearGradient id='r' x1='0' y1='1' x2='1' y2='0'><stop offset='0' stop-color='#7a0f3a' stop-opacity='0'/><stop offset='.5' stop-color='#a5122f'/><stop offset='1' stop-color='#d01c2a'/></linearGradient>
-    <linearGradient id='tg' x1='0' y1='1' x2='0' y2='0'><stop offset='0' stop-color='#ff5a1e'/><stop offset='.6' stop-color='#ffa52a'/><stop offset='1' stop-color='#ffe27a' stop-opacity='.9'/></linearGradient>
-    <radialGradient id='glow' cx='.92' cy='.12' r='.55'><stop offset='0' stop-color='#ffd25a' stop-opacity='.85'/><stop offset='.45' stop-color='#ff8a2a' stop-opacity='.35'/><stop offset='1' stop-color='#ff6a2a' stop-opacity='0'/></radialGradient>
-    <radialGradient id='dark' cx='.08' cy='.55' r='.6'><stop offset='0' stop-color='#1e0838' stop-opacity='.7'/><stop offset='1' stop-color='#1e0838' stop-opacity='0'/></radialGradient>
-    <filter id='soft' x='-10%' y='-10%' width='120%' height='120%'><feGaussianBlur stdDeviation='6'/></filter>
+    <linearGradient id='base' x1='0' y1='0' x2='1' y2='.15'><stop offset='0' stop-color='#33103f'/><stop offset='.2' stop-color='#4a1243'/><stop offset='.38' stop-color='#8c1640'/><stop offset='.55' stop-color='#d01e34'/><stop offset='.75' stop-color='#ec3a26'/><stop offset='1' stop-color='#ff7a24'/></linearGradient>
+    <radialGradient id='glowTR' cx='.95' cy='.02' r='.5'><stop offset='0' stop-color='#ff9a7a' stop-opacity='.85'/><stop offset='.5' stop-color='#ff6a4a' stop-opacity='.35'/><stop offset='1' stop-color='#ff5a3a' stop-opacity='0'/></radialGradient>
+    <radialGradient id='glowBR' cx='.98' cy='1' r='.45'><stop offset='0' stop-color='#ffd04a' stop-opacity='.95'/><stop offset='.5' stop-color='#ffa02a' stop-opacity='.45'/><stop offset='1' stop-color='#ff8a2a' stop-opacity='0'/></radialGradient>
+    <radialGradient id='plum' cx='.1' cy='.5' r='.55'><stop offset='0' stop-color='#260a36' stop-opacity='.65'/><stop offset='1' stop-color='#260a36' stop-opacity='0'/></radialGradient>
+    <filter id='glow' x='-20%' y='-20%' width='140%' height='140%'><feGaussianBlur stdDeviation='14'/></filter>
   </defs>
   <rect width='${W}' height='${H}' fill='url(#base)'/>
-  <rect width='${W}' height='${H}' fill='url(#dark)'/>
-  <path d='M0 -10 L330 -10 L120 ${H + 10} L0 ${H + 10} Z' fill='#24093f' opacity='.45'/>
-  <path d='M250 -10 L420 -10 L260 ${H + 10} L150 ${H + 10} Z' fill='#5a1550' opacity='.35'/>
-  ${swoosh(300, 400, 1230, -40, 150, 120, 'url(#r)', .75)}
-  ${swoosh(420, 420, 1240, 30, 120, 90, 'url(#o)', .95)}
-  <g filter='url(#soft)'>${tongues}</g>
-  ${tongues}
-  ${swoosh(560, 420, 1240, 110, 60, 70, 'url(#y)', .95)}
-  ${swoosh(820, 420, 1240, 250, 34, 40, 'url(#y)', 1)}
-  ${swoosh(640, 420, 1240, 330, 22, 30, '#ffe066', .8)}
-  ${swoosh(700, 420, 1240, 210, 40, 50, 'url(#o)', .85)}
-  ${swoosh(380, -30, 1230, 330, 80, -90, 'url(#r)', .45)}
-  <rect width='${W}' height='${H}' fill='url(#glow)'/>
-  <path d='M470 400 C640 280 860 200 1230 40' fill='none' stroke='#fff4c0' stroke-opacity='.55' stroke-width='3'/>
-  <path d='M600 400 C760 300 930 230 1230 140' fill='none' stroke='#fff' stroke-opacity='.35' stroke-width='2'/>
-  <path d='M420 -20 C620 90 820 130 1230 90' fill='none' stroke='#ffb85a' stroke-opacity='.35' stroke-width='2.5'/>
-  <path d='M1110 30 l42 42 -42 42 -42 -42z' fill='none' stroke='#b06cff' stroke-opacity='.7' stroke-width='8' stroke-linejoin='round'/>
-  <path d='M1110 30 l42 42 -42 42 -42 -42z' fill='#8a3ae0' fill-opacity='.25'/>
-  <path d='M700 52 l18 -6 -6 22z' fill='#ffb02a'/><rect x='640' y='300' width='16' height='16' fill='#e8262e' transform='rotate(20 648 308)'/>
-  <path d='M1040 300 l30 -14 -10 34z' fill='#ffc23a'/><path d='M560 120 l14 -4 -4 16z' fill='#ff8a2a' opacity='.9'/>
-  <rect x='1000' y='70' width='12' height='12' fill='#e8262e' transform='rotate(-15 1006 76)'/><path d='M860 330 l22 -8 -6 26z' fill='#ffd24a' opacity='.9'/>
+  <rect width='${W}' height='${H}' fill='url(#plum)'/>
+  <path d='M150 -10 L235 -10 L85 ${H + 10} L0 ${H + 10} Z' fill='#b06cd8' opacity='.1'/>
+  <path d='M300 -10 L340 -10 L210 ${H + 10} L170 ${H + 10} Z' fill='#b06cd8' opacity='.06'/>
+  <g filter='url(#glow)' opacity='.8'>${streaks}</g>
+  ${streaks}
+  <rect width='${W}' height='${H}' fill='url(#glowTR)'/>
+  <rect width='${W}' height='${H}' fill='url(#glowBR)'/>
+  <path d='M520 400 C700 300 900 230 1240 60' fill='none' stroke='#fff3c4' stroke-opacity='.5' stroke-width='3'/>
+  <path d='M700 400 C840 330 1000 270 1240 200' fill='none' stroke='#fff' stroke-opacity='.3' stroke-width='2'/>
+  <path d='M1110 22 L1160 72 L1110 122 L1060 72 Z' fill='#9a6ae0' fill-opacity='.35' stroke='#c9a0ff' stroke-opacity='.75' stroke-width='7' stroke-linejoin='round'/>
+  <path d='M478 66 l30 -10 -8 34 z' fill='#ffb02a'/>
+  <path d='M440 262 l44 -18 -10 52 z' fill='#ffa62a'/>
+  <path d='M1092 300 l52 -22 -14 60 z' fill='#ffbf2e'/>
+  <path d='M1040 250 l26 -10 -6 28 z' fill='#ffcf4a' opacity='.9'/>
+  <rect x='410' y='190' width='16' height='16' rx='2' fill='#e2242e' transform='rotate(22 418 198)'/>
+  <rect x='1000' y='64' width='14' height='14' rx='2' fill='#e2242e' transform='rotate(-14 1007 71)'/>
+  <rect x='760' y='34' width='10' height='10' rx='2' fill='#ff8a2a' transform='rotate(30 765 39)'/>
+  <path d='M610 330 l20 -6 -4 22 z' fill='#ffd24a' opacity='.85'/>
 </svg>`;
 })();
 

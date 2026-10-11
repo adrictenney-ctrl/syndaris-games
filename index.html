@@ -59,7 +59,7 @@
     .spot .pic { position: absolute; inset: 0 0 0 36%; overflow: hidden; }
     .spot-wrap { position: relative; margin: 30px 0 34px; }
     .spot-wrap .spot { margin: 0; }
-    .spot-nav, .spot-dots, .spot-meta { display: none; }
+    .spot-nav, .spot-dots, .spot-meta, .meta .time { display: none; }
     .spot .pic .cover { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); }
     .spot .pic::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #110e0b 0%, rgba(17, 14, 11, .7) 22%, transparent 55%), linear-gradient(0deg, rgba(0, 0, 0, .5), transparent 40%); }
     a.spot:hover .spot-pic .cover, a.spot:hover .pic .cover { transform: scale(1.03); }
@@ -273,7 +273,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=75">
+  <link rel="stylesheet" href="css/vibrant.css?v=76">
 </head>
 <body class="home">
   <header class="bar">
@@ -335,7 +335,7 @@
   <script type="module" src="js/tvnav.js?v=69"></script>
   <script type="module">
     import { GAMES } from './js/games.js?v=69';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=74';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=78';
 
     const ids = ['cornerkings', 'cardgolf', 'pairs', 'speed', 'slapstack', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'counttogether', 'whackamole', 'memorygrid', 'simonsays', 'echo', 'quickdraw', 'musicalchairs', 'redlight', 'tapderby', 'tugofwar', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'speedtypist', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -510,7 +510,7 @@
       box.href = `table.html?game=${id}`;
       box.innerHTML = `<div class="art">${NEW.has(id) ? '<span class="new">NEW</span>' : ''}<span class="hover-play" aria-hidden="true"></span></div>
         <div class="info-row"><div class="box-stage"></div><h3>${G.name}</h3>
-          <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${KIND_NAME[KIND[id]]}</span></div></div>`;
+          <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${KIND_NAME[KIND[id]]}</span><span class="time">${clock}~${minsOf(id)} min</span></div></div>`;
       box.title = desc(G);
       // The picture and the box are drawn when the tile scrolls near the screen.
       lazy.observe(box);

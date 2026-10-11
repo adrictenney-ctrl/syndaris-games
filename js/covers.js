@@ -4,7 +4,8 @@
 
 import { makeKit } from './art-kit.js?v=70';
 import { ART } from './art-index.js?v=70';
-import { makeStill } from './still.js?v=73';
+import { makeStill } from './still.js?v=75';
+import { toonSVG } from './toon-covers.js?v=2';
 
 const SERIF = "'DM Serif Display', Georgia, serif";
 const CORM = "'Cormorant Garamond', Georgia, serif";
@@ -31,9 +32,9 @@ function shell(id, o, body) {
     <filter id="${id}-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     ${o.defs || ''}
   </defs>
-  ${KIT.T.vivid?.[2] ? '' : `<rect width="600" height="400" fill="url(#${id}-bg)"/>`}
+  <rect width="600" height="400" fill="url(#${id}-bg)"/>
   ${body}
-  ${KIT.T.vivid?.[2] ? '' : `<rect width="600" height="400" fill="url(#${id}-vig)"/>`}
+  <rect width="600" height="400" fill="url(#${id}-vig)"/>
   ${SCENE ? '' : `<rect y="190" width="600" height="210" fill="url(#${id}-scrim)"/>${titleBlock(id, o)}`}
 </svg>`;
 }
@@ -111,10 +112,18 @@ export function coverSVG(id) { return COVERS[id] ? COVERS[id](id) : ''; }
 // ------------------------------------------------------------------ the boxes
 // The illustration alone (no title), for the picture beside the box. `pre` keeps ids unique.
 // `vivid` = [main, deep] shoots the same props on the Vibrant style's bright printed backdrop.
+// `vivid` = [main, deep, 'bare'?] draws the Vibrant style's cartoon art instead (toon-covers.js);
+// 'bare' leaves out its background so the objects sit on the banner.
+const META = {};
 export function sceneSVG(id, pre = id + '-s', vivid = null) {
   if (!COVERS[id]) return '';
-  SCENE = true; KIT.T.vivid = vivid;
-  try { return COVERS[id](pre); } finally { SCENE = false; KIT.T.vivid = null; }
+  if (vivid) {
+    if (!META[id]) { SCENE = true; try { COVERS[id](pre); } finally { SCENE = false; } META[id] = LAST; }
+    LAST = META[id];
+    return toonSVG(id, pre, vivid[0], vivid[1], vivid[2] === 'bare', Math.max(0, Object.keys(COVERS).indexOf(id)) % 3);
+  }
+  SCENE = true;
+  try { return COVERS[id](pre); } finally { SCENE = false; }
 }
 const fitTitle = (t, w, max) => {
   // DM Serif runs about .5em a character; long names go onto two lines.
