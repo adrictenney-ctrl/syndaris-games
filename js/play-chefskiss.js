@@ -4,7 +4,8 @@
 import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=80';
 import { face, back, wireBulbs, esc } from './ck-face.js?v=80';
 import { movable } from './gesture.js?v=80';
-import { TEAMS } from './chefskiss.js?v=80';
+import { TEAMS } from './chefskiss.js?v=81';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=80';
 
 let ctx = null, v = null;
 let flipped = new Set();
@@ -12,6 +13,9 @@ let selected = null, swapMode = false, chosen = -1;
 let handKey = '', panelKey = '', boardKey = '', recipeKey = '';
 let endsAt = 0, tickT = null, gameId = null;
 let sheetOpen = false, editing = -1, sheetPlayable = false;
+// Laugh Engine (only when the host left it on): the funniest cards in this hand for this Recipe
+// Card, and card ideas. Both arrive whenever they're ready; nothing here ever waits on them.
+let laughKey = '', laughIds = [], ideas = null, ideasFor = '';
 
 // ---------------------------------------------------------------- stored on this phone only
 
@@ -34,6 +38,7 @@ function countKiss(key) {
 export function reset() {
   handKey = panelKey = boardKey = recipeKey = '';
   selected = null; swapMode = false; chosen = -1;
+  laughKey = ''; laughIds = []; ideas = null; ideasFor = '';
   clearInterval(tickT);
   document.getElementById('ckPhone')?.remove();
   document.getElementById('ckSheet')?.remove();
@@ -66,6 +71,19 @@ function shell() {
 }
 
 const isRecipeTurn = () => v.isChef && v.phase === 'recipe';
+const choosing = () => v.phase === 'play' && v.playing && v.mine.length < v.need;
+function askLaugh() {
+  const on = v.laugh && choosing() && v.recipe && v.hand.length > 1;
+  const key = on ? `${v.recipe.id}|${v.hand.map(c => c.id).join(',')}` : '';
+  if (key === laughKey) return;
+  laughKey = key; laughIds = [];
+  if (!on) return;
+  funnyPicks(v.recipe, v.hand).then(ids => {
+    if (laughKey !== key || !ids.length) return;
+    laughIds = ids; handKey = '';
+    if (document.getElementById('ckPhone')) renderHandRow();
+  }, () => {});
+}
 const handCards = () => (isRecipeTurn() ? v.myRecipes : v.hand);
 const canPlay = c => {
   if (!c) return false;
@@ -94,15 +112,16 @@ function flip(id) {
 function renderHandRow() {
   const row = $('#ckPhone .ckp-hand');
   const cards = handCards() || [];
-  const key = cards.map(c => c.id + (flipped.has(c.id) ? '+' : '-')).join(',') + `|${selected}|${swapMode}|${v.phase}|${v.isChef}|${v.mine.length}`;
+  const funny = !isRecipeTurn() && choosing() && !swapMode ? laughIds : [];
+  const key = cards.map(c => c.id + (flipped.has(c.id) ? '+' : '-')).join(',') + `|${selected}|${swapMode}|${v.phase}|${v.isChef}|${v.mine.length}|${funny.join(',')}`;
   if (key === handKey) return;
   handKey = key;
   row.innerHTML = '';
   row.classList.toggle('resting', !(isRecipeTurn() || (v.phase === 'play' && v.playing && v.mine.length < v.need)) && !swapMode);
   for (const c of cards) {
     const wrap = document.createElement('div');
-    wrap.className = 'ckp-slot' + (selected === c.id ? ' sel' : '') + (swapMode && c.kind === 'i' ? ' swapping' : '');
-    wrap.innerHTML = flipped.has(c.id) ? face(c) : back(c.kind);
+    wrap.className = 'ckp-slot' + (selected === c.id ? ' sel' : '') + (swapMode && c.kind === 'i' ? ' swapping' : '') + (funny.includes(c.id) ? ' laugh' : '');
+    wrap.innerHTML = (flipped.has(c.id) ? face(c) : back(c.kind)) + (funny.includes(c.id) ? '<em class="ckp-laugh">😂 Funny pick</em>' : '');
     row.appendChild(wrap);
     gestures(wrap, c);
   }
@@ -219,6 +238,7 @@ function renderPanel() {
   const sel = (handCards() || []).find(c => c.id === selected);
   if (sel && canPlay(sel)) btn(sel.kind === 'r' ? 'Use this Recipe Card' : 'Play this card', 'go', () => playCard(sel, document.querySelector('#ckPhone .ckp-slot.sel')));
   btn('✎ My cards', '', openSheet);
+  if (v.laugh && choosing() && v.recipe) btn('✨ Make me a card', '', () => { openSheet(); askIdeas(); });
   if (!isRecipeTurn() && v.hand.length) {
     btn(swapMode ? 'Cancel swap' : v.canSwap ? '⟳ Swap a card' : 'Swap used this round', '', () => { swapMode = !swapMode; handKey = panelKey = ''; renderHandRow(); renderPanel(); }).disabled = !v.canSwap && !swapMode;
   }
@@ -227,6 +247,14 @@ function renderPanel() {
 }
 
 // ---------------------------------------------------------------- my own Ingredient Cards
+
+function askIdeas() {
+  if (!v?.laugh || !v.recipe) return;
+  const key = v.recipe.id + ':' + Date.now();
+  ideasFor = key; ideas = 'loading'; drawSheet();
+  const avoid = [...(v.hand || []).map(c => c.t), ...myDeck().map(c => c.t)];
+  makeCards(v.recipe, avoid).then(list => { if (ideasFor !== key) return; ideas = list; drawSheet(); }, () => { if (ideasFor === key) { ideas = []; drawSheet(); } });
+}
 
 function openSheet() {
   sheetOpen = true;
@@ -245,6 +273,7 @@ function drawSheet() {
     <div class="ckp-sheet">
       <header><h3>My Ingredient Cards</h3><button class="ckp-x" type="button" aria-label="Close">✕</button></header>
       <p class="ckp-hint">Your own cards stay on this phone. Only you can play them.</p>
+      ${v?.laugh && v.recipe && v.phase === 'play' ? `<div class="ckp-ideas"><button class="panel-btn" type="button" data-a="ideas">✨ Make me a card</button>${ideas === 'loading' ? '<p class="ckp-hint">Thinking of something funny…</p>' : Array.isArray(ideas) ? (ideas.length ? `<div class="ckp-idea-list">${ideas.map((t, i) => `<button type="button" data-idea="${i}">${esc(t)}</button>`).join('')}</div><p class="ckp-hint">Tap an idea to put it on a card, then save or play it.</p>` : '<p class="ckp-hint">No ideas right now. Write your own!</p>') : ''}</div>` : ''}
       <form class="ckp-form">
         <input name="t" maxlength="80" placeholder="Write a card…" value="${esc(cur.t)}" autocomplete="off">
         <input name="d" maxlength="160" placeholder="What it means (for the 💡, optional)" value="${esc(cur.d)}" autocomplete="off">
@@ -276,6 +305,8 @@ function drawSheet() {
     if (!c.t) return toast('Write something on the card first');
     playOwn(c);
   });
+  s.querySelector('[data-a="ideas"]')?.addEventListener('click', askIdeas);
+  s.querySelectorAll('[data-idea]').forEach(b => { b.onclick = () => { f.t.value = ideas[Number(b.dataset.idea)] || ''; f.t.focus(); }; });
   s.querySelector('.ckp-x').onclick = () => { sheetOpen = false; drawSheet(); };
   s.onclick = e => { if (e.target === s) { sheetOpen = false; drawSheet(); } };
   s.querySelectorAll('[data-play]').forEach(b => { b.onclick = () => playOwn(myDeck()[Number(b.dataset.play)]); });
@@ -358,6 +389,8 @@ export function render(c) {
     setStatus(w.yours ? "💋 You got the Chef's Kiss!" : `💋 ${c.nameOf(w.seat)} got the Chef's Kiss`, `“${w.t}”`);
   }
 
+  if (ideas && ideasFor && !ideasFor.startsWith((v.recipe?.id || '-') + ':')) { ideas = null; ideasFor = ''; }
+  askLaugh();
   shell();
   renderRecipe();
   renderBoard();

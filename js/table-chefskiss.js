@@ -1,7 +1,7 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=80';
+import * as K from './chefskiss.js?v=81';
 import { face, back, wireBulbs, esc } from './ck-face.js?v=80';
 import { movable } from './gesture.js?v=80';
 
@@ -177,7 +177,8 @@ export default {
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
       <label>Recipe timer ${sel('recipeTime', [0, 5, 10, 15], v => (v ? `${v} s` : 'off'))}</label>
       <label>Ingredient timer ${sel('ingredientTime', [0, 10, 15, 20, 30], v => (v ? `${v} s` : 'off'))}</label>
-      <label>Teams ${sel('teams', [0, 2, 3, 4], v => (v ? `${v} teams` : 'no teams'))}</label>`;
+      <label>Teams ${sel('teams', [0, 2, 3, 4], v => (v ? `${v} teams` : 'no teams'))}</label>
+      <label class="ck-check"><input type="checkbox" data-set="laugh" ${s.laugh !== false ? 'checked' : ''}> Laugh Engine (funny-card hints &amp; ideas)</label>`;
   },
 
   create: (settings, players) => K.createGame(settings, players),

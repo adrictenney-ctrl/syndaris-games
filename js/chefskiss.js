@@ -83,6 +83,7 @@ export const DEFAULTS = {
   recipeTime: 10,     // seconds for the Chef to pick a Recipe Card (0 = off)
   ingredientTime: 15, // seconds for Apprentices to play (0 = off)
   teams: 0,           // 0 = everyone for themselves, else 2–4 teams
+  laugh: true,        // the Laugh Engine: funny-card highlights and "Make me a card" on the phones
 };
 
 export function createGame(settings, players) {
@@ -353,6 +354,7 @@ export function viewFor(g, seat) {
     left: g.endsAt ? Math.max(0, g.endsAt - now()) : null,
     gameLeft: g.settings.length ? Math.max(0, g.startedAt + g.settings.length * 60000 - now()) : null,
     winners: g.winners || null,
+    laugh: !!g.settings.laugh,
     winningTeams: g.winningTeams || null,
     why: g.why,
   };

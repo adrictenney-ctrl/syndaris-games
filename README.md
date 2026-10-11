@@ -128,6 +128,14 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   Ingredient Cards. Hands are dealt for variety (people, things, happenings, places) so nobody gets five of a kind.
 - **Swap:** each player may swap out one Ingredient Card per round.
 - **Brain Bulb 💡:** every card has one. Touch it to see a short description of the card's title.
+- **Laugh Engine** (Master Plan, Section 7; on/off switch in the lobby, on by default). It only helps:
+  - **Funny Pairing Radar:** on each Apprentice's phone, the 2–3 Ingredient Cards that are funniest with the current
+    Recipe Card glow with a "Funny pick" tag. It never plays a card and never picks the winner.
+  - **Make me a card:** three short, family-friendly ideas for the current Recipe Card; tap one to put it on your
+    own card.
+  - The game never waits on it: every call has a 3-second timeout, and if anything fails the round carries on with
+    no highlights. It runs on the phone (`js/laugh-engine.js`) with a local scorer (themes, word overlap, absurdity
+    and serious-versus-silly contrast). A real on-device model can be plugged in later with `setLaughBackend()`.
 - **Three's a Party (Double Vision):** with exactly three players, each Apprentice plays two cards.
 - **Bot mode:** computer players can fill seats. They play a random card, and as Chef they pick a random winner.
 - **Your own cards:** "✎ My cards" on the phone lets you write, edit, delete and play your own Ingredient Cards.

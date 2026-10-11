@@ -197,3 +197,22 @@ body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
 .ckp-list span { display: flex; gap: 6px; flex: none; }
 .ckp-list button { font: 600 13px var(--ui); padding: 6px 10px; border-radius: 6px; border: 1px solid rgba(42, 35, 32, .3); background: transparent; color: var(--paper-ink); cursor: pointer; }
 .ckp-list button[data-play] { background: var(--ck-terracotta); border-color: var(--ck-terracotta-deep); color: var(--ck-ink); }
+
+/* ---------------------------------------------------------------- Laugh Engine (phones) */
+/* The 2–3 funniest cards for this Recipe Card glow, with a little tag. It's only a hint. */
+.ckp-slot.laugh { position: relative; filter: drop-shadow(0 0 8px rgba(255, 196, 64, .85)); }
+.ckp-slot.laugh::after { content: ''; position: absolute; inset: -3px; border-radius: 12px; border: 2px solid rgba(255, 210, 90, .9); pointer-events: none; animation: ckpGlow 1.6s ease-in-out infinite; }
+@keyframes ckpGlow { 50% { opacity: .45; } }
+.ckp-laugh {
+  position: absolute; left: 50%; top: -11px; transform: translateX(-50%); z-index: 3; white-space: nowrap; pointer-events: none;
+  font: 800 10.5px/1 var(--ui); font-style: normal; letter-spacing: .04em; padding: 4px 8px; border-radius: 99px;
+  color: #3a2400; background: #ffd24a; box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+.ckp-ideas { margin: 4px 0 10px; }
+.ckp-ideas .panel-btn { width: 100%; }
+.ckp-idea-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.ckp-idea-list button {
+  text-align: left; padding: 10px 12px; border-radius: 10px; cursor: pointer; font: 700 15px/1.25 var(--ui);
+  color: var(--paper-ink); background: #fff4c8; border: 1px solid #e0b84a;
+}
+.ckp-idea-list button:active { transform: translateY(1px); }
