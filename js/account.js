@@ -38,12 +38,14 @@ export function mountAccount() {
   function draw() {
     if (user) {
       dlg.innerHTML = `<form method="dialog">
-        <div class="set-head"><h2 id="acctTitle">Your account</h2><button class="set-x" value="close" aria-label="Close">✕</button></div>
+        <div class="set-head"><h2 id="acctTitle">Your account</h2></div>
         <div class="acct-me">${avatar(user, 'big')}<div><strong>${esc(nameOf(user))}</strong><small>${esc(user.email || '')}</small></div></div>
         <p class="set-note">Signed in on this device. Your name fills in automatically when you join a table from this browser.</p>
-        <div class="acct-row"><button type="button" class="acct-go ghost" data-a="out">Sign out</button></div>
+        <div class="acct-row"><button type="button" class="acct-go ghost" data-a="out">Sign out</button><button type="button" class="acct-go" data-a="continue">Continue</button></div>
       </form>`;
       dlg.querySelector('[data-a="out"]').onclick = async () => { await signOutUser().catch(() => {}); dlg.close(); };
+      dlg.querySelector('[data-a="continue"]').onclick = () => dlg.close();
+      dlg.querySelector('[data-a="continue"]').focus();
       return;
     }
     const up = mode === 'signup', reset = mode === 'reset';

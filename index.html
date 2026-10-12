@@ -248,7 +248,7 @@
     .acct-me { display: flex; align-items: center; gap: 14px; margin: 4px 0; }
     .acct-me strong { display: block; font: 800 18px/1.2 var(--ui); }
     .acct-me small { display: block; font: 500 13px/1.3 var(--ui); color: var(--mute); }
-    .acct-row { display: flex; justify-content: flex-end; margin-top: 14px; }
+    .acct-row { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; }
     .acct-row .acct-go { padding: 12px 22px; }
     @media (max-width: 600px) { .acct-btn span:last-child { display: none; } .acct-btn { padding: 0 10px; } }
     .settings {
@@ -576,7 +576,7 @@
     draw();
 
     // ---- Account (Firebase sign-in). Loaded in the background; the page never waits on it.
-    if (!onTV) import('./js/account.js?v=1').then(m => m.mountAccount()).catch(() => {});
+    if (!onTV) import('./js/account.js?v=2').then(m => m.mountAccount()).catch(() => {});
 
     // ---- Settings: pick the page style (saved per device).
     const dlg = document.getElementById('settings');
