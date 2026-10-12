@@ -427,3 +427,14 @@ html[data-style="vibrant"] a.box:hover .art .cover { will-change: transform; }
   html[data-style="vibrant"] .meta .who, html[data-style="vibrant"] .meta .time { font-size: 12px; }
   html[data-style="vibrant"] .meta .kind { display: none; }
 }
+
+/* ================================================================ ACCOUNT (sign in) */
+html[data-style="vibrant"] .acct-init { color: #17104d; background: #aea7ff; }
+html[data-style="vibrant"] .acct-field input { font-family: var(--ui); font-weight: 700; color: #fff; background: rgba(8, 5, 44, .55); border: 2px solid rgba(255, 255, 255, .1); }
+html[data-style="vibrant"] .acct-field input:focus { border-color: var(--v-lav); }
+html[data-style="vibrant"] .acct-field, html[data-style="vibrant"] .acct-or, html[data-style="vibrant"] .acct-me small { color: var(--mute); }
+html[data-style="vibrant"] .acct-or::before, html[data-style="vibrant"] .acct-or::after { background: rgba(255, 255, 255, .15); }
+html[data-style="vibrant"] .acct-go { font-family: var(--ui); font-weight: 900; letter-spacing: .06em; color: #06301c; background: var(--v-go); box-shadow: 0 4px 0 var(--v-go-edge); }
+html[data-style="vibrant"] .acct-go.ghost { color: #fff; background: rgba(8, 5, 44, .45); border: 2px solid rgba(255, 255, 255, .14); box-shadow: none; }
+html[data-style="vibrant"] .acct-links button { color: var(--v-sun); }
+html[data-style="vibrant"] .acct-google { border: 0; box-shadow: 0 4px 0 rgba(6, 3, 34, .35); }

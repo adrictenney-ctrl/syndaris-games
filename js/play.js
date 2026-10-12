@@ -111,6 +111,8 @@ function show(id) {
 // ---------------------------------------------------------------- join
 
 try { $('#name').value = localStorage.getItem('syndaris.name') || ''; } catch {}
+// Signed in on this browser (home page → Sign in)? Fill in their name if the box is still empty.
+import('./firebase.js?v=1').then(({ onUser }) => onUser(u => { const n = u && (u.displayName || (u.email || '').split('@')[0]); if (n && !$('#name').value) $('#name').value = n.slice(0, 14); })).catch(() => {});
 const urlRoom = (params.get('room') || '').toUpperCase();
 if (urlRoom) { $('#room').value = urlRoom; $('#roomField').hidden = true; }
 show('s-join');

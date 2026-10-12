@@ -223,6 +223,34 @@
     .gear svg { width: 18px; height: 18px; transition: transform .6s; }
     .gear:hover { color: var(--ivory); border-color: var(--champagne); }
     .gear:hover svg { transform: rotate(60deg); }
+    /* ---------- account (sign in) ---------- */
+    .acct-btn { gap: 8px; max-width: 200px; }
+    .acct-btn span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .acct-pic { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; flex: none; }
+    .acct-init { display: inline-grid; place-items: center; font: 800 12px/1 var(--ui); color: #17130c; background: var(--champagne); letter-spacing: 0; }
+    .acct-pic.big { width: 56px; height: 56px; font-size: 24px; }
+    .acct .acct-form { display: flex; flex-direction: column; gap: 12px; }
+    .acct-google { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border-radius: 999px; cursor: pointer; font: 700 15px/1 var(--ui); color: #1f1f1f; background: #fff; border: 1px solid #dadce0; }
+    .acct-google svg { width: 20px; height: 20px; }
+    .acct-google:disabled, .acct-go:disabled { opacity: .6; cursor: default; }
+    .acct-or { display: flex; align-items: center; gap: 10px; margin: 2px 0; font: 600 12px/1 var(--ui); color: var(--mute); }
+    .acct-or::before, .acct-or::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+    .acct-field { display: flex; flex-direction: column; gap: 6px; font: 700 11px/1 var(--ui); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+    .acct-field input { font: 500 16px/1.2 var(--ui); letter-spacing: 0; text-transform: none; padding: 11px 14px; border-radius: 12px; outline: none; color: var(--ivory); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); }
+    .acct-field input:focus { border-color: var(--champagne); }
+    .acct-go { padding: 13px; border: 0; border-radius: 999px; cursor: pointer; font: 800 13px/1 var(--ui); letter-spacing: .16em; text-transform: uppercase; color: #17130c; background: linear-gradient(180deg, var(--champagne-hi), var(--champagne)); }
+    .acct-go.ghost { color: var(--ivory); background: none; border: 1px solid var(--hairline-hi); }
+    .acct-err, .acct-note { margin: 0; font: 600 13.5px/1.4 var(--ui); }
+    .acct-err { color: #f2a59a; }
+    .acct-note { color: #9ad8a8; }
+    .acct-links { display: flex; justify-content: space-between; gap: 10px; margin: 0; }
+    .acct-links button { padding: 0; border: 0; background: none; cursor: pointer; font: 700 13px/1.3 var(--ui); color: var(--champagne); }
+    .acct-me { display: flex; align-items: center; gap: 14px; margin: 4px 0; }
+    .acct-me strong { display: block; font: 800 18px/1.2 var(--ui); }
+    .acct-me small { display: block; font: 500 13px/1.3 var(--ui); color: var(--mute); }
+    .acct-row { display: flex; justify-content: flex-end; margin-top: 14px; }
+    .acct-row .acct-go { padding: 12px 22px; }
+    @media (max-width: 600px) { .acct-btn span:last-child { display: none; } .acct-btn { padding: 0 10px; } }
     .settings {
       width: min(560px, calc(100vw - 32px)); padding: 26px 26px 22px; border-radius: 20px; color: var(--ivory);
       background: var(--onyx-2); border: 1px solid var(--hairline-hi); box-shadow: 0 40px 90px rgba(0, 0, 0, .6);
@@ -273,7 +301,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=82">
+  <link rel="stylesheet" href="css/vibrant.css?v=84">
 </head>
 <body class="home">
   <header class="bar">
@@ -546,6 +574,9 @@
       document.getElementById('libCount').textContent = `${show.length} ${show.length === 1 ? 'game' : 'games'}${who !== 'any' ? ` · ${PLAYERS.find(p => p[0] === who)[1]} players` : ''}`;
     }
     draw();
+
+    // ---- Account (Firebase sign-in). Loaded in the background; the page never waits on it.
+    if (!onTV) import('./js/account.js?v=1').then(m => m.mountAccount()).catch(() => {});
 
     // ---- Settings: pick the page style (saved per device).
     const dlg = document.getElementById('settings');
