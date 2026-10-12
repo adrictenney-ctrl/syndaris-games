@@ -1,10 +1,10 @@
 // Rebel Cell on the table: the five missions along the middle (team sizes, then a green or red
 // seal once played), the rejected-teams counter, the team on the table right now, and how
 // everyone voted. Round Table (table-roundtable.js) is the same table with its characters.
-import * as R from './rebel.js?v=80';
-import { snap } from './cards.js?v=80';
-import { chime, sad } from './sfx.js?v=80';
-import { centerMsg, clearMsg } from './table-hearts.js?v=80';
+import * as R from './rebel.js?v=82';
+import { snap } from './cards.js?v=82';
+import { chime, sad } from './sfx.js?v=82';
+import { centerMsg, clearMsg } from './table-hearts.js?v=82';
 
 export function rebelMode(avalon) {
   let root = null, key = '';
@@ -27,7 +27,7 @@ export function rebelMode(avalon) {
       if (g.phase === 'vote') badges.push(g.votes[s] == null ? '<span class="badge">voting…</span>' : '<span class="badge">voted</span>');
       if (g.phase === 'tally') badges.push(g.lastVote.votes[s] ? '<span class="badge got">👍 approve</span>' : '<span class="badge alone">👎 reject</span>');
       if (g.phase === 'over') badges.push(`<span class="badge ${R.side(g, s) ? 'alone' : 'got'}">${R.ROLE[g.role[s]].ic} ${R.ROLE[g.role[s]].name}</span>`);
-      const turn = R.current(g) === s || (g.phase === 'night' && !g.ready[s]) || (g.phase === 'vote' && g.votes[s] == null) || (g.phase === 'mission' && g.team.includes(s) && g.cards[s] == null);
+      const turn = R.current(g) === s || (g.phase === 'night' && !g.ready[s]) || (g.phase === 'vote' && g.votes[s] == null) || (g.phase === 'mission' && (g.team || []).includes(s) && g.cards?.[s] == null);
       return { badges, meta: '', cards: 0, turn, out: false };
     },
     reset() { root?.remove(); root = null; key = ''; clearMsg(); },
@@ -49,7 +49,7 @@ export function rebelMode(avalon) {
         propose: `<b>${L}</b> is choosing ${R.teamSize(g)} players for mission ${g.missions.length + 1}`,
         vote: `Vote on <b>${L}</b>’s team — ${g.order.filter(s => g.votes?.[s] != null).length}/${g.order.length} voted`,
         tally: g.lastVote ? (g.lastVote.passed ? '<b>Approved!</b> The team sets out' : `<b>Rejected.</b> ${g.rejects + 1 >= 5 ? 'Five in a row…' : 'Leadership passes on'}`) : '',
-        mission: `The team is on the mission — ${g.team.filter(s => g.cards[s] != null).length}/${g.team.length} cards played`,
+        mission: `The team is on the mission — ${(g.team || []).filter(s => g.cards?.[s] != null).length}/${(g.team || []).length} cards played`,
         result: g.missions.length ? (g.missions.at(-1).ok ? '<b>Mission succeeded</b>' : `<b>Mission sabotaged</b> — ${g.missions.at(-1).fails} sabotage card${g.missions.at(-1).fails > 1 ? 's' : ''}`) : '',
         knife: 'The loyalists won three missions… but <b>the Knife</b> gets one guess at the Seer',
         over: '',

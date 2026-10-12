@@ -1,93 +1,93 @@
 // A player's phone: joining, picking a seat, then the game's own phone UI.
-import { GAMES } from './games.js?v=80';
-import { keepAwake } from './cards.js?v=80';
-import { joinRoom } from './net.js?v=80';
-import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=80';
-import * as euchreUI from './play-euchre.js?v=80';
-import * as pokerUI from './play-poker.js?v=80';
-import * as vetoUI from './play-veto.js?v=80';
-import * as gofishUI from './play-gofish.js?v=80';
-import * as chessUI from './play-chess.js?v=80';
-import * as backgammonUI from './play-backgammon.js?v=80';
-import * as sketchUI from './play-sketch.js?v=80';
-import * as chefskissUI from './play-chefskiss.js?v=81';
-import * as insidejobUI from './play-insidejob.js?v=80';
-import * as crownUI from './play-crown.js?v=80';
-import * as hollowUI from './play-hollow.js?v=80';
-import * as blackjackUI from './play-blackjack.js?v=80';
-import * as baccaratUI from './play-baccarat.js?v=80';
-import * as checkersUI from './play-checkers.js?v=80';
-import * as yachtUI from './play-yacht.js?v=80';
-import * as spoonsUI from './play-spoons.js?v=80';
-import * as doubtUI from './play-doubt.js?v=80';
-import * as cashoutUI from './play-cashout.js?v=80';
-import * as crazy8UI from './play-crazy8.js?v=80';
-import * as skylineUI from './play-skyline.js?v=80';
-import * as lowtideUI from './play-lowtide.js?v=80';
-import * as trioUI from './play-trio.js?v=80';
-import * as fourupUI from './play-fourup.js?v=80';
-import * as seedstonesUI from './play-seedstones.js?v=80';
-import * as sonarUI from './play-sonar.js?v=80';
-import * as milestonesUI from './play-milestones.js?v=80';
-import * as wrongnumberUI from './play-wrongnumber.js?v=80';
-import * as scribbleUI from './play-scribble.js?v=80';
-import * as manorUI from './play-manor.js?v=80';
-import * as warfrontUI from './play-warfront.js?v=80';
-import * as ironroutesUI from './play-ironroutes.js?v=80';
-import * as homesteadUI from './play-homestead.js?v=80';
-import * as wordsmithUI from './play-wordsmith.js?v=80';
-import * as partyUI from './play-party.js?v=80';
-import * as passphraseUI from './play-passphrase.js?v=80';
-import * as dontsayUI from './play-dontsay.js?v=80';
-import * as pardonUI from './play-pardon.js?v=80';
-import * as ludoUI from './play-ludo.js?v=80';
-import * as orchardUI from './play-orchard.js?v=80';
-import * as sweettrailUI from './play-sweettrail.js?v=80';
-import * as snakesUI from './play-snakes.js?v=80';
-import * as bingoUI from './play-bingo.js?v=80';
-import * as hogtossUI from './play-hogtoss.js?v=80';
-import * as hotdiceUI from './play-hotdice.js?v=80';
-import * as lineup5UI from './play-lineup5.js?v=80';
-import * as shapeshadeUI from './play-shapeshade.js?v=80';
-import * as cornerstonesUI from './play-cornerstones.js?v=80';
-import * as dominoesUI from './play-dominoes.js?v=80';
-import * as starjumpUI from './play-starjump.js?v=80';
-import * as codebreakerUI from './play-codebreaker.js?v=80';
-import * as goUI from './play-go.js?v=80';
-import * as reversiUI from './play-reversi.js?v=80';
-import * as rebelcellUI from './play-rebelcell.js?v=80';
-import * as powergrabUI from './play-powergrab.js?v=80';
-import * as unicornsUI from './play-unicorns.js?v=80';
-import * as roadrallyUI from './play-roadrally.js?v=80';
-import * as dealmakerUI from './play-dealmaker.js?v=80';
-import * as bentoUI from './play-bento.js?v=80';
-import * as rackemUI from './play-rackem.js?v=80';
-import * as stackupUI from './play-stackup.js?v=80';
-import * as cribbageUI from './play-cribbage.js?v=80';
-import * as drawpokerUI from './play-drawpoker.js?v=80';
-import * as ginUI from './play-gin.js?v=80';
-import * as rummyUI from './play-rummy.js?v=80';
-import * as oldmaidUI from './play-oldmaid.js?v=80';
-import * as warUI from './play-war.js?v=80';
-import * as spadesUI from './play-spades.js?v=80';
-import * as heartsUI from './play-hearts.js?v=80';
-import * as words4funUI from './play-words4fun.js?v=80';
-import * as hardsellUI from './play-hardsell.js?v=80';
-import * as deepspaceUI from './play-deepspace.js?v=80';
-import * as houserulesUI from './play-houserules.js?v=80';
-import * as bannerraidUI from './play-bannerraid.js?v=80';
-import * as fieldagentsUI from './play-fieldagents.js?v=80';
-import * as dialitinUI from './play-dialitin.js?v=80';
-import * as pileupUI from './play-pileup.js?v=80';
-import * as luckystreakUI from './play-luckystreak.js?v=80';
-import * as passpotUI from './play-passpot.js?v=80';
-import * as tesseraUI from './play-tessera.js?v=80';
-import * as gearworksUI from './play-gearworks.js?v=80';
-import * as redlineUI from './play-redline.js?v=80';
-import * as grandprixUI from './play-grandprix.js?v=80';
-import * as spiresUI from './play-spires.js?v=80';
-import * as kaboomUI from './play-kaboom.js?v=80';
-import * as nesteggUI from './play-nestegg.js?v=80';
+import { GAMES } from './games.js?v=82';
+import { keepAwake } from './cards.js?v=82';
+import { joinRoom } from './net.js?v=82';
+import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=82';
+import * as euchreUI from './play-euchre.js?v=82';
+import * as pokerUI from './play-poker.js?v=82';
+import * as vetoUI from './play-veto.js?v=82';
+import * as gofishUI from './play-gofish.js?v=82';
+import * as chessUI from './play-chess.js?v=82';
+import * as backgammonUI from './play-backgammon.js?v=82';
+import * as sketchUI from './play-sketch.js?v=82';
+import * as chefskissUI from './play-chefskiss.js?v=82';
+import * as insidejobUI from './play-insidejob.js?v=82';
+import * as crownUI from './play-crown.js?v=82';
+import * as hollowUI from './play-hollow.js?v=82';
+import * as blackjackUI from './play-blackjack.js?v=82';
+import * as baccaratUI from './play-baccarat.js?v=82';
+import * as checkersUI from './play-checkers.js?v=82';
+import * as yachtUI from './play-yacht.js?v=82';
+import * as spoonsUI from './play-spoons.js?v=82';
+import * as doubtUI from './play-doubt.js?v=82';
+import * as cashoutUI from './play-cashout.js?v=82';
+import * as crazy8UI from './play-crazy8.js?v=82';
+import * as skylineUI from './play-skyline.js?v=82';
+import * as lowtideUI from './play-lowtide.js?v=82';
+import * as trioUI from './play-trio.js?v=82';
+import * as fourupUI from './play-fourup.js?v=82';
+import * as seedstonesUI from './play-seedstones.js?v=82';
+import * as sonarUI from './play-sonar.js?v=82';
+import * as milestonesUI from './play-milestones.js?v=82';
+import * as wrongnumberUI from './play-wrongnumber.js?v=82';
+import * as scribbleUI from './play-scribble.js?v=82';
+import * as manorUI from './play-manor.js?v=82';
+import * as warfrontUI from './play-warfront.js?v=82';
+import * as ironroutesUI from './play-ironroutes.js?v=82';
+import * as homesteadUI from './play-homestead.js?v=82';
+import * as wordsmithUI from './play-wordsmith.js?v=82';
+import * as partyUI from './play-party.js?v=82';
+import * as passphraseUI from './play-passphrase.js?v=82';
+import * as dontsayUI from './play-dontsay.js?v=82';
+import * as pardonUI from './play-pardon.js?v=82';
+import * as ludoUI from './play-ludo.js?v=82';
+import * as orchardUI from './play-orchard.js?v=82';
+import * as sweettrailUI from './play-sweettrail.js?v=82';
+import * as snakesUI from './play-snakes.js?v=82';
+import * as bingoUI from './play-bingo.js?v=82';
+import * as hogtossUI from './play-hogtoss.js?v=82';
+import * as hotdiceUI from './play-hotdice.js?v=82';
+import * as lineup5UI from './play-lineup5.js?v=82';
+import * as shapeshadeUI from './play-shapeshade.js?v=82';
+import * as cornerstonesUI from './play-cornerstones.js?v=82';
+import * as dominoesUI from './play-dominoes.js?v=82';
+import * as starjumpUI from './play-starjump.js?v=82';
+import * as codebreakerUI from './play-codebreaker.js?v=82';
+import * as goUI from './play-go.js?v=82';
+import * as reversiUI from './play-reversi.js?v=82';
+import * as rebelcellUI from './play-rebelcell.js?v=82';
+import * as powergrabUI from './play-powergrab.js?v=82';
+import * as unicornsUI from './play-unicorns.js?v=82';
+import * as roadrallyUI from './play-roadrally.js?v=82';
+import * as dealmakerUI from './play-dealmaker.js?v=82';
+import * as bentoUI from './play-bento.js?v=82';
+import * as rackemUI from './play-rackem.js?v=82';
+import * as stackupUI from './play-stackup.js?v=82';
+import * as cribbageUI from './play-cribbage.js?v=82';
+import * as drawpokerUI from './play-drawpoker.js?v=82';
+import * as ginUI from './play-gin.js?v=82';
+import * as rummyUI from './play-rummy.js?v=82';
+import * as oldmaidUI from './play-oldmaid.js?v=82';
+import * as warUI from './play-war.js?v=82';
+import * as spadesUI from './play-spades.js?v=82';
+import * as heartsUI from './play-hearts.js?v=82';
+import * as words4funUI from './play-words4fun.js?v=82';
+import * as hardsellUI from './play-hardsell.js?v=82';
+import * as deepspaceUI from './play-deepspace.js?v=82';
+import * as houserulesUI from './play-houserules.js?v=82';
+import * as bannerraidUI from './play-bannerraid.js?v=82';
+import * as fieldagentsUI from './play-fieldagents.js?v=82';
+import * as dialitinUI from './play-dialitin.js?v=82';
+import * as pileupUI from './play-pileup.js?v=82';
+import * as luckystreakUI from './play-luckystreak.js?v=82';
+import * as passpotUI from './play-passpot.js?v=82';
+import * as tesseraUI from './play-tessera.js?v=82';
+import * as gearworksUI from './play-gearworks.js?v=82';
+import * as redlineUI from './play-redline.js?v=82';
+import * as grandprixUI from './play-grandprix.js?v=82';
+import * as spiresUI from './play-spires.js?v=82';
+import * as kaboomUI from './play-kaboom.js?v=82';
+import * as nesteggUI from './play-nestegg.js?v=82';
 
 const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI, crazy8: crazy8UI, skyline: skylineUI, lowtide: lowtideUI, trio: trioUI, fourup: fourupUI, seedstones: seedstonesUI, sonar: sonarUI, milestones: milestonesUI, wrongnumber: wrongnumberUI, scribble: scribbleUI, manor: manorUI, warfront: warfrontUI, ironroutes: ironroutesUI, homestead: homesteadUI, wordsmith: wordsmithUI, powerup: chessUI, nestegg: nesteggUI, kaboom: kaboomUI, spires: spiresUI, grandprix: grandprixUI, redline: redlineUI, gearworks: gearworksUI, tessera: tesseraUI, passpot: passpotUI, luckystreak: luckystreakUI, pileup: pileupUI, dialitin: dialitinUI, fieldagents: fieldagentsUI, bannerraid: bannerraidUI, houserules: houserulesUI, deepspace: deepspaceUI, hardsell: hardsellUI, words4fun: words4funUI, hearts: heartsUI, spades: spadesUI, war: warUI, oldmaid: oldmaidUI, rummy: rummyUI, gin: ginUI, drawpoker: drawpokerUI, cribbage: cribbageUI, stackup: stackupUI, rackem: rackemUI, bento: bentoUI, dealmaker: dealmakerUI, roadrally: roadrallyUI, unicorns: unicornsUI, powergrab: powergrabUI, rebelcell: rebelcellUI, roundtable: rebelcellUI, reversi: reversiUI, go: goUI, codebreaker: codebreakerUI, starjump: starjumpUI, dominoes: dominoesUI, cornerstones: cornerstonesUI, shapeshade: shapeshadeUI, lineup5: lineup5UI, hotdice: hotdiceUI, hogtoss: hogtossUI, bingo: bingoUI, snakes: snakesUI, sweettrail: sweettrailUI, orchard: orchardUI, ludo: ludoUI, poprace: ludoUI, marblerush: ludoUI, pardon: pardonUI, dontsay: dontsayUI, passphrase: passphraseUI, listoff: partyUI, wordbluff: partyUI, topanswers: partyUI, triviawheel: partyUI, answerboard: partyUI, spinsolve: partyUI, oddoneout: partyUI, mostlikely: partyUI, twotruths: partyUI, bluffdice: partyUI, petals: partyUI, sealed: partyUI, insync: partyUI, nightlights: partyUI, nope: partyUI, bullpen: partyUI, openhouse: partyUI, bugbluff: partyUI, snapmatch: partyUI, whoswho: partyUI, throwdown: partyUI, oneclue: partyUI, samebrain: partyUI, closecall: partyUI, doodlebluff: partyUI, dreamcards: partyUI, knowme: partyUI, thisorthat: partyUI, faceoff: partyUI, flagfrenzy: partyUI, capitalquest: partyUI, trueorfalse: partyUI, emojiphrase: partyUI, numbercrunch: partyUI, whichismore: partyUI, missingvowels: partyUI, wordscramble: partyUI, riddleme: partyUI, doesntbelong: partyUI, wildfacts: partyUI, finishthesaying: partyUI, continentquest: partyUI, colorclash: partyUI, countit: partyUI, lastonestanding: partyUI, buzzin: partyUI, whatyear: partyUI, nextinline: partyUI, opposites: partyUI, cluecrack: partyUI, sortitout: partyUI, flashmemory: partyUI, roulette: partyUI, tripledice: partyUI, luckynumbers: partyUI, moneywheel: partyUI, derbyday: partyUI, oddoreven: partyUI, dicepit: partyUI, pegdrop: partyUI, inbetween: partyUI, casinowar: partyUI, liftoff: partyUI, ridethebus: partyUI, threecard: partyUI, islandstud: partyUI, omaha: pokerUI, lowestunique: partyUI, splitsteal: partyUI, twothirds: partyUI, vulturebids: partyUI, treasurerun: partyUI, ticker: partyUI, galaauction: partyUI, threefronts: partyUI, lemonade: partyUI, fishpond: partyUI, mysteryboxes: partyUI, standoff: partyUI, fiveletters: partyUI, wordgallows: partyUI, longword: partyUI, targetnumber: partyUI, wordchain: partyUI, ghostletters: partyUI, slowreveal: partyUI, acrorace: partyUI, fibfinder: partyUI, storychain: partyUI, rateit: partyUI, topfive: partyUI, mindmeld: partyUI, captionit: partyUI, fakeartist: partyUI, copycat: partyUI, codecrack: partyUI, undercover: partyUI, mafianight: partyUI, whist: partyUI, exactly: partyUI, setback: partyUI, raven: partyUI, missiontricks: partyUI, schnapsen: partyUI, pinochle: partyUI, bridge: partyUI, topdog: partyUI, bigdeuce: partyUI, foolsdefense: partyUI, thirtyone: partyUI, tonk: partyUI, pairs: partyUI, cardgolf: partyUI, cornerkings: partyUI, emojistory: partyUI, fakepitch: partyUI, hottakes: partyUI, whosaidthat: partyUI, worstgift: partyUI, interrogation: partyUI, translatethis: partyUI, drawpartner: partyUI, excuses: partyUI, lipreader: partyUI, twowords: partyUI, guilty: partyUI, plottwist: partyUI };
 const params = new URLSearchParams(location.search);
@@ -161,9 +161,15 @@ function onStatus(s) {
   bar.textContent = s === 'no-table' ? 'Table not reachable — retrying…' : 'Reconnecting to the table…';
 }
 
+// The newest state seen from this table run; anything older that arrives late is ignored.
+let lastRun = null, lastSeq = 0;
 function onMessage(m) {
   if (m.t === 'error') return toast(m.msg);
   if (m.t !== 'state') return;
+  if (m.run && m.seq) {
+    if (m.run === lastRun && m.seq <= lastSeq) return;
+    lastRun = m.run; lastSeq = m.seq;
+  }
   st = m;
   $('#netbar').hidden = true;
   render();
@@ -221,6 +227,9 @@ function renderSeatPicker() {
   const table = $('#minitable');
   table.dataset.game = G.id;
   table.querySelectorAll('.seatbtn').forEach(b => b.remove());
+  // Seats sharing one side: when there are too many to fit at the usual size (e.g. four
+  // teammates down each side), they get smaller and are spaced evenly so none overlap.
+  const sideSeats = side => G.layout.map((L, i) => ({ L, i })).filter(o => o.L.side === side).sort((p, q) => (side % 2 ? p.L.y - q.L.y : p.L.x - q.L.x));
   G.layout.forEach((L, seat) => {
     const s = st.seats[seat];
     const mine = st.you === seat;
@@ -229,12 +238,22 @@ function renderSeatPicker() {
     // Map the table-screen position into the little picture of the table. Rows along the
     // top/bottom edge (x from 28% to 72%) are stretched to use the picture's full width.
     const vertical = L.side % 2 === 1;
-    const [w, h] = vertical ? (G.max > 4 ? [20, 30] : [22, 42]) : (G.max > 4 ? [32, 19] : [42, 21]);
+    const many = G.layout.length > 4;  // size by the seats actually drawn, not the player limit
+    let [w, h] = vertical ? (many ? [20, 30] : [22, 42]) : (many ? [32, 19] : [42, 21]);
     const fx = vertical ? L.x / 100 : Math.min(1, Math.max(0, (L.x - 28) / 44));
-    Object.assign(b.style, {
-      width: w + '%', height: h + '%',
-      left: (100 - w) * fx + '%', top: ((100 - h) * L.y) / 100 + '%',
-    });
+    let left = (100 - w) * fx, top = ((100 - h) * L.y) / 100;
+    const row = sideSeats(L.side), n = row.length, gap = 2;
+    // Would this side's buttons overlap where the layout puts them? Then space them evenly instead
+    // (side seats stay clear of any rows along the top and bottom edges).
+    const fxOf = Q => Math.min(1, Math.max(0, (Q.x - 28) / 44));
+    const crowded = vertical ? row.some((o, k) => k && (100 - h) * (o.L.y - row[k - 1].L.y) / 100 < h)
+      : row.some((o, k) => k && (100 - w) * (fxOf(o.L) - fxOf(row[k - 1].L)) < w);
+    if (vertical && crowded) {
+      const band = (many ? 19 : 21) + gap, t0 = G.layout.some(Q => Q.side === 2) ? band : 0, t1 = G.layout.some(Q => Q.side === 0) ? band : 0;
+      h = Math.min(h, (100 - t0 - t1 - gap * (n - 1)) / n); top = t0 + row.findIndex(o => o.i === seat) * (h + gap);
+    }
+    if (!vertical && crowded) { w = Math.min(w, (100 - gap * (n - 1)) / n); left = row.findIndex(o => o.i === seat) * (w + gap); }
+    Object.assign(b.style, { width: w + '%', height: h + '%', left: left + '%', top: top + '%' });
     b.style.setProperty('--dot', `var(--seat-${seat})`);
     b.classList.toggle('mine', mine);
     b.classList.toggle('open', !s);

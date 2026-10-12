@@ -2,7 +2,7 @@
 // Take turns asking yes/no questions — "Glasses?", "Red hair?" — the answer comes from your
 // opponent's secret person automatically and the faces it rules out flip down on your board. When
 // you think you know, guess. Right and you win; wrong and you lose.
-import { base, shuffle, sfx, announce } from './party.js?v=80';
+import { base, shuffle, sfx, announce } from './party.js?v=82';
 
 const HAIR = [{ n: 'black', c: '#2a211c' }, { n: 'brown', c: '#7a4a26' }, { n: 'blond', c: '#e3bf5a' }, { n: 'red', c: '#c4502a' }, { n: 'white', c: '#e6e2da' }];
 const SKIN = ['#f3d2b5', '#e0b08a', '#c68a5e', '#8d5a3a', '#5e3a26'];

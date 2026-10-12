@@ -1,9 +1,9 @@
 // Seven Spires on a phone: tap one of your three decks to take its top card — the deck on your
 // left, the hidden centre (you see its top card while you hold the Owl), or the deck on your
 // right. Below: your spire, what the next stage needs, and everything you've collected.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=80';
-import * as S from './spires.js?v=80';
-import { svCard, spireSVG, tableauHTML } from './table-spires.js?v=80';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=82';
+import * as S from './spires.js?v=82';
+import { svCard, spireSVG, tableauHTML } from './table-spires.js?v=82';
 
 let ctx = null, wasMyTurn = false;
 

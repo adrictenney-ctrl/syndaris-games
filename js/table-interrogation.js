@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { interrogationT } from './table-talk.js?v=80';
+import { interrogationT } from './table-talk.js?v=82';
 
 export default interrogationT;

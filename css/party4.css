@@ -351,3 +351,5 @@ body[data-game="faceoff"] #felt { background: radial-gradient(ellipse 120% 100% 
 .fo-card small { font-family: var(--ui); font-size: 1.5vmin; color: #6a5a4a; }
 .fo-card.sweep { box-shadow: 0 0 0 .5vmin #ffd070, 0 1.6vmin 3vmin rgba(0, 0, 0, .45); }
 .fo-vs { font-family: var(--ui); font-weight: 900; font-size: 4vmin; color: #ffd070; }
+/* Symbols that draw as plain text (not colour emoji) need dark ink on the cream cards, in every style. */
+.sm-card span, .pp-btns .panel-btn.sm-sym, html[data-style="vibrant"] .pp-btns .panel-btn.sm-sym { color: #1d1b2e; }

@@ -1,7 +1,7 @@
 // Answer Board on the table: the blue board of categories and values; a picked clue fills the
 // screen with its four answers, then the right one lights up.
-import * as E from './answerboard.js?v=80';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=80';
+import * as E from './answerboard.js?v=82';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=82';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {
@@ -16,6 +16,8 @@ export default partyTable(E, {
         ${[0, 1, 2, 3, 4].map(r => g.board.map(B => `<div class="ab-val ${B.used[r] ? 'used' : ''}">${B.used[r] ? '' : E.val(r)}</div>`).join('')).join('')}</div>
         <p class="pt-sub">${who(ctx, g.picker)} picks on their phone</p>${sc(g, ctx)}`;
     }
+    // Between clues and at the end there's no clue picked: just the scores.
+    if (!g.at) return sc(g, ctx);
     const q = E.clue(g), C = E.CATS[g.board[g.at.c].cat], dd = E.isDD(g);
     const head = `<p class="tw-cat" style="--c:${C.color}">${C.icon} ${esc(C.name)} · ${E.val(g.at.r) * (dd ? 2 : 1)}${dd ? ' · DOUBLE DOWN' : ''}</p><h2 class="pt-h ab-q">${esc(q[0])}</h2>`;
     const choices = `<ol class="tw-choices">${g.choices.map((c, i) => `<li class="tw-c${i} ${g.phase === 'reveal' ? (c === q[1] ? 'right' : 'wrong') : ''}"><span>${'ABCD'[i]}</span>${esc(c)}${g.phase === 'reveal' ? `<em>${Object.keys(g.ans).filter(s => g.ans[s].i === i).map(s => `<i style="background:var(--seat-${s})"></i>`).join('')}</em>` : ''}</li>`).join('')}</ol>`;

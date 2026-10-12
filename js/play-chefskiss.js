@@ -1,11 +1,11 @@
 // Chef's Kiss on a phone. Cards arrive face down: touch one to turn it over, then slide it
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=80';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=80';
-import { movable } from './gesture.js?v=80';
-import { TEAMS } from './chefskiss.js?v=81';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=80';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=82';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=82';
+import { movable } from './gesture.js?v=82';
+import { TEAMS } from './chefskiss.js?v=82';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=82';
 
 let ctx = null, v = null;
 let flipped = new Set();
