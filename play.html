@@ -15,11 +15,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <script>
     // Style from Settings. A join link from a Vibrant table carries ?look=vibrant, so the phone matches the TV.
-    try {
-      const look = new URLSearchParams(location.search).get('look');
-      if (look === 'vibrant' || look === 'classic') localStorage.setItem('pod.style', look);
-      if (localStorage.getItem('pod.style') === 'vibrant') { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
-    } catch {}
+    // Vibrant is the default; Classic only when someone picked it (or the table is Classic).
+    (() => {
+      try {
+        const look = new URLSearchParams(location.search).get('look');
+        if (look === 'vibrant' || look === 'classic') localStorage.setItem('pod.style', look);
+        if (localStorage.getItem('pod.style') === 'classic') return;
+      } catch {}
+      document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg';
+    })();
   </script>
   <link rel="stylesheet" href="css/cards.css?v=82">
   <link rel="stylesheet" href="css/play.css?v=82">

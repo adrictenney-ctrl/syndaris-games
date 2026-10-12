@@ -15,7 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <script>
     // Style from Settings on the home page (Classic or Vibrant).
-    try { if (localStorage.getItem('pod.style') === 'vibrant') { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; } } catch {}
+    // Vibrant is the default; Classic only when someone picked it in Settings.
+    let podStyle = null; try { podStyle = localStorage.getItem('pod.style'); } catch {}
+    if (podStyle !== 'classic') { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
   </script>
   <link rel="stylesheet" href="css/cards.css?v=82">
   <link rel="stylesheet" href="css/table.css?v=82">
