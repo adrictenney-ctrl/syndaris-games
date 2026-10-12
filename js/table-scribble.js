@@ -1,9 +1,9 @@
 // Scribble Chain on the table. While everyone works: which step it is, the clock, and who's
 // finished. Then the reveal: each sketchbook opens on the table, page by page — the word, the
 // drawing, the guess, the next drawing… — with who did each page.
-import * as C from './scribble.js?v=82';
-import { fitCanvas, paint } from './sketch-pad.js?v=82';
-import { snap } from './cards.js?v=82';
+import * as C from './scribble.js?v=85';
+import { fitCanvas, paint } from './sketch-pad.js?v=85';
+import { snap } from './cards.js?v=85';
 
 let root = null, key = '', tick = null, gref = null;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -21,7 +21,8 @@ export default {
   defaults: { draw: 80, guess: 45 },
   settingsHTML: s => `<label>Drawing time <select data-set="draw">${[60, 80, 100, 120].map(n => `<option value="${n}" ${n === s.draw ? 'selected' : ''}>${n} seconds</option>`).join('')}</select></label>
     <label>Guessing time <select data-set="guess">${[30, 45, 60].map(n => `<option value="${n}" ${n === s.guess ? 'selected' : ''}>${n} seconds</option>`).join('')}</select></label>`,
-  create: (settings, players) => C.createGame(settings, players),
+  // "Play again" hands in the finished game, so the points carry on.
+  create: (settings, players, prev) => C.createGame(settings, players, prev?.books ? prev : null),
   act: C.applyAction,
   bot: () => null,
   view: C.viewFor,
@@ -35,7 +36,7 @@ export default {
     const badges = [];
     if (['write', 'draw', 'guess'].includes(g.phase)) badges.push(g.done[seat] ? '<span class="badge got">done</span>' : `<span class="badge">${g.phase === 'draw' ? '✏️ drawing' : g.phase === 'guess' ? 'guessing' : 'choosing'}</span>`);
     if (g.phase === 'reveal' && g.books[g.revealBook].owner === seat) badges.push('<span class="badge alone">their book</span>');
-    return { badges, meta: '', cards: 0, turn: false, out: false };
+    return { badges, meta: `<span class="pt-pts">${g.score?.[seat] || 0} pt${g.score?.[seat] === 1 ? '' : 's'}</span>`, cards: 0, turn: false, out: false };
   },
 
   reset() { clearInterval(tick); root?.remove(); root = null; key = ''; gref = null; },
@@ -64,7 +65,7 @@ export default {
     const b = g.books[g.revealBook], p = b.pages[g.revealPage];
     book.innerHTML = `<header><b>${esc(ctx.nameOf(b.owner))}'s book</b><span>${b.pages.map((_, i) => `<i class="${i === g.revealPage ? 'on' : i < g.revealPage ? 'past' : ''}"></i>`).join('')}</span></header>
       <div class="sc-page ${p.type}">${p.type === 'draw' ? '<canvas></canvas>' : `<p class="${p.type}">${p.text ? esc(p.text) : '<em>(no answer)</em>'}</p>`}</div>
-      <footer>${p.type === 'word' ? 'The word was chosen by' : p.type === 'draw' ? 'Drawn by' : 'Guessed by'} <b>${esc(ctx.nameOf(p.by))}</b></footer>
+      <footer>${p.type === 'word' ? 'The word was chosen by' : p.type === 'draw' ? 'Drawn by' : 'Guessed by'} <b>${esc(ctx.nameOf(p.by))}</b>${g.revealPage === b.pages.length - 1 && b.nailed === p.by ? ' · <b class="sc-nailed">Got the word! +1</b>' : ''}</footer>
       <div class="sc-nav"><button class="tool" data-x="back" ${g.revealBook || g.revealPage ? '' : 'disabled'}>‹ Back</button><button class="tool" data-x="pause">${g.paused ? '▶ Play' : '❚❚ Pause'}</button><button class="tool" data-x="next">Next page ›</button></div>`;
     if (p.type === 'draw') { const cv = book.querySelector('canvas'); fitCanvas(cv, Math.floor(W * 0.92)); paint(cv, p.strokes); }
     book.querySelectorAll('[data-x]').forEach(x => { x.onclick = () => ctx.act(b.owner, { type: x.dataset.x }); });
@@ -77,6 +78,7 @@ export default {
     return {
       key: 'over' + g.stepId,
       html: `<h2>That's every book</h2><p>From the first word to the last guess:</p><ol class="scores sc-drift">${drift}</ol>
+        <p class="hint">Points so far${g.chains > 1 ? ` (${g.chains} rounds)` : ''} — the leader when you go back to the lobby wins:</p><ol class="scores">${[...g.order].sort((a, b) => (g.score[b] || 0) - (g.score[a] || 0)).map(s => `<li>${esc(ctx.nameOf(s))} <b>${g.score[s] || 0}</b></li>`).join('')}</ol>
         <div class="buttons"><button class="big" data-do="again">Play again</button><button class="big ghost" data-do="lobby">Back to lobby</button></div>`,
     };
   },

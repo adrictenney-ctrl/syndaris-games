@@ -1,7 +1,7 @@
 // The account button in the home page's top bar and its window: sign in with Google or with an
 // email and password, create an account, reset a password, and sign out. Uses Firebase
 // Authentication (firebase.js). The page works exactly the same when nobody is signed in.
-import { onUser, signInGoogle, signInEmail, signUpEmail, resetPassword, signOutUser, authMessage } from './firebase.js?v=1';
+import { onUser, signInGoogle, signInEmail, signUpEmail, resetPassword, signOutUser, authMessage } from './firebase.js?v=2';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const nameOf = u => u.displayName || (u.email || '').split('@')[0] || 'Player';

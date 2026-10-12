@@ -1,7 +1,7 @@
 // Nope! on the table: the card up for grabs with its little pile of chips, the deck, and everyone's
 // taken cards laid out in runs. Chip counts stay hidden on the phones.
-import * as E from './nope.js?v=82';
-import { partyTable, esc, who } from './table-party.js?v=82';
+import * as E from './nope.js?v=85';
+import { partyTable, esc, who } from './table-party.js?v=85';
 
 export default partyTable(E, {
   id: 'nope',

@@ -1,7 +1,7 @@
 // Hard Sell on the table: the Customer's card in the middle, then a shelf of products — each a
 // pair of word cards with its seller's name — with a spotlight on whoever is pitching.
-import * as H from './hardsell.js?v=82';
-import { snap } from './cards.js?v=82';
+import * as H from './hardsell.js?v=85';
+import { snap } from './cards.js?v=85';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

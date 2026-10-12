@@ -1,7 +1,7 @@
 // Shared pieces for the card games built on the party frame: decks, card text, card options for
 // the phone, and a trick-taking engine (deal → optional bidding → tricks → score → next hand).
 // Cards are strings: rank + suit, e.g. 'AS', 'TD', '9H'. Ranks: 2–9, T, J, Q, K, A. Suits: S H D C.
-import { base, shuffle, sfx, announce } from './party.js?v=82';
+import { base, shuffle, sfx, announce } from './party.js?v=85';
 
 export const SUITS = 'SHDC';
 export const SYM = { S: '♠', H: '♥', D: '♦', C: '♣' };

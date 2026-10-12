@@ -3,7 +3,7 @@
 // works out poison and false information, and announces who died. By day the village
 // talks, nominates and votes on the table; the player on the block is executed at dusk.
 // Good wins when the Shade dies. Evil wins when only two players are left alive.
-import { CHARS, TEAM, BY_KIND, SETUP } from './hollow-chars.js?v=82';
+import { CHARS, TEAM, BY_KIND, SETUP } from './hollow-chars.js?v=85';
 
 const rnd = n => Math.floor(Math.random() * n);
 const pick = a => a[rnd(a.length)];
@@ -50,6 +50,8 @@ const alive = g => g.crew.filter(s => g.alive[s]);
 const real = (g, s) => g.chars[s];
 const kindOf = c => CHARS[c].kind;
 const isEvil = (g, s) => TEAM[kindOf(g.chars[s])] === 'evil';
+// Which side a seat is on ('good' or 'evil'), e.g. to pay out the winners.
+export const sideOf = (g, s) => (isEvil(g, s) ? 'evil' : 'good');
 const broken = (g, s) => g.poisoned === s || g.chars[s] === 'sleepwalker';
 const say = (g, text) => { g.log.push(text); if (g.log.length > 40) g.log.shift(); };
 const note = (g, s, text) => g.notes[s].push({ night: g.night, day: g.day, text });

@@ -1,4 +1,4 @@
 // See table-social.js.
-import { fakeartistT } from './table-social.js?v=82';
+import { fakeartistT } from './table-social.js?v=85';
 
 export default fakeartistT;

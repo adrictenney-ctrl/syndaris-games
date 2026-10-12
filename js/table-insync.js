@@ -1,7 +1,7 @@
 // In Sync on the table: the pile of played cards climbing upward, lives and stars, how many cards
 // each player still holds (never what they are), and a flash when someone plays too soon.
-import * as E from './insync.js?v=82';
-import { partyTable, esc, who } from './table-party.js?v=82';
+import * as E from './insync.js?v=85';
+import { partyTable, esc, who } from './table-party.js?v=85';
 
 export default partyTable(E, {
   id: 'insync',

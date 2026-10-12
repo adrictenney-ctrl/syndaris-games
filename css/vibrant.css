@@ -438,3 +438,9 @@ html[data-style="vibrant"] .acct-go { font-family: var(--ui); font-weight: 900; 
 html[data-style="vibrant"] .acct-go.ghost { color: #fff; background: rgba(8, 5, 44, .45); border: 2px solid rgba(255, 255, 255, .14); box-shadow: none; }
 html[data-style="vibrant"] .acct-links button { color: var(--v-sun); }
 html[data-style="vibrant"] .acct-google { border: 0; box-shadow: 0 4px 0 rgba(6, 3, 34, .35); }
+
+html[data-style="vibrant"] .style-price { font-family: var(--ui); color: #fff; background: rgba(8, 5, 44, .45); border-color: rgba(255, 255, 255, .12); }
+html[data-style="vibrant"] .style-price.owned { color: #3a2400; background: var(--v-sun); }
+html[data-style="vibrant"] .shop-msg { font-family: var(--ui); background: rgba(8, 5, 44, .45); border: 2px solid rgba(255, 255, 255, .12); }
+html[data-style="vibrant"] .shop-go { font-family: var(--ui); font-weight: 900; letter-spacing: .06em; color: #06301c; background: var(--v-go); box-shadow: 0 4px 0 var(--v-go-edge); }
+html[data-style="vibrant"] .dough-pill { font-family: var(--ui); font-weight: 900; color: #fff; background: rgba(8, 5, 44, .55); border: 2px solid rgba(255, 255, 255, .1); }

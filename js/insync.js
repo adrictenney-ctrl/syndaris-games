@@ -3,7 +3,7 @@
 // every card onto the table pile in rising order, just by feel. Play a card while someone still
 // holds a lower one and the team loses a life (those lower cards are thrown away). Everyone can
 // agree to throw a star: each player discards their lowest card. Clear every level to win.
-import { base, shuffle, sfx, announce } from './party.js?v=82';
+import { base, shuffle, sfx, announce } from './party.js?v=85';
 
 export function createGame(settings, players) {
   const g = base(settings, players, {});

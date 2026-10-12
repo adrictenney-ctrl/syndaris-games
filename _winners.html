@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Winners audit</title></head>
+<body><div id="center"></div><div id="watermark"></div><pre id="out">running…</pre>
+<script type="module">
+// Dev only: play every game to the end with computer players (clock fast-forwarded) and report
+// what each one records about who won.
+const { GAMES } = await import('./js/games.js?v=85');
+const realNow = Date.now.bind(Date); let skew = 0; Date.now = () => realNow() + skew;
+const ids = (new URLSearchParams(location.search).get('ids') || Object.keys(GAMES).join(',')).split(',');
+const src = await (await fetch('./js/table.js?v=85')).text();
+const FILE = Object.fromEntries([...src.matchAll(/import (\w+) from '\.\/(table-[\w-]+)\.js/g)].map(m => [m[1], m[2]]));
+const W = await import('./js/winners.js?v=' + Date.now());
+const rows = [];
+for (const id of ids) {
+  const G = GAMES[id];
+  let mode;
+  try { mode = (await import(`./js/${FILE[id] || 'table-' + id}.js?v=82`)).default; } catch (e) { rows.push({ id, err: 'import ' + e.message }); continue; }
+  const n = Math.min(G.max, Math.max(G.min, G.layout?.length >= 4 ? 4 : G.min));
+  const players = Array.from({ length: (G.layout || []).length || n }, (_, i) => (i < n ? { name: 'P' + i, bot: true, connected: true } : null));
+  let g, steps = 0, err = '';
+  try {
+    g = mode.create({ ...(mode.defaults || {}) }, players);
+    for (; steps < 4000; steps++) {
+      if (['over', 'done', 'gameOver', 'final'].includes(g.phase) || g.over) break;
+      const t = mode.timer(g, players);
+      if (t) { skew += Math.max(0, t.ms) + 5; t.run(); continue; }
+      const turn = mode.turn(g);
+      if (turn >= 0 && players[turn]?.bot) { const e = mode.act(g, turn, mode.bot(g, turn)); if (e) { err = 'bot: ' + e; break; } continue; }
+      err = 'stuck in ' + g.phase + ' (turn ' + turn + ')'; break;
+    }
+  } catch (e) { err = 'crash: ' + e.message; }
+  const pick = k => (g && g[k] !== undefined ? JSON.stringify(g[k]) : undefined);
+  let wins; try { wins = W.winnersOf(id, g); } catch (e) { wins = 'ERR ' + e.message; }
+  let leads; try { leads = W.OPEN_ENDED.has(id) ? W.leadersOf(id, g) : undefined; } catch (e) { leads = 'ERR ' + e.message; }
+  rows.push({ id, wins: JSON.stringify(wins), leads: JSON.stringify(leads), n, keys: g ? Object.keys(g).join(' ') : '', result: pick('result'), out: pick('out'), state: pick('state'), status: pick('status'), over: pick('over'), standings: pick('standings'), phase: g?.phase, steps, err, winners: pick('winners'), winner: pick('winner'), champion: pick('champion'), winTeam: pick('winTeam'), team: g?.team ? 'team' : undefined, scores: g?.scores ? 'scores' : undefined, won: pick('won') });
+}
+window.__rows = rows;
+document.getElementById('out').textContent = JSON.stringify(rows, null, 0).replace(/},{/g, '},\n{');
+</script></body></html>

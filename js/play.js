@@ -1,93 +1,93 @@
 // A player's phone: joining, picking a seat, then the game's own phone UI.
-import { GAMES } from './games.js?v=82';
-import { keepAwake } from './cards.js?v=82';
-import { joinRoom } from './net.js?v=82';
-import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=82';
-import * as euchreUI from './play-euchre.js?v=82';
-import * as pokerUI from './play-poker.js?v=82';
-import * as vetoUI from './play-veto.js?v=82';
-import * as gofishUI from './play-gofish.js?v=82';
-import * as chessUI from './play-chess.js?v=82';
-import * as backgammonUI from './play-backgammon.js?v=82';
-import * as sketchUI from './play-sketch.js?v=82';
-import * as chefskissUI from './play-chefskiss.js?v=82';
-import * as insidejobUI from './play-insidejob.js?v=82';
-import * as crownUI from './play-crown.js?v=82';
-import * as hollowUI from './play-hollow.js?v=82';
-import * as blackjackUI from './play-blackjack.js?v=82';
-import * as baccaratUI from './play-baccarat.js?v=82';
-import * as checkersUI from './play-checkers.js?v=82';
-import * as yachtUI from './play-yacht.js?v=82';
-import * as spoonsUI from './play-spoons.js?v=82';
-import * as doubtUI from './play-doubt.js?v=82';
-import * as cashoutUI from './play-cashout.js?v=82';
-import * as crazy8UI from './play-crazy8.js?v=82';
-import * as skylineUI from './play-skyline.js?v=82';
-import * as lowtideUI from './play-lowtide.js?v=82';
-import * as trioUI from './play-trio.js?v=82';
-import * as fourupUI from './play-fourup.js?v=82';
-import * as seedstonesUI from './play-seedstones.js?v=82';
-import * as sonarUI from './play-sonar.js?v=82';
-import * as milestonesUI from './play-milestones.js?v=82';
-import * as wrongnumberUI from './play-wrongnumber.js?v=82';
-import * as scribbleUI from './play-scribble.js?v=82';
-import * as manorUI from './play-manor.js?v=82';
-import * as warfrontUI from './play-warfront.js?v=82';
-import * as ironroutesUI from './play-ironroutes.js?v=82';
-import * as homesteadUI from './play-homestead.js?v=82';
-import * as wordsmithUI from './play-wordsmith.js?v=82';
-import * as partyUI from './play-party.js?v=82';
-import * as passphraseUI from './play-passphrase.js?v=82';
-import * as dontsayUI from './play-dontsay.js?v=82';
-import * as pardonUI from './play-pardon.js?v=82';
-import * as ludoUI from './play-ludo.js?v=82';
-import * as orchardUI from './play-orchard.js?v=82';
-import * as sweettrailUI from './play-sweettrail.js?v=82';
-import * as snakesUI from './play-snakes.js?v=82';
-import * as bingoUI from './play-bingo.js?v=82';
-import * as hogtossUI from './play-hogtoss.js?v=82';
-import * as hotdiceUI from './play-hotdice.js?v=82';
-import * as lineup5UI from './play-lineup5.js?v=82';
-import * as shapeshadeUI from './play-shapeshade.js?v=82';
-import * as cornerstonesUI from './play-cornerstones.js?v=82';
-import * as dominoesUI from './play-dominoes.js?v=82';
-import * as starjumpUI from './play-starjump.js?v=82';
-import * as codebreakerUI from './play-codebreaker.js?v=82';
-import * as goUI from './play-go.js?v=82';
-import * as reversiUI from './play-reversi.js?v=82';
-import * as rebelcellUI from './play-rebelcell.js?v=82';
-import * as powergrabUI from './play-powergrab.js?v=82';
-import * as unicornsUI from './play-unicorns.js?v=82';
-import * as roadrallyUI from './play-roadrally.js?v=82';
-import * as dealmakerUI from './play-dealmaker.js?v=82';
-import * as bentoUI from './play-bento.js?v=82';
-import * as rackemUI from './play-rackem.js?v=82';
-import * as stackupUI from './play-stackup.js?v=82';
-import * as cribbageUI from './play-cribbage.js?v=82';
-import * as drawpokerUI from './play-drawpoker.js?v=82';
-import * as ginUI from './play-gin.js?v=82';
-import * as rummyUI from './play-rummy.js?v=82';
-import * as oldmaidUI from './play-oldmaid.js?v=82';
-import * as warUI from './play-war.js?v=82';
-import * as spadesUI from './play-spades.js?v=82';
-import * as heartsUI from './play-hearts.js?v=82';
-import * as words4funUI from './play-words4fun.js?v=82';
-import * as hardsellUI from './play-hardsell.js?v=82';
-import * as deepspaceUI from './play-deepspace.js?v=82';
-import * as houserulesUI from './play-houserules.js?v=82';
-import * as bannerraidUI from './play-bannerraid.js?v=82';
-import * as fieldagentsUI from './play-fieldagents.js?v=82';
-import * as dialitinUI from './play-dialitin.js?v=82';
-import * as pileupUI from './play-pileup.js?v=82';
-import * as luckystreakUI from './play-luckystreak.js?v=82';
-import * as passpotUI from './play-passpot.js?v=82';
-import * as tesseraUI from './play-tessera.js?v=82';
-import * as gearworksUI from './play-gearworks.js?v=82';
-import * as redlineUI from './play-redline.js?v=82';
-import * as grandprixUI from './play-grandprix.js?v=82';
-import * as spiresUI from './play-spires.js?v=82';
-import * as kaboomUI from './play-kaboom.js?v=82';
-import * as nesteggUI from './play-nestegg.js?v=82';
+import { GAMES } from './games.js?v=85';
+import { keepAwake } from './cards.js?v=85';
+import { joinRoom } from './net.js?v=85';
+import { $, toast, setStatus, renderHand, resetHand } from './phone-kit.js?v=85';
+import * as euchreUI from './play-euchre.js?v=85';
+import * as pokerUI from './play-poker.js?v=85';
+import * as vetoUI from './play-veto.js?v=85';
+import * as gofishUI from './play-gofish.js?v=85';
+import * as chessUI from './play-chess.js?v=85';
+import * as backgammonUI from './play-backgammon.js?v=85';
+import * as sketchUI from './play-sketch.js?v=85';
+import * as chefskissUI from './play-chefskiss.js?v=85';
+import * as insidejobUI from './play-insidejob.js?v=85';
+import * as crownUI from './play-crown.js?v=85';
+import * as hollowUI from './play-hollow.js?v=85';
+import * as blackjackUI from './play-blackjack.js?v=85';
+import * as baccaratUI from './play-baccarat.js?v=85';
+import * as checkersUI from './play-checkers.js?v=85';
+import * as yachtUI from './play-yacht.js?v=85';
+import * as spoonsUI from './play-spoons.js?v=85';
+import * as doubtUI from './play-doubt.js?v=85';
+import * as cashoutUI from './play-cashout.js?v=85';
+import * as crazy8UI from './play-crazy8.js?v=85';
+import * as skylineUI from './play-skyline.js?v=85';
+import * as lowtideUI from './play-lowtide.js?v=85';
+import * as trioUI from './play-trio.js?v=85';
+import * as fourupUI from './play-fourup.js?v=85';
+import * as seedstonesUI from './play-seedstones.js?v=85';
+import * as sonarUI from './play-sonar.js?v=85';
+import * as milestonesUI from './play-milestones.js?v=85';
+import * as wrongnumberUI from './play-wrongnumber.js?v=85';
+import * as scribbleUI from './play-scribble.js?v=85';
+import * as manorUI from './play-manor.js?v=85';
+import * as warfrontUI from './play-warfront.js?v=85';
+import * as ironroutesUI from './play-ironroutes.js?v=85';
+import * as homesteadUI from './play-homestead.js?v=85';
+import * as wordsmithUI from './play-wordsmith.js?v=85';
+import * as partyUI from './play-party.js?v=85';
+import * as passphraseUI from './play-passphrase.js?v=85';
+import * as dontsayUI from './play-dontsay.js?v=85';
+import * as pardonUI from './play-pardon.js?v=85';
+import * as ludoUI from './play-ludo.js?v=85';
+import * as orchardUI from './play-orchard.js?v=85';
+import * as sweettrailUI from './play-sweettrail.js?v=85';
+import * as snakesUI from './play-snakes.js?v=85';
+import * as bingoUI from './play-bingo.js?v=85';
+import * as hogtossUI from './play-hogtoss.js?v=85';
+import * as hotdiceUI from './play-hotdice.js?v=85';
+import * as lineup5UI from './play-lineup5.js?v=85';
+import * as shapeshadeUI from './play-shapeshade.js?v=85';
+import * as cornerstonesUI from './play-cornerstones.js?v=85';
+import * as dominoesUI from './play-dominoes.js?v=85';
+import * as starjumpUI from './play-starjump.js?v=85';
+import * as codebreakerUI from './play-codebreaker.js?v=85';
+import * as goUI from './play-go.js?v=85';
+import * as reversiUI from './play-reversi.js?v=85';
+import * as rebelcellUI from './play-rebelcell.js?v=85';
+import * as powergrabUI from './play-powergrab.js?v=85';
+import * as unicornsUI from './play-unicorns.js?v=85';
+import * as roadrallyUI from './play-roadrally.js?v=85';
+import * as dealmakerUI from './play-dealmaker.js?v=85';
+import * as bentoUI from './play-bento.js?v=85';
+import * as rackemUI from './play-rackem.js?v=85';
+import * as stackupUI from './play-stackup.js?v=85';
+import * as cribbageUI from './play-cribbage.js?v=85';
+import * as drawpokerUI from './play-drawpoker.js?v=85';
+import * as ginUI from './play-gin.js?v=85';
+import * as rummyUI from './play-rummy.js?v=85';
+import * as oldmaidUI from './play-oldmaid.js?v=85';
+import * as warUI from './play-war.js?v=85';
+import * as spadesUI from './play-spades.js?v=85';
+import * as heartsUI from './play-hearts.js?v=85';
+import * as words4funUI from './play-words4fun.js?v=85';
+import * as hardsellUI from './play-hardsell.js?v=85';
+import * as deepspaceUI from './play-deepspace.js?v=85';
+import * as houserulesUI from './play-houserules.js?v=85';
+import * as bannerraidUI from './play-bannerraid.js?v=85';
+import * as fieldagentsUI from './play-fieldagents.js?v=85';
+import * as dialitinUI from './play-dialitin.js?v=85';
+import * as pileupUI from './play-pileup.js?v=85';
+import * as luckystreakUI from './play-luckystreak.js?v=85';
+import * as passpotUI from './play-passpot.js?v=85';
+import * as tesseraUI from './play-tessera.js?v=85';
+import * as gearworksUI from './play-gearworks.js?v=85';
+import * as redlineUI from './play-redline.js?v=85';
+import * as grandprixUI from './play-grandprix.js?v=85';
+import * as spiresUI from './play-spires.js?v=85';
+import * as kaboomUI from './play-kaboom.js?v=85';
+import * as nesteggUI from './play-nestegg.js?v=85';
 
 const UIS = { euchre: euchreUI, holdem: pokerUI, veto: vetoUI, gofish: gofishUI, chess: chessUI, backgammon: backgammonUI, sketch: sketchUI, chefskiss: chefskissUI, insidejob: insidejobUI, crown: crownUI, hollow: hollowUI, blackjack: blackjackUI, baccarat: baccaratUI, checkers: checkersUI, yacht: yachtUI, spoons: spoonsUI, doubt: doubtUI, cashout: cashoutUI, crazy8: crazy8UI, skyline: skylineUI, lowtide: lowtideUI, trio: trioUI, fourup: fourupUI, seedstones: seedstonesUI, sonar: sonarUI, milestones: milestonesUI, wrongnumber: wrongnumberUI, scribble: scribbleUI, manor: manorUI, warfront: warfrontUI, ironroutes: ironroutesUI, homestead: homesteadUI, wordsmith: wordsmithUI, powerup: chessUI, nestegg: nesteggUI, kaboom: kaboomUI, spires: spiresUI, grandprix: grandprixUI, redline: redlineUI, gearworks: gearworksUI, tessera: tesseraUI, passpot: passpotUI, luckystreak: luckystreakUI, pileup: pileupUI, dialitin: dialitinUI, fieldagents: fieldagentsUI, bannerraid: bannerraidUI, houserules: houserulesUI, deepspace: deepspaceUI, hardsell: hardsellUI, words4fun: words4funUI, hearts: heartsUI, spades: spadesUI, war: warUI, oldmaid: oldmaidUI, rummy: rummyUI, gin: ginUI, drawpoker: drawpokerUI, cribbage: cribbageUI, stackup: stackupUI, rackem: rackemUI, bento: bentoUI, dealmaker: dealmakerUI, roadrally: roadrallyUI, unicorns: unicornsUI, powergrab: powergrabUI, rebelcell: rebelcellUI, roundtable: rebelcellUI, reversi: reversiUI, go: goUI, codebreaker: codebreakerUI, starjump: starjumpUI, dominoes: dominoesUI, cornerstones: cornerstonesUI, shapeshade: shapeshadeUI, lineup5: lineup5UI, hotdice: hotdiceUI, hogtoss: hogtossUI, bingo: bingoUI, snakes: snakesUI, sweettrail: sweettrailUI, orchard: orchardUI, ludo: ludoUI, poprace: ludoUI, marblerush: ludoUI, pardon: pardonUI, dontsay: dontsayUI, passphrase: passphraseUI, listoff: partyUI, wordbluff: partyUI, topanswers: partyUI, triviawheel: partyUI, answerboard: partyUI, spinsolve: partyUI, oddoneout: partyUI, mostlikely: partyUI, twotruths: partyUI, bluffdice: partyUI, petals: partyUI, sealed: partyUI, insync: partyUI, nightlights: partyUI, nope: partyUI, bullpen: partyUI, openhouse: partyUI, bugbluff: partyUI, snapmatch: partyUI, whoswho: partyUI, throwdown: partyUI, oneclue: partyUI, samebrain: partyUI, closecall: partyUI, doodlebluff: partyUI, dreamcards: partyUI, knowme: partyUI, thisorthat: partyUI, faceoff: partyUI, flagfrenzy: partyUI, capitalquest: partyUI, trueorfalse: partyUI, emojiphrase: partyUI, numbercrunch: partyUI, whichismore: partyUI, missingvowels: partyUI, wordscramble: partyUI, riddleme: partyUI, doesntbelong: partyUI, wildfacts: partyUI, finishthesaying: partyUI, continentquest: partyUI, colorclash: partyUI, countit: partyUI, lastonestanding: partyUI, buzzin: partyUI, whatyear: partyUI, nextinline: partyUI, opposites: partyUI, cluecrack: partyUI, sortitout: partyUI, flashmemory: partyUI, roulette: partyUI, tripledice: partyUI, luckynumbers: partyUI, moneywheel: partyUI, derbyday: partyUI, oddoreven: partyUI, dicepit: partyUI, pegdrop: partyUI, inbetween: partyUI, casinowar: partyUI, liftoff: partyUI, ridethebus: partyUI, threecard: partyUI, islandstud: partyUI, omaha: pokerUI, lowestunique: partyUI, splitsteal: partyUI, twothirds: partyUI, vulturebids: partyUI, treasurerun: partyUI, ticker: partyUI, galaauction: partyUI, threefronts: partyUI, lemonade: partyUI, fishpond: partyUI, mysteryboxes: partyUI, standoff: partyUI, fiveletters: partyUI, wordgallows: partyUI, longword: partyUI, targetnumber: partyUI, wordchain: partyUI, ghostletters: partyUI, slowreveal: partyUI, acrorace: partyUI, fibfinder: partyUI, storychain: partyUI, rateit: partyUI, topfive: partyUI, mindmeld: partyUI, captionit: partyUI, fakeartist: partyUI, copycat: partyUI, codecrack: partyUI, undercover: partyUI, mafianight: partyUI, whist: partyUI, exactly: partyUI, setback: partyUI, raven: partyUI, missiontricks: partyUI, schnapsen: partyUI, pinochle: partyUI, bridge: partyUI, topdog: partyUI, bigdeuce: partyUI, foolsdefense: partyUI, thirtyone: partyUI, tonk: partyUI, pairs: partyUI, cardgolf: partyUI, cornerkings: partyUI, emojistory: partyUI, fakepitch: partyUI, hottakes: partyUI, whosaidthat: partyUI, worstgift: partyUI, interrogation: partyUI, translatethis: partyUI, drawpartner: partyUI, excuses: partyUI, lipreader: partyUI, twowords: partyUI, guilty: partyUI, plottwist: partyUI };
 const params = new URLSearchParams(location.search);
@@ -112,7 +112,7 @@ function show(id) {
 
 try { $('#name').value = localStorage.getItem('syndaris.name') || ''; } catch {}
 // Signed in on this browser (home page → Sign in)? Fill in their name if the box is still empty.
-import('./firebase.js?v=1').then(({ onUser }) => onUser(u => { const n = u && (u.displayName || (u.email || '').split('@')[0]); if (n && !$('#name').value) $('#name').value = n.slice(0, 14); })).catch(() => {});
+import('./firebase.js?v=2').then(({ onUser }) => onUser(u => { const n = u && (u.displayName || (u.email || '').split('@')[0]); if (n && !$('#name').value) $('#name').value = n.slice(0, 14); })).catch(() => {});
 const urlRoom = (params.get('room') || '').toUpperCase();
 if (urlRoom) { $('#room').value = urlRoom; $('#roomField').hidden = true; }
 show('s-join');
@@ -173,8 +173,25 @@ function onMessage(m) {
     lastRun = m.run; lastSeq = m.seq;
   }
   st = m;
+  if (m.awards?.length) collectAwards(m.awards);
   $('#netbar').hidden = true;
   render();
+}
+
+// Dough this phone won: each award counts once, into the signed-in account (or waits for sign-in).
+let awardChain = Promise.resolve();
+const awardsSeen = new Set();
+function collectAwards(ids) {
+  const fresh = ids.filter(id => !awardsSeen.has(id));
+  if (!fresh.length) return;
+  fresh.forEach(id => awardsSeen.add(id));
+  awardChain = awardChain.then(() => import('./dough.js?v=1')).then(async D => {
+    for (const id of fresh) {
+      const r = await D.collectWin(id).catch(() => ({}));
+      if (r.paid) { toast('🏆 +10 Dough! Added to your account'); navigator.vibrate?.([60, 40, 120]); }
+      else if (r.pending) toast('🏆 +10 Dough! Sign in on the home page to keep it');
+    }
+  }).catch(() => {});
 }
 
 function send(action) {

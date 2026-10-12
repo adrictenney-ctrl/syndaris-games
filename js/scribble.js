@@ -2,17 +2,23 @@
 // table: the next player draws the word, the next guesses what the drawing is, the next draws
 // that guess, and so on — everyone working at once — until each book comes home. Then the
 // table reveals every chain, page by page, to see how far the word drifted.
-import { LISTS } from './sketch-words.js?v=82';
-import { SCRIBBLE_WORDS } from './scribble-words.js?v=82';
+// Scoring: whoever writes the LAST guess in a book gets a point if it matches the original word.
+// Points carry over through "Play again"; whoever leads when the table goes back to the lobby wins.
+import { LISTS } from './sketch-words.js?v=85';
+import { same } from './party.js?v=85';
+import { SCRIBBLE_WORDS } from './scribble-words.js?v=85';
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // Scribble Chain draws from the shared easy and medium lists plus its own big list (no repeats).
 const POOL = [...new Set([...LISTS.easy, ...LISTS.medium, ...SCRIBBLE_WORDS])];
 const pickWords = n => shuffle([...POOL]).slice(0, n);
 
-export function createGame(settings, players) {
+// `prev` is the game just finished, when the table chose "Play again": its points carry on.
+export function createGame(settings, players, prev) {
   const g = { settings: { draw: 80, guess: 45, ...settings }, seats: players.map(p => !!p), annId: 0, stepId: 0 };
   g.order = g.seats.map((x, i) => (x ? i : -1)).filter(i => i >= 0);
+  g.score = g.seats.map((x, i) => (x && Array.isArray(prev?.score) ? prev.score[i] || 0 : 0));
+  g.chains = (prev?.chains || 0) + 1;
   const words = pickWords(g.order.length * 3);
   g.books = g.order.map((owner, i) => ({ owner, pages: [], offer: words.slice(i * 3, i * 3 + 3) }));
   g.step = 0;
@@ -48,8 +54,16 @@ function finishStep(g) {
     b.pages.push(stepType(g.step) === 'draw' ? { type: 'draw', by: s, strokes: d.strokes || [] } : { type: 'guess', by: s, text: d.text || '' });
   }
   g.step++;
-  if (g.step >= totalSteps(g)) { g.phase = 'reveal'; g.revealBook = 0; g.revealPage = 0; g.nextAt = Date.now() + 4500; return; }
+  if (g.step >= totalSteps(g)) { scoreBooks(g); g.phase = 'reveal'; g.revealBook = 0; g.revealPage = 0; g.nextAt = Date.now() + 4500; return; }
   startStep(g);
+}
+
+// A point for each book whose last guess got all the way back to the original word.
+function scoreBooks(g) {
+  for (const b of g.books) {
+    const word = b.pages[0]?.text, last = b.pages[b.pages.length - 1];
+    if (word && last?.type === 'guess' && last.text && same(last.text, word)) { b.nailed = last.by; g.score[last.by] = (g.score[last.by] || 0) + 1; }
+  }
 }
 
 export function applyAction(g, seat, a) {

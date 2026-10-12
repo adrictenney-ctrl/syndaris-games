@@ -704,3 +704,16 @@ whoever's turn it is. Type: Cormorant Garamond (names, headings), DM Serif Displ
 Around the tables, the site is a private members' room: onyx black, champagne gold and fine hairlines, with
 deep jewel tones (emerald, sapphire, oxblood, aubergine) only as quiet glows behind each game. The tokens
 (`--onyx`, `--champagne`, `--hairline` and friends) live at the top of `css/cards.css`.
+
+## Dough (currency)
+- **Earning:** win a game and you get **10 Dough**. The table decides the winners (`js/winners.js` reads every game's
+  ending: winner lists, winning seats or colours, teams, hidden-role sides, race rankings…) and each winner's phone
+  collects it into their own account (`js/dough.js`). Computer players don't earn Dough. Each game pays once.
+- **Open-ended games** (Scribble Chain, Blackjack, Baccarat) pay whoever leads when the table goes **Back to lobby**.
+  Scribble Chain: the last guess in a book that matches the original word scores a point; points carry over
+  through "Play again".
+- **Signed out?** The win waits on that phone and is paid in the next time the player signs in on the home page.
+- **Spending:** Settings is also the style shop. Vibrant is free; Classic costs **100 Dough**. Owned styles are stored
+  on the account; Classic only applies on a device whose signed-in account owns it.
+- **Storage:** Firestore `users/{uid} = { name, dough, styles, updatedAt }`, protected by the security rules
+  (only you can read or change yours; Dough rises by at most 10 per change; a style can only be bought at its price).

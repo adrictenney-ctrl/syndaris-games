@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { lipreaderT } from './table-talk.js?v=82';
+import { lipreaderT } from './table-talk.js?v=85';
 
 export default lipreaderT;

@@ -1,8 +1,8 @@
 // Casino games with a decision after the deal: Liftoff (cash out before the rocket crashes),
 // Ride the Bus (guess card by card, cash out or keep riding), Three Card Showdown and Island Stud
 // (see your hand on your phone, then play or fold against the dealer on the table).
-import { base, shuffle, sfx, left, waiting, announce } from './party.js?v=82';
-import { bestHand, describe } from './poker.js?v=82';
+import { base, shuffle, sfx, left, waiting, announce } from './party.js?v=85';
+import { bestHand, describe } from './poker.js?v=85';
 
 const STAKES = [10, 25, 50, 100];
 const RANKS = '23456789TJQKA', SUITS = 'SHDC';

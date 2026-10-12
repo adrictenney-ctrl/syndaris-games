@@ -16,11 +16,12 @@
   <script>
     // The home page style (Settings): classic black-and-gold, or vibrant game-night colours.
     // Vibrant is the default; Classic only when someone picked it in Settings.
-    let podStyle = null; try { podStyle = localStorage.getItem('pod.style'); } catch {}
-    if (podStyle !== 'classic') { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
+    let podStyle = null, podOwned = []; try { podStyle = localStorage.getItem('pod.style'); podOwned = JSON.parse(localStorage.getItem('pod.owned')) || []; } catch {}
+    // Classic is bought with Dough: only use it when the signed-in account owns it.
+    if (podStyle !== 'classic' || !podOwned.includes('classic')) { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
   </script>
-  <link rel="stylesheet" href="css/cards.css?v=82">
-  <link rel="stylesheet" href="css/boxes.css?v=82">
+  <link rel="stylesheet" href="css/cards.css?v=85">
+  <link rel="stylesheet" href="css/boxes.css?v=85">
   <style>
     html { background: var(--onyx); }
     body {
@@ -288,6 +289,17 @@
     .sw-vibrant i { background: linear-gradient(160deg, #ff5a4e, #c8203a); }
     .sw-vibrant i:nth-of-type(2) { background: linear-gradient(160deg, #2fd08f, #0e8a5a); } .sw-vibrant i:nth-of-type(3) { background: linear-gradient(160deg, #4a95ff, #1f4fd6); }
     .set-note { margin: 16px 2px 0; font-family: var(--ui); font-size: 12.5px; color: var(--mute); }
+    /* ---------- Dough and the style shop ---------- */
+    .loaf { width: 1.15em; height: 1.15em; vertical-align: -.2em; margin-right: .2em; }
+    .style-price { display: inline-flex; align-items: center; margin: 6px 4px 0; padding: 4px 10px; border-radius: 99px; font: 800 12.5px/1 var(--ui); font-style: normal; color: var(--ivory); background: rgba(255, 248, 230, .08); border: 1px solid var(--hairline); }
+    .style-price.owned { color: #17130c; background: var(--champagne); border-color: transparent; }
+    .shop-msg { margin-top: 14px; padding: 12px 14px; border-radius: 14px; font: 600 14px/1.45 var(--ui); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
+    .shop-msg[hidden] { display: none; }
+    .shop-msg p { margin: 0; flex: 1 1 220px; }
+    .shop-go { padding: 10px 18px; border: 0; border-radius: 99px; cursor: pointer; font: 800 12.5px/1 var(--ui); letter-spacing: .1em; text-transform: uppercase; color: #17130c; background: linear-gradient(180deg, var(--champagne-hi), var(--champagne)); }
+    .dough-pill { display: inline-flex; align-items: center; gap: 2px; height: 40px; padding: 0 14px 0 10px; cursor: pointer; border-radius: 999px; font: 800 15px/1 var(--ui); color: var(--ivory); background: rgba(255, 248, 230, .03); border: 1px solid var(--hairline-hi); }
+    .dough-pill .loaf { width: 22px; height: 22px; }
+    .dough-pill[hidden] { display: none; }
     @media (max-width: 600px) { .gear span { display: none; } .gear { padding: 0 10px; } .styles { gap: 8px; } }
 
     /* ---------- TV: just the library, every game on one screen ---------- */
@@ -303,7 +315,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=84">
+  <link rel="stylesheet" href="css/vibrant.css?v=85">
 </head>
 <body class="home">
   <header class="bar">
@@ -314,6 +326,7 @@
         <input id="code" name="room" maxlength="4" placeholder="CODE" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Room code">
         <button type="submit">Join</button>
       </form>
+      <button class="dough-pill" id="doughPill" type="button" title="Your Dough" hidden><svg class="loaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11c0-3.5 3.6-6 8-6s8 2.5 8 6c0 1.2-.8 2-2 2v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5c-1.2 0-2-.8-2-2z" fill="#e8b45a" stroke="#7a4a14" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 9l1 2M12 8.5l1 2M15 9l1 2" stroke="#7a4a14" stroke-width="1.3" stroke-linecap="round"/></svg><b>0</b></button>
       <button class="gear" id="openSettings" type="button" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></button>
     </div>
   </header>
@@ -323,16 +336,17 @@
       <div class="set-head"><h2 id="setTitle">Settings</h2><button class="set-x" value="close" aria-label="Close">✕</button></div>
       <p class="caps set-label">Style</p>
       <div class="styles" role="radiogroup" aria-label="Style">
-        <button type="button" class="style-opt" data-style="classic" role="radio">
-          <span class="sw sw-classic"><b></b><i></i><i></i><i></i></span>
-          <strong>Classic</strong><small>Black and gold, an old card room</small>
-        </button>
         <button type="button" class="style-opt" data-style="vibrant" role="radio">
           <span class="sw sw-vibrant"><b></b><i></i><i></i><i></i></span>
-          <strong>Vibrant</strong><small>Bright, bold game-night colours</small>
+          <strong>Vibrant</strong><small>Bright, bold game-night colours</small><em class="style-price" data-price="vibrant">Free</em>
+        </button>
+        <button type="button" class="style-opt" data-style="classic" role="radio">
+          <span class="sw sw-classic"><b></b><i></i><i></i><i></i></span>
+          <strong>Classic</strong><small>Black and gold, an old card room</small><em class="style-price" data-price="classic"><svg class="loaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11c0-3.5 3.6-6 8-6s8 2.5 8 6c0 1.2-.8 2-2 2v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5c-1.2 0-2-.8-2-2z" fill="#e8b45a" stroke="#7a4a14" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 9l1 2M12 8.5l1 2M15 9l1 2" stroke="#7a4a14" stroke-width="1.3" stroke-linecap="round"/></svg>100</em>
         </button>
       </div>
-      <p class="set-note">Saved on this device. The game boxes stay in both styles.</p>
+      <div class="shop-msg" id="shopMsg" hidden></div>
+      <p class="set-note">Win a game to earn 10 Dough, then spend it on new styles. Your choice is saved on this device.</p>
     </form>
   </dialog>
 
@@ -362,10 +376,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=82"></script>
+  <script type="module" src="js/tvnav.js?v=85"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=82';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=82';
+    import { GAMES } from './js/games.js?v=85';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=85';
 
     const ids = ['plottwist', 'guilty', 'twowords', 'lipreader', 'excuses', 'drawpartner', 'translatethis', 'interrogation', 'worstgift', 'whosaidthat', 'hottakes', 'fakepitch', 'emojistory', 'cornerkings', 'cardgolf', 'pairs', 'tonk', 'thirtyone', 'foolsdefense', 'bigdeuce', 'topdog', 'bridge', 'pinochle', 'schnapsen', 'missiontricks', 'raven', 'setback', 'exactly', 'whist', 'mafianight', 'undercover', 'codecrack', 'copycat', 'fakeartist', 'captionit', 'mindmeld', 'topfive', 'rateit', 'storychain', 'fibfinder', 'acrorace', 'slowreveal', 'ghostletters', 'wordchain', 'targetnumber', 'longword', 'wordgallows', 'fiveletters', 'standoff', 'mysteryboxes', 'fishpond', 'lemonade', 'threefronts', 'galaauction', 'ticker', 'treasurerun', 'vulturebids', 'twothirds', 'splitsteal', 'lowestunique', 'omaha', 'islandstud', 'threecard', 'ridethebus', 'liftoff', 'casinowar', 'inbetween', 'pegdrop', 'dicepit', 'oddoreven', 'derbyday', 'moneywheel', 'luckynumbers', 'tripledice', 'roulette', 'flashmemory', 'sortitout', 'cluecrack', 'opposites', 'nextinline', 'whatyear', 'buzzin', 'lastonestanding', 'countit', 'colorclash', 'continentquest', 'finishthesaying', 'wildfacts', 'doesntbelong', 'riddleme', 'wordscramble', 'missingvowels', 'whichismore', 'numbercrunch', 'emojiphrase', 'trueorfalse', 'capitalquest', 'flagfrenzy', 'faceoff', 'thisorthat', 'knowme', 'dreamcards', 'doodlebluff', 'closecall', 'samebrain', 'oneclue', 'throwdown', 'whoswho', 'snapmatch', 'bugbluff', 'openhouse', 'bullpen', 'nope', 'nightlights', 'insync', 'sealed', 'petals', 'bluffdice', 'twotruths', 'mostlikely', 'oddoneout', 'spinsolve', 'answerboard', 'triviawheel', 'topanswers', 'wordbluff', 'listoff', 'passphrase', 'dontsay', 'pardon', 'marblerush', 'poprace', 'ludo', 'orchard', 'sweettrail', 'snakes', 'bingo', 'hogtoss', 'hotdice', 'lineup5', 'shapeshade', 'cornerstones', 'dominoes', 'starjump', 'codebreaker', 'go', 'reversi', 'roundtable', 'rebelcell', 'powergrab', 'unicorns', 'roadrally', 'dealmaker', 'bento', 'rackem', 'stackup', 'cribbage', 'drawpoker', 'gin', 'rummy', 'oldmaid', 'war', 'spades', 'hearts', 'words4fun', 'hardsell', 'pileup', 'luckystreak', 'fieldagents', 'dialitin', 'houserules', 'deepspace', 'bannerraid', 'passpot', 'nestegg', 'kaboom', 'spires', 'gearworks', 'euchre', 'holdem', 'blackjack', 'baccarat', 'cashout', 'yacht', 'wrongnumber', 'scribble', 'spoons', 'doubt', 'crazy8', 'lowtide', 'skyline', 'wordsmith', 'homestead', 'warfront', 'ironroutes', 'grandprix', 'redline', 'tessera', 'chess', 'powerup', 'checkers', 'backgammon', 'fourup', 'seedstones', 'trio', 'sonar', 'milestones', 'manor', 'crown', 'hollow', 'insidejob', 'sketch', 'chefskiss', 'veto', 'gofish'];
     const KIND = {
@@ -578,7 +592,7 @@
     draw();
 
     // ---- Account (Firebase sign-in). Loaded in the background; the page never waits on it.
-    if (!onTV) import('./js/account.js?v=2').then(m => m.mountAccount()).catch(() => {});
+    if (!onTV) import('./js/account.js?v=3').then(m => m.mountAccount()).catch(() => {});
 
     // ---- Settings: pick the page style (saved per device).
     const dlg = document.getElementById('settings');
@@ -596,8 +610,38 @@
       markStyle();
       redrawBoxes();
     }
-    opts.forEach(o => o.addEventListener('click', () => setStyle(o.dataset.style)));
-    document.getElementById('openSettings').onclick = () => { markStyle(); dlg.showModal(); (opts.find(o => o.getAttribute('aria-checked') === 'true') || opts[0]).focus(); };
+    // ---- Dough and the style shop. Vibrant is free; other styles are bought with Dough.
+    const PRICES = { vibrant: 0, classic: 100 }, NAMES = { vibrant: 'Vibrant', classic: 'Classic' };
+    const LOAF = "<svg class=\"loaf\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 11c0-3.5 3.6-6 8-6s8 2.5 8 6c0 1.2-.8 2-2 2v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5c-1.2 0-2-.8-2-2z\" fill=\"#e8b45a\" stroke=\"#7a4a14\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/><path d=\"M9 9l1 2M12 8.5l1 2M15 9l1 2\" stroke=\"#7a4a14\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>";
+    let wallet = { signedIn: false, dough: 0, styles: [] }, D = null;
+    const owns = st => !PRICES[st] || wallet.styles.includes(st);
+    const shopMsg = document.getElementById('shopMsg'), pill = document.getElementById('doughPill');
+    function refreshShop() {
+      dlg.querySelectorAll('.style-price').forEach(el => { const st = el.dataset.price; el.innerHTML = !PRICES[st] ? 'Free' : owns(st) ? 'Yours' : LOAF + PRICES[st]; el.classList.toggle('owned', owns(st) && !!PRICES[st]); });
+      pill.hidden = !wallet.signedIn;
+      pill.querySelector('b').textContent = wallet.dough;
+      // Signed out, or the style isn't theirs: back to the free one.
+      if (D && curStyle() !== 'vibrant' && !owns(curStyle())) setStyle('vibrant');
+    }
+    function shop(html) { shopMsg.hidden = !html; shopMsg.innerHTML = html || ''; }
+    function offer(st) {
+      const price = PRICES[st], name = NAMES[st];
+      if (!wallet.signedIn) { shop(`<p><b>${name}</b> costs ${LOAF}${price} Dough. Sign in to earn and spend Dough.</p><button type="button" class="shop-go" data-shop="signin">Sign in</button>`); return; }
+      if (wallet.dough < price) { shop(`<p><b>${name}</b> costs ${LOAF}${price} Dough. You have ${wallet.dough}. Win games to earn 10 Dough each!</p>`); return; }
+      shop(`<p>Buy <b>${name}</b> for ${LOAF}${price} Dough? You have ${wallet.dough}.</p><button type="button" class="shop-go" data-shop="buy" data-style="${st}">Buy ${name}</button>`);
+    }
+    shopMsg.addEventListener('click', async e => {
+      const b = e.target.closest('[data-shop]');
+      if (!b) return;
+      if (b.dataset.shop === 'signin') { dlg.close(); document.getElementById('openAccount')?.click(); return; }
+      b.disabled = true; b.textContent = 'Buying…';
+      try { await D.buyStyle(b.dataset.style); wallet.styles = [...new Set([...wallet.styles, b.dataset.style])]; shop(`<p>${NAMES[b.dataset.style]} is yours!</p>`); setStyle(b.dataset.style); refreshShop(); }
+      catch (err) { shop(`<p>${err?.code === 'poor' ? 'Not enough Dough yet.' : 'Couldn\u2019t buy it right now. Check your connection and try again.'}</p>`); }
+    });
+    opts.forEach(o => o.addEventListener('click', () => { const st = o.dataset.style; if (owns(st)) { shop(''); setStyle(st); } else offer(st); }));
+    pill.onclick = () => document.getElementById('openSettings').click();
+    if (!onTV) import('./js/dough.js?v=1').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); }); }).catch(() => {});
+    document.getElementById('openSettings').onclick = () => { markStyle(); refreshShop(); shop(''); dlg.showModal(); (opts.find(o => o.getAttribute('aria-checked') === 'true') || opts[0]).focus(); };
     dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
     markStyle();
 

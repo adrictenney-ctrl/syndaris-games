@@ -1,6 +1,6 @@
 // Blackjack on a phone: tap chips to bet, then Hit / Stand / Double / Split / Surrender.
-import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=82';
-import { CHIP_CLASS, money } from './casino.js?v=82';
+import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=85';
+import { CHIP_CLASS, money } from './casino.js?v=85';
 
 let ctx = null, panelKey = '', boardKey = '';
 const CHIPS = [5, 25, 100, 500];

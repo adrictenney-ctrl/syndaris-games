@@ -1,8 +1,8 @@
 // Warfront on the table: the island map drawn as hex territories coloured by region, sea lanes
 // dashed across the water, and on each territory a token in its owner's colour with the troop
 // count. The last battle is marked with an arrow; the dice are shown beside the map.
-import * as W from './warfront.js?v=82';
-import { snap } from './cards.js?v=82';
+import * as W from './warfront.js?v=85';
+import { snap } from './cards.js?v=85';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -2,10 +2,10 @@
 // title set like the front of a box. Shown on the home page tiles and the spotlight.
 // Every id inside an SVG is prefixed with the game id so the covers can share one page.
 
-import { makeKit } from './art-kit.js?v=82';
-import { ART } from './art-index.js?v=82';
-import { makeStill } from './still.js?v=82';
-import { toonSVG } from './toon-covers.js?v=82';
+import { makeKit } from './art-kit.js?v=85';
+import { ART } from './art-index.js?v=85';
+import { makeStill } from './still.js?v=85';
+import { toonSVG } from './toon-covers.js?v=85';
 
 const SERIF = "'DM Serif Display', Georgia, serif";
 const CORM = "'Cormorant Garamond', Georgia, serif";

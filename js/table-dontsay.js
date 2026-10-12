@@ -1,9 +1,9 @@
 // Don't Say It on the table: the two teams' scores, the clock, and who's giving clues. The card
 // itself is only on the clue-giver's phone (and the other team's, so they can buzz). At the end
 // of a turn the words are listed.
-import * as D from './dontsay.js?v=82';
-import { buzzer, ding, beep } from './sfx.js?v=82';
-import { centerMsg, clearMsg } from './table-hearts.js?v=82';
+import * as D from './dontsay.js?v=85';
+import { buzzer, ding, beep } from './sfx.js?v=85';
+import { centerMsg, clearMsg } from './table-hearts.js?v=85';
 
 export const TEAMS = ['Team Ruby', 'Team Teal'];
 let root = null, key = '', gameRef = null, clockT = null, lastAnn = 0, lastSec = -1;

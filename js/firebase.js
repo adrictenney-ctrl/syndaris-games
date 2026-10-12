@@ -7,6 +7,7 @@ import {
   getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
   createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, signOut,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA8T7hOlVPyt3kqSpRyKo7Uv8rx1WaP-xc',
@@ -20,6 +21,9 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// Cloud Firestore: each player's wallet (Dough) and the styles they own, at users/{uid}.
+export const db = getFirestore(app);
 auth.useDeviceLanguage();
 
 // Analytics only where it can run (it isn't available in every browser or in the TV app's web view).
