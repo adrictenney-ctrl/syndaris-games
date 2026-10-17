@@ -1,11 +1,11 @@
 // Chef's Kiss on a phone. Cards arrive face down: touch one to turn it over, then slide it
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=85';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=85';
-import { movable } from './gesture.js?v=85';
-import { TEAMS } from './chefskiss.js?v=85';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=85';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=88';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=88';
+import { movable } from './gesture.js?v=88';
+import { TEAMS } from './chefskiss.js?v=88';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=88';
 
 let ctx = null, v = null;
 let flipped = new Set();
@@ -38,7 +38,7 @@ function countKiss(key) {
 export function reset() {
   handKey = panelKey = boardKey = recipeKey = '';
   selected = null; swapMode = false; chosen = -1;
-  laughKey = ''; laughIds = []; ideas = null; ideasFor = '';
+  laughKey = ''; laughIds = []; ideas = null; ideasFor = ''; laughFrom = ''; clearTimeout(laughTimer);
   clearInterval(tickT);
   document.getElementById('ckPhone')?.remove();
   document.getElementById('ckSheet')?.remove();
@@ -72,17 +72,31 @@ function shell() {
 
 const isRecipeTurn = () => v.isChef && v.phase === 'recipe';
 const choosing = () => v.phase === 'play' && v.playing && v.mine.length < v.need;
+// Where this hand's picks come from: the table's AI (Gemma on the host) when it's running,
+// otherwise the built-in scorer on this phone. The AI gets 3 seconds; then the scorer steps in.
+const AI_WAIT = 3000;
+let laughFrom = '', laughTimer = null;
+function showPicks(key, ids, from) {
+  if (laughKey !== key || !ids?.length) return;
+  const mine = new Set(v.hand.map(c => c.id));
+  const keep = ids.filter(id => mine.has(id));
+  if (!keep.length) return;
+  laughIds = keep; laughFrom = from; handKey = '';
+  if (document.getElementById('ckPhone')) renderHandRow();
+}
+function localPicks(key) { funnyPicks(v.recipe, v.hand).then(ids => { if (laughFrom !== 'ai') showPicks(key, ids, 'local'); }, () => {}); }
 function askLaugh() {
   const on = v.laugh && choosing() && v.recipe && v.hand.length > 1;
   const key = on ? `${v.recipe.id}|${v.hand.map(c => c.id).join(',')}` : '';
-  if (key === laughKey) return;
-  laughKey = key; laughIds = [];
-  if (!on) return;
-  funnyPicks(v.recipe, v.hand).then(ids => {
-    if (laughKey !== key || !ids.length) return;
-    laughIds = ids; handKey = '';
-    if (document.getElementById('ckPhone')) renderHandRow();
-  }, () => {});
+  if (key !== laughKey) {
+    laughKey = key; laughIds = []; laughFrom = '';
+    clearTimeout(laughTimer);
+    if (!on) return;
+    if (v.laughAI === 'ready') laughTimer = setTimeout(() => { if (!laughFrom) localPicks(key); }, AI_WAIT);
+    else localPicks(key);
+  }
+  // The AI's picks for this round have arrived (and nothing is showing yet): use them.
+  if (on && !laughFrom && v.aiPicks?.length) { clearTimeout(laughTimer); showPicks(key, v.aiPicks, 'ai'); }
 }
 const handCards = () => (isRecipeTurn() ? v.myRecipes : v.hand);
 const canPlay = c => {
@@ -248,9 +262,19 @@ function renderPanel() {
 
 // ---------------------------------------------------------------- my own Ingredient Cards
 
+let aiShown = [];
 function askIdeas() {
   if (!v?.laugh || !v.recipe) return;
   const key = v.recipe.id + ':' + Date.now();
+  // The table's AI already wrote ideas for this Recipe Card: show three (fresh ones each tap).
+  if (v.aiIdeas?.length) {
+    let pool = v.aiIdeas.filter(t => !aiShown.includes(t));
+    if (pool.length < 3) { aiShown = []; pool = [...v.aiIdeas]; }
+    const pick = pool.sort(() => Math.random() - .5).slice(0, 3);
+    aiShown.push(...pick);
+    ideasFor = key; ideas = pick; drawSheet();
+    return;
+  }
   ideasFor = key; ideas = 'loading'; drawSheet();
   const avoid = [...(v.hand || []).map(c => c.t), ...myDeck().map(c => c.t)];
   makeCards(v.recipe, avoid).then(list => { if (ideasFor !== key) return; ideas = list; drawSheet(); }, () => { if (ideasFor === key) { ideas = []; drawSheet(); } });

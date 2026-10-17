@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { guiltyT } from './table-talk.js?v=85';
+import { guiltyT } from './table-talk.js?v=88';
 
 export default guiltyT;

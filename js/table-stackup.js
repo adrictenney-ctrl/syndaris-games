@@ -1,8 +1,8 @@
 // Stack Up on the table: the four build piles in the middle, and in front of each player their
 // stock (top card up, with how many are left) and their four discard piles.
-import * as S from './stackup.js?v=85';
-import { snap } from './cards.js?v=85';
-import { centerMsg, clearMsg } from './table-hearts.js?v=85';
+import * as S from './stackup.js?v=88';
+import { snap } from './cards.js?v=88';
+import { centerMsg, clearMsg } from './table-hearts.js?v=88';
 
 let root = null, key = '';
 // A Stack Up card: numbers in three colour bands, stars wild.

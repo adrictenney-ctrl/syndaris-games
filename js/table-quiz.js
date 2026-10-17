@@ -1,6 +1,6 @@
 // The table side of the quiz-show kit: the question (with its picture, emoji or flash card), the
 // options, the clock and who's answered; then the answer lit up, who got it and the scores.
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=85';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=88';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export function quizTable(E, o) {

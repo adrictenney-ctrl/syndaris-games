@@ -136,6 +136,11 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   - The game never waits on it: every call has a 3-second timeout, and if anything fails the round carries on with
     no highlights. It runs on the phone (`js/laugh-engine.js`) with a local scorer (themes, word overlap, absurdity
     and serious-versus-silly contrast). A real on-device model can be plugged in later with `setLaughBackend()`.
+  - **Gemma AI on the host** (`js/laugh-ai.js`): when the table screen supports WebGPU, Chef's Kiss runs Google's
+    Gemma 3n (E2B or E4B, the "-Web" .litertlm build) through MediaPipe 0.10.29, only while Chef's Kiss is open.
+    Each round it rates every card in every hand and writes card ideas in the background; phones use its picks if
+    they arrive within 3 seconds, otherwise the built-in scorer. The model is kept in the browser's private storage
+    after the host picks the file once (or set `MODEL_URL` to a copy you host).
 - **Three's a Party (Double Vision):** with exactly three players, each Apprentice plays two cards.
 - **Bot mode:** computer players can fill seats. They play a random card, and as Chef they pick a random winner.
 - **Your own cards:** "✎ My cards" on the phone lets you write, edit, delete and play your own Ingredient Cards.

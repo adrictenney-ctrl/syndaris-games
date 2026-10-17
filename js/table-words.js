@@ -1,6 +1,6 @@
 // Table screens for the word games (word-games.js).
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=85';
-import * as W from './word-games.js?v=85';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=88';
+import * as W from './word-games.js?v=88';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const rounds = (list, label = 'Rounds') => s => `<label>${label} ${opt('rounds', s, list.map(n => [n, String(n)]))}</label>`;

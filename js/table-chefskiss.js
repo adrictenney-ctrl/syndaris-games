@@ -1,9 +1,55 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=85';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=85';
-import { movable } from './gesture.js?v=85';
+import * as K from './chefskiss.js?v=88';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=88';
+import { movable } from './gesture.js?v=88';
+import { startAi, stopAi, aiStatus, onAiStatus, useModelFile, gemmaBackend } from './laugh-ai.js?v=1';
+import { topPicks } from './laugh-engine.js?v=88';
+
+// ---------------------------------------------------------------- Laugh Engine AI (host only)
+// When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
+// background, never holding up the game) to rate every card in every Apprentice's hand against the
+// Recipe Card, and to write a handful of card ideas. Phones show the results when they arrive; if
+// the AI is slow or unavailable, phones use the built-in scorer instead.
+const AI_MS = 12000;
+const roundKey = g => `${g.id}:${g.round}`;
+function laughRound(g) {
+  if (!g || !g.settings.laugh || aiStatus().state !== 'ready' || g.phase !== 'play' || !g.recipe) return;
+  const key = roundKey(g);
+  if (g.ai?.key === key) return;
+  g.ai = { key, picks: null, ideas: null };
+  const recipe = K.card(g.recipe);
+  const seats = (g.apprentices || []).filter(s => g.hands[s]?.length > 1);
+  const cards = [...new Map(seats.flatMap(s => g.hands[s].map(K.card).filter(Boolean)).map(c => [c.id, c])).values()];
+  const refresh = () => { if (g.ai?.key === key) ctxRef?.refresh?.(); };
+  (async () => {
+    try {
+      const scores = await gemmaBackend.rank(recipe, cards, AI_MS);
+      const byId = new Map(cards.map((c, i) => [c.id, scores[i]]));
+      if (g.ai?.key !== key) return;
+      g.ai.picks = Object.fromEntries(seats.map(s => { const hand = g.hands[s].map(K.card).filter(Boolean); return [s, topPicks(hand, hand.map(c => byId.get(c.id) ?? 0))]; }));
+      refresh();
+    } catch {}
+    try {
+      const ideas = await gemmaBackend.suggest(recipe, 6, cards.map(c => c.t), AI_MS);
+      if (g.ai?.key !== key || !ideas.length) return;
+      g.ai.ideas = ideas;
+      refresh();
+    } catch {}
+  })();
+}
+// What each phone learns about it: whether the AI is on, and its picks/ideas for this round.
+function laughView(g, seat, v) {
+  v.laughAI = g.settings.laugh ? aiStatus().state : 'off';
+  if (g.ai && g.ai.key === roundKey(g)) { v.aiKey = g.ai.key; v.aiPicks = g.ai.picks ? g.ai.picks[seat] || [] : null; v.aiIdeas = g.ai.ideas || null; }
+  return v;
+}
+// The lobby line that shows how the AI is doing (and lets the host give it the model file).
+const AI_TEXT = { off: 'AI off', nogpu: 'Built-in scorer (this screen can’t run the AI)', needmodel: 'AI needs its model file', downloading: 'Getting the AI model…', loading: 'Waking up the AI…', ready: 'Gemma AI is ready ✓', error: 'Built-in scorer (the AI couldn’t start)' };
+const aiLine = () => { const st = aiStatus(); return `<span class="ck-ai-state">${AI_TEXT[st.state] || ''}${st.state === 'downloading' && st.note ? ' ' + st.note : ''}</span>${['needmodel', 'error'].includes(st.state) ? '<label class="tool ck-ai-file">Choose model file<input type="file" accept=".litertlm,.task" data-ai-file hidden></label>' : ''}${st.note && st.state !== 'downloading' && st.state !== 'ready' ? `<small>${esc(st.note)}</small>` : ''}`; };
+onAiStatus(() => { document.querySelectorAll('[data-ai-status]').forEach(el => { el.innerHTML = aiLine(); }); if (aiStatus().state === 'ready' && gameRef) { laughRound(gameRef); ctxRef?.refresh?.(); } });
+document.addEventListener('change', e => { const f = e.target.closest?.('[data-ai-file]')?.files?.[0]; if (f) useModelFile(f); });
 
 let root = null, gameRef = null, ctxRef = null, tick = null;
 let subsKey = '', recipeKey = '', chosen = -1, slipOpen = false;
@@ -178,15 +224,16 @@ export default {
       <label>Recipe timer ${sel('recipeTime', [0, 5, 10, 15], v => (v ? `${v} s` : 'off'))}</label>
       <label>Ingredient timer ${sel('ingredientTime', [0, 10, 15, 20, 30], v => (v ? `${v} s` : 'off'))}</label>
       <label>Teams ${sel('teams', [0, 2, 3, 4], v => (v ? `${v} teams` : 'no teams'))}</label>
-      <label class="ck-check"><input type="checkbox" data-set="laugh" ${s.laugh !== false ? 'checked' : ''}> Laugh Engine (funny-card hints &amp; ideas)</label>`;
+      <label class="ck-check"><input type="checkbox" data-set="laugh" ${s.laugh !== false ? 'checked' : ''}> Laugh Engine (funny-card hints &amp; ideas)</label>
+      ${s.laugh !== false ? `<p class="ck-ai" data-ai-status>${aiLine()}</p>` : ''}${(s.laugh !== false ? startAi() : stopAi(), '')}`;
   },
 
   create: (settings, players) => K.createGame(settings, players),
-  act: K.applyAction,
+  act(g, seat, a) { const err = K.applyAction(g, seat, a); if (!err) laughRound(g); return err; },
   bot: K.botAction,
-  view: K.viewFor,
+  view: (g, seat) => laughView(g, seat, K.viewFor(g, seat)),
   turn: K.turn,
-  timer: K.timer,
+  timer(g, players) { const t = K.timer(g, players); return t && { ms: t.ms, run: () => { t.run(); laughRound(g); } }; },
   joinMidGame: () => true,
 
   plate(g, seat) {
@@ -220,6 +267,7 @@ export default {
   renderCenter(g, ctx) {
     gameRef = g;
     ctxRef = ctx;
+    if (g.settings.laugh) { startAi(); laughRound(g); }
     document.getElementById('watermark').textContent = '';
     if (!root) build();
     const felt = document.getElementById('felt').getBoundingClientRect();

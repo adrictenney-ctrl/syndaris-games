@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { pinochleT } from './table-cardgames.js?v=85';
+import { pinochleT } from './table-cardgames.js?v=88';
 
 export default pinochleT;

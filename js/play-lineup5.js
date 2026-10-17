@@ -1,8 +1,8 @@
 // Line Up 5 on a phone: tap a card in your hand — its open spaces glow on the board — then tap
 // one. Jacks: two-eyed (♣ ♦) go anywhere, one-eyed (♠ ♥) remove a chip. Dead cards can be traded.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=85';
-import { boardHTML } from './table-lineup5.js?v=85';
-import { TEAM_COLOR, TEAM_NAME, BOARD, isTwoEye, isOneEye } from './lineup5.js?v=85';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=88';
+import { boardHTML } from './table-lineup5.js?v=88';
+import { TEAM_COLOR, TEAM_NAME, BOARD, isTwoEye, isOneEye } from './lineup5.js?v=88';
 
 let ctx = null, sel = null, wasMyTurn = false;
 export function reset() { sel = null; document.getElementById('l5Phone')?.remove(); }

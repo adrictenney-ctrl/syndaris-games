@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { splitstealT } from './table-choice.js?v=85';
+import { splitstealT } from './table-choice.js?v=88';
 
 export default splitstealT;

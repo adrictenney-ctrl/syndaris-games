@@ -152,9 +152,12 @@ export async function funnyPicks(recipe, cards, ms = TIMEOUT_MS) {
   if (!recipe || !Array.isArray(cards) || cards.length < 2) return [];
   const scores = await withTimeout(() => backend.rank(recipe, cards), ms, null);
   if (!Array.isArray(scores) || scores.length !== cards.length || scores.some(s => !Number.isFinite(s))) return [];
+  return topPicks(cards, scores);
+}
+// The 2 best cards, plus a third when it's nearly as good as the second.
+export function topPicks(cards, scores) {
   const ranked = cards.map((c, i) => ({ id: c.id, s: scores[i] })).sort((a, b) => b.s - a.s);
   const top = ranked.slice(0, 2);
-  // A third card only when it's nearly as good as the second.
   if (cards.length >= 5 && ranked[2] && ranked[2].s >= ranked[1].s * .9) top.push(ranked[2]);
   return top.map(x => x.id);
 }

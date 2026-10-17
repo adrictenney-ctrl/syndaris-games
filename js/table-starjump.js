@@ -1,8 +1,8 @@
 // Star Jump on the table: a six-pointed star of holes on a dark wooden disc, each point tinted
 // in the colour of the player who starts there; glass marbles; the last move traced as a line.
-import * as J from './starjump.js?v=85';
-import { snap } from './cards.js?v=85';
-import { centerMsg, clearMsg } from './table-hearts.js?v=85';
+import * as J from './starjump.js?v=88';
+import { snap } from './cards.js?v=88';
+import { centerMsg, clearMsg } from './table-hearts.js?v=88';
 
 let root = null, key = '';
 const XY = J.HOLES.map(h => [Math.sqrt(3) * (h.q + h.r / 2), 1.5 * h.r]);

@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { topdogT } from './table-cardgames.js?v=85';
+import { topdogT } from './table-cardgames.js?v=88';
 
 export default topdogT;

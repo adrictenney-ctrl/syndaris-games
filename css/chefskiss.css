@@ -216,3 +216,9 @@ body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
   color: var(--paper-ink); background: #fff4c8; border: 1px solid #e0b84a;
 }
 .ckp-idea-list button:active { transform: translateY(1px); }
+
+/* ---------------------------------------------------------------- Laugh Engine AI (lobby line on the table) */
+.ck-ai { display: flex; flex-wrap: wrap; align-items: center; gap: 1vmin 1.4vmin; margin: .4vmin 0 0; font-size: 1.7vmin; }
+.ck-ai .ck-ai-state { font-weight: 700; }
+.ck-ai small { flex-basis: 100%; opacity: .75; }
+.ck-ai-file { cursor: pointer; }

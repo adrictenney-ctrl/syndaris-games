@@ -1,4 +1,4 @@
 // See table-casinolive.js.
-import { ridethebusTable } from './table-casinolive.js?v=85';
+import { ridethebusTable } from './table-casinolive.js?v=88';
 
 export default ridethebusTable;
