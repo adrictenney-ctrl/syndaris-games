@@ -1,8 +1,8 @@
 // Orchard on the table: everyone's fruit tree in a ring around a big spinner; picked fruit moves
 // into their basket.
-import * as O from './orchard.js?v=88';
-import { snap } from './cards.js?v=88';
-import { centerMsg, clearMsg } from './table-hearts.js?v=88';
+import * as O from './orchard.js?v=89';
+import { snap } from './cards.js?v=89';
+import { centerMsg, clearMsg } from './table-hearts.js?v=89';
 
 let root = null, key = '';
 const SPOTS = [[0, -22], [-14, -16], [14, -16], [-20, -4], [20, -4], [-9, -8], [9, -8], [-4, -20], [4, -20], [0, -10]];

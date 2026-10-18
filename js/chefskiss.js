@@ -2,14 +2,13 @@
 // Recipe Card (the prompt). Everyone else is an Apprentice and plays the Ingredient Card
 // from their hand that they think pairs best with it. The Chef must award exactly one
 // Chef's Kiss (1 point). The Chef role then passes to the left.
-import { DECKS } from './chefskiss-cards.js?v=88';
+import { CARDS } from './chefskiss-db.js?v=1';
+import { CONFIG, OFFICIAL_LEVELS, TEAMS } from './chefskiss-config.js?v=1';
+import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=1';
+export { TEAMS };
 
-export const HAND = 5;          // Ingredient Cards per Apprentice
-export const RECIPES = 3;       // Recipe Cards to choose from
-export const TEAMS = [
-  { name: 'Red', c: '#e0474c' }, { name: 'Blue', c: '#3d7fe0' },
-  { name: 'Green', c: '#33a35b' }, { name: 'Gold', c: '#e2a72e' },
-];
+export const HAND = CONFIG.handSize;        // Ingredient Cards per Apprentice
+export const RECIPES = CONFIG.recipeChoices; // Recipe Cards to choose from
 const REVEAL_MS = 9000;
 
 const now = () => Date.now();
@@ -21,63 +20,47 @@ function shuffle(a) {
 
 // ---------------------------------------------------------------- cards
 
-// Card ids look like "e2026:r:12" (Recipe) or "d80:i:3" (Ingredient).
+// Cards come from the master card database (js/chefskiss-db.js). Ids look like "rc_000042"
+// (Recipe) or "ic_000310" (Ingredient). A player's own card is an object: { own: true, t, d }.
+const BY_ID = new Map(CARDS.map(c => [c.id, c]));
+const KIND = { person: 'p', animal: 'p', thing: 't', food: 't', pop_culture: 't', event: 'e', action: 'e', place: 'c', feeling: 'c', nature: 'c' };
 export function card(id) {
-  if (id && typeof id === 'object') return id;           // a player's own card: { own: true, t, d }
-  const [deck, kind, n] = String(id).split(':');
-  const D = DECKS[deck];
-  const c = D && (kind === 'r' ? D.recipes : D.ingredients)[Number(n)];
-  return c ? { id, kind, t: c.t, d: c.d, k: c.k, deck: D.name } : null;
+  if (id && typeof id === 'object') return id;
+  const c = BY_ID.get(id);
+  if (!c) return null;
+  // t/d/k are the short names the screens use: text, the light-bulb hint, and a rough kind.
+  return { id, kind: c.type === 'recipe' ? 'r' : 'i', t: c.text, d: c.hint || '', k: KIND[c.tags?.subject?.[0]] || 't', level: c.level, tags: c.tags, ...(c.type === 'recipe' ? { funnyTargets: c.funnyTargets, literalTags: c.literalTags } : {}) };
+}
+export const record = id => BY_ID.get(id) || null;
+export const levelOf = settings => OFFICIAL_LEVELS[settings.level] || 'mild';
+
+const tableOf = g => ({ level: levelOf(g.settings), usedCardIds: new Set(g.used) });
+const rngFor = (g, what) => makeRng(`${g.id}:${g.round}:${what}`);
+
+// The Chef is dealt fresh Recipe Card choices every round.
+function dealRecipes(g) {
+  g.recipes = { [g.chef]: recipeChoices(CARDS, tableOf(g), rngFor(g, 'recipes')) };
 }
 
-export function decksIn(settings) {
-  const keys = Object.keys(DECKS).filter(k => settings['deck_' + k]);
-  // Decade-Decks only have Ingredient Cards, so there's always an Edition for the Recipes.
-  if (!keys.some(k => DECKS[k].group === 'edition')) keys.unshift('e2026');
-  return keys;
-}
-
-function buildPiles(settings) {
-  const r = [], i = [];
-  for (const k of decksIn(settings)) {
-    DECKS[k].recipes.forEach((_, n) => r.push(`${k}:r:${n}`));
-    DECKS[k].ingredients.forEach((_, n) => i.push(`${k}:i:${n}`));
+// After the Recipe is picked, every Apprentice (bots too) gets a fresh hand from the Laugh Engine.
+// Last round's unplayed cards go back in the pool; no card is in two hands in the same round.
+function dealHands(g) {
+  const table = tableOf(g), round = { dealtThisRound: new Set() };
+  const recipe = record(g.recipe);
+  const rng = rngFor(g, 'hands');
+  g.hands = {};
+  g.slots = {};
+  for (const seat of rng.shuffle([...g.apprentices])) {
+    const hand = buildHand(CARDS, recipe, table, round, rng);
+    g.hands[seat] = hand.map(h => h.cardId);
+    g.slots[seat] = Object.fromEntries(hand.map(h => [h.cardId, h.slot]));
   }
-  return { r: shuffle(r), i: shuffle(i) };
-}
-
-function draw(g, kind) {
-  if (!g.piles[kind].length) { g.piles[kind] = shuffle(g.discard[kind]); g.discard[kind] = []; }
-  return g.piles[kind].pop() || null;
-}
-
-// Smart hands: deal for variety (people, things, happenings, places and ideas) so nobody
-// stares at five cards that are all the same sort of thing.
-function drawIngredient(g, hand) {
-  const pile = g.piles.i;
-  if (!pile.length) { g.piles.i = shuffle(g.discard.i); g.discard.i = []; }
-  const count = k => hand.filter(id => card(id)?.k === k).length;
-  for (let j = g.piles.i.length - 1, tries = 0; j >= 0 && tries < 8; j--, tries++) {
-    if (count(card(g.piles.i[j])?.k) < 2) return g.piles.i.splice(j, 1)[0];
-  }
-  return draw(g, 'i');
-}
-
-function deal(g) {
-  g.seats.forEach((s, seat) => {
-    if (!s) return;
-    const hand = g.hands[seat] || (g.hands[seat] = []);
-    while (hand.length < HAND) { const c = drawIngredient(g, hand); if (!c) break; hand.push(c); }
-    const rec = g.recipes[seat] || (g.recipes[seat] = []);
-    while (rec.length < RECIPES) { const c = draw(g, 'r'); if (!c) break; rec.push(c); }
-  });
 }
 
 // ---------------------------------------------------------------- setup
 
 export const DEFAULTS = {
-  deck_e2026: true, deck_silly: false, deck_easy: false,
-  deck_d50: false, deck_d60: false, deck_d70: false, deck_d80: false, deck_d90: false,
+  level: 0,           // card level: 0 = Mild (elementary), 1 = Medium (middle school), 2 = Spicy (high school)
   target: 7,          // Chef's Kisses to win (0 = no target)
   length: 60,         // minutes (0 = no game timer)
   recipeTime: 10,     // seconds for the Chef to pick a Recipe Card (0 = off)
@@ -93,9 +76,10 @@ export function createGame(settings, players) {
     seats: [],
     scores: new Array(players.length).fill(0),
     teams: new Array(players.length).fill(null),
-    piles: null,
-    discard: { r: [], i: [] },
+    v: 2,              // the master card database version of the game
+    used: [],          // cards used this game (played Ingredients, picked Recipes), so they aren't repeated
     hands: {},
+    slots: {},         // the Laugh Engine's slot for each dealt card; stays at the table
     recipes: {},
     round: 0,
     chef: -1,
@@ -104,7 +88,6 @@ export function createGame(settings, players) {
     startedAt: now(),
     announce: null,
   };
-  g.piles = buildPiles(g.settings);
   refreshSeats(g, players);
   // The first Chef is the first player at the table.
   g.chef = g.seats.findIndex(s => s === 'human');
@@ -140,24 +123,26 @@ function startRound(g, first = false) {
     g.chef = next;
   }
   if (seated(g).length < 2 || g.chef < 0) return gameOver(g);
-  deal(g);
   g.round++;
   g.phase = 'recipe';
   g.recipe = null;
   g.subs = {};
   g.apprentices = seated(g).filter(s => s !== g.chef);
+  g.hands = {};
+  g.slots = {};
+  dealRecipes(g);
   // Three's a Party: with only three players, each Apprentice plays two cards (Double Vision).
   g.need = seated(g).length === 3 ? 2 : 1;
-  g.swapped = {};
   g.reveal = null;
   g.winner = null;
   g.endsAt = g.settings.recipeTime ? now() + g.settings.recipeTime * 1000 : 0;
 }
 
 function pickRecipe(g, id) {
-  const hand = g.recipes[g.chef];
-  hand.splice(hand.indexOf(id), 1);
   g.recipe = id;
+  g.used.push(id);
+  g.recipes = {};
+  dealHands(g);
   g.phase = 'play';
   g.endsAt = g.settings.ingredientTime ? now() + g.settings.ingredientTime * 1000 : 0;
 }
@@ -166,7 +151,7 @@ const pending = g => g.apprentices.filter(s => g.seats[s] && (g.subs[s]?.length 
 
 function playCard(g, seat, c) {
   (g.subs[seat] || (g.subs[seat] = [])).push(c);
-  if (typeof c === 'string') { const h = g.hands[seat]; h.splice(h.indexOf(c), 1); }
+  if (typeof c === 'string') { const h = g.hands[seat]; h.splice(h.indexOf(c), 1); g.used.push(c); }
 }
 
 function playRandom(g, seat) {
@@ -194,8 +179,6 @@ function kiss(g, i) {
 }
 
 function finishRound(g) {
-  if (g.recipe) g.discard.r.push(g.recipe);
-  for (const cards of Object.values(g.subs || {})) for (const c of cards) if (typeof c === 'string') g.discard.i.push(c);
   const T = g.settings.target;
   if (T && Math.max(...g.scores) >= T) return gameOver(g, 'target');
   if (g.settings.length && now() >= g.startedAt + g.settings.length * 60000) return gameOver(g, 'time');
@@ -224,6 +207,8 @@ export function teamTotals(g) {
 // ---------------------------------------------------------------- the clock and the bots
 
 export function timer(g, players) {
+  // A game saved before the card database changed can't continue: end it cleanly.
+  if (g.v !== 2 && g.phase !== 'over') return { ms: 0, run: () => gameOver(g) };
   refreshSeats(g, players);
   const chefHere = g.seats[g.chef];
   const chefBot = chefHere === 'bot';
@@ -281,19 +266,6 @@ export function applyAction(g, seat, a) {
       if (!pending(g).length) toJudge(g);
       return null;
     }
-    case 'swap': {
-      if (g.phase === 'over') return null;
-      if (g.swapped[seat]) return 'You can swap one card per round';
-      const hand = g.hands[seat];
-      const i = hand ? hand.indexOf(a.id) : -1;
-      if (i < 0) return "That card isn't in your hand";
-      const next = drawIngredient(g, hand.filter(x => x !== a.id));
-      if (!next) return 'No cards left to swap in';
-      g.discard.i.push(hand[i]);
-      hand[i] = next;
-      g.swapped[seat] = true;
-      return null;
-    }
     case 'kiss': {
       if (g.phase !== 'judge' || seat !== g.chef) return 'Only the Chef awards the Chef\'s Kiss';
       const i = Number(a.i);
@@ -335,17 +307,16 @@ export function viewFor(g, seat) {
     need: g.need,
     playing: (g.apprentices || []).includes(seat),
     recipe: g.recipe ? card(g.recipe) : null,
-    myRecipes: isChef && g.phase === 'recipe' ? g.recipes[seat].map(card) : null,
-    hand: (g.hands[seat] || []).map(card),
-    mine: (g.subs?.[seat] || []).map(card),
+    myRecipes: isChef && g.phase === 'recipe' ? (g.recipes[seat] || []).map(card).filter(Boolean) : null,
+    hand: (g.hands[seat] || []).map(card).filter(Boolean),
+    mine: (g.subs?.[seat] || []).map(card).filter(Boolean),
     played: Object.values(g.subs || {}).reduce((n, c) => n + c.length, 0),
     expected: (g.apprentices || []).filter(s => g.seats[s]).length * g.need,
     reveal: g.reveal && ['judge', 'reveal'].includes(g.phase)
-      ? g.reveal.map(r => ({ ...card(r.c), seat: showOwners ? r.seat : undefined, yours: r.seat === seat }))
+      ? g.reveal.map(r => ({ ...(card(r.c) || { t: '?' }), seat: showOwners ? r.seat : undefined, yours: r.seat === seat }))
       : null,
     winner: g.winner,
     lastKiss: g.lastKiss || null,
-    canSwap: !g.swapped?.[seat],
     scores: g.scores,
     seats: g.seats,
     teams: g.settings.teams ? g.teams : null,
@@ -363,7 +334,7 @@ export function viewFor(g, seat) {
 export const turn = g => (['recipe', 'judge'].includes(g.phase) ? g.chef : -1);
 
 export function botAction(g, seat) {
-  if (g.phase === 'recipe') return { type: 'recipe', id: g.recipes[seat][0] };
+  if (g.phase === 'recipe') return { type: 'recipe', id: g.recipes[seat]?.[0] };
   if (g.phase === 'judge') return { type: 'kiss', i: rnd(g.reveal.length) };
   return { type: 'next' };
 }

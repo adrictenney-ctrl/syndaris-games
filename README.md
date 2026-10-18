@@ -117,17 +117,19 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
 
 - **Each round** one player is the **Chef**; everyone else is an **Apprentice**. The first Chef is the first player at
   the table, and the Chef moves one seat to the left each round.
-- **The Chef** holds three Recipe Cards (dealt face down; touch one to turn it over) and slides one up into the
-  selection area. It appears on the table.
-- **Apprentices** hold five Ingredient Cards, also face down until touched, and slide up the one that pairs best.
-  The table shows face-down cards as they come in.
+- **The Chef** is dealt three fresh Recipe Cards each round (face down; touch one to turn it over) and slides one up
+  into the selection area. It appears on the table.
+- **Apprentices** get a fresh hand of seven Ingredient Cards as soon as the Recipe is picked, also face down until
+  touched, and slide up the one that pairs best. The table shows face-down cards as they come in.
 - **Lobby the Chef:** when everyone has played, the cards are revealed on the table and on the Chef's phone, in a
   random order. There's no timer on the Chef's decision. The Chef **must** award exactly one Chef's Kiss (1 point),
   either on their phone or by tapping a card on the table. Then the table shows who played what.
-- **Hands are refilled** after every round, so the Chef always has three Recipe Cards and Apprentices have five
-  Ingredient Cards. Hands are dealt for variety (people, things, happenings, places) so nobody gets five of a kind.
-- **Swap:** each player may swap out one Ingredient Card per round.
-- **Brain Bulb 💡:** every card has one. Touch it to see a short description of the card's title.
+- **Laugh Engine hands** (SPEC.md Section 8, `js/chefskiss-hands.js`): every round each hand is built fresh for the
+  Recipe Card: 5 on-target cards whose tags are likely to be funny with it, 1 safe card (a plain, literal fit) and
+  1 wild card (no link at all), shuffled. Players never see which is which. No card is in two hands in the same
+  round, and a card that's been played isn't dealt again that game (unplayed cards go back in the pool). If tags
+  are missing, the hand is dealt at random instead. The same game and round always deal the same hands.
+- **Brain Bulb 💡:** cards that have a short description show it when you touch the bulb.
 - **Laugh Engine** (Master Plan, Section 7; on/off switch in the lobby, on by default). It only helps:
   - **Funny Pairing Radar:** on each Apprentice's phone, the 2–3 Ingredient Cards that are funniest with the current
     Recipe Card glow with a "Funny pick" tag. It never plays a card and never picks the winner.
@@ -157,9 +159,14 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   which also has "End the game now".
 - **Teams:** 2, 3 or 4 colored teams. Players are spread across the teams in seat order (latecomers join the
   smallest team). Everyone still scores individually; team scores are the sum.
-- **Decks:** Editions are the **2026 Edition** (default), **Simply Silly** (ages 6–9) and **Easy Peasy** (ages
-  10–12). Decade-Decks ('50s, '60s, '70s, '80s, '90s) add Ingredient Cards. Mix any of them in the lobby. All
-  official cards are family-friendly.
+- **Card level:** Mild (elementary, the default), Medium (middle school) or Spicy (high school), chosen in the
+  lobby. A table deals cards at its level and below. All official cards are family-friendly at every level.
+- **Master card database** (SPEC.md Sections 5.2 and 15): 2,437 official cards, at least 150 Recipe Cards and 600
+  Ingredient Cards per level, every one tagged (subject, tone, scale, register), with funny and literal targets on
+  every Recipe and dates on pop-culture cards. The sources are the text files in `content/chefskiss/`;
+  `node tools/build-chefskiss-cards.mjs` checks them and writes `js/chefskiss-db.js`. IDs are permanent, and a
+  card removed from the sources is retired, never deleted. Settings from the spec live in `js/chefskiss-config.js`.
+- **Tests:** `node --test "tests/*.test.mjs"` (Node 22 or newer, nothing to install).
 
 Not built yet: the Fan-Pacs (their card lists weren't in the instructions), the Super-Duper Pantry, descriptions in
 other languages, and the optional on-device AI suggestions. The rules say the game must work without AI, and it does.
@@ -694,7 +701,7 @@ and cellular networks block them.
 | `play.html`, `js/play.js`, `css/play.css` | The phone: join, seat picker |
 | `js/play-euchre.js`, `js/play-poker.js`, `js/play-veto.js`, `js/play-gofish.js`, `js/play-chess.js`, `js/play-backgammon.js`, `js/play-sketch.js`, `js/play-chefskiss.js`, `js/play-insidejob.js`, `js/play-crown.js`, `js/play-hollow.js`, `js/play-blackjack.js`, `js/play-baccarat.js`, `js/phone-kit.js` | Each game's phone controls, plus shared phone pieces |
 | `js/games.js` | Game list and seat layouts, used by both sides |
-| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-cards.js`, `js/ck-face.js`, `js/gesture.js`), `js/insidejob.js`, `js/crown.js`, `js/hollow.js` (+ `js/hollow-chars.js`), `js/blackjack.js`, `js/baccarat.js` (+ `js/casino.js`) | Rules engines, per-player views, bots |
+| `js/euchre.js`, `js/poker.js`, `js/veto.js`, `js/gofish.js`, `js/chess.js`, `js/backgammon.js` (+ `js/bg-board.js`), `js/sketch.js` (+ `js/sketch-words.js`, `js/sketch-pad.js`), `js/chefskiss.js` (+ `js/chefskiss-db.js`, `js/chefskiss-hands.js`, `js/chefskiss-config.js`, `js/ck-face.js`, `js/gesture.js`), `js/insidejob.js`, `js/crown.js`, `js/hollow.js` (+ `js/hollow-chars.js`), `js/blackjack.js`, `js/baccarat.js` (+ `js/casino.js`) | Rules engines, per-player views, bots |
 | `js/net.js` | Host/join networking (MQTT relay) |
 | `js/cards.js`, `css/cards.css` | Card rendering, sound, keep-screen-awake |
 | `serve.ps1` | Tiny local web server for LAN play |

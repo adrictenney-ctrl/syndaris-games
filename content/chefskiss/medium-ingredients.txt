@@ -1,0 +1,665 @@
+# Medium Ingredient Cards (middle school). text | subject tone scale register | meta | hint
+The lunch lady | p w 2 c | | The person who serves school lunch.
+A substitute teacher | p k 2 c | | A teacher filling in for the day.
+My little cousin | p s 1 c | | A younger relative who follows you around.
+A know-it-all | p y 2 c | | Someone who thinks they know everything.
+A crossing guard | p w 2 c | | The person who helps kids cross the street.
+A mad scientist | p d 2 c | | A scientist with wild experiments.
+The school mascot | p s 2 c | | The costumed character at games.
+A ninja | p d 2 c | | A sneaky, skilled fighter.
+A zombie | p d 2 c | | A walking creature from monster stories.
+A secret agent | p d 2 c | | A spy on a mission.
+A golden retriever | a w 2 c | | A friendly, fluffy dog.
+A talking parrot | a s 1 c | | A bird that repeats what you say.
+A vampire | p d 2 c | | A night creature from scary stories.
+A mummy | p d 2 c | | A wrapped-up figure from ancient tombs.
+A gamer | p y 2 s | | Someone who loves playing video games.
+A bodybuilder | p d 3 c | | Someone with huge muscles.
+A cranky neighbor | p d 2 c | | A neighbor who yells "get off my lawn."
+A babysitter | p y 2 c | | Someone who watches kids while parents are out.
+A hamster escape artist | a d 1 c | | A pet who keeps getting out of its cage.
+A wise old turtle | a w 1 c | | A slow animal full of advice.
+A Bigfoot hunter | p d 2 c | | Someone searching for a legendary forest creature.
+A drama kid | p d 2 c | | A student who loves the school play.
+A goalie | p d 2 c | | The player who guards the net.
+A raccoon | a g 1 c | | A masked animal that raids trash cans.
+A lifeguard | p y 2 c | | Someone who keeps swimmers safe.
+The principal | p y 2 o | | The person in charge of the school.
+A pro skateboarder | p d 2 s | | An expert at skateboard tricks.
+A sleepy sloth | a w 1 c | | A very slow animal that hangs from trees.
+A pop quiz | t d 2 c | | A surprise test.
+An oozing slime volcano | t g 2 c | | A science project that goes everywhere.
+Cafeteria meatloaf | f g 1 c | | A mysterious school lunch.
+Braces | t k 1 c | | Wires that straighten teeth.
+A locker that won't open | t k 1 c | | A stuck school locker.
+A permission slip | t y 1 o | | A form your parent has to sign.
+A participation trophy | t y 1 c | | A prize everyone gets for showing up.
+A broken pencil | t y 1 c | | A pencil that keeps snapping.
+A secret diary | t d 1 c | | A journal for private thoughts.
+A game controller | t y 1 c | | What you hold to play video games.
+A skateboard | t w 1 c | | A board with wheels for tricks.
+A tablet with a cracked screen | t k 1 c | | A device that's seen better days.
+A hall pass | t y 1 o | | A note that lets you leave class.
+Glow sticks | t w 1 c | | Sticks that light up after you snap them.
+Homework | t y 2 c | | Schoolwork you do at home.
+A stink bomb | t g 1 c | | A prank that smells terrible.
+Hot sauce | f d 1 c | | A very spicy sauce.
+Nachos | f w 1 c | | Chips with melted cheese.
+A chocolate fountain | f w 2 y | | A tower of flowing chocolate.
+A rubber band ball | t y 1 c | | A ball made of many rubber bands.
+A lost retainer | t g 1 c | | The thing that keeps teeth straight, now missing.
+An old cell phone | t n 1 c | | A phone from years ago.
+A metal detector | t y 1 c | | A device that beeps near metal.
+A creepy doll | t d 1 c | | A doll that might have moved by itself.
+A friendship bracelet | t w 1 c | | A woven bracelet you give a friend.
+A trampoline park | l s 3 c | | A place full of trampolines.
+A walkie-talkie | t n 1 c | | A radio for talking to a friend nearby.
+Falling asleep in class | x k 2 c | | Nodding off during a lesson.
+Tripping in the hallway | x k 2 c | | Stumbling in front of everyone.
+Laughing at the wrong time | x k 1 c | | Giggling when you should be quiet.
+A group project | e y 2 c | | Schoolwork done as a team.
+Forgetting your lines in the play | x k 2 c | | Blanking on stage.
+Winning the spelling bee | e w 2 c | | Spelling every word right.
+A surprise party | e w 2 c | | A party the guest of honor doesn't know about.
+Getting caught passing notes | x k 1 c | | Being found sending a secret message.
+Sharing a bathroom with siblings | e d 2 c | | Waiting your turn every morning.
+A field trip | e w 2 c | | A class trip outside school.
+A dodgeball game | e d 2 c | | A game of throwing and dodging balls.
+Losing a tooth | x w 1 c | | When a baby tooth comes out.
+A camping trip | e w 2 c | | Sleeping outdoors in a tent.
+Getting grounded | e d 2 c | | Being told you can't go out.
+A thunderstorm | n d 3 c | | Lightning, thunder, and rain.
+A power outage | e d 3 c | | When all the lights go out.
+Staying up past bedtime | x s 2 c | | Not going to sleep on time.
+A sneeze attack | x s 1 c | | Sneezing again and again.
+Being the new kid | m k 2 c | | Your first day at a new school.
+The cafeteria | l g 2 c | | Where everyone eats lunch at school.
+The principal's office | l d 2 o | | Where you go when you're in trouble.
+Summer vacation | e w 3 c | | The long break from school.
+The back seat of the car | l d 2 c | | Where kids sit on long rides.
+The internet | l a 4 c | | A whole world of information online.
+Friday afternoon | e w 2 c | | The best part of the school week.
+My third-grade teacher | p n 2 c | | The teacher who knew all your tricks.
+The uncle who won't give up the karaoke mic | p s 2 c | | The relative who sings every song.
+A mime stuck in a real box | p a 1 c | | A silent performer who can't get out this time.
+A ninja librarian | p a 2 c | | A librarian who shushes from the shadows.
+Your mom's best friend | p k 2 c | | The person who has heard every story about you.
+An overly excited weather reporter | p d 2 c | | Someone very, very thrilled about rain.
+Someone unboxing something online | c y 1 c | @2010 k4 | A person filming themselves opening a package.
+The group project slacker | p y 2 c | | The teammate who lets everyone else do the work.
+A very tired lifeguard | p y 2 c | | A beach guard who needs a nap.
+An influencer | c d 2 s | @2015 k5 | Someone who posts online to inspire followers.
+A clown at a business meeting | p a 2 f | | Someone in big shoes at a serious meeting.
+A cat that hates Mondays | a y 1 c | | A lazy cat with strong opinions.
+Free Wi-Fi | t w 2 c | | Internet you don't have to pay for.
+A selfie stick | c y 1 c | @2014 k4 | A pole for taking photos of yourself.
+A fidget spinner | c n 1 c | @2017 ^2017 k4 | A spinning toy that was everywhere in 2017.
+Socks with sandals | t k 1 c | | A bold fashion choice.
+The emoji keyboard | c s 1 c | @2011 k5 | The menu of little faces and pictures on a phone.
+Cold leftover pizza | f w 1 c | | Pizza saved for later and eaten straight from the fridge.
+A smart fridge | t a 2 c | | A refrigerator connected to the internet.
+Duct tape | t y 1 c | | Strong tape that fixes almost anything.
+A mystery casserole | f g 2 c | | A baked dish of unknown ingredients.
+The TV remote | t y 1 c | | The clicker that always goes missing.
+A hot dog bun that's too small | f k 1 c | | A food problem as old as time.
+Pineapple on pizza | f d 1 c | | Pizza with pineapple, a great debate.
+Kale | f y 1 c | | A leafy green vegetable famous for being healthy.
+An air fryer | t y 1 c | | A kitchen gadget that crisps food with hot air.
+Noise-canceling headphones | t y 1 c | | Headphones that block out the world.
+The group chat | c d 2 s | @2012 k5 | A text conversation with lots of friends.
+A fanny pack | t k 1 c | | A small bag worn around the waist.
+A 1,000-piece puzzle | t y 2 c | | A puzzle with a thousand pieces.
+A really slow internet connection | t y 2 c | | When pages take forever to load.
+A wobbly table | t k 1 c | | A table that tips when you lean on it.
+A hoverboard | c s 1 c | @2015 k4 | A self-balancing two-wheeled board.
+A karaoke machine | t s 2 c | | A machine for singing along to songs.
+A surprise pop quiz | e d 2 c | | A test you didn't know was coming.
+Waving back at someone who wasn't waving at you | x k 1 c | | An awkward mix-up in public.
+A sneeze during a quiet moment | x k 1 c | | A loud sneeze at the worst time.
+Forgetting someone's name | x k 1 c | | Blanking on a name you should know.
+Losing the remote in the couch | e y 1 c | | When the remote falls into the cushions.
+Opening the fridge for no reason | x y 1 c | | Looking in the fridge just because.
+A flash mob | e d 3 c | | A crowd that suddenly breaks into a dance.
+Burning the popcorn | e g 1 c | | Ruining the movie-night snack.
+The ice bucket challenge | c s 2 c | @2014 ^2014 ~2016 k3 | A 2014 trend of dumping ice water on yourself for charity.
+Planking | c a 2 s | @2011 ^2011 ~2013 k2 | A 2011 trend of lying stiff in odd places for photos.
+Pressing snooze six times | x y 1 c | | Putting off waking up again and again.
+Binge-watching a whole season | x y 2 c | | Watching every episode in one sitting.
+Getting caught singing in the car | x k 1 c | | Being seen belting out a song.
+The dab | c s 1 s | @2015 ^2016 ~2018 k3 | A dance move with your face in your elbow, big in 2016.
+Running out of toilet paper | e d 1 c | | An empty roll at the worst possible time.
+Accidentally liking an old photo | c k 1 c | @2010 k4 | Tapping "like" on a photo from years ago.
+Getting lost at the mall | e d 2 c | | Wandering around looking for your group.
+Snoring on a plane | x k 2 c | | Sleeping loudly in a crowded place.
+Yelling "Bingo!" too early | x k 1 c | | Calling a win you didn't actually get.
+Monday morning | e y 2 c | | The start of the work or school week.
+A really long line | e y 2 c | | A wait that goes on forever.
+Awkward silence | m k 2 c | | When nobody knows what to say.
+The terms and conditions | t y 2 o | | The fine print nobody reads.
+The middle seat | l k 1 c | | The squished seat between two others.
+An all-you-can-eat buffet | l a 3 c | | A spread of food where you serve yourself.
+Fashionably late | x y 2 y | | Arriving late on purpose to look cool.
+The Wild West | l d 3 c | | The rugged frontier of old cowboy stories.
+A spa day | e w 2 y | | A day of relaxing and pampering.
+The fanciest restaurant in town | l y 2 y | | Where you need a reservation and a nice shirt.
+Total chaos | m d 3 c | | Everything going wrong at once.
+Peer pressure | m d 2 c | | When friends push you to do something.
+A family road trip | e d 2 c | | A long drive with everyone in the car.
+The back of the bus | l d 2 c | | Where the cool kids sit.
+Déjà vu | m a 2 c | | The feeling you've lived this moment before.
+The Bermuda Triangle | l d 3 c | | An ocean area where ships are said to vanish.
+A dentist's waiting room | l k 2 c | | Where you wait nervously for a checkup.
+The cool aunt | p w 2 c | | The relative who lets you do fun things.
+Your search history | t k 2 c | | The list of everything you've looked up.
+Group project drama | e d 2 s
+Autocorrect | t y 1 c
+A dramatic hair flip | x d 1 s
+A teacher who says "this will be on the test" | p y 2 c
+A kid who reminds the teacher about homework | p k 2 c
+The quiet kid with a secret talent | p d 2 c
+A hall monitor with too much power | p d 2 o
+A gym teacher with a whistle | p d 2 c
+The kid who always has gum | p w 1 c
+An older sibling who drives you everywhere | p y 2 c
+A dad doing a TikTok dance | p k 2 c
+A mom who just discovered memes | p k 2 c
+A grandma who texts in all caps | p s 1 c
+A cousin who's "basically famous" | p y 2 s
+A goldfish with a social media account | a a 1 s
+A cat who runs the house | a d 2 c
+A dog who's afraid of the vacuum | a k 1 c
+A parrot that learned your ringtone | a s 1 c
+A raccoon at a fancy party | a a 2 y
+A seagull stealing your fries | a d 1 c
+A squirrel doing parkour | a a 1 s
+A goose who wants to fight | a d 2 c
+A crab with a tiny knife | a d 1 c
+A llama in a hoodie | a s 2 s
+A sloth on a deadline | a a 1 c
+A cat on a video call | a s 1 c
+A dog who learned to open the fridge | a d 2 c
+A hamster in a hamster ball | a s 1 c
+A pigeon who's seen things | a y 1 c
+A coach who yells "hustle!" | p d 2 c
+A referee who needs glasses | p k 2 c
+A YouTuber with a ring light | c y 1 s | @2012 k4
+A streamer who never sleeps | c y 2 s | @2015 k4
+A game tutorial from a ten-year-old | c y 1 c | @2012 k4
+A robot that only says "error" | t y 1 o
+An AI that's way too confident | t y 2 c
+A smart speaker that misheard you | t k 1 c
+A video call that froze on your face | c k 1 c | @2020 k5
+A phone at 1% battery | t d 1 c
+A charger that only works at an angle | t y 1 c
+A group chat with 400 unread messages | c d 2 s | @2012 k5
+The "seen" receipt | c k 1 s | @2012 k4
+A voice message that's six minutes long | c y 1 c | @2015 k4
+Typing... then nothing | c k 1 s | @2012 k4
+Your phone's screen time report | t k 1 c
+A password you forgot immediately | t y 1 c
+Buffering | t y 2 c
+A loading screen that never ends | t y 2 c
+A cracked phone case | t y 1 c
+An unboxing video | c y 1 c | @2010 k4
+A gaming chair | t d 2 c
+A keyboard that lights up | t s 1 c
+Lag | t d 2 s
+A respawn | x a 1 s
+Losing to a little kid at video games | e k 2 c
+A rage quit | x d 1 s
+A plot twist | e d 2 c
+A cliffhanger | e d 2 c
+A cringe compilation | c k 2 s | @2014 k4
+A meme your parents don't get | c k 1 s | @2012 k5
+A dance trend nobody can do | c s 2 s | @2019 k4
+A viral recipe that went wrong | c g 1 c | @2016 k4
+The family group photo | e k 2 c
+An awkward school dance | e k 2 c
+A slow dance with a broom | x a 2 c
+The yearbook photo | t k 1 c
+School picture retakes | e k 2 c
+A science fair volcano | t s 2 c
+A potato battery | t y 1 c
+The school spirit week | e s 2 c
+Pajama day | e w 2 c
+Twin day | e s 2 c
+Crazy hair day | e s 2 c
+A pep rally | e d 3 c
+The spelling bee final word | e d 2 c
+A school assembly | e y 3 c
+The fire alarm during a test | e d 2 c
+A snow day announcement | e w 2 c
+The bus ride home | e s 2 c
+A substitute who doesn't know your name | p k 2 c
+A teacher's pet | p y 2 c
+A class clown | p s 2 c
+A kid who brings a llama to show-and-tell | p a 2 c
+The PE uniform | t k 1 c
+A mystery smell in the locker room | t g 1 c
+A lunch table argument | e d 2 c
+A food trade at lunch | e w 1 c
+A spork that broke | t y 1 c
+A dried-out marker | t y 1 c
+A calculator spelling words | t s 1 c
+A math problem about trains | t y 2 c
+A pencil sharpener that eats pencils | t d 1 c
+A lost homework folder | t k 1 c
+Detention | e y 2 o
+A late slip | t y 1 o
+A pop-up book report | t w 1 c
+A diorama in a shoebox | t w 1 c
+A history project due tomorrow | t d 2 c
+A fake mustache disguise | t s 1 c
+A whoopee cushion on the teacher's chair | t s 1 c
+A stink bomb in the locker room | t g 1 c
+A soggy sandwich | f g 1 c
+A banana squished in your backpack | f g 1 c
+A thermos of mystery soup | f g 1 c
+Lunch from home | f w 1 c
+The last slice of pizza at a party | f d 1 c
+Extra-spicy chips | f d 1 c
+A sour candy challenge | e d 1 c
+A giant burrito | f a 3 c
+A pizza delivered to the wrong house | f k 2 c
+Breakfast for dinner | f w 2 c
+A snack drawer | t w 1 c
+Ramen at midnight | f w 1 c
+Grandma's mystery jelly | f g 1 c
+A fruitcake nobody eats | f y 1 c
+Leftover turkey for a week | f y 2 c
+A cereal that turns the milk blue | f s 1 c
+Expired yogurt | f g 1 c
+A sports drink | f y 1 c
+Energy bars that taste like cardboard | f y 1 c
+Gas station sushi | f g 1 c
+A food truck | l w 2 c
+A burnt marshmallow | f g 1 c
+S'mores | f w 1 c
+Pizza rolls | f w 1 c
+An entire bag of chips | f s 1 c
+A chocolate bar that melted | f g 1 c
+A hot pocket that's lava inside | f d 1 c
+A cold pizza breakfast | f w 1 c
+Family movie night | e w 2 c
+Board game night | e d 2 c
+A game of Monopoly that never ends | e d 2 c
+A puzzle missing one piece | t k 1 c
+A card game argument | e d 2 c
+Charades with your grandparents | e s 2 c
+A family vacation photo | t k 1 c
+A cousin's birthday party | e y 2 c
+A wedding where you don't know anyone | e k 2 c
+Being the youngest at the kids' table | m k 2 c
+Thanksgiving with the relatives | e d 2 c
+A holiday sweater | t k 1 c
+A sibling stealing your fries | x d 1 c
+A sibling reading your diary | x d 1 c
+The front seat argument | e d 1 c
+"Are we there yet?" | x y 2 c
+A rest stop bathroom | l g 2 c
+A car sickness bag | t g 1 c
+A road trip playlist | t w 1 c
+A wrong turn | e d 2 c
+A flat tire | e d 2 c
+A motel pool | l y 2 c
+A souvenir shop | l y 2 c
+A theme park line | l y 2 c
+A roller coaster photo | t k 1 c
+A water slide wedgie | x k 1 c
+A sunburn | n d 2 c
+A beach towel full of sand | t g 1 c
+A jellyfish sting | a d 1 c
+A sandcastle contest | e d 2 c
+A hike that's way too long | e d 2 c
+A tent that won't stay up | t k 2 c
+A mosquito swarm | a d 2 c
+A campfire story | e d 2 c
+A bear raiding the campsite | a d 3 c
+A canoe tipping over | e d 2 c
+The lake monster | a d 3 c
+A wasp at the picnic | a d 1 c
+A haunted campsite | l d 2 c
+Spending all day in pajamas | x w 2 c
+Sleeping until noon | x w 2 c
+Cleaning your room | x y 2 c
+Laundry mountain | t g 2 c
+A sock that vanished in the dryer | t a 1 c
+Taking out the trash | x g 2 c
+Doing the dishes | x y 2 c
+Walking the dog in the rain | x y 2 c
+Mowing the lawn | x y 2 c
+A chore chart | t y 1 o
+An allowance | t w 1 c
+Saving up for something big | x w 2 c
+A lemonade stand | l w 1 c
+A yard sale | e n 2 c
+Selling candy for a fundraiser | x k 2 c
+A neighbor's pet you're watching | a k 1 c
+A babysitting job gone wrong | e d 2 c
+A first phone | t d 1 c
+A first crush | m k 2 c
+A secret handshake with your best friend | x w 1 c
+Inside jokes | m w 1 c
+A friendship breakup | e d 2 c
+The new kid in class | p k 2 c
+Getting a haircut you hate | e d 1 c
+A bad hair day | m d 1 c
+A pimple on picture day | t k 1 c
+A growth spurt | e k 2 c
+Voice cracking | x k 1 c
+Being too tall for the kiddie rides | m k 2 c
+Feeling like everyone's watching | m k 2 c
+Overthinking a text | x k 1 c
+Embarrassing baby photos | t k 1 c
+Your mom calling you by your full name | e d 1 c
+Getting caught sneaking a cookie | x k 1 c
+A lie that got out of hand | e d 2 c
+A rumor spreading through school | e d 2 c
+A secret everyone knows | m k 2 c
+Brain fog | m y 1 c
+A Sunday night feeling | m y 2 c
+Hype | m d 2 s
+FOMO | m d 2 s
+Main character energy | m d 2 s
+A vibe check | m s 1 s
+Spilling the tea | x d 1 s
+Big brain time | m s 1 s
+No cap | m y 1 s
+A glow-up | m d 2 s
+Low battery energy | m y 1 s
+Being hyped for nothing | m s 2 s
+Pretending to be asleep | x k 1 c
+Fake laughing at a joke | x k 1 c
+Walking into a glass door | x k 1 c
+Pushing a door that says pull | x k 1 c
+Waving at a stranger by mistake | x k 1 c
+Forgetting what you were going to say | x k 1 c
+Saying "you too" to a waiter who said "enjoy your meal" | x k 1 c
+Laughing so hard no sound comes out | x w 1 c
+Calling your teacher "Mom" | x k 1 c
+A fake sneeze to cover a laugh | x k 1 c
+Practicing a speech in the mirror | x k 1 c
+Tripping up the stairs | x k 1 c
+Getting your hoodie string stuck | x k 1 c
+Hitting your funny bone | x d 1 c
+A sneeze with your eyes open | x a 1 c
+Rehearsing a phone call | x k 1 c
+Talking to your pet like a person | x w 1 c
+Ugly crying at a movie | x d 1 c
+Eating cereal for every meal | x s 2 c
+Dancing when nobody's home | x w 2 c
+Singing in the shower | x w 2 c
+Blaming the dog | x k 1 c
+Having the last word | x d 1 c
+Winning an argument in the shower | x a 1 c
+A thumb war | e s 1 c
+Rock, paper, scissors | e y 1 c
+A staring contest | e d 1 c
+An arm-wrestling match | e d 1 c
+A dare | e d 1 c
+Truth or dare | e d 2 c
+A prank call | x k 1 c
+A pillow fort war | e d 2 c
+A Nerf battle | e d 2 c
+A water gun ambush | e d 2 c
+Freeze tag | e w 2 c
+Capture the flag | e d 2 c
+A dodgeball to the face | x d 1 c
+A trick shot | x d 1 s
+A half-court shot | x d 2 c
+An own goal | x k 1 c
+A last-second buzzer beater | e d 2 c
+A participation medal | t y 1 c
+The championship trophy | t d 2 c
+A sports parent | p d 2 c
+A coach's pep talk | e d 2 c
+A team mascot dance | x s 2 c
+The wave at a stadium | x w 3 c
+A foam finger | t s 1 c
+A kiss cam | e k 2 c
+A rain delay | e y 2 c
+The bench | l y 2 c
+A sports injury that's just a bruise | e d 1 c
+A dragon with a phone | a a 3 c
+A unicorn influencer | p a 2 s
+A zombie on a diet | p a 2 c
+A vampire who's afraid of the dark | p k 2 c
+A mummy who needs new bandages | p s 2 c
+A werewolf at the barber | p s 2 c
+A ghost who's bad at haunting | p k 2 c
+A witch with allergies | p s 2 c
+A wizard with a smartphone | p a 2 c
+An alien at middle school | p a 2 c
+A robot taking a test | t a 2 c
+A superhero who's always late | p k 2 c
+A villain with a cute pet | p a 2 c
+A sidekick who wants to be the hero | p d 2 c
+A pirate with a GPS | p a 2 c
+A cowboy who's never seen a horse | p k 2 c
+A knight in tinfoil armor | p s 2 c
+A dragon guarding a pizza | a a 3 c
+A troll in the comments | p y 2 s
+A haunted video game | c d 2 c | @1990 k3
+A cursed group chat | c d 2 s | @2012 k3
+A time traveler from 1999 | p a 2 c
+A caveman with a smartphone | p a 2 c
+A fortune cookie with bad news | f d 1 c
+A magic 8-ball | t y 1 c
+A horoscope that's weirdly accurate | t a 2 c
+A spooky campfire legend | e d 2 c
+A shadow in the hallway | n d 2 c
+A creaky floorboard | t d 1 c
+A full moon on a school night | n d 4 c
+Thunder at 3 a.m. | n d 3 c
+A hurricane of homework | n a 3 c
+A blizzard | n d 3 c
+A heat wave | n d 3 c
+A rainbow after a test | n w 3 c
+A lightning storm | n d 3 c
+An earthquake drill | e d 2 c
+A solar eclipse | n d 4 c
+A meteor shower | n w 4 c
+The Big Bang | n d 4 f
+A black hole in your backpack | n a 4 c
+The edge of the universe | n d 4 c
+A moon base | l d 4 c
+Mars | n d 4 c
+A spaceship bathroom | l g 4 c
+An asteroid | n d 4 c
+A satellite | t y 4 c
+Gravity | n y 4 f
+The speed of light | n d 4 f
+Dinosaurs | a d 3 c
+A T. rex trying to clap | a k 3 c
+A fossil | n n 2 c
+A volcano science project | t s 2 c
+A pyramid | l d 3 c
+A haunted museum | l d 3 c
+The mall food court | l y 2 c
+A bowling alley | l n 2 c
+An arcade | l n 2 c
+A laser tag arena | l d 2 c
+A skate park | l d 2 s
+A movie theater with sticky floors | l g 2 c
+A library with a strict librarian | l y 2 c
+An escape room | l d 2 c
+A water park lazy river | l w 2 c
+A hotel breakfast buffet | l w 2 c
+An airport security line | l y 2 o
+The school nurse | p y 2 c
+The janitor who knows everything | p d 2 c
+A crossing guard with dance moves | p s 2 c
+A bus driver who sings | p s 2 c
+A mall Santa | p k 2 c
+A grumpy cashier | p y 2 c
+A magician at a kid's party | p k 2 c
+A tour guide who's lost | p k 2 c
+A weather forecaster who's always wrong | p y 2 c
+A celebrity chef | p d 2 y
+A news anchor who sneezed live | p k 2 o
+An astronaut on a coffee break | p y 4 c
+A detective with no clues | p k 2 c
+A mime who won't stop talking | p a 2 c
+A librarian who loves heavy metal | p a 2 c
+An archaeologist finding a toy | p k 2 c
+A zookeeper on her first day | p d 2 c
+A dentist who loves candy | p a 2 c
+A firefighter rescuing a cat | p w 2 c
+A plumber in a tuxedo | p a 2 y
+An inventor with explosive ideas | p d 2 c
+A spelling bee champion | p y 2 c
+A chess grandmaster | p y 2 f
+A juggler with butter fingers | p k 2 c
+A tightrope walker with hiccups | p d 2 c
+A circus strongman | p d 3 c
+A ventriloquist's dummy | t d 1 c
+A puppet with a grudge | t d 1 c
+A haunted painting | t d 2 c
+A singing fish on the wall | t s 1 c | @1999 k3
+A lava lamp | t n 1 c | @1963 k4
+A disco ball | t s 1 c
+A smoke machine | t d 2 c
+A trophy for second place | t k 1 c
+A medal made of chocolate | f w 1 c
+An empty gift box | t k 1 c
+A gift card with $1 on it | t k 1 c
+A gift wrapped in newspaper | t k 1 c
+A birthday card with money | t w 1 c
+A birthday cake on fire | e d 1 c
+A candle that won't blow out | t a 1 c
+An awkward "Happy Birthday" song | e k 2 c
+A surprise party that wasn't a surprise | e k 2 c
+A clown that showed up uninvited | p d 2 c
+A piñata that won't break | t d 1 c
+A bounce house popping | e d 2 c
+A party where the music stopped | e k 2 c
+A sleepover prank | e s 2 c
+Shaving cream in your hand | x g 1 c
+A midnight pizza order | e w 1 c
+Scary movie night | e d 2 c
+A ghost story that goes too far | e d 2 c
+A flashlight battery dying | e d 1 c
+The last one awake | m d 1 c
+Falling asleep first at a sleepover | x k 1 c
+A secret club meeting | e d 1 c
+A treehouse with a password | l s 2 c
+A treasure map in the attic | t d 2 c
+A time capsule | t n 2 c
+A message in a bottle | t d 2 c
+A note in a library book | t w 1 c
+A secret tunnel in the basement | l d 2 c
+A hidden door | t d 2 c
+A trapdoor | t d 2 c
+A lost puppy poster | t w 1 c
+A neighborhood mystery | e d 2 c
+A missing garden gnome | t d 1 c
+The ice cream truck that never stops | t d 2 c
+A wrong-number text | c k 1 c | @2005 k5
+A delivery left at the wrong door | t k 1 c
+A doorbell camera | t y 1 c
+A package that's mostly bubble wrap | t y 1 c
+A robot lawnmower | t a 2 c
+A self-driving shopping cart | t a 2 c
+A drone delivering pizza | t a 2 c
+A vacuum chasing the cat | t s 1 c
+A toaster that burns everything | t y 1 c
+A blender at 6 a.m. | t d 1 c
+A microwave beeping forever | t y 1 c
+A fridge full of condiments | t y 2 c
+A sock drawer of chaos | t g 1 c
+A junk drawer | t y 1 c
+A pile of chargers | t y 1 c
+A shoebox full of cards | t n 1 c
+A rock collection | t w 1 c
+A sticker collection | t w 1 c
+A bug collection | t g 1 c
+A shell collection | t w 1 c
+A baseball card worth a fortune | t d 1 c
+A comic book in plastic | t n 1 c
+A science kit | t y 1 c
+A chemistry set | t d 1 c
+A telescope | t w 1 c
+A microscope | t y 1 c
+A slime-making kit | t g 1 c
+A volcano kit that worked too well | t d 2 c
+A build-it-yourself robot | t y 2 c
+A model rocket | t d 2 c
+A remote-control car | t w 1 c
+A drone stuck in a tree | t k 2 c
+A kite in a thunderstorm | t d 2 c
+A skateboard ramp in the driveway | t d 2 c
+A scooter with one wheel | t a 1 c
+A bike with training wheels | t k 2 c
+Rollerblades | t n 1 c
+A pogo stick | t s 1 c
+A unicycle | t a 1 c
+A hoverboard that won't stop | t d 1 c
+A trampoline in the rain | t d 2 c
+A pool noodle | t s 1 c
+An inflatable flamingo | t s 2 c
+A beach ball at a concert | t w 2 c
+A frisbee on the roof | t k 2 c
+A tennis ball in the gutter | t k 1 c
+A soccer ball through a window | t d 1 c
+A basketball that won't bounce | t y 1 c
+A deflated football | t y 1 c
+A tug-of-war rope | t d 2 c
+A bowling ball | t y 1 c
+A golf cart | t w 2 c
+A mini-golf windmill | t d 2 c
+An arcade claw machine | t d 1 c
+A prize ticket | t w 1 c
+A rubber spider | t s 1 c
+A fake snake | t s 1 c
+A whoopee cushion of epic size | t s 3 c
+Invisible ink | t d 1 c
+Disappearing ink | t d 1 c
+A trick candle | t s 1 c
+A joy buzzer | t s 1 c
+Itching powder | t s 1 c
+A fake spider in the cereal | t s 1 c
+Sneezing powder | t s 1 c
+A squirt flower | t s 1 c
+Fake vomit | t g 1 c
+A gross-out joke book | t g 1 c
+A bad pun | x y 1 c
+A knock-knock joke that never ends | x y 1 c
+A dad joke | x y 1 c
+A tongue twister | x s 1 c
+Talking like a pirate | x s 1 c
+A silly accent | x s 1 c
+A fake British accent | x k 1 c
+Saying "yeet" | x s 1 s
+Speaking in emojis | x s 1 s
+Narrating your own life | x a 2 c
+Doing a dramatic slow clap | x d 1 c
+A mic drop | x d 1 s
+A victory dance | x d 1 c
+An end-zone celebration | x d 2 c
+A trust fall | x k 1 c
+A group hug | x w 2 c
+A high five that missed | x k 1 c
+A fist bump that went wrong | x k 1 c
+A handshake that turned into a hug | x k 1 c
+A selfie with a goat | c s 1 c | @2013 k4
+A photobomb | c s 1 s | @2009 k4
+A blurry photo of Bigfoot | t d 1 c
+A world record attempt | e d 3 c
+The longest sneeze in history | e a 2 c
+A hot dog eating contest | e g 2 c
+A pie-eating contest | e g 2 c
+A chili cook-off | e d 2 c
+A pumpkin carving contest | e w 2 c
+A spelling bee for adults | e k 2 c
+A talent show disaster | e d 2 c
+An air guitar solo | x d 1 c
+A drum solo on pots and pans | x d 1 c
+A recorder concert | e k 2 c
+A school band playing off-key | e k 2 c
+A choir with one loud singer | e k 2 c
+A sing-along in the car | e w 2 c
+A boy band | c d 2 c | @1995 k4
+A song from a cartoon that won't leave your head | c s 1 c | @2013 k4
+Elevator music | t y 2 c
+A ringtone in a quiet theater | e k 1 c
+A cat video | c w 1 c | @2007 k5

@@ -2,7 +2,7 @@
 // Your card is on your phone; the middle card is on the table. Spot the picture they share and tap
 // it on your phone first to win the middle card (it becomes your new card). Tap a wrong one and
 // you're frozen for two seconds. When the pile runs out, whoever won the most cards wins.
-import { base, shuffle, sfx, announce } from './party.js?v=88';
+import { base, shuffle, sfx, announce } from './party.js?v=89';
 
 export const SYMS = '🍎 🍌 🍇 🍉 🍓 🥕 🌽 🍄 🌵 🌻 🌙 ⭐ ☀️ ⚡ ❄️ 🔥 💧 🌈 ☂️ ⚓ 🚲 🚗 ✈️ 🚀 ⛵ 🎈 🎁 🎸 🎺 🥁 🎲 🧩 ⚽ 🏀 🎯 🔑 🔒 💡 ⏰ ✂️ 📌 ✏️ 📚 🧲 🔔 🎩 👓 👑 💎 🐶 🐱 🐸 🐢 🐙 🦋 🐝 🦉'.split(' ');
 // The 57 cards: lines of the projective plane of order 7.

@@ -1,0 +1,12 @@
+{
+  "subject": ["person", "place", "thing", "event", "nature", "animal", "food", "pop_culture", "feeling", "action"],
+  "tone": ["silly", "absurd", "wholesome", "awkward", "dramatic", "dry", "gross_mild", "nostalgic"],
+  "scale": ["tiny", "everyday", "huge", "cosmic"],
+  "register": ["formal", "casual", "kid", "slang", "fancy", "official_sounding"],
+  "codes": {
+    "subject": { "p": "person", "l": "place", "t": "thing", "e": "event", "n": "nature", "a": "animal", "f": "food", "c": "pop_culture", "m": "feeling", "x": "action" },
+    "tone": { "s": "silly", "a": "absurd", "w": "wholesome", "k": "awkward", "d": "dramatic", "y": "dry", "g": "gross_mild", "n": "nostalgic" },
+    "scale": { "1": "tiny", "2": "everyday", "3": "huge", "4": "cosmic" },
+    "register": { "f": "formal", "c": "casual", "k": "kid", "s": "slang", "y": "fancy", "o": "official_sounding" }
+  }
+}

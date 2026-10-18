@@ -1,7 +1,7 @@
 // Don't Say It on a phone. The clue-giver sees the card (Got it / Skip); the other team sees it
 // too, with a big BUZZ button; the guessing team just sees the clock and shouts answers.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=88';
-import { TEAMS, partyClock } from './table-dontsay.js?v=88';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=89';
+import { TEAMS, partyClock } from './table-dontsay.js?v=89';
 
 let ctx = null, clockT = null, wasMyTurn = false, endAt = 0;
 export function reset() { clearInterval(clockT); clockT = null; document.getElementById('dsPhone')?.remove(); }

@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { bridgeT } from './table-cardgames.js?v=88';
+import { bridgeT } from './table-cardgames.js?v=89';
 
 export default bridgeT;

@@ -1,0 +1,154 @@
+# Medium Recipe Cards (middle school). text | tags | funnyTargets | literalTags | meta | hint
+Totally awkward | m k 2 c | an d 34 fo | x k - - | | Something embarrassing and uncomfortable.
+Epic fail | e d 2 s | at wy 1 f | x k - - | | A mistake that goes really wrong.
+The best day ever | e w 2 c | tf y 1 o | e w - - | | A perfect day from start to finish.
+What my parents don't know | m d 2 c | an w 1 k | x k - - | | A secret you keep from your folks.
+Something in a teacher's desk | t y 1 c | an d 34 - | t - 1 o | | What's hiding in the teacher's drawer.
+The worst school lunch | f g 2 c | pe d 34 y | f g - - | | A cafeteria meal nobody wants.
+My dream job | x w 2 c | at s 1 k | p - - o | | The job you'd love to have someday.
+Most likely to go viral | c s 2 s | n y 4 f | c - - s | | Something everyone online would share.
+Way too expensive | t y 2 c | fa s 1 k | t - - y | | Something that costs much more than it should.
+Why I didn't do my homework | e k 2 c | an d 34 o | x - - - | | Your excuse for having no homework.
+Something that should be against the rules | x d 2 c | at w 1 k | x - - o | | A thing that needs a rule against it.
+A survival kit for middle school | t d 2 c | fa a 1 k | t - - - | | What you need to make it through.
+The scariest thing at a sleepover | e d 2 c | ft s 1 k | a d - - | | What spooks everyone after lights out.
+Totally underrated | m y 2 c | tf d 1 f | m w - - | | Something that deserves more love.
+The worst thing to forget on a field trip | t k 2 c | ap a 3 - | t - - - | | Something you'll miss when you're far from home.
+A new school rule | e y 2 o | ax s 1 k | e - - o | | A rule your school should add.
+What my pet does when I'm at school | a s 1 c | e d 4 f | a w - - | | Your pet's secret daytime life.
+Something that gets on my nerves | m d 2 c | tf w 1 k | m d - - | | Something that really annoys you.
+The best superpower | x d 3 c | t y 1 k | x d 3 - | | The power you'd pick if you could.
+My villain name | p d 2 c | tf w 1 k | p d - - | | What you'd be called as a bad guy.
+Found in a haunted house | l d 2 c | tf s 1 k | a d - - | | What's waiting in the creepy house.
+Unbelievable | m d 2 c | t y 1 k | e d 4 - | | Too strange to believe.
+The best way to spend a snow day | e w 2 c | l d 4 o | x w - - | | What to do when school's canceled.
+Something that would make class more fun | e s 2 c | ap a 34 - | x s - - | | An idea to liven up the classroom.
+A new video game | c s 2 c | ex y 2 o | c - - - | | A game someone should make.
+Belongs in a museum | t y 2 f | fa g 1 c | t n - y | | Something worth putting on display.
+The worst chore | x y 2 c | e d 4 f | x g - - | | The job at home nobody wants.
+Totally mysterious | m d 2 c | tf y 1 k | n d - - | | Something nobody can explain.
+Bad advice from a big sibling | x s 2 c | ln d 34 f | x - - - | | Tips you shouldn't follow.
+What I'd invent | t s 2 c | f g 1 k | t - - o | | A brand new invention.
+The best thing about summer vacation | e w 2 c | m y 1 o | e w - - | | Why summer is the best.
+Ridiculous | m s 2 c | t y 1 f | e a - - | | Silly and hard to take seriously.
+What happens at midnight | e d 2 c | f s 1 k | n d - - | | What goes on while everyone sleeps.
+Super dramatic | m d 2 c | tf y 1 k | e d - - | | Over-the-top and full of feelings.
+A clue a detective would find | t d 1 c | f s 2 k | t - 1 o | | A hint left at the scene.
+What I'll be famous for | x d 3 c | e y 1 k | c - - - | | The reason everyone will know your name.
+The worst thing to bring to a picnic | f k 2 c | ae da 34 o | f - 2 - | | Something that would ruin a nice lunch outside.
+What's really in the secret sauce | f d 1 c | pl a 34 o | f g - - | | The mystery ingredient nobody talks about.
+Grandma's secret weapon | p d 2 c | tf w 1 k | t d - - | | What Grandma uses to win every argument.
+The first thing I'd save in a fire | t d 2 c | f s 1 k | t w - - | | The one thing you grab on the way out.
+Totally overrated | m y 2 c | n d 4 f | c - - - | | Something people love way more than it deserves.
+My villain origin story | e d 2 c | tf s 1 k | e d - - | | The moment that turned you a little bit evil.
+The perfect excuse for being late | e k 2 c | an d 34 o | x - - - | | A reason so good nobody can be mad.
+A terrible name for a boat | t s 2 c | pm d 1 f | n - - - | | What you should never paint on the side of a boat.
+What woke me up at 3 a.m. | e d 2 c | tf s 1 k | a d - - | | The thing that ruined a good night's sleep.
+The best thing about Mondays | e y 2 c | f s 1 k | e w - - | | There has to be something good about them.
+What I'm hiding in my closet | t k 2 c | ap d 34 - | t - - - | | The thing you don't want guests to find.
+A sign the zombie apocalypse has started | e d 4 c | tx s 1 k | e d 4 - | | A clue that the undead are on their way.
+What my phone autocorrects to | c s 1 c | a d 3 f | c - - s | | When your phone thinks it knows best.
+The theme of my next birthday party | e w 2 c | m d 4 o | e w - - | | The big idea for your next party.
+A rejected theme park ride | e a 3 c | m y 2 o | e d 3 - | | A ride that never made it past the drawing board.
+My most useless talent | x s 1 c | e d 4 f | x - - - | | A skill that impresses absolutely no one.
+What's at the bottom of my bag | t g 1 c | ap d 34 y | t - 1 - | | The mystery stuff that piles up in a bag.
+A brand new Olympic sport | e d 3 o | x s 1 k | e - - - | | An event that belongs in the next Olympics.
+What I'd do with a million dollars | x d 3 c | f s 1 k | t y - y | | Your first move after getting rich.
+What the GPS says when it's had enough | t y 2 c | e d 4 f | l - - o | | When the map voice finally loses patience.
+Always in the junk drawer | t y 1 c | ap d 34 y | t - 1 - | | The stuff every junk drawer collects.
+A feeling with no name yet | m a 2 c | tf s 1 k | m - - - | | An emotion that deserves its own word.
+The next big social media trend | c s 2 s | n n 4 f | c - - s | | What everyone will be posting next.
+An unexpected thing in a sandwich | f a 1 c | ple d 34 y | f - 1 - | | A surprise between the bread.
+A life hack that doesn't work | x y 2 c | e d 4 f | x - - - | | Advice that sounds smart but fails.
+A bad name for a band | c s 2 c | fa w 1 k | c - - s | | A band name that will never sell tickets.
+The worst place to fall asleep | l k 2 c | e d 4 o | l w - - | | Somewhere you really should stay awake.
+What happens when you fall asleep in class | e k 2 c | n d 4 f | x - - - | | The fallout of a nap at school.
+The most awkward elevator ride | e k 2 c | a d 3 f | p k - - | | A moment stuck in a small box with strangers.
+A reality show that needs to happen | c d 2 c | ax y 1 o | c d - - | | A TV show someone should make right now.
+Pure chaos | m d 2 c | t y 1 f | e d - - | | Something that brings total disorder.
+The scariest thing at the grocery store | l d 2 c | f s 1 k | p d - - | | What makes shopping frightening.
+What I really do when nobody's watching | x k 2 c | e d 4 f | x - - - | | Your private, secret habit.
+Absolutely unforgettable | m d 2 c | t y 1 k | e w - - | | Something you could never forget.
+Would ruin a road trip | e k 2 c | an d 1 o | t g - - | | Something that turns a fun drive into a disaster.
+The peak of human achievement | e d 4 f | xf s 1 k | e d 4 o | | The greatest thing people have ever done.
+A smell that brings back memories | m n 2 c | ex g 1 k | f n - - | | A scent that takes you back in time.
+What the substitute teacher does on weekends | p k 2 c | en da 4 - | p - - - | | What the stand-in teacher gets up to.
+The real reason the Wi-Fi is slow | t y 2 c | ap a 14 - | t - - - | | The truth behind the spinning wheel.
+The worst thing to say on the first day of school | x k 2 c | ae d 4 f | x k - - | | Words that follow you all year.
+What's in the group chat right now | c s 2 s | an d 34 o | c - - s | | The messages piling up while you're busy.
+A terrible name for a pet goldfish | a s 1 c | e d 4 o | a - - - | | A name no fish deserves.
+The worst thing to hear from the dentist | e d 2 c | n s 4 k | e d - - | | Words you don't want with your mouth open.
+Why the teacher is in a bad mood | p y 2 c | an a 4 - | e - - - | | The real reason for the grumpy face.
+The secret ingredient in cafeteria pizza | f g 1 c | m d 4 o | f g - - | | What makes it taste like that.
+A new emoji we desperately need | c s 1 s | e d 4 f | m - - - | | The little picture your phone is missing.
+What my little brother is up to | p d 2 c | n y 4 f | x s - - | | The chaos happening in the next room.
+The worst video game power-up | c s 2 s | f w 1 k | x d - - | | A bonus that makes everything worse.
+A strange thing to find in your locker | t a 1 c | an d 3 - | t - 1 - | | Something that definitely wasn't there yesterday.
+Why the school play was canceled | e d 2 c | af s 1 k | e - - - | | The disaster behind the curtain.
+The real reason I'm late for class | e k 2 c | an d 34 o | x - - - | | An excuse the teacher has never heard.
+What the vending machine is thinking | t y 2 c | e d 4 f | f - - - | | The thoughts of the snack box in the hall.
+A new rule for the family road trip | e y 2 o | ax s 1 k | x - - - | | One rule to keep everyone sane.
+The most dramatic way to quit a sport | x d 2 c | t y 1 f | e d - - | | Leaving with a bang.
+The world's worst field trip destination | l k 2 c | e d 4 o | l - - - | | Where no class should ever go.
+What the cafeteria lady knows | p y 2 c | e d 4 f | f - - - | | The secrets behind the lunch counter.
+The worst thing to say to a cat | x s 1 c | ep d 4 f | a - - - | | Words that earn you a hiss.
+What aliens would put in a time capsule | t a 4 c | c n 1 s | t - - - | | What visitors from space want to remember.
+My autobiography's title | c d 2 c | t y 1 o | p - - - | | The name of the book about your life.
+The best thing to yell on a roller coaster | x d 2 c | e y 2 f | x d - - | | What comes out when the coaster drops.
+Why the dog keeps barking | a d 1 c | n a 4 o | a - - - | | What the dog is trying to tell you.
+Something that would make a great school mascot | p s 2 c | tf y 1 - | a - - - | | A creature to cheer for at games.
+The worst way to start a speech | x k 2 f | e s 1 k | x k - f | | A beginning nobody will forget.
+The secret life of my backpack | t a 1 c | e d 4 f | t - - - | | What it gets up to while you sleep.
+The weirdest thing in the school lost and found | t a 1 c | an d 3 - | t - - - | | Nobody has come to claim it.
+What the principal does after school | p y 2 c | e d 4 s | p - - o | | The secret after-hours life of the boss.
+A terrible new ice cream topping | f g 1 c | tm d 34 - | f - - - | | Something that should never go on a sundae.
+What my hamster writes in its diary | a s 1 c | e d 4 f | a - - - | | The private thoughts of a tiny pet.
+The worst nickname | p k 2 c | tf a 1 o | p - - s | | A nickname you can never shake.
+What the weather forecast should really say | n y 3 c | m d 1 s | n - - o | | The forecast that tells the truth.
+The worst thing to find in your hood | t g 1 c | a d 3 - | n - - - | | A surprise in the back of your sweatshirt.
+A rejected flavor of chips | f a 1 c | lm d 34 o | f - - - | | A taste that never made it to the store.
+What the group project leader says | p d 2 c | a s 1 k | x - - o | | The words of the one person doing all the work.
+What the school should spend its money on | t s 3 c | f a 1 k | t - - o | | The best use of the budget.
+The worst sound during a test | e k 2 c | n d 4 f | e - - - | | A noise that breaks the silence.
+How to survive a family dinner | x d 2 c | t s 1 k | x - - - | | Tips for getting through the meal.
+The best way to get out of gym class | x k 2 c | ap d 34 o | x - - - | | Your plan to skip the dodgeball.
+A sequel nobody asked for | c y 2 c | n d 4 f | c - - - | | Part two of something that should have stopped.
+The worst thing to accidentally text your teacher | c k 1 c | a d 3 f | c k - s | | A message sent to exactly the wrong person.
+What the cat is plotting | a d 1 c | e s 4 f | a - - - | | The master plan behind those eyes.
+A good reason to skip the dentist | x k 2 c | n d 4 f | x - - - | | An excuse to avoid the drill.
+A better name for Monday | e y 2 c | ma d 4 y | e - - - | | Something to make the week start nicer.
+The most useless school supply | t y 1 c | an d 34 - | t - 1 - | | Something on every list that you never use.
+What the ocean is hiding | n d 3 c | t s 1 k | n - 3 - | | What lives deep down in the dark water.
+The next big dance craze | c s 2 s | n d 4 f | c - - s | | The moves everyone will be doing.
+The worst way to wake up | e k 2 c | an d 34 - | e - - - | | A start to the day nobody wants.
+What I'd put in a robot's brain | t a 2 c | m d 1 k | t - - o | | The thoughts your robot will have.
+A bad idea for a theme restaurant | l a 2 c | af dg 3 - | f - - - | | A place nobody would book for a birthday.
+The best way to annoy your sibling | x s 2 c | e d 4 f | x - - - | | Small moves, big reaction.
+The world's least scary monster | p s 2 c | tf w 1 k | p d - - | | A monster nobody runs from.
+What's really in the mystery meat | f g 1 c | c d 4 o | f g - - | | The answer to the cafeteria's oldest question.
+Why the bus driver is singing | p s 2 c | e d 4 f | e w - - | | The song filling the whole bus.
+A brand new school subject | e y 2 o | xa s 1 k | e - - o | | A class every school should teach.
+The worst thing about being the oldest | m d 2 c | ta s 1 k | p - - - | | The price of being first.
+The best thing about being the youngest | m w 2 c | ta d 4 f | p - - - | | The perks of being the baby of the family.
+What's under the couch cushions | t g 1 c | an d 34 - | t - 1 - | | The treasures that slip away.
+The most dramatic thing that happened at recess | e d 2 c | n y 1 f | e - - - | | Playground news everyone is talking about.
+What my future self would tell me | m d 2 c | tf s 1 k | m - - - | | Advice from you, years from now.
+A movie that should never get made | c y 2 c | x s 1 k | c - - - | | A film idea best left on the cutting room floor.
+The worst thing to spill on yourself before picture day | t g 1 c | n d 4 f | f g - - | | A stain that will be in the yearbook forever.
+The most annoying ringtone | c s 1 c | n d 4 f | c - - - | | A sound everyone wants you to change.
+What makes a sleepover legendary | e w 2 c | a d 3 f | e - - - | | The night everyone talks about for years.
+A totally fair punishment for a sibling | x d 2 c | t s 1 k | x - - o | | Justice, served at home.
+What lives in the school basement | l d 2 c | t s 1 k | a d - - | | The stuff of hallway legends.
+A secret talent nobody knows about | x w 2 c | a d 3 f | x - - - | | What you can do that would surprise everyone.
+The worst thing to bring for show-and-tell | t k 1 c | an d 34 o | t - - - | | Something that should stay at home.
+What's on the other side of the rainbow | n d 4 c | tf y 1 k | n w - - | | Where the colors end.
+The worst thing to hear on the school intercom | e k 2 o | n d 4 f | e - - o | | An announcement the whole school hears.
+What the class pet would say if it could talk | a s 1 c | e d 4 f | a - - - | | Finally, the hamster speaks.
+A new holiday just for kids | e w 2 c | tf y 1 o | e w - - | | A day off school for a very good reason.
+The worst thing to sit next to on a bus | t k 2 c | ae d 34 f | p g - - | | A long ride with an awful seatmate.
+The secret to winning at dodgeball | x d 2 c | ft w 1 k | x - - - | | A strategy nobody has thought of.
+What the moon is hiding on its dark side | n d 4 c | tf s 1 k | n - 4 - | | The secret on the side we never see.
+A rejected superhero | p s 2 c | ft y 1 k | p d - - | | A hero who didn't make the team.
+The worst thing to find in your popcorn | f g 1 c | ap d 3 - | f - - - | | A surprise at the movies.
+What my shadow does when I'm not looking | n a 2 c | e d 4 f | x - - - | | Your shadow's secret life.
+The most ridiculous thing to get in trouble for | e k 2 c | an d 34 o | x - - - | | A punishment that doesn't fit the crime.

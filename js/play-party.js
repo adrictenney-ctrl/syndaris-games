@@ -13,11 +13,11 @@
 // (other players' cards to look at), html (ready-made markup from the engine), hud [[label, value, sub], …],
 // left (ms on the clock), myturn, buzz (vibrate on a new key), buttons (under a pick).
 // Anywhere in the text, @3@ is replaced by the name of the player in seat 3.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=88';
-import { esc } from './party.js?v=88';
-import { PALETTE } from './sketch.js?v=88';
-import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=88';
-import { PAD_W, PAD_H } from './sketch.js?v=88';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=89';
+import { esc } from './party.js?v=89';
+import { PALETTE } from './sketch.js?v=89';
+import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=89';
+import { PAD_W, PAD_H } from './sketch.js?v=89';
 
 let ctx = null, key = null, clockT = null, endAt = 0, draftT = null, radio = -1;
 let strokes = [], pen = { c: 0, w: 1 }, live = null;

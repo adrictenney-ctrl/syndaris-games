@@ -1,0 +1,628 @@
+# Spicy Ingredient Cards (high school). Still family-friendly. text | subject tone scale register | meta | hint
+A flip phone | c n 1 c | @1996 ^2005 ~2010 k4 | A phone that folds in half, popular in the 2000s.
+Expired coupons | t y 1 c | | Discounts you can no longer use.
+A treadmill used as a clothes rack | t y 2 c | | Exercise gear that now holds laundry.
+Hitting reply-all by accident | x k 2 o | | Sending a message to everyone instead of one person.
+Spilling coffee on your shirt | x k 1 c | | A stain right before something important.
+Parallel parking | x d 2 c | | Squeezing a car into a tight spot.
+Having screws left over | e k 1 c | | Building furniture and finding extra parts.
+The friend zone | m k 2 s | | When someone only wants to be friends.
+The DMV | l y 2 o | | The office where you get a driver's license and wait in line.
+Senioritis | m y 2 s
+Your parents discovering emojis | p k 2 c
+A 3 a.m. existential crisis | m d 4 c
+Poodle skirts | c n 1 c | @1950 ^1955 k2 | Wide felt skirts with a poodle stitched on.
+A jukebox | c n 2 c | @1940 ^1955 k3 | A coin machine that plays records.
+Hula hoops | c n 1 c | @1958 ^1958 k4 | Plastic rings spun around the waist, a 1958 craze.
+Rock 'n' roll | c d 2 c | @1954 ^1958 k4 | The new, loud music teens loved.
+A drive-in movie | c n 2 c | @1950 ^1958 k3 | Watching a film from your car.
+A milkshake at the soda fountain | c n 1 c | @1950 ^1955 k3 | A treat from the counter at the drugstore.
+A greaser | c d 2 s | @1955 ^1958 k2 | A teen with slicked-back hair and a leather jacket.
+Saddle shoes | c n 1 c | @1950 ^1955 k2 | Two-tone shoes worn with bobby socks.
+A black-and-white TV | c n 2 c | @1950 ^1955 k3 | The family's brand new television set.
+A sock hop | c n 2 c | @1950 ^1957 k2 | A school dance in your socks.
+A Cadillac with tail fins | c n 2 y | @1955 ^1959 k2 | A big car with fins on the back.
+The suburbs | c y 3 c | @1950 k3 | New neighborhoods of matching houses.
+A TV dinner | c y 1 c | @1953 ^1958 k3 | A frozen meal in a tray.
+A coonskin cap | c n 1 c | @1955 ^1955 k2 | A fur hat made popular by TV frontier heroes.
+Duck-and-cover drills | c d 2 o | @1951 ^1955 k2 | School safety drills from the Cold War.
+A transistor radio | c n 1 c | @1954 ^1960 k2 | A small radio you could carry anywhere.
+An Elvis impersonator | c s 2 c | @1956 k4 | Someone dressed as the king of rock 'n' roll.
+A Slinky | c w 1 c | @1945 ^1955 k4 | A spring toy that walks down the stairs.
+Silly Putty | c s 1 c | @1950 ^1955 k4 | Stretchy putty that bounces and copies comics.
+The bunny hop | c s 2 c | @1952 ^1953 k2 | A line dance with lots of hops.
+The start of the space race | c d 4 c | @1957 ^1961 k3 | The contest to get into space first.
+The milkman's delivery | c n 1 c | @1950 ^1955 ~1970 k2 | Fresh milk brought right to your door.
+Bobby socks | c n 1 c | @1950 ^1955 k2 | White ankle socks worn by teens.
+A rotary phone | c n 1 c | @1950 ^1965 ~1985 k3 | A phone with a dial you spin.
+A Frisbee | c w 1 c | @1957 k5 | A plastic flying disc.
+Cruising the strip | c n 2 c | @1955 ^1960 k2 | Driving slowly down Main Street to show off your car.
+A booth at the malt shop | c n 2 c | @1950 ^1955 k2 | Where teens hung out after school.
+A beatnik poet | c y 2 s | @1955 ^1959 k2 | A poet in a beret who snaps instead of clapping.
+Hair pomade | c n 1 c | @1950 ^1955 k2 | Grease for slicking hair back.
+3-D movie glasses | c s 1 c | @1952 ^1953 k3 | Cardboard glasses with red and blue lenses.
+A carhop on roller skates | c n 2 c | @1950 ^1955 k2 | A server who skates food out to your car.
+Mr. Potato Head | c s 1 k | @1952 k5 | A toy potato with face parts you stick in.
+A pink flamingo lawn ornament | c y 1 c | @1957 k3 | A plastic bird for the front yard.
+A cherry cola from the counter | c n 1 c | @1950 ^1955 k2 | A soda with a shot of cherry syrup.
+A moody teen rebel | c d 2 c | @1955 ^1955 k3 | The cool, misunderstood teenager of the movies.
+Staring at the TV test pattern | c y 2 c | @1950 ^1955 ~1985 k1 | Waiting for the shows to start.
+A lava lamp from the sixties | c n 1 c | @1963 ^1968 k4 | A lamp with floating blobs, invented in 1963.
+A hippie | c w 2 s | @1965 ^1969 k4 | A peace-loving free spirit.
+Tie-dye shirts | c w 1 c | @1965 ^1969 k5 | Shirts dyed in swirls of color.
+The moon landing | c d 4 c | @1969 ^1969 k5 | Astronauts walked on the moon in 1969.
+Go-go boots | c n 1 c | @1965 ^1966 k2 | Shiny, knee-high boots.
+A VW bus | c w 2 c | @1960 ^1969 k4 | A boxy van loved by road trippers.
+The twist | c s 2 c | @1960 ^1961 k3 | A dance where you twist your hips.
+Bell-bottoms | c n 1 c | @1966 ^1972 k4 | Pants that flare out at the bottom.
+Woodstock | c d 3 c | @1969 ^1969 k3 | A giant outdoor music festival in 1969.
+Peace signs everywhere | c w 1 c | @1965 ^1969 k4 | The symbol for peace, everywhere.
+A beehive hairdo | c a 1 c | @1960 ^1964 k3 | Hair piled high like a beehive.
+A beach surfer | c w 2 s | @1961 ^1965 k4 | A sun-tanned wave rider.
+An Etch A Sketch | c w 1 c | @1960 k4 | A drawing toy with two knobs.
+Beatlemania | c d 3 c | @1963 ^1964 k3 | Screaming fans of the Beatles.
+Flower power | c w 2 s | @1967 ^1968 k3 | Using flowers as a symbol of peace.
+Troll dolls | c s 1 c | @1959 ^1965 k3 | Little dolls with wild, bright hair.
+A Spirograph | c w 1 c | @1965 k3 | A drawing toy for making swirly patterns.
+The space race | c d 4 c | @1957 ^1969 k3 | The race to reach the moon.
+Go-karts | c w 1 c | @1959 k4 | Small racing cars.
+Twister | c k 2 c | @1966 k5 | A party game that ties you in knots.
+Mini skirts | c n 1 c | @1964 ^1966 k3 | Short skirts that shocked the grown-ups.
+A secret agent with gadgets | c d 2 c | @1962 ^1965 k4 | Spy movies were huge in the 60s.
+A sit-in | c d 2 c | @1960 ^1968 k2 | A peaceful protest by sitting down.
+Psychedelic posters | c a 1 c | @1966 ^1968 k3 | Wild, swirly, colorful art.
+An 8-track tape | c n 1 c | @1965 ^1975 ~1982 k2 | A music cartridge for the car.
+Hot Wheels cars | c w 1 k | @1968 k5 | Small, fast toy cars, first sold in 1968.
+Mod fashion | c y 1 y | @1964 ^1966 k2 | Bold shapes, bright colors, and sharp haircuts.
+An instant camera | c n 1 c | @1963 k4 | A camera that prints the photo right away.
+The mashed potato | c s 2 c | @1962 ^1962 k1 | A popular 60s dance with shuffling feet.
+A fondue pot | c y 1 y | @1964 ^1970 k3 | A pot of melted cheese for dipping.
+A wood-paneled surf wagon | c n 2 c | @1960 ^1965 k2 | A station wagon for hauling surfboards.
+Sea-Monkeys | c a 1 c | @1962 ^1970 k3 | Tiny brine shrimp sold as pets.
+Love beads | c w 1 s | @1966 ^1968 k2 | Strings of colorful beads.
+Far out! | c w 1 s | @1965 ^1969 k3 | 60s slang for amazing.
+The lunar module | c d 4 o | @1969 k3 | The spacecraft that landed on the moon.
+A go-go dancer | c d 2 c | @1964 ^1966 k2 | A dancer in a cage at the discotheque.
+Disco | c d 2 c | @1974 ^1978 k5 | Dance music with a big beat and mirror balls.
+A pet rock | c y 1 c | @1975 ^1975 k3 | A rock in a box, sold as a pet in 1975.
+Mood rings | c a 1 c | @1975 ^1976 k3 | Rings that change color with your "mood."
+Platform shoes | c d 1 c | @1971 ^1975 k4 | Shoes with very thick soles.
+A mirrored disco ball | c d 1 c | @1970 ^1978 k4 | A mirrored ball that sparkles.
+Roller skates | c n 1 c | @1970 ^1979 k4 | Four-wheeled skates for the rink.
+Shag carpet | c g 2 c | @1965 ^1975 k3 | Long, fluffy carpet.
+A leisure suit | c k 1 c | @1972 ^1975 k2 | A casual polyester suit.
+A CB radio | c n 1 s | @1975 ^1977 k2 | A radio truckers used to chat ("10-4, good buddy").
+An afro pick | c w 1 c | @1970 ^1975 k3 | A comb for big, beautiful hair.
+Pong | c n 1 c | @1972 ^1975 k3 | One of the first home video games.
+An 8-track player | c n 1 c | @1970 ^1975 ~1982 k2 | A tape player for music cartridges.
+Smiley face stickers | c w 1 c | @1970 k5 | The yellow smiley face, everywhere.
+A bean bag chair | c w 1 c | @1969 ^1975 k5 | A squishy chair filled with beads.
+The hustle | c d 2 c | @1975 ^1976 k2 | A popular disco line dance.
+Avocado-green appliances | c k 2 c | @1970 ^1975 k2 | The kitchen color of the decade.
+Pop Rocks | c s 1 c | @1975 k4 | Candy that crackles in your mouth.
+An Atari | c n 1 c | @1977 ^1982 k3 | An early game console from 1977.
+Roller disco | c d 2 c | @1977 ^1979 k3 | Skating to disco music.
+Bell-bottom jeans | c n 1 c | @1970 ^1975 k4 | Super-flared jeans.
+Feathered hair | c d 1 c | @1975 ^1978 k3 | The big, swooping hairstyle of the 70s.
+A disco king | c d 2 c | @1977 ^1978 k3 | A dancer in a white suit.
+A wood-paneled station wagon | c n 2 c | @1970 ^1975 k3 | The family car.
+Striped tube socks | c n 1 c | @1975 ^1978 k3 | Long socks pulled up to the knees.
+A Big Wheel | c n 1 k | @1969 ^1975 k3 | A plastic tricycle that roared down sidewalks.
+Groovy | c w 1 s | @1970 ^1975 k4 | 70s slang for cool.
+A macramé plant hanger | c n 1 c | @1972 ^1976 k2 | Knotted string holding a plant.
+The first Walkman | c n 1 c | @1979 ^1980 k3 | A portable cassette player, 1979.
+Waiting in the gas line | c y 2 c | @1973 ^1979 k2 | Long lines for fuel during the shortage.
+Space-movie action figures | c d 1 c | @1977 ^1978 k4 | Toys from the big 1977 space movie.
+A pinball machine | c n 2 c | @1950 ^1978 k4 | An arcade game with flippers.
+Tang | c y 1 c | @1959 ^1969 k3 | An orange drink powder linked to astronauts.
+Saturday morning cartoons | c n 2 c | @1966 ^1985 k4 | Kids glued to the TV.
+The Bicentennial | c d 3 c | @1976 ^1976 k2 | America's 200th birthday in 1976.
+A Stretch Armstrong | c s 1 c | @1976 ^1977 k2 | A rubbery action figure you could pull to four times his size.
+A Lite-Brite | c n 1 c | @1967 ^1978 k3 | A glowing toy where you push colored pegs into a light board.
+A Rubik's Cube | c d 1 c | @1980 ^1981 k5 | A twisty puzzle cube.
+Leg warmers | c n 1 c | @1980 ^1983 k3 | Knit tubes worn over the legs.
+A boombox | c d 2 c | @1980 ^1985 k4 | A big portable stereo.
+Big hair | c d 1 c | @1983 ^1987 k4 | Hair teased high with lots of hairspray.
+A Walkman | c n 1 c | @1979 ^1986 ~1995 k4 | A portable cassette player.
+Breakdancing | c d 2 s | @1982 ^1984 k4 | Dancing with spins on the floor.
+Parachute pants | c k 1 c | @1983 ^1984 k2 | Shiny, baggy pants.
+Pac-Man | c s 1 c | @1980 k5 | A yellow arcade hero who eats dots.
+A mixtape | c w 1 c | @1980 ^1988 k4 | A cassette of hand-picked songs.
+Shoulder pads | c d 1 c | @1983 ^1987 k3 | Pads that made shoulders huge.
+Neon everything | c d 2 c | @1983 ^1987 k4 | Bright, glowing colors.
+A valley girl | c s 2 s | @1982 ^1983 k3 | A teen saying "like, totally."
+A mullet | c s 1 c | @1983 ^1990 k5 | Business in front, party in the back.
+Cabbage Patch Kids | c d 1 c | @1983 ^1983 k3 | Dolls that caused shopping stampedes.
+A VCR | c n 1 c | @1977 ^1990 ~2005 k4 | A machine to record and play videotapes.
+Jelly shoes | c n 1 c | @1982 ^1985 k3 | Plastic shoes in candy colors.
+Aerobics in a leotard | c s 2 c | @1982 ^1985 k3 | Workout videos full of energy.
+A Trapper Keeper | c n 1 c | @1981 ^1988 k3 | A school binder with a snap.
+Scrunchies | c n 1 c | @1987 ^1992 k4 | Fabric hair ties.
+A Nintendo | c n 1 c | @1985 ^1988 k5 | The home game console that saved video games.
+A car phone | c y 1 c | @1984 ^1990 ~1998 k2 | A phone mounted in a car.
+A jacket with a strap at the collar | c n 1 c | @1985 ^1987 k2 | The must-have jacket of the decade.
+Moonwalking | c d 1 c | @1983 k5 | Gliding backward while looking like you walk forward.
+A talking teddy bear | c n 1 c | @1985 ^1986 k3 | A bear with a tape player inside.
+An arcade token | c n 1 c | @1980 ^1985 k3 | A coin for the arcade.
+Gross-out trading cards | c g 1 c | @1985 ^1986 k2 | Sticker cards meant to make you say "ew."
+Totally tubular | c s 1 s | @1982 ^1985 k3 | 80s slang for awesome.
+Swatch watches | c n 1 c | @1983 ^1986 k3 | Colorful plastic watches.
+Acid-wash jeans | c n 1 c | @1985 ^1989 k3 | Jeans with a speckled, faded look.
+The video rental store | c n 2 c | @1985 ^1995 ~2010 k4 | Where you rented movies for the weekend.
+A Speak & Spell | c n 1 c | @1978 ^1982 k2 | A talking toy that teaches spelling.
+A friendly movie alien | c w 1 c | @1982 ^1982 k4 | The little visitor from a 1982 movie who wanted to phone home.
+A hair crimper | c n 1 c | @1985 ^1988 k2 | A tool for zig-zag hair.
+A keytar | c d 1 c | @1980 ^1985 k3 | A keyboard worn like a guitar.
+Care Bears | c w 1 k | @1981 ^1985 k4 | Colorful bears with pictures on their tummies.
+A Commodore 64 | c n 1 c | @1982 ^1984 k2 | A popular early home computer.
+A Tamagotchi | c n 1 c | @1996 ^1997 k4 | A digital pet on a keychain.
+Dial-up internet | c n 2 c | @1990 ^1997 ~2005 k4 | Screechy internet over the phone line.
+Slap bracelets | c n 1 c | @1990 ^1990 k3 | Bracelets that snap around your wrist.
+A pager | c n 1 c | @1990 ^1995 ~2000 k3 | A device that beeps with a number to call.
+Butterfly clips | c n 1 c | @1997 ^1999 k3 | Tiny clips for your hair.
+Pogs | c n 1 c | @1993 ^1995 k3 | Cardboard discs for a slamming game.
+Beanie Babies | c n 1 c | @1993 ^1998 k4 | Small beanbag animals people collected.
+A Discman | c n 1 c | @1990 ^1998 ~2004 k3 | A portable CD player.
+Frosted tips | c s 1 c | @1998 ^2001 k4 | Spiky hair with bleached ends.
+A Furby | c d 1 c | @1998 ^1999 k4 | A chatty, owl-like robot toy.
+The Macarena | c s 2 c | @1996 ^1996 k5 | A 1996 dance everyone learned.
+Y2K panic | c d 4 c | @1999 ^1999 k3 | The fear computers would crash in the year 2000.
+A Game Boy | c n 1 c | @1989 ^1995 k5 | A handheld game system.
+Overalls with one strap down | c n 1 c | @1994 ^1996 k3 | A classic look.
+Rainbow animal folders | c n 1 c | @1993 ^1997 k3 | Bright school supplies with dolphins and leopards.
+A brick cell phone | c n 1 c | @1999 ^2001 k4 | A tough early cell phone you could never break.
+Gak | c g 1 c | @1992 ^1993 k2 | A squishy slime toy.
+Bucket hats | c n 1 c | @1990 ^1995 k4 | Floppy hats.
+A choker necklace | c n 1 c | @1993 ^1996 k3 | A stretchy necklace that looks like a tattoo.
+Hypercolor shirts | c a 1 c | @1991 ^1991 k2 | Shirts that change color with heat.
+Crystal Pepsi | c a 1 c | @1992 ^1993 k2 | A clear cola from 1992.
+A movie rental card | c n 1 c | @1990 ^1998 ~2010 k3 | A card for renting movies on Friday night.
+Zip-off cargo pants | c k 1 c | @1997 ^2001 k3 | Pants that turn into shorts.
+"You've got mail!" | c n 1 c | @1995 ^1998 k3 | The sound of a new email.
+Floppy disks | c n 1 c | @1985 ^1995 ~2005 k4 | Square disks for saving files.
+Tickle Me Elmo | c d 1 c | @1996 ^1996 k3 | A giggling toy that caused shopping frenzies.
+Lunchables | c w 1 c | @1988 k4 | Build-your-own snack packs.
+Rollerblading | c n 2 c | @1990 ^1995 k4 | Skating on inline wheels.
+A boy band poster | c n 1 c | @1997 ^2000 k4 | A poster of five singing heartthrobs.
+As if! | c y 1 s | @1995 ^1995 k3 | 90s slang for "no way."
+Bubble letters | c n 1 c | @1990 k4 | Puffy handwriting on every notebook.
+Magic Eye pictures | c a 1 c | @1993 ^1994 k3 | Hidden 3-D images.
+A Super Soaker | c d 1 c | @1990 ^1995 k4 | A huge water blaster.
+Inflatable furniture | c n 2 c | @1997 ^1999 k2 | Blow-up chairs.
+Super-wide jeans | c s 1 c | @1995 ^1999 k3 | Jeans so wide you could hide in them.
+A screensaver of flying toasters | c a 1 c | @1990 ^1995 k2 | The computer's sleepy show.
+A learner's permit | t d 1 o
+A driving instructor with a brake pedal | p d 2 c
+A minivan with a dent | t y 2 c
+A car that smells like fries | t g 2 c
+A gas light that's been on for days | t d 1 c
+A parking ticket | t y 1 o
+A tow truck | t d 2 c
+A speed bump at full speed | e d 1 c
+Merging onto the highway | x d 2 c
+A carpool with your little brother | e y 2 c
+Your first car | t w 2 c
+A car with one working speaker | t y 2 c
+A road trip with no snacks | e d 2 c
+A GPS that sends you into a lake | t a 2 c
+Getting gas for the first time | x k 2 c
+The first day of high school | e d 2 c
+A locker combination you forgot | t k 1 c
+The senior lounge | l y 2 c
+Freshman orientation | e k 2 o
+A promposal | e d 2 s
+A prom photo booth | t s 1 c
+A corsage that doesn't match | t k 1 y
+A slow dance with too much space | x k 1 c
+The after-prom party | e w 2 c
+Homecoming week | e d 2 c
+A homecoming float made of tissue paper | t w 2 c
+The yearbook quote | t d 1 c
+Senior superlatives | t s 1 c
+"Most likely to be famous" | t d 1 c
+Graduation caps flying | e w 2 c
+A graduation speech that won't end | e y 2 f
+The SAT | e d 2 o
+A college application essay | t d 2 f
+A rejection letter | t d 1 f
+An acceptance email | t w 1 f
+A college tour guide walking backward | p s 2 c
+A dorm room the size of a closet | l k 1 c
+A roommate assignment | e k 2 o
+A study group that just eats | e w 2 c
+An all-nighter | e d 2 c
+A five-page paper due at midnight | t d 2 c
+A group project in the group chat | e d 2 s
+A teacher who grades on a curve | p y 2 c
+A pop quiz in AP Chemistry | e d 2 c
+A lab partner who's on fire | p d 2 c
+Dissecting a frog | e g 2 c
+A school-issued laptop | t y 1 o
+A calculator that costs $100 | t y 1 c
+The school Wi-Fi password | t y 1 c
+A hall pass from 1987 | t n 1 c
+Detention with the principal | e y 2 o
+An unexcused absence | e y 2 o
+A sick day that was really a beach day | e k 2 c
+Skipping class to study | x a 2 c
+A teacher who says "see me after class" | p d 2 c
+Getting called on when you weren't listening | e k 2 c
+A substitute who lets you watch a movie | p w 2 c
+A fire drill in the rain | e y 2 c
+A spirit week dress-up day | e s 2 c
+A pep rally chant | x d 2 c
+The school's rival | p d 2 c
+The varsity jacket | t d 1 c
+A team bus ride | e w 2 c
+A coach's whistle at 6 a.m. | t d 1 c
+Two-a-day practices | e d 2 c
+The marching band | p d 3 c
+A drumline | p d 2 c
+Theater kids at lunch | p d 2 c
+A school musical | e d 3 c
+Stage fright | m d 2 c
+Debate club | p d 2 f
+A robotics competition | e d 2 c
+The chess club | p y 2 c
+Mock trial | e d 2 o
+A student council election | e d 2 o
+A campaign poster | t s 1 c
+A first job | x d 2 c
+A drive-thru headset | t y 1 c
+Working the fryer | x g 2 c
+A name tag with the wrong name | t k 1 c
+A grumpy customer | p d 2 c
+A manager who says "if you have time to lean, you have time to clean" | p y 2 c
+A paycheck with lots of taxes | t d 1 c
+Direct deposit | t w 1 o
+A W-2 form | t y 1 o
+Taxes | t d 2 o
+A budget spreadsheet | t y 1 c
+A credit score | t d 2 o
+A savings account with $12 | t y 1 c
+A bill you forgot about | t d 1 c
+Paying rent | x d 2 c
+Doing your own laundry | x y 2 c
+Grocery shopping on an empty stomach | x d 2 c
+A fridge with only ketchup | t y 1 c
+Instant noodles for a week | f y 1 c
+A meal-prep Sunday | e y 2 c
+Calling to make an appointment | x k 1 c
+Leaving a voicemail | x k 1 c
+Adulting | x y 2 s
+A to-do list that never ends | t y 2 c
+A calendar alert for something you already missed | t k 1 c
+An inbox with 3,000 emails | t d 2 c
+A "per my last email" | x y 1 o
+An out-of-office reply | t y 1 o
+A conference call with background noise | e k 2 c
+Being on mute | x k 1 c
+"You're on mute" | x k 1 c
+A video call with a cat walking across the keyboard | e s 1 c
+A team-building exercise | e k 2 o
+Casual Friday | e w 2 c
+The office printer | t d 2 c
+A jammed stapler | t y 1 c
+The break room fridge | l g 2 c
+Someone else's lunch | f k 1 c
+A birthday cake in the break room | e w 2 c
+A motivational poster | t y 1 c
+A desk plant that's fake | t y 1 c
+A swivel chair race | e s 2 c
+A boss who replies-all | p y 2 c
+A meeting that could have been an email | e y 2 c
+A coworker who microwaves fish | p g 2 c
+A LinkedIn post about breakfast | c y 1 c | @2015 k3
+A job interview on video | e k 2 c
+A firm handshake | x d 1 f
+A resume with "proficient in Microsoft Word" | t y 1 f
+A cover letter | t y 1 f
+An internship | e y 2 o
+A business card | t y 1 f
+A tie you don't know how to tie | t k 1 c
+A suit that's too big | t k 2 c
+Wedding season | e d 2 c
+A best man's speech | e d 2 f
+A first dance gone wrong | e k 2 c
+The bouquet toss | e d 2 c
+A wedding DJ who won't stop | p d 2 c
+A gender-reveal party | e d 2 c
+A baby shower game | e k 2 c
+A family reunion T-shirt | t k 1 c
+The weird uncle | p s 2 c
+A grandparent learning to video call | p w 2 c
+A grandma with a smartphone | p s 2 c
+Family drama at Thanksgiving | e d 2 c
+The kids' table at 17 | m k 2 c
+A secret family recipe | t d 1 c
+A fruit salad with mayonnaise | f g 1 c
+A casserole with crunchy stuff on top | f y 1 c
+Gelatin with things in it | f g 1 c
+A potluck with eight potato salads | e y 2 c
+Mom's "we have food at home" | x y 1 c
+A dad with a grill | p w 2 c
+A dad who says "I'm not lost" | p y 2 c
+A mom who knows everything | p d 2 c
+Parents on social media | p k 2 c
+A parent's Facebook post about you | c k 1 c | @2008 k5
+Your baby pictures at a party | t k 1 c
+A parent who chaperones the dance | p k 2 c
+A sibling who tells on you | p d 2 c
+A younger sibling with your clothes | p d 2 c
+Sharing a car with your sibling | e d 2 c
+The family dog judging you | a y 1 c
+A cat who knocks over your coffee | a d 1 c
+A dog who ate your homework, for real | a k 1 c
+A pet hamster's funeral | e d 1 c
+A goldfish that's lived for twelve years | a a 1 c
+An emotional support peacock | a a 2 c
+A raccoon in the garage | a d 2 c
+A squirrel in the attic | a d 2 c
+A bird that flew into the house | a d 2 c
+A spider in the shower | a d 1 c
+A wasp nest by the door | a d 2 c
+A possum playing dead | a d 1 c
+A neighbor's rooster | a y 2 c
+A dog park drama | e d 2 c
+A cat café | l w 2 c
+A doggy daycare report card | t s 1 c
+A pet influencer | c s 2 s | @2015 k4
+A cat with a bow tie | a y 1 y
+A dog in a Halloween costume | a s 1 c
+A pet that's smarter than you | a y 2 c
+A first date at the movies | e k 2 c
+A dinner where you split the bill | e k 2 c
+A love song on the radio | c d 2 c | @1955 k5
+A crush who doesn't know you exist | p k 2 c
+Getting asked out in front of everyone | e k 2 c
+A breakup text | c d 1 c | @2005 k4
+A heart emoji you didn't mean to send | c k 1 s | @2011 k4
+A "we need to talk" text | c d 1 c | @2005 k4
+Double texting | x k 1 s
+Leaving someone on read | x d 1 s
+A long text you'll never send | t d 1 c
+A friend who's always "five minutes away" | p y 2 c
+A friend who never pays you back | p y 2 c
+A friend who borrows your hoodie forever | p y 2 c
+A friendship bracelet you still wear | t n 1 c
+Your best friend's mom | p w 2 c
+The friend with the car | p w 2 c
+Plans that fell through | e y 2 c
+Canceling plans and being happy about it | x w 2 c
+A group trip that nobody plans | e d 2 c
+A camping trip with no tent | e d 2 c
+A road trip with a broken air conditioner | e d 2 c
+A beach trip in the rain | e y 2 c
+A theme park on the hottest day | e d 2 c
+A water park with a two-hour line | e y 2 c
+An airplane middle seat | l k 1 c
+A crying baby on a long flight | e d 2 c
+A lost suitcase | t d 1 c
+A connecting flight with ten minutes to spare | e d 2 c
+Airport security | l y 2 o
+A passport photo | t k 1 o
+A hotel pool at 10 p.m. | l s 2 c
+A hotel room key that doesn't work | t k 1 c
+A free continental breakfast | f w 2 c
+A souvenir T-shirt | t n 1 c
+A tourist trap | l y 2 c
+A selfie at a famous landmark | c s 1 c | @2010 k4
+Getting lost in a foreign city | e d 2 c
+Pointing at the menu | x k 1 c
+A cruise buffet | l w 3 c
+Seasickness | m g 2 c
+A ski lift that stops | e d 2 c
+A snowboard wipeout | x d 2 c
+A hike with a "moderate" rating | e d 2 c
+Running a 5K | e d 2 c
+A gym membership you don't use | t y 1 c
+A fitness tracker | t y 1 c
+Ten thousand steps | x y 2 c
+A protein shake | f y 1 c
+A yoga class with one pose you can do | e k 2 c
+A spin class instructor | p d 2 c
+A workout video from the 80s | c s 2 c | @1982 k3
+Leg day | e d 2 s
+A trampoline workout | e s 2 c
+Sore muscles after one push-up | m d 1 c
+A smoothie that's mostly spinach | f g 1 c
+A cheat day | e w 2 c
+Kale chips | f y 1 c
+Avocado toast | f y 1 y
+A latte with your name spelled wrong | f k 1 c
+Cold brew | f y 1 s
+A fancy coffee order | f y 1 y
+An overpriced juice | f y 1 y
+Pumpkin spice everything | c n 2 c | @2003 k5
+A food that's "an acquired taste" | f y 1 c
+Sushi for the first time | e d 1 c
+A ghost pepper | f d 1 c
+Hot sauce that should come with a warning | f d 1 c
+A buffet at 4 p.m. | l y 2 c
+A restaurant where the waiter sings | l k 2 c
+A fortune cookie with a strange fortune | f a 1 c
+A gas station hot dog | f g 1 c
+A drive-thru order gone wrong | e k 2 c
+Fries at the bottom of the bag | f w 1 c
+A milkshake brain freeze | m d 1 c
+A food delivery that took two hours | e d 2 c
+A pizza with pineapple and anchovies | f g 1 c
+A sandwich that's too tall to bite | f a 1 c
+A cereal with a toy at the bottom | f n 1 c
+A birthday cake that collapsed | f d 1 c
+A cake that says "Congrats" for no reason | f a 1 c
+A charcuterie board | f y 1 y
+A smoothie bowl | f y 1 y
+A cooking show disaster | e d 2 c
+A recipe video sped up | c y 1 c | @2015 k4
+A smoke alarm going off while cooking | e d 1 c
+A podcast about nothing | c y 2 c | @2005 k4
+A true-crime documentary | c d 2 c | @2015 k4
+A streaming service you forgot you pay for | t y 1 c
+A show with fifteen seasons | c y 2 c | @2005 k4
+A movie trailer that shows the whole movie | c y 1 c | @1990 k4
+A spoiler | x d 1 c
+A cliffhanger season finale | e d 2 c
+A superhero movie with seven endings | c y 3 c | @2008 k4
+A movie theater with reclining seats | l w 2 y
+A remake of a remake | c y 2 c | @2000 k4
+A sequel with a number in the title | c y 2 c | @1980 k4
+A reality show elimination | e d 2 c
+A cooking competition with a 30-second timer | e d 2 c
+A game show buzzer | t d 1 c
+A trivia night | e d 2 c
+A karaoke duet nobody asked for | e k 2 c
+An escape room with your family | e d 2 c
+A murder mystery dinner party | e d 2 c
+A board game that ended a friendship | t d 2 c
+A video game with a 500-page lore wiki | c y 3 s | @2005 k3
+A controller with sticky buttons | t g 1 c
+Speedrunning | x d 2 s
+A game update that takes four hours | e y 2 c
+A save file that got deleted | e d 1 c
+A boss battle | e d 2 s
+A tutorial level | e y 1 s
+An achievement for doing nothing | t y 1 s
+Player two | p w 2 s
+A lag spike at the worst time | e d 1 s
+A headset with a broken mic | t y 1 c
+Losing to a nine-year-old online | e k 2 c
+A dance emote | x s 1 s
+A camera roll full of screenshots | t y 2 c
+A phone with no storage left | t d 1 c
+A software update at the worst time | e y 1 c
+An app that wants your location | t y 1 o
+"I agree to the terms" | x y 1 o
+A pop-up ad | t y 1 c
+A captcha with blurry traffic lights | t y 1 c
+A password that needs a special character | t y 1 o
+Two-factor authentication | t y 1 o
+A tech support call | e y 2 c
+Turning it off and on again | x y 1 c
+A printer that says it's out of ink | t d 1 c
+A computer that restarts during a test | e d 1 c
+A cloud storage full warning | t y 1 c
+An algorithm that knows you too well | t a 2 c
+A targeted ad for something you just said | t a 1 c
+A viral post you didn't mean to make | c d 2 s | @2010 k4
+Going viral for the wrong reason | e d 3 s
+A hashtag nobody uses | c y 1 s | @2009 k4
+A filter that gives you dog ears | c s 1 c | @2015 k4
+A comments section | l d 2 c
+A troll account | c y 1 s | @2010 k4
+An influencer apology video | c d 2 s | @2017 k4
+A sponsored post | c y 1 c | @2015 k4
+A face-swap gone wrong | c a 1 c | @2016 k4
+A 15-second dance trend | c s 1 s | @2019 k5
+An unboxing of a single sock | c a 1 c | @2015 k3
+A life-hack video that doesn't work | c y 1 c | @2015 k4
+A "day in my life" video | c y 2 s | @2016 k4
+Your screen time on Sunday | t k 1 c
+Doomscrolling | x d 2 s
+Touch grass | x y 2 s
+Rizz | m s 1 s
+Living rent-free in someone's head | m s 1 s
+A side quest | e s 2 s
+An NPC | p y 2 s
+A plot armor | m d 2 s
+The Sunday scaries | m d 2 s
+Imposter syndrome | m k 2 c
+A midlife crisis | m d 2 c
+A quarter-life crisis | m d 2 c
+A bucket list | t w 2 c
+A gap year | e w 3 c
+A five-year plan | t y 2 f
+A vision board | t w 1 c
+A self-help book | t y 1 c
+A motivational speaker | p d 2 c
+A life coach | p y 2 c
+A personality quiz | t s 1 c
+A star sign excuse | m a 2 c
+A fortune teller | p d 2 c
+A lucky charm | t w 1 c
+Knocking on wood | x y 1 c
+A black cat crossing your path | a d 1 c
+Friday the 13th | e d 2 c
+A haunted hotel room | l d 2 c
+A ghost-hunting show | c d 2 c | @2004 k4
+A Ouija board party game | t d 1 c
+A creepy basement | l d 2 c
+A doll that blinks | t d 1 c
+A clown in the woods | p d 2 c
+A horror movie where they split up | c d 2 c | @1978 k4
+Hearing your name when nobody's there | e d 1 c
+A flickering light | t d 1 c
+Footsteps in the attic | e d 2 c
+An alien abduction story | e a 4 c
+A crop circle | n a 3 c
+A UFO sighting over the mall | e d 3 c
+A conspiracy theory about birds | e a 2 c
+Area 51 | l d 3 c
+The Moon's dark side | n d 4 c
+A robot uprising | e d 4 c
+An AI that wants a vacation | t a 2 c
+A time traveler at the mall | p a 2 c
+A parallel universe | l a 4 c
+A clone of yourself | p a 2 c
+A self-driving car with road rage | t a 2 c
+A smart home that locked you out | t d 2 c
+A robot butler | t y 2 y
+A jetpack commute | x a 2 c
+A hoverboard that actually hovers | t a 2 c
+Teleporting to school | x a 2 c
+A pill that replaces sleep | t a 1 c
+A brain chip | t d 1 c
+Living on Mars | e d 4 c
+A space tourist | p y 4 c
+The heat death of the universe | n d 4 f
+A black hole selfie | c a 4 c | @2019 k3
+Existential dread | m d 4 c
+The meaning of life | m d 4 f
+Being a tiny speck in the universe | m d 4 c
+Thinking about the Roman Empire | m a 3 s
+A tax audit | e d 2 o
+Jury duty | e y 2 o
+A court summons | t d 1 o
+The fine print | t y 1 o
+A warranty that just expired | t y 1 o
+A customer service hold song | e y 2 c
+"Your call is important to us" | x y 1 o
+Being put on hold for an hour | e y 2 c
+A return without a receipt | e d 2 c
+A self-checkout argument | e k 2 c
+"Unexpected item in bagging area" | x y 1 o
+A store that's out of the one thing you need | e y 2 c
+A Black Friday stampede | e d 3 c
+A coupon that expired yesterday | t y 1 c
+A gift card balance of 37 cents | t y 1 c
+A shopping cart with a wobbly wheel | t k 1 c
+A mall that's mostly empty | l n 3 c
+A garage sale treasure | t n 1 c
+A thrift store find | t w 1 c
+A vintage band T-shirt | t n 1 c
+A pair of jeans from middle school | t n 1 c
+A sweater from Grandma | t w 1 c
+Cargo shorts | t k 1 c
+White sneakers in the rain | t d 1 c
+A hoodie in July | t y 1 c
+Sweatpants as formal wear | t a 1 c
+A bow tie | t y 1 y
+A tuxedo T-shirt | t s 1 c
+A Halloween costume that's just cat ears | t y 1 c
+A group costume with one person missing | e k 2 c
+A haunted hayride | e d 2 c
+A corn maze at night | l d 2 c
+A pumpkin spice candle | t n 1 c
+Holiday lights that won't untangle | t d 2 c
+A gift exchange with a $5 limit | e k 2 c
+A gingerbread house that collapsed | t d 2 c
+An ugly holiday sweater contest | e s 2 c
+New Year's resolutions | t y 2 c
+A countdown that started too early | e k 2 c
+Valentine's Day candy on sale | f w 1 c
+April Fools' Day | e s 2 c
+Spring break | e w 3 c
+Summer reading | e y 2 c
+The last week of summer | e n 2 c
+Back-to-school shopping | e y 2 c
+A snow day for seniors | e w 2 c

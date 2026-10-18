@@ -1,15 +1,15 @@
 // Chef's Kiss on a phone. Cards arrive face down: touch one to turn it over, then slide it
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=88';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=88';
-import { movable } from './gesture.js?v=88';
-import { TEAMS } from './chefskiss.js?v=88';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=88';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=89';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=89';
+import { movable } from './gesture.js?v=89';
+import { TEAMS } from './chefskiss-config.js?v=1';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=89';
 
 let ctx = null, v = null;
 let flipped = new Set();
-let selected = null, swapMode = false, chosen = -1;
+let selected = null, chosen = -1;
 let handKey = '', panelKey = '', boardKey = '', recipeKey = '';
 let endsAt = 0, tickT = null, gameId = null;
 let sheetOpen = false, editing = -1, sheetPlayable = false;
@@ -37,7 +37,7 @@ function countKiss(key) {
 
 export function reset() {
   handKey = panelKey = boardKey = recipeKey = '';
-  selected = null; swapMode = false; chosen = -1;
+  selected = null; chosen = -1;
   laughKey = ''; laughIds = []; ideas = null; ideasFor = ''; laughFrom = ''; clearTimeout(laughTimer);
   clearInterval(tickT);
   document.getElementById('ckPhone')?.remove();
@@ -126,15 +126,15 @@ function flip(id) {
 function renderHandRow() {
   const row = $('#ckPhone .ckp-hand');
   const cards = handCards() || [];
-  const funny = !isRecipeTurn() && choosing() && !swapMode ? laughIds : [];
-  const key = cards.map(c => c.id + (flipped.has(c.id) ? '+' : '-')).join(',') + `|${selected}|${swapMode}|${v.phase}|${v.isChef}|${v.mine.length}|${funny.join(',')}`;
+  const funny = !isRecipeTurn() && choosing() ? laughIds : [];
+  const key = cards.map(c => c.id + (flipped.has(c.id) ? '+' : '-')).join(',') + `|${selected}|${v.phase}|${v.isChef}|${v.mine.length}|${funny.join(',')}`;
   if (key === handKey) return;
   handKey = key;
   row.innerHTML = '';
-  row.classList.toggle('resting', !(isRecipeTurn() || (v.phase === 'play' && v.playing && v.mine.length < v.need)) && !swapMode);
+  row.classList.toggle('resting', !(isRecipeTurn() || (v.phase === 'play' && v.playing && v.mine.length < v.need)));
   for (const c of cards) {
     const wrap = document.createElement('div');
-    wrap.className = 'ckp-slot' + (selected === c.id ? ' sel' : '') + (swapMode && c.kind === 'i' ? ' swapping' : '') + (funny.includes(c.id) ? ' laugh' : '');
+    wrap.className = 'ckp-slot' + (selected === c.id ? ' sel' : '') + (funny.includes(c.id) ? ' laugh' : '');
     wrap.innerHTML = (flipped.has(c.id) ? face(c) : back(c.kind)) + (funny.includes(c.id) ? '<em class="ckp-laugh">😂 Funny pick</em>' : '');
     row.appendChild(wrap);
     gestures(wrap, c);
@@ -170,13 +170,6 @@ function gestures(wrap, c) {
       return;
     }
     if (e.type !== 'pointerup' || Math.abs(e.clientX - x0) + Math.abs(e.clientY - y0) > 10) return;
-    if (swapMode && c.kind === 'i') {
-      swapMode = false;
-      send({ type: 'swap', id: c.id });
-      flipped.delete(c.id);
-      handKey = panelKey = '';
-      return;
-    }
     if (!flipped.has(c.id)) return flip(c.id);
     selected = selected === c.id ? null : c.id;
     handKey = panelKey = '';
@@ -233,7 +226,7 @@ function renderBoard() {
 }
 
 function renderPanel() {
-  const key = [v.phase, v.round, v.isChef, v.playing, v.mine.length, selected, swapMode, v.canSwap, chosen, sheetOpen].join('|');
+  const key = [v.phase, v.round, v.isChef, v.playing, v.mine.length, selected, chosen, sheetOpen].join('|');
   if (key === panelKey) return;
   panelKey = key;
   const p = $('#panel');
@@ -253,11 +246,7 @@ function renderPanel() {
   if (sel && canPlay(sel)) btn(sel.kind === 'r' ? 'Use this Recipe Card' : 'Play this card', 'go', () => playCard(sel, document.querySelector('#ckPhone .ckp-slot.sel')));
   btn('✎ My cards', '', openSheet);
   if (v.laugh && choosing() && v.recipe) btn('✨ Make me a card', '', () => { openSheet(); askIdeas(); });
-  if (!isRecipeTurn() && v.hand.length) {
-    btn(swapMode ? 'Cancel swap' : v.canSwap ? '⟳ Swap a card' : 'Swap used this round', '', () => { swapMode = !swapMode; handKey = panelKey = ''; renderHandRow(); renderPanel(); }).disabled = !v.canSwap && !swapMode;
-  }
   if (row.childElementCount) p.appendChild(row);
-  if (swapMode) p.insertAdjacentHTML('beforeend', '<p class="ckp-hint">Tap the card you want to swap out. You get one swap each round.</p>');
 }
 
 // ---------------------------------------------------------------- my own Ingredient Cards
@@ -374,7 +363,6 @@ export function render(c) {
   }
   if (v.phase !== 'judge') chosen = -1;
   if (selected && !(handCards() || []).some(x => x.id === selected)) selected = null;
-  if (swapMode && (!v.canSwap || isRecipeTurn())) swapMode = false;
   endsAt = v.left !== null ? Date.now() + v.left : 0;
   clearInterval(tickT);
   tickT = setInterval(showClock, 250);
@@ -399,7 +387,7 @@ export function render(c) {
     setStatus(won ? '🏆 You win!' : v.winners?.length ? `${v.winners.map(i => c.nameOf(i)).join(' & ')} win${v.winners.length > 1 ? '' : 's'}!` : 'Game over', won ? 'Bonus Chef\'s Kiss added to your lifetime count' : 'The real win is the laughs. Look at the table.');
   } else if (v.phase === 'recipe') {
     if (v.isChef) setStatus("You're the Chef!", 'Touch your Recipe Cards to turn them over, then slide one up.');
-    else setStatus(`${chefName} is the Chef`, 'They are picking a Recipe Card. Turn over your Ingredient Cards while you wait.');
+    else setStatus(`${chefName} is the Chef`, 'They are picking a Recipe Card. Your new hand of 7 arrives as soon as they do.');
   } else if (v.phase === 'play') {
     if (v.isChef) setStatus('Apprentices are choosing…', `${v.played} of ${v.expected} cards in`);
     else if (!v.playing) setStatus('Welcome to the kitchen!', "You'll be dealt in next round.");

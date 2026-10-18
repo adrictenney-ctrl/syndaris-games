@@ -1,0 +1,680 @@
+# Mild Ingredient Cards (elementary). text | subject tone scale register | meta | hint
+A dancing banana | f s 1 k | | A banana that loves to dance.
+A puppy | a w 1 k | | A baby dog.
+A dinosaur | a d 3 k | | A giant reptile from long, long ago.
+My little brother | p s 2 k | | A younger boy in the family.
+A unicorn | a w 2 k | | A magic horse with a horn.
+A monkey | a s 2 k | | A playful animal that climbs trees.
+A pirate | p d 2 k | | A sailor who looks for treasure.
+A robot | t y 2 k | | A machine that can move and talk.
+A dragon | a d 3 k | | A big flying creature that breathes fire.
+A kitten | a w 1 k | | A baby cat.
+A clown | p s 2 k | | A funny performer with a red nose.
+An octopus | a a 2 k | | A sea animal with eight arms.
+A superhero | p d 3 k | | A hero with special powers.
+A friendly ghost | p w 2 k | | A floating spirit who just wants to play.
+A frog | a s 1 k | | A green animal that hops and croaks.
+A shark | a d 3 k | | A big fish with lots of teeth.
+A wizard | p d 2 k | | A person who does magic.
+A penguin | a w 2 k | | A bird that swims but can't fly.
+A skunk | a g 1 k | | An animal that can make a big stink.
+A giraffe | a s 3 k | | An animal with a very long neck.
+My teacher | p y 2 k | | The grown-up who teaches your class.
+A princess | p y 2 k | | The daughter of a king and queen.
+A bear | a d 3 k | | A big furry animal that loves honey.
+An alien | p a 4 k | | A visitor from another planet.
+A snail | a y 1 k | | A slow animal that carries its shell.
+A baby | p w 1 k | | A very young child.
+A pig in a puddle | a g 2 k | | A pig having fun in the mud.
+A bumblebee | a w 1 k | | A fuzzy bee that buzzes.
+A sleepy owl | a w 1 k | | A night bird who needs a nap.
+Grandpa | p w 2 k | | Your mom's or dad's father.
+A slice of pizza | f w 1 k | | A piece of cheesy pizza.
+A rainbow | n w 3 k | | Colors in the sky after the rain.
+Slime | t g 1 k | | Gooey, stretchy goo.
+A rocket ship | t d 3 k | | A ship that flies to space.
+Bubble gum | f s 1 k | | Chewy gum that blows bubbles.
+A big pile of leaves | n w 2 k | | Leaves raked up to jump in.
+Mud | n g 2 k | | Wet, squishy dirt.
+Ice cream | f w 1 k | | A frozen sweet treat.
+A smelly sock | t g 1 k | | A sock that really needs washing.
+A bubble bath | t w 2 k | | A bath full of bubbles.
+A trampoline | t s 2 k | | A bouncy mat to jump on.
+A cupcake | f w 1 k | | A small cake just for one.
+A teddy bear | t w 1 k | | A soft, cuddly toy bear.
+Broccoli | f y 1 k | | A green vegetable that looks like a little tree.
+A cardboard box | t y 2 c | | A plain brown box, the best toy for any cat.
+A sandcastle | t w 2 k | | A castle built of sand at the beach.
+A balloon | t s 1 k | | A rubber ball filled with air.
+A snowball | n s 1 k | | A ball made of snow.
+A crown | t y 1 y | | A fancy hat for a king or queen.
+A magic wand | t d 1 k | | A stick for doing magic.
+A cookie | f w 1 k | | A sweet baked treat.
+A worm | a g 1 k | | A wiggly creature in the dirt.
+Spaghetti | f s 2 k | | Long noodles, often with sauce.
+A big puddle | n g 2 k | | A pool of rainwater on the ground.
+A whoopee cushion | t s 1 k | | A cushion that makes a funny noise.
+Pajamas | t w 2 k | | Clothes you sleep in.
+A volcano | n d 3 k | | A mountain that can erupt.
+A wiggly tooth | t k 1 k | | A tooth that's about to fall out.
+A hot dog | f s 1 k | | A sausage in a bun.
+Sprinkles | f w 1 k | | Tiny colorful candy bits.
+A pillow | t w 1 k | | A soft thing to rest your head on.
+Glitter | t s 1 k | | Tiny sparkles that never, ever go away.
+A treasure chest | t d 2 k | | A box full of gold.
+A tiny umbrella | t a 1 k | | An umbrella that's a little too small.
+A banana peel | f s 1 k | | The slippery skin of a banana.
+A slide | t w 2 k | | Playground fun that goes down.
+Pancakes | f w 1 k | | Flat breakfast cakes.
+A marshmallow | f w 1 k | | A soft, puffy sweet.
+A castle | l d 3 y | | A big stone home for kings and queens.
+A big burp | x g 1 k | | A loud noise from your tummy.
+A tickle | x s 1 k | | A touch that makes you laugh.
+A sneeze | x s 1 k | | Achoo!
+Jumping in puddles | x w 2 k | | Splashing in rainwater.
+A pillow fight | e s 2 k | | A playful fight with pillows.
+A dance party | e w 2 k | | A party where everyone dances.
+Snoring | x s 1 k | | A noisy sound while sleeping.
+Hiccups | x s 1 k | | Hic! A funny little sound.
+A water balloon fight | e s 2 k | | A fight with balloons full of water.
+Blowing bubbles | x w 1 k | | Making bubbles float in the air.
+A cartwheel | x s 1 k | | Flipping sideways on your hands.
+Bath time | e w 2 k | | Time to get clean in the tub.
+Bedtime | e w 2 k | | Time to go to sleep.
+Recess | e w 2 k | | Playtime at school.
+A sleepover | e w 2 k | | Spending the night at a friend's house.
+Building a fort | x w 2 k | | Making a hideout with blankets.
+A snow day | e w 2 k | | A day off school because of snow.
+Making a funny face | x s 1 k | | Scrunching up your face to be silly.
+A loud toot | x g 1 k | | An embarrassing noise from your bottom.
+Dancing like a chicken | x s 1 k | | Flapping your arms and clucking.
+A goat in pajamas | a a 2 k | | A farm goat dressed for bed.
+A raccoon with a plan | a d 1 c | | A clever masked bandit up to something.
+A very confused pirate | p a 2 c | | A sea robber who has lost the map and the plot.
+Grandpa on a scooter | p s 2 c | | An older gentleman zooming around town.
+The world's tiniest horse | a a 1 c | | A horse small enough to fit in a backpack.
+A sloth in a hurry | a a 1 c | | The slowest animal trying its very best.
+A grumpy cat | a y 1 c | | A cat that looks annoyed at everything.
+A pigeon with an attitude | a s 1 s | | A city bird that is not afraid of you.
+A very polite robot | t a 2 f | | A machine with perfect manners.
+Bigfoot | a d 3 c | | A large, hairy creature said to live in the woods.
+The Loch Ness Monster | a d 3 c | | A legendary creature said to live in a Scottish lake.
+A dog who thinks he's a cat | a a 1 c | | A pup with a very confused identity.
+A toddler with a marker | p d 1 c | | A small child holding big danger.
+A llama with a grudge | a d 2 c | | An animal known for spitting when annoyed.
+A Viking on vacation | p a 2 c | | A Norse warrior taking some time off.
+A wizard who forgot his spells | p k 2 c | | A magic user having an off day.
+A dinosaur with tiny arms | a k 3 c | | A T. rex who can't reach anything.
+A penguin in a tuxedo | a y 2 y | | A bird that always looks dressed up.
+A squirrel who found coffee | a d 1 c | | A jittery little rodent with a lot of energy.
+A cowboy on a hoverboard | p a 2 c | | An old-west rider on a modern toy.
+A choir of cats | a a 2 c | | Many cats singing, sort of.
+A suspicious-looking snowman | p d 2 c | | A snowman who is up to no good.
+A hamster on a wheel | a y 1 c | | A small pet running in circles.
+The ice cream truck driver | p w 2 c | | The person behind the music-playing truck.
+A robot vacuum | t y 1 c | | A little round machine that cleans the floor.
+A grandma on a skateboard | p s 2 c | | An older lady doing tricks.
+The tooth fairy on strike | p d 1 o | | A fairy who refuses to pick up teeth.
+A rubber chicken | t s 1 c | | A floppy fake chicken used for laughs.
+The last cookie | f d 1 c | | The final cookie that everyone wants.
+A haunted toaster | t d 1 c | | A kitchen appliance with a spooky spirit.
+Bubble wrap | t w 1 c | | Plastic with air bubbles that's fun to pop.
+An inflatable dinosaur costume | t a 3 c | | A blow-up suit that turns you into a T. rex.
+Light-up sneakers | t s 1 c | | Shoes with lights that flash as you walk.
+A giant rubber duck | t a 3 c | | A bath toy the size of a car.
+A treasure map | t d 2 c | | A map showing where riches are hidden.
+Socks that don't match | t k 1 c | | Two socks from different pairs.
+A spork | t y 1 c | | A spoon and a fork in one.
+A paper airplane | t w 1 c | | A plane folded out of paper.
+A stuffed animal collection | t w 2 c | | A big pile of cuddly toys.
+A bouncy castle | t s 3 c | | An inflatable castle for jumping.
+Cotton candy | f w 1 c | | Spun sugar that melts in your mouth.
+A garden gnome | t y 1 c | | A little bearded statue for the yard.
+A very large pickle | f a 3 c | | A pickle much bigger than normal.
+Brain freeze | m d 1 c | | The pain from eating something cold too fast.
+A tickle fight | e s 2 c | | A playful battle of tickling.
+Building a pillow fort | x w 2 c | | A fort built from pillows and blankets.
+A food fight | e g 2 c | | Throwing food at each other for fun.
+A conga line | e s 2 c | | A party dance in one long line.
+A water balloon ambush | e d 2 c | | A surprise attack with water balloons.
+Hiccups that won't stop | x k 1 c | | Hiccups that last way too long.
+Wearing pajamas all day | x w 2 c | | Never changing out of sleep clothes.
+A cannonball into the pool | x d 2 c | | A big, splashing jump.
+Doing the robot | x s 2 c | | A dance where you move like a stiff machine.
+Nap time | e w 2 c | | A short sleep in the afternoon.
+Summer camp | l w 2 c | | Where kids swim, do crafts, and sleep in cabins.
+A haunted house | l d 2 c | | A house said to have ghosts.
+A water park | l w 3 c | | A park full of slides and pools.
+Pure joy | m w 2 c | | A feeling of total happiness.
+Infinity | m d 4 c | | Something that never ends.
+Grandma's attic | l n 2 c | | An attic full of old treasures.
+A sneaky midnight snack | f s 1 c | | Eating in the kitchen late at night.
+Tripping over nothing | x k 1 c | | Stumbling on a perfectly flat floor.
+Stepping on a toy brick | x d 1 c | | A tiny plastic brick that hurts to step on.
+A dance-off | e d 2 c | | A contest to see who dances best.
+A song stuck in your head | m s 1 c | | A tune that won't go away.
+Stubbing your toe | x d 1 c | | Hitting your toe on the furniture.
+A very polite volcano | n a 3 f
+Grandma's fuzzy slippers | t w 1 k
+A sneezing giraffe | a s 3 k
+A hippo in a tutu | a a 3 k
+A chicken wearing sunglasses | a s 1 s
+A shy octopus | a w 2 k
+A kangaroo with an empty pocket | a k 2 k
+A bat who's afraid of the dark | a k 1 k
+A zebra with polka dots | a a 2 k
+A walrus with a fancy mustache | a y 3 y
+A duck on roller skates | a s 1 k
+A very proud peacock | a d 2 y
+A cow that says "oink" | a a 2 k
+A bossy goose | a d 2 k
+A lobster who loves hugs | a w 1 k
+A ladybug with no spots | a k 1 k
+A turtle in a race car | a a 1 k
+A crab who walks forward | a a 1 k
+A bear who can't find his honey | a d 3 k
+An elephant afraid of mice | a k 3 k
+A camel with three humps | a a 3 k
+A dog in a raincoat | a w 1 k
+A cat who loves baths | a a 1 k
+A fish that can't swim | a a 1 k
+A hedgehog wearing mittens | a w 1 k
+A worm with a top hat | a y 1 y
+A moose on ice skates | a s 3 k
+A rooster who sleeps in | a k 2 k
+A beaver building a skyscraper | a a 3 o
+A monkey with a banana phone | a s 1 k
+A gorilla doing ballet | a a 3 y
+A snake with a scarf | a s 1 k
+A spider who knits sweaters | a w 1 k
+A flamingo standing on two legs | a k 2 k
+A polar bear on vacation | a s 3 k
+A dragon with the hiccups | a s 3 k
+A unicorn with a cold | a s 2 k
+A vegetarian shark | a a 3 k
+A mermaid who can't swim | p k 2 k
+A troll under a bouncy bridge | p s 2 k
+A giant who's afraid of ants | p k 3 k
+A witch on a vacuum cleaner | p a 2 k
+A knight in pajamas | p s 2 k
+A tiny dragon | a w 1 k
+A bunny with big feet | a s 1 k
+A puppy who ate a sock | a g 1 k
+A hamster with a jetpack | a a 1 k
+A squirrel with a secret stash | a d 1 k
+A sheep in a sweater | a a 2 k
+A bee who forgot how to buzz | a k 1 k
+A koala who won't wake up | a w 1 k
+A parrot who only says "no" | a s 1 k
+A cat in a tiny hat | a y 1 y
+A goldfish with big dreams | a w 1 k
+A snail with a racing stripe | a a 1 k
+An owl who stays up all day | a k 1 k
+A pig who loves bubble baths | a s 2 k
+A chicken who wants to fly | a w 1 k
+A grumpy dinosaur | a d 3 k
+A tooth fairy with a backpack | p w 1 k
+A sleepy dragon | a w 3 k
+A ghost who's afraid of people | p k 2 k
+A pirate who gets seasick | p k 2 k
+A superhero who's afraid of heights | p k 2 k
+A robot learning to dance | t w 2 k
+An alien at the grocery store | p a 2 c
+A wizard's runaway hat | t s 1 k
+A princess who loves mud | p s 2 k
+A dragon who loves cupcakes | a w 3 k
+A lion with a bad hair day | a s 3 k
+A bear in a bathtub | a s 3 k
+A cat who thinks he's a lion | a d 1 k
+Santa on summer break | p a 2 c
+The Easter Bunny's cousin | p s 1 k
+A snowman at the beach | p d 2 k
+A gingerbread man running late | p d 1 k
+A scarecrow who loves crows | p w 2 k
+A sock puppet with opinions | t d 1 k
+A dinosaur in a museum gift shop | a a 3 c
+A school bus full of frogs | e s 2 k
+My dog's best friend | a w 2 k
+A bunny on a pogo stick | a s 1 k
+A singing tomato | f s 1 k
+A pancake with a face | f w 1 k
+A carrot in sunglasses | f s 1 s
+A dancing broccoli | f s 1 k
+A meatball rolling away | f s 1 k
+A grumpy potato | f d 1 k
+A giant marshmallow | f a 3 k
+A jelly bean the size of a car | f a 3 k
+Peanut butter on everything | f s 2 k
+A mountain of mashed potatoes | f a 3 k
+A pizza with every topping | f a 2 k
+A soggy cereal | f g 1 k
+A cold french fry | f y 1 k
+A slice of birthday cake | f w 1 k
+Chocolate milk | f w 1 k
+A juice box | f w 1 k
+A pickle popsicle | f a 1 k
+Green eggs | f a 1 k
+A smoothie with a surprise | f g 1 k
+Spaghetti on your head | f s 1 k
+A sandwich with no bread | f a 1 k
+A cookie the size of a pizza | f a 3 k
+Grandma's soup | f w 2 k
+A bowl of jelly | f s 1 k
+A taco with sprinkles | f a 1 k
+Ice cream for breakfast | f s 1 k
+A stinky cheese | f g 1 k
+A lemon that's too sour | f d 1 k
+A rainbow of jelly beans | f w 1 k
+Popcorn everywhere | f s 2 k
+A pie in the face | x s 1 k
+A gumball machine | t w 1 k
+A melting snowman | n d 2 k
+A lollipop as big as your head | f a 2 k
+A slippery noodle | f s 1 k
+A muffin top | f s 1 k
+Burnt toast | f y 1 k
+A carrot nose | f s 1 k
+A hot chocolate mustache | f w 1 k
+A lunchbox that smells funny | t g 1 k
+Leftover birthday cake | f w 1 k
+A peanut butter and pickle sandwich | f a 1 k
+A watermelon seed | f s 1 k
+A cupcake with too much frosting | f s 1 k
+A box of crayons | t w 1 k
+A rubber band | t y 1 k
+A kazoo | t s 1 k
+A glow-in-the-dark star | t w 1 k
+A sticker on your forehead | t s 1 k
+A tiny drum set | t s 1 k
+A jump rope | t w 1 k
+A magnifying glass | t y 1 k
+A bucket and shovel | t w 1 k
+A sparkly unicorn backpack | t s 1 k
+A bike with a bell | t w 2 k
+A wagon full of puppies | t w 2 k
+A toy that won't stop singing | t d 1 k
+A flashlight under the covers | t w 1 k
+A night-light | t w 1 k
+A loose shoelace | t k 1 k
+A pirate eye patch | t s 1 k
+A superhero cape | t d 1 k
+A tutu | t s 1 k
+A firefighter's hat | t w 1 k
+A tiara | t y 1 y
+A fake mustache | t s 1 k
+Clown shoes | t s 2 k
+Googly eyes | t s 1 k
+A whistle | t d 1 k
+A snow globe | t w 1 k
+A treasure in the sandbox | t w 1 k
+A lost mitten | t k 1 k
+A swing set | t w 2 k
+A seesaw | t w 2 k
+A merry-go-round | t w 2 k
+A sprinkler | t w 2 k
+A kite stuck in a tree | t k 2 k
+A wobbly tower of blocks | t d 2 k
+A jack-in-the-box | t d 1 k
+A rubber ducky | t w 1 k
+A bath full of toys | t w 2 k
+A finger painting | t w 1 k
+A macaroni necklace | t w 1 k
+A homemade card | t w 1 k
+A pet rock with a name | t y 1 k
+A hat made of newspaper | t s 1 k
+A fort made of couch cushions | t w 2 k
+A cape made from a towel | t s 1 k
+A cardboard rocket | t w 2 k
+A pair of fuzzy earmuffs | t w 1 k
+A raincoat that's too big | t s 1 k
+Rain boots | t w 1 k
+A sleeping bag | t w 1 k
+A toothbrush | t y 1 k
+A bar of soap | t y 1 k
+A hairbrush full of knots | t g 1 k
+A diaper | t g 1 k
+A baby rattle | t w 1 k
+A pacifier | t w 1 k
+A piggy bank | t w 1 k
+A shiny penny | t w 1 k
+A lucky rock | t w 1 k
+A four-leaf clover | n w 1 k
+A dandelion puff | n w 1 k
+A spiderweb | n d 1 k
+A big oak tree | n w 3 k
+A puddle of mud | n g 2 k
+A thundercloud | n d 3 k
+A tornado of leaves | n d 2 k
+A snowflake | n w 1 k
+An icicle | n y 1 k
+A sunflower taller than you | n w 3 k
+A pinecone | n y 1 k
+An acorn | n w 1 k
+A seashell | n w 1 k
+A starfish | a w 1 k
+The moon | n w 4 k
+The sun | n d 4 k
+A shooting star | n w 4 k
+A comet | n d 4 k
+A black hole | n d 4 k
+Saturn's rings | n w 4 k
+A full moon | n d 4 k
+A sunset | n w 3 k
+A waterfall | n d 3 k
+A cave | l d 3 k
+A jungle | l d 3 k
+A desert island | l d 3 k
+The North Pole | l w 3 k
+The bottom of the ocean | l d 3 k
+Outer space | l d 4 k
+A candy store | l w 2 k
+A toy store | l w 2 k
+The zoo | l w 3 k
+A farm | l w 3 k
+The playground | l w 2 k
+A library | l y 2 k
+The school nurse's office | l y 2 k
+The lost and found | l n 2 k
+A tree house | l w 2 k
+A bouncy house | l s 2 k
+A fire station | l d 2 k
+The dentist's chair | l d 2 k
+A swimming pool | l w 2 k
+A pumpkin patch | l w 2 k
+A dinosaur museum | l d 3 k
+A secret tunnel | l d 2 k
+Grandma's kitchen | l w 2 k
+The top bunk | l s 1 k
+Under the bed | l d 1 k
+The back seat | l y 2 k
+The ice rink | l w 2 k
+A birthday party | e w 2 k
+A school play | e d 2 k
+Show-and-tell | e w 2 k
+Picture day | e k 2 k
+Field day | e w 2 k
+The last day of school | e w 2 k
+A family picnic | e w 2 k
+A treasure hunt | e d 2 k
+A parade | e w 3 k
+A talent show | e d 2 k
+A sack race | e s 2 k
+A game of tag | e w 2 k
+Hide-and-seek | e w 2 k
+Musical statues | e s 2 k
+A tea party with stuffed animals | e w 2 k
+A puppet show | e w 2 k
+A magic show | e d 2 k
+A snowball fight | e s 2 k
+A bike race | e d 2 k
+A spelling test | e y 2 k
+A fire drill | e d 2 k
+A lost tooth | e w 1 k
+A trip to the dentist | e d 2 k
+A haircut | e k 2 k
+A thunderstorm at night | e d 3 k
+A rainy Saturday | e y 2 k
+Splash day | e w 2 k
+A cookie bake-off | e w 2 k
+A costume parade | e s 2 k
+A sleepover with no sleep | e s 2 k
+The first snow | e w 3 k
+A surprise visit from Grandma | e w 2 k
+A pet show | e s 2 k
+The tooth fairy's visit | e w 1 k
+Hopping like a bunny | x s 1 k
+Spinning until you're dizzy | x s 1 k
+Rolling down a hill | x w 2 k
+Skipping | x w 1 k
+Jumping on the bed | x s 2 k
+Hula hooping | x s 1 k
+Whistling | x y 1 k
+Giggling | x w 1 k
+Yawning | x w 1 k
+Tiptoeing | x d 1 k
+Crawling like a baby | x s 1 k
+Climbing a tree | x w 2 k
+Making a wish | x w 1 k
+Counting sheep | x y 1 k
+Licking the bowl | x w 1 k
+Picking your nose | x g 1 k
+Wiggling your ears | x s 1 k
+Talking with your mouth full | x g 1 k
+Stomping in boots | x s 1 k
+Howling at the moon | x s 4 k
+Running in slow motion | x s 2 k
+Doing a happy dance | x w 1 k
+Clapping really fast | x s 1 k
+Hugging a tree | x w 2 k
+Playing pretend | x w 2 k
+Sharing your snack | x w 1 k
+Barking like a dog | x s 1 k
+Flapping like a bird | x s 1 k
+Swimming like a fish | x s 2 k
+Walking backward | x s 1 k
+Hopping on one foot | x s 1 k
+Burping the alphabet | x g 1 k
+Holding your breath | x d 1 k
+Saying "please" | x w 1 f
+Sneezing on a cupcake | x g 1 k
+Forgetting your homework | x k 2 k
+Waking up too early | x y 2 k
+Being the line leader | x d 2 k
+Being "it" | x d 2 k
+Getting a gold star | x w 1 k
+Feeling brave | m w 2 k
+Feeling grumpy | m d 2 k
+Feeling sleepy | m w 2 k
+Feeling silly | m s 2 k
+Butterflies in your tummy | m k 1 k
+A big hug | m w 2 k
+Being proud | m w 2 k
+Being scared of the dark | m d 2 k
+Being super excited | m d 2 k
+Being bored | m y 2 k
+A sugar rush | m d 2 k
+Hangry | m d 1 s
+A happy tummy | m w 1 k
+The giggles | m s 1 k
+A bad dream | m d 2 k
+A good dream | m w 2 k
+A secret | m d 1 k
+A surprise | m d 2 k
+Homesick | m k 2 k
+Feeling left out | m k 2 k
+Feeling ticklish | m s 1 k
+Brave enough to try broccoli | m d 1 k
+The floss dance | c s 1 s | @2016 k4
+A slime video | c g 1 c | @2016 k4
+A video of a cat playing piano | c s 1 c | @2007 k4
+A sticker chart | t w 1 k
+A class pet | a w 1 k
+The school mascot costume | t s 2 k
+A lost library book | t k 1 k
+A bus that's always late | t y 2 k
+A pencil with no eraser | t k 1 k
+The big kid's bike | t d 2 k
+A glue stick | t y 1 k
+A box of tissues | t y 1 k
+A backpack that's too heavy | t d 1 k
+Lunch money | t y 1 k
+A crumpled permission slip | t k 1 k
+A chalkboard | t n 2 k
+A playground ball on the roof | t k 2 k
+The tallest slide | t d 3 k
+A sticky lollipop | f g 1 k
+A mustache made of milk | f s 1 k
+Mac and cheese | f w 1 k
+Chicken nuggets | f w 1 k
+Fish sticks | f y 1 k
+Animal crackers | f w 1 k
+A grilled cheese | f w 1 k
+Applesauce | f w 1 k
+A banana split | f w 1 k
+Corn on the cob | f w 1 k
+A juicy orange | f w 1 k
+Strawberry jam | f w 1 k
+Waffles | f w 1 k
+Toast with too much butter | f s 1 k
+Lima beans | f y 1 k
+Brussels sprouts | f y 1 k
+A sour gummy worm | f s 1 k
+A candy necklace | f w 1 k
+A snow cone | f w 1 k
+A gingerbread house | f w 2 k
+A pumpkin pie | f w 1 k
+A mountain of pancakes | f a 3 k
+A runaway meatball | f s 1 k
+Dinosaur chicken nuggets | f s 1 k
+A hot dog with ice cream | f a 1 k
+A grumpy goblin | p d 1 k
+A fairy who lost her wings | p d 1 k
+A sleepy giant | p w 3 k
+A baby dragon's first sneeze | a s 1 k
+A wizard's pet frog | a s 1 k
+A mermaid's comb | t w 1 y
+A genie in a juice box | p a 1 k
+A talking teapot | t w 1 y
+A singing mushroom | n s 1 k
+A walking tree | n d 3 k
+A cloud shaped like a dog | n w 3 k
+A rainbow-colored sheep | a s 2 k
+A dancing teapot | t s 1 k
+A ghost in a bedsheet | p s 2 k
+A friendly monster under the bed | p w 2 k
+A pirate ship in the bathtub | t s 2 k
+A treasure chest full of socks | t a 2 k
+A dragon egg | t d 1 k
+A magic carpet | t d 2 k
+A flying bicycle | t a 2 k
+A potion that makes you burp | t s 1 k
+A spell that turns things to jelly | x a 2 k
+An invisible friend | p w 2 k
+A robot dog | a y 2 k
+A pet dinosaur | a a 3 k
+A space hamster | a a 1 k
+A moon made of cheese | n a 4 k
+An alien's lunchbox | t a 1 k
+A rocket made of cardboard | t w 2 k
+A UFO in the backyard | t d 3 k
+An astronaut's ice cream | f y 1 k
+A planet made of candy | n a 4 k
+A star that fell in the yard | n d 4 k
+A time machine made from a box | t a 2 k
+A superhero in training | p w 2 k
+A villain who says sorry | p a 2 k
+A robot with hiccups | t s 2 k
+A dinosaur in a tutu | a a 3 k
+A unicorn who hates glitter | a a 2 k
+A troll who loves bubble baths | p s 2 k
+A dragon afraid of fire | a k 3 k
+A knight who's afraid of horses | p k 2 k
+A princess who loves dragons | p w 2 k
+A wizard who can only make bubbles | p s 2 k
+A fairy godmother on her day off | p y 2 k
+A pumpkin that turned into a car | t a 2 k
+A glass slipper that doesn't fit | t k 1 y
+A frog who wants a kiss | a s 1 k
+A beanstalk in the backyard | n d 3 k
+Three little pigs in a moving truck | a a 2 k
+A big bad wolf with a cold | a s 2 k
+Goldilocks's messy room | l s 2 k
+A tortoise who won the race | a w 1 k
+A clock that runs backward | t a 2 k
+A mirror that talks back | t d 1 k
+A hat that pulls out rabbits | t s 1 k
+A wishing well | l w 2 k
+A bridge made of candy canes | l a 3 k
+A castle made of pillows | l w 3 k
+A bubble as big as a house | t a 3 k
+A puddle that's really deep | n d 2 k
+A rain cloud that follows you | n s 3 k
+A snowman who wants a hug | p w 2 k
+A blanket fort city | l w 3 k
+A secret handshake | x w 1 k
+A tummy rumble | x s 1 k
+A sneeze that won't come out | x k 1 k
+A yawn that's catching | x s 1 k
+A tickle monster | p s 2 k
+A tooth under the pillow | t w 1 k
+A wiggly worm in an apple | a g 1 k
+A buzzing fly at dinner | a k 1 k
+A mosquito bite | a k 1 k
+A sandbox surprise | t s 1 k
+A cat on the keyboard | a s 1 c
+A dog chasing its tail | a s 1 k
+A puppy's first bath | a w 1 k
+A kitten in a sock drawer | a w 1 k
+A bird nest in a hat | a s 1 k
+A bunny who ate all the carrots | a s 1 k
+A duck parade | a w 2 k
+A pony with pigtails | a s 2 k
+Ants at a picnic | a k 1 k
+A firefly in a jar | a w 1 k
+A caterpillar's shoe store | a a 1 k
+A turtle who lost his shell | a k 1 k
+A fish tank with a tiny castle | t w 1 k
+A singing bird alarm clock | t w 1 k
+A rooster at midnight | a k 2 k
+A goat eating homework | a s 1 k
+A horse in rain boots | a s 3 k
+A dog wearing shoes | a s 1 k
+A cat in a cardboard box | a w 1 k
+A puppy pile | a w 2 k
+A hamster stuffing its cheeks | a s 1 k
+A sloth on a skateboard | a a 1 k
+A penguin slide | a w 2 k
+A giraffe in a little car | a a 3 k
+An elephant's sneeze | a s 3 k
+A whale's burp | a g 3 k
+A chicken dance | x s 1 k
+Monkey bars | t w 2 k
+A tire swing | t w 2 k
+A squeaky shoe | t s 1 k
+A toy dinosaur in your cereal | t s 1 k
+A bath bomb | t w 1 k
+Bubbles that won't pop | t a 1 k
+A teacher's apple | f w 1 k
+A slingshot | t d 1 k
+A kitty litter box | t g 1 k
+A dog's chew toy | t g 1 k
+A snowsuit you can't move in | t k 2 k
+A hat with ear flaps | t s 1 k
+A hand-me-down sweater | t n 1 k
+A birthday hat | t s 1 k
+A party blower | t s 1 k
+A piñata | t d 2 k
+A goodie bag | t w 1 k
+A bounce-house sock | t g 1 k
+A glow-in-the-dark toothbrush | t s 1 k
+A singing toothbrush | t s 1 k
+A giant teddy bear | t w 3 k
+A sticker book | t w 1 k
+A coloring book | t w 1 k
+A connect-the-dots | t w 1 k
+A paper crown | t w 1 k
+A toy robot | t w 1 k
+A toy train | t n 2 k
+Wind-up teeth | t s 1 k
+Chattering teeth | t s 1 k
+A grumpy alarm clock | t d 1 k
+A tickly feather | t s 1 k
+Tummy ache | m d 1 k
+A boo-boo | m d 1 k
+A bandage with dinosaurs | t w 1 k
+The school bell | t d 2 k
+A lunch tray | t y 1 k
+A cubby full of junk | t g 1 k
+The class hamster's escape | e d 1 k
+A puddle jump contest | e s 2 k
+The ice cream truck song | c n 2 k | @1950 k5
+Wearing a cape to school | x s 2 k
+A mom with a camera | p w 2 k
+A dad who tells corny jokes | p s 2 k
+A big sister | p d 2 k
+A baby cousin | p w 1 k
+Aunt Sally's hugs | p w 2 k
+The neighbor's dog | a w 2 k
+A crossing guard's whistle | t d 1 k
+The tooth fairy's piggy bank | t w 1 k
+A ghost who lost his "boo" | p s 2 k

@@ -157,7 +157,6 @@ body[data-game="chefskiss"] { background: linear-gradient(180deg, #12363e, #0715
 .ckp-slot.sel { transform: translateY(-16px); }
 .ckp-slot.sel .ck-card { box-shadow: 0 0 0 3px #e3cf9f, 0 12px 26px rgba(0, 0, 0, .5); }
 .ckp-slot.fly { transition: transform .3s ease-in, opacity .3s ease-in; transform: translateY(-80vh) rotate(-8deg) scale(.8) !important; opacity: 0; }
-.ckp-slot.swapping { animation: ckWiggle .5s ease-in-out infinite; }
 @keyframes ckWiggle { 25% { transform: rotate(-2deg); } 75% { transform: rotate(2deg); } }
 .ckp-board { width: 100%; display: flex; flex-direction: column; align-items: center; }
 .ckp-board:empty { display: none; }

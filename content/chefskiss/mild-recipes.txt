@@ -1,0 +1,162 @@
+# Mild Recipe Cards (elementary). text | tags | funnyTargets | literalTags | meta | hint
+Super silly | m s 2 k | pt yd 3 fo | - s - k | | Very, very funny and goofy.
+Yucky | m g 2 k | pl yw 34 fy | f g - k | | Something gross you don't want to touch.
+Really loud | m d 2 k | at w 1 y | ex d 3 - | | Something that makes a big noise.
+Fluffy | t w 1 k | pex dg 34 o | a w - k | | Soft and puffy, like a cloud.
+Sticky | t g 1 k | pel dy 34 fo | f g - - | | Something that sticks to your hands.
+The best thing at the zoo | l w 2 k | tfe ak 12 o | a w - k | | What you want to see most at the zoo.
+Something in my lunchbox | f s 1 k | apn ad 34 y | f - 2 k | | What you might find in your lunch.
+Wiggly | t s 1 k | lp yd 34 f | a s - k | | Something that wiggles and wobbles.
+Super fast | x d 2 k | at wy 1 y | x d - - | | Something that goes zoom!
+Smelly | m g 2 k | pl yw 3 fy | f g - k | | Something with a strong smell.
+What I want for my birthday | e w 2 k | anl ag 34 o | t w 2 k | | The best present ever.
+A great place to hide | l s 2 k | ta ad 13 f | l - 2 k | | Where no one would ever find you.
+Something a dragon would eat | f a 3 k | t wy 1 c | f d - - | | A snack for a big, scaly dragon.
+Spooky | m d 2 k | ft w 1 y | e d - - | | A little bit scary.
+Tiny | t s 1 k | anl d 34 f | t - 1 - | | Very, very small.
+Giant | t s 3 k | atf w 1 y | n - 3 - | | Very, very big.
+Something that makes me giggle | m w 2 k | ln dy 34 o | x s - k | | What gets you laughing.
+The best pet ever | a w 2 k | tfn ad 34 y | a w 2 k | | The pet you want most.
+Something at the beach | l w 2 k | pt ak 1 f | n - 2 k | | What you might see by the ocean.
+Bouncy | t s 2 k | pl yd 3 f | t s - k | | Something that bounces up and down.
+Shiny | t w 2 k | fa g 1 c | t w - y | | Something that sparkles in the light.
+What a monster is scared of | m d 3 k | tf ws 1 k | a d 3 - | | What makes a monster run away.
+Something in space | n d 4 k | f s 1 k | n - 4 - | | Something far up past the clouds.
+Squishy | t g 1 k | pl d 3 f | f g 1 k | | Soft enough to squeeze.
+Something a pirate needs | p d 2 k | tf ws 1 k | t d 2 - | | What a pirate brings on the ship.
+The best snack | f w 1 k | ntl ad 34 o | f w 1 k | | Your favorite thing to munch.
+Cold | m s 2 k | pe dw 2 c | n - 2 - | | Brrr! Something chilly.
+Hot | m s 2 k | ap w 1 y | n d - - | | Something very warm.
+Something in my backpack | t y 1 k | an ad 34 f | t - 1 k | | What you carry to school.
+Sleepy | m w 2 k | tl d 3 o | a w - - | | Something tired and yawning.
+Something that can fly | x s 2 k | tf y 2 c | a - - - | | Something that goes up in the air.
+Messy | m g 2 k | pl yd 2 fy | f g - k | | Something that makes a big mess.
+Something a superhero needs | p d 3 k | tf ys 1 c | t d - - | | What helps a hero save the day.
+Wet | m s 2 k | tl y 2 f | n - - - | | Something soaked with water.
+Something at a birthday party | e w 2 k | an da 34 o | f w 2 k | | What you see at a party.
+Grumpy | m d 2 k | tf w 1 k | a d - - | | Cranky and in a bad mood.
+What the dog is thinking right now | a s 2 c | ltc ad 34 fo | f w - - | | Inside the mind of a staring dog.
+The real reason the dinosaurs disappeared | e d 4 c | tf sk 12 k | n d 4 - | | The truth the textbooks left out.
+What I'd bring to a deserted island | t y 2 c | pa as 13 y | tf - 2 - | | Your one item for life on an island.
+Why the cat knocked it off the table | a s 1 c | e d 4 fo | x s - - | | The real reason cats push things off edges.
+What aliens think is weird about us | e a 4 c | xt k 12 c | n - 4 - | | A human habit that confuses visitors from space.
+A new flavor of ice cream | f s 1 c | ltm ag 34 o | f w - - | | Something the ice cream shop should try.
+My spirit animal | m w 2 c | tf a 1 y | a w - - | | The creature that best represents you.
+What my houseplant would say | n s 1 c | e d 3 o | n w - - | | If your plant could finally talk.
+What's living under the bed | a d 2 k | ft w 1 y | a d - - | | The thing you feared as a kid.
+What I'd name my robot butler | t s 2 c | p a 2 y | t - - o | | The name for your future helper bot.
+A brand new holiday | e w 2 c | ft ak 1 c | e w 3 - | | A day that deserves to be celebrated.
+Totally adorable | m w 1 c | ple dg 3 f | a w 1 - | | Something so cute it's hard to handle.
+Smells suspicious | m g 2 c | pl y 3 f | f g - - | | Something you wouldn't want to sniff.
+The worst superpower to have | x a 3 c | at k 1 y | p d 3 - | | A power that's more trouble than it's worth.
+The best part of a family reunion | e w 2 c | anc ad 34 o | p w 2 - | | What makes the whole trip worth it.
+The worst superpower to get on a Monday | e s 2 c | at ak 14 - | x - - -
+What's in a dragon's lunchbox? | f s 3 k | tp wa 12 - | f - - -
+What the classroom hamster does at night | a s 1 k | e d 4 fo | a w - k
+The best way to wake up a giant | x s 3 k | f w 1 y | x - 3 -
+Why the cow jumped over the moon | a a 4 k | e k 2 o | n - 4 -
+A new rule for recess | e s 2 k | pa d 3 o | x - 2 k
+What the tooth fairy does with all the teeth | p a 1 k | l d 34 o | t - 1 -
+The worst thing to find in your shoe | t g 1 k | pa d 3 f | n g 1 -
+What a snowman dreams about | p w 2 k | fl d 4 y | n - - -
+The silliest thing a grown-up ever said | p s 2 c | at a 1 k | p s - -
+What my teddy bear does when I'm asleep | t w 1 k | e d 34 o | x w - k
+A terrible name for a puppy | a s 1 k | e d 4 fo | a w - k
+The best thing to build with blocks | t w 2 k | ae a 34 o | l - 3 -
+What goes bump in the night | e d 2 k | f s 1 k | a d - -
+Why the chicken crossed the road | a y 2 c | e d 4 fo | x - 2 -
+A brand new dinosaur | a d 3 k | tf s 1 c | a d 3 -
+What's hiding in the cereal box | f s 1 k | pl d 34 f | f - 1 k
+The worst sound in the world | m d 2 c | tf w 1 k | e d - -
+The best treasure ever | t d 2 k | f s 1 k | t w - y
+What the class goldfish is thinking | a s 1 k | e d 4 f | a w 1 -
+A new crayon color | t w 1 k | pf ag 3 o | n w - -
+What I'd find at the end of a rainbow | n w 3 k | f g 1 c | t w - -
+The best thing about being a kid | m w 2 k | t d 4 o | e w - k
+What makes the baby cry | p d 1 k | t a 3 o | e - - -
+The first thing I'd do on the moon | x d 4 k | e w 2 c | x - 4 -
+A spell a wizard got wrong | x a 2 k | fa s 1 c | x d - -
+What the mail carrier is delivering | t y 2 c | an a 34 - | t - 2 o
+A ride at the silliest fair | e s 3 k | a d 1 o | e - - -
+What lives in the school pond | a s 1 k | p d 3 o | a - 1 -
+The worst thing to sit on | t s 1 k | lf dy 3 f | t - - -
+The best birthday cake topping | f w 1 k | an g 34 o | f w - -
+What makes a superhero sneeze | p s 1 k | n a 4 - | n - - -
+A magical thing in Grandma's garden | n w 2 k | ex dk - c | n w - -
+Something that should never be purple | t a 2 k | pl d 34 f | f - - -
+What the moon does all day | n y 4 k | x s 2 c | n - 4 -
+A good name for a robot | t s 2 k | p y 2 f | t - - o
+The fanciest hat | t y 2 k | f g 1 c | t - - y
+What lives at the bottom of the toy box | t d 2 k | a g 1 - | t - - k
+The best thing to do on a rainy day | e w 2 k | l d 4 o | x w 2 k
+A very bad idea for a pet | a a 2 k | t y 1 c | a - - -
+What the bus driver sings | p s 2 c | e d 3 f | e - - -
+The worst thing to step in | e g 1 k | pa d 3 o | n g - -
+What a mermaid keeps in her purse | p w 1 k | f g 3 c | t - - y
+A treasure in my pocket | t w 1 k | an d 34 o | t - 1 -
+What the clouds are made of | n w 4 k | t g 1 c | n - - -
+The noisiest animal | a s 2 k | t y 1 f | a d - -
+What a ghost eats for breakfast | f a 2 k | l d 4 o | f - - -
+A wish for a shooting star | n w 4 k | tf y 1 c | m w - -
+The best thing to wear to school | t s 2 k | an d 34 f | t - - k
+A brand new game for the playground | e s 2 k | l d 4 o | x - - k
+What's making that funny noise | e s 2 k | p d 4 f | a - - -
+The worst thing to share | t g 1 k | e w 4 - | f g - -
+What a knight is scared of | p d 2 k | a w 1 k | a d 3 -
+The best way to get out of bath time | x s 2 k | e d 4 o | x - - k
+A job for a dragon | x s 3 k | t w 1 o | x d - -
+The most amazing thing a dog can do | a w 2 k | t d 4 f | x - - -
+What I'd put in a magic potion | f a 1 k | ep y 3 c | n - - -
+The worst thing to lose | t d 2 k | f w 1 k | t - - -
+A new animal at the farm | a s 2 k | t d 4 y | a - - -
+What the scarecrow says | p y 2 k | e d 4 f | a - - -
+The best part of a sleepover | e w 2 k | l d 4 o | f w - k
+A really weird sandwich | f a 1 k | ple d 34 y | f - 1 -
+What's in the teacher's coffee mug | f y 1 c | an d 34 - | f - - -
+Something that should be a flavor | f a 1 k | lem dk 34 o | f - - -
+The best thing to find on the sidewalk | t w 1 k | ap d 3 y | t - 1 -
+What a unicorn does on its day off | p w 2 k | x k 2 c | n w - -
+The scariest thing at the playground | l d 2 k | f w 1 k | a d - -
+My robot's favorite food | f s 1 k | nm d 4 y | t - - -
+What I'd trade my little brother for | p s 2 k | f w 1 y | t - - -
+The perfect hiding place for candy | l s 1 k | p d 3 o | t - 1 -
+What the frog is croaking about | a s 1 k | e d 4 f | n - - -
+A strange thing to find in the fridge | f a 2 k | pa d 3 - | f - - -
+What a pirate parrot always says | a s 1 k | x y 2 f | p d - -
+The greatest thing about summer | e w 2 k | n d 4 o | e w 2 -
+The worst thing to wear to bed | t s 2 k | ae d 34 f | t - - -
+What makes Grandpa laugh | p w 2 c | t a 1 k | e w - -
+A rule for the castle | e d 3 k | t s 1 k | p - - f
+What the vacuum cleaner wants | t a 2 c | e d 4 f | t - - -
+The tastiest bug | a g 1 k | p d 3 y | a g 1 -
+A new kind of shoe | t s 2 k | f a 3 - | t - - -
+What's inside a cloud | n s 4 k | f g 1 c | n - - -
+Things that go splat | e g 2 k | p d 4 f | f g - -
+A gift for a grumpy giant | t w 1 k | ef a 3 c | t - 3 -
+The best costume ever | t s 2 k | m y 1 c | p d - -
+What the bunny is thinking | a s 1 k | e d 4 f | a w - -
+Something you'd find in a wizard's pocket | t a 1 k | f y 2 c | t - 1 -
+The perfect name for a snowman | p s 2 k | e y 2 o | n - - -
+What's at the top of the beanstalk | l d 3 k | f s 1 c | n - 3 -
+The worst thing to hear at bedtime | e d 2 k | f w 1 k | a d - -
+A wild idea for field day | e s 2 k | a d 4 f | x - - -
+What happens when you sneeze in space | e a 4 k | f w 1 c | e - 4 -
+What the toaster dreams about | t a 1 c | e d 4 f | f - - -
+My best invention | t s 2 k | f g 1 c | t - - -
+The worst helper in the kitchen | p s 2 k | a d 3 f | p - - -
+A secret club password | x s 1 k | ne d 4 o | x - - s
+Something that tickles | m s 1 k | p d 3 f | x s - -
+What the stars are whispering | n w 4 k | ft y 1 c | n - 4 -
+A brand new sport for animals | e s 2 k | t d 3 o | a - - -
+The worst thing to find in your soup | f g 1 k | pa d 3 y | f - - -
+What the octopus does with eight arms | a s 2 k | e y 2 o | x - - -
+A dragon's favorite game | e s 3 k | t w 1 c | x d - -
+What's for dinner on a pirate ship | f s 2 k | t y 1 y | f d - -
+The best way to say sorry | x w 2 k | ae d 4 o | m w - -
+Something a sloth would never do | x s 2 k | e d 3 - | x - - -
+A really bad name for a superhero | p s 2 k | ft y 1 c | p d - -
+What the moon would say to the sun | n w 4 k | x k 1 s | n - 4 -
+A brand new planet | n d 4 k | f s 1 k | n - 4 -
+The perfect pet for a witch | a d 2 k | t w 1 c | a d - -
+Something that is secretly a robot | t a 2 k | anf w 12 - | t - - o
+What the penguins are arguing about | a s 2 k | e d 4 f | n - - -

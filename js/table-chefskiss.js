@@ -1,11 +1,12 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=88';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=88';
-import { movable } from './gesture.js?v=88';
+import * as K from './chefskiss.js?v=89';
+import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=1';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=89';
+import { movable } from './gesture.js?v=89';
 import { startAi, stopAi, aiStatus, onAiStatus, useModelFile, gemmaBackend } from './laugh-ai.js?v=1';
-import { topPicks } from './laugh-engine.js?v=88';
+import { topPicks } from './laugh-engine.js?v=89';
 
 // ---------------------------------------------------------------- Laugh Engine AI (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
@@ -214,11 +215,9 @@ export default {
   defaults: { ...K.DEFAULTS },
 
   settingsHTML(s) {
-    const box = (k, label) => `<label class="ck-check"><input type="checkbox" data-set="deck_${k}" ${s['deck_' + k] ? 'checked' : ''}> ${label}</label>`;
     const sel = (key, vals, label) => `<select data-set="${key}">${vals.map(v => `<option value="${v}" ${v === s[key] ? 'selected' : ''}>${label(v)}</option>`).join('')}</select>`;
     return `
-      <div class="ck-set"><span>Editions</span>${box('e2026', '2026 Edition')}${box('silly', 'Simply Silly (6–9)')}${box('easy', 'Easy Peasy (10–12)')}</div>
-      <div class="ck-set"><span>Decade-Decks</span>${box('d50', "'50s")}${box('d60', "'60s")}${box('d70', "'70s")}${box('d80', "'80s")}${box('d90', "'90s")}</div>
+      <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
       <label>Recipe timer ${sel('recipeTime', [0, 5, 10, 15], v => (v ? `${v} s` : 'off'))}</label>
