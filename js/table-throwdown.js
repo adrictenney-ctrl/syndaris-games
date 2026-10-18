@@ -1,7 +1,7 @@
 // Throwdown on the table: this round's matches side by side with the score in each and the last
 // throws flipped face to face, plus the earlier rounds as a bracket strip.
-import * as E from './throwdown.js?v=89';
-import { partyTable, esc, who } from './table-party.js?v=89';
+import * as E from './throwdown.js?v=90';
+import { partyTable, esc, who } from './table-party.js?v=90';
 
 const nm = (ctx, s) => (s == null ? '—' : esc(ctx.nameOf(s)));
 export default partyTable(E, {

@@ -125,8 +125,8 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   random order. There's no timer on the Chef's decision. The Chef **must** award exactly one Chef's Kiss (1 point),
   either on their phone or by tapping a card on the table. Then the table shows who played what.
 - **Laugh Engine hands** (SPEC.md Section 8, `js/chefskiss-hands.js`): every round each hand is built fresh for the
-  Recipe Card: 5 on-target cards whose tags are likely to be funny with it, 1 safe card (a plain, literal fit) and
-  1 wild card (no link at all), shuffled. Players never see which is which. No card is in two hands in the same
+  Recipe Card: 6 on-target cards whose tags best fit one of the Recipe's funny-target combos, plus 1 random card,
+  shuffled (approved by Al, 17 Oct 2026; see CARD_RULES.md Section 7). Players never see which is which. No card is in two hands in the same
   round, and a card that's been played isn't dealt again that game (unplayed cards go back in the pool). If tags
   are missing, the hand is dealt at random instead. The same game and round always deal the same hands.
 - **Brain Bulb 💡:** cards that have a short description show it when you touch the bulb.
@@ -138,7 +138,7 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   - The game never waits on it: every call has a 3-second timeout, and if anything fails the round carries on with
     no highlights. It runs on the phone (`js/laugh-engine.js`) with a local scorer (themes, word overlap, absurdity
     and serious-versus-silly contrast). A real on-device model can be plugged in later with `setLaughBackend()`.
-  - **Gemma AI on the host** (`js/laugh-ai.js`): when the table screen supports WebGPU, Chef's Kiss runs Google's
+  - **Gemma Si on the host** (`js/laugh-si.js`): when the table screen supports WebGPU, Chef's Kiss runs Google's
     Gemma 3n (E2B or E4B, the "-Web" .litertlm build) through MediaPipe 0.10.29, only while Chef's Kiss is open.
     Each round it rates every card in every hand and writes card ideas in the background; phones use its picks if
     they arrive within 3 seconds, otherwise the built-in scorer. The model is kept in the browser's private storage
@@ -161,15 +161,17 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   smallest team). Everyone still scores individually; team scores are the sum.
 - **Card level:** Mild (elementary, the default), Medium (middle school) or Spicy (high school), chosen in the
   lobby. A table deals cards at its level and below. All official cards are family-friendly at every level.
-- **Master card database** (SPEC.md Sections 5.2 and 15): 2,437 official cards, at least 150 Recipe Cards and 600
-  Ingredient Cards per level, every one tagged (subject, tone, scale, register), with funny and literal targets on
-  every Recipe and dates on pop-culture cards. The sources are the text files in `content/chefskiss/`;
+- **Master card database** (SPEC.md Sections 5.2 and 15): official cards at every level, tagged on subject, tone,
+  scale and register (violation and status are supported too), with funny-target combos and literal tags on every
+  Recipe and dates on pop-culture cards. The spec now asks for 200 Recipe + 800 Ingredient Cards per level; Al's
+  finished decks will replace these when they're added. `SPEC.md`, `CARD_RULES.md` and `cards.json` (Al's
+  blind-test deck, used as a test fixture) are in the repo root. The sources are the text files in `content/chefskiss/`;
   `node tools/build-chefskiss-cards.mjs` checks them and writes `js/chefskiss-db.js`. IDs are permanent, and a
   card removed from the sources is retired, never deleted. Settings from the spec live in `js/chefskiss-config.js`.
 - **Tests:** `node --test "tests/*.test.mjs"` (Node 22 or newer, nothing to install).
 
 Not built yet: the Fan-Pacs (their card lists weren't in the instructions), the Super-Duper Pantry, descriptions in
-other languages, and the optional on-device AI suggestions. The rules say the game must work without AI, and it does.
+other languages, and Si Spice It Up. The rules say the game must work without the Si, and it does.
 
 ## Inside Job
 A cooperative heist for 3–6 players, played with Texas Hold'em hands and a standard deck. It plays like the board

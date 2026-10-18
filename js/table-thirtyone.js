@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { thirtyoneT } from './table-cardgames.js?v=89';
+import { thirtyoneT } from './table-cardgames.js?v=90';
 
 export default thirtyoneT;

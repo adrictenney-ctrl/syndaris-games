@@ -16,13 +16,14 @@ These text files are the master card database's source (SPEC.md Section 5.2 and 
 ## Line formats
 
 ```
-Recipe Card:      text | tags | funnyTargets | literalTags | meta | hint
+Recipe Card:      text | tags | funnyTargetCombos | literalTags | meta | hint
 Ingredient Card:  text | tags | meta | hint
 ```
 
-`meta` and `hint` are optional. Lines starting with `#` are comments.
+`meta` and `hint` are optional. `funnyTargetCombos` is one or more tag groups separated by `;`
+(CARD_RULES.md asks for 2–3, each a different technique on 2+ axes). Follow `CARD_RULES.md` (repo root) for every card. Lines starting with `#` are comments.
 
-A **tag group** is four space-separated fields, `subject tone scale register`. Each field is a string of
+A **tag group** is four or six space-separated fields, `subject tone scale register [violation status]`. Each field is a string of
 one-letter codes (several letters = several tags), or `-` for none.
 
 | Field | Codes |
@@ -31,6 +32,8 @@ one-letter codes (several letters = several tags), or `-` for none.
 | tone | `s` silly, `a` absurd, `w` wholesome, `k` awkward, `d` dramatic, `y` dry, `g` gross_mild, `n` nostalgic |
 | scale | `1` tiny, `2` everyday, `3` huge, `4` cosmic |
 | register | `f` formal, `c` casual, `k` kid, `s` slang, `y` fancy, `o` official_sounding |
+| violation | `n` none, `s` social, `p` physical, `l` logic |
+| status | `h` high, `l` low, `n` neutral |
 
 `meta` is space-separated tokens: `k3` knownness (1–5, default 4), `@1996` culture born, `^1997` peak,
 `~2005` stale. Every pop-culture card gives at least `@year`.

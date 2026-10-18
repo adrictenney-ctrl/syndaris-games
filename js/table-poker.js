@@ -1,6 +1,6 @@
 // Texas Hold'em on the table screen: board, pot, bets in front of each player, showdown.
-import * as P from './poker.js?v=89';
-import { cardEl, setFace, snap } from './cards.js?v=89';
+import * as P from './poker.js?v=90';
+import { cardEl, setFace, snap } from './cards.js?v=90';
 
 let boardKey = null;
 let boardEls = [];

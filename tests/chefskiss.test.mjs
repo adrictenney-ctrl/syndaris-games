@@ -2,22 +2,23 @@
 // Run:  node --test "tests/*.test.mjs"
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { CARDS } from '../js/chefskiss-db.js';
 import { CONFIG, OFFICIAL_LEVELS, rank } from '../js/chefskiss-config.js';
-import { buildHand, recipeChoices, makeRng, eligible, literalScore, isDud, overlap } from '../js/chefskiss-hands.js';
+import { buildHand, recipeChoices, makeRng, eligible, isDud, targetScore, funnyScore } from '../js/chefskiss-hands.js';
+import { validateCard, fromTestDeck, TAXONOMY as TAX } from '../js/chefskiss-schema.js';
 import * as K from '../js/chefskiss.js';
 
-const TAX = {
-  subject: ['person', 'place', 'thing', 'event', 'nature', 'animal', 'food', 'pop_culture', 'feeling', 'action'],
-  tone: ['silly', 'absurd', 'wholesome', 'awkward', 'dramatic', 'dry', 'gross_mild', 'nostalgic'],
-  scale: ['tiny', 'everyday', 'huge', 'cosmic'],
-  register: ['formal', 'casual', 'kid', 'slang', 'fancy', 'official_sounding'],
-};
 const DIMS = Object.keys(TAX);
 const active = CARDS.filter(c => c.status === 'active');
 const ingredients = active.filter(c => c.type === 'ingredient');
 const recipes = active.filter(c => c.type === 'recipe');
 const byId = new Map(CARDS.map(c => [c.id, c]));
+const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
+
+// Al's 17 Oct 2026 blind-test deck (30 Recipe + 150 Ingredient Cards, all Medium): the first test fixture.
+const TEST_DECK = JSON.parse(read('../cards.json'));
+const FIXTURE = [...TEST_DECK.recipes, ...TEST_DECK.ingredients].map(fromTestDeck);
 
 // ---------------------------------------------------------------- seed data (Sections 5.2 and 15)
 test('every card matches the Card schema', () => {
@@ -25,20 +26,15 @@ test('every card matches the Card schema', () => {
   for (const c of CARDS) {
     assert.ok(!ids.has(c.id), `duplicate id ${c.id}`); ids.add(c.id);
     assert.match(c.id, c.type === 'recipe' ? /^rc_\d{6}$/ : /^ic_\d{6}$/);
-    assert.ok(['recipe', 'ingredient'].includes(c.type));
-    assert.ok(typeof c.text === 'string' && c.text.length >= 1 && c.text.length <= 120, c.id);
     assert.equal(c.source, 'official');
-    assert.ok(['draft', 'in_review', 'active', 'retired', 'rejected'].includes(c.status));
-    assert.ok(c.freshness >= 0 && c.freshness <= 1);
-    assert.ok(c.audience.knownness >= 1 && c.audience.knownness <= 5);
-    assert.ok(rank(c.audience.readingLevel) <= rank('spicy') && rank(c.audience.cultureLevel) <= rank('spicy'));
-    for (const k of ['born', 'peak', 'stale']) assert.ok(c.culture[k] === null || /^\d{4}$/.test(c.culture[k]));
-    for (const key of c.type === 'recipe' ? ['tags', 'funnyTargets', 'literalTags'] : ['tags']) {
-      for (const d of DIMS) for (const t of c[key][d]) assert.ok(TAX[d].includes(t), `${c.id} ${key}.${d} "${t}"`);
-    }
-    assert.deepEqual(Object.keys(c.stats).sort(), ['kisses', 'timesDealt', 'timesPlayed']);
-    assert.ok(Number.isInteger(c.version) && c.version >= 1);
+    assert.deepEqual(validateCard(c), [], c.id);
   }
+});
+
+test("Al's test deck (cards.json) passes the Card schema", () => {
+  assert.equal(TEST_DECK.recipes.length, 30);
+  assert.equal(TEST_DECK.ingredients.length, 150);
+  for (const c of FIXTURE) assert.deepEqual(validateCard(c), [], c.id);
 });
 
 test('official cards are only Mild, Medium or Spicy (never Hot or Hellfire)', () => {
@@ -52,12 +48,24 @@ test('at least 150 Recipe Cards and 600 Ingredient Cards per level', () => {
   }
 });
 
-test('every card is fully tagged and every Recipe has funnyTargets and literalTags', () => {
+// SPEC.md Section 15, approved 18 Oct 2026. Al's finished decks meet these; they aren't in the repo yet.
+test('200 Recipe Cards and 800 Ingredient Cards per level', { todo: "waiting for Al's 18 Oct 2026 decks" }, () => {
+  for (const level of OFFICIAL_LEVELS) {
+    assert.ok(recipes.filter(c => c.level === level).length >= 200, `${level} recipes`);
+    assert.ok(ingredients.filter(c => c.level === level).length >= 800, `${level} ingredients`);
+  }
+});
+
+test('every card has 1–2 tags on all 6 axes (CARD_RULES.md Section 3)', { todo: "waiting for Al's 18 Oct 2026 decks" }, () => {
+  for (const c of active) for (const d of DIMS) assert.ok(c.tags[d].length >= 1 && c.tags[d].length <= 2, `${c.id} ${d}`);
+});
+
+test('every card is tagged and every Recipe has funnyTargetCombos and literalTags', () => {
   for (const c of active) {
-    for (const d of DIMS) assert.ok(c.tags[d].length, `${c.id} has no ${d} tag`);
+    for (const d of ['subject', 'tone', 'scale', 'register']) assert.ok(c.tags[d].length, `${c.id} has no ${d} tag`);
     if (c.type === 'recipe') {
-      assert.ok(DIMS.some(d => c.funnyTargets[d].length), `${c.id} funnyTargets`);
-      assert.ok(DIMS.some(d => c.literalTags[d].length), `${c.id} literalTags`);
+      assert.ok(c.funnyTargetCombos.length >= 1, `${c.id} funnyTargetCombos`);
+      assert.ok(DIMS.some(d => c.literalTags[d]?.length), `${c.id} literalTags`);
     }
   }
 });
@@ -71,8 +79,18 @@ test('no two cards share the same text', () => {
   for (const c of active) { const k = c.text.toLowerCase(); assert.ok(!seen.has(k), c.text); seen.add(k); }
 });
 
-test('old banned titles are not in any card', () => {
-  for (const c of CARDS) assert.doesNotMatch(c.text, /Trash It|Toss It|Super-Duper|MyCard|Simply Silly|Easy Peasy|Double Vision/i);
+test('old banned titles and the banned two-letter term are not in any card', () => {
+  for (const c of active) {
+    assert.doesNotMatch(c.text, /Trash It|Toss It|Super-Duper|MyCard|Simply Silly|Easy Peasy|Double Vision/i);
+    assert.doesNotMatch(c.text, /\bA[I]\b/);
+  }
+});
+
+test("Chef's Kiss code and screens say Si, never the banned two-letter term", () => {
+  for (const file of ['chefskiss.js', 'table-chefskiss.js', 'play-chefskiss.js', 'laugh-si.js', 'laugh-engine.js', 'chefskiss-hands.js', 'chefskiss-config.js', 'chefskiss-schema.js']) {
+    assert.doesNotMatch(read('../js/' + file), /\bA[I]\b/, file);
+  }
+  assert.doesNotMatch(read('../css/chefskiss.css'), /\bA[I]\b/);
 });
 
 // ---------------------------------------------------------------- hands (Section 8)
@@ -92,25 +110,47 @@ test('buildHand returns 7 unique eligible cards', () => {
   }
 });
 
-test('hands are 5 on-target, 1 safe and 1 wild when the data is there', () => {
+test('hands are 6 on-target + 1 random when the data is there, and nothing else', () => {
+  assert.deepEqual(CONFIG.handMix, { onTarget: 6, random: 1 });
   for (const r of recipes.slice(0, 60)) {
     const hand = buildHand(CARDS, r, table(r.level), { dealtThisRound: new Set() }, makeRng(r.id));
     const n = s => hand.filter(h => h.slot === s).length;
-    assert.deepEqual([n('on_target'), n('safe'), n('wild')], [CONFIG.handMix.onTarget, CONFIG.handMix.safe, CONFIG.handMix.wild], r.id);
+    assert.deepEqual([n('on_target'), n('random')], [6, 1], r.id);
   }
 });
 
-test('the wild card has no link to the Recipe when one exists', () => {
-  const r = someRecipe('medium');
-  const hand = buildHand(CARDS, r, table('medium'), { dealtThisRound: new Set() }, makeRng('wild'));
-  const wild = byId.get(hand.find(h => h.slot === 'wild').cardId);
-  assert.equal(overlap(wild.tags, r.funnyTargets), 0);
-  assert.equal(literalScore(wild, r), 0);
+test('no safe or wild slot code is left in the engine', () => {
+  assert.doesNotMatch(read('../js/chefskiss-hands.js'), /safe|wild/);
+  assert.doesNotMatch(read('../js/chefskiss-config.js'), /safe:|wild:/);
 });
 
-test('falls back to a random hand when tags are missing', () => {
-  const bare = CARDS.map(c => ({ ...c, tags: undefined, funnyTargets: undefined }));
-  const r = { ...someRecipe(), funnyTargets: undefined };
+test("buildHand over Al's test deck returns 7 cards per Recipe, aimed at the combos", () => {
+  const deck = FIXTURE.filter(c => c.type === 'ingredient');
+  for (const r of FIXTURE.filter(c => c.type === 'recipe')) {
+    const hand = buildHand(deck, r, table('medium'), { dealtThisRound: new Set() }, makeRng(r.id));
+    assert.equal(hand.length, 7, r.id);
+    assert.equal(new Set(hand.map(h => h.cardId)).size, 7);
+    for (const h of hand) assert.deepEqual(validateCard(deck.find(c => c.id === h.cardId)), []);
+    // The on-target cards should match the Recipe's combos better than the deck does on average.
+    const on = hand.filter(h => h.slot === 'on_target').map(h => targetScore(deck.find(c => c.id === h.cardId), r));
+    const avg = deck.reduce((t, c) => t + targetScore(c, r), 0) / deck.length;
+    assert.ok(on.reduce((a, b) => a + b, 0) / on.length >= avg, `${r.id} on-target cards aim at the combos`);
+  }
+});
+
+test('the funny score uses the best single combo, not bits of several', () => {
+  const r = { id: 'rc_t', funnyTargetCombos: [{ subject: ['animal'], register: ['fancy'] }, { scale: ['cosmic'], tone: ['gross_mild'] }], literalTags: {} };
+  const whole = { id: 'ic_1', tags: { subject: ['animal'], register: ['fancy'] } };
+  const bits = { id: 'ic_2', tags: { subject: ['animal'], scale: ['cosmic'] } };
+  assert.equal(targetScore(whole, r), 2);
+  assert.equal(targetScore(bits, r), 1);
+  const zero = () => 0;
+  assert.ok(funnyScore(whole, r, zero) > funnyScore(bits, r, zero));
+});
+
+test('falls back to a random hand when tags or combos are missing', () => {
+  const bare = CARDS.map(c => ({ ...c, tags: undefined, funnyTargetCombos: undefined }));
+  const r = { ...someRecipe(), funnyTargetCombos: undefined };
   const hand = buildHand(bare, r, table('mild'), { dealtThisRound: new Set() }, makeRng('bare'));
   assert.equal(hand.length, CONFIG.handSize);
   assert.ok(hand.every(h => h.slot === 'random'));
@@ -164,15 +204,15 @@ test('Recipe choices are 3 distinct eligible Recipes', () => {
   }
 });
 
-test('isDud: a safe-slot or literal winner is a dud; a funny one is not', () => {
-  const r = { id: 'rc_test', literalTags: { subject: ['animal'], tone: ['wholesome'], scale: [], register: [] } };
-  const literal = { id: 'ic_a', tags: { subject: ['animal'], tone: ['wholesome'], scale: [], register: [] } };
-  const funny = { id: 'ic_b', tags: { subject: ['thing'], tone: ['absurd'], scale: [], register: [] } };
+test('isDud uses only the literal checks, never the slot', () => {
+  const r = { id: 'rc_test', literalTags: { subject: ['animal'], tone: ['wholesome'] } };
+  const literal = { id: 'ic_a', tags: { subject: ['animal'], tone: ['wholesome'] } };
+  const funny = { id: 'ic_b', tags: { subject: ['thing'], tone: ['absurd'] } };
   const known = { ...funny, literalFor: ['rc_test'] };
-  assert.equal(isDud(funny, 'safe', r), true);
-  assert.equal(isDud(literal, 'on_target', r), true);
-  assert.equal(isDud(known, 'wild', r), true);
-  assert.equal(isDud(funny, 'on_target', r), false);
+  assert.equal(isDud.length, 2, 'isDud takes no slot');
+  assert.equal(isDud(literal, r), true);
+  assert.equal(isDud(known, r), true);
+  assert.equal(isDud(funny, r), false);
 });
 
 // ---------------------------------------------------------------- the game (Section 6, with the Section 8.3 hand refresh)
@@ -230,7 +270,7 @@ test('the old card swap is gone', () => {
 test('phones never see the Laugh Engine slot labels', () => {
   const g = K.createGame({}, players(4));
   pickRecipe(g);
-  for (const s of g.apprentices) assert.doesNotMatch(JSON.stringify(K.viewFor(g, s)), /on_target|"safe"|"wild"/);
+  for (const s of g.apprentices) assert.doesNotMatch(JSON.stringify(K.viewFor(g, s)), /on_target|"random"/);
 });
 
 test('a Mild table only ever deals Mild cards', () => {

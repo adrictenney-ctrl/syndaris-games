@@ -1,56 +1,56 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=89';
-import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=89';
-import { movable } from './gesture.js?v=89';
-import { startAi, stopAi, aiStatus, onAiStatus, useModelFile, gemmaBackend } from './laugh-ai.js?v=1';
-import { topPicks } from './laugh-engine.js?v=89';
+import * as K from './chefskiss.js?v=90';
+import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=2';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=90';
+import { movable } from './gesture.js?v=90';
+import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
+import { topPicks } from './laugh-engine.js?v=90';
 
-// ---------------------------------------------------------------- Laugh Engine AI (host only)
+// ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
 // background, never holding up the game) to rate every card in every Apprentice's hand against the
 // Recipe Card, and to write a handful of card ideas. Phones show the results when they arrive; if
-// the AI is slow or unavailable, phones use the built-in scorer instead.
-const AI_MS = 12000;
+// the Si is slow or unavailable, phones use the built-in scorer instead.
+const SI_MS = 12000;
 const roundKey = g => `${g.id}:${g.round}`;
 function laughRound(g) {
-  if (!g || !g.settings.laugh || aiStatus().state !== 'ready' || g.phase !== 'play' || !g.recipe) return;
+  if (!g || !g.settings.laugh || siStatus().state !== 'ready' || g.phase !== 'play' || !g.recipe) return;
   const key = roundKey(g);
-  if (g.ai?.key === key) return;
-  g.ai = { key, picks: null, ideas: null };
+  if (g.si?.key === key) return;
+  g.si = { key, picks: null, ideas: null };
   const recipe = K.card(g.recipe);
   const seats = (g.apprentices || []).filter(s => g.hands[s]?.length > 1);
   const cards = [...new Map(seats.flatMap(s => g.hands[s].map(K.card).filter(Boolean)).map(c => [c.id, c])).values()];
-  const refresh = () => { if (g.ai?.key === key) ctxRef?.refresh?.(); };
+  const refresh = () => { if (g.si?.key === key) ctxRef?.refresh?.(); };
   (async () => {
     try {
-      const scores = await gemmaBackend.rank(recipe, cards, AI_MS);
+      const scores = await gemmaBackend.rank(recipe, cards, SI_MS);
       const byId = new Map(cards.map((c, i) => [c.id, scores[i]]));
-      if (g.ai?.key !== key) return;
-      g.ai.picks = Object.fromEntries(seats.map(s => { const hand = g.hands[s].map(K.card).filter(Boolean); return [s, topPicks(hand, hand.map(c => byId.get(c.id) ?? 0))]; }));
+      if (g.si?.key !== key) return;
+      g.si.picks = Object.fromEntries(seats.map(s => { const hand = g.hands[s].map(K.card).filter(Boolean); return [s, topPicks(hand, hand.map(c => byId.get(c.id) ?? 0))]; }));
       refresh();
     } catch {}
     try {
-      const ideas = await gemmaBackend.suggest(recipe, 6, cards.map(c => c.t), AI_MS);
-      if (g.ai?.key !== key || !ideas.length) return;
-      g.ai.ideas = ideas;
+      const ideas = await gemmaBackend.suggest(recipe, 6, cards.map(c => c.t), SI_MS);
+      if (g.si?.key !== key || !ideas.length) return;
+      g.si.ideas = ideas;
       refresh();
     } catch {}
   })();
 }
-// What each phone learns about it: whether the AI is on, and its picks/ideas for this round.
+// What each phone learns about it: whether the Si is on, and its picks/ideas for this round.
 function laughView(g, seat, v) {
-  v.laughAI = g.settings.laugh ? aiStatus().state : 'off';
-  if (g.ai && g.ai.key === roundKey(g)) { v.aiKey = g.ai.key; v.aiPicks = g.ai.picks ? g.ai.picks[seat] || [] : null; v.aiIdeas = g.ai.ideas || null; }
+  v.laughSi = g.settings.laugh ? siStatus().state : 'off';
+  if (g.si && g.si.key === roundKey(g)) { v.siKey = g.si.key; v.siPicks = g.si.picks ? g.si.picks[seat] || [] : null; v.siIdeas = g.si.ideas || null; }
   return v;
 }
-// The lobby line that shows how the AI is doing (and lets the host give it the model file).
-const AI_TEXT = { off: 'AI off', nogpu: 'Built-in scorer (this screen can’t run the AI)', needmodel: 'AI needs its model file', downloading: 'Getting the AI model…', loading: 'Waking up the AI…', ready: 'Gemma AI is ready ✓', error: 'Built-in scorer (the AI couldn’t start)' };
-const aiLine = () => { const st = aiStatus(); return `<span class="ck-ai-state">${AI_TEXT[st.state] || ''}${st.state === 'downloading' && st.note ? ' ' + st.note : ''}</span>${['needmodel', 'error'].includes(st.state) ? '<label class="tool ck-ai-file">Choose model file<input type="file" accept=".litertlm,.task" data-ai-file hidden></label>' : ''}${st.note && st.state !== 'downloading' && st.state !== 'ready' ? `<small>${esc(st.note)}</small>` : ''}`; };
-onAiStatus(() => { document.querySelectorAll('[data-ai-status]').forEach(el => { el.innerHTML = aiLine(); }); if (aiStatus().state === 'ready' && gameRef) { laughRound(gameRef); ctxRef?.refresh?.(); } });
-document.addEventListener('change', e => { const f = e.target.closest?.('[data-ai-file]')?.files?.[0]; if (f) useModelFile(f); });
+// The lobby line that shows how the Si is doing (and lets the host give it the model file).
+const SI_TEXT = { off: 'Si off', nogpu: 'Built-in scorer (this screen can’t run the Si)', needmodel: 'Si needs its model file', downloading: 'Getting the Si model…', loading: 'Waking up the Si…', ready: 'The Si is ready ✓', error: 'Built-in scorer (the Si couldn’t start)' };
+const siLine = () => { const st = siStatus(); return `<span class="ck-si-state">${SI_TEXT[st.state] || ''}${st.state === 'downloading' && st.note ? ' ' + st.note : ''}</span>${['needmodel', 'error'].includes(st.state) ? '<label class="tool ck-si-file">Choose model file<input type="file" accept=".litertlm,.task" data-si-file hidden></label>' : ''}${st.note && st.state !== 'downloading' && st.state !== 'ready' ? `<small>${esc(st.note)}</small>` : ''}`; };
+onSiStatus(() => { document.querySelectorAll('[data-si-status]').forEach(el => { el.innerHTML = siLine(); }); if (siStatus().state === 'ready' && gameRef) { laughRound(gameRef); ctxRef?.refresh?.(); } });
+document.addEventListener('change', e => { const f = e.target.closest?.('[data-si-file]')?.files?.[0]; if (f) useModelFile(f); });
 
 let root = null, gameRef = null, ctxRef = null, tick = null;
 let subsKey = '', recipeKey = '', chosen = -1, slipOpen = false;
@@ -224,7 +224,7 @@ export default {
       <label>Ingredient timer ${sel('ingredientTime', [0, 10, 15, 20, 30], v => (v ? `${v} s` : 'off'))}</label>
       <label>Teams ${sel('teams', [0, 2, 3, 4], v => (v ? `${v} teams` : 'no teams'))}</label>
       <label class="ck-check"><input type="checkbox" data-set="laugh" ${s.laugh !== false ? 'checked' : ''}> Laugh Engine (funny-card hints &amp; ideas)</label>
-      ${s.laugh !== false ? `<p class="ck-ai" data-ai-status>${aiLine()}</p>` : ''}${(s.laugh !== false ? startAi() : stopAi(), '')}`;
+      ${s.laugh !== false ? `<p class="ck-si" data-si-status>${siLine()}</p>` : ''}${(s.laugh !== false ? startSi() : stopSi(), '')}`;
   },
 
   create: (settings, players) => K.createGame(settings, players),
@@ -266,7 +266,7 @@ export default {
   renderCenter(g, ctx) {
     gameRef = g;
     ctxRef = ctx;
-    if (g.settings.laugh) { startAi(); laughRound(g); }
+    if (g.settings.laugh) { startSi(); laughRound(g); }
     document.getElementById('watermark').textContent = '';
     if (!root) build();
     const felt = document.getElementById('felt').getBoundingClientRect();

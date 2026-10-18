@@ -1,7 +1,7 @@
 // Table screens for the talk-and-laugh party games (talk-games.js).
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=89';
-import * as S from './talk-games.js?v=89';
-import { fitCanvas, paint } from './sketch-pad.js?v=89';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=90';
+import * as S from './talk-games.js?v=90';
+import { fitCanvas, paint } from './sketch-pad.js?v=90';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${String(v) === String(s[k]) ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const nm = (ctx, s) => esc(ctx.nameOf(s));

@@ -216,8 +216,8 @@ body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
 }
 .ckp-idea-list button:active { transform: translateY(1px); }
 
-/* ---------------------------------------------------------------- Laugh Engine AI (lobby line on the table) */
-.ck-ai { display: flex; flex-wrap: wrap; align-items: center; gap: 1vmin 1.4vmin; margin: .4vmin 0 0; font-size: 1.7vmin; }
-.ck-ai .ck-ai-state { font-weight: 700; }
-.ck-ai small { flex-basis: 100%; opacity: .75; }
-.ck-ai-file { cursor: pointer; }
+/* ---------------------------------------------------------------- Laugh Engine Si (lobby line on the table) */
+.ck-si { display: flex; flex-wrap: wrap; align-items: center; gap: 1vmin 1.4vmin; margin: .4vmin 0 0; font-size: 1.7vmin; }
+.ck-si .ck-si-state { font-weight: 700; }
+.ck-si small { flex-basis: 100%; opacity: .75; }
+.ck-si-file { cursor: pointer; }

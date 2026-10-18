@@ -1,4 +1,4 @@
-// The Laugh Engine's AI, run on the HOST device (the table screen) and only during Chef's Kiss:
+// The Laugh Engine's Si, run on the HOST device (the table screen) and only during Chef's Kiss:
 // Google's Gemma 3n (E2B or E4B, the "-Web" .litertlm build) through MediaPipe's LLM Inference API
 // on WebGPU. Phones never run it; they receive its picks and card ideas from the table.
 //
@@ -19,8 +19,8 @@ let llm = null, busy = Promise.resolve(), loading = null;
 const listeners = new Set();
 let status = { state: 'off', note: '' };          // off | nogpu | needmodel | downloading | loading | ready | error
 const set = (state, note = '', extra = {}) => { status = { state, note, ...extra }; listeners.forEach(f => f(status)); };
-export const aiStatus = () => status;
-export const onAiStatus = f => { listeners.add(f); return () => listeners.delete(f); };
+export const siStatus = () => status;
+export const onSiStatus = f => { listeners.add(f); return () => listeners.delete(f); };
 
 async function gpuOk() {
   try { return !!(navigator.gpu && await navigator.gpu.requestAdapter()); } catch { return false; }
@@ -49,7 +49,7 @@ async function keep(stream, size) {
 }
 
 // Get the model ready (download/copy if needed, then load it onto the GPU). Safe to call often.
-export function startAi() {
+export function startSi() {
   if (llm) return Promise.resolve(true);
   if (loading) return loading;
   loading = (async () => {
@@ -62,10 +62,10 @@ export function startAi() {
         if (!res.ok || !res.body) throw new Error('HTTP ' + res.status);
         await keep(res.body, Number(res.headers.get('content-length')) || 0);
         file = await storedModel();
-      } catch (e) { set('needmodel', 'Couldn’t download the AI model — choose the file instead'); return false; }
+      } catch (e) { set('needmodel', 'Couldn’t download the Si model — choose the file instead'); return false; }
     }
     if (!file) { set('needmodel', 'Choose the Gemma 3n model file (E2B or E4B, “-Web” .litertlm) once on this screen'); return false; }
-    set('loading', 'Waking up the AI…');
+    set('loading', 'Waking up the Si…');
     try {
       const { FilesetResolver, LlmInference } = await import(`${MP}/genai_bundle.mjs`);
       const files = await FilesetResolver.forGenAiTasks(`${MP}/wasm`);
@@ -75,7 +75,7 @@ export function startAi() {
       });
       set('ready', 'Gemma is ready');
       return true;
-    } catch (e) { llm = null; set('error', 'The AI couldn’t start on this screen — using the built-in scorer'); return false; }
+    } catch (e) { llm = null; set('error', 'The Si couldn’t start on this screen — using the built-in scorer'); return false; }
   })().finally(() => { loading = null; });
   return loading;
 }
@@ -85,17 +85,17 @@ export async function useModelFile(file) {
   if (!file) return false;
   set('downloading', '0%', { progress: 0 });
   try { await keep(file.stream(), file.size); } catch { set('error', 'Couldn’t store the model on this device (not enough space?)'); return false; }
-  return startAi();
+  return startSi();
 }
 
 // Leaving Chef's Kiss: free the GPU and memory (the file stays on the device for next time).
-export function stopAi() {
+export function stopSi() {
   try { llm?.cancelProcessing?.(); llm?.close(); } catch {}
   llm = null;
   if (status.state === 'ready' || status.state === 'loading') set('off');
 }
 export async function forgetModel() {
-  stopAi();
+  stopSi();
   try { const dir = await navigator.storage.getDirectory(); await dir.removeEntry(STORE); } catch {}
   set('needmodel', 'Model removed from this device');
 }

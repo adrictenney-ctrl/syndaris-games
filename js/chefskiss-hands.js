@@ -1,12 +1,12 @@
 // The Laugh Engine's hand building (SPEC.md Section 8). Pure functions over the master card
 // database, so they can be tested on their own. Every round, after the Chef picks a Recipe Card,
-// each Apprentice gets a fresh 7-card hand: 5 on-target cards (likely funny with this Recipe),
-// 1 safe card (a plain, literal fit) and 1 wild card (no link at all), shuffled together.
+// each Apprentice gets a fresh 7-card hand: 6 on-target cards (likely funny with this Recipe) and
+// 1 random eligible card, shuffled together (approved by Al, 17 Oct 2026; CARD_RULES.md Section 7).
 // The slot labels stay with the table; players never see them.
-import { CONFIG, rank } from './chefskiss-config.js?v=1';
+import { CONFIG, rank } from './chefskiss-config.js?v=2';
 
-const DIMS = ['subject', 'tone', 'scale', 'register'];
-export const TAG_WEIGHTS = { subject: 1.0, tone: 1.5, scale: 1.0, register: 1.0 };
+const DIMS = ['subject', 'tone', 'scale', 'register', 'violation', 'status'];
+export const TAG_WEIGHTS = { subject: 1.0, tone: 1.5, scale: 1.0, register: 1.0, violation: 1.0, status: 1.0 };
 export const LITERAL_THRESHOLD = 2;
 
 // A small seeded random number generator (mulberry32), so the same seed always deals the same hands.
@@ -32,6 +32,7 @@ const tagsOf = (c, key = 'tags') => {
   return Object.fromEntries(DIMS.map(d => [d, Array.isArray(t[d]) ? t[d] : []]));
 };
 const hasTags = c => DIMS.some(d => tagsOf(c)[d].length);
+const combosOf = recipe => (Array.isArray(recipe?.funnyTargetCombos) ? recipe.funnyTargetCombos : []).filter(x => x && typeof x === 'object');
 const fresh = c => (typeof c?.freshness === 'number' ? c.freshness : 1);
 
 export function overlap(cardTags, targetTags) {
@@ -54,8 +55,12 @@ export const pairWinRate = (recipeId, cardId, stats) => {
   return s ? (s.wins + prior * weight) / (s.plays + weight) : prior;
 };
 
+// How well a card fits the Recipe's funny targets: its best match against any one combo
+// (a card has to fit one whole technique, not bits of several).
+export const targetScore = (card, recipe) => Math.max(0, ...combosOf(recipe).map(combo => overlap(tagsOf(card), combo)));
+
 export function funnyScore(card, recipe, rng = Math.random, stats = null) {
-  const target = overlap(tagsOf(card), tagsOf(recipe, 'funnyTargets'));
+  const target = targetScore(card, recipe);
   const literal = literalScore(card, recipe);
   const history = pairWinRate(recipe?.id, card?.id, stats);
   return (2.0 * target - 1.5 * literal + 3.0 * history) * (0.5 + 0.5 * fresh(card)) + rng() * 0.3;
@@ -104,35 +109,19 @@ export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.
   // Short on cards: let this game's played cards come back before anything else (never higher levels).
   if (pool.length < handSize) pool = cards.filter(c => eligible(c, { ...table, usedCardIds: new Set() }, round));
   let hand;
-  const hasData = DIMS.some(d => tagsOf(recipe, 'funnyTargets')[d].length) && pool.filter(hasTags).length >= 10;
+  const hasData = combosOf(recipe).length > 0 && pool.filter(hasTags).length >= 10;
   if (!hasData) {
     hand = rng.shuffle([...pool]).slice(0, handSize).map(c => ({ cardId: c.id, slot: 'random' }));
   } else {
     const ranked = pool.map(c => ({ c, s: funnyScore(c, recipe, rng, stats) })).sort((a, b) => b.s - a.s);
     const onTarget = takeTopWithDiversity(ranked, mix.onTarget, 2, rng);
-    let rest = pool.filter(c => !onTarget.includes(c));
-    const safe = [];
-    for (let k = 0; k < mix.safe && rest.length; k++) {
-      const best = Math.max(...rest.map(c => literalScore(c, recipe)));
-      const tied = best > 0
-        ? rest.filter(c => literalScore(c, recipe) === best)
-        : rest.filter(c => (c.audience?.knownness || 0) === Math.max(...rest.map(x => x.audience?.knownness || 0)));
-      const pick = rng.pick(tied);
-      safe.push(pick); rest = rest.filter(c => c !== pick);
-    }
-    const wild = [];
-    for (let k = 0; k < mix.wild && rest.length; k++) {
-      const none = rest.filter(c => overlap(tagsOf(c), tagsOf(recipe, 'funnyTargets')) === 0 && literalScore(c, recipe) === 0);
-      const pick = rng.pick(none.length ? none : rest);
-      wild.push(pick); rest = rest.filter(c => c !== pick);
-    }
+    const rest = rng.shuffle(pool.filter(c => !onTarget.includes(c)));
     hand = [
       ...onTarget.map(c => ({ cardId: c.id, slot: 'on_target' })),
-      ...safe.map(c => ({ cardId: c.id, slot: 'safe' })),
-      ...wild.map(c => ({ cardId: c.id, slot: 'wild' })),
+      ...rest.slice(0, mix.random).map(c => ({ cardId: c.id, slot: 'random' })),
     ];
-    // Top up if the mix couldn't be filled (tiny pools only).
-    for (const c of rng.shuffle(rest)) { if (hand.length >= handSize) break; hand.push({ cardId: c.id, slot: 'random' }); }
+    // Top up with random cards if the mix couldn't be filled (tiny pools only).
+    for (const c of rest.slice(mix.random)) { if (hand.length >= handSize) break; hand.push({ cardId: c.id, slot: 'random' }); }
     rng.shuffle(hand);
   }
   for (const h of hand) round.dealtThisRound.add(h.cardId);
@@ -145,7 +134,7 @@ export function recipeChoices(cards, table, rng, n = CONFIG.recipeChoices) {
   const ok = c => c && c.status === 'active' && c.type === 'recipe' && c.source !== 'organic' && rank(c.level) <= rank(table.level);
   let pool = cards.filter(c => ok(c) && !table.usedCardIds?.has?.(c.id));
   if (pool.length < n) pool = cards.filter(ok);
-  const weight = c => fresh(c) * (DIMS.some(d => tagsOf(c, 'funnyTargets')[d].length) ? 1 : 0.3) + 0.01;
+  const weight = c => fresh(c) * (combosOf(c).length ? 1 : 0.3) + 0.01;
   const out = [];
   for (const strict of [true, false]) {
     let left = pool.filter(c => !out.includes(c) && (!strict || !out.some(o => tagsOf(o).subject[0] && tagsOf(o).subject[0] === tagsOf(c).subject[0])));
@@ -162,8 +151,9 @@ export function recipeChoices(cards, table, rng, n = CONFIG.recipeChoices) {
   return out.map(c => c.id);
 }
 
-// Was this round won by a plain, literal match? (SPEC.md Section 8.5)
-export function isDud(winnerCard, slot, recipe) {
+// Was this round won by a plain, literal match? (SPEC.md Section 8.5) Only the literal checks
+// count; the slot a card was dealt in never decides a dud.
+export function isDud(winnerCard, recipe) {
   if (!winnerCard || !recipe) return false;
-  return slot === 'safe' || literalScore(winnerCard, recipe) >= LITERAL_THRESHOLD || (winnerCard.literalFor || []).includes(recipe.id);
+  return literalScore(winnerCard, recipe) >= LITERAL_THRESHOLD || (winnerCard.literalFor || []).includes(recipe.id);
 }

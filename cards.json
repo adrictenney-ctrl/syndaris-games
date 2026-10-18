@@ -1,0 +1,6563 @@
+{
+  "recipes": [
+    {
+      "id": "rc_001",
+      "type": "recipe",
+      "text": "The worst thing to bring to show-and-tell",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "thing",
+          "animal"
+        ],
+        "tone": [
+          "wholesome"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "subject": [
+            "nature",
+            "place"
+          ],
+          "scale": [
+            "cosmic",
+            "huge"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ],
+          "register": [
+            "fancy"
+          ]
+        },
+        {
+          "violation": [
+            "logic"
+          ],
+          "status": [
+            "high"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "nature",
+          "place"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_002",
+      "type": "recipe",
+      "text": "What the principal secretly does after school",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "place",
+          "event"
+        ],
+        "tone": [
+          "dry"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "silly"
+          ],
+          "status": [
+            "low"
+          ],
+          "register": [
+            "kid"
+          ]
+        },
+        {
+          "violation": [
+            "physical"
+          ],
+          "tone": [
+            "absurd"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "violation": [
+            "logic"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd",
+          "silly"
+        ],
+        "scale": [],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic",
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_003",
+      "type": "recipe",
+      "text": "The real reason the Wi-Fi is down",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "neutral"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dry"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "subject": [
+            "animal"
+          ],
+          "status": [
+            "low"
+          ],
+          "tone": [
+            "silly"
+          ]
+        },
+        {
+          "scale": [
+            "cosmic"
+          ],
+          "tone": [
+            "dramatic"
+          ]
+        },
+        {
+          "subject": [
+            "person"
+          ],
+          "status": [
+            "high"
+          ],
+          "violation": [
+            "logic"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal",
+          "person"
+        ],
+        "tone": [
+          "dramatic",
+          "silly"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high",
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_004",
+      "type": "recipe",
+      "text": "A terrible name for a superhero",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "pop_culture"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dramatic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "scale": [
+            "tiny"
+          ],
+          "status": [
+            "low"
+          ]
+        },
+        {
+          "tone": [
+            "dry"
+          ],
+          "register": [
+            "official_sounding"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ],
+          "subject": [
+            "food"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_005",
+      "type": "recipe",
+      "text": "Something you should never say on a first day at a new school",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "awkward"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "register": [
+            "fancy",
+            "formal"
+          ],
+          "status": [
+            "high"
+          ]
+        },
+        {
+          "tone": [
+            "absurd"
+          ],
+          "violation": [
+            "logic"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ],
+          "register": [
+            "kid"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [],
+        "tone": [
+          "absurd",
+          "gross_mild"
+        ],
+        "scale": [],
+        "register": [
+          "fancy",
+          "formal",
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_006",
+      "type": "recipe",
+      "text": "Grandma's secret talent",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "nostalgic",
+          "wholesome"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "dramatic"
+          ],
+          "scale": [
+            "huge",
+            "cosmic"
+          ]
+        },
+        {
+          "register": [
+            "slang"
+          ],
+          "violation": [
+            "social"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "violation": [
+            "physical"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "physical",
+          "social"
+        ],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_007",
+      "type": "recipe",
+      "text": "What's actually inside the school mystery meat",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "gross_mild"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "register": [
+            "fancy"
+          ],
+          "status": [
+            "high"
+          ]
+        },
+        {
+          "scale": [
+            "cosmic"
+          ],
+          "subject": [
+            "nature"
+          ]
+        },
+        {
+          "subject": [
+            "person"
+          ],
+          "violation": [
+            "logic"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "nature",
+          "person"
+        ],
+        "tone": [],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_008",
+      "type": "recipe",
+      "text": "The most dramatic way to end a sleepover",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "nostalgic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "dramatic"
+          ],
+          "scale": [
+            "cosmic",
+            "huge"
+          ]
+        },
+        {
+          "register": [
+            "official_sounding"
+          ],
+          "status": [
+            "high"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "tone": [
+            "absurd"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd",
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_009",
+      "type": "recipe",
+      "text": "What your pet does when you're at school",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "register": [
+            "fancy",
+            "official_sounding"
+          ],
+          "status": [
+            "high"
+          ]
+        },
+        {
+          "scale": [
+            "huge",
+            "cosmic"
+          ],
+          "tone": [
+            "dramatic"
+          ]
+        },
+        {
+          "subject": [
+            "event"
+          ],
+          "violation": [
+            "social"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [
+          "fancy",
+          "official_sounding"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_010",
+      "type": "recipe",
+      "text": "The newest Olympic sport",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event",
+          "action"
+        ],
+        "tone": [
+          "dramatic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "scale": [
+            "tiny"
+          ],
+          "tone": [
+            "dry",
+            "awkward"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ],
+          "register": [
+            "kid"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "tone": [
+            "silly"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "awkward",
+          "dry",
+          "gross_mild",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_011",
+      "type": "recipe",
+      "text": "A rejected flavor of ice cream",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "silly"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "subject": [
+            "place"
+          ],
+          "tone": [
+            "dry"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ],
+          "register": [
+            "fancy"
+          ]
+        },
+        {
+          "scale": [
+            "cosmic"
+          ],
+          "subject": [
+            "nature"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "nature",
+          "place"
+        ],
+        "tone": [
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_012",
+      "type": "recipe",
+      "text": "The real reason the teacher is late",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dry"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "subject": [
+            "animal"
+          ],
+          "tone": [
+            "absurd",
+            "silly"
+          ]
+        },
+        {
+          "scale": [
+            "cosmic",
+            "huge"
+          ],
+          "tone": [
+            "dramatic"
+          ]
+        },
+        {
+          "violation": [
+            "logic"
+          ],
+          "status": [
+            "low"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd",
+          "dramatic",
+          "silly"
+        ],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_013",
+      "type": "recipe",
+      "text": "Something that would ruin a wedding",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "scale": [
+            "tiny"
+          ],
+          "status": [
+            "low"
+          ],
+          "tone": [
+            "silly"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "violation": [
+            "logic"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "gross_mild",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_014",
+      "type": "recipe",
+      "text": "The world's most useless invention",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "register": [
+            "official_sounding"
+          ],
+          "status": [
+            "high"
+          ]
+        },
+        {
+          "tone": [
+            "wholesome"
+          ],
+          "subject": [
+            "animal"
+          ]
+        },
+        {
+          "scale": [
+            "cosmic",
+            "huge"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_015",
+      "type": "recipe",
+      "text": "Your new middle name",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "neutral"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "awkward"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "subject": [
+            "food"
+          ],
+          "tone": [
+            "silly"
+          ]
+        },
+        {
+          "subject": [
+            "nature"
+          ],
+          "scale": [
+            "cosmic"
+          ]
+        },
+        {
+          "subject": [
+            "place"
+          ],
+          "tone": [
+            "dry"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "food",
+          "nature",
+          "place"
+        ],
+        "tone": [
+          "dry",
+          "silly"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [],
+        "violation": [],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_016",
+      "type": "recipe",
+      "text": "What aliens think humans do for fun",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "neutral"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "absurd"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "awkward"
+          ],
+          "scale": [
+            "tiny"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ],
+          "register": [
+            "kid"
+          ]
+        },
+        {
+          "tone": [
+            "dry"
+          ],
+          "status": [
+            "low"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [],
+        "tone": [
+          "awkward",
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_017",
+      "type": "recipe",
+      "text": "The worst thing to find in your backpack",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "gross_mild"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "scale": [
+            "huge",
+            "cosmic"
+          ],
+          "subject": [
+            "nature",
+            "animal"
+          ]
+        },
+        {
+          "status": [
+            "high"
+          ],
+          "register": [
+            "fancy"
+          ]
+        },
+        {
+          "subject": [
+            "person"
+          ],
+          "violation": [
+            "logic"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal",
+          "nature",
+          "person"
+        ],
+        "tone": [],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_018",
+      "type": "recipe",
+      "text": "How I survived middle school",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "neutral"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "awkward"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "subject": [
+            "animal"
+          ],
+          "tone": [
+            "silly"
+          ]
+        },
+        {
+          "subject": [
+            "food"
+          ],
+          "tone": [
+            "wholesome"
+          ]
+        },
+        {
+          "register": [
+            "fancy"
+          ],
+          "status": [
+            "high"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal",
+          "food"
+        ],
+        "tone": [
+          "silly",
+          "wholesome"
+        ],
+        "scale": [],
+        "register": [
+          "fancy"
+        ],
+        "violation": [],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_019",
+      "type": "recipe",
+      "text": "The next big social media trend",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "pop_culture"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "pop_culture",
+          "action"
+        ],
+        "tone": [
+          "silly"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "register": [
+            "official_sounding",
+            "formal"
+          ],
+          "tone": [
+            "dry"
+          ]
+        },
+        {
+          "subject": [
+            "nature"
+          ],
+          "scale": [
+            "cosmic"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ],
+          "violation": [
+            "social"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "formal",
+          "official_sounding"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_020",
+      "type": "recipe",
+      "text": "What the dog really dreams about",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "wholesome"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "status": [
+            "high"
+          ],
+          "register": [
+            "official_sounding",
+            "fancy"
+          ]
+        },
+        {
+          "scale": [
+            "cosmic"
+          ],
+          "tone": [
+            "dramatic"
+          ]
+        },
+        {
+          "subject": [
+            "food"
+          ],
+          "tone": [
+            "gross_mild"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "dramatic",
+          "gross_mild"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "fancy",
+          "official_sounding"
+        ],
+        "violation": [],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_021",
+      "type": "recipe",
+      "text": "The worst theme for a birthday party",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "wholesome"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "register": [
+            "official_sounding"
+          ],
+          "tone": [
+            "dry"
+          ]
+        },
+        {
+          "tone": [
+            "gross_mild"
+          ]
+        },
+        {
+          "subject": [
+            "nature"
+          ],
+          "scale": [
+            "cosmic",
+            "huge"
+          ],
+          "tone": [
+            "dramatic"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic",
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "cosmic",
+          "huge"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_022",
+      "type": "recipe",
+      "text": "Something you'd find in a royal palace",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "place",
+          "thing"
+        ],
+        "tone": [
+          "dramatic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "status": [
+            "low"
+          ],
+          "tone": [
+            "gross_mild"
+          ]
+        },
+        {
+          "scale": [
+            "tiny"
+          ],
+          "register": [
+            "kid"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "tone": [
+            "silly"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "gross_mild",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_023",
+      "type": "recipe",
+      "text": "The scariest thing in the world (according to a cat)",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "nature",
+          "animal"
+        ],
+        "tone": [
+          "dramatic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "scale": [
+            "tiny"
+          ],
+          "tone": [
+            "dry"
+          ]
+        },
+        {
+          "subject": [
+            "thing"
+          ],
+          "tone": [
+            "silly"
+          ]
+        },
+        {
+          "subject": [
+            "food"
+          ],
+          "tone": [
+            "wholesome"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "food",
+          "thing"
+        ],
+        "tone": [
+          "dry",
+          "silly",
+          "wholesome"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [],
+        "violation": [],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_024",
+      "type": "recipe",
+      "text": "A bad excuse for not doing homework",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event",
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "scale": [
+            "cosmic"
+          ],
+          "tone": [
+            "dramatic"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "violation": [
+            "logic"
+          ]
+        },
+        {
+          "register": [
+            "official_sounding"
+          ],
+          "status": [
+            "high"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_025",
+      "type": "recipe",
+      "text": "The best thing about being a grown-up",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "wholesome"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "dry"
+          ],
+          "register": [
+            "official_sounding"
+          ]
+        },
+        {
+          "scale": [
+            "tiny"
+          ],
+          "tone": [
+            "gross_mild"
+          ]
+        },
+        {
+          "tone": [
+            "silly"
+          ],
+          "register": [
+            "kid"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [],
+        "tone": [
+          "dry",
+          "gross_mild",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid",
+          "official_sounding"
+        ],
+        "violation": [],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_026",
+      "type": "recipe",
+      "text": "What's hiding in the teachers' lounge",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "place",
+          "food"
+        ],
+        "tone": [
+          "dry"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "absurd"
+          ],
+          "violation": [
+            "physical"
+          ]
+        },
+        {
+          "subject": [
+            "animal"
+          ],
+          "tone": [
+            "silly"
+          ]
+        },
+        {
+          "register": [
+            "fancy"
+          ],
+          "status": [
+            "high"
+          ],
+          "tone": [
+            "absurd"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd",
+          "silly"
+        ],
+        "scale": [],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "rc_027",
+      "type": "recipe",
+      "text": "The new school mascot",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "neutral"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "subject": [
+            "thing",
+            "food"
+          ],
+          "status": [
+            "low"
+          ]
+        },
+        {
+          "subject": [
+            "person"
+          ],
+          "violation": [
+            "logic"
+          ]
+        },
+        {
+          "tone": [
+            "dry"
+          ],
+          "subject": [
+            "nature"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "food",
+          "nature",
+          "person",
+          "thing"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [],
+        "register": [],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "rc_028",
+      "type": "recipe",
+      "text": "What really happens in the Bermuda Triangle",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "register": [
+            "kid"
+          ],
+          "tone": [
+            "wholesome"
+          ]
+        },
+        {
+          "tone": [
+            "awkward"
+          ],
+          "violation": [
+            "social"
+          ]
+        },
+        {
+          "subject": [
+            "food"
+          ],
+          "tone": [
+            "silly"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "awkward",
+          "silly",
+          "wholesome"
+        ],
+        "scale": [],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_029",
+      "type": "recipe",
+      "text": "The worst job for a robot",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "neutral"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dry"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "wholesome"
+          ],
+          "register": [
+            "kid"
+          ]
+        },
+        {
+          "tone": [
+            "awkward"
+          ],
+          "violation": [
+            "social"
+          ]
+        },
+        {
+          "tone": [
+            "dramatic"
+          ],
+          "register": [
+            "fancy"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [],
+        "tone": [
+          "awkward",
+          "dramatic",
+          "wholesome"
+        ],
+        "scale": [],
+        "register": [
+          "fancy",
+          "kid"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": []
+      }
+    },
+    {
+      "id": "rc_030",
+      "type": "recipe",
+      "text": "A sign that your house is haunted",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "neutral"
+        ]
+      },
+      "literalTags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic"
+        ]
+      },
+      "funnyTargetCombos": [
+        {
+          "tone": [
+            "silly"
+          ],
+          "register": [
+            "kid"
+          ]
+        },
+        {
+          "tone": [
+            "wholesome"
+          ],
+          "violation": [
+            "logic"
+          ]
+        },
+        {
+          "tone": [
+            "dry"
+          ],
+          "register": [
+            "official_sounding"
+          ]
+        }
+      ],
+      "funnyTargets": {
+        "subject": [],
+        "tone": [
+          "dry",
+          "silly",
+          "wholesome"
+        ],
+        "scale": [],
+        "register": [
+          "kid",
+          "official_sounding"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": []
+      }
+    }
+  ],
+  "ingredients": [
+    {
+      "id": "ic_001",
+      "type": "ingredient",
+      "text": "A substitute teacher who only speaks in whispers",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "awkward",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_002",
+      "type": "ingredient",
+      "text": "The principal",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_003",
+      "type": "ingredient",
+      "text": "A toddler with a whistle",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_004",
+      "type": "ingredient",
+      "text": "Grandma on a skateboard",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "silly",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_005",
+      "type": "ingredient",
+      "text": "A very confident pirate",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dramatic",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_006",
+      "type": "ingredient",
+      "text": "A mime who won't stop talking",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_007",
+      "type": "ingredient",
+      "text": "The lunch lady",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "wholesome",
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_008",
+      "type": "ingredient",
+      "text": "A knight in full armor at the beach",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_009",
+      "type": "ingredient",
+      "text": "Your dentist",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dry",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_010",
+      "type": "ingredient",
+      "text": "A wizard who forgot his password",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_011",
+      "type": "ingredient",
+      "text": "The kid who always says \"actually\"",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_012",
+      "type": "ingredient",
+      "text": "A royal butler",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy",
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_013",
+      "type": "ingredient",
+      "text": "A crossing guard with superpowers",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dramatic",
+          "absurd"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_014",
+      "type": "ingredient",
+      "text": "Your cousin who does magic tricks",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_015",
+      "type": "ingredient",
+      "text": "An astronaut on vacation",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_016",
+      "type": "ingredient",
+      "text": "A detective who is also a toddler",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_017",
+      "type": "ingredient",
+      "text": "The world's strongest grandpa",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dramatic",
+          "wholesome"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_018",
+      "type": "ingredient",
+      "text": "A ninja who sneezes a lot",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_019",
+      "type": "ingredient",
+      "text": "A soccer mom with a megaphone",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_020",
+      "type": "ingredient",
+      "text": "A robot learning to dance",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person",
+          "pop_culture"
+        ],
+        "tone": [
+          "silly",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_021",
+      "type": "ingredient",
+      "text": "A YouTuber unboxing a sandwich",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "pop_culture",
+          "person"
+        ],
+        "tone": [
+          "dry",
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_022",
+      "type": "ingredient",
+      "text": "A queen who loves bowling",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_023",
+      "type": "ingredient",
+      "text": "The new kid in class",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "awkward",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_024",
+      "type": "ingredient",
+      "text": "A referee at a tea party",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_025",
+      "type": "ingredient",
+      "text": "A vampire who's afraid of the dark",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_026",
+      "type": "ingredient",
+      "text": "A gym teacher who hates running",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "dry",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_027",
+      "type": "ingredient",
+      "text": "A celebrity chef who burns toast",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person",
+          "food"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_028",
+      "type": "ingredient",
+      "text": "An overly polite zombie",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "silly",
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_029",
+      "type": "ingredient",
+      "text": "A caveman at the mall",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_030",
+      "type": "ingredient",
+      "text": "Your best friend's mom",
+      "aaCategory": "people",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "person"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_031",
+      "type": "ingredient",
+      "text": "The school cafeteria",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "gross_mild",
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_032",
+      "type": "ingredient",
+      "text": "The bottom of a swimming pool",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_033",
+      "type": "ingredient",
+      "text": "The moon",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "nature"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_034",
+      "type": "ingredient",
+      "text": "A haunted bounce house",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "absurd",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_035",
+      "type": "ingredient",
+      "text": "The DMV",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_036",
+      "type": "ingredient",
+      "text": "Grandma's basement",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "nostalgic",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_037",
+      "type": "ingredient",
+      "text": "A five-star restaurant for dogs",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "animal"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_038",
+      "type": "ingredient",
+      "text": "The back seat on a road trip",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "nostalgic",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_039",
+      "type": "ingredient",
+      "text": "A volcano lair",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_040",
+      "type": "ingredient",
+      "text": "The lost-and-found bin",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "gross_mild",
+          "nostalgic"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_041",
+      "type": "ingredient",
+      "text": "A library where you have to yell",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_042",
+      "type": "ingredient",
+      "text": "The inside of a whale",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "animal"
+        ],
+        "tone": [
+          "gross_mild",
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_043",
+      "type": "ingredient",
+      "text": "A porta-potty at the fair",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_044",
+      "type": "ingredient",
+      "text": "The White House bowling alley",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_045",
+      "type": "ingredient",
+      "text": "A bouncy castle in space",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_046",
+      "type": "ingredient",
+      "text": "Your locker",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_047",
+      "type": "ingredient",
+      "text": "A water park in Antarctica",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "nature"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_048",
+      "type": "ingredient",
+      "text": "The principal's office",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_049",
+      "type": "ingredient",
+      "text": "A castle made of cheese",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "food"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_050",
+      "type": "ingredient",
+      "text": "The ball pit at a fast-food playground",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "gross_mild",
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_051",
+      "type": "ingredient",
+      "text": "Mount Everest",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "nature"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_052",
+      "type": "ingredient",
+      "text": "A wedding on a roller coaster",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "event"
+        ],
+        "tone": [
+          "dramatic",
+          "silly"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_053",
+      "type": "ingredient",
+      "text": "A tiny island with one palm tree",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "nature"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_054",
+      "type": "ingredient",
+      "text": "The emergency room",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_055",
+      "type": "ingredient",
+      "text": "A sleepover in a museum",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place",
+          "event"
+        ],
+        "tone": [
+          "nostalgic",
+          "wholesome"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_056",
+      "type": "ingredient",
+      "text": "The parking lot at the mall",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_057",
+      "type": "ingredient",
+      "text": "Under your bed",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "nostalgic",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_058",
+      "type": "ingredient",
+      "text": "A dentist's waiting room",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dry",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_059",
+      "type": "ingredient",
+      "text": "The Pentagon",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_060",
+      "type": "ingredient",
+      "text": "A treehouse with Wi-Fi",
+      "aaCategory": "places",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "place"
+        ],
+        "tone": [
+          "wholesome",
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_061",
+      "type": "ingredient",
+      "text": "A soggy sock",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_062",
+      "type": "ingredient",
+      "text": "A golden toilet",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_063",
+      "type": "ingredient",
+      "text": "A rubber chicken",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_064",
+      "type": "ingredient",
+      "text": "An instruction manual for a spoon",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dry",
+          "absurd"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_065",
+      "type": "ingredient",
+      "text": "A trophy for participation",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "wholesome",
+          "dry"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_066",
+      "type": "ingredient",
+      "text": "A fidget spinner the size of a car",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_067",
+      "type": "ingredient",
+      "text": "A whoopee cushion",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "gross_mild",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_068",
+      "type": "ingredient",
+      "text": "A crown made of macaroni",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing",
+          "food"
+        ],
+        "tone": [
+          "wholesome",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_069",
+      "type": "ingredient",
+      "text": "A dead phone battery",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dramatic",
+          "dry"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_070",
+      "type": "ingredient",
+      "text": "A permission slip",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dry",
+          "nostalgic"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_071",
+      "type": "ingredient",
+      "text": "A self-driving shopping cart",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_072",
+      "type": "ingredient",
+      "text": "A juice box",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing",
+          "food"
+        ],
+        "tone": [
+          "nostalgic",
+          "wholesome"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_073",
+      "type": "ingredient",
+      "text": "A tuxedo for a hamster",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing",
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_074",
+      "type": "ingredient",
+      "text": "A rocket-powered skateboard",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_075",
+      "type": "ingredient",
+      "text": "A participation certificate signed by the President",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_076",
+      "type": "ingredient",
+      "text": "A bowl of cold spaghetti",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_077",
+      "type": "ingredient",
+      "text": "A gummy worm",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "silly",
+          "nostalgic"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_078",
+      "type": "ingredient",
+      "text": "A 12-layer wedding cake",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_079",
+      "type": "ingredient",
+      "text": "Broccoli",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "dry",
+          "wholesome"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_080",
+      "type": "ingredient",
+      "text": "A pickle with feelings",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food",
+          "feeling"
+        ],
+        "tone": [
+          "absurd",
+          "wholesome"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_081",
+      "type": "ingredient",
+      "text": "A burrito the size of a bus",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_082",
+      "type": "ingredient",
+      "text": "Fancy cheese that smells like feet",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_083",
+      "type": "ingredient",
+      "text": "A mysterious casserole",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "gross_mild",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_084",
+      "type": "ingredient",
+      "text": "Mom's meatloaf",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "food"
+        ],
+        "tone": [
+          "nostalgic",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_085",
+      "type": "ingredient",
+      "text": "A glitter bomb",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "silly",
+          "dramatic"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_086",
+      "type": "ingredient",
+      "text": "A TV remote that's always missing",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "dry"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_087",
+      "type": "ingredient",
+      "text": "A homework-eating robot",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_088",
+      "type": "ingredient",
+      "text": "A fanny pack",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "nostalgic",
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_089",
+      "type": "ingredient",
+      "text": "A stuffed animal with a mustache",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_090",
+      "type": "ingredient",
+      "text": "A diamond-studded pencil",
+      "aaCategory": "things",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "thing"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_091",
+      "type": "ingredient",
+      "text": "Picture day",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "awkward",
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_092",
+      "type": "ingredient",
+      "text": "A surprise pop quiz",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic",
+          "dry"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_093",
+      "type": "ingredient",
+      "text": "Sneezing during a moment of silence",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_094",
+      "type": "ingredient",
+      "text": "Your voice cracking during a speech",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_095",
+      "type": "ingredient",
+      "text": "A fire drill during a shower",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "awkward",
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_096",
+      "type": "ingredient",
+      "text": "A grandparents' rap battle",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "absurd",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_097",
+      "type": "ingredient",
+      "text": "Tripping on the stage at graduation",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action",
+          "event"
+        ],
+        "tone": [
+          "awkward",
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_098",
+      "type": "ingredient",
+      "text": "The last day of school",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "nostalgic",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_099",
+      "type": "ingredient",
+      "text": "A food fight in a fancy restaurant",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_100",
+      "type": "ingredient",
+      "text": "A snow day",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "wholesome",
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_101",
+      "type": "ingredient",
+      "text": "Accidentally calling the teacher \"Mom\"",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_102",
+      "type": "ingredient",
+      "text": "A dramatic slow-motion walk",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action",
+          "pop_culture"
+        ],
+        "tone": [
+          "dramatic",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_103",
+      "type": "ingredient",
+      "text": "Burping the alphabet",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "gross_mild",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_104",
+      "type": "ingredient",
+      "text": "A pet's birthday party",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event",
+          "animal"
+        ],
+        "tone": [
+          "wholesome",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_105",
+      "type": "ingredient",
+      "text": "Waving back at someone who wasn't waving at you",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_106",
+      "type": "ingredient",
+      "text": "A royal coronation",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "fancy",
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_107",
+      "type": "ingredient",
+      "text": "The science fair volcano exploding",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic",
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_108",
+      "type": "ingredient",
+      "text": "A family reunion",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "awkward",
+          "wholesome"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_109",
+      "type": "ingredient",
+      "text": "A viral dance challenge",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "pop_culture",
+          "action"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_110",
+      "type": "ingredient",
+      "text": "A group project where nobody does anything",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dry",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_111",
+      "type": "ingredient",
+      "text": "The Olympics",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_112",
+      "type": "ingredient",
+      "text": "Getting your braces off",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_113",
+      "type": "ingredient",
+      "text": "A wedding where everyone's a dog",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event",
+          "animal"
+        ],
+        "tone": [
+          "absurd",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_114",
+      "type": "ingredient",
+      "text": "Losing a tooth in an apple",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "gross_mild",
+          "nostalgic"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_115",
+      "type": "ingredient",
+      "text": "A sleepover where no one sleeps",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "nostalgic",
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_116",
+      "type": "ingredient",
+      "text": "Getting caught singing in the car",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_117",
+      "type": "ingredient",
+      "text": "An alien invasion",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_118",
+      "type": "ingredient",
+      "text": "A dramatic season finale",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "pop_culture",
+          "event"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_119",
+      "type": "ingredient",
+      "text": "Forgetting your locker combination",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "action"
+        ],
+        "tone": [
+          "dry",
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_120",
+      "type": "ingredient",
+      "text": "The world's longest group hug",
+      "aaCategory": "events",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "event"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_121",
+      "type": "ingredient",
+      "text": "A goat",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_122",
+      "type": "ingredient",
+      "text": "A thunderstorm",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_123",
+      "type": "ingredient",
+      "text": "A sloth in a hurry",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_124",
+      "type": "ingredient",
+      "text": "A pigeon with an attitude",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly",
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_125",
+      "type": "ingredient",
+      "text": "The sun",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic",
+          "wholesome"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_126",
+      "type": "ingredient",
+      "text": "A black hole",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_127",
+      "type": "ingredient",
+      "text": "A very polite volcano",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_128",
+      "type": "ingredient",
+      "text": "A cow on a trampoline",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_129",
+      "type": "ingredient",
+      "text": "A goldfish with a law degree",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_130",
+      "type": "ingredient",
+      "text": "A rainbow",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_131",
+      "type": "ingredient",
+      "text": "A raccoon in a tuxedo",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_132",
+      "type": "ingredient",
+      "text": "Mud",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "gross_mild"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_133",
+      "type": "ingredient",
+      "text": "A tornado of glitter",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "absurd",
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "slang"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_134",
+      "type": "ingredient",
+      "text": "A penguin who wants to fly",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "wholesome",
+          "dramatic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_135",
+      "type": "ingredient",
+      "text": "A skunk at a perfume store",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "gross_mild",
+          "awkward"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_136",
+      "type": "ingredient",
+      "text": "A dinosaur with tiny arms",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_137",
+      "type": "ingredient",
+      "text": "An angry squirrel",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "dramatic",
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_138",
+      "type": "ingredient",
+      "text": "Pollen season",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_139",
+      "type": "ingredient",
+      "text": "The ocean",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_140",
+      "type": "ingredient",
+      "text": "A llama that spits compliments",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd",
+          "wholesome"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_141",
+      "type": "ingredient",
+      "text": "A meteor shower",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "wholesome",
+          "dramatic"
+        ],
+        "scale": [
+          "cosmic"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_142",
+      "type": "ingredient",
+      "text": "A mosquito",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "dry",
+          "gross_mild"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_143",
+      "type": "ingredient",
+      "text": "A single snowflake",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "formal"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_144",
+      "type": "ingredient",
+      "text": "A hamster on a treadmill",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_145",
+      "type": "ingredient",
+      "text": "A whale singing opera",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "absurd",
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "fancy"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    },
+    {
+      "id": "ic_146",
+      "type": "ingredient",
+      "text": "A cactus that wants a hug",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature",
+          "feeling"
+        ],
+        "tone": [
+          "wholesome",
+          "awkward"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "logic"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_147",
+      "type": "ingredient",
+      "text": "Quicksand",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic",
+          "nostalgic"
+        ],
+        "scale": [
+          "everyday"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_148",
+      "type": "ingredient",
+      "text": "A puppy",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "wholesome"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "kid"
+        ],
+        "violation": [
+          "none"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_149",
+      "type": "ingredient",
+      "text": "A cat knocking things off a table",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "animal"
+        ],
+        "tone": [
+          "silly",
+          "dry"
+        ],
+        "scale": [
+          "tiny"
+        ],
+        "register": [
+          "casual"
+        ],
+        "violation": [
+          "social"
+        ],
+        "status": [
+          "low"
+        ]
+      }
+    },
+    {
+      "id": "ic_150",
+      "type": "ingredient",
+      "text": "An earthquake",
+      "aaCategory": "nature",
+      "level": "medium",
+      "tags": {
+        "subject": [
+          "nature"
+        ],
+        "tone": [
+          "dramatic"
+        ],
+        "scale": [
+          "huge"
+        ],
+        "register": [
+          "official_sounding"
+        ],
+        "violation": [
+          "physical"
+        ],
+        "status": [
+          "high"
+        ]
+      }
+    }
+  ]
+}

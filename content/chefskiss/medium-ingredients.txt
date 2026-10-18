@@ -186,7 +186,7 @@ A YouTuber with a ring light | c y 1 s | @2012 k4
 A streamer who never sleeps | c y 2 s | @2015 k4
 A game tutorial from a ten-year-old | c y 1 c | @2012 k4
 A robot that only says "error" | t y 1 o
-An AI that's way too confident | t y 2 c
+A robot that's way too confident | t y 2 c
 A smart speaker that misheard you | t k 1 c
 A video call that froze on your face | c k 1 c | @2020 k5
 A phone at 1% battery | t d 1 c

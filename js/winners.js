@@ -7,10 +7,10 @@
 //   leadersOf(id, g) → for open-ended games with no finish (Scribble Chain, the casino tables):
 //                      whoever is ahead when the table goes back to the lobby.
 
-import { totals as yachtTotals } from './yacht.js?v=89';
-import { sideOf as hollowSide } from './hollow.js?v=89';
-import { side as rebelSide } from './rebel.js?v=89';
-import { team as w4fTeam } from './words4fun.js?v=89';
+import { totals as yachtTotals } from './yacht.js?v=90';
+import { sideOf as hollowSide } from './hollow.js?v=90';
+import { side as rebelSide } from './rebel.js?v=90';
+import { team as w4fTeam } from './words4fun.js?v=90';
 
 const isSeat = s => Number.isInteger(s) && s >= 0;
 const seatsOf = g => (Array.isArray(g.order) ? g.order : (g.seats || []).map((x, i) => (x ? i : -1)).filter(i => i >= 0));

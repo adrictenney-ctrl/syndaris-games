@@ -1,11 +1,11 @@
 // Chef's Kiss on a phone. Cards arrive face down: touch one to turn it over, then slide it
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=89';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=89';
-import { movable } from './gesture.js?v=89';
-import { TEAMS } from './chefskiss-config.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=89';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=90';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=90';
+import { movable } from './gesture.js?v=90';
+import { TEAMS } from './chefskiss-config.js?v=2';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=90';
 
 let ctx = null, v = null;
 let flipped = new Set();
@@ -72,9 +72,9 @@ function shell() {
 
 const isRecipeTurn = () => v.isChef && v.phase === 'recipe';
 const choosing = () => v.phase === 'play' && v.playing && v.mine.length < v.need;
-// Where this hand's picks come from: the table's AI (Gemma on the host) when it's running,
-// otherwise the built-in scorer on this phone. The AI gets 3 seconds; then the scorer steps in.
-const AI_WAIT = 3000;
+// Where this hand's picks come from: the table's Si (Gemma on the host) when it's running,
+// otherwise the built-in scorer on this phone. The Si gets 3 seconds; then the scorer steps in.
+const SI_WAIT = 3000;
 let laughFrom = '', laughTimer = null;
 function showPicks(key, ids, from) {
   if (laughKey !== key || !ids?.length) return;
@@ -84,7 +84,7 @@ function showPicks(key, ids, from) {
   laughIds = keep; laughFrom = from; handKey = '';
   if (document.getElementById('ckPhone')) renderHandRow();
 }
-function localPicks(key) { funnyPicks(v.recipe, v.hand).then(ids => { if (laughFrom !== 'ai') showPicks(key, ids, 'local'); }, () => {}); }
+function localPicks(key) { funnyPicks(v.recipe, v.hand).then(ids => { if (laughFrom !== 'si') showPicks(key, ids, 'local'); }, () => {}); }
 function askLaugh() {
   const on = v.laugh && choosing() && v.recipe && v.hand.length > 1;
   const key = on ? `${v.recipe.id}|${v.hand.map(c => c.id).join(',')}` : '';
@@ -92,11 +92,11 @@ function askLaugh() {
     laughKey = key; laughIds = []; laughFrom = '';
     clearTimeout(laughTimer);
     if (!on) return;
-    if (v.laughAI === 'ready') laughTimer = setTimeout(() => { if (!laughFrom) localPicks(key); }, AI_WAIT);
+    if (v.laughSi === 'ready') laughTimer = setTimeout(() => { if (!laughFrom) localPicks(key); }, SI_WAIT);
     else localPicks(key);
   }
-  // The AI's picks for this round have arrived (and nothing is showing yet): use them.
-  if (on && !laughFrom && v.aiPicks?.length) { clearTimeout(laughTimer); showPicks(key, v.aiPicks, 'ai'); }
+  // The Si's picks for this round have arrived (and nothing is showing yet): use them.
+  if (on && !laughFrom && v.siPicks?.length) { clearTimeout(laughTimer); showPicks(key, v.siPicks, 'si'); }
 }
 const handCards = () => (isRecipeTurn() ? v.myRecipes : v.hand);
 const canPlay = c => {
@@ -251,16 +251,16 @@ function renderPanel() {
 
 // ---------------------------------------------------------------- my own Ingredient Cards
 
-let aiShown = [];
+let siShown = [];
 function askIdeas() {
   if (!v?.laugh || !v.recipe) return;
   const key = v.recipe.id + ':' + Date.now();
-  // The table's AI already wrote ideas for this Recipe Card: show three (fresh ones each tap).
-  if (v.aiIdeas?.length) {
-    let pool = v.aiIdeas.filter(t => !aiShown.includes(t));
-    if (pool.length < 3) { aiShown = []; pool = [...v.aiIdeas]; }
+  // The table's Si already wrote ideas for this Recipe Card: show three (fresh ones each tap).
+  if (v.siIdeas?.length) {
+    let pool = v.siIdeas.filter(t => !siShown.includes(t));
+    if (pool.length < 3) { siShown = []; pool = [...v.siIdeas]; }
     const pick = pool.sort(() => Math.random() - .5).slice(0, 3);
-    aiShown.push(...pick);
+    siShown.push(...pick);
     ideasFor = key; ideas = pick; drawSheet();
     return;
   }

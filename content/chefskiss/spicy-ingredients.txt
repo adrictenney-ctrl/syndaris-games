@@ -560,7 +560,7 @@ A conspiracy theory about birds | e a 2 c
 Area 51 | l d 3 c
 The Moon's dark side | n d 4 c
 A robot uprising | e d 4 c
-An AI that wants a vacation | t a 2 c
+A robot that wants a vacation | t a 2 c
 A time traveler at the mall | p a 2 c
 A parallel universe | l a 4 c
 A clone of yourself | p a 2 c
