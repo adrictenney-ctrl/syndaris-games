@@ -1,9 +1,9 @@
 // Sweet Trail on the table: a winding candy path of coloured squares across a pastel meadow,
 // treat squares along the way, toffee pits, rainbow sugar bridges and the Candy Castle at the
 // end. The last card drawn is shown big.
-import * as T from './sweettrail.js?v=90';
-import { snap } from './cards.js?v=90';
-import { centerMsg, clearMsg } from './table-hearts.js?v=90';
+import * as T from './sweettrail.js?v=91';
+import { snap } from './cards.js?v=91';
+import { centerMsg, clearMsg } from './table-hearts.js?v=91';
 
 let root = null, key = '';
 // Path coordinates: 8 rows of 15, snaking upward from the bottom-left.

@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { pairsT } from './table-cardgames.js?v=90';
+import { pairsT } from './table-cardgames.js?v=91';
 
 export default pairsT;

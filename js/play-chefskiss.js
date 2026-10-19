@@ -1,11 +1,12 @@
 // Chef's Kiss on a phone. Cards arrive face down: touch one to turn it over, then slide it
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=90';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=90';
-import { movable } from './gesture.js?v=90';
-import { TEAMS } from './chefskiss-config.js?v=2';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=90';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=91';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=91';
+import { movable } from './gesture.js?v=91';
+import { TEAMS, CONFIG } from './chefskiss-config.js?v=2';
+import { spiceItUp } from './spice.js?v=1';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=91';
 
 let ctx = null, v = null;
 let flipped = new Set();
@@ -13,6 +14,8 @@ let selected = null, chosen = -1;
 let handKey = '', panelKey = '', boardKey = '', recipeKey = '';
 let endsAt = 0, tickT = null, gameId = null;
 let sheetOpen = false, editing = -1, sheetPlayable = false;
+// What's typed in the sheet (kept when the sheet redraws), and the Si's Spice It Up suggestions.
+let draft = null, spice = null, spiceFrom = '';
 // Laugh Engine (only when the host left it on): the funniest cards in this hand for this Recipe
 // Card, and card ideas. Both arrive whenever they're ready; nothing here ever waits on them.
 let laughKey = '', laughIds = [], ideas = null, ideasFor = '';
@@ -272,6 +275,7 @@ function askIdeas() {
 function openSheet() {
   sheetOpen = true;
   editing = -1;
+  draft = null; spice = null;
   drawSheet();
 }
 
@@ -281,7 +285,7 @@ function drawSheet() {
   if (!s) { s = document.createElement('div'); s.id = 'ckSheet'; document.body.appendChild(s); }
   const deck = myDeck();
   const playable = v && v.phase === 'play' && v.playing && v.mine.length < v.need;
-  const cur = editing >= 0 ? deck[editing] : { t: '', d: '' };
+  const cur = draft || (editing >= 0 ? deck[editing] : { t: '', d: '' });
   s.innerHTML = `
     <div class="ckp-sheet">
       <header><h3>My Ingredient Cards</h3><button class="ckp-x" type="button" aria-label="Close">✕</button></header>
@@ -295,6 +299,12 @@ function drawSheet() {
           ${playable ? '<button class="panel-btn go" type="button" data-a="playnow">Play it now</button>' : ''}
         </div>
       </form>
+      ${CONFIG.spiceItUpEnabled ? `<div class="ckp-spice">
+        <button class="panel-btn spice" type="button" data-a="spice"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h3v3H8zM6.5 6h6l1 3v11a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V9z" fill="#f4efe6" stroke="currentColor" stroke-width="1.4"/><path d="M15 6h3l1.5 3v11a1 1 0 0 1-1 1h-4" fill="#3a332e" stroke="currentColor" stroke-width="1.4"/></svg>${esc(CONFIG.spiceItUpButtonLabel)}</button>
+        <p class="ckp-hint">The Si doesn't change your card, it pulls out the flavor.</p>
+        ${spice ? `<div class="ckp-spice-list">${spice.map((x, i) => `<button type="button" data-sp="${i}"><b>${esc(x.technique)}</b>${esc(x.text)}</button>`).join('')}<button type="button" data-sp="keep" class="keep"><b>Keep mine</b>${esc(spiceFrom)}</button></div>
+          <p class="ckp-hint">${spice.length ? 'Tap one to use it (you can still change the words). Nothing is saved until you save.' : 'No ideas for that one. Keep yours, or try different words.'}</p>` : ''}
+      </div>` : ''}
       <ul class="ckp-list">${deck.length ? deck.map((c, i) => `
         <li><div><b>${esc(c.t)}</b>${c.d ? `<small>${esc(c.d)}</small>` : ''}</div>
           <span>${playable ? `<button type="button" data-play="${i}">Play</button>` : ''}<button type="button" data-edit="${i}">Edit</button><button type="button" data-del="${i}">Delete</button></span></li>`).join('')
@@ -302,6 +312,26 @@ function drawSheet() {
     </div>`;
   const f = s.querySelector('form');
   const val = () => ({ t: f.t.value.trim().slice(0, 80), d: f.d.value.trim().slice(0, 160) });
+  f.oninput = () => { draft = { t: f.t.value, d: f.d.value }; };
+  // Salt and Pepper: the Si's funnier versions of what's typed, made on this phone only.
+  s.querySelector('[data-a="spice"]')?.addEventListener('click', () => {
+    const idea = f.t.value.trim();
+    if (!idea) { toast('Write your idea first, then add Salt and Pepper'); f.t.focus(); return; }
+    spiceFrom = idea;
+    spice = spiceItUp(idea, 'ingredient', v?.level || 'mild', null, Math.random, CONFIG.spiceItUpSuggestions);
+    draft = { t: f.t.value, d: f.d.value };
+    drawSheet();
+  });
+  s.querySelectorAll('[data-sp]').forEach(b => {
+    b.onclick = () => {
+      const pick = b.dataset.sp === 'keep' ? spiceFrom : spice?.[Number(b.dataset.sp)]?.text;
+      if (pick == null) return;
+      f.t.value = pick;
+      draft = { t: f.t.value, d: f.d.value };
+      s.querySelectorAll('[data-sp]').forEach(x => x.classList.toggle('on', x === b));
+      f.t.focus();
+    };
+  });
   f.onsubmit = e => {
     e.preventDefault();
     const c = val();
@@ -310,6 +340,7 @@ function drawSheet() {
     if (editing >= 0) d[editing] = c; else d.unshift(c);
     write(LS.deck, d);
     editing = -1;
+    draft = null; spice = null;
     toast('Saved to your deck');
     drawSheet();
   };
@@ -319,11 +350,11 @@ function drawSheet() {
     playOwn(c);
   });
   s.querySelector('[data-a="ideas"]')?.addEventListener('click', askIdeas);
-  s.querySelectorAll('[data-idea]').forEach(b => { b.onclick = () => { f.t.value = ideas[Number(b.dataset.idea)] || ''; f.t.focus(); }; });
+  s.querySelectorAll('[data-idea]').forEach(b => { b.onclick = () => { f.t.value = ideas[Number(b.dataset.idea)] || ''; draft = { t: f.t.value, d: f.d.value }; f.t.focus(); }; });
   s.querySelector('.ckp-x').onclick = () => { sheetOpen = false; drawSheet(); };
   s.onclick = e => { if (e.target === s) { sheetOpen = false; drawSheet(); } };
   s.querySelectorAll('[data-play]').forEach(b => { b.onclick = () => playOwn(myDeck()[Number(b.dataset.play)]); });
-  s.querySelectorAll('[data-edit]').forEach(b => { b.onclick = () => { editing = Number(b.dataset.edit); drawSheet(); s.querySelector('input').focus(); }; });
+  s.querySelectorAll('[data-edit]').forEach(b => { b.onclick = () => { editing = Number(b.dataset.edit); draft = null; spice = null; drawSheet(); s.querySelector('input').focus(); }; });
   s.querySelectorAll('[data-del]').forEach(b => {
     b.onclick = () => {
       const d = myDeck();

@@ -1,8 +1,9 @@
 // Prompts and decks for the talk-and-laugh party games (talk-games.js). All family friendly.
+import { familySafe } from './parental.js?v=1';
 const pickOne = a => a[Math.floor(Math.random() * a.length)];
 
 // ---------------------------------------------------------------- Emoji Story: secret stories to tell in emoji
-export const EMOJI_PROMPTS = [
+const ALL_EMOJI_PROMPTS = [
   'A dog becomes an astronaut', 'Grandma wins a rap battle', 'A vampire goes to the dentist', 'A pizza falls in love with a pineapple',
   'The cat steals the birthday cake', 'A shark is scared of a goldfish', 'Aliens land at a wedding', 'A chicken crosses a very busy road',
   'A snowman goes on a beach holiday', 'The robot learns to dance', 'A pirate loses his treasure map', 'A wizard turns his teacher into a frog',
@@ -19,11 +20,11 @@ export const EMOJI_PROMPTS = [
 const TITLE_A = ['Revenge of the', 'The Last', 'Night of the', 'Return of the', 'Attack of the', 'The Secret', 'Planet of the', 'Escape from the', 'Love and the', 'The Curse of the', 'Fast and', 'Mission:', 'The Great', 'Invasion of the', 'Diary of a'];
 const TITLE_B = ['Toaster', 'Penguins', 'Grandmas', 'Lawnmower', 'Sock', 'Library', 'Spaghetti', 'Cactus', 'Hamsters', 'Bowling Alley', 'Haunted Fridge', 'Llama', 'Disco', 'Leftovers', 'Garden Gnome', 'Laundry', 'Bubble Wrap', 'Moon Cheese', 'Tuba', 'Rubber Duck'];
 export const movieTitle = () => `${pickOne(TITLE_A)} ${pickOne(TITLE_B)}`;
-export const GENRES = ['Horror', 'Romantic comedy', 'Action thriller', 'Musical', 'Space adventure', 'Western', 'Courtroom drama', 'Nature documentary', 'Superhero blockbuster', 'Heist movie', 'Sports underdog story', 'Kids cartoon', 'Spy thriller', 'Disaster movie', 'Period drama'];
-export const STARS = ['a talking dog', 'your grandma', 'a very tired wizard', 'a retired pirate', 'a nervous robot', 'a famous chef', 'a moody teenager', 'a karate-kid goldfish', 'a time-travelling plumber', 'twin babies', 'a disco-dancing alien', 'a heroic hamster', 'a sleepy dragon', 'the school janitor', 'a cowboy with stage fright', 'an overconfident pigeon'];
+const ALL_GENRES = ['Horror', 'Romantic comedy', 'Action thriller', 'Musical', 'Space adventure', 'Western', 'Courtroom drama', 'Nature documentary', 'Superhero blockbuster', 'Heist movie', 'Sports underdog story', 'Kids cartoon', 'Spy thriller', 'Disaster movie', 'Period drama'];
+const ALL_STARS = ['a talking dog', 'your grandma', 'a very tired wizard', 'a retired pirate', 'a nervous robot', 'a famous chef', 'a moody teenager', 'a karate-kid goldfish', 'a time-travelling plumber', 'twin babies', 'a disco-dancing alien', 'a heroic hamster', 'a sleepy dragon', 'the school janitor', 'a cowboy with stage fright', 'an overconfident pigeon'];
 
 // ---------------------------------------------------------------- Hot Takes
-export const HOT_TAKES = [
+const ALL_HOT_TAKES = [
   'Cereal is soup.', 'A hot dog is a sandwich.', 'Pineapple belongs on pizza.', 'Socks with sandals is peak fashion.', 'Breakfast for dinner beats dinner.',
   'Cats are better than dogs.', 'Water is wet.', 'The middle seat on a plane is the best seat.', 'Winter is the best season.', 'Cold pizza beats hot pizza.',
   'Books are always better than the movie.', 'Mondays are actually great.', 'Ketchup is a smoothie.', 'A straw has only one hole.', 'Naps are a waste of time.',
@@ -36,7 +37,7 @@ export const HOT_TAKES = [
 ];
 
 // ---------------------------------------------------------------- Who Said That?
-export const QUESTIONS = [
+const ALL_QUESTIONS = [
   'What food could you eat every single day?', 'What was your worst ever haircut?', 'What is your secret talent?', 'What is your most-used emoji?', 'What would your superhero name be?',
   'What is the weirdest thing you have ever eaten?', 'Which celebrity would play you in a movie?', 'What is your go-to karaoke song?', 'What did you want to be when you were little?', 'What is your biggest pet peeve?',
   'What is the last thing you searched online?', 'What would you buy first if you won the lottery?', 'What smell do you love that others hate?', 'What is your most embarrassing nickname?', 'What is the best gift you have ever got?',
@@ -46,10 +47,10 @@ export const QUESTIONS = [
 ];
 
 // ---------------------------------------------------------------- Worst Gift occasions
-export const OCCASIONS = ['For their birthday', 'For their wedding day', 'For graduation', 'For a new job', 'For the holidays', 'For moving house', 'For their retirement', 'Just because'];
+const ALL_OCCASIONS = ['For their birthday', 'For their wedding day', 'For graduation', 'For a new job', 'For the holidays', 'For moving house', 'For their retirement', 'Just because'];
 
 // ---------------------------------------------------------------- Interrogation: the case, the alibi and what really happened there
-export const ALIBIS = [
+const ALL_ALIBIS = [
   { crime: 'The last slice of cake vanished last night at 8 pm', place: 'at the cinema', facts: ['Watched a cartoon about a penguin', 'Ate nachos with too much cheese', 'Sat in row F'] },
   { crime: 'Someone painted the neighbour’s cat blue on Saturday', place: 'at a football match', facts: ['Home team lost 2–1', 'It rained in the second half', 'Bought a hot dog at half-time'] },
   { crime: 'The school trophy went missing on Friday afternoon', place: 'at the dentist', facts: ['Had a filling on the left side', 'Waited 40 minutes', 'Read an old fishing magazine'] },
@@ -68,14 +69,14 @@ export const ALIBIS = [
 ];
 
 // ---------------------------------------------------------------- Translate This
-export const PLAIN = [
+const ALL_PLAIN = [
   'Please take out the rubbish.', 'I would like a cheese sandwich.', 'The bus is running late again.', 'Can you pass me the salt?', 'It is my turn to choose the movie.',
   'I forgot my homework at home.', 'The Wi-Fi is not working.', 'Please stop eating my crisps.', 'We need to buy more milk.', 'Who left their shoes on the stairs?',
   'Your parking ticket has expired.', 'I lost my keys again.', 'The cat is sitting on my laptop.', 'Dinner is ready in five minutes.', 'Can I have the last cookie?',
   'Please turn the music down.', 'The printer is out of paper.', 'I need a nap.', 'It is raining, bring an umbrella.', 'Your order has been delayed.',
   'Happy birthday, I hope you like socks.', 'Do not touch my sandwich.', 'The meeting starts at nine o’clock.', 'Please wipe your feet.', 'I think I left the oven on.',
 ];
-export const STYLES = [
+const ALL_STYLES = [
   { name: 'a pirate', tip: 'Arr, matey! Treasure, ships and parrots' }, { name: 'a toddler', tip: 'Short words, big feelings, maybe a tantrum' },
   { name: 'Shakespeare', tip: 'Thee, thou, forsooth and plenty of drama' }, { name: 'an angry customer-service agent', tip: 'Polite… but furious' },
   { name: 'a sports commentator', tip: 'And he’s going for it — WHAT A MOMENT!' }, { name: 'a nature documentary', tip: 'Here we observe the human in its habitat…' },
@@ -86,7 +87,7 @@ export const STYLES = [
 ];
 
 // ---------------------------------------------------------------- Excuses, Excuses
-export const SITUATIONS = [
+const ALL_SITUATIONS = [
   'Why were you on the roof at 3 a.m.?', 'Why is there a goat in your bedroom?', 'Why did you show up to school in pyjamas?', 'Why are you covered in glitter?', 'Why is the car full of balloons?',
   'Why did you eat the whole birthday cake?', 'Why is your homework written in crayon?', 'Why were you singing in the library?', 'Why is the dog wearing your sunglasses?', 'Why are there 40 pizzas at the door?',
   'Why were you hiding in the fridge?', 'Why did you call your teacher “Mum”?', 'Why is there spaghetti on the ceiling?', 'Why are you wearing a wedding dress to the shop?', 'Why did you bring a duck to the cinema?',
@@ -95,7 +96,7 @@ export const SITUATIONS = [
 ];
 
 // ---------------------------------------------------------------- Lip Reader
-export const PHRASES = [
+const ALL_PHRASES = [
   'I love pizza', 'Where are my keys', 'Banana pancakes', 'Happy birthday to you', 'Pass the ketchup', 'My cat is a genius', 'Is it lunchtime yet',
   'I need a holiday', 'Purple monkey dishwasher', 'Turn the music up', 'Bubble gum', 'Chocolate cake', 'I forgot my homework', 'Watch out for the shark',
   'See you later alligator', 'The dog ate it', 'Let’s go to the beach', 'Hot chocolate please', 'Nice to meet you', 'Strawberry milkshake',
@@ -105,14 +106,14 @@ export const PHRASES = [
 ];
 
 // ---------------------------------------------------------------- Two Words
-export const INVENT = [
+const ALL_INVENT = [
   { name: 'product', tip: 'What is it and why would anyone buy it?' }, { name: 'band name', tip: 'Name the band and their big hit' },
   { name: 'superhero', tip: 'Hero name and their superpower' }, { name: 'restaurant', tip: 'Name it and the signature dish' },
   { name: 'video game', tip: 'Title and what you do in it' }, { name: 'sport', tip: 'Name it and how you win' },
 ];
 
 // ---------------------------------------------------------------- Guilty Conscience: have you ever…
-export const CONFESSIONS = [
+const ALL_CONFESSIONS = [
   'Pretended to be asleep to get out of a chore?', 'Eaten food that fell on the floor?', 'Laughed at a joke you didn’t understand?', 'Re-gifted a present?', 'Sung loudly when you thought nobody could hear?',
   'Walked into a glass door?', 'Blamed a smell on the dog?', 'Lied about reading a book?', 'Waved back at someone who wasn’t waving at you?', 'Fallen asleep in a cinema?',
   'Googled yourself?', 'Talked to a pet like it’s a person?', 'Sent a text to the wrong person?', 'Forgotten someone’s name right after meeting them?', 'Eaten dessert before dinner?',
@@ -122,7 +123,7 @@ export const CONFESSIONS = [
 ];
 
 // ---------------------------------------------------------------- Plot Twist: story openings
-export const STORIES = [
+const ALL_STORIES = [
   'Detective Holmes finally opened the locked room. Inside, the missing diamond sat on the table… next to a sleeping cat.',
   'The rocket counted down: three, two, one… and the captain suddenly shouted “STOP!”',
   'Grandma had always said the attic was off limits. Tonight, the attic door was wide open.',
@@ -139,3 +140,19 @@ export const STORIES = [
   'The pirate captain unrolled the map. The X was on his own ship.',
   'Two best friends found an old phone in the park. It started ringing.',
 ];
+
+// Parent Controls: leave out anything with a word this family has blocked.
+export const EMOJI_PROMPTS = familySafe(ALL_EMOJI_PROMPTS);
+export const GENRES = familySafe(ALL_GENRES);
+export const STARS = familySafe(ALL_STARS);
+export const HOT_TAKES = familySafe(ALL_HOT_TAKES);
+export const QUESTIONS = familySafe(ALL_QUESTIONS);
+export const OCCASIONS = familySafe(ALL_OCCASIONS);
+export const ALIBIS = familySafe(ALL_ALIBIS);
+export const PLAIN = familySafe(ALL_PLAIN);
+export const STYLES = familySafe(ALL_STYLES);
+export const SITUATIONS = familySafe(ALL_SITUATIONS);
+export const PHRASES = familySafe(ALL_PHRASES);
+export const INVENT = familySafe(ALL_INVENT);
+export const CONFESSIONS = familySafe(ALL_CONFESSIONS);
+export const STORIES = familySafe(ALL_STORIES);

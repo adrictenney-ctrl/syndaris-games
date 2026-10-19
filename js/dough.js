@@ -5,7 +5,7 @@
 // only be bought at its price).
 //
 // Wins collected while signed out wait on this device (pending) and are paid in on sign-in.
-import { db, auth, onUser, currentUser } from './firebase.js?v=2';
+import { db, auth, onUser, currentUser } from './firebase.js?v=3';
 import { doc, getDoc, setDoc, updateDoc, onSnapshot, increment, arrayUnion, runTransaction, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 export const WIN_DOUGH = 10;

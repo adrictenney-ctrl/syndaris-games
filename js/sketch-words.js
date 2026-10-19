@@ -1,3 +1,4 @@
+import { familySafe } from './parental.js?v=1';
 // Words for Sketch & Guess, sorted by how hard they are to draw.
 export const WORDS = {
   easy: `apple banana sun moon star tree house car boat fish cat dog bird snake spider ice cream cake pizza
@@ -54,4 +55,5 @@ function split(text) {
   return out;
 }
 
-export const LISTS = Object.fromEntries(Object.entries(WORDS).map(([k, v]) => [k, split(v)]));
+// Parent Controls: leave out any word this family has blocked.
+export const LISTS = Object.fromEntries(Object.entries(WORDS).map(([k, v]) => [k, familySafe(split(v))]));

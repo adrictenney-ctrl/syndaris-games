@@ -1,8 +1,8 @@
 // Hog Toss on the table: two little pink pigs land on a straw-coloured mat in whatever pose they
 // rolled, with the name of the toss and the turn's running total.
-import * as P from './hogtoss.js?v=90';
-import { snap } from './cards.js?v=90';
-import { centerMsg, clearMsg } from './table-hearts.js?v=90';
+import * as P from './hogtoss.js?v=91';
+import { snap } from './cards.js?v=91';
+import { centerMsg, clearMsg } from './table-hearts.js?v=91';
 
 let root = null, key = '';
 // A pig (side view) in a pose: side, dot (side with its spot showing), back, feet, nose, ear.

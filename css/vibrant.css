@@ -444,3 +444,17 @@ html[data-style="vibrant"] .style-price.owned { color: #3a2400; background: var(
 html[data-style="vibrant"] .shop-msg { font-family: var(--ui); background: rgba(8, 5, 44, .45); border: 2px solid rgba(255, 255, 255, .12); }
 html[data-style="vibrant"] .shop-go { font-family: var(--ui); font-weight: 900; letter-spacing: .06em; color: #06301c; background: var(--v-go); box-shadow: 0 4px 0 var(--v-go-edge); }
 html[data-style="vibrant"] .dough-pill { font-family: var(--ui); font-weight: 900; color: #fff; background: rgba(8, 5, 44, .55); border: 2px solid rgba(255, 255, 255, .1); }
+
+/* ================================================================ PARENT CONTROLS */
+html[data-style="vibrant"] .pc-open { color: #fff; background: rgba(8, 5, 44, .45); border-color: rgba(255, 255, 255, .1); }
+html[data-style="vibrant"] .pc-open:hover { border-color: var(--v-sun); }
+html[data-style="vibrant"] .pc-open > svg { color: var(--v-sun); }
+html[data-style="vibrant"] .pc-open strong { font-weight: 900; }
+html[data-style="vibrant"] .pc-tabs button { font-family: var(--ui); color: #fff; border: 2px solid rgba(255, 255, 255, .12); }
+html[data-style="vibrant"] .pc-tabs button[aria-selected="true"] { color: #3a2400; background: var(--v-sun); border-color: transparent; }
+html[data-style="vibrant"] .pc-search, html[data-style="vibrant"] .pc-add input { font-weight: 700; color: #fff; background: rgba(8, 5, 44, .55); border: 2px solid rgba(255, 255, 255, .1); }
+html[data-style="vibrant"] .pc-games { border: 2px solid rgba(255, 255, 255, .1); background: rgba(8, 5, 44, .35); }
+html[data-style="vibrant"] .pc-games li + li { border-top-color: rgba(255, 255, 255, .08); }
+html[data-style="vibrant"] .pc-games input:checked + i { background: var(--v-go); }
+html[data-style="vibrant"] .pc-words li { color: #fff; background: rgba(8, 5, 44, .5); border-color: rgba(255, 255, 255, .12); }
+html[data-style="vibrant"] .home-note { font-family: var(--ui); color: #fff; background: #2a1f9e; border: 2px solid var(--v-sun); box-shadow: 0 6px 0 #120c4a; }

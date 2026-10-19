@@ -1,7 +1,7 @@
 // The table side of the casino kit: the game's own centrepiece (wheel, dice, race, pegs, cards),
 // the clock and who's placed their bets, then the result and everyone's stack.
-import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=90';
-import { REDS, HORSES, SILKS, WHEEL, PEG_PAY, KENO_TABLE, cardTxt } from './casino-games.js?v=90';
+import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=91';
+import { REDS, HORSES, SILKS, WHEEL, PEG_PAY, KENO_TABLE, cardTxt } from './casino-games.js?v=91';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const FACES = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];

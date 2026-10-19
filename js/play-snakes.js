@@ -1,7 +1,7 @@
 // Roll-and-move games on a phone (Snakes & Ladders, Sweet Trail, Orchard): one big button to
 // roll (or draw / spin), and what happened last.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=90';
-import { dieHTML } from './table-yacht.js?v=90';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=91';
+import { dieHTML } from './table-yacht.js?v=91';
 
 let wasMyTurn = false;
 export function reset() { document.getElementById('rcPhone')?.remove(); }

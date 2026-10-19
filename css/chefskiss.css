@@ -215,6 +215,19 @@ body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
   color: var(--paper-ink); background: #fff4c8; border: 1px solid #e0b84a;
 }
 .ckp-idea-list button:active { transform: translateY(1px); }
+/* Si Spice It Up ("Salt and Pepper") */
+.ckp-spice { margin: 10px 0 4px; display: flex; flex-direction: column; gap: 6px; }
+.ckp-spice .panel-btn.spice { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.ckp-spice .panel-btn.spice svg { width: 22px; height: 22px; flex: none; }
+.ckp-spice-list { display: flex; flex-direction: column; gap: 6px; }
+.ckp-spice-list button {
+  text-align: left; padding: 9px 12px; border-radius: 10px; cursor: pointer; font: 700 15px/1.25 var(--ui);
+  color: var(--paper-ink); background: #fff; border: 1px solid rgba(42, 35, 32, .25); display: flex; flex-direction: column; gap: 2px;
+}
+.ckp-spice-list button b { font: 800 11px/1 var(--ui); letter-spacing: .08em; text-transform: uppercase; color: #a8203a; }
+.ckp-spice-list button.keep { background: #f4efe6; }
+.ckp-spice-list button.keep b { color: #5a4d40; }
+.ckp-spice-list button.on { box-shadow: 0 0 0 3px #e3cf9f; border-color: #c9a24a; }
 
 /* ---------------------------------------------------------------- Laugh Engine Si (lobby line on the table) */
 .ck-si { display: flex; flex-wrap: wrap; align-items: center; gap: 1vmin 1.4vmin; margin: .4vmin 0 0; font-size: 1.7vmin; }

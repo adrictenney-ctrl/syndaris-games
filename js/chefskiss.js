@@ -4,7 +4,8 @@
 // Chef's Kiss (1 point). The Chef role then passes to the left.
 import { CARDS } from './chefskiss-db.js?v=2';
 import { CONFIG, OFFICIAL_LEVELS, TEAMS } from './chefskiss-config.js?v=2';
-import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=2';
+import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=3';
+import { blockedWords, makeBlocker } from './parental.js?v=1';
 export { TEAMS };
 
 export const HAND = CONFIG.handSize;        // Ingredient Cards per Apprentice
@@ -34,7 +35,9 @@ export function card(id) {
 export const record = id => BY_ID.get(id) || null;
 export const levelOf = settings => OFFICIAL_LEVELS[settings.level] || 'mild';
 
-const tableOf = g => ({ level: levelOf(g.settings), usedCardIds: new Set(g.used) });
+// Parent Controls: cards with a word this family blocked are never dealt (and can't be played).
+const blockerOf = g => makeBlocker(g.block);
+const tableOf = g => ({ level: levelOf(g.settings), usedCardIds: new Set(g.used), blocked: blockerOf(g) });
 const rngFor = (g, what) => makeRng(`${g.id}:${g.round}:${what}`);
 
 // The Chef is dealt fresh Recipe Card choices every round.
@@ -77,6 +80,7 @@ export function createGame(settings, players) {
     scores: new Array(players.length).fill(0),
     teams: new Array(players.length).fill(null),
     v: 2,              // the master card database version of the game
+    block: blockedWords(),   // Parent Controls words on this screen (never sent to phones)
     used: [],          // cards used this game (played Ingredients, picked Recipes), so they aren't repeated
     hands: {},
     slots: {},         // the Laugh Engine's slot for each dealt card; stays at the table
@@ -258,6 +262,7 @@ export function applyAction(g, seat, a) {
       if (a.own) {
         const t = clean(a.own.t, 80);
         if (!t) return 'Write something on your card first';
+        if (blockerOf(g)(t)) return "That card can't be played at this table";
         playCard(g, seat, { own: true, t, d: clean(a.own.d, 160) });
       } else {
         if (!g.hands[seat]?.includes(a.id)) return "That card isn't in your hand";
@@ -326,6 +331,7 @@ export function viewFor(g, seat) {
     gameLeft: g.settings.length ? Math.max(0, g.startedAt + g.settings.length * 60000 - now()) : null,
     winners: g.winners || null,
     laugh: !!g.settings.laugh,
+    level: levelOf(g.settings),
     winningTeams: g.winningTeams || null,
     why: g.why,
   };

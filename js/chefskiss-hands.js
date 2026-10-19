@@ -71,6 +71,7 @@ export function eligible(card, table, round) {
   if (!card || card.status !== 'active' || card.type !== 'ingredient') return false;
   if (table.usedCardIds?.has?.(card.id) || round.dealtThisRound.has(card.id)) return false;
   if (card.source === 'organic') return false;                // Organic Cards are played from their owner's tab, never dealt
+  if (table.blocked?.(card.text)) return false;               // Parent Controls: a word this family blocked
   if (rank(card.level) > rank(table.level)) return false;
   if (table.decadeFilter?.length && !table.decadeFilter.includes(card.decade)) return false;
   return true;
@@ -131,7 +132,7 @@ export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.
 // The Chef's Recipe Card choices: eligible Recipes, weighted toward fresh ones with funnyTargets,
 // avoiding two choices with the same main subject when possible (SPEC.md Section 8.3).
 export function recipeChoices(cards, table, rng, n = CONFIG.recipeChoices) {
-  const ok = c => c && c.status === 'active' && c.type === 'recipe' && c.source !== 'organic' && rank(c.level) <= rank(table.level);
+  const ok = c => c && c.status === 'active' && c.type === 'recipe' && c.source !== 'organic' && rank(c.level) <= rank(table.level) && !table.blocked?.(c.text);
   let pool = cards.filter(c => ok(c) && !table.usedCardIds?.has?.(c.id));
   if (pool.length < n) pool = cards.filter(ok);
   const weight = c => fresh(c) * (combosOf(c).length ? 1 : 0.3) + 0.01;

@@ -1,7 +1,8 @@
 // Wrong Number: every text and reply here is written for Play On Display.
 // Prompts are texts from an unknown number; replies are what you send back.
+import { familySafe } from './parental.js?v=1';
 
-export const PROMPTS = [
+const ALL_PROMPTS = [
   'hey it\'s me. from last night. you still have my shoe?',
   'Who is this? Your number was written on my hand when I woke up.',
   'URGENT: the goat is loose again',
@@ -74,7 +75,7 @@ export const PROMPTS = [
   'The wedding band cancelled. Can you play the kazoo?',
 ];
 
-export const REPLIES = [
+const ALL_REPLIES = [
   'New phone, who this?',
   'Sorry, I only respond to carrier pigeon.',
   'This is a recording.',
@@ -253,3 +254,7 @@ export const REPLIES = [
   'Respect the hustle.',
   'Unsubscribe.',
 ];
+
+// Parent Controls: leave out anything with a word this family has blocked.
+export const PROMPTS = familySafe(ALL_PROMPTS);
+export const REPLIES = familySafe(ALL_REPLIES);

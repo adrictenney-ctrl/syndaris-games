@@ -6,6 +6,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
   getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
   createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, signOut,
+  reauthenticateWithPopup, reauthenticateWithCredential, EmailAuthProvider,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
@@ -56,6 +57,19 @@ export async function signUpEmail(email, password, name) {
 export const resetPassword = email => sendPasswordResetEmail(auth, email.trim());
 export const signOutUser = () => signOut(auth);
 
+// Prove it's really the account owner again (Parent Controls: resetting a forgotten parent code).
+export const signsInWithGoogle = () => !!auth.currentUser?.providerData.some(p => p.providerId === 'google.com');
+export async function confirmOwner(password) {
+  const u = auth.currentUser;
+  if (!u) throw Object.assign(new Error('Not signed in'), { code: 'auth/user-not-found' });
+  if (password == null && signsInWithGoogle()) {
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account', login_hint: u.email || '' });
+    return reauthenticateWithPopup(u, provider);
+  }
+  return reauthenticateWithCredential(u, EmailAuthProvider.credential(u.email, password || ''));
+}
+
 // Friendly words for Firebase's error codes.
 export function authMessage(e) {
   const c = e?.code || '';
@@ -72,6 +86,7 @@ export function authMessage(e) {
     'auth/cancelled-popup-request': 'Sign-in was closed before it finished.',
     'auth/network-request-failed': 'No connection. Check your internet and try again.',
     'auth/unauthorized-domain': 'This web address isn’t allowed to sign in yet (add it in the Firebase console under Authentication → Settings → Authorized domains).',
+    'auth/user-mismatch': 'That’s a different account. Use the account these Parent Controls belong to.',
     'auth/operation-not-allowed': 'This sign-in method isn’t turned on yet (enable it in the Firebase console under Authentication → Sign-in method).',
   }[c] || 'Something went wrong. Please try again.';
 }

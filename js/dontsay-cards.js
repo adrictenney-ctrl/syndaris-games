@@ -1,6 +1,7 @@
 // Don't Say It cards: the word to get your team to say, then the five words you mustn't use.
 // Our own list.
-export const CARDS = `
+import { familySafe } from './parental.js?v=1';
+const ALL_CARDS = `
 Pizza|cheese|slice|Italy|pepperoni|delivery
 Beach|sand|ocean|sun|waves|towel
 Birthday|cake|candles|party|age|presents
@@ -184,3 +185,6 @@ Thanksgiving|turkey|November|holiday|thanks|dinner
 Valentine|love|February|heart|card|cupid
 Wheelbarrow|garden|wheel|push|dirt|carry
 `.trim().split('\n').map(l => { const [word, ...ban] = l.split('|'); return { word, ban }; });
+
+// Parent Controls: leave out anything with a word this family has blocked.
+export const CARDS = familySafe(ALL_CARDS);

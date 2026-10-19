@@ -1,3 +1,4 @@
+import { familySafe } from './parental.js?v=1';
 // Extra words for Scribble Chain only (on top of the shared Sketch & Guess easy and medium lists).
 // One entry per line group, separated by commas, so phrases need no special handling.
 // All of them can be drawn: things, animals, places, people at work, actions and little scenes.
@@ -164,4 +165,5 @@ paper towel, photo album, picket fence, porch swing, rain gutter, recliner, rock
 stained glass, staircase, swing set, tea cup, tea kettle, toy box, trash bag, weather vane, window box, wind turbine,
 `;
 
-export const SCRIBBLE_WORDS = [...new Set(RAW.split(',').map(w => w.replace(/\s+/g, ' ').trim()).filter(Boolean))];
+// Parent Controls: leave out any word this family has blocked.
+export const SCRIBBLE_WORDS = familySafe([...new Set(RAW.split(',').map(w => w.replace(/\s+/g, ' ').trim()).filter(Boolean))]);

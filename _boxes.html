@@ -7,7 +7,7 @@
 <body><script type="module">
 const q = new URLSearchParams(location.search);
 const C = await import('./js/covers.js?t=' + Date.now());
-const { GAMES } = await import('./js/games.js?v=90');
+const { GAMES } = await import('./js/games.js?v=91');
 const ids = (q.get('ids') || 'euchre,holdem,veto,chess').split(',');
 document.body.style.setProperty('--cols', q.get('cols') || 4);
 await document.fonts.ready;

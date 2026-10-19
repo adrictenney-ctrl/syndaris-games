@@ -731,3 +731,44 @@ deep jewel tones (emerald, sapphire, oxblood, aubergine) only as quiet glows beh
   on the account; Classic only applies on a device whose signed-in account owns it.
 - **Storage:** Firestore `users/{uid} = { name, dough, styles, updatedAt }`, protected by the security rules
   (only you can read or change yours; Dough rises by at most 10 per change; a style can only be bought at its price).
+
+## Parent Controls
+
+Settings → **Family** → **Parent Controls** on the home page (`js/parental-ui.js`, `js/parental.js`).
+
+- **Account based.** A parent signs in, then chooses a **parent code** (4 to 8 numbers). The code is needed to change
+  or turn off Parent Controls; it's stored only as a SHA-256 hash mixed with the account id. "Forgot the code?"
+  asks the parent to confirm their sign-in (Google, or the account password) and then set a new one.
+- **Games:** switch off any game. It disappears from the home page (library, search, favorites and the banner),
+  and the table page won't open it: `table.html?game=…` goes back home with "… is turned off in Parent Controls",
+  before the table starts, so no phones can join.
+- **Blocked words:** cards, prompts and words containing them (whole words and simple plurals) are left out of
+  Chef's Kiss (never dealt, and players' own cards with them can't be played), Wrong Number, Don't Say It,
+  Sketch & Guess, Scribble Chain, One Clue, Pass the Phrase, and the talk-and-laugh games (Hot Takes, Emoji Story,
+  Fake Movie Pitch and the rest). The lists are cleaned on the table screen as the game loads; the words are
+  never sent to phones.
+- **Follows the account, sticks to the screen.** Saved in Firestore at `parental/{uid} = { pin, games, words,
+  updatedAt }` and copied to the screen (`localStorage` `pod.parental`), so it applies offline and stays on if
+  someone signs out. Turning it off (with the code) removes it everywhere that account is signed in.
+- **TV app:** not yet. The Android TV app doesn't sign in, so Parent Controls can't be set up or applied there.
+- **Firestore rule needed** (add inside `match /databases/{database}/documents { … }` and publish):
+
+```
+match /parental/{uid} {
+  allow read, delete: if request.auth != null && request.auth.uid == uid;
+  allow create, update: if request.auth != null && request.auth.uid == uid
+    && request.resource.data.keys().hasOnly(['pin', 'games', 'words', 'updatedAt'])
+    && request.resource.data.pin is string
+    && request.resource.data.games is list && request.resource.data.games.size() <= 300
+    && request.resource.data.words is list && request.resource.data.words.size() <= 300;
+}
+```
+
+## Si Spice It Up
+
+In Chef's Kiss, the phone's **✎ My cards** sheet has a **Salt and Pepper** button (`js/spice.js`; label in
+`js/chefskiss-config.js`). Type an idea, tap it, and the Si offers up to 3 funnier versions, each labelled with
+its technique (Twist, Status flip, Scale mismatch, Fancy talk, Rule-break), next to **Keep mine**. Tap one to use
+it, change the words if you like, then save; nothing is saved until you do. It runs on the phone only, keeps the
+player's own idea in every version, and stays family-friendly at the table's level ("The Si doesn't change your
+card, it pulls out the flavor.").

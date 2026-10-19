@@ -1,4 +1,4 @@
 // See table-casinolive.js.
-import { islandstudTable } from './table-casinolive.js?v=90';
+import { islandstudTable } from './table-casinolive.js?v=91';
 
 export default islandstudTable;
