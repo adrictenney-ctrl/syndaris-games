@@ -3,7 +3,7 @@
 // it ("It IS a spider" / "It's NOT a spider") or secretly peek and pass it on to someone who hasn't
 // seen it, with a claim of their own. Call it right and the one who passed it takes it face up;
 // call it wrong and you take it. Four of the same bug face up in front of you and you lose.
-import { base, shuffle, sfx, announce } from './party.js?v=93';
+import { base, shuffle, sfx, announce } from './party.js?v=94';
 
 export const BUGS = [{ n: 'Spider', e: '🕷️' }, { n: 'Rat', e: '🐀' }, { n: 'Toad', e: '🐸' }, { n: 'Bat', e: '🦇' }, { n: 'Fly', e: '🪰' }, { n: 'Cockroach', e: '🪳' }, { n: 'Scorpion', e: '🦂' }, { n: 'Beetle', e: '🐞' }];
 export function createGame(settings, players) {

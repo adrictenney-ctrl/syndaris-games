@@ -20,8 +20,8 @@
     // Classic is bought with Dough: only use it when the signed-in account owns it.
     if (podStyle !== 'classic' || !podOwned.includes('classic')) { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
   </script>
-  <link rel="stylesheet" href="css/cards.css?v=93">
-  <link rel="stylesheet" href="css/boxes.css?v=93">
+  <link rel="stylesheet" href="css/cards.css?v=94">
+  <link rel="stylesheet" href="css/boxes.css?v=94">
   <style>
     html { background: var(--onyx); }
     body {
@@ -352,7 +352,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=93">
+  <link rel="stylesheet" href="css/vibrant.css?v=94">
 </head>
 <body class="home">
   <header class="bar">
@@ -419,10 +419,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=93"></script>
+  <script type="module" src="js/tvnav.js?v=94"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=93';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=93';
+    import { GAMES } from './js/games.js?v=94';
+    import { sceneSVG, boxHTML } from './js/covers.js?v=94';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);

@@ -1,8 +1,8 @@
 // Tessera on a phone: choose the top or bottom tile of your deck, turn it, and tap one of the
 // glowing spots on the mosaic to try it there — then Place. Spots only show where it fits.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=93';
-import * as T from './tessera.js?v=93';
-import { boardSVG, tilePreview } from './table-tessera.js?v=93';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=94';
+import * as T from './tessera.js?v=94';
+import { boardSVG, tilePreview } from './table-tessera.js?v=94';
 
 let ctx = null, pick = 0, rot = 0, spot = null, lastMove = -1, wasMyTurn = false;
 

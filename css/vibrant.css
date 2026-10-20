@@ -136,6 +136,7 @@ html[data-style="vibrant"] .lobby-info {
   padding: 3vmin 3.4vmin; border-radius: 3vmin; background: var(--v-glass); border: .22vmin solid var(--v-line);
   box-shadow: 0 1vmin 0 -.2vmin rgba(10, 6, 60, .4), 0 2.4vmin 5vmin rgba(10, 6, 60, .4); backdrop-filter: blur(8px);
 }
+html[data-style="vibrant"] #felt { --info-pad-x: 7.24vmin; }   /* the panel's padding, so the lobby fit keeps its old width */
 html[data-style="vibrant"] .game-title { font-weight: 400; letter-spacing: .01em; text-shadow: 0 .6vmin 0 rgba(10, 6, 60, .5); }
 html[data-style="vibrant"] .game-blurb { font-style: normal; font-weight: 700; color: var(--mute); }
 html[data-style="vibrant"] .back { font-weight: 800; color: var(--mute); }

@@ -1,5 +1,5 @@
 // Last One Standing on the table — the quiz-show screen (see table-quiz.js).
-import { QUIZ } from './quiz-games.js?v=93';
-import { quizTable } from './table-quiz.js?v=93';
+import { QUIZ } from './quiz-games.js?v=94';
+import { quizTable } from './table-quiz.js?v=94';
 
 export default quizTable(QUIZ.lastonestanding, { id: 'lastonestanding' });

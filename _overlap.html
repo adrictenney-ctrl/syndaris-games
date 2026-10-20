@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lobby overlap check</title>
+<style>
+  body { font: 13px system-ui, sans-serif; margin: 12px; background: #f4f4f4; }
+  iframe { border: 0; position: absolute; left: -99999px; top: 0; }
+  pre { white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<p>Dev page (not linked): loads every game's table lobby at 1920×1080, 1280×720 and 1024×576, in Classic and Vibrant,
+empty and full of bots, and lists every seat tile that touches the settings panel, the QR card, the corner controls
+or another seat tile. Add <code>?games=a,b</code>, <code>?sizes=1024x576</code>, <code>?styles=vibrant</code> to narrow it.</p>
+<pre id="out">Running…</pre>
+<script type="module">
+import { GAMES } from './js/games.js';
+
+const q = new URLSearchParams(location.search);
+const ids = q.get('games') ? q.get('games').split(',') : Object.keys(GAMES);
+const sizes = (q.get('sizes') || '1920x1080,1280x720,1024x576').split(',').map(s => s.split('x').map(Number));
+const styles = (q.get('styles') || 'classic,vibrant').split(',');
+const out = document.getElementById('out');
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const saved = { style: localStorage.getItem('pod.style'), owned: localStorage.getItem('pod.owned'), session: localStorage.getItem('syndaris.table.v2') };
+
+function hit(a, b) {
+  const pad = 1;  // touching by a hairline doesn't count
+  return a.left < b.right - pad && b.left < a.right - pad && a.top < b.bottom - pad && b.top < a.bottom - pad;
+}
+const visible = el => el && el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden' && +getComputedStyle(el).opacity !== 0;
+
+function measure(doc) {
+  const found = [];
+  const plates = [...doc.querySelectorAll('.seat .plate')].filter(visible);
+  const others = [
+    ['settings panel', doc.querySelector('.lobby-info')],
+    ['QR card', doc.querySelector('.tent')],
+    ['room code', doc.querySelector('#netstatus')],
+    ['card-size slider', doc.querySelector('#sizer')],
+    ['Flat/Upright', doc.querySelector('#btnOrient')],
+    ['Full screen', doc.querySelector('#btnFull')],
+    ['rejoin QR', doc.querySelector('#qrMini')],
+  ].filter(([, el]) => visible(el));
+  const W = doc.documentElement.clientWidth, H = doc.documentElement.clientHeight;
+  plates.forEach((p, i) => {
+    const r = p.getBoundingClientRect();
+    if (r.left < -1 || r.top < -1 || r.right > W + 1 || r.bottom > H + 1) found.push(`seat ${i} off screen`);
+    for (const [name, el] of others) if (hit(r, el.getBoundingClientRect())) found.push(`seat ${i} × ${name}`);
+    plates.slice(i + 1).forEach((q2, j) => { if (hit(r, q2.getBoundingClientRect())) found.push(`seat ${i} × seat ${i + j + 1}`); });
+  });
+  // The panel must stay on screen and clear of the QR card.
+  const panel = doc.querySelector('.lobby-info').getBoundingClientRect();
+  if (panel.top < 0 || panel.bottom > H) found.push('panel off screen');
+  return found;
+}
+
+async function load(frame, id) {
+  localStorage.removeItem('syndaris.table.v2');
+  frame.src = 'table.html?game=' + id + '&t=' + Math.random();
+  await new Promise(r => { frame.onload = r; });
+  const st = frame.contentDocument.createElement('style');
+  st.textContent = '*, *::before, *::after { transition: none !important; animation: none !important; }';
+  frame.contentDocument.head.appendChild(st);
+  for (let i = 0; i < 40; i++) {
+    const d = frame.contentDocument;
+    if (d && d.body.classList.contains('in-lobby') && d.querySelectorAll('.seat').length) break;
+    await wait(50);
+  }
+  await wait(150);
+}
+
+const lines = [];
+let bad = 0, runs = 0;
+const frame = document.createElement('iframe');
+document.body.appendChild(frame);
+for (const style of styles) {
+  localStorage.setItem('pod.style', style);
+  localStorage.setItem('pod.owned', JSON.stringify(['classic']));
+  localStorage.setItem('syndaris.table.upright', q.get('orient') === 'upright' ? '1' : '0');
+  for (const [w, h] of sizes) {
+    frame.style.width = w + 'px'; frame.style.height = h + 'px';
+    for (const id of ids) {
+      await load(frame, id);
+      const doc = frame.contentDocument;
+      if (q.has('probe')) {   // how far the seat tiles reach in from each edge, in vmin
+        const v = Math.min(w, h) / 100, d = { t: 0, b: 0, l: 0, r: 0 };
+        const depth = () => doc.querySelectorAll('.seat .plate').forEach(p => {
+          const r = p.getBoundingClientRect(), s = p.closest('.seat').className.match(/side-(\d)/)[1];
+          if (s === '0') d.b = Math.max(d.b, (h - r.top) / v);
+          if (s === '2') d.t = Math.max(d.t, r.bottom / v);
+          if (s === '1') d.l = Math.max(d.l, r.right / v);
+          if (s === '3') d.r = Math.max(d.r, (w - r.left) / v);
+        });
+        depth();
+        doc.querySelectorAll('.seat.empty .addbot').forEach(b => b.click());
+        await wait(120);
+        depth();
+        const lob = doc.querySelector('#lobby').getBoundingClientRect(), tb = doc.querySelector('#toolbar').getBoundingClientRect();
+        lines.push(`${style} ${w}x${h} ${id}: t${d.t.toFixed(1)} b${d.b.toFixed(1)} l${d.l.toFixed(1)} r${d.r.toFixed(1)} lobby ${(lob.height / v).toFixed(1)}h toolbar ${(tb.width / v).toFixed(1)}x${(tb.height / v).toFixed(1)}`);
+        runs++; continue;
+      }
+      const empty = measure(doc);
+      doc.querySelectorAll('.seat.empty .addbot').forEach(b => b.click());
+      await wait(120);
+      const full = measure(doc);
+      runs++;
+      if (empty.length || full.length) {
+        bad++;
+        lines.push(`${style} ${w}x${h} ${id}: ${[...new Set([...empty.map(s => 'empty: ' + s), ...full.map(s => 'full: ' + s)])].join('; ')}`);
+      }
+      out.textContent = `Running… ${runs} checked, ${bad} with overlaps\n\n` + lines.join('\n');
+    }
+  }
+}
+frame.remove();
+if (saved.style == null) localStorage.removeItem('pod.style'); else localStorage.setItem('pod.style', saved.style);
+if (saved.owned == null) localStorage.removeItem('pod.owned'); else localStorage.setItem('pod.owned', saved.owned);
+if (saved.session == null) localStorage.removeItem('syndaris.table.v2'); else localStorage.setItem('syndaris.table.v2', saved.session);
+out.textContent = `Done: ${runs} lobbies checked, ${bad} with overlaps\n\n` + lines.join('\n');
+window.DONE = { runs, bad, lines };
+</script>
+</body>
+</html>

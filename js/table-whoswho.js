@@ -1,7 +1,7 @@
 // Who's Who on the table: both boards facing each other, with faces flipping down as questions
 // are answered, and the list of questions asked so far.
-import * as E from './whoswho.js?v=93';
-import { partyTable, esc, who } from './table-party.js?v=93';
+import * as E from './whoswho.js?v=94';
+import { partyTable, esc, who } from './table-party.js?v=94';
 
 export default partyTable(E, {
   id: 'whoswho',

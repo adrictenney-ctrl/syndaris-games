@@ -1,8 +1,8 @@
 // List Off on the table: the big letter and the clock while everyone writes, then each category
 // with everyone's answer (crossed out if it matched someone else's, used the wrong letter or was
 // voted down), then the round's points.
-import * as E from './listoff.js?v=93';
-import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=93';
+import * as E from './listoff.js?v=94';
+import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=94';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {

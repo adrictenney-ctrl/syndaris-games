@@ -756,3 +756,40 @@ body.in-game #qrMini { display: flex; }
 .rules-win { padding: 1.8vmin 2.2vmin; border-radius: 1.6vmin; background: rgba(255, 248, 230, .05); border: .15vmin solid rgba(255, 255, 255, .1); }
 .rules-tips { margin: 0; padding-left: 2.6vmin; display: flex; flex-direction: column; gap: .8vmin; }
 .rules-foot { display: flex; justify-content: flex-end; padding: 2vmin 3.4vmin 2.6vmin; border-top: .15vmin solid rgba(255, 255, 255, .08); }
+
+/* ---------- lobby: keep everything clear of the seat tiles ----------
+   The seats sit in a band along each edge of the table. table.js measures how far the tiles reach
+   in from each edge (--edge-t/-b/-l/-r); in the lobby the game panel and the corner controls stay
+   inside the free middle, so they never cover an Open seat, a name or an Add a bot button.
+   (During a game the controls go back to the corner, where the rejoin QR joins them.) */
+#felt { --edge-t: 21vmin; --edge-b: 21vmin; --edge-l: 21vmin; --edge-r: 21vmin; --tb-row: 4.6vmin; --mirror-h: 5.6vmin; --tent-span: 39vmin; --info-pad-x: 0px; --info-w: 50vmin; }
+/* A long settings list gets a wider panel, so two settings share a row and less of it has to scroll. */
+body.many-settings #felt { --info-w: 70vmin; }
+body.many-seats #felt, body.upright #felt { --mirror-h: 0px; }
+body.many-seats #felt { --tent-span: 33vmin; }
+/* Four seats down a side (Words 4 Fun, Field Agents): narrower tiles so neighbours don't touch. */
+body.crowded-sides #felt { --seat-w: 17vmin; }
+body.crowded-sides .seat:is(.side-1, .side-3) .plate { padding-inline: 1vmin; min-width: 0; }
+body.crowded-sides .seat:is(.side-1, .side-3) .who .name { font-size: 2.6vmin; max-width: 14vmin; }
+body.crowded-sides .seat:is(.side-1, .side-3) .meta { flex-wrap: wrap; text-align: center; }
+
+/* The lobby is centred in the space between the seat bands, above the controls row. */
+body.in-lobby #lobby { top: calc((var(--edge-t) + 100% - var(--edge-b) - var(--tb-row)) / 2); width: max-content; max-width: calc(100vw - var(--edge-l) - var(--edge-r)); }
+/* The game panel never grows past that space; a long settings list scrolls inside it. */
+body.in-lobby .lobby-info {
+  box-sizing: border-box; display: flex; flex-direction: column; min-height: 0;
+  max-height: calc(100vh - var(--edge-t) - var(--edge-b) - var(--tb-row) - var(--mirror-h) - 2.4vmin);
+  max-width: min(var(--info-w) + var(--info-pad-x), calc(100vw - var(--edge-l) - var(--edge-r) - var(--tent-span)));
+}
+body.in-lobby .lobby-info > * { flex: none; }
+body.in-lobby .lobby-info .settings { flex: 0 1 auto; min-height: 5.6vmin; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+
+/* The corner controls sit in one row at the inner corner of the seat bands, not on a seat. */
+body.in-lobby #toolbar {
+  right: calc(var(--edge-r) + .8vmin); bottom: calc(var(--edge-b) + .6vmin);
+  flex-direction: row; align-items: center; gap: 1vmin;
+}
+body.in-lobby #toolbar .pill { white-space: nowrap; }
+html[data-style="vibrant"] body.in-lobby .lobby-info .settings { scrollbar-color: rgba(255, 255, 255, .35) transparent; }
+body.in-lobby .lobby-info .settings { scrollbar-color: rgba(218, 188, 118, .4) transparent; }
+body.many-settings.in-lobby .lobby-info .settings { row-gap: 1.2vmin; }

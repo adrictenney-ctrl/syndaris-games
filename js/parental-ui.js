@@ -6,7 +6,7 @@
 import { db, onUser, currentUser, confirmOwner, signsInWithGoogle, authMessage } from './firebase.js?v=3';
 import { doc, setDoc, deleteDoc, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 import { getParental, setParental, clearParental, hashPin, makeBlocker } from './parental.js?v=1';
-import { GAMES } from './games.js?v=93';
+import { GAMES } from './games.js?v=94';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const ref = uid => doc(db, 'parental', uid);
