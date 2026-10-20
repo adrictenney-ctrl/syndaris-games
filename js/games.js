@@ -92,6 +92,7 @@ GAMES.chefskiss = {
   min: 3,
   max: 8,
   midJoin: true,   // dealt in at the next round
+  fillBots: 4,     // fewer than 4 people: computer players fill seats up to 4
   startLabel: 'Start the game',
   layout: GAMES.holdem.layout,
 };

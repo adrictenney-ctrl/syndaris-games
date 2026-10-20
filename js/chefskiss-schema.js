@@ -10,8 +10,8 @@ export const TAXONOMY = {
   status: ['high', 'low', 'neutral'],
 };
 export const AXES = Object.keys(TAXONOMY);
-const LEVELS = ['mild', 'medium', 'spicy', 'hot', 'hellfire'];
-const FAMILY = ['mild', 'medium', 'spicy'];
+const LEVELS = ['mild', 'medium', 'hot', 'spicy', 'hellfire_scorpion'];
+const FAMILY = ['mild', 'medium', 'hot', 'spicy'];
 
 function checkTags(obj, label, out, { partial = false } = {}) {
   if (!obj || typeof obj !== 'object') { out.push(`${label} missing`); return; }
@@ -31,7 +31,7 @@ export function validateCard(c) {
   if (typeof c.text !== 'string' || c.text.length < 1 || c.text.length > 120) out.push('text must be 1–120 characters');
   if (!['official', 'community', 'organic'].includes(c.source)) out.push(`source "${c.source}"`);
   if (!LEVELS.includes(c.level)) out.push(`level "${c.level}"`);
-  if (['hot', 'hellfire'].includes(c.level) && c.source !== 'organic') out.push('Hot and Hellfire are for Organic Cards only');
+  if (c.level === 'hellfire_scorpion' && c.source !== 'organic') out.push('Hellfire Scorpion is for Organic Cards only');
   if (!['draft', 'in_review', 'active', 'retired', 'rejected'].includes(c.status)) out.push(`status "${c.status}"`);
   if (!c.audience || !FAMILY.includes(c.audience.readingLevel) || !FAMILY.includes(c.audience.cultureLevel)) out.push('audience levels');
   if (!(c.audience?.knownness >= 1 && c.audience?.knownness <= 5)) out.push('audience.knownness 1–5');

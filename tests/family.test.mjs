@@ -13,7 +13,7 @@ const IDEAS = ['a dog', 'homework', 'pizza', 'Grandma', 'Uncle Bob dancing', 'so
 
 // ---------------------------------------------------------------- Spice It Up
 test('Spice It Up returns at most 3 suggestions, each with a different technique label', () => {
-  for (const idea of IDEAS) for (const level of ['mild', 'medium', 'spicy']) {
+  for (const idea of IDEAS) for (const level of ['mild', 'medium', 'hot']) {
     const out = spiceItUp(idea, 'ingredient', level, null, makeRng(idea + level));
     assert.ok(out.length <= 3 && out.length >= 1, idea);
     assert.equal(new Set(out.map(x => x.technique)).size, out.length, 'distinct techniques');
@@ -24,7 +24,7 @@ test('Spice It Up returns at most 3 suggestions, each with a different technique
 test('every suggestion keeps the player’s own idea in it', () => {
   for (const idea of IDEAS) {
     const core = coreOf(idea).bare.toLowerCase();
-    for (const x of spiceItUp(idea, 'ingredient', 'spicy', null, makeRng(idea))) assert.ok(x.text.toLowerCase().includes(core), `${idea} → ${x.text}`);
+    for (const x of spiceItUp(idea, 'ingredient', 'hot', null, makeRng(idea))) assert.ok(x.text.toLowerCase().includes(core), `${idea} → ${x.text}`);
   }
 });
 
@@ -58,7 +58,7 @@ test('Spice It Up runs on the phone and says Si, never the banned two-letter ter
   const src = readFileSync(new URL('../js/spice.js', import.meta.url), 'utf8');
   assert.doesNotMatch(src, /\bfetch\(|XMLHttpRequest|WebSocket|sendBeacon/, 'no network calls');
   assert.doesNotMatch(src, /\bA[I]\b/);
-  for (const x of IDEAS.flatMap(i => spiceItUp(i, 'ingredient', 'spicy', null, makeRng(i)))) assert.doesNotMatch(x.text, /\bA[I]\b/);
+  for (const x of IDEAS.flatMap(i => spiceItUp(i, 'ingredient', 'hot', null, makeRng(i)))) assert.doesNotMatch(x.text, /\bA[I]\b/);
 });
 
 // ---------------------------------------------------------------- Parent Controls: blocked words
@@ -98,14 +98,14 @@ test("Chef's Kiss never deals a card with a blocked word", () => {
   }
 });
 
-test("a player's own card with a blocked word can't be played", () => {
+test("a player's own card with a blocked word can't come to the table", async () => {
+  const { makeCustomCard } = await import('../js/ck-custom.js');
   const players = Array.from({ length: 8 }, (_, i) => (i < 4 ? { name: 'P' + i, bot: false, connected: true } : null));
   const g = K.createGame({ level: 0 }, players);
   g.block = ['toot'];
-  K.applyAction(g, g.chef, { type: 'recipe', id: g.recipes[g.chef][0] });
-  const s = g.apprentices[0];
-  assert.equal(K.applyAction(g, s, { type: 'play', own: { t: 'A very loud toot', d: '' } }), "That card can't be played at this table");
-  assert.equal(K.applyAction(g, s, { type: 'play', own: { t: 'A very loud trumpet', d: '' } }), null);
+  const card = t => makeCustomCard({ type: 'snack', text: t, level: 'mild' });
+  assert.equal(K.applyAction(g, 1, { type: 'custom', card: card('A very loud toot') }), "That card can't be played at this table");
+  assert.equal(K.applyAction(g, 1, { type: 'custom', card: card('A very loud trumpet') }), null);
 });
 
 test('the blocked words never reach a phone', () => {

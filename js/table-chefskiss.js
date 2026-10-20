@@ -1,13 +1,13 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=91';
-import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=2';
+import * as K from './chefskiss.js?v=92';
+import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=91';
-import { movable } from './gesture.js?v=91';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=92';
+import { movable } from './gesture.js?v=92';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=91';
+import { topPicks } from './laugh-engine.js?v=92';
 
 // ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
@@ -21,16 +21,16 @@ function laughRound(g) {
   const key = roundKey(g);
   if (g.si?.key === key) return;
   g.si = { key, picks: null, ideas: null };
-  const recipe = K.card(g.recipe);
+  const recipe = K.cardOf(g, g.recipe);
   const seats = (g.apprentices || []).filter(s => g.hands[s]?.length > 1);
-  const cards = [...new Map(seats.flatMap(s => g.hands[s].map(K.card).filter(Boolean)).map(c => [c.id, c])).values()];
+  const cards = [...new Map(seats.flatMap(s => g.hands[s].map(id => K.cardOf(g, id)).filter(Boolean)).map(c => [c.id, c])).values()];
   const refresh = () => { if (g.si?.key === key) ctxRef?.refresh?.(); };
   (async () => {
     try {
       const scores = await gemmaBackend.rank(recipe, cards, SI_MS);
       const byId = new Map(cards.map((c, i) => [c.id, scores[i]]));
       if (g.si?.key !== key) return;
-      g.si.picks = Object.fromEntries(seats.map(s => { const hand = g.hands[s].map(K.card).filter(Boolean); return [s, topPicks(hand, hand.map(c => byId.get(c.id) ?? 0))]; }));
+      g.si.picks = Object.fromEntries(seats.map(s => { const hand = g.hands[s].map(id => K.cardOf(g, id)).filter(Boolean); return [s, topPicks(hand, hand.map(c => byId.get(c.id) ?? 0))]; }));
       refresh();
     } catch {}
     try {
@@ -49,8 +49,9 @@ function laughView(g, seat, v) {
   return v;
 }
 // The lobby line that shows how the Si is doing (and lets the host give it the model file).
-const SI_TEXT = { off: 'Si off', nogpu: 'Built-in scorer (this screen can’t run the Si)', needmodel: 'Si needs its model file', downloading: 'Getting the Si model…', loading: 'Waking up the Si…', ready: 'The Si is ready ✓', error: 'Built-in scorer (the Si couldn’t start)' };
-const siLine = () => { const st = siStatus(); return `<span class="ck-si-state">${SI_TEXT[st.state] || ''}${st.state === 'downloading' && st.note ? ' ' + st.note : ''}</span>${['needmodel', 'error'].includes(st.state) ? '<label class="tool ck-si-file">Choose model file<input type="file" accept=".litertlm,.task" data-si-file hidden></label>' : ''}${st.note && st.state !== 'downloading' && st.state !== 'ready' ? `<small>${esc(st.note)}</small>` : ''}`; };
+// Shown to players: plain words only (never the helper's technical names).
+const SI_TEXT = { off: 'Funny-card helper off', nogpu: 'Built-in funny-card scorer', needmodel: 'Funny-card helper needs its file', downloading: 'Getting the funny-card helper…', loading: 'Waking up the funny-card helper…', ready: 'Funny-card helper ready ✓', error: 'Built-in funny-card scorer' };
+const siLine = () => { const st = siStatus(); return `<span class="ck-si-state">${SI_TEXT[st.state] || ''}${st.state === 'downloading' && st.note ? ' ' + st.note : ''}</span>${['needmodel', 'error'].includes(st.state) ? '<label class="tool ck-si-file">Choose helper file<input type="file" accept=".litertlm,.task" data-si-file hidden></label>' : ''}${st.note && st.state !== 'downloading' && st.state !== 'ready' ? `<small>${esc(st.note)}</small>` : ''}`; };
 onSiStatus(() => { document.querySelectorAll('[data-si-status]').forEach(el => { el.innerHTML = siLine(); }); if (siStatus().state === 'ready' && gameRef) { laughRound(gameRef); ctxRef?.refresh?.(); } });
 document.addEventListener('change', e => { const f = e.target.closest?.('[data-si-file]')?.files?.[0]; if (f) useModelFile(f); });
 
@@ -140,7 +141,7 @@ function renderRecipe(g) {
     box.innerHTML = `<div class="ck-stack">${back('r')}${back('r')}${back('r')}</div>`;
     return;
   }
-  box.innerHTML = face({ kind: 'r', ...K.card(g.recipe) });
+  box.innerHTML = face({ kind: 'r', ...K.cardOf(g, g.recipe) });
   const el = box.firstElementChild;
   el.classList.add('deal');
   movable(el);
@@ -150,7 +151,7 @@ function renderRecipe(g) {
 function renderSubs(g, ctx) {
   const box = root.querySelector('.ck-subs');
   const played = Object.values(g.subs || {}).reduce((n, c) => n + c.length, 0);
-  const expected = (g.apprentices || []).filter(s => g.seats[s]).length * g.need;
+  const expected = (g.apprentices || []).filter(s => g.seats[s]).length;
   const key = [g.round, g.phase, played, expected, g.winner].join('|');
   if (key === subsKey) return;
   subsKey = key;
@@ -165,11 +166,11 @@ function renderSubs(g, ctx) {
   }
   if (!['judge', 'reveal'].includes(g.phase)) return;
   g.reveal.forEach((r, i) => {
-    const c = K.card(r.c);
+    const c = K.cardOf(g, r.c);
     const won = g.phase === 'reveal' && g.winner === i;
     const wrap = document.createElement('div');
     wrap.className = 'ck-sub' + (won ? ' won' : '') + (g.phase === 'reveal' && !won ? ' lost' : '');
-    wrap.innerHTML = face({ kind: 'i', ...c }) + (g.phase === 'reveal' ? nameTag(r.seat, ctx, g) : '') +
+    wrap.innerHTML = face({ kind: 'i', ...c }) + (g.phase === 'reveal' && !c?.custom ? nameTag(r.seat, ctx, g) : '') +
       (won ? `<span class="ck-kissmark">${'<svg viewBox="0 0 64 36"><path d="M2 17C10 6 20 2 26 7c3 2 4 3 6 3s3-1 6-3c6-5 16-1 24 10-7 11-17 17-30 17S9 28 2 17Z" fill="currentColor"/></svg>'}</span>` : '');
     wrap.style.animationDelay = (g.phase === 'judge' ? i * 0.12 : 0) + 's';
     box.appendChild(wrap);
@@ -201,12 +202,14 @@ function message(g, ctx) {
   switch (g.phase) {
     case 'recipe': return `<b>${chef}</b> is the Chef · choosing a Recipe Card`;
     case 'play': {
-      const waiting = g.apprentices.filter(s => g.seats[s] && (g.subs[s]?.length || 0) < g.need);
-      return `Apprentices, play ${g.need === 2 ? 'two Ingredient Cards (Double Vision)' : 'your best Ingredient Card'} · waiting on ${waiting.length}`;
+      const waiting = g.apprentices.filter(s => g.seats[s] && !g.subs[s]?.length);
+      return `Apprentices, play your best Ingredient Card · waiting on ${waiting.length}`;
     }
     case 'judge': return `<b>Lobby the Chef!</b> ${chef} is choosing the Chef's Kiss`;
     case 'reveal': {
       const w = g.reveal[g.winner];
+      // A player's own card wins anonymously (nobody is shown as its writer).
+      if (K.cardOf(g, w.c)?.custom) return `💋 A house card gets the Chef's Kiss! <span class="ck-next">Next round in <b></b>s <button class="tool" type="button" data-a="next">Next round</button></span>`;
       return `💋 <b>${esc(ctx.nameOf(w.seat))}</b> gets the Chef's Kiss! <span class="ck-next">Next round in <b></b>s <button class="tool" type="button" data-a="next">Next round</button></span>`;
     }
   }
@@ -220,6 +223,7 @@ export default {
     const sel = (key, vals, label) => `<select data-set="${key}">${vals.map(v => `<option value="${v}" ${v === s[key] ? 'selected' : ''}>${label(v)}</option>`).join('')}</select>`;
     return `
       <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
+      <label>House Recipes ${sel('houseRecipes', [1, 2, 0], v => ['Off', 'Mix in (up to 1 of 3)', 'Replace (players’ first)'][v])}</label>
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
       <label>Recipe timer ${sel('recipeTime', [0, 5, 10, 15], v => (v ? `${v} s` : 'off'))}</label>
@@ -245,7 +249,7 @@ export default {
       badges.push(`<span class="badge" style="color:${t.c};border-color:${t.c}">Team ${t.name}</span>`);
     }
     if (g.phase === 'play' && g.apprentices.includes(seat)) {
-      badges.push((g.subs[seat]?.length || 0) >= g.need ? '<span class="badge got">✓ played</span>' : '<span class="badge">choosing…</span>');
+      badges.push(g.subs[seat]?.length ? '<span class="badge got">✓ played</span>' : '<span class="badge">choosing…</span>');
     }
     if (g.phase === 'over' && g.winners?.includes(seat)) badges.push('<span class="badge got">🏆 winner</span>');
     return {
@@ -277,7 +281,7 @@ export default {
     const availW = felt.width - 2 * v * (many ? 26 : 23);
     const availH = felt.height - 2 * v * (ctx.upright ? 19 : 21) - 12 * v;
     const n = ['play', 'judge', 'reveal'].includes(g.phase)
-      ? Math.max(1, g.phase === 'play' ? (g.apprentices || []).filter(s => g.seats[s]).length * g.need : g.reveal.length) : 3;
+      ? Math.max(1, g.phase === 'play' ? (g.apprentices || []).filter(s => g.seats[s]).length : g.reveal.length) : 3;
     const rows = n <= 4 ? 1 : 2;
     const cols = Math.ceil(n / rows);
     const gap = 1.6 * v;

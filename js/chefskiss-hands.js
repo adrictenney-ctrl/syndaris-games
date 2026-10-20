@@ -3,7 +3,8 @@
 // each Apprentice gets a fresh 7-card hand: 6 on-target cards (likely funny with this Recipe) and
 // 1 random eligible card, shuffled together (approved by Al, 17 Oct 2026; CARD_RULES.md Section 7).
 // The slot labels stay with the table; players never see them.
-import { CONFIG, rank } from './chefskiss-config.js?v=2';
+import { CONFIG, rank } from './chefskiss-config.js?v=3';
+import { answerFit } from './ck-custom.js?v=1';
 
 const DIMS = ['subject', 'tone', 'scale', 'register', 'violation', 'status'];
 export const TAG_WEIGHTS = { subject: 1.0, tone: 1.5, scale: 1.0, register: 1.0, violation: 1.0, status: 1.0 };
@@ -63,7 +64,9 @@ export function funnyScore(card, recipe, rng = Math.random, stats = null) {
   const target = targetScore(card, recipe);
   const literal = literalScore(card, recipe);
   const history = pairWinRate(recipe?.id, card?.id, stats);
-  return (2.0 * target - 1.5 * literal + 3.0 * history) * (0.5 + 0.5 * fresh(card)) + rng() * 0.3;
+  // A Signature Recipe's "What kind of answer fits?" chips: cards of those kinds score higher.
+  const fit = recipe?.answerTypes?.length ? 2.0 * answerFit(card, recipe.answerTypes) : 0;
+  return (2.0 * target - 1.5 * literal + 3.0 * history + fit) * (0.5 + 0.5 * fresh(card)) + rng() * 0.3;
 }
 
 // Which Ingredient Cards may be dealt at this table this round (SPEC.md Section 8.1).
@@ -72,7 +75,7 @@ export function eligible(card, table, round) {
   if (table.usedCardIds?.has?.(card.id) || round.dealtThisRound.has(card.id)) return false;
   if (card.source === 'organic') return false;                // Organic Cards are played from their owner's tab, never dealt
   if (table.blocked?.(card.text)) return false;               // Parent Controls: a word this family blocked
-  if (rank(card.level) > rank(table.level)) return false;
+  if (card.level !== table.level) return false;               // one table, one deck: never another level's cards
   if (table.decadeFilter?.length && !table.decadeFilter.includes(card.decade)) return false;
   return true;
 }
@@ -110,12 +113,14 @@ export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.
   // Short on cards: let this game's played cards come back before anything else (never higher levels).
   if (pool.length < handSize) pool = cards.filter(c => eligible(c, { ...table, usedCardIds: new Set() }, round));
   let hand;
-  const hasData = combosOf(recipe).length > 0 && pool.filter(hasTags).length >= 10;
+  const hasData = (combosOf(recipe).length > 0 || recipe?.answerTypes?.length > 0) && pool.filter(hasTags).length >= 10;
   if (!hasData) {
     hand = rng.shuffle([...pool]).slice(0, handSize).map(c => ({ cardId: c.id, slot: 'random' }));
   } else {
     const ranked = pool.map(c => ({ c, s: funnyScore(c, recipe, rng, stats) })).sort((a, b) => b.s - a.s);
-    const onTarget = takeTopWithDiversity(ranked, mix.onTarget, 2, rng);
+    // Mixed subjects keep a hand varied, unless the Recipe asked for one kind of answer (a Signature
+    // Recipe's "What kind of answer fits?" chips).
+    const onTarget = takeTopWithDiversity(ranked, mix.onTarget, recipe?.answerTypes?.length ? mix.onTarget : 2, rng);
     const rest = rng.shuffle(pool.filter(c => !onTarget.includes(c)));
     hand = [
       ...onTarget.map(c => ({ cardId: c.id, slot: 'on_target' })),
@@ -132,7 +137,7 @@ export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.
 // The Chef's Recipe Card choices: eligible Recipes, weighted toward fresh ones with funnyTargets,
 // avoiding two choices with the same main subject when possible (SPEC.md Section 8.3).
 export function recipeChoices(cards, table, rng, n = CONFIG.recipeChoices) {
-  const ok = c => c && c.status === 'active' && c.type === 'recipe' && c.source !== 'organic' && rank(c.level) <= rank(table.level) && !table.blocked?.(c.text);
+  const ok = c => c && c.status === 'active' && c.type === 'recipe' && c.source !== 'organic' && c.level === table.level && !table.blocked?.(c.text);
   let pool = cards.filter(c => ok(c) && !table.usedCardIds?.has?.(c.id));
   if (pool.length < n) pool = cards.filter(ok);
   const weight = c => fresh(c) * (combosOf(c).length ? 1 : 0.3) + 0.01;

@@ -62,10 +62,10 @@ export function startSi() {
         if (!res.ok || !res.body) throw new Error('HTTP ' + res.status);
         await keep(res.body, Number(res.headers.get('content-length')) || 0);
         file = await storedModel();
-      } catch (e) { set('needmodel', 'Couldn’t download the Si model — choose the file instead'); return false; }
+      } catch (e) { set('needmodel', 'Couldn’t download the helper file. Choose it instead.'); return false; }
     }
-    if (!file) { set('needmodel', 'Choose the Gemma 3n model file (E2B or E4B, “-Web” .litertlm) once on this screen'); return false; }
-    set('loading', 'Waking up the Si…');
+    if (!file) { set('needmodel', 'Choose the helper file (the .litertlm file in the README) once on this screen'); return false; }
+    set('loading', 'Waking up the funny-card helper…');
     try {
       const { FilesetResolver, LlmInference } = await import(`${MP}/genai_bundle.mjs`);
       const files = await FilesetResolver.forGenAiTasks(`${MP}/wasm`);
@@ -75,7 +75,7 @@ export function startSi() {
       });
       set('ready', 'Gemma is ready');
       return true;
-    } catch (e) { llm = null; set('error', 'The Si couldn’t start on this screen — using the built-in scorer'); return false; }
+    } catch (e) { llm = null; set('error', 'The helper couldn’t start on this screen, so the built-in scorer is used'); return false; }
   })().finally(() => { loading = null; });
   return loading;
 }
@@ -84,7 +84,7 @@ export function startSi() {
 export async function useModelFile(file) {
   if (!file) return false;
   set('downloading', '0%', { progress: 0 });
-  try { await keep(file.stream(), file.size); } catch { set('error', 'Couldn’t store the model on this device (not enough space?)'); return false; }
+  try { await keep(file.stream(), file.size); } catch { set('error', 'Couldn’t store the helper file on this device (not enough space?)'); return false; }
   return startSi();
 }
 
@@ -97,7 +97,7 @@ export function stopSi() {
 export async function forgetModel() {
   stopSi();
   try { const dir = await navigator.storage.getDirectory(); await dir.removeEntry(STORE); } catch {}
-  set('needmodel', 'Model removed from this device');
+  set('needmodel', 'Helper file removed from this device');
 }
 
 // One request at a time, each cancelled after `ms`.

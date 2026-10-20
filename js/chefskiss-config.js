@@ -22,10 +22,13 @@ export const CONFIG = {
   spiceItUpButtonLabel: 'Salt and Pepper',   // candidate name (TODO-AL)
 };
 
-// Level order, used for every comparison (SPEC.md Section 2). Official cards are only the first three.
-export const LEVELS = ['mild', 'medium', 'spicy', 'hot', 'hellfire'];
-export const OFFICIAL_LEVELS = ['mild', 'medium', 'spicy'];
-export const LEVEL_LABEL = { mild: 'Mild (elementary)', medium: 'Medium (middle school)', spicy: 'Spicy (high school)' };
+// Level order, used for every comparison (SPEC.md Section 2, renamed 19 Oct 2026): Hot is the high
+// school family deck (formerly "Spicy"); Spicy is now the gated college tier and Hellfire Scorpion the
+// adult tier. Tables play exactly one of the three family decks (OFFICIAL_LEVELS), never a mix.
+export const LEVELS = ['mild', 'medium', 'hot', 'spicy', 'hellfire_scorpion'];
+export const OFFICIAL_LEVELS = ['mild', 'medium', 'hot'];
+export const LEVEL_LABEL = { mild: 'Mild (elementary)', medium: 'Medium (middle school)', hot: 'Hot (high school)' };
+export const LEVEL_NAME = { mild: 'Mild', medium: 'Medium', hot: 'Hot' };
 export const rank = level => LEVELS.indexOf(level);
 
 export const TEAMS = [

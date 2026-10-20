@@ -1,6 +1,6 @@
 # Chef's Kiss Party Game: Build Spec for Claude Code
 
-**Version:** 12 October 2026, updated 17 October 2026 (approved 6+1 hand, dud rule, Si Spice It Up), updated 18 October 2026 (deck size set to 200 Recipe + 800 Ingredient per level; Parent Controls, Section 9.3; Family Deck Sync, Section 9.4) · **Owner:** Al Waller · **Builder:** Adric (with Claude Code)
+**Version:** 12 October 2026, updated 17 October 2026 (approved 6+1 hand, dud rule, Si Spice It Up), updated 18 October 2026 (deck size set to 200 Recipe + 800 Ingredient per level; Parent Controls, Section 9.3; Family Deck Sync, Section 9.4) · **19 Oct 2026 tier rename:** the family decks are now **Mild** (elementary), **Medium** (middle school) and **Hot** (high school, formerly Spicy). **Spicy** (college) and **Hellfire Scorpion** (adult) are separate tiers above Hot (age gates as set in the next note). Section 9.2 restated (it previously used "Hot" for the adult Organic tier); deck-size status updated for 100 new Ingredient Cards. · **19 Oct 2026 Spicy deck and age gates:** **Spicy** (college, **17+**) is now an **official curated deck** of 200 Recipe + 800 Ingredient Cards in `college_batch*` (all 4 sets written; deck complete, 1,000 cards in `college_batch1`–`10`); how 17+ is enforced is TODO-AL. **Hellfire Scorpion** is **21+** with real 21+ proof, player-made Organic Cards only, blocked by default, with no official cards. Level order unchanged: `mild < medium < hot < spicy < hellfire_scorpion`. Spicy Ingredient Cards are 3–9 words. · **19 Oct 2026 Spicy table rule (Al's decision):** a table is Spicy only if every seated player has passed the 17+ gate, **or** a parent on the account approves Spicy for the entire table (Section 9.1 rule 7, a logged, undoable parent control under Section 9.3). A host who isn't a parent still can't raise it. The 17+ enforcement method stays TODO-AL. Hellfire Scorpion unchanged (21+ with real proof; parent approval does not unlock it). Spicy deck complete (all 4 sets, 1,000 cards). · **19 Oct 2026 follow-up decisions (Al, relayed by Alvin):** Hot Recipe Card rc_s145 (landlord) moved to Spicy, keeping its ID, and replaced in Hot by rc_s201, so Hot stays at 1,045 and Spicy is **1,001** (201 Recipe + 800 Ingredient). Using the same subject at different ages across decks is intended and preferred. 17-year-old Spicy players stay under Parent Controls (Section 9.3 item 2). A parent may approve Spicy for a table that includes younger players, after a confirmation (Section 9.3 item 8, Section 9.1 rule 7). · **Owner:** Al Waller · **Builder:** Adric (with Claude Code)
 **Source of truth:** *Chef's Kiss Party Game Master Plan 10-12-26*. If this spec conflicts with the Master Plan, the Master Plan wins. Stop and ask.
 **Companion files (keep them in the repo next to this file):**
 - **`CARD_RULES.md`**: the Card Writing Rulebook. It covers how to write and tag cards, and the Si Spice It Up rules.
@@ -49,7 +49,7 @@ Bots fill empty seats. Content is filtered by level. The Laugh Engine stacks han
 - A public social feed of Organic Cards.
 - A marketplace for paid player cards.
 - Automatic age detection. Levels come from player and host settings.
-- Hot or Hellfire content in official decks or in Cards from the Community, ever.
+- Hellfire Scorpion (adult, 21+) content in official decks or in Cards from the Community, ever. Spicy (college, 17+) cards are never harvested into Cards from the Community. (Since 19 Oct 2026 Spicy itself is an official curated deck; see Section 9.2.)
 - Uploading card text to analytics.
 - Any cooking, recipe-app or restaurant-sim framing. The kitchen is a metaphor.
 - Old titles or names in UI copy: no "Trash It", "Toss It", "Super-Duper Pantry", "MyCard", "Simply Silly" or "Easy Peasy".
@@ -70,8 +70,9 @@ Bots fill empty seats. Content is filtered by level. The Laugh Engine stacks han
 | **Apprentice** | Every other seated player this round. | `role: "apprentice"` |
 | **Chef's Kiss** | The single award per round. Worth 1 point. | `kiss` |
 | **Laugh Engine** | The system that builds hands to maximize funny pairings, plus optional on-device model features. It never picks a human Chef's winner. | `laughEngine` |
-| **Mild / Medium / Spicy** | Family-friendly official levels: elementary, middle school, high school. | `level: "mild" \| "medium" \| "spicy"` |
-| **Hot / Hellfire** | Adult heat levels, for Organic Cards only. Blocked by default. Enabled only when every seated human opts in. | `level: "hot" \| "hellfire"` |
+| **Mild / Medium / Hot** | Family-friendly official levels: elementary, middle school, high school. Hot is the high school level (formerly named Spicy) and is **not** adult. | `level: "mild" \| "medium" \| "hot"` |
+| **Spicy** | Official curated college level, **17+** (enforcement TODO-AL). Clever, not crude: no sex, drugs, profanity or explicit content. Dealt only at a Spicy table (Section 9.2). | `level: "spicy"` |
+| **Hellfire Scorpion** | Adult heat level, **21+** with real 21+ proof. Player-made Organic Cards only; there are no official Hellfire Scorpion cards. Blocked by default. Enabled only when every seated human opts in. | `level: "hellfire_scorpion"` |
 | **Table screen** | The shared big screen at `/table?game=chefskiss`. | `table` |
 | **Phone** | A player's device, joined via `/play?room=CODE`. | `client` |
 | **Bot** | A computer-controlled seat. | `isBot: true` |
@@ -79,7 +80,7 @@ Bots fill empty seats. Content is filtered by level. The Laugh Engine stacks han
 | **Si** | The game's built-in on-device intelligence. Always "Si"; never the other two-letter term. | `si` |
 | **Spice It Up** | Si feature. It offers about 3 funnier, technique-labelled versions of a player's card idea. The player chooses or keeps the original. Tagline: *"The Si doesn't change your card, it pulls out the flavor."* | `spiceItUp` |
 
-Level order, used for every comparison: `mild < medium < spicy < hot < hellfire`.
+Level order, used for every comparison: `mild < medium < hot < spicy < hellfire_scorpion`.
 
 Never write "Prompt/Answer" or "Green/Red" cards. Never imply the cards are real recipes.
 
@@ -177,7 +178,7 @@ The shapes below are TypeScript-style. Adapt the syntax to the existing stack, b
 ```ts
 type CardType = "recipe" | "ingredient";
 type CardSource = "official" | "community" | "organic";
-type Level = "mild" | "medium" | "spicy" | "hot" | "hellfire";
+type Level = "mild" | "medium" | "hot" | "spicy" | "hellfire_scorpion";
 type CardStatus = "draft" | "in_review" | "active" | "retired" | "rejected";
 type Subject = "person" | "place" | "thing" | "event" | "nature" | "animal" | "food" | "pop_culture" | "feeling" | "action";
 type Tone = "silly" | "absurd" | "wholesome" | "awkward" | "dramatic" | "dry" | "gross_mild" | "nostalgic";
@@ -198,9 +199,9 @@ The tag lists are a **starter taxonomy (TODO-AL)**. The `violation` and `status`
 | `type` | CardType | ✔ | |
 | `text` | string | ✔ | 1–120 chars. Plain text. |
 | `source` | CardSource | ✔ | |
-| `level` | Level | ✔ | `hot` and `hellfire` are allowed only when `source = "organic"`. |
+| `level` | Level | ✔ | `hellfire_scorpion` is allowed only when `source = "organic"`. `spicy` is allowed for `official` (the curated college deck) and `organic`, never `community`. |
 | `status` | CardStatus | ✔ | Never hard-delete `official` or `community` cards. Set `retired` instead. |
-| `audience` | object | ✔ | `{ readingLevel: Level≤spicy, cultureLevel: Level≤spicy, knownness: 1–5 }`. Hot and Hellfire cards keep their audience at `spicy`. |
+| `audience` | object | ✔ | `{ readingLevel: Level≤spicy, cultureLevel: Level≤spicy, knownness: 1–5 }`. Official Spicy cards use `readingLevel` and `cultureLevel` `spicy` (college). Hellfire Scorpion cards keep their audience at `spicy`. |
 | `culture` | object | ✔ | `{ born: "YYYY" \| null, peak: "YYYY" \| null, stale: "YYYY" \| null }` |
 | `freshness` | number | ✔ | 0–1. Default 1.0 for new cards. |
 | `tags` | object | ✔ | `{ subject: Subject[], tone: Tone[], scale: Scale[], register: Register[], violation: Violation[], status: Status[] }`. 1–2 values per axis for new cards (CARD_RULES.md §3). The engine still tolerates empty arrays. |
@@ -282,7 +283,7 @@ The tag lists are a **starter taxonomy (TODO-AL)**. The `violation` and `status`
 | `id` | string | ✔ | Stable per device (stored on the device). Bots use `bot_<n>`. |
 | `displayName` | string | ✔ | 1–16 chars. Never attached to played cards. |
 | `isBot` | boolean | ✔ | |
-| `level` | `"mild" \| "medium" \| "spicy"` | ✔ | Self-declared at join (TODO-AL: profile or parent setting later). Bots default to the table level. |
+| `level` | `"mild" \| "medium" \| "hot" \| "spicy"` | ✔ | Self-declared at join (TODO-AL: profile or parent setting later). `spicy` requires the 17+ gate (Section 9.2; enforcement TODO-AL). Bots default to the table level. |
 | `paidTier` | boolean | ✔ | Unlocks Organic Cards. Default false. |
 | `adultOptIn` | ConsentRef \| null | ✔ | A reference to this device's consent record. Bots are always null. |
 | `seatIndex` | int \| null | ✔ | |
@@ -291,7 +292,7 @@ The tag lists are a **starter taxonomy (TODO-AL)**. The `violation` and `status`
 | `rejoinToken` | string | ✔ | Secret, stored on the device. Used to reclaim the seat. |
 
 ```json
-{ "id": "p_local_19c2", "displayName": "Grandpa Al", "isBot": false, "level": "spicy", "paidTier": true, "adultOptIn": null, "seatIndex": 0, "connection": "connected", "score": 3, "rejoinToken": "<secret>" }
+{ "id": "p_local_19c2", "displayName": "Grandpa Al", "isBot": false, "level": "hot", "paidTier": true, "adultOptIn": null, "seatIndex": 0, "connection": "connected", "score": 3, "rejoinToken": "<secret>" }
 ```
 
 ### 5.5 Table / session
@@ -306,8 +307,9 @@ The tag lists are a **starter taxonomy (TODO-AL)**. The `violation` and `status`
 | `targetScore` | 5 \| 7 \| 10 | ✔ | |
 | `gameTimerMin` | int \| null | ✔ | |
 | `level` | Level | ✔ | Effective table level, computed per Section 9 |
-| `levelRaisedByHost` | `"mild" \| "medium" \| "spicy"` \| null | ✔ | |
-| `adultLevel` | `"hot" \| "hellfire"` \| null | ✔ | Effective only if the gate passes (Section 9.2) |
+| `levelRaisedByHost` | `"mild" \| "medium" \| "hot"` \| null | ✔ | The host can never raise a table to `spicy` (Section 9.1). |
+| `spicyApprovedByParent` | `{ parentId: string, approvedAt: number, youngerPlayersConfirmed: boolean }` \| null | ✔ | Set only by a parent on the account (Section 9.1 rule 7, Section 9.3 item 8). `youngerPlayersConfirmed` records that the parent accepted the younger-players confirmation; it MUST be true before the approval takes effect. Makes the whole table Spicy. Logged like other parent controls; clearing it undoes the approval. Never unlocks `hellfire_scorpion`. |
+| `adultLevel` | `"hellfire_scorpion"` \| null | ✔ | Effective only if the Hellfire Scorpion gate passes (Section 9.2) |
 | `chefOrder` | string[] | ✔ | Player IDs in rotation order |
 | `chefIndex` | int | ✔ | |
 | `roundNumber` | int | ✔ | |
@@ -315,7 +317,7 @@ The tag lists are a **starter taxonomy (TODO-AL)**. The `violation` and `status`
 | `startedAt` / `endsAt?` | string | | |
 
 ```json
-{ "roomCode": "KZ4P", "game": "chefskiss", "hostPlayerId": "table", "state": "APPRENTICES_PLAY", "seats": ["p_local_19c2", "p_9a01", "bot_1", null, null, null, null, null], "targetScore": 7, "gameTimerMin": null, "level": "medium", "levelRaisedByHost": "medium", "adultLevel": null, "chefOrder": ["p_local_19c2", "p_9a01"], "chefIndex": 1, "roundNumber": 4, "usedCardIds": ["rc_000042", "ic_000310"] }
+{ "roomCode": "KZ4P", "game": "chefskiss", "hostPlayerId": "table", "state": "APPRENTICES_PLAY", "seats": ["p_local_19c2", "p_9a01", "bot_1", null, null, null, null, null], "targetScore": 7, "gameTimerMin": null, "level": "medium", "levelRaisedByHost": "medium", "spicyApprovedByParent": null, "adultLevel": null, "chefOrder": ["p_local_19c2", "p_9a01"], "chefIndex": 1, "roundNumber": 4, "usedCardIds": ["rc_000042", "ic_000310"] }
 ```
 
 ### 5.6 Round
@@ -352,7 +354,7 @@ There are two forms: **local**, kept on the device, and **upload**, the anonymou
 | `won` | boolean | ✔ | |
 | `slot` | `"on_target" \| "random"` | ✔ | |
 | `isDud` | boolean | ✔ | Set on the winning entry, otherwise false |
-| `tableLevel` | Level | ✔ | Upload: `hot` and `hellfire` are reported as `"adult"` with no IDs (TODO-AL: or not uploaded at all) |
+| `tableLevel` | Level | ✔ | Upload: `hellfire_scorpion` is reported as `"adult"` with no IDs (TODO-AL: or not uploaded at all). `spicy` uploads like the other official levels. |
 | `seatCount` / `botCount` | int | ✔ | |
 | `engineVersion` | string | ✔ | |
 | `ts` | string | ✔ | Upload: rounded to the hour |
@@ -361,7 +363,7 @@ There are two forms: **local**, kept on the device, and **upload**, the anonymou
 { "pairingId": "pl_8c21", "recipeId": "rc_000042", "ingredientId": "ic_000310", "won": true, "slot": "on_target", "isDud": false, "tableLevel": "medium", "seatCount": 5, "botCount": 1, "engineVersion": "le-2.0.0", "ts": "2026-10-12T22:00:00Z" }
 ```
 
-### 5.8 Opt-in consent record (Hot / Hellfire)
+### 5.8 Opt-in consent record (Hellfire Scorpion, 21+)
 
 Stored **on the device**. The authority receives only `{ playerId, adultOk: true, maxLevel, consentVersion }` for the current session.
 
@@ -369,14 +371,14 @@ Stored **on the device**. The authority receives only `{ playerId, adultOk: true
 |---|---|---|---|
 | `consentId` | string | ✔ | |
 | `playerId` | string | ✔ | |
-| `ageAttested18` | boolean | ✔ | Must be true. TODO-AL/legal: verification method |
+| `ageAttested21` | boolean | ✔ | Must be true. Attestation alone is **not** enough: real 21+ proof is required for Hellfire Scorpion (19 Oct 2026). TODO-AL/legal: verification method |
 | `agreementVersion` | string | ✔ | e.g. `"adult-v0-DRAFT"`. TODO-AL/legal: the final text |
-| `maxLevel` | `"hot" \| "hellfire"` | ✔ | |
+| `maxLevel` | `"hellfire_scorpion"` | ✔ | The only opt-in level. Spicy uses the 17+ gate, not this record. |
 | `acceptedAt` | string | ✔ | |
 | `revokedAt` | string \| null | ✔ | Revoking takes effect immediately |
 
 ```json
-{ "consentId": "c_31aa", "playerId": "p_local_19c2", "ageAttested18": true, "agreementVersion": "adult-v0-DRAFT", "maxLevel": "hot", "acceptedAt": "2026-10-12T22:10:00Z", "revokedAt": null }
+{ "consentId": "c_31aa", "playerId": "p_local_19c2", "ageAttested21": true, "agreementVersion": "adult-v0-DRAFT", "maxLevel": "hellfire_scorpion", "acceptedAt": "2026-10-12T22:10:00Z", "revokedAt": null }
 ```
 
 ---
@@ -451,8 +453,8 @@ All timers run at the authority and are shown as a countdown on the table and on
 
 - Bots are seated by the host in the lobby. They fill the **lowest-numbered open seat** (seats numbered clockwise from top-left).
 - As an Apprentice, a bot plays from its own Laugh Engine hand after a random delay of 3–12 s. Choice weights: on-target cards ranked by score 85%, the random card 15%. Use a seeded RNG so tests are reproducible.
-- Bots **never** hold or play Organic, Hot or Hellfire cards.
-- Bots have no consent record and do not count toward or against the adult gate (Section 9.2).
+- Bots **never** hold or play Organic or Hellfire Scorpion cards. At a Spicy table, bots may hold official Spicy cards like any other official card.
+- Bots have no consent record and do not count toward or against the Hellfire Scorpion gate (Section 9.2).
 - Bot names are clearly marked (e.g. "🤖 Basil").
 
 ---
@@ -486,7 +488,7 @@ After Start, empty seats are **hidden** (the ring re-lays out for the seated pla
 
 | Screen | MUST show |
 |---|---|
-| **Join** | Room code (prefilled from the URL), name, level picker ("Which school level fits you?": Mild = elementary, Medium = middle school, Spicy = high school), Join button. While connecting: "Connecting to the table…", then an error and Retry after 15 s. |
+| **Join** | Room code (prefilled from the URL), name, level picker ("Which school level fits you?": Mild = elementary, Medium = middle school, Hot = high school, Spicy = college (17+, behind the 17+ gate)), Join button. While connecting: "Connecting to the table…", then an error and Retry after 15 s. |
 | **Lobby wait** | "You're in, seat N", list of players, a link to Settings. |
 | **Chef: pick a Recipe** | 3 Recipe Cards as large tappable cards, countdown, Confirm. |
 | **Chef: wait** | "Apprentices are choosing…" with an anonymous count. |
@@ -495,7 +497,7 @@ After Start, empty seats are **hidden** (the ring re-lays out for the seated pla
 | **Apprentice: submitted** | "Your card is in. The Chef won't know it's yours." Option to change the pick until the phase ends. |
 | **Result** | The winning pairing. "You won the Kiss!" privately on the winner's phone, plus the public result per config. |
 | **Game over** | Final scores, Play again. |
-| **Settings** | Level, an adult opt-in section (Section 9.2), and a revoke button. |
+| **Settings** | Level, a Hellfire Scorpion (21+) opt-in section (Section 9.2), and a revoke button. |
 | **Organic Cards** (paid) | Collection, plant, tag, decks, grow, harvest, delete (Section 10). |
 | **Error** | A plain-language reason, Retry, and "Check you're on the internet" help. |
 
@@ -511,12 +513,12 @@ function eligible(card, table, player, round):
  if card.type != "ingredient": return false
  if card.id in table.usedCardIds or card.id in round.dealtThisRound: return false
  if card.source == "organic": return false # Organic cards are never dealt; owners play them from their own tab
- if rank(card.level) > rank(table.level): return false # table.level ≤ spicy for official/community
+ if rank(card.level) > rank(table.level): return false # official ≤ spicy, community ≤ hot
  if table.decadeFilter and card.decade not in table.decadeFilter: return false
  return true
 ```
 
-Official and community cards are always `mild`, `medium` or `spicy`, so they can never be dealt above Spicy. Hot and Hellfire cards exist only as Organic Cards, are played only from the owner's tab, and only when the gate passes (Section 9.2).
+Official cards are `mild`, `medium`, `hot` or `spicy`; community cards are `mild`, `medium` or `hot`. Official Spicy cards are dealt only when `table.level` is `spicy` (Section 9.2). Hellfire Scorpion cards exist only as Organic Cards, are played only from the owner's tab, and only when the Hellfire Scorpion gate passes (Section 9.2).
 
 ### 8.2 Scoring
 
@@ -614,34 +616,50 @@ TARGET: dudRate ≤ 0.30 (goodRate ≥ 0.70)
 
 ## 9. Level rules
 
-### 9.1 Mild / Medium / Spicy
+### 9.1 Mild / Medium / Hot / Spicy
 
 1. `youngest = min(rank(p.level) for p in seated humans)`.
 2. `table.level = max(youngest, table.levelRaisedByHost ?? youngest)`. The host can **raise** the level above the youngest player's level. The host can also clear the raise, which returns the table to the youngest level. The table level is never set below the youngest level.
 3. The default with no host action: `table.level = youngest`.
 4. When a player joins or leaves, recompute. If a younger player joins, the level drops to theirs unless the host had raised it (then show the host "Level stays at X because you raised it").
-5. Official and community content MUST be `≤ spicy`.
+5. Official content MUST be `≤ spicy`; community content MUST be `≤ hot`.
 6. The current level is shown on the table screen in the lobby and during play.
+7. **Who can make a table Spicy (DECIDED by Al, 19 Oct 2026).** A host raise alone never reaches Spicy: `levelRaisedByHost` is at most `hot`, and a host who isn't a parent can't raise the table to Spicy. `table.level` is `spicy` in exactly two cases:
+ - **every** seated human's level is `spicy` (each has passed the 17+ gate), **or**
+ - **a parent on the account approves Spicy for the entire table** (`spicyApprovedByParent` is set). This is a parent control and follows the official philosophy in Section 9.3: *The game adapts to the family; it does not judge the family.* Parents are in control, so a parent may decide Spicy suits their whole table, **including younger players** and players who haven't passed the 17+ gate, and the game MUST NOT second-guess that choice. Before the approval switches on, the parent MUST see and accept a confirmation that younger players may be at the table (Section 9.3 item 8).
 
-### 9.2 Hot / Hellfire (adult Organic Cards)
+ `table.level = spicy if (all seated humans are spicy) or spicyApprovedByParent else max(youngest, levelRaisedByHost ?? youngest)`. Without parent approval, if anyone below Spicy joins, the table drops to their level at once and no Spicy card is dealt. Parent approval is **logged like other parent controls** (Section 9.3) and **can be undone** at any time. Undoing it recomputes the level at once under rules 1–4, and no further Spicy card is dealt. Card removals and rewordings a parent has made for a child (Section 9.3 item 1) still apply at a Spicy table. Parent approval **never** unlocks Hellfire Scorpion (Section 9.2). How the 17+ gate itself is enforced is still **TODO-AL** (decision #4).
 
-1. **Blocked by default** for every player and every table.
+### 9.2 Spicy (college, 17+) official deck and Hellfire Scorpion (adult, 21+) Organic Cards
+
+> **Restated 19 Oct 2026 (twice).** This section used to call the adult Organic tier "Hot"; "Hot" is now the family high school level (Section 9.1). Later the same day Al made **Spicy** (college) an **official curated deck rated 17+**, and set **Hellfire Scorpion** at **21+ with real 21+ proof**. Hellfire Scorpion keeps every block-by-default rule below.
+
+**Spicy (college, 17+): official curated deck.**
+
+- Official cards written by us, 201 Recipe + 800 Ingredient Cards in `college_batch*` (`level: "spicy"`; 200 written for Spicy plus Recipe Card rc_s145, moved from Hot on 19 Oct 2026), clever, not crude: no sex, drugs, profanity or explicit content (CARD_RULES.md Section 5).
+- **17+ gate.** A player may pick the Spicy level only after the 17+ gate. How 17+ is enforced is **TODO-AL** (decision #4). Until it is decided, build the gate behind a config value and keep Spicy off by default.
+- Official Spicy cards are dealt only when `table.level` is `spicy`: every seated player has passed the 17+ gate, **or** a parent on the account has approved Spicy for the entire table (Section 9.1 rule 7, DECIDED by Al, 19 Oct 2026). A host who isn't a parent can't raise a table to Spicy. There is no per-player opt-in record for Spicy.
+- A player at the Spicy level may also play their own Spicy Organic Cards at a Spicy table. Spicy cards are never harvested into Cards from the Community.
+
+**Hellfire Scorpion (adult, 21+): player-made Organic Cards only.** There are no official Hellfire Scorpion cards, drafts or seed data.
+
+1. **Blocked by default** for every player and every table. A parent's Spicy table approval (Section 9.1 rule 7) does **not** unlock Hellfire Scorpion, and no parent control does.
 2. A player turns it on **individually** on their own phone, under Settings → Adult Organic Cards:
- - an 18+ warning,
- - an age attestation,
+ - a 21+ warning,
+ - an age attestation **plus real 21+ proof** (TODO-AL/legal: verification method),
  - a legal agreement (`agreementVersion`, TODO-AL/legal text),
- - a choice of max level (Hot, or Hellfire).
+ - confirmation of the level: Hellfire Scorpion (adult, 21+) is the only opt-in level.
 3. Gate, evaluated at the authority at deal time **and** at submit time:
 
 ```text
-adultAllowed(table, level L in {hot, hellfire}) =
+adultAllowed(table, level L = hellfire_scorpion) =
  paidTierEnabled
  and table.adultLevel is set and rank(L) ≤ rank(table.adultLevel)
  and for EVERY seated human h: h.adultOptIn valid (not revoked, current agreementVersion) and rank(L) ≤ rank(h.maxLevel)
 ```
 
  Bots are excluded from the check and **never** play adult cards.
-4. **No reveal.** The UI MUST NOT show which players have or have not opted in. The host sees only "Adult Organic Cards: available" or "not available at this table". Flagging a card Hot or Hellfire never reveals the card's text or creator to anyone else.
+4. **No reveal.** The UI MUST NOT show which players have or have not opted in. The host sees only "Adult Organic Cards: available" or "not available at this table". Flagging a card Hellfire Scorpion never reveals the card's text or creator to anyone else.
 5. If a non-consenting player joins mid-game, or a player revokes, adult cards are immediately unavailable. Unplayed adult submissions are withdrawn silently (the player is told privately: "That card can't be played at this table right now").
 6. Adult cards MUST NOT be harvested into Cards from the Community, promoted to official decks, uploaded, or included in pairing-log uploads with IDs. Enforce this on the client **and** the server.
 
@@ -650,11 +668,17 @@ adultAllowed(table, level L in {hot, hellfire}) =
 **Design philosophy (official):** *The game adapts to the family; it does not judge the family.* Families range from very conservative (some parents don't allow TV at all) to very permissive. The game MUST be flexible enough for each family, and each parent, mother or father equally, is in control of what their young kids play with. *(Equal-parent wording raised by Al, 18 Oct 2026: a father has exactly the same control over his kids' decks as a mother, and every rule in 9.3 and 9.4 applies to any parent on the account.)*
 
 1. **Edit or remove any card.** A parent MAY edit the text of, or remove, **any** card (official, Cards from the Community, or Organic) from their child's deck, for **any reason**. No justification is asked for and the game MUST NOT second-guess or override the parent's choice.
-2. **Who it covers.** Parent Controls apply to child profiles **under 18**. When a player turns 18 (e.g. off to college and no longer playing at home), the parent controls on that profile end and the player manages their own deck, including the adult opt-in in Section 9.2.
+2. **Who it covers.** Parent Controls apply to child profiles **under 18**. **17-year-old Spicy players stay under Parent Controls** (Al, 19 Oct 2026): passing the 17+ gate and playing Spicy does not end them. A parent can still edit or remove any card in a 17-year-old's deck, including Spicy cards (item 1), and can turn the Spicy level off for that profile. When a player turns 18 (e.g. off to college and no longer playing at home), the parent controls on that profile end and the player manages their own deck, including the adult opt-in in Section 9.2.
 3. **Scope.** A parent's edits and removals apply only to that family's child profiles. They never change the official decks, Cards from the Community, or any other family's game.
-4. **Precedence.** A removed card is never dealt to that child, and an edited card is shown to that child in its edited form. This applies on top of the level rules in 9.1: Parent Controls can only make a child's deck more restrictive or reworded, never raise the level or unlock Hot/Hellfire.
+4. **Precedence.** A removed card is never dealt to that child, and an edited card is shown to that child in its edited form. This applies on top of the level rules in 9.1: Parent Controls can only make a child's deck more restrictive or reworded, never raise the level or unlock Spicy or Hellfire Scorpion. The one exception is item 8: a parent may approve Spicy for the entire table. Nothing a parent does unlocks Hellfire Scorpion.
 5. **Reversible.** A parent can view, restore, or re-edit any card they changed.
 6. **Privacy.** Parent edits are stored with the family's profiles and are not shared or uploaded with card text.
+8. **Spicy table approval (DECIDED by Al, 19 Oct 2026).** A parent on the account MAY approve Spicy for the entire table (Section 9.1 rule 7), so the table plays Spicy even if not every seated player has passed the 17+ gate. **This includes a table with younger players** (Mild, Medium or Hot profiles). This is the philosophy above in practice: parents are in control, and the game adapts to the family rather than judging it. A host who isn't a parent can't do this.
+ - **Confirmation first.** Before Spicy switches on, the parent sees a confirmation that younger players may be at the table, and must accept it. Default wording (candidate): *"Younger players may be at this table. Spicy (college, 17+) cards will be dealt to everyone seated. Turn on Spicy for this table?"* with **Turn on Spicy** and **Cancel**. Cancel leaves the table level unchanged. By default the confirmation is shown every time a parent approves, not just the first time (default; TODO-AL: confirm).
+ - **Logged.** The approval is logged like other parent controls: who approved it, when, which table, and that the confirmation was accepted (`youngerPlayersConfirmed`).
+ - **Undoable.** A parent can undo it at any time (item 5). The table level is recomputed at once and no further Spicy card is dealt.
+ - **Other parent controls still apply.** Each child's removed or reworded cards (item 1) still apply at the Spicy table.
+ - It never unlocks Hellfire Scorpion, which still needs each player's own 21+ opt-in with real proof (Section 9.2).
 7. TODO-AL/TODO-ADRIC: how a parent account is set up and verified, and how child profiles are linked to it. **Related to Family Deck Sync (9.4):** the parent account and child links are what sync uses to know which devices belong to a household.
 
 ### 9.4 Family Deck Sync (raised by Al, 18 Oct 2026)
@@ -675,10 +699,10 @@ This is the plumbing behind Parent Controls (9.3). Without sync, a parent's card
 Everything here is behind `player.paidTier && config.paidTierEnabled`. TODO-ADRIC/AL: the payment mechanism. Until it exists, use a dev flag.
 
 1. **Plant.** Write a card (Recipe or Ingredient, 1–120 chars). Then the player may tap **Spice It Up** (button label candidate: **"Salt and Pepper"**) to see Si suggestions (Section 10.1). Hide the button if the Si is unavailable. Planting always works without it.
-2. **Tag.** Show suggested tags as one-tap chips (subject, tone, scale, register, violation, status) and a heat level (Mild, Medium, Spicy, plus Hot or Hellfire only if this player has opted in). The default heat is the player's level.
+2. **Tag.** Show suggested tags as one-tap chips (subject, tone, scale, register, violation, status) and a heat level (Mild, Medium, Hot, plus Spicy only if this player's level is Spicy, plus Hellfire Scorpion only if this player has opted in). The default heat is the player's level.
 3. **Deck.** Pick a themed deck (Wedding, Family Reunion, Birthday, Retirement, Custom…) or create one.
 4. **Grow.** Each Kiss the card wins increments `stats.kisses`. The collection shows growth stages (e.g. seed → sprout → bloom at 0 / 3 / 10 Kisses). Growth appears **only** in the owner's collection, never on the table or the Chef's view mid-round.
-5. **Harvest** (optional). Submit to Cards from the Community. Show exactly what will be shared (text and tags) and an optional credit name. On submit, send `{ text, type, tags, level, creditName? }`. Status becomes `in_review`. Harvest is **disabled** for Hot and Hellfire cards, and the server also rejects them.
+5. **Harvest** (optional). Submit to Cards from the Community. Show exactly what will be shared (text and tags) and an optional credit name. On submit, send `{ text, type, tags, level, creditName? }`. Status becomes `in_review`. Harvest is **disabled** for Spicy and Hellfire Scorpion cards, and the server also rejects them.
 6. **Storage.** Organic Cards live on the device (TODO-ADRIC: IndexedDB or the existing store). They are not synced to a server unless harvested.
 7. **Delete.** The owner can delete any Organic Card from the device. It is removed from the device immediately. A harvested copy already in Cards from the Community follows the master DB rule (retire, never delete). TODO-AL: should deleting also withdraw a pending submission?
 8. **Play.** In APPRENTICES_PLAY, the owner may play an Organic Card from "My Organic Cards" if it passes the level/adult gate. Its text is sent to the authority **for this round only** and shown anonymously. The authority MUST NOT persist Organic text after the round ends.
@@ -693,9 +717,9 @@ Full writing rules and examples are in **`CARD_RULES.md` §6**. The requirements
 2. **About 3 suggestions** (`spiceItUpSuggestions`, default 3), each using a **different technique**, each shown with its **technique label**. Labels: `Twist`, `Status flip`, `Scale mismatch`, `Fancy talk`, `Rule-break`. (For Recipe ideas: `Wrong word`, `Role frame` and `Status flip` are also allowed.)
 3. **"Keep mine" is always shown** with the original text, as an equal option. The player can also edit any suggestion before saving. Nothing is saved until the player confirms.
 4. **The core idea is kept.** Every suggestion contains the player's core noun, person or idea.
-5. **Card formula** (CARD_RULES.md §2). Ingredient: a 3–8 word picturable noun phrase with one twist. Recipe: a role or label frame with a "wrong" word.
+5. **Card formula** (CARD_RULES.md §2). Ingredient: a 3–8 word picturable noun phrase with one twist (Spicy: 3–9 words). Recipe: a role or label frame with a "wrong" word.
 6. **Tags.** Each suggestion carries suggested tags on all 6 axes. The player can change them in the Tag step.
-7. **Level.** Suggestions are family-friendly at the player's level (Mild, Medium or Spicy) by default. Only when the card is being planted in the player's **own opted-in Hot or Hellfire deck** (Section 9.2) may suggestions use that heat, and **never above that deck's level**. The Si never raises heat on its own.
+7. **Level.** Suggestions stay at the player's level by default: family-friendly at Mild, Medium or Hot, and clever-not-crude at Spicy (17+). Only when the card is being planted in the player's **own opted-in Hellfire Scorpion deck** (Section 9.2) may suggestions use that heat, and **never above that deck's level**. The Si never raises heat on its own.
 8. **Never punch down.** No insults about real groups, appearance, disability, religion, race or gender.
 9. **On the device.** Prompts, the original text and suggestions stay on the device (privacy rules, Section 11). If the Si is offline or the device is too old, hide the button. Planting still works.
 10. **Output contract.** `spiceItUp(text, type, level, deckHeat) -> [{ text, technique, tags }]`. Return 0–3 items. 0 means "show Keep mine only". Never throw into the UI.
@@ -708,7 +732,7 @@ Example: *a dog* → **Status flip:** "A dog who thinks he's the mayor" · **Fan
 
 1. By default, only **anonymous win stats** (the Section 5.7 upload form) leave the device. They contain no card text, no names and no hashes that can be reversed.
 2. Card text leaves the device only (a) transiently, to show a played card to the table for the current round, or (b) when a player explicitly harvests a card.
-3. The authority and any relay MUST NOT log or persist the text of Organic Cards (including Hot and Hellfire cards). Redact it from server logs.
+3. The authority and any relay MUST NOT log or persist the text of Organic Cards (including Spicy and Hellfire Scorpion cards). Redact it from server logs.
 4. The Chef never receives the `playerId` of any submission before the Kiss. Only the winner may be revealed after the Kiss (per config).
 5. Consent records stay on the device. The server receives only the session flag.
 6. Creator credit appears only if the creator opts in at harvest, and only when the card is promoted.
@@ -809,9 +833,10 @@ Each milestone ships behind its own PR(s). It is done only when every box is che
 - [ ] Plant / Tag / Deck / Grow / Harvest UI and device storage. Delete.
 - [ ] **Si Spice It Up** per Section 10.1: button (label from config), about 3 technique-labelled suggestions, "Keep mine", editable, on-device, hidden when unavailable.
 - [ ] Organic play from the "My Organic Cards" tab, anonymous, with text never persisted by the authority.
-- [ ] Adult opt-in screen (18+ warning, attestation, agreement version, max level), revoke, and on-device consent record.
+- [ ] Hellfire Scorpion opt-in screen (21+ warning, attestation plus real 21+ proof, agreement version), revoke, and on-device consent record.
+- [ ] Spicy 17+ gate behind a config value (method TODO-AL). Table is Spicy only if every seated player passed the gate or a parent approved Spicy for the whole table, after the younger-players confirmation (logged, undoable); a non-parent host cannot raise a table to Spicy; parent approval never unlocks Hellfire Scorpion.
 - [ ] Gate (Section 9.2) enforced at deal and submit time on the server. Mid-game join or revoke handled. No reveal of who opted in.
-- [ ] Harvest disabled for Hot and Hellfire, and the server rejects them.
+- [ ] Harvest disabled for Spicy and Hellfire Scorpion, and the server rejects them.
 
 **Tests:**
 - adult card blocked when any seated human lacks consent;
@@ -819,7 +844,8 @@ Each milestone ships behind its own PR(s). It is done only when every box is che
 - blocked again after revoke or a new join;
 - bots never receive or play adult cards;
 - the host's view shows only available or not available;
-- harvest of a Hot card rejected by client and server;
+- harvest of a Spicy card rejected by client and server;
+- official Spicy cards never dealt unless every seated human is at the Spicy level; a mid-game join below Spicy drops the table level at once;
 - Organic text absent from server logs and storage after the round (log scan);
 - growth hidden from Chef and table payloads;
 - delete removes the card from device storage;
@@ -859,13 +885,14 @@ Each milestone ships behind its own PR(s). It is done only when every box is che
 
 ## 15. Seed data guidance
 
-- **Deck size (APPROVED by Al, 18 Oct 2026):** each level's deck (Mild, Medium, Spicy) is **1,000 cards: 200 Recipe Cards and 800 Ingredient Cards**, keeping the 4:1 Ingredient-to-Recipe ratio. This replaces the earlier placeholder of 150 Recipe and 600 Ingredient Cards per level. Status (as of 18 Oct 2026): all three decks are written at 200 Recipe + 800 Ingredient each: Mild in `mild_batch1.json`–`mild_batch12.json`, Medium in `medium_batch1.json`–`medium_batch10.json`, Spicy in `spicy_batch1.json`–`spicy_batch10.json`. None have been playtested yet.
+- **Deck size (APPROVED by Al, 18 Oct 2026):** each level's deck (Mild, Medium, Hot) is **1,000 cards: 200 Recipe Cards and 800 Ingredient Cards**, keeping the 4:1 Ingredient-to-Recipe ratio. This replaces the earlier placeholder of 150 Recipe and 600 Ingredient Cards per level. Status (as of 19 Oct 2026): each deck has 200 Recipe Cards plus the original 800 Ingredient Cards. On 19 Oct 2026, 100 Ingredient Cards were added for thin Recipe Cards, so the decks are now **Mild 1,025** (200 Recipe + 825 Ingredient) in `mild_batch1.json`–`mild_batch13.json`, **Medium 1,030** (200 + 830) in `medium_batch1.json`–`medium_batch11.json`, and **Hot 1,045** (200 + 845) in `spicy_batch1.json`–`spicy_batch11.json` (on 19 Oct 2026 Hot Recipe Card rc_s145 moved to Spicy and was replaced by rc_s201, so Hot still has 200 Recipe Cards) (the files keep their old `spicy_` names; since 19 Oct 2026 their cards carry `level: "hot"`). All three decks were playtested on 19 Oct 2026 (playtests 6 and 7).
+- **Spicy deck (APPROVED by Al, 19 Oct 2026):** official college deck rated 17+, **1,000 cards: 200 Recipe + 800 Ingredient** as written (now **1,001** with one card moved from Hot), written in 4 sets of 250 (50 Recipe + 200 Ingredient) in `college_batch*.json` (20 Recipe + 80 Ingredient per file), `level: "spicy"`, IDs `rc_c###` / `ic_c###`. Status (19 Oct 2026): **COMPLETE**, all 4 sets written: `college_batch1.json`–`college_batch10.json`, **1,001 cards: 201 Recipe + 800 Ingredient** (`rc_c001`–`rc_c200` + `ic_c001`–`ic_c800`, 20 Recipe + 80 Ingredient per file, plus Hot Recipe Card **rc_s145** "The worst thing to hear from your landlord", moved to Spicy by Al's decision with its ID kept, in `college_batch10.json`, which now holds 21 Recipe + 80 Ingredient). Hot replaced it with **rc_s201** "The worst thing to hear from the school nurse" and stays at 1,045 (200 Recipe + 845 Ingredient). Moves are logged in `deckedit_20261019/spicy_moves.json`. **Same subject at different ages across decks is intended and preferred** (CARD_RULES.md Section 5.1); only copies of the joke are not allowed. Validator: `cleankiss_audit/validate_college.py`.
 - **Follow `CARD_RULES.md`** for every card: the formulas, tagging on all 6 axes, the level rules and the do's and don'ts. Use `cards.json` as the tagged reference set and test fixture. Improving each card is the priority.
-- Voice: picturable noun phrases with one twist for Ingredients (3–7 words; Mild 2–5); role or label frames with a "wrong" word for Recipes. Never mean, never punching down, family-friendly at every level.
+- Voice: picturable noun phrases with one twist for Ingredients (3–7 words; Mild 2–5; Hot 3–8; Spicy 3–9); role or label frames with a "wrong" word for Recipes (up to 10 words). Never mean, never punching down. Family-friendly at Mild, Medium and Hot; clever, not crude at Spicy (no sex, drugs, profanity or explicit content).
 - Every card is fully tagged. Every Recipe has 2–3 `funnyTargetCombos` and `literalTags`.
 - Spread subjects. Do **not** split cards evenly by category and rely on the mechanic alone; that is the Apples to Apples approach that produced about 70% duds.
 - Fill in `culture.born`, `peak` and `stale` for any pop-culture reference.
-- **No Hot or Hellfire cards in seed data, ever.**
+- **No Hellfire Scorpion cards in seed data, ever.** Official Spicy cards are seeded only from `college_batch*` (`level: "spicy"`) and are never mixed into the Mild, Medium or Hot decks.
 
 ### SAMPLE cards: examples only, not final content
 
@@ -881,11 +908,11 @@ Each milestone ships behind its own PR(s). It is done only when every box is che
 | Medium | Ingredient | SAMPLE: "Group project drama" | event / dramatic / everyday / slang |
 | Medium | Ingredient | SAMPLE: "Autocorrect" | thing / dry / tiny / casual |
 | Medium | Ingredient | SAMPLE: "A dramatic hair flip" | action / dramatic / tiny / slang |
-| Spicy | Recipe | SAMPLE: "The worst thing to say in a job interview" | event / awkward / everyday / formal · funnyTargets: feeling, pop_culture / absurd, dramatic / cosmic |
-| Spicy | Recipe | SAMPLE: "A text from your future self" | event / dramatic / cosmic / casual · funnyTargets: thing, food / dry, silly / tiny |
-| Spicy | Ingredient | SAMPLE: "Senioritis" | feeling / dry / everyday / slang |
-| Spicy | Ingredient | SAMPLE: "Your parents discovering emojis" | person / awkward / everyday / casual |
-| Spicy | Ingredient | SAMPLE: "A 3 a.m. existential crisis" | feeling / dramatic / cosmic / casual |
+| Hot | Recipe | SAMPLE: "The worst thing to say in a job interview" | event / awkward / everyday / formal · funnyTargets: feeling, pop_culture / absurd, dramatic / cosmic |
+| Hot | Recipe | SAMPLE: "A text from your future self" | event / dramatic / cosmic / casual · funnyTargets: thing, food / dry, silly / tiny |
+| Hot | Ingredient | SAMPLE: "Senioritis" | feeling / dry / everyday / slang |
+| Hot | Ingredient | SAMPLE: "Your parents discovering emojis" | person / awkward / everyday / casual |
+| Hot | Ingredient | SAMPLE: "A 3 a.m. existential crisis" | feeling / dramatic / cosmic / casual |
 
 ---
 
@@ -896,7 +923,7 @@ Each milestone ships behind its own PR(s). It is done only when every box is che
 | 1 | Online-only, or add local/offline mode | Online (existing) |
 | 2 | Bots as Chef | `botsCanBeChef: false` |
 | 3 | Reveal the winner's name after the Kiss | `true`; never reveal non-winners |
-| 4 | Age verification method and legal text for Hot/Hellfire | Self-attestation plus the DRAFT agreement. **Do not launch adult features publicly until legal text is final.** |
+| 4 | Age gates and legal text for Spicy (college) and Hellfire Scorpion (adult) | **Spicy: 17+**; how 17+ is enforced is TODO-AL (gate off by default until decided). **Spicy table rule DECIDED (19 Oct 2026):** every seated player passed the 17+ gate, or a parent on the account approves Spicy for the entire table (Section 9.1 rule 7); a non-parent host can't raise it; parent approval never unlocks Hellfire Scorpion. **Hellfire Scorpion: 21+ with real 21+ proof**; self-attestation alone is not enough. Method TODO-AL/legal, plus the DRAFT agreement. **Do not launch adult features publicly until legal text is final.** |
 | 5 | Who sets player levels (self, host, parent profile) | Self-declared at join |
 | 6 | Final tag taxonomy | Section 5.1 starter lists in `taxonomy.json` |
 | 7 | Hand size and mix | **APPROVED 17 Oct 2026:** 7 = 6 on-target + 1 random. Safe slot dropped; wild slot is now random. A safe-slot win is not an automatic dud. |

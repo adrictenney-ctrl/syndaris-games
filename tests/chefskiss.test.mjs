@@ -25,7 +25,7 @@ test('every card matches the Card schema', () => {
   const ids = new Set();
   for (const c of CARDS) {
     assert.ok(!ids.has(c.id), `duplicate id ${c.id}`); ids.add(c.id);
-    assert.match(c.id, c.type === 'recipe' ? /^rc_\d{6}$/ : /^ic_\d{6}$/);
+    assert.match(c.id, c.type === 'recipe' ? /^rc_[a-z0-9_]+$/i : /^ic_[a-z0-9_]+$/i);
     assert.equal(c.source, 'official');
     assert.deepEqual(validateCard(c), [], c.id);
   }
@@ -37,8 +37,8 @@ test("Al's test deck (cards.json) passes the Card schema", () => {
   for (const c of FIXTURE) assert.deepEqual(validateCard(c), [], c.id);
 });
 
-test('official cards are only Mild, Medium or Spicy (never Hot or Hellfire)', () => {
-  for (const c of CARDS) assert.ok(OFFICIAL_LEVELS.includes(c.level), `${c.id} is ${c.level}`);
+test('family deck cards are only Mild, Medium or Hot (never Spicy or Hellfire Scorpion)', () => {
+  for (const c of active) assert.ok(OFFICIAL_LEVELS.includes(c.level), `${c.id} is ${c.level}`);
 });
 
 test('at least 150 Recipe Cards and 600 Ingredient Cards per level', () => {
@@ -94,7 +94,7 @@ test("Chef's Kiss code and screens say Si, never the banned two-letter term", ()
 });
 
 // ---------------------------------------------------------------- hands (Section 8)
-const table = (level = 'spicy', used = []) => ({ level, usedCardIds: new Set(used) });
+const table = (level = 'hot', used = []) => ({ level, usedCardIds: new Set(used) });
 const someRecipe = (level = 'mild') => recipes.find(c => c.level === level);
 
 test('buildHand returns 7 unique eligible cards', () => {
@@ -156,11 +156,11 @@ test('falls back to a random hand when tags or combos are missing', () => {
   assert.ok(hand.every(h => h.slot === 'random'));
 });
 
-test('never deals a card above the table level', () => {
-  for (const level of ['mild', 'medium']) {
+test('one table, one deck: a table deals only its own level, never a lower or higher one', () => {
+  for (const level of OFFICIAL_LEVELS) {
     for (let i = 0; i < 30; i++) {
       const hand = buildHand(CARDS, someRecipe(level), table(level), { dealtThisRound: new Set() }, makeRng(level + i));
-      for (const h of hand) assert.ok(rank(byId.get(h.cardId).level) <= rank(level), `${h.cardId} at a ${level} table`);
+      for (const h of hand) assert.equal(byId.get(h.cardId).level, level, `${h.cardId} at a ${level} table`);
     }
   }
 });
@@ -185,7 +185,7 @@ test('no card appears in two hands in the same round', () => {
 });
 
 test('the same seed always deals the same hand', () => {
-  const deal = () => buildHand(CARDS, someRecipe('spicy'), table(), { dealtThisRound: new Set() }, makeRng('seed-42'));
+  const deal = () => buildHand(CARDS, someRecipe('hot'), table(), { dealtThisRound: new Set() }, makeRng('seed-42'));
   assert.deepEqual(deal(), deal());
 });
 
@@ -200,7 +200,7 @@ test('Recipe choices are 3 distinct eligible Recipes', () => {
     const ids = recipeChoices(CARDS, table(level), makeRng('r' + level));
     assert.equal(ids.length, CONFIG.recipeChoices);
     assert.equal(new Set(ids).size, ids.length);
-    for (const id of ids) { const c = byId.get(id); assert.equal(c.type, 'recipe'); assert.ok(rank(c.level) <= rank(level)); }
+    for (const id of ids) { const c = byId.get(id); assert.equal(c.type, 'recipe'); assert.equal(c.level, level); }
   }
 });
 
@@ -220,7 +220,7 @@ const players = n => Array.from({ length: 8 }, (_, i) => (i < n ? { name: 'P' + 
 const pickRecipe = g => K.applyAction(g, g.chef, { type: 'recipe', id: g.recipes[g.chef][0] });
 function finishRound(g, played) {
   for (const s of g.apprentices) {
-    while ((g.subs[s]?.length || 0) < g.need) {
+    if (!g.subs[s]?.length) {
       const id = g.hands[s][0];
       assert.equal(K.applyAction(g, s, { type: 'play', id }), null);
       played?.push(id);
@@ -271,6 +271,52 @@ test('phones never see the Laugh Engine slot labels', () => {
   const g = K.createGame({}, players(4));
   pickRecipe(g);
   for (const s of g.apprentices) assert.doesNotMatch(JSON.stringify(K.viewFor(g, s)), /on_target|"random"/);
+});
+
+// Al's 19 Oct 2026 playtest note: one Ingredient Card per Apprentice per round, at any table size.
+test('Double Vision is gone: every round asks each Apprentice for exactly one card, at 3, 4 and 6 players', () => {
+  for (const n of [3, 4, 6]) {
+    const g = K.createGame({ level: 0, target: 0, length: 0 }, players(n));
+    for (let round = 0; round < 4; round++) {
+      pickRecipe(g);
+      const v = K.viewFor(g, g.apprentices[0]);
+      assert.equal(v.expected, g.apprentices.length, 'one card per Apprentice');
+      assert.equal(v.need, undefined, 'no two-card rounds');
+      const s = g.apprentices[0];
+      assert.equal(K.applyAction(g, s, { type: 'play', id: g.hands[s][0] }), null);
+      assert.equal(K.applyAction(g, s, { type: 'play', id: g.hands[s][0] }), 'You already played');
+      finishRound(g);
+    }
+  }
+  for (const file of ['chefskiss.js', 'table-chefskiss.js', 'play-chefskiss.js']) assert.doesNotMatch(read('../js/' + file), /Double Vision|g\.need|v\.need/, file);
+});
+
+test('Chef’s Kiss fills seats with bots up to 4 players', async () => {
+  const { GAMES } = await import('../js/games.js');
+  assert.equal(GAMES.chefskiss.fillBots, 4);
+  assert.match(read('../js/table.js'), /function fillWithBots\(\)/);
+});
+
+test('every level, 3 and 6 seats: 100% of dealt and played cards come from that level’s deck', () => {
+  for (const [i, level] of OFFICIAL_LEVELS.entries()) {
+    for (const n of [3, 6]) {
+      const g = K.createGame({ level: i, target: 0, length: 0 }, players(n));
+      for (let round = 0; round < 6; round++) {
+        for (const id of g.recipes[g.chef]) assert.equal(byId.get(id).level, level, 'Recipe choice');
+        pickRecipe(g);
+        for (const s of g.apprentices) for (const id of g.hands[s]) assert.equal(byId.get(id).level, level, 'hand');
+        const played = [];
+        finishRound(g, played);
+        for (const id of played) assert.equal(byId.get(id).level, level, 'played');
+      }
+    }
+  }
+});
+
+test('the high school level is called Hot', () => {
+  assert.deepEqual(OFFICIAL_LEVELS, ['mild', 'medium', 'hot']);
+  assert.match(read('../js/table-chefskiss.js'), /LEVEL_LABEL/);
+  for (const file of ['chefskiss-config.js', 'table-chefskiss.js', 'play-chefskiss.js']) assert.doesNotMatch(read('../js/' + file), /Spicy \(high school\)/);
 });
 
 test('a Mild table only ever deals Mild cards', () => {

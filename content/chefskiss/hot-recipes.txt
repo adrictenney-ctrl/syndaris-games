@@ -1,4 +1,4 @@
-# Spicy Recipe Cards (high school). Still family-friendly. text | tags | funnyTargets | literalTags | meta | hint
+# Hot Recipe Cards (high school). Still family-friendly. text | tags | funnyTargetCombos | literalTags | meta | hint
 The secret to a happy marriage | m w 2 c | at as 1 - | m w - - | | Advice for a love that lasts.
 The worst gift for a first date | t k 2 c | an g 3 o | t - - y | | A present that ends the date early.
 Why I can't come to work today | e k 2 c | an d 34 - | x - - o | | The excuse you send your boss.

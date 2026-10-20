@@ -1,6 +1,6 @@
 # Chef's Kiss Party Game: Card Writing Rulebook
 
-**Version:** 17 October 2026 (updated the same day: Al approved the 6+1 hand) · **For:** anyone writing official Recipe Cards and Ingredient Cards, reviewing Cards from the Community, or tuning the Si's "Spice It Up" feature
+**Version:** 17 October 2026 (updated the same day: Al approved the 6+1 hand) · **19 Oct 2026 tier rename:** the family decks are now **Mild** (elementary), **Medium** (middle school) and **Hot** (high school, formerly Spicy). **Spicy** (college) and **Hellfire Scorpion** (adult) are separate tiers above Hot. Build spec Section 9.2 restated. · **19 Oct 2026 Spicy deck and age gates:** **Spicy** (college, **17+**) is now an **official curated deck** of 200 Recipe + 800 Ingredient Cards in `college_batch*` (all 4 sets written; deck complete, 1,000 cards in `college_batch1`–`10`, now 1,001 with Hot Recipe Card rc_s145 moved in); how 17+ is enforced is TODO-AL. **Hellfire Scorpion** is **21+** with real 21+ proof, player-made Organic Cards only, blocked by default, with no official cards. Level order unchanged: `mild < medium < hot < spicy < hellfire_scorpion`. Spicy Ingredient Cards are 3–9 words. Section 5.1 added. · **19 Oct 2026 Spicy table rule:** a table is Spicy if every seated player has passed the 17+ gate, or a parent on the account approves Spicy for the entire table (build spec Section 9.1 rule 7). Section 5.1 updated. · **19 Oct 2026 follow-up (Al):** rc_s145 moved Hot → Spicy (Hot replacement rc_s201); same subject at different ages across decks is intended and preferred (Section 5.1); a parent may approve Spicy for a table with younger players after a confirmation. · **For:** anyone writing official Recipe Cards and Ingredient Cards, reviewing Cards from the Community, or tuning the Si's "Spice It Up" feature
 **Built from:** the Laugh Engine tag taxonomy (test kit v1), 180 tagged sample cards (30 Recipe Cards, 150 Ingredient Cards, all Medium), and a blind test with 4 raters scoring the same 420 pairings each (1,680 ratings).
 
 > **House term:** we say **Si**, never the other two-letter word. Use "Si" in every doc, UI string, tag and comment.
@@ -86,7 +86,7 @@ Describe something lowly or gross in posh, official or luxury words, or put a fa
 ### 2.1 A funny Ingredient Card
 
 > **[a concrete thing you can picture] + [one twist that breaks a rule, flips status, mismatches scale, or mismatches register]**
-> 3 to 7 words. A noun phrase, never a full sentence.
+> 3 to 7 words (Mild 2–5, Hot 3–8, Spicy 3–9). A noun phrase, never a full sentence.
 
 | Part | Rule | Example |
 |---|---|---|
@@ -165,7 +165,7 @@ Winners it produced: **The science fair volcano exploding** (4/4 FUNNY), **A gli
 
 - **funnyTargetCombos:** 2–3 combos, each on 2+ axes, each a different technique (Section 2.3).
 - **literalTags:** the obvious fits. For *The next big social media trend*, list `pop_culture` + `slang`, so **A viral dance challenge** (4/4 DUD) gets pushed down.
-- **level:** Mild, Medium or Spicy, set by **both** the reading level and the cultural level. Take the higher of the two.
+- **level:** Mild, Medium or Hot for the family decks, or Spicy for the official college deck (17+), set by **both** the reading level and the cultural level. Take the higher of the two.
 
 ---
 
@@ -217,18 +217,18 @@ All of these are real pairings from the blind test, at Medium level.
 
 ---
 
-## 5. Writing for Mild, Medium and Spicy
+## 5. Writing for Mild, Medium and Hot
 
-All three levels are **family-friendly**. The level sets the **reading level** and the **cultural world**, not how "dirty" the card is. Hot and Hellfire are player-only adult Organic Cards and are **out of scope for official writing**.
+All three levels are **family-friendly**. The level sets the **reading level** and the **cultural world**, not how "dirty" the card is. Hot is the high school level (formerly named Spicy). **Spicy** (college, 17+) is an official curated deck with its own rules in Section 5.1. **Hellfire Scorpion** (adult, 21+ with real 21+ proof) is player-made Organic Cards only and is **out of scope for official writing**.
 
-| | **Mild** (elementary) | **Medium** (middle school) | **Spicy** (high school) |
+| | **Mild** (elementary) | **Medium** (middle school) | **Hot** (high school) |
 |---|---|---|---|
 | Words | 2–5 words, simple words a 2nd–4th grader can read aloud | 3–7 words | 3–8 words; wordplay and irony allowed |
 | World | Home, pets, playground, cartoons, snacks, bedtime | School life, group projects, the cafeteria, siblings, early internet life | Driving tests, jobs, prom, college applications, group chats, adulting |
 | Best techniques | Silly physical violations, animals doing people things, family-safe gross, scale | All five, especially status flips with teachers and parents, and awkward moments | Dry irony, official or fancy register, social awkwardness, self-aware status flips |
-| Avoid | Sarcasm that needs explaining, fear, embarrassment that stings | Meanness about real groups, crushes made cruel | Anything sexual, drugs, alcohol, violence, insults. **Spicy is not adult.** |
+| Avoid | Sarcasm that needs explaining, fear, embarrassment that stings | Meanness about real groups, crushes made cruel | Anything sexual, drugs, alcohol, violence, insults. **Hot is not adult.** |
 
-**Examples.** Medium cards are real cards from the test deck. Mild and Spicy cards are **illustrative samples only**, not tested or final.
+**Examples.** Medium cards are real cards from the test deck. Mild and Hot cards are **illustrative samples only**, not tested or final.
 
 | Level | Recipe Card | Ingredient Cards |
 |---|---|---|
@@ -236,8 +236,8 @@ All three levels are **family-friendly**. The level sets the **reading level** a
 | **Mild** (sample) | "A silly name for a new pet" | "Captain Burp" · "A worm in a party hat" · "Cold pancake" |
 | **Medium** (tested) | "A terrible name for a superhero" | "A sloth in a hurry" · "A wizard who forgot his password" · "A celebrity chef who burns toast" |
 | **Medium** (tested) | "The newest Olympic sport" | "A cat knocking things off a table" · "A TV remote that's always missing" · "Burping the alphabet" |
-| **Spicy** (sample) | "The worst thing to say in a job interview" | "Your mom's voicemail greeting" · "A strongly worded email to the moon" · "Senioritis, officially diagnosed" |
-| **Spicy** (sample) | "What your future self texts you at 3 a.m." | "Your parents discovering emojis" · "A group chat with the principal in it" · "A 3 a.m. existential crisis" |
+| **Hot** (sample) | "The worst thing to say in a job interview" | "Your mom's voicemail greeting" · "A strongly worded email to the moon" · "Senioritis, officially diagnosed" |
+| **Hot** (sample) | "What your future self texts you at 3 a.m." | "Your parents discovering emojis" · "A group chat with the principal in it" · "A 3 a.m. existential crisis" |
 
 **Level check before submitting a card:**
 
@@ -246,6 +246,22 @@ All three levels are **family-friendly**. The level sets the **reading level** a
 3. Would a grandparent laugh, not wince?
 
 If the answer to 1 or 2 is no, raise the level. If the answer to 3 is no, the card doesn't ship at any official level.
+
+### 5.1 Writing for Spicy (college, 17+)
+
+Spicy is an **official** curated deck (since 19 Oct 2026): 201 Recipe + 800 Ingredient Cards in `college_batch*` (200 written for Spicy plus rc_s145, moved from Hot), `level: "spicy"`. How 17+ is enforced is TODO-AL. Spicy cards are dealt only at a Spicy table: every seated player has passed the 17+ gate, **or** a parent on the account has approved Spicy for the entire table (parents are in control: *the game adapts to the family; it does not judge the family*). A parent may approve Spicy even with younger players at the table, after a confirmation. 17-year-old Spicy players stay under Parent Controls. A host who isn't a parent can't raise a table to Spicy. Parent approval never unlocks Hellfire Scorpion (build spec Sections 9.1 rule 7 and 9.3 item 8).
+
+| | **Spicy** (college, 17+) |
+|---|---|
+| Words | Ingredient Cards **3–9 words**; Recipe Cards up to 10 words |
+| World | Dorms, roommates, finals, dining halls, internships, student loans, group projects, adulting, laundry, first apartments |
+| Best techniques | Sharper dry irony, official and fancy register on small problems, status flips with professors, landlords and recruiters, quoted lines |
+| Avoid | Anything sexual, drugs, alcohol, profanity, explicit content, insults. **Clever, not crude.** The grandparent test above still applies. |
+
+- Keep Spicy completely separate from Mild, Medium and Hot: no exact or near copies across decks.
+- **Same subject, different age: intended and preferred** (Al, 19 Oct 2026). Writing the same subject once per deck at each deck's age is how the decks should relate: a kitten in Mild, Medium and Hot, or a cover letter, a group project or a dorm room in Medium or Hot and again in Spicy. The subject may repeat across decks; the card text and the joke must not.
+- Mix answer types so no Recipe goes thin: actions ("way to", "how I"), quoted speech ("say", "text", "email") and food, alongside things, people and places.
+- `literalTags` mark the obvious **content** word (detergent for doing laundry), never the **form** of the answer (an action, or something said).
 
 ---
 
@@ -266,9 +282,9 @@ When a player types a plain Organic Card idea, the Si can offer funnier versions
    - **Rule-break**: a benign social, physical or logic violation.
 3. **Always show "Keep mine"** next to the suggestions, with the original text, as an equal choice. The player may also edit any suggestion.
 4. **Keep the player's idea.** Every version must contain the player's core noun or person (their uncle stays their uncle).
-5. **Follow the card formula** (Section 2): 3–8 words, picturable, one twist, a noun phrase for Ingredient Cards, a role or label frame for Recipe Cards.
+5. **Follow the card formula** (Section 2): 3–8 words (Spicy 3–9), picturable, one twist, a noun phrase for Ingredient Cards, a role or label frame for Recipe Cards.
 6. **Suggest tags** for each version (all six axes), shown as one-tap chips the player can change.
-7. **Stay family-friendly** at the player's level (Mild, Medium or Spicy) by default. Only when the player is writing in **their own opted-in Hot or Hellfire deck** may the Si write at that heat level, and **never above the deck's level**. The Si never raises the heat by itself.
+7. **Stay at the player's level** by default: family-friendly at Mild, Medium or Hot, and clever-not-crude at Spicy (17+). Only when the player is writing in **their own opted-in Hellfire Scorpion deck** may the Si write at that heat level, and **never above the deck's level**. The Si never raises the heat by itself.
 8. **Never punch down.** No insults about real groups, appearance, disability, religion, race or gender. No real-person mockery in official-bound text. Real names are fine in a player's own private deck (e.g. "Uncle Bob").
 9. **Never share.** Suggestions are made for the player's own card. Nothing is submitted to Cards from the Community unless the player separately chooses to harvest it.
 10. **Fail quietly.** If the Si can't run (offline, older device), hide the button. The player can still write and keep their card.
@@ -321,13 +337,13 @@ Status: **approved by Al, 17 Oct 2026.** The next blind test should confirm the 
 
 - **4 bot raters, not people.** The raters were automated stand-ins rating the same 420 pairings. They agreed fully on only 43% of pairings. Real Chefs have different tastes, inside jokes and timing.
 - **An all-funny deck.** Every card was written to be funny, so random hands already scored 69% good. That says the writing works, but it hides how much the Laugh Engine helps. **We need a mixed-deck test** that includes plain, literal cards (like an evenly split, mechanic-only deck) to measure the engine fairly.
-- **Medium level only.** Mild and Spicy are untested. Their examples in this rulebook are samples.
+- **Medium level only.** Mild and Hot are untested. Their examples in this rulebook are samples.
 - **Small numbers per card.** Most cards appeared 3–6 times. Card-level rankings are a guide, not a verdict.
 - **No play history.** Freshness and win history were neutral in this test, so they are untested.
 - **Phrasing analysis is approximate.** "Twist vs plain" was sorted by a simple wording rule.
 - **Next steps:**
   1. a mixed-deck test;
-  2. Mild and Spicy decks;
+  2. Mild and Hot decks;
   3. **real human tables** with mixed ages, using the pairings log in the live build;
   4. a re-test of the approved 6+1 hand (no safe or wild slots).
 
@@ -335,7 +351,7 @@ Status: **approved by Al, 17 Oct 2026.** The next blind test should confirm the 
 
 ## Quick checklist for every official card
 
-- [ ] Picturable, 3–7 words (Mild 2–5), noun phrase (Ingredient) or role/label frame with a "wrong" word (Recipe)
+- [ ] Picturable, 3–7 words (Mild 2–5, Hot 3–8, Spicy 3–9), noun phrase (Ingredient) or role/label frame with a "wrong" word (Recipe)
 - [ ] One real twist (status, scale, register, or a benign rule-break), or a true "everybody knows it" moment
 - [ ] Not the literal answer to any obvious Recipe; doesn't echo Recipe words
 - [ ] Not a plain big nature or institution noun

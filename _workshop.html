@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card Workshop (dev)</title>
+<link rel="stylesheet" href="css/cards.css?v=92"><link rel="stylesheet" href="css/chefskiss.css?v=92">
+</head><body data-game="chefskiss">
+<script type="module">
+// Dev only: opens the Chef's Kiss Card Workshop on its own, with "Add salt and pepper" answered
+// locally (?fail=1 shows the error screen), so the four screens can be checked at phone width.
+import { openWorkshop } from './js/ck-workshop.js?v=1';
+const q = new URLSearchParams(location.search);
+const realFetch = window.fetch;
+window.fetch = async (url, init) => {
+  if (String(url).includes('/api/season-card')) {
+    await new Promise(r => setTimeout(r, 600));
+    if (q.has('fail')) return new Response('{}', { status: 503 });
+    const b = JSON.parse(init.body);
+    return new Response(JSON.stringify({ options: [
+      { text: b.text + ', wearing a crown', flavor: b.flavor || null },
+      { text: b.text + ', visible from space', flavor: null },
+      { text: b.text + ' with a secret double life', flavor: 'Nobody suspects a thing.' },
+    ] }));
+  }
+  if (String(url).includes('/api/check-card')) return new Response('{"ok":true}');
+  return realFetch(url, init);
+};
+const active = new Set();
+window.ws = openWorkshop({ level: q.get('level') || 'mild', send: a => { if (a.type === 'custom') active.add(a.card.id); console.log('send', a); }, toast: t => console.log('toast', t), activeIds: () => [...active], ideas: async () => ['A dancing banana', 'A very polite volcano', 'Grandma on a scooter'] });
+</script></body></html>

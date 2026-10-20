@@ -175,27 +175,79 @@ body[data-game="chefskiss"] { background: linear-gradient(180deg, #12363e, #0715
 body[data-game="chefskiss"] #status { margin: 10px 0 4px; min-height: 0; }
 body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
 
-#ckSheet { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .55); display: flex; align-items: flex-end; justify-content: center; }
-.ckp-sheet {
-  width: 100%; max-width: 520px; max-height: 86vh; overflow-y: auto; box-sizing: border-box; padding: 18px 16px calc(18px + env(safe-area-inset-bottom));
-  background: var(--stock); color: var(--paper-ink); border-radius: 16px 16px 0 0; display: flex; flex-direction: column; gap: 10px;
+/* ---------------------------------------------------------------- Card Workshop (players' own cards) */
+/* Phone-first, one column, 44 px tap targets, 16 px+ inputs, main buttons along the bottom. */
+#ckWork { position: fixed; inset: 0; z-index: 60; background: rgba(20, 12, 10, .6); display: flex; justify-content: center; overflow: hidden; }
+#ckWork *, #ckWork *::before, #ckWork *::after { box-sizing: border-box; }
+.ckw-panel {
+  width: 100%; max-width: 520px; height: 100%; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--stock, #f4efe6); color: var(--paper-ink, #2a2320); font-family: var(--ui);
 }
-.ckp-sheet header { display: flex; justify-content: space-between; align-items: center; }
-.ckp-sheet h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 24px; }
-.ckp-sheet .ckp-hint { color: #7a6c58; text-align: left; }
-.ckp-x { border: 0; background: none; font-size: 22px; padding: 4px 8px; cursor: pointer; color: var(--paper-ink); }
-.ckp-form { display: flex; flex-direction: column; gap: 8px; }
-.ckp-form input { font-family: var(--serif); font-size: 18px; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(42, 35, 32, .25); background: #fff; color: var(--paper-ink); }
-.ckp-sheet .panel-btn { color: var(--paper-ink); background: transparent; border-color: rgba(42, 35, 32, .3); }
-.ckp-sheet .panel-btn.go { color: #2a1d08; }
-.ckp-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.ckp-list li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 2px; border-top: 1px solid rgba(42, 35, 32, .15); }
-.ckp-list li.empty { font-style: italic; color: #7a6c58; }
-.ckp-list b { display: block; font-family: var(--serif); font-size: 17px; }
-.ckp-list small { display: block; color: #7a6c58; font-size: 13px; }
-.ckp-list span { display: flex; gap: 6px; flex: none; }
-.ckp-list button { font: 600 13px var(--ui); padding: 6px 10px; border-radius: 6px; border: 1px solid rgba(42, 35, 32, .3); background: transparent; color: var(--paper-ink); cursor: pointer; }
-.ckp-list button[data-play] { background: var(--ck-terracotta); border-color: var(--ck-terracotta-deep); color: var(--ck-ink); }
+.ckw-top { display: flex; align-items: center; gap: 10px; padding: calc(10px + env(safe-area-inset-top)) 14px 10px; border-bottom: 1px solid rgba(42, 35, 32, .12); flex: none; }
+.ckw-top h2 { flex: 1; margin: 0; min-width: 0; font: 400 26px/1.1 var(--display); overflow-wrap: anywhere; }
+.ckw-level { flex: none; padding: 6px 12px; border-radius: 99px; font: 800 13px/1 var(--ui); letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--ck-burgundy); }
+.ckw-x, .ckw-back { flex: none; min-width: 44px; min-height: 44px; border: 0; border-radius: 50%; background: none; font-size: 24px; line-height: 1; color: var(--paper-ink, #2a2320); cursor: pointer; }
+.ckw-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 16px 16px 24px; display: flex; flex-direction: column; gap: 14px; -webkit-overflow-scrolling: touch; }
+.ckw-center { align-items: center; justify-content: center; text-align: center; }
+.ckw-new { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-height: 64px; width: 100%; padding: 14px 16px; text-align: left; cursor: pointer;
+  border-radius: 14px; border: 0; color: #fff; background: linear-gradient(160deg, #9c2a3f, var(--ck-burgundy) 60%, var(--ck-burgundy-deep)); box-shadow: 0 3px 0 rgba(0, 0, 0, .18); }
+.ckw-new.snack { color: #2a1206; background: linear-gradient(160deg, #f0956a, var(--ck-terracotta) 60%, #c4542a); }
+.ckw-new b { font: 800 18px/1.2 var(--ui); }
+.ckw-new small { font: 600 14px/1.3 var(--ui); opacity: .9; }
+.ckw-h { margin: 8px 0 0; font: 800 13px/1 var(--ui); letter-spacing: .12em; text-transform: uppercase; color: #6a5c4c; }
+.ckw-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ckw-list li { display: flex; align-items: stretch; gap: 6px; }
+.ckw-row { flex: 1; min-width: 0; min-height: 52px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 10px 12px; text-align: left; cursor: pointer;
+  border-radius: 12px; border: 1px solid rgba(42, 35, 32, .2); background: #fff; color: inherit; font: 600 16px/1.3 var(--ui); }
+.ckw-text { flex: 1 1 160px; min-width: 0; overflow-wrap: anywhere; }
+.ckw-tag { flex: none; padding: 4px 8px; border-radius: 6px; font: 800 11px/1 var(--ui); letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--ck-burgundy); }
+.ckw-tag.snack { color: #2a1206; background: var(--ck-terracotta); }
+.ckw-on { flex-basis: 100%; font: 700 12.5px/1 var(--ui); color: #2f7a4a; }
+.ckw-del { flex: none; width: 48px; min-height: 52px; border-radius: 12px; border: 1px solid rgba(42, 35, 32, .2); background: #fff; color: #8a2a2a; font-size: 16px; cursor: pointer; }
+.ckw-empty { margin: 6px 0; font: italic 500 16px/1.4 var(--serif, Georgia, serif); color: #6a5c4c; }
+.ckw-preview { position: sticky; top: -16px; z-index: 1; padding: 4px 0 6px; background: var(--stock, #f4efe6); }
+.ckw-card { width: 100%; max-width: 360px; margin: 0 auto; min-height: 120px; padding: 14px 16px 16px; border-radius: 14px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 6px 16px rgba(0, 0, 0, .18); }
+.ckw-card.rec { color: #fdf4e8; background: radial-gradient(ellipse 120% 90% at 30% 15%, #9c2a3f, var(--ck-burgundy) 55%, var(--ck-burgundy-deep)); }
+.ckw-card.ing { color: #2a1206; background: radial-gradient(ellipse 120% 90% at 30% 15%, #f4a27a, var(--ck-terracotta) 60%, #c4542a); }
+.ckw-card p { margin: 0; font: 600 21px/1.25 var(--display); overflow-wrap: anywhere; }
+.ckw-card p i { opacity: .6; }
+.ckw-card small { font: italic 500 15px/1.3 var(--serif, Georgia, serif); opacity: .9; overflow-wrap: anywhere; }
+.ckw-kind { font: 800 11px/1 var(--ui); letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+.ckw-field { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.ckw-label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 0; padding: 0; font: 800 15px/1.2 var(--ui); }
+.ckw-count { font: 700 13px/1 var(--ui); color: #6a5c4c; }
+.ckw-count.over { color: #b3261e; }
+.ckw-field input { width: 100%; min-height: 48px; padding: 12px 14px; font: 500 17px/1.3 var(--ui); border-radius: 12px; border: 1.5px solid rgba(42, 35, 32, .3); background: #fff; color: var(--paper-ink, #2a2320); }
+.ckw-field input:focus { outline: none; border-color: var(--ck-burgundy); box-shadow: 0 0 0 3px rgba(125, 31, 48, .18); }
+.ckw-hint { font: 500 14px/1.35 var(--ui); color: #5e5244; }
+.ckw-err { font: 700 14px/1.35 var(--ui); color: #b3261e; margin: 0; }
+.ckw-note { font: 700 15px/1.4 var(--ui); color: #2f6a44; margin: 0; }
+.ckw-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ckw-chip { min-height: 44px; padding: 10px 16px; border-radius: 99px; cursor: pointer; font: 700 15px/1 var(--ui); color: var(--paper-ink, #2a2320); background: #fff; border: 1.5px solid rgba(42, 35, 32, .3); }
+.ckw-chip[aria-pressed="true"] { color: #fff; background: var(--ck-burgundy); border-color: var(--ck-burgundy); }
+.ckw-ideas { display: flex; flex-direction: column; gap: 8px; }
+.ckw-idea { min-height: 44px; padding: 10px 14px; text-align: left; border-radius: 12px; cursor: pointer; font: 700 15px/1.3 var(--ui); color: var(--paper-ink, #2a2320); background: #fff4c8; border: 1px solid #e0b84a; }
+.ckw-link { align-self: flex-start; min-height: 44px; padding: 10px 4px; border: 0; background: none; cursor: pointer; font: 800 15px/1 var(--ui); color: var(--ck-burgundy); text-decoration: underline; text-underline-offset: 3px; }
+.ckw-link:disabled { opacity: .35; cursor: default; }
+.ckw-actions { flex: none; display: flex; gap: 10px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(42, 35, 32, .12); background: var(--stock, #f4efe6); }
+.ckw-actions.col { flex-direction: column; }
+.ckw-actions.col .ckw-link { align-self: center; }
+.ckw-btn { flex: 1 1 0; min-width: 0; min-height: 52px; padding: 10px 12px; border-radius: 14px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font: 800 16px/1.15 var(--ui); color: var(--paper-ink, #2a2320); background: #fff; border: 1.5px solid rgba(42, 35, 32, .3); }
+.ckw-btn.go { color: #2a1206; background: var(--ck-terracotta); border-color: #c4542a; }
+.ckw-btn.season { color: #fff; background: var(--ck-burgundy); border-color: var(--ck-burgundy-deep); }
+.ckw-btn:disabled { opacity: .45; cursor: default; }
+.ckw-shaker { width: 26px; height: 26px; flex: none; }
+.ckw-shake .ckw-shaker { width: 88px; height: 88px; color: var(--ck-burgundy); animation: ckwShake .7s ease-in-out infinite; transform-origin: 50% 80%; }
+@keyframes ckwShake { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg) translateY(-6px); } }
+@media (prefers-reduced-motion: reduce) { .ckw-shake .ckw-shaker { animation: none; } }
+.ckw-wait { margin: 0; font: 700 18px/1.4 var(--ui); }
+.ckw-opt-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; font: 700 14px/1 var(--ui); }
+.ckw-opts { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 6px; }
+.ckw-opts::-webkit-scrollbar { display: none; }
+.ckw-opt { flex: 0 0 100%; scroll-snap-align: center; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.ckw-opt .ckw-label { justify-content: flex-start; }
+.ckw-row2 { display: flex; gap: 10px; }
 
 /* ---------------------------------------------------------------- Laugh Engine (phones) */
 /* The 2–3 funniest cards for this Recipe Card glow, with a little tag. It's only a hint. */
@@ -207,29 +259,8 @@ body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
   font: 800 10.5px/1 var(--ui); font-style: normal; letter-spacing: .04em; padding: 4px 8px; border-radius: 99px;
   color: #3a2400; background: #ffd24a; box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
 }
-.ckp-ideas { margin: 4px 0 10px; }
-.ckp-ideas .panel-btn { width: 100%; }
-.ckp-idea-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-.ckp-idea-list button {
-  text-align: left; padding: 10px 12px; border-radius: 10px; cursor: pointer; font: 700 15px/1.25 var(--ui);
-  color: var(--paper-ink); background: #fff4c8; border: 1px solid #e0b84a;
-}
-.ckp-idea-list button:active { transform: translateY(1px); }
-/* Si Spice It Up ("Salt and Pepper") */
-.ckp-spice { margin: 10px 0 4px; display: flex; flex-direction: column; gap: 6px; }
-.ckp-spice .panel-btn.spice { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-.ckp-spice .panel-btn.spice svg { width: 22px; height: 22px; flex: none; }
-.ckp-spice-list { display: flex; flex-direction: column; gap: 6px; }
-.ckp-spice-list button {
-  text-align: left; padding: 9px 12px; border-radius: 10px; cursor: pointer; font: 700 15px/1.25 var(--ui);
-  color: var(--paper-ink); background: #fff; border: 1px solid rgba(42, 35, 32, .25); display: flex; flex-direction: column; gap: 2px;
-}
-.ckp-spice-list button b { font: 800 11px/1 var(--ui); letter-spacing: .08em; text-transform: uppercase; color: #a8203a; }
-.ckp-spice-list button.keep { background: #f4efe6; }
-.ckp-spice-list button.keep b { color: #5a4d40; }
-.ckp-spice-list button.on { box-shadow: 0 0 0 3px #e3cf9f; border-color: #c9a24a; }
 
-/* ---------------------------------------------------------------- Laugh Engine Si (lobby line on the table) */
+/* ---------------------------------------------------------------- Laugh Engine helper (lobby line on the table) */
 .ck-si { display: flex; flex-wrap: wrap; align-items: center; gap: 1vmin 1.4vmin; margin: .4vmin 0 0; font-size: 1.7vmin; }
 .ck-si .ck-si-state { font-weight: 700; }
 .ck-si small { flex-basis: 100%; opacity: .75; }

@@ -3,7 +3,7 @@
 // than the last, or call "Liar!" on the bid before you. Ones are wild. The cups lift on the table:
 // if the bid was there, the caller loses a die; if not, the bidder does. Lose all your dice and
 // you're out. Last player with dice wins.
-import { base, sfx, announce } from './party.js?v=91';
+import { base, sfx, announce } from './party.js?v=92';
 
 const roll = n => Array.from({ length: n }, () => 1 + Math.floor(Math.random() * 6));
 export function createGame(settings, players) {

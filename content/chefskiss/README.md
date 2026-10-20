@@ -11,7 +11,7 @@ These text files are the master card database's source (SPEC.md Section 5.2 and 
 
 ## Files
 
-`mild-recipes.txt`, `mild-ingredients.txt`, `medium-…`, `spicy-…`. The level is in the file name.
+`mild-recipes.txt`, `mild-ingredients.txt`, `medium-…`, `hot-…`. The level is in the file name. (These are the older cards. Al's finished decks go in `decks/` as JSON, and replace them: see `decks/README.md`.)
 
 ## Line formats
 

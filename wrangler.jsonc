@@ -1,7 +1,12 @@
-// Cloudflare deploy settings for playondisplay.com (an assets-only Worker).
+// Cloudflare deploy settings for playondisplay.com.
 // Deploy with:  bash deploy-cloudflare.sh
+// The site is static files; worker/index.js only answers /api/* (Chef's Kiss "Add salt and pepper"
+// and the custom-card content check). Its model key is a secret, never in this file or the repo:
+//   wrangler secret put GEMINI_API_KEY
 {
   "name": "playondisplay",
   "compatibility_date": "2026-10-08",
-  "assets": { "directory": "../play-on-display-site" }
+  "main": "worker/index.js",
+  "assets": { "directory": "../play-on-display-site", "binding": "ASSETS" },
+  "vars": { "GEMMA_MODEL": "gemma-3-27b-it" }
 }

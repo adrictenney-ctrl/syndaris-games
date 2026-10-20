@@ -143,10 +143,30 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
     Each round it rates every card in every hand and writes card ideas in the background; phones use its picks if
     they arrive within 3 seconds, otherwise the built-in scorer. The model is kept in the browser's private storage
     after the host picks the file once (or set `MODEL_URL` to a copy you host).
-- **Three's a Party (Double Vision):** with exactly three players, each Apprentice plays two cards.
-- **Bot mode:** computer players can fill seats. They play a random card, and as Chef they pick a random winner.
-- **Your own cards:** "✎ My cards" on the phone lets you write, edit, delete and play your own Ingredient Cards.
-  They're kept on that phone only, and the game doesn't filter them.
+- **One card per Apprentice per round**, at any table size (Double Vision is gone).
+- **Bot mode:** computer players can fill seats. With fewer than 4 people, bots fill the seats up to 4 when the game
+  starts (lowest open seat first). They play a random card, and as Chef they pick a random winner.
+- **Card Workshop** (customizable cards, `js/ck-workshop.js`): "✎ Card Workshop" on the phone. Players write
+  **Signature Recipes** (their own prompt cards, 80 characters, with "What kind of answer fits?" chips) and
+  **Snack cards** (their own answer cards, 60 characters, with an optional flavor line). There are no Chef cards.
+  Four screens: Workshop home (read-only level badge, New Signature Recipe, New Snack Card, My Cards), the editor
+  (live preview, counters, drafts saved as you type), **Add salt and pepper** (three seasoned options: Use this,
+  Tweak it, Keep mine, Shake again) and Saved (Play it at this table, Share with Cards from the Community).
+  Cards are private, kept on the phone, and only for tables of their own level.
+  - **At the table:** "Play it at this table" brings a card in. **House Recipes** (lobby): Off, **Mix in**
+    (default: at most 1 of the Chef's 3 Recipe choices is a Signature Recipe) or Replace (Signature Recipes first).
+    Snack cards go into their owner's hand, at most 2 per hand, taking the random slot first. Signature Recipes'
+    answer types steer which cards are dealt. Who wrote a custom card is never shown, even when it wins.
+  - **Add salt and pepper** runs on the server, never the phone: `POST /api/season-card` in the Worker
+    (`worker/`). It asks Google's Gemma (`gemma-3-27b-it` through the Gemini API; name in `wrangler.jsonc`) for
+    exactly 3 versions, checks them, and retries once. The key is a Worker secret, never in the repo:
+    `wrangler secret put GEMINI_API_KEY`. Until the key is set, the built-in technique templates (`js/spice.js`)
+    stand in. 20 tries per player per hour. Players never see what powers it.
+  - **Content check** (`POST /api/check-card`, and every option): the family-friendly word list
+    (`js/ck-wordlist.js`), then the model's yes/no verdict for the table's level. Nothing that fails is saved or shown.
+  - **Share with Cards from the Community** writes the card to Firestore `cardReviews/{cardId}` with
+    `status: "pending_review"` (the review screen isn't built yet). It needs this rule:
+    `match /cardReviews/{id} { allow create: if request.resource.data.status == 'pending_review' && request.resource.data.text is string && request.resource.data.text.size() <= 80; }`
 - **Chef's Kisses Forever:** each phone keeps a lifetime count of the Kisses won on it. Winning a game adds a
   bonus Kiss.
 - **Moving cards:** cards on the table (and the Recipe Card on your phone) can be dragged, pinched bigger or
@@ -159,8 +179,10 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   which also has "End the game now".
 - **Teams:** 2, 3 or 4 colored teams. Players are spread across the teams in seat order (latecomers join the
   smallest team). Everyone still scores individually; team scores are the sum.
-- **Card level:** Mild (elementary, the default), Medium (middle school) or Spicy (high school), chosen in the
-  lobby. A table deals cards at its level and below. All official cards are family-friendly at every level.
+- **Card level:** Mild (elementary, the default), Medium (middle school) or **Hot** (high school, formerly called
+  Spicy), chosen in the lobby. **One table, one deck:** a table deals only its own level's Recipe and Ingredient
+  Cards, never a lower or higher one. All three are family-friendly. (Spicy is now the college tier, 17+, and
+  Hellfire Scorpion the adult tier; neither can be chosen yet.)
 - **Master card database** (SPEC.md Sections 5.2 and 15): official cards at every level, tagged on subject, tone,
   scale and register (violation and status are supported too), with funny-target combos and literal tags on every
   Recipe and dates on pop-culture cards. The spec now asks for 200 Recipe + 800 Ingredient Cards per level; Al's
@@ -764,11 +786,7 @@ match /parental/{uid} {
 }
 ```
 
-## Si Spice It Up
+## Add salt and pepper
 
-In Chef's Kiss, the phone's **✎ My cards** sheet has a **Salt and Pepper** button (`js/spice.js`; label in
-`js/chefskiss-config.js`). Type an idea, tap it, and the Si offers up to 3 funnier versions, each labelled with
-its technique (Twist, Status flip, Scale mismatch, Fancy talk, Rule-break), next to **Keep mine**. Tap one to use
-it, change the words if you like, then save; nothing is saved until you do. It runs on the phone only, keeps the
-player's own idea in every version, and stays family-friendly at the table's level ("The Si doesn't change your
-card, it pulls out the flavor.").
+Chef's Kiss's Card Workshop button (see the Chef's Kiss section). The built-in technique templates in `js/spice.js`
+(Twist, Status flip, Scale mismatch, Fancy talk, Rule-break) are used by the server when no model key is set.

@@ -56,7 +56,7 @@ export function coreOf(text) {
   };
 }
 
-// Each technique: templates (Mild ones for every level, more for Medium and Spicy), and the tags
+// Each technique: templates (Mild ones for every level, more for Medium and Hot), and the tags
 // it adds. All of them are family-friendly at every level.
 const ING = {
   'Twist': {
@@ -104,7 +104,7 @@ function tagsFor(core, extra, type) {
 /**
  * @param text     the player's idea, e.g. "a dog"
  * @param type     'ingredient' | 'recipe'
- * @param level    'mild' | 'medium' | 'spicy' (Mild gets the simplest wording)
+ * @param level    'mild' | 'medium' | 'hot' (Mild gets the simplest wording)
  * @param deckHeat null, or 'hot' | 'hellfire' for the player's own opted-in deck. Unused on
  *                 purpose: the Si never raises heat, and every template is family-friendly.
  * @param rng      random source (for tests)

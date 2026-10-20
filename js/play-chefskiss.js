@@ -1,31 +1,29 @@
 // Chef's Kiss on a phone. Cards arrive face down: touch one to turn it over, then slide it
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=91';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=91';
-import { movable } from './gesture.js?v=91';
-import { TEAMS, CONFIG } from './chefskiss-config.js?v=2';
-import { spiceItUp } from './spice.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=91';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=92';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=92';
+import { movable } from './gesture.js?v=92';
+import { TEAMS } from './chefskiss-config.js?v=3';
+import { openWorkshop, myCards } from './ck-workshop.js?v=1';
+import { makeCustomCard } from './ck-custom.js?v=1';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=92';
 
 let ctx = null, v = null;
 let flipped = new Set();
 let selected = null, chosen = -1;
 let handKey = '', panelKey = '', boardKey = '', recipeKey = '';
 let endsAt = 0, tickT = null, gameId = null;
-let sheetOpen = false, editing = -1, sheetPlayable = false;
-// What's typed in the sheet (kept when the sheet redraws), and the Si's Spice It Up suggestions.
-let draft = null, spice = null, spiceFrom = '';
+let workshop = null;   // the Card Workshop panel, when it's open
 // Laugh Engine (only when the host left it on): the funniest cards in this hand for this Recipe
 // Card, and card ideas. Both arrive whenever they're ready; nothing here ever waits on them.
-let laughKey = '', laughIds = [], ideas = null, ideasFor = '';
+let laughKey = '', laughIds = [];
 
 // ---------------------------------------------------------------- stored on this phone only
 
 const LS = { deck: 'pod.ck.deck', life: 'pod.ck.lifetime', counted: 'pod.ck.counted', flips: 'pod.ck.flips' };
 const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
 const write = (k, val) => { try { localStorage.setItem(k, JSON.stringify(val)); } catch {} };
-const myDeck = () => read(LS.deck, []);
 const lifetime = () => read(LS.life, 0);
 
 // Chef's Kisses Forever: every Kiss you win adds to this phone's lifetime counter.
@@ -41,11 +39,10 @@ function countKiss(key) {
 export function reset() {
   handKey = panelKey = boardKey = recipeKey = '';
   selected = null; chosen = -1;
-  laughKey = ''; laughIds = []; ideas = null; ideasFor = ''; laughFrom = ''; clearTimeout(laughTimer);
+  laughKey = ''; laughIds = []; laughFrom = ''; clearTimeout(laughTimer);
   clearInterval(tickT);
   document.getElementById('ckPhone')?.remove();
-  document.getElementById('ckSheet')?.remove();
-  sheetOpen = false;
+  workshop?.close(); workshop = null;
 }
 
 export function renderLobby(c) {
@@ -74,7 +71,7 @@ function shell() {
 }
 
 const isRecipeTurn = () => v.isChef && v.phase === 'recipe';
-const choosing = () => v.phase === 'play' && v.playing && v.mine.length < v.need;
+const choosing = () => v.phase === 'play' && v.playing && !v.mine.length;
 // Where this hand's picks come from: the table's Si (Gemma on the host) when it's running,
 // otherwise the built-in scorer on this phone. The Si gets 3 seconds; then the scorer steps in.
 const SI_WAIT = 3000;
@@ -105,7 +102,7 @@ const handCards = () => (isRecipeTurn() ? v.myRecipes : v.hand);
 const canPlay = c => {
   if (!c) return false;
   if (c.kind === 'r') return isRecipeTurn();
-  return v.phase === 'play' && v.playing && v.mine.length < v.need;
+  return v.phase === 'play' && v.playing && !v.mine.length;
 };
 
 function send(a) { ctx.send(a); }
@@ -134,7 +131,7 @@ function renderHandRow() {
   if (key === handKey) return;
   handKey = key;
   row.innerHTML = '';
-  row.classList.toggle('resting', !(isRecipeTurn() || (v.phase === 'play' && v.playing && v.mine.length < v.need)));
+  row.classList.toggle('resting', !(isRecipeTurn() || (v.phase === 'play' && v.playing && !v.mine.length)));
   for (const c of cards) {
     const wrap = document.createElement('div');
     wrap.className = 'ckp-slot' + (selected === c.id ? ' sel' : '') + (funny.includes(c.id) ? ' laugh' : '');
@@ -229,7 +226,7 @@ function renderBoard() {
 }
 
 function renderPanel() {
-  const key = [v.phase, v.round, v.isChef, v.playing, v.mine.length, selected, chosen, sheetOpen].join('|');
+  const key = [v.phase, v.round, v.isChef, v.playing, v.mine.length, selected, chosen].join('|');
   if (key === panelKey) return;
   panelKey = key;
   const p = $('#panel');
@@ -247,130 +244,48 @@ function renderPanel() {
   if (v.phase === 'over') return;
   const sel = (handCards() || []).find(c => c.id === selected);
   if (sel && canPlay(sel)) btn(sel.kind === 'r' ? 'Use this Recipe Card' : 'Play this card', 'go', () => playCard(sel, document.querySelector('#ckPhone .ckp-slot.sel')));
-  btn('✎ My cards', '', openSheet);
-  if (v.laugh && choosing() && v.recipe) btn('✨ Make me a card', '', () => { openSheet(); askIdeas(); });
+  btn('✎ Card Workshop', '', () => openCards());
+  if (v.laugh && choosing() && v.recipe) btn('✨ Make me a card', '', () => openCards('snack'));
   if (row.childElementCount) p.appendChild(row);
 }
 
-// ---------------------------------------------------------------- my own Ingredient Cards
+// ---------------------------------------------------------------- the Card Workshop (players' own cards)
 
-let siShown = [];
-function askIdeas() {
-  if (!v?.laugh || !v.recipe) return;
-  const key = v.recipe.id + ':' + Date.now();
-  // The table's Si already wrote ideas for this Recipe Card: show three (fresh ones each tap).
+// Card ideas for a Snack card: the table's ideas for this Recipe Card when it has some (fresh ones
+// each time), otherwise the built-in idea maker on this phone.
+let ideasShown = [];
+function cardIdeas() {
+  if (!v?.recipe) return Promise.resolve([]);
   if (v.siIdeas?.length) {
-    let pool = v.siIdeas.filter(t => !siShown.includes(t));
-    if (pool.length < 3) { siShown = []; pool = [...v.siIdeas]; }
+    let pool = v.siIdeas.filter(t => !ideasShown.includes(t));
+    if (pool.length < 3) { ideasShown = []; pool = [...v.siIdeas]; }
     const pick = pool.sort(() => Math.random() - .5).slice(0, 3);
-    siShown.push(...pick);
-    ideasFor = key; ideas = pick; drawSheet();
-    return;
+    ideasShown.push(...pick);
+    return Promise.resolve(pick);
   }
-  ideasFor = key; ideas = 'loading'; drawSheet();
-  const avoid = [...(v.hand || []).map(c => c.t), ...myDeck().map(c => c.t)];
-  makeCards(v.recipe, avoid).then(list => { if (ideasFor !== key) return; ideas = list; drawSheet(); }, () => { if (ideasFor === key) { ideas = []; drawSheet(); } });
+  const avoid = [...(v.hand || []).map(c => c.t), ...myCards().map(c => c.text)];
+  return makeCards(v.recipe, avoid).then(list => list.slice(0, 3), () => []);
 }
 
-function openSheet() {
-  sheetOpen = true;
-  editing = -1;
-  draft = null; spice = null;
-  drawSheet();
+// Cards written before the Card Workshop (the old "My cards" list) become Snack cards at the first
+// table this phone opens the Workshop at.
+function moveOldCards(level) {
+  const old = read(LS.deck, []);
+  if (!old.length) return;
+  const list = myCards();
+  for (const o of old) { try { list.push(makeCustomCard({ type: 'snack', text: o.t, flavor: o.d ? String(o.d).slice(0, 60) : null, level })); } catch {} }
+  write('pod.ck.cards', list);
+  write(LS.deck, []);
 }
 
-function drawSheet() {
-  let s = document.getElementById('ckSheet');
-  if (!sheetOpen) { s?.remove(); panelKey = ''; return; }
-  if (!s) { s = document.createElement('div'); s.id = 'ckSheet'; document.body.appendChild(s); }
-  const deck = myDeck();
-  const playable = v && v.phase === 'play' && v.playing && v.mine.length < v.need;
-  const cur = draft || (editing >= 0 ? deck[editing] : { t: '', d: '' });
-  s.innerHTML = `
-    <div class="ckp-sheet">
-      <header><h3>My Ingredient Cards</h3><button class="ckp-x" type="button" aria-label="Close">✕</button></header>
-      <p class="ckp-hint">Your own cards stay on this phone. Only you can play them.</p>
-      ${v?.laugh && v.recipe && v.phase === 'play' ? `<div class="ckp-ideas"><button class="panel-btn" type="button" data-a="ideas">✨ Make me a card</button>${ideas === 'loading' ? '<p class="ckp-hint">Thinking of something funny…</p>' : Array.isArray(ideas) ? (ideas.length ? `<div class="ckp-idea-list">${ideas.map((t, i) => `<button type="button" data-idea="${i}">${esc(t)}</button>`).join('')}</div><p class="ckp-hint">Tap an idea to put it on a card, then save or play it.</p>` : '<p class="ckp-hint">No ideas right now. Write your own!</p>') : ''}</div>` : ''}
-      <form class="ckp-form">
-        <input name="t" maxlength="80" placeholder="Write a card…" value="${esc(cur.t)}" autocomplete="off">
-        <input name="d" maxlength="160" placeholder="What it means (for the 💡, optional)" value="${esc(cur.d)}" autocomplete="off">
-        <div class="row">
-          <button class="panel-btn" type="submit" name="save">${editing >= 0 ? 'Save changes' : 'Save to my deck'}</button>
-          ${playable ? '<button class="panel-btn go" type="button" data-a="playnow">Play it now</button>' : ''}
-        </div>
-      </form>
-      ${CONFIG.spiceItUpEnabled ? `<div class="ckp-spice">
-        <button class="panel-btn spice" type="button" data-a="spice"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h3v3H8zM6.5 6h6l1 3v11a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V9z" fill="#f4efe6" stroke="currentColor" stroke-width="1.4"/><path d="M15 6h3l1.5 3v11a1 1 0 0 1-1 1h-4" fill="#3a332e" stroke="currentColor" stroke-width="1.4"/></svg>${esc(CONFIG.spiceItUpButtonLabel)}</button>
-        <p class="ckp-hint">The Si doesn't change your card, it pulls out the flavor.</p>
-        ${spice ? `<div class="ckp-spice-list">${spice.map((x, i) => `<button type="button" data-sp="${i}"><b>${esc(x.technique)}</b>${esc(x.text)}</button>`).join('')}<button type="button" data-sp="keep" class="keep"><b>Keep mine</b>${esc(spiceFrom)}</button></div>
-          <p class="ckp-hint">${spice.length ? 'Tap one to use it (you can still change the words). Nothing is saved until you save.' : 'No ideas for that one. Keep yours, or try different words.'}</p>` : ''}
-      </div>` : ''}
-      <ul class="ckp-list">${deck.length ? deck.map((c, i) => `
-        <li><div><b>${esc(c.t)}</b>${c.d ? `<small>${esc(c.d)}</small>` : ''}</div>
-          <span>${playable ? `<button type="button" data-play="${i}">Play</button>` : ''}<button type="button" data-edit="${i}">Edit</button><button type="button" data-del="${i}">Delete</button></span></li>`).join('')
-        : '<li class="empty">No cards yet. Write one above.</li>'}</ul>
-    </div>`;
-  const f = s.querySelector('form');
-  const val = () => ({ t: f.t.value.trim().slice(0, 80), d: f.d.value.trim().slice(0, 160) });
-  f.oninput = () => { draft = { t: f.t.value, d: f.d.value }; };
-  // Salt and Pepper: the Si's funnier versions of what's typed, made on this phone only.
-  s.querySelector('[data-a="spice"]')?.addEventListener('click', () => {
-    const idea = f.t.value.trim();
-    if (!idea) { toast('Write your idea first, then add Salt and Pepper'); f.t.focus(); return; }
-    spiceFrom = idea;
-    spice = spiceItUp(idea, 'ingredient', v?.level || 'mild', null, Math.random, CONFIG.spiceItUpSuggestions);
-    draft = { t: f.t.value, d: f.d.value };
-    drawSheet();
+function openCards(startOn) {
+  if (!v) return;
+  moveOldCards(v.level);
+  workshop = openWorkshop({
+    level: v.level, startOn, send, toast,
+    activeIds: () => v?.myCustom || [],
+    ideas: v.laugh ? cardIdeas : null,
   });
-  s.querySelectorAll('[data-sp]').forEach(b => {
-    b.onclick = () => {
-      const pick = b.dataset.sp === 'keep' ? spiceFrom : spice?.[Number(b.dataset.sp)]?.text;
-      if (pick == null) return;
-      f.t.value = pick;
-      draft = { t: f.t.value, d: f.d.value };
-      s.querySelectorAll('[data-sp]').forEach(x => x.classList.toggle('on', x === b));
-      f.t.focus();
-    };
-  });
-  f.onsubmit = e => {
-    e.preventDefault();
-    const c = val();
-    if (!c.t) return toast('Write something on the card first');
-    const d = myDeck();
-    if (editing >= 0) d[editing] = c; else d.unshift(c);
-    write(LS.deck, d);
-    editing = -1;
-    draft = null; spice = null;
-    toast('Saved to your deck');
-    drawSheet();
-  };
-  s.querySelector('[data-a="playnow"]')?.addEventListener('click', () => {
-    const c = val();
-    if (!c.t) return toast('Write something on the card first');
-    playOwn(c);
-  });
-  s.querySelector('[data-a="ideas"]')?.addEventListener('click', askIdeas);
-  s.querySelectorAll('[data-idea]').forEach(b => { b.onclick = () => { f.t.value = ideas[Number(b.dataset.idea)] || ''; draft = { t: f.t.value, d: f.d.value }; f.t.focus(); }; });
-  s.querySelector('.ckp-x').onclick = () => { sheetOpen = false; drawSheet(); };
-  s.onclick = e => { if (e.target === s) { sheetOpen = false; drawSheet(); } };
-  s.querySelectorAll('[data-play]').forEach(b => { b.onclick = () => playOwn(myDeck()[Number(b.dataset.play)]); });
-  s.querySelectorAll('[data-edit]').forEach(b => { b.onclick = () => { editing = Number(b.dataset.edit); draft = null; spice = null; drawSheet(); s.querySelector('input').focus(); }; });
-  s.querySelectorAll('[data-del]').forEach(b => {
-    b.onclick = () => {
-      const d = myDeck();
-      d.splice(Number(b.dataset.del), 1);
-      write(LS.deck, d);
-      editing = -1;
-      drawSheet();
-    };
-  });
-}
-
-function playOwn(c) {
-  send({ type: 'play', own: { t: c.t, d: c.d } });
-  sheetOpen = false;
-  drawSheet();
-  navigator.vibrate?.(20);
 }
 
 // ---------------------------------------------------------------- render
@@ -409,7 +324,7 @@ export function render(c) {
   setHud('#hudR', 'Lifetime 💋', lifetime(), team ? `team ${v.teamTotals[v.teams[you]]}` : 'on this phone');
 
   const chefName = c.nameOf(v.chef);
-  const myTurn = (v.isChef && ['recipe', 'judge'].includes(v.phase)) || (v.phase === 'play' && v.playing && v.mine.length < v.need);
+  const myTurn = (v.isChef && ['recipe', 'judge'].includes(v.phase)) || (v.phase === 'play' && v.playing && !v.mine.length);
   document.body.classList.toggle('myturn', myTurn);
   document.body.classList.toggle('ck-chef', v.isChef);
 
@@ -422,31 +337,28 @@ export function render(c) {
   } else if (v.phase === 'play') {
     if (v.isChef) setStatus('Apprentices are choosing…', `${v.played} of ${v.expected} cards in`);
     else if (!v.playing) setStatus('Welcome to the kitchen!', "You'll be dealt in next round.");
-    else if (v.mine.length < v.need) setStatus(v.need === 2 && v.mine.length === 0 ? 'Double Vision: play two cards' : v.need === 2 ? 'Play one more card' : 'Play your best pairing', 'Touch a card to turn it over, then slide it up.');
+    else if (!v.mine.length) setStatus('Play your best pairing', 'Touch a card to turn it over, then slide it up.');
     else setStatus('Card played!', `Waiting for the others · ${v.played} of ${v.expected} in`);
   } else if (v.phase === 'judge') {
     if (v.isChef) setStatus("Award the Chef's Kiss", 'Tap your favorite pairing. Let them lobby you first!');
     else setStatus('Lobby the Chef!', `Talk up your card. ${chefName} is deciding.`);
   } else if (v.phase === 'reveal') {
     const w = v.reveal[v.winner];
-    setStatus(w.yours ? "💋 You got the Chef's Kiss!" : `💋 ${c.nameOf(w.seat)} got the Chef's Kiss`, `“${w.t}”`);
+    setStatus(w.yours ? "💋 You got the Chef's Kiss!" : w.custom ? "💋 A house card got the Chef's Kiss" : `💋 ${c.nameOf(w.seat)} got the Chef's Kiss`, `“${w.t}”`);
   }
 
-  if (ideas && ideasFor && !ideasFor.startsWith((v.recipe?.id || '-') + ':')) { ideas = null; ideasFor = ''; }
   askLaugh();
   shell();
   renderRecipe();
   renderBoard();
   const zone = $('#ckPhone .ckp-zone');
-  const zoneOn = isRecipeTurn() || (v.phase === 'play' && v.playing && v.mine.length < v.need);
+  const zoneOn = isRecipeTurn() || (v.phase === 'play' && v.playing && !v.mine.length);
   zone.hidden = !zoneOn;
   zone.querySelector('span').textContent = isRecipeTurn() ? 'Slide a Recipe Card up here' : 'Slide an Ingredient Card up here to play it';
   $('#ckPhone .ckp-hand').hidden = v.phase === 'over' || (v.phase === 'judge' && v.isChef);
   renderHandRow();
   renderPanel();
-  // Refresh the "Play" buttons in My cards when playing becomes possible (or stops being).
-  const playable = v.phase === 'play' && v.playing && v.mine.length < v.need;
-  if (sheetOpen && playable !== sheetPlayable) drawSheet();
-  sheetPlayable = playable;
+  // The Workshop shows which cards are at this table: keep it current.
+  if (!document.getElementById('ckWork')) workshop = null; else workshop?.redraw();
   renderHand([]);
 }

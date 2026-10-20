@@ -1,4 +1,4 @@
-# Spicy Ingredient Cards (high school). Still family-friendly. text | subject tone scale register | meta | hint
+# Hot Ingredient Cards (high school). Still family-friendly. text | subject tone scale register | meta | hint
 A flip phone | c n 1 c | @1996 ^2005 ~2010 k4 | A phone that folds in half, popular in the 2000s.
 Expired coupons | t y 1 c | | Discounts you can no longer use.
 A treadmill used as a clothes rack | t y 2 c | | Exercise gear that now holds laundry.
