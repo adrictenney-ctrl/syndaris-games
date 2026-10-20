@@ -186,3 +186,86 @@ html[data-style="vibrant"][data-skin] .lobby-info .tool, html[data-style="vibran
 html[data-style="vibrant"][data-skin] .rules-card .tool {
   color: var(--k-ghost-ink); background: var(--k-ghost-bg); border: .2vmin solid var(--k-ghost-line); border-radius: var(--k-btn-radius); font-family: var(--k-btn-font, var(--k-body-font));
 }
+
+/* ================================================================ the home page */
+/* Each skin dresses the home page too: the room, the top bar, the featured banner, the filters, the
+   game tiles (the pictures stay; their frames, corners, shadows and lettering change) and the windows.
+   The Settings, sign-in and Parent Controls windows use the skin's darker tone (--k-dialog-*), so
+   their many light labels stay readable in every style. */
+html[data-style="vibrant"][data-skin] {
+  --k-dialog-bg: var(--k-felt-base); --k-dialog-ink: var(--k-felt-ink); --k-dialog-mute: var(--k-room-mute);
+  --k-dialog-line: var(--k-felt-line); --k-dialog-soft: rgba(255, 255, 255, .06);
+  background: var(--k-felt-base);
+}
+html[data-style="vibrant"][data-skin] body.home { color: var(--k-felt-ink); }
+html[data-style="vibrant"][data-skin] body.home::before { background: var(--k-room) !important; background-blend-mode: normal !important; }
+html[data-style="vibrant"][data-skin] .caps { font-family: var(--k-btn-font, var(--k-body-font)); }
+html[data-style="vibrant"][data-skin] .bar { background: var(--k-bar, rgba(0, 0, 0, .4)); background-blend-mode: normal; border-bottom: 2px solid var(--k-felt-line); box-shadow: 0 6px 0 rgba(0, 0, 0, .25); }
+html[data-style="vibrant"][data-skin] .brand span { font-family: var(--k-title-font); color: var(--k-felt-ink); text-shadow: var(--k-room-title-shadow, none); }
+html[data-style="vibrant"][data-skin] .join, html[data-style="vibrant"][data-skin] .gear, html[data-style="vibrant"][data-skin] .dough-pill,
+html[data-style="vibrant"][data-skin] .chip, html[data-style="vibrant"][data-skin] .seg, html[data-style="vibrant"][data-skin] .search input {
+  font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-pbtn-ink); background: var(--k-pbtn-bg); border: 2px solid var(--k-pbtn-line); border-radius: var(--k-btn-radius);
+}
+html[data-style="vibrant"][data-skin] .join label, html[data-style="vibrant"][data-skin] .gear, html[data-style="vibrant"][data-skin] .seg button { color: var(--k-pbtn-ink); font-family: var(--k-btn-font, var(--k-body-font)); }
+html[data-style="vibrant"][data-skin] .join input { color: var(--k-pbtn-ink); font-family: var(--k-num-font); }
+html[data-style="vibrant"][data-skin] .search input::placeholder, html[data-style="vibrant"][data-skin] .search svg { color: var(--k-input-mute); }
+html[data-style="vibrant"][data-skin] .search input:focus, html[data-style="vibrant"][data-skin] .gear:hover, html[data-style="vibrant"][data-skin] .chip:hover { border-color: var(--k-accent); color: var(--k-pbtn-ink); }
+html[data-style="vibrant"][data-skin] .chip.on, html[data-style="vibrant"][data-skin] .seg button.on { color: var(--k-accent-ink); background: var(--k-accent); border-color: transparent; box-shadow: 0 3px 0 rgba(0, 0, 0, .3); }
+html[data-style="vibrant"][data-skin] .chip.fav-chip::before { color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .chip.fav-chip.on::before { color: var(--k-accent-ink); }
+html[data-style="vibrant"][data-skin] .seg button { border-radius: var(--k-btn-radius); }
+html[data-style="vibrant"][data-skin] .join button, html[data-style="vibrant"][data-skin] .play-btn, html[data-style="vibrant"][data-skin] .hover-play,
+html[data-style="vibrant"][data-skin] .shop-go, html[data-style="vibrant"][data-skin] .acct-go {
+  font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-go-ink); background: var(--k-go-bg); border: var(--k-go-bw, 0) solid var(--k-go-line, transparent);
+  border-radius: var(--k-btn-radius); box-shadow: 0 4px 0 var(--k-go-edge), 0 10px 22px rgba(0, 0, 0, .3); text-shadow: none;
+}
+html[data-style="vibrant"][data-skin] .play-btn::before { border-left-color: currentColor; }
+html[data-style="vibrant"][data-skin] .section-head h2 { font-family: var(--k-title-font); color: var(--k-felt-ink); text-shadow: var(--k-room-title-shadow, none); }
+html[data-style="vibrant"][data-skin] .count .caps, html[data-style="vibrant"][data-skin] .section-head span, html[data-style="vibrant"][data-skin] footer .wrap { color: var(--k-room-mute); font-family: var(--k-body-font); }
+html[data-style="vibrant"][data-skin] footer { border-top-color: var(--k-felt-line); }
+html[data-style="vibrant"][data-skin] footer a { color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .empty { font-family: var(--k-title-font); color: var(--k-room-mute); }
+
+/* the featured banner */
+html[data-style="vibrant"][data-skin] .spot { background: var(--k-spot); background-blend-mode: normal; border-radius: var(--k-spot-radius, var(--k-panel-radius)); box-shadow: var(--k-spot-shadow); }
+html[data-style="vibrant"][data-skin] .spot h1 { font-family: var(--k-title-font); color: var(--k-spot-ink, #fff); text-shadow: var(--k-spot-title-shadow); }
+html[data-style="vibrant"][data-skin] .spot p, html[data-style="vibrant"][data-skin] .spot-meta, html[data-style="vibrant"][data-skin] .spot-meta svg { color: var(--k-spot-ink, #fff); font-family: var(--k-body-font); text-shadow: var(--k-spot-text-shadow, 0 2px 0 rgba(0, 0, 0, .4)); }
+html[data-style="vibrant"][data-skin] .spot-nav { color: var(--k-pbtn-ink); background: var(--k-pbtn-bg); border: 2px solid var(--k-pbtn-line); border-radius: var(--k-nav-radius, 50%); }
+html[data-style="vibrant"][data-skin] .spot-dots { background: var(--k-dots-bg, var(--k-felt-base)); }
+html[data-style="vibrant"][data-skin] .spot-dots button { background: var(--k-dot, rgba(255, 255, 255, .32)); border-radius: var(--k-dot-radius, 50%); }
+html[data-style="vibrant"][data-skin] .spot-dots button.on { background: var(--k-accent); }
+
+/* the game tiles */
+html[data-style="vibrant"][data-skin] .box { border-radius: var(--k-tile-radius); box-shadow: var(--k-tile-shadow); }
+html[data-style="vibrant"][data-skin] a.box:hover, html[data-style="vibrant"][data-skin] a.box:focus-visible { box-shadow: var(--k-tile-hover); }
+html[data-style="vibrant"][data-skin] .art, html[data-style="vibrant"][data-skin] .art::after { border-radius: var(--k-tile-radius); }
+html[data-style="vibrant"][data-skin] .art::after { box-shadow: var(--k-tile-inset, inset 0 0 0 2px rgba(255, 255, 255, .18)); }
+html[data-style="vibrant"][data-skin] .box h3 { font-family: var(--k-title-font); color: var(--k-tile-ink, #fff); text-shadow: var(--k-tile-text-shadow); }
+html[data-style="vibrant"][data-skin] .meta .who, html[data-style="vibrant"][data-skin] .meta .time { font-family: var(--k-body-font); color: var(--k-tile-ink, #fff); text-shadow: var(--k-tile-meta-shadow, var(--k-tile-text-shadow)); }
+html[data-style="vibrant"][data-skin] .new { font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-accent-ink); background: var(--k-accent); box-shadow: 0 2px 0 rgba(0, 0, 0, .3); border-radius: var(--k-btn-radius); }
+
+/* the windows: Settings, sign in, Parent Controls, notes */
+html[data-style="vibrant"][data-skin] dialog.settings, html[data-style="vibrant"][data-skin] .home-note {
+  color: var(--k-dialog-ink); background: var(--k-dialog-bg); background-blend-mode: normal; font-family: var(--k-body-font);
+  border: 2px solid var(--k-dialog-line); border-radius: var(--k-panel-radius); box-shadow: 0 10px 0 rgba(0, 0, 0, .35), 0 40px 80px rgba(0, 0, 0, .55);
+  --ivory: var(--k-dialog-ink); --mute: var(--k-dialog-mute); --champagne: var(--k-accent);
+}
+html[data-style="vibrant"][data-skin] .set-head h2 { font-family: var(--k-title-font); text-shadow: none; }
+html[data-style="vibrant"][data-skin] .set-x { color: var(--k-dialog-ink); border-color: var(--k-dialog-line); }
+html[data-style="vibrant"][data-skin] .set-label, html[data-style="vibrant"][data-skin] .style-opt small, html[data-style="vibrant"][data-skin] .set-note,
+html[data-style="vibrant"][data-skin] .code-msg, html[data-style="vibrant"][data-skin] .acct-field, html[data-style="vibrant"][data-skin] .acct-or, html[data-style="vibrant"][data-skin] .acct-me small { color: var(--k-dialog-mute); }
+html[data-style="vibrant"][data-skin] .style-opt, html[data-style="vibrant"][data-skin] .pc-open, html[data-style="vibrant"][data-skin] .shop-msg,
+html[data-style="vibrant"][data-skin] .style-price, html[data-style="vibrant"][data-skin] .pc-tabs button, html[data-style="vibrant"][data-skin] .pc-words li,
+html[data-style="vibrant"][data-skin] .acct-go.ghost { color: var(--k-dialog-ink); background: var(--k-dialog-soft); border-color: var(--k-dialog-line); }
+html[data-style="vibrant"][data-skin] .style-opt[aria-checked="true"] { border-color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .style-opt[aria-checked="true"] strong::after, html[data-style="vibrant"][data-skin] .pc-open > svg, html[data-style="vibrant"][data-skin] .acct-links button { color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .style-price.owned, html[data-style="vibrant"][data-skin] .pc-tabs button[aria-selected="true"] { color: var(--k-accent-ink); background: var(--k-accent); border-color: transparent; }
+html[data-style="vibrant"][data-skin] .code-row input, html[data-style="vibrant"][data-skin] .acct-field input, html[data-style="vibrant"][data-skin] .pc-search, html[data-style="vibrant"][data-skin] .pc-add input {
+  color: var(--k-dialog-ink); background: var(--k-dialog-soft); border: 2px solid var(--k-dialog-line); border-radius: var(--k-btn-radius); font-family: var(--k-body-font);
+}
+html[data-style="vibrant"][data-skin] .code-row input:focus, html[data-style="vibrant"][data-skin] .acct-field input:focus { border-color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .pc-games { background: var(--k-dialog-soft); border-color: var(--k-dialog-line); }
+html[data-style="vibrant"][data-skin] .pc-games input:checked + i { background: var(--k-go-bg); }
+html[data-style="vibrant"][data-skin] .acct-init { color: var(--k-accent-ink); background: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .home-note { border-color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .join input::placeholder { color: var(--k-input-mute); opacity: 1; }

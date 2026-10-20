@@ -2,7 +2,8 @@
 // the phone; the page is named by data-page on the script tag).
 //   classic          the black-and-gold card room (bought)
 //   vibrant          the free default
-//   a skin (below)   Vibrant's layout with that skin's look on top (bought)
+//   a skin (below)   Vibrant's layout with that skin's look on top (bought): the home page, the table
+//                    and the phone
 // Paid styles only apply on a device whose signed-in account owns them. Phones follow the table: the
 // join link carries ?look=<style>, so the phone matches the TV without owning it.
 (() => {
@@ -19,6 +20,24 @@
   window.POD_SKINS = Object.keys(SKINS);
   const me = document.currentScript, page = me?.dataset.page || 'home', d = document.documentElement;
   const read = (k, f) => { try { return JSON.parse(localStorage.getItem(k)) ?? f; } catch { return f; } };
+
+  // A skin's fonts and styles, loaded once each. On the built site every file sits in one folder (no
+  // css/). The home page calls this again when someone picks a skin in Settings.
+  const src = me?.getAttribute('src') || '';
+  const dir = /(^|\/)js\//.test(src) ? 'css/' : '', ver = (src.match(/\?v=\d+/) || [''])[0];
+  const add = (href, key) => {
+    if (document.head.querySelector(`link[data-skin-file="${key}"]`)) return;
+    const l = document.createElement('link');
+    l.rel = 'stylesheet'; l.href = href; l.dataset.skinFile = key;
+    document.head.appendChild(l);
+  };
+  window.POD_LOAD_SKIN = id => {
+    if (!SKINS[id]) return;
+    add(`https://fonts.googleapis.com/css2?${SKINS[id]}&display=swap`, 'font-' + id);
+    add(`${dir}skins.css${ver}`, 'engine');
+    add(`${dir}skin-${id}.css${ver}`, id);
+  };
+
   let st = null;
   try {
     if (page === 'phone') {
@@ -35,12 +54,5 @@
   if (icon) icon.href = 'icon-vibrant.svg';
   if (!SKINS[st]) return;
   d.dataset.skin = st;
-  if (page === 'home') return;     // the home page keeps Vibrant; skins dress the table and the phone
-  // The skin's fonts and styles. On the built site every file sits in one folder (no css/).
-  const src = me?.getAttribute('src') || '';
-  const dir = /(^|\/)js\//.test(src) ? 'css/' : '', ver = (src.match(/\?v=\d+/) || [''])[0];
-  const add = href => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); };
-  add(`https://fonts.googleapis.com/css2?${SKINS[st]}&display=swap`);
-  add(`${dir}skins.css${ver}`);
-  add(`${dir}skin-${st}.css${ver}`);
+  window.POD_LOAD_SKIN(st);
 })();

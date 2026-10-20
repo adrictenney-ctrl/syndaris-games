@@ -55,3 +55,15 @@ html[data-skin="cafe"] #overlay .scores li:first-child::before {
   html[data-skin="cafe"] #overlay { animation: cafeIn .5s cubic-bezier(.2, .8, .3, 1); }
   html[data-skin="cafe"] #overlay::before { animation: cafeSteam 1.6s ease-out both; }
 }
+
+/* home page: the café table, cream-rimmed tiles, a mocha menu-board banner */
+html[data-style="vibrant"][data-skin="cafe"] {
+  --k-bar: #3f2716;
+  --k-spot: var(--k-doodles) 96% 50% / 280px 280px no-repeat, radial-gradient(ellipse 60% 80% at 80% 40%, rgba(242, 196, 192, .25), transparent 70%), #3f2716;
+  --k-spot-radius: 28px; --k-spot-shadow: inset 0 0 0 6px #fff6e9, inset 0 0 0 8px #d9b99b, 0 10px 0 #2a190d, 0 26px 50px rgba(20, 10, 2, .5); --k-spot-ink: #fff6e9;
+  --k-spot-title-shadow: 0 4px 0 #2a190d; --k-spot-text-shadow: 0 2px 0 #2a190d;
+  --k-dots-bg: #3f2716;
+  --k-tile-radius: 22px; --k-tile-shadow: 0 0 0 5px #fff6e9, 0 8px 0 5px #d9b99b, 0 18px 30px rgba(20, 10, 2, .45); --k-tile-hover: 0 0 0 5px #f2c4c0, 0 10px 0 5px #d9b99b, 0 24px 40px rgba(20, 10, 2, .5);
+  --k-tile-text-shadow: 2px 0 0 #3f2716, -2px 0 0 #3f2716, 0 2px 0 #3f2716, 0 -2px 0 #3f2716, 0 4px 0 #3f2716;
+  --k-dialog-bg: #4a2f1c; --k-dialog-ink: #fff6e9; --k-dialog-mute: #ecd5bc; --k-dialog-line: #8a6440; --k-dialog-soft: rgba(255, 246, 233, .08);
+}

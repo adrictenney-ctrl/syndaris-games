@@ -1,8 +1,8 @@
 // Gearworks on the table: the round track, this round's two Power Surges, the five actions (and
 // who picked each, once they're revealed), and in front of every player their workshop of
 // robots, parts and points.
-import * as W from './gearworks.js?v=100';
-import { snap } from './cards.js?v=100';
+import * as W from './gearworks.js?v=101';
+import { snap } from './cards.js?v=101';
 
 let root = null, shops = {}, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

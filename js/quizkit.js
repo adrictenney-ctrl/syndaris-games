@@ -8,7 +8,7 @@
 // Options: rounds, secs, firstOnly (only the first right answer scores; wrong answers lose points),
 // elim (a wrong or missing answer knocks you out), flash (ms the table shows q.show before hiding it).
 // A question: { q, big?, show?, opts?, a, note?, pts? }.
-import { base, shuffle, same, cleanText, sfx, left, waiting, announce } from './party.js?v=100';
+import { base, shuffle, same, cleanText, sfx, left, waiting, announce } from './party.js?v=101';
 
 export function quizEngine(src, cfg = {}) {
   const mode = cfg.mode || 'mc';

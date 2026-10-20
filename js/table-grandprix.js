@@ -1,9 +1,9 @@
 // Grand Prix Dice on the table: the Monte Vale circuit fills the table — kerbs and a stop count
 // on every corner, each car in its driver's colour with its gear on the roof — and the gear
 // die rolling in the infield.
-import * as G from './grandprix.js?v=100';
-import { circuitSVG } from './circuit.js?v=100';
-import { snap } from './cards.js?v=100';
+import * as G from './grandprix.js?v=101';
+import { circuitSVG } from './circuit.js?v=101';
+import { snap } from './cards.js?v=101';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

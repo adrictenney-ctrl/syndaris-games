@@ -1,7 +1,7 @@
 // One Clue on the table: while clues are written only who's guessing (the word is never shown);
 // then the surviving clues on easels — crossed-out ones stay face down — and finally the word.
-import * as E from './oneclue.js?v=100';
-import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=100';
+import * as E from './oneclue.js?v=101';
+import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=101';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {

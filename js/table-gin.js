@@ -1,9 +1,9 @@
 // Gin Rummy on the table: the stock and discard pile between the two players. After a knock
 // both hands are laid out face up — melds, deadwood, and what was laid off.
-import * as G from './gin.js?v=100';
-import { snap } from './cards.js?v=100';
-import { centerMsg, clearMsg } from './table-hearts.js?v=100';
-import { rowEl, pilesEl } from './table-rummy.js?v=100';
+import * as G from './gin.js?v=101';
+import { snap } from './cards.js?v=101';
+import { centerMsg, clearMsg } from './table-hearts.js?v=101';
+import { rowEl, pilesEl } from './table-rummy.js?v=101';
 
 let root = null, key = '';
 

@@ -81,3 +81,21 @@ html[data-skin="arcade"] .card, html[data-skin="arcade"] #qr, html[data-skin="ar
 html[data-skin="arcade"] .who .name { font-size: 3.1vmin; line-height: 1.25; padding-block: .25em; margin-block: -.25em; }
 html[data-skin="arcade"] body.many-seats .who .name { font-size: 3vmin; }
 html[data-skin="arcade"] button.big { font-size: 1.3vmin; line-height: 1.6; }
+
+/* home page: a black cabinet, pixel-framed tiles with an 8-bit shadow */
+html[data-style="vibrant"][data-skin="arcade"] {
+  --k-bar: #0a0a12;
+  --k-spot: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255, 46, 136, .35), transparent 70%), linear-gradient(rgba(0, 229, 255, .08) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, rgba(0, 229, 255, .08) 1px, transparent 1px) 0 0 / 24px 24px, #120a24;
+  --k-spot-radius: 0; --k-spot-shadow: 0 0 0 4px #ff2e88, 10px 10px 0 #ff2e88; --k-spot-ink: #ffffff;
+  --k-spot-title-shadow: 4px 4px 0 #ff2e88, 0 0 18px rgba(0, 229, 255, .5); --k-spot-text-shadow: 2px 2px 0 #000;
+  --k-nav-radius: 0; --k-dot-radius: 0; --k-dots-bg: #0a0a12;
+  --k-tile-radius: 0; --k-tile-shadow: 0 0 0 3px #00e5ff, 6px 6px 0 #006b78; --k-tile-hover: 0 0 0 3px #ffe600, 8px 8px 0 #ff2e88;
+  --k-tile-inset: none; --k-tile-text-shadow: 3px 3px 0 #0a0a12, -1px -1px 0 #0a0a12, 1px -1px 0 #0a0a12, -1px 1px 0 #0a0a12;
+  --k-dialog-bg: #12121e; --k-dialog-line: #ff2e88; --k-dialog-soft: #1b1b2c; --k-dialog-mute: #b9c6e4;
+}
+html[data-skin="arcade"] .spot h1 { font-size: clamp(30px, 3.4vw, 50px); line-height: 1.25; }
+html[data-skin="arcade"] .box h3 { font-size: 15px; line-height: 1.4; }
+html[data-skin="arcade"] .brand span { font-size: 15px; }
+html[data-skin="arcade"] .section-head h2 { font-size: 22px; }
+html[data-skin="arcade"] .set-head h2 { font-size: 18px; }
+html[data-skin="arcade"] .join input { font-family: var(--k-body-font); font-size: 22px; letter-spacing: .2em; }

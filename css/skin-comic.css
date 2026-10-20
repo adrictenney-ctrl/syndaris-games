@@ -57,3 +57,16 @@ html[data-skin="comic"] #overlay::before {
   html[data-skin="comic"] #overlay { animation: comicPop .35s cubic-bezier(.2, 1.4, .4, 1), comicShake .4s linear .3s; }
   html[data-skin="comic"] #overlay::before { animation: comicBurst .45s cubic-bezier(.2, 1.4, .4, 1) .1s both; }
 }
+
+/* home page: comic panels — thick ink frames and hard shadows on every tile */
+html[data-style="vibrant"][data-skin="comic"] {
+  --k-bar: #111111;
+  --k-spot: repeating-conic-gradient(from 0deg at 82% 50%, rgba(255, 212, 0, .5) 0 6deg, transparent 6deg 16deg), radial-gradient(circle, rgba(0, 0, 0, .18) 22%, transparent 26%) 0 0 / 12px 12px, #e8202a;
+  --k-spot-radius: 6px; --k-spot-shadow: 0 0 0 5px #111, 12px 12px 0 #111; --k-spot-ink: #ffffff;
+  --k-spot-title-shadow: 3px 3px 0 #111, -2px -2px 0 #111, 2px -2px 0 #111, -2px 2px 0 #111, 6px 6px 0 #111; --k-spot-text-shadow: 2px 2px 0 #111;
+  --k-nav-radius: 6px; --k-dots-bg: #111111;
+  --k-tile-radius: 6px; --k-tile-shadow: 0 0 0 4px #111, 8px 8px 0 #111; --k-tile-hover: 0 0 0 4px #111, 12px 12px 0 #ffd400, 12px 12px 0 4px #111;
+  --k-tile-inset: none; --k-tile-text-shadow: 2px 2px 0 #111, -2px -2px 0 #111, 2px -2px 0 #111, -2px 2px 0 #111, 4px 4px 0 #111;
+  --k-dialog-bg: #0f3f8f; --k-dialog-ink: #ffffff; --k-dialog-mute: #dbe6ff; --k-dialog-line: #111111; --k-dialog-soft: rgba(255, 255, 255, .1);
+}
+html[data-skin="comic"] .box h3 { letter-spacing: .03em; }

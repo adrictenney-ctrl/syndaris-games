@@ -1,5 +1,5 @@
 // roulette on the table — see table-casino.js.
-import * as C from './casino-games.js?v=100';
-import { casinoTable } from './table-casino.js?v=100';
+import * as C from './casino-games.js?v=101';
+import { casinoTable } from './table-casino.js?v=101';
 
 export default casinoTable(C.roulette, { id: 'roulette' });

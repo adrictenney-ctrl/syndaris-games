@@ -3,7 +3,7 @@
 // put one of your chips on it to pass it along. You can't say Nope with no chips. Runs of numbers
 // only count their lowest card, and every chip you keep takes a point off. Lowest score wins.
 // Your chips are secret — only your phone knows how many you have.
-import { base, shuffle, sfx, announce } from './party.js?v=100';
+import { base, shuffle, sfx, announce } from './party.js?v=101';
 
 export function createGame(settings, players) {
   const g = base(settings, players, {});

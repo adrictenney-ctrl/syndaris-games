@@ -57,3 +57,18 @@ html[data-skin="neon"] .rules-btn:active, html[data-skin="neon"] .seat-actions b
   html[data-skin="neon"] #overlay h2 { animation: neonOn 1s linear, neonPulse 2.4s ease-in-out 1s infinite; }
   html[data-skin="neon"] .game-title { animation: neonBuzz 7s linear infinite; }
 }
+
+/* home page: a dim room, glowing tube frames on the tiles and the banner */
+html[data-style="vibrant"][data-skin="neon"] {
+  --k-bar: rgba(7, 7, 15, .92);
+  --k-spot: radial-gradient(ellipse 50% 70% at 78% 50%, rgba(176, 38, 255, .4), transparent 70%), radial-gradient(ellipse 40% 60% at 95% 100%, rgba(45, 155, 255, .3), transparent 70%), #0c0a1c;
+  --k-spot-radius: 22px; --k-spot-shadow: 0 0 0 2px #ff3dcb, 0 0 22px rgba(255, 61, 203, .6), inset 0 0 30px rgba(176, 38, 255, .25); --k-spot-ink: #f2eeff;
+  --k-spot-title-shadow: 0 0 8px #b026ff, 0 0 24px #b026ff, 0 0 48px rgba(176, 38, 255, .7); --k-spot-text-shadow: none;
+  --k-dots-bg: #0c0a1c;
+  --k-tile-radius: 16px; --k-tile-shadow: 0 0 0 2px #2d9bff, 0 0 16px rgba(45, 155, 255, .55); --k-tile-hover: 0 0 0 2px #3dffb5, 0 0 26px rgba(61, 255, 181, .7);
+  --k-tile-inset: inset 0 0 22px rgba(0, 0, 0, .45); --k-tile-text-shadow: 0 0 6px #000, 0 0 14px rgba(176, 38, 255, .9), 0 2px 0 #000;
+  --k-dialog-bg: #0e0b20; --k-dialog-line: #b026ff; --k-dialog-soft: rgba(255, 255, 255, .05); --k-dialog-mute: #b9b2d9;
+}
+html[data-skin="neon"] .spot h1 { font-size: clamp(40px, 4.4vw, 66px); line-height: 1.05; }
+html[data-skin="neon"] .box h3 { font-size: 21px; letter-spacing: .03em; }
+html[data-skin="neon"] .brand span { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: .06em; }

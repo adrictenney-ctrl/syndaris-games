@@ -1,7 +1,7 @@
 // Yacht Club on the table: a leather dice tray and the shared score card. The player
 // whose turn it is rolls and keeps dice from their phone; kept dice sit up on the rail.
-import * as Y from './yacht.js?v=100';
-import { snap } from './cards.js?v=100';
+import * as Y from './yacht.js?v=101';
+import { snap } from './cards.js?v=101';
 
 let root = null, lastRoll = -1, cardKey = '', trayKey = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
