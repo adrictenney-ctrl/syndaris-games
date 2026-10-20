@@ -753,6 +753,10 @@ deep jewel tones (emerald, sapphire, oxblood, aubergine) only as quiet glows beh
   on the account; Classic only applies on a device whose signed-in account owns it.
 - **Storage:** Firestore `users/{uid} = { name, dough, styles, updatedAt }`, protected by the security rules
   (only you can read or change yours; Dough rises by at most 10 per change; a style can only be bought at its price).
+- **Codes:** Settings has a "Have a code?" box for signed-in players (`checkCode` / `redeemDough` in `js/dough.js`).
+  Codes are kept only as SHA-256 fingerprints. A Dough code asks how much to add; the write carries a second
+  fingerprint (`devGrant`) that only the Firestore rule knows, then clears it. That rule clause is deliberately not
+  kept in this repo.
 
 ## Parent Controls
 

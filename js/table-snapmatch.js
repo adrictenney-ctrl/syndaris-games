@@ -1,7 +1,7 @@
 // Snap Match on the table: the big round middle card with its eight pictures scattered at different
 // sizes and angles, the pile, and who won the last card (with the shared picture).
-import * as E from './snapmatch.js?v=95';
-import { partyTable, who, sc } from './table-party.js?v=95';
+import * as E from './snapmatch.js?v=96';
+import { partyTable, who, sc } from './table-party.js?v=96';
 
 // Positions inside the circle: one in the middle, seven around it.
 const SPOTS = [[50, 50], [50, 17], [78, 31], [82, 63], [58, 84], [26, 80], [16, 52], [27, 22]];

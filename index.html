@@ -20,8 +20,8 @@
     // Classic is bought with Dough: only use it when the signed-in account owns it.
     if (podStyle !== 'classic' || !podOwned.includes('classic')) { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
   </script>
-  <link rel="stylesheet" href="css/cards.css?v=95">
-  <link rel="stylesheet" href="css/tablet.css?v=95">
+  <link rel="stylesheet" href="css/cards.css?v=96">
+  <link rel="stylesheet" href="css/tablet.css?v=96">
   <style>
     html { background: var(--onyx); }
     body {
@@ -296,6 +296,12 @@
     .shop-msg { margin-top: 14px; padding: 12px 14px; border-radius: 14px; font: 600 14px/1.45 var(--ui); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
     .shop-msg[hidden] { display: none; }
     .shop-msg p { margin: 0; flex: 1 1 220px; }
+    .code-row { display: flex; gap: 8px; margin-top: 12px; }
+    .code-row[hidden] { display: none; }
+    .code-row input { flex: 1; min-width: 0; padding: 10px 14px; border-radius: 12px; outline: none; font: 600 14px/1.2 var(--ui); color: var(--ivory); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); }
+    .code-row input:focus { border-color: var(--champagne); }
+    .code-msg { margin: 8px 2px 0; font: 600 13px/1.4 var(--ui); color: var(--mute); }
+    .code-msg[hidden] { display: none; }
     .shop-go { padding: 10px 18px; border: 0; border-radius: 99px; cursor: pointer; font: 800 12.5px/1 var(--ui); letter-spacing: .1em; text-transform: uppercase; color: #17130c; background: linear-gradient(180deg, var(--champagne-hi), var(--champagne)); }
     /* ---------- Parent Controls ---------- */
     .pc-label { margin-top: 22px; }
@@ -352,7 +358,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=95">
+  <link rel="stylesheet" href="css/vibrant.css?v=96">
 </head>
 <body class="home">
   <header class="bar">
@@ -384,6 +390,15 @@
       </div>
       <div class="shop-msg" id="shopMsg" hidden></div>
       <p class="set-note">Win a game to earn 10 Dough, then spend it on new styles. Your choice is saved on this device.</p>
+      <div class="code-row" id="codeRow" hidden>
+        <input id="codeIn" type="text" placeholder="Have a code?" aria-label="Have a code?" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="120">
+        <button type="button" class="shop-go" id="codeGo">Use</button>
+      </div>
+      <div class="code-row" id="amountRow" hidden>
+        <input id="amountIn" type="number" min="1" max="1000000" step="1" inputmode="numeric" placeholder="How much Dough?" aria-label="How much Dough?">
+        <button type="button" class="shop-go" id="amountGo">Add</button>
+      </div>
+      <p class="code-msg" id="codeMsg" hidden></p>
       <p class="caps set-label pc-label">Family</p>
       <button type="button" class="pc-open" id="openParental">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
@@ -419,10 +434,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=95"></script>
+  <script type="module" src="js/tvnav.js?v=96"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=95';
-    import { sceneSVG } from './js/covers.js?v=95';
+    import { GAMES } from './js/games.js?v=96';
+    import { sceneSVG } from './js/covers.js?v=96';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
@@ -504,14 +519,14 @@
     }
     fillSpot();
     restartSpin();
-    // Vibrant style: every game has its own bright printed colour (tile and tablet case); Classic ignores these.
+    // Vibrant style: every game has its own bright printed colour (tile); Classic ignores these.
     const VIVID = [['#ef4a4f', '#a8203a'], ['#22b97a', '#0d7a50'], ['#3f86f2', '#1c4fc0'], ['#ff8f2e', '#c4501c'], ['#8a55ef', '#5528b8'], ['#f0509c', '#a8216a'], ['#18b2c9', '#0d6f8a']];
     const vividOf = id => VIVID[Math.max(0, ids.indexOf(id)) % VIVID.length];
     const isVibrant = () => document.documentElement.dataset.style === 'vibrant';
-    // The game on a tablet: its screen shows that game's table being played (tools/shoot-tables.mjs).
+    // The game on a black tablet: its screen shows that game's table halfway through a game (tools/shoot-tables.mjs).
     const boxFor = id => {
-      const v = isVibrant(), [c1, c2] = vividOf(id);
-      return `<div class="tablet${v ? ' vivid' : ''}" style="--c1:${c1};--c2:${c2}"><div class="tb-screen"><img src="tables/${id}-${v ? 'v' : 'c'}.webp" alt="" loading="lazy" decoding="async" onerror="this.remove()"></div></div>`;
+      const v = isVibrant();
+      return `<div class="tablet"><div class="tb-screen"><img src="tables/${id}-${v ? 'v' : 'c'}.webp" alt="" loading="lazy" decoding="async" onerror="this.remove()"></div></div>`;
     };
     const picFor = (id, pre) => sceneSVG(id, pre, isVibrant() ? vividOf(id) : null);
     // The spotlight's props sit straight on the banner (no backdrop of their own) in the Vibrant style.
@@ -692,7 +707,31 @@
     });
     opts.forEach(o => o.addEventListener('click', () => { const st = o.dataset.style; if (owns(st)) { shop(''); setStyle(st); } else offer(st); }));
     pill.onclick = () => document.getElementById('openSettings').click();
-    if (!onTV) import('./js/dough.js?v=2').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); }); }).catch(() => {});
+    // Codes: shown to signed-in players only. A Dough code asks how much to add.
+    const codeRow = document.getElementById('codeRow'), amountRow = document.getElementById('amountRow');
+    const codeIn = document.getElementById('codeIn'), amountIn = document.getElementById('amountIn'), codeMsg = document.getElementById('codeMsg');
+    const say = t => { codeMsg.hidden = !t; codeMsg.textContent = t || ''; };
+    let codeOk = '';
+    const useCode = async () => {
+      if (!D || !codeIn.value.trim()) return;
+      const what = await D.checkCode(codeIn.value).catch(() => null);
+      if (what !== 'dough') { codeOk = ''; amountRow.hidden = true; say('That code doesn’t work.'); return; }
+      codeOk = codeIn.value; codeIn.value = ''; codeRow.hidden = true; amountRow.hidden = false; say(''); amountIn.focus();
+    };
+    const addDough = async () => {
+      const n = Math.floor(Number(amountIn.value));
+      if (!(n > 0) || n > 1e6) { say('Type a number from 1 to 1,000,000.'); return; }
+      const b = document.getElementById('amountGo'); b.disabled = true;
+      try { const total = await D.redeemDough(codeOk, n); say(`Added ${n.toLocaleString()} Dough. You have ${total.toLocaleString()}.`); amountIn.value = ''; amountRow.hidden = true; codeRow.hidden = false; codeOk = ''; }
+      catch (err) { say(err?.code === 'signin' ? 'Sign in first.' : 'Couldn’t add it right now. Try again in a moment.'); }
+      b.disabled = false;
+    };
+    document.getElementById('codeGo').onclick = useCode;
+    document.getElementById('amountGo').onclick = addDough;
+    codeIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); useCode(); } });
+    amountIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addDough(); } });
+    const showCodes = () => { codeRow.hidden = !wallet.signedIn || !amountRow.hidden; if (!wallet.signedIn) { amountRow.hidden = true; say(''); } };
+    if (!onTV) import('./js/dough.js?v=3').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); }); }).catch(() => {});
     // ---- Parent Controls (Settings → Family). They're kept in step with the parent's account; when
     // the list of turned-off games changes, the page reloads so they disappear (or come back) everywhere.
     const pcBtn = document.getElementById('openParental'), pcSum = document.getElementById('pcSummary');

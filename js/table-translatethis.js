@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { translatethisT } from './table-talk.js?v=95';
+import { translatethisT } from './table-talk.js?v=96';
 
 export default translatethisT;

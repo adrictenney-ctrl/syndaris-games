@@ -1,6 +1,7 @@
 // Photographs every game's table for the home page tablets: tables/<id>-c.webp (Classic) and
-// tables/<id>-v.webp (Vibrant). Each table gets bots in every seat and the game started, so the
-// picture shows the game being played, then the menus and corner controls are hidden.
+// tables/<id>-v.webp (Vibrant). Each table gets bots in every seat and the game started; the bots
+// play (on a sped-up clock) and the picture is taken from halfway through, with the menus and corner
+// controls hidden.
 //
 // Needs Chrome and the site running locally (the "table" server in .claude/launch.json, port 8090).
 //   node tools/shoot-tables.mjs                 every game, both styles
@@ -26,6 +27,12 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
 const W = 1280, H = 720, SCALE = 480 / 1280;
 const HIDE = `#lobby, #toolbar, #overlay, #rulesPanel, #btnTool, .seat-actions, .bubble, #qrMini { display: none !important; }
   *, *::before, *::after { animation-play-state: paused !important; }`;
+// Halfway through a game: the page's clock runs WARP times fast so the bots get well into it.
+const WARP = 8, STEP_MS = 650, STEPS = 30;   // up to about 2.5 minutes of game time
+const WARP_JS = `(() => { const F = ${WARP}, rn = Date.now.bind(Date), pn = performance.now.bind(performance), r0 = rn(), p0 = pn();
+  Date.now = () => r0 + (rn() - r0) * F; performance.now = () => p0 + (pn() - p0) * F;
+  const st = setTimeout, si = setInterval;
+  window.setTimeout = (f, d = 0, ...a) => st(f, d / F, ...a); window.setInterval = (f, d = 0, ...a) => si(f, d / F, ...a); })()`;
 
 async function browser(port) {
   const exe = CHROME.find(p => existsSync(p)) || CHROME[0];
@@ -40,6 +47,8 @@ async function browser(port) {
   const send = (method, params = {}) => new Promise(r => { const k = ++n; pending[k] = r; ws.send(JSON.stringify({ id: k, method, params })); });
   const js = expression => send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }).then(r => r?.result?.value);
   await send('Emulation.setDeviceMetricsOverride', { width: W, height: H, deviceScaleFactor: 1, mobile: false });
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: WARP_JS });
   return { send, js, close: () => { ws.close(); proc.kill(); } };
 }
 
@@ -54,11 +63,26 @@ async function shoot(b, id, style) {
   await b.js(`document.querySelectorAll('.seat.empty .addbot').forEach(x => x.click())`);
   await wait(300);
   const started = await b.js(`(() => { const s = document.getElementById('startBtn'); if (s.disabled) return false; s.click(); return true; })()`);
-  if (started) await wait(3200);
   await b.js(`(() => { const st = document.createElement('style'); st.textContent = ${JSON.stringify(HIDE)}; document.head.appendChild(st); })()`);
-  await wait(250);
-  const shot = await b.send('Page.captureScreenshot', { format: 'webp', quality: 72, clip: { x: 0, y: 0, width: W, height: H, scale: SCALE } });
-  writeFileSync(new URL(`${id}-${style[0]}.webp`, OUT), Buffer.from(shot.data, 'base64'));
+  const snap = async () => (await b.send('Page.captureScreenshot', { format: 'webp', quality: 72, clip: { x: 0, y: 0, width: W, height: H, scale: SCALE } })).data;
+  let pick;
+  if (!started) { await wait(300); pick = await snap(); }
+  else {
+    // Let the bots play (the clock runs WARP times fast), snapshot every few game-seconds until the
+    // game ends, then keep the snapshot from the middle (frames showing a scoring slip don't count).
+    const frames = [];
+    let over = 0;
+    for (let i = 0; i < STEPS; i++) {
+      await wait(STEP_MS);
+      const st = await b.js(`({ lobby: document.body.classList.contains('in-lobby'), slip: !document.getElementById('overlay').hidden })`);
+      if (st.lobby) break;
+      over = st.slip ? over + 1 : 0;
+      if (over >= 4) break;            // the final scores are up: the game is over
+      if (!st.slip) frames.push(await snap());
+    }
+    pick = frames[Math.floor(frames.length / 2)] || await snap();
+  }
+  writeFileSync(new URL(`${id}-${style[0]}.webp`, OUT), Buffer.from(pick, 'base64'));
   return started;
 }
 

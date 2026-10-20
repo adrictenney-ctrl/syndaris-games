@@ -6,7 +6,7 @@
 //
 // Wins collected while signed out wait on this device (pending) and are paid in on sign-in.
 import { db, auth, onUser, currentUser } from './firebase.js?v=3';
-import { doc, getDoc, setDoc, updateDoc, onSnapshot, increment, arrayUnion, runTransaction, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import { doc, getDoc, setDoc, updateDoc, onSnapshot, increment, arrayUnion, runTransaction, serverTimestamp, deleteField } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 export const WIN_DOUGH = 10;
 // Styles for sale. Vibrant is the free default; more will be added here later.
@@ -85,4 +85,35 @@ export async function buyStyle(id) {
     if ((d.dough || 0) < item.price) throw Object.assign(new Error('Not enough Dough'), { code: 'poor', have: d.dough || 0 });
     tx.update(ref(u.uid), { dough: increment(-item.price), styles: arrayUnion(id), updatedAt: serverTimestamp() });
   });
+}
+
+// Codes (Settings → "Have a code?"). Only fingerprints are kept here, never the codes themselves.
+// A code is matched without caring about capitals or extra spaces.
+const CODES = { '06387caf46ccc5834c704240a2c7bfaa296b33fb41a8308f984f54766d94ddb8': 'dough' };
+const norm = t => String(t || '').toLowerCase().replace(/\s+/g, ' ').trim();
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+// What a code unlocks ('dough' = choose an amount of Dough to add), or null.
+export async function checkCode(code) { return CODES[await sha256('pod-code:' + norm(code))] || null; }
+
+// Add Dough with a 'dough' code. The grant carries a second fingerprint of the code that only the
+// Firestore rules know, so the amount can't be raised without it; it's cleared again straight after.
+export async function redeemDough(code, amount) {
+  const u = currentUser();
+  if (!u) throw Object.assign(new Error('Sign in first'), { code: 'signin' });
+  if (await checkCode(code) !== 'dough') throw Object.assign(new Error('Unknown code'), { code: 'bad' });
+  const add = Math.floor(Number(amount));
+  if (!(add > 0) || add > 1e6) throw Object.assign(new Error('Amount'), { code: 'amount' });
+  await ensureWallet(u);
+  const grant = await sha256('pod-dev-grant:' + norm(code));
+  let total = 0;
+  await runTransaction(db, async tx => {
+    const s = await tx.get(ref(u.uid));
+    total = ((s.data() || {}).dough || 0) + add;
+    tx.update(ref(u.uid), { dough: total, devGrant: grant, updatedAt: serverTimestamp() });
+  });
+  await updateDoc(ref(u.uid), { devGrant: deleteField(), updatedAt: serverTimestamp() }).catch(() => {});
+  return total;
 }

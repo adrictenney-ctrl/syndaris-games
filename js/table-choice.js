@@ -1,7 +1,7 @@
 // Table screens for the secret-choice games (choice-games.js). While everyone chooses: what's at
 // stake, the clock and who's locked in. Then the big reveal.
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=95';
-import * as C from './choice-games.js?v=95';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=96';
+import * as C from './choice-games.js?v=96';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const dot = s => `<i class="ch-dot" style="background:var(--seat-${s})"></i>`;

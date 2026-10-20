@@ -1,9 +1,9 @@
 // Grand Prix Dice on a phone: your car's wear, the next corner, and — on your turn — the gearbox
 // (each gear shows its die and what a big downshift costs), then after the roll, how hard to
 // brake, with where each choice puts you. ★ marks what the computer would pick.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=95';
-import * as G from './grandprix.js?v=95';
-import { trackSVG, GEAR_COLOR } from './table-grandprix.js?v=95';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=96';
+import * as G from './grandprix.js?v=96';
+import { trackSVG, GEAR_COLOR } from './table-grandprix.js?v=96';
 
 let ctx = null, wasMyTurn = false;
 

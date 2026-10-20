@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { mysteryboxesT } from './table-choice.js?v=95';
+import { mysteryboxesT } from './table-choice.js?v=96';
 
 export default mysteryboxesT;

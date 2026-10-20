@@ -3,7 +3,7 @@
 // from lowest to highest, each on the row whose last card is the closest below it. Lay the SIXTH
 // card in a row and you take the five before it. Play a card lower than every row and you choose
 // a row to take. When someone reaches the bull limit, fewest bull heads wins.
-import { base, shuffle, sfx, announce, waiting } from './party.js?v=95';
+import { base, shuffle, sfx, announce, waiting } from './party.js?v=96';
 
 export const bulls = v => (v === 55 ? 7 : v % 11 === 0 ? 5 : v % 10 === 0 ? 3 : v % 5 === 0 ? 2 : 1);
 export function createGame(settings, players) {

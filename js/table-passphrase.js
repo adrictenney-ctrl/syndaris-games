@@ -1,9 +1,9 @@
 // Pass the Phrase on the table: the two teams' scores and a ticking bomb — the buzzer is hidden,
 // so the table only shows that it's ticking (faster and faster), and who's holding the phrase.
-import * as P from './passphrase.js?v=95';
-import { buzzer, tone } from './sfx.js?v=95';
-import { TEAMS } from './table-dontsay.js?v=95';
-import { centerMsg, clearMsg } from './table-hearts.js?v=95';
+import * as P from './passphrase.js?v=96';
+import { buzzer, tone } from './sfx.js?v=96';
+import { TEAMS } from './table-dontsay.js?v=96';
+import { centerMsg, clearMsg } from './table-hearts.js?v=96';
 
 let root = null, key = '', gameRef = null, tickT = null;
 function ticking() {

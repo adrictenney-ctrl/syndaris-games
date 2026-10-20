@@ -1,7 +1,7 @@
 // Veto on a player's phone: your hand, draw / keep, wild colours, "last card!".
-import { GAMES } from './games.js?v=95';
-import { COLORS, COLOR_NAME, cardName, parse } from './veto.js?v=95';
-import { $, toast, setHud, setStatus, renderHand, flyCard, cardEl } from './phone-kit.js?v=95';
+import { GAMES } from './games.js?v=96';
+import { COLORS, COLOR_NAME, cardName, parse } from './veto.js?v=96';
+import { $, toast, setHud, setStatus, renderHand, flyCard, cardEl } from './phone-kit.js?v=96';
 
 const LAYOUT = GAMES.veto.layout;
 let ctx = null;
