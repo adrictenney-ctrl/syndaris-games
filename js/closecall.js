@@ -3,7 +3,7 @@
 // order, each with payout odds (the outside guesses pay more). Then everyone bets on the guess they
 // think is closest WITHOUT going over. Your guess wins: +3. Your bet wins: + the odds. Most points
 // after the last question wins.
-import { base, deal, sfx, left, waiting, finish } from './party.js?v=92';
+import { base, deal, sfx, left, waiting, finish } from './party.js?v=93';
 
 export const QS = [
   ['How many keys are on a standard piano?', 88], ['In what year did the Titanic sink?', 1912], ['How many bones are in the adult human body?', 206],

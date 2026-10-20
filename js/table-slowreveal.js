@@ -1,4 +1,4 @@
 // See table-words.js.
-import { slowrevealT } from './table-words.js?v=92';
+import { slowrevealT } from './table-words.js?v=93';
 
 export default slowrevealT;

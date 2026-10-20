@@ -3,7 +3,7 @@
 // (it must be the next number for its colour, or a fuse burns), discard one (gets a hint token
 // back), or spend a hint token to tell a teammate about all their cards of one colour or one
 // number. Three burnt fuses and the show is over. Score = the cards in the rockets (25 is perfect).
-import { base, shuffle, sfx, announce } from './party.js?v=92';
+import { base, shuffle, sfx, announce } from './party.js?v=93';
 
 export const COLORS = [{ n: 'Red', c: '#e8473c' }, { n: 'Gold', c: '#f2c230' }, { n: 'Green', c: '#3fb35c' }, { n: 'Blue', c: '#3d8be8' }, { n: 'Violet', c: '#a05ad8' }];
 const COUNTS = [0, 3, 2, 2, 2, 1];

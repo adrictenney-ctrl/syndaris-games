@@ -1,9 +1,9 @@
 // Table screens for the card-kit games (trick-games.js, shed-games.js). Hands stay on the
 // phones; the table shows the trick, the pile, trump, bids, the dummy and the scores.
-import { partyTable, esc, sc, who, teamScores, TEAMS } from './table-party.js?v=92';
-import * as T from './trick-games.js?v=92';
-import * as S from './shed-games.js?v=92';
-import { cardEl, SYM, txt } from './cardkit.js?v=92';
+import { partyTable, esc, sc, who, teamScores, TEAMS } from './table-party.js?v=93';
+import * as T from './trick-games.js?v=93';
+import * as S from './shed-games.js?v=93';
+import { cardEl, SYM, txt } from './cardkit.js?v=93';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${String(v) === String(s[k]) ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const nm = (ctx, s) => esc(ctx.nameOf(s));

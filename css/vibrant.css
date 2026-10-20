@@ -458,3 +458,22 @@ html[data-style="vibrant"] .pc-games li + li { border-top-color: rgba(255, 255, 
 html[data-style="vibrant"] .pc-games input:checked + i { background: var(--v-go); }
 html[data-style="vibrant"] .pc-words li { color: #fff; background: rgba(8, 5, 44, .5); border-color: rgba(255, 255, 255, .12); }
 html[data-style="vibrant"] .home-note { font-family: var(--ui); color: #fff; background: #2a1f9e; border: 2px solid var(--v-sun); box-shadow: 0 6px 0 #120c4a; }
+
+/* ================================================================ HOW TO PLAY */
+html[data-style="vibrant"] .rules-btn { font-weight: 900; letter-spacing: .1em; color: #fff; background: var(--v-glass-hi); border: .2vmin solid var(--v-line); }
+html[data-style="vibrant"] .rules-btn svg { color: var(--v-sun); }
+html[data-style="vibrant"] .rules-btn:hover, html[data-style="vibrant"] .rules-btn:focus-visible { background: rgba(255, 255, 255, .18); border-color: var(--v-sun); }
+html[data-style="vibrant"] .rules-panel { background: rgba(8, 5, 44, .6); }
+html[data-style="vibrant"] .rules-card {
+  color: #fff; background: var(--v-grain) 0 0 / 180px, #241a8a; background-blend-mode: overlay, normal;
+  border: .22vmin solid var(--v-line); border-radius: 3vmin; box-shadow: 0 1vmin 0 #120c4a, 0 4vmin 8vmin rgba(6, 3, 34, .6);
+}
+html[data-style="vibrant"] .rules-head, html[data-style="vibrant"] .rules-foot { border-color: var(--v-line); }
+html[data-style="vibrant"] .rules-eyebrow, html[data-style="vibrant"] .rules-body h3 { font-weight: 900; color: var(--v-sun); }
+html[data-style="vibrant"] .rules-head h2 { font-family: var(--display); font-weight: 400; text-shadow: 0 .6vmin 0 rgba(10, 6, 60, .5); }
+html[data-style="vibrant"] .rules-players { color: var(--mute); font-weight: 700; }
+html[data-style="vibrant"] .rules-x { background: var(--v-glass-hi); border-color: var(--v-line); }
+html[data-style="vibrant"] .rules-body p, html[data-style="vibrant"] .rules-body li { font-weight: 600; }
+html[data-style="vibrant"] .rules-goal p { font-weight: 800; }
+html[data-style="vibrant"] .rules-steps li::before { color: #3a2400; background: var(--v-sun); }
+html[data-style="vibrant"] .rules-win { background: rgba(8, 5, 44, .45); border-color: var(--v-line); }
