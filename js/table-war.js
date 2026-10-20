@@ -1,8 +1,8 @@
 // War on the table: each player's face-down pile by their edge, the flipped cards meeting in
 // the middle, war cards fanned face down underneath.
-import * as W from './war.js?v=94';
-import { cardEl, snap } from './cards.js?v=94';
-import { centerMsg, clearMsg } from './table-hearts.js?v=94';
+import * as W from './war.js?v=95';
+import { cardEl, snap } from './cards.js?v=95';
+import { centerMsg, clearMsg } from './table-hearts.js?v=95';
 
 let root = null, key = '';
 

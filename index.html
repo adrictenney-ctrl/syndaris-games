@@ -20,8 +20,8 @@
     // Classic is bought with Dough: only use it when the signed-in account owns it.
     if (podStyle !== 'classic' || !podOwned.includes('classic')) { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
   </script>
-  <link rel="stylesheet" href="css/cards.css?v=94">
-  <link rel="stylesheet" href="css/boxes.css?v=94">
+  <link rel="stylesheet" href="css/cards.css?v=95">
+  <link rel="stylesheet" href="css/tablet.css?v=95">
   <style>
     html { background: var(--onyx); }
     body {
@@ -67,7 +67,7 @@
     .spot .pic::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #110e0b 0%, rgba(17, 14, 11, .7) 22%, transparent 55%), linear-gradient(0deg, rgba(0, 0, 0, .5), transparent 40%); }
     a.spot:hover .spot-pic .cover, a.spot:hover .pic .cover { transform: scale(1.03); }
     .spot .stage { position: relative; z-index: 1; padding: 40px 34px 40px 56px; --s: 230px; }
-    a.spot:hover .box3d { transform: rotateX(-12deg) rotateY(-36deg) translateY(-4px); }
+    a.spot:hover .tablet { transform: rotateX(6deg) rotateY(-10deg) translateY(-4px); }
     .spot .info { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 48px 40px 10px; text-shadow: 0 2px 12px rgba(0, 0, 0, .6); }
     .spot .kicker { color: var(--champagne); display: inline-flex; align-items: center; gap: 10px; }
     .spot .kicker::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--champagne); box-shadow: 0 0 12px var(--champagne); }
@@ -156,9 +156,9 @@
     }
     .hover-play::before { content: ''; margin-left: 3px; border-left: 11px solid currentColor; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
     a.box:hover .hover-play, a.box:focus-visible .hover-play { opacity: 1; transform: none; }
-    .info-row { position: relative; min-height: 76px; padding: 13px 14px 15px 124px; }
-    .info-row .box-stage { --s: 92px; position: absolute; left: 16px; bottom: 14px; z-index: 2; pointer-events: none; }
-    a.box:hover .box3d, a.box:focus-visible .box3d { transform: rotateX(-12deg) rotateY(-38deg) translateY(-6px); }
+    .info-row { position: relative; min-height: 76px; padding: 13px 14px 15px 150px; }
+    .info-row .box-stage { --s: 86px; position: absolute; left: 16px; bottom: 14px; z-index: 2; pointer-events: none; }
+    a.box:hover .tablet, a.box:focus-visible .tablet { transform: rotateX(6deg) rotateY(-10deg) translateY(-6px); }
     .box h3 { font-family: var(--display); font-weight: 600; font-size: 23px; line-height: 1.1; margin: 0 0 8px; }
     .meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .meta .who { display: inline-flex; align-items: center; gap: 6px; font-family: var(--ui); font-size: 12.5px; font-weight: 600; color: rgba(239, 233, 220, .78); }
@@ -212,8 +212,8 @@
       .search { max-width: none; flex-basis: auto; }
       .shelf { grid-template-columns: 1fr 1fr; gap: 12px; }
       .box h3 { font-size: 19px; }
-      .info-row { padding: 9px 10px 11px 74px; min-height: 58px; }
-      .info-row .box-stage { --s: 56px; left: 9px; bottom: 10px; }
+      .info-row { padding: 9px 10px 11px 88px; min-height: 58px; }
+      .info-row .box-stage { --s: 50px; left: 9px; bottom: 10px; }
       .meta .dot, .meta .kind { display: none; }
     }
 
@@ -352,7 +352,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=94">
+  <link rel="stylesheet" href="css/vibrant.css?v=95">
 </head>
 <body class="home">
   <header class="bar">
@@ -419,10 +419,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=94"></script>
+  <script type="module" src="js/tvnav.js?v=95"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=94';
-    import { sceneSVG, boxHTML } from './js/covers.js?v=94';
+    import { GAMES } from './js/games.js?v=95';
+    import { sceneSVG } from './js/covers.js?v=95';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
@@ -504,11 +504,15 @@
     }
     fillSpot();
     restartSpin();
-    // Vibrant style: every game has its own bright printed colour (tile and box); Classic ignores these.
+    // Vibrant style: every game has its own bright printed colour (tile and tablet case); Classic ignores these.
     const VIVID = [['#ef4a4f', '#a8203a'], ['#22b97a', '#0d7a50'], ['#3f86f2', '#1c4fc0'], ['#ff8f2e', '#c4501c'], ['#8a55ef', '#5528b8'], ['#f0509c', '#a8216a'], ['#18b2c9', '#0d6f8a']];
     const vividOf = id => VIVID[Math.max(0, ids.indexOf(id)) % VIVID.length];
     const isVibrant = () => document.documentElement.dataset.style === 'vibrant';
-    const boxFor = id => boxHTML(id, GAMES[id], isVibrant() ? vividOf(id) : null);
+    // The game on a tablet: its screen shows that game's table being played (tools/shoot-tables.mjs).
+    const boxFor = id => {
+      const v = isVibrant(), [c1, c2] = vividOf(id);
+      return `<div class="tablet${v ? ' vivid' : ''}" style="--c1:${c1};--c2:${c2}"><div class="tb-screen"><img src="tables/${id}-${v ? 'v' : 'c'}.webp" alt="" loading="lazy" decoding="async" onerror="this.remove()"></div></div>`;
+    };
     const picFor = (id, pre) => sceneSVG(id, pre, isVibrant() ? vividOf(id) : null);
     // The spotlight's props sit straight on the banner (no backdrop of their own) in the Vibrant style.
     const spotPic = id => sceneSVG(id, id + '-sp', isVibrant() ? ['#d8304a', '#7a1240', 'bare'] : null);
@@ -562,7 +566,7 @@
     // ---- Library
     const shelf = document.getElementById('shelf');
     const tiles = {};
-    // A tile's picture and box are drawn when it scrolls near the screen. Drawing is spread over
+    // A tile's picture and tablet are drawn when it scrolls near the screen. Drawing is spread over
     // frames (a few milliseconds each), so scrolling never stalls while a row of art is built.
     const drawn = new Set(), queue = [];
     let pumping = false;
@@ -584,7 +588,7 @@
       lazy.unobserve(e.target);
       enqueue(e.target.dataset.id);
     }), { rootMargin: '600px 0px' });
-    // Switching style redraws the pictures and boxes already drawn, in the new style (on-screen ones first).
+    // Switching style redraws the pictures and tablets already drawn, in the new style (on-screen ones first).
     const redrawBoxes = () => {
       if (!isVibrant()) { spotIdx = 0; spotId = FEATURED[0]; }
       fillSpot();
@@ -604,7 +608,7 @@
         <div class="info-row"><div class="box-stage"></div><h3>${G.name}</h3>
           <div class="meta"><span class="who">${people}${range(G)}</span><i class="dot"></i><span class="kind">${KIND_NAME[KIND[id]]}</span><span class="time">${clock}~${minsOf(id)} min</span></div></div>`;
       box.title = desc(G);
-      // The picture and the box are drawn when the tile scrolls near the screen.
+      // The picture and the tablet are drawn when the tile scrolls near the screen.
       lazy.observe(box);
       const star = document.createElement('button');
       star.type = 'button';

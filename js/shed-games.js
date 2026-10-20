@@ -1,7 +1,7 @@
 // Card games where your hand lives on your phone: Top Dog (President), Big Deuce (Big Two),
 // Fool's Defense (Durak), Tonk, Thirty-One, Slap Stack, Speed, Pairs, Card Golf, Corner Kings.
-import { base, shuffle, sfx, announce, left } from './party.js?v=94';
-import { deck52, deckOf, SYM, SUITS, isRed, txt, cardEl, cardOpt } from './cardkit.js?v=94';
+import { base, shuffle, sfx, announce, left } from './party.js?v=95';
+import { deck52, deckOf, SYM, SUITS, isRed, txt, cardEl, cardOpt } from './cardkit.js?v=95';
 
 const R = n => Math.floor(Math.random() * n);
 const nextOf = (g, s, skip = () => false) => { const o = g.order; let i = o.indexOf(s); for (let k = 0; k < o.length; k++) { i = (i + 1) % o.length; if (!skip(o[i])) return o[i]; } return s; };

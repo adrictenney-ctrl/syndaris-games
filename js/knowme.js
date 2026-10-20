@@ -2,7 +2,7 @@
 // goes up on the table with four answers. They secretly pick their real answer on their phone while
 // everyone else guesses what they picked. +1 for every right guess — and the hot seat gets +1 for
 // each friend who knew them. Everyone takes the hot seat twice.
-import { base, deal, sfx, left, waiting, finish } from './party.js?v=94';
+import { base, deal, sfx, left, waiting, finish } from './party.js?v=95';
 
 export const QS = [
   ['The perfect Saturday?', 'Out with friends', 'On the sofa', 'Outdoors, somewhere green', 'Trying something new'],

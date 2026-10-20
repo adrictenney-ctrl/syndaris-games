@@ -2,8 +2,8 @@
 // that sounds believable. Then all the meanings — the fakes and the real one — are shuffled
 // together and everyone votes for the one they think is real. 2 points for finding the real
 // meaning; 1 point for every player your fake fooled. Most points wins.
-import { base, shuffle, deal, cleanText, core, sfx, left, finish, waiting } from './party.js?v=94';
-import { WORDS } from './wordbluff-words.js?v=94';
+import { base, shuffle, deal, cleanText, core, sfx, left, finish, waiting } from './party.js?v=95';
+import { WORDS } from './wordbluff-words.js?v=95';
 
 export function createGame(settings, players) {
   const g = base(settings, players, { rounds: 6, secs: 90 });

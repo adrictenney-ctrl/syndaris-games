@@ -18,12 +18,15 @@ test('table.js measures the seat bands for the lobby', () => {
 
 test('the lobby panel is capped to the free middle and its settings scroll', () => {
   const rule = css.slice(css.indexOf('body.in-lobby .lobby-info {'));
-  assert.match(rule, /max-height: calc\(100vh - var\(--edge-t\) - var\(--edge-b\)/);
+  assert.match(rule, /max-height: calc\(var\(--lob-b, 100vh\) - var\(--lob-t, 0px\)/);
+  assert.match(js, /function plateRects\(\)/);
+  assert.match(js, /--lob-t/);
   assert.match(css, /body\.in-lobby \.lobby-info \.settings \{[^}]*overflow-y: auto/);
 });
 
 test('the corner controls sit inside the seat bands in the lobby', () => {
-  assert.match(css, /body\.in-lobby #toolbar \{[^}]*right: calc\(var\(--edge-r\)[^}]*bottom: calc\(var\(--edge-b\)/);
+  assert.match(css, /body\.in-lobby #toolbar \{[^}]*right: var\(--tb-right[^}]*bottom: var\(--tb-bottom/);
+  assert.match(js, /--tb-right/);
 });
 
 test('four seats down a side get narrower tiles', () => {
@@ -31,4 +34,14 @@ test('four seats down a side get narrower tiles', () => {
   assert.match(css, /body\.crowded-sides #felt \{ --seat-w: 17vmin; \}/);
   const crowded = Object.values(GAMES).filter(G => [1, 3].some(s => G.layout.filter(L => L.side === s).length >= 4)).map(G => G.id);
   for (const id of ['words4fun', 'fieldagents']) assert.ok(crowded.includes(id), id);
+});
+
+test('nothing in the lobby gets cut off', () => {
+  // a long settings list wraps side by side; if it still has to scroll, the box keeps text off its
+  // edges and ends between two settings, never through one
+  assert.match(css, /body\.in-lobby \.lobby-info \.settings \{ box-sizing: border-box; padding:/);
+  assert.match(css, /body\.many-settings\.in-lobby \.lobby-info \.settings \{ display: flex; flex-wrap: wrap;/);
+  assert.match(js, /function settingsFit\(\)/);
+  // seat names clip with "…", so their clip box needs room for letter tails
+  assert.match(css, /\.who \.name \{ padding-block: \.16em; margin-block: -\.16em; \}/);
 });

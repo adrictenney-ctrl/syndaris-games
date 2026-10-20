@@ -53,6 +53,49 @@ function measure(doc) {
   // The panel must stay on screen and clear of the QR card.
   const panel = doc.querySelector('.lobby-info').getBoundingClientRect();
   if (panel.top < 0 || panel.bottom > H) found.push('panel off screen');
+  return found.concat(cutText(doc));
+}
+
+// Text that's cut off: shortened with "…", or sticking out past (or clipped by) the box it's in.
+// Rows of a scrolling settings list may sit wholly below its edge (that's what the scroll is for),
+// but never half in view, and never past its sides.
+function cutText(doc) {
+  const found = [];
+  const W = doc.documentElement.clientWidth, H = doc.documentElement.clientHeight;
+  const roots = [doc.querySelector('#lobby'), doc.querySelector('#toolbar'), ...doc.querySelectorAll('.seat .plate')].filter(visible);
+  const boxes = '.lobby-info, .tent, .plate, .settings, button, .pill, .sizer, label';
+  const say = (t, why) => found.push(`cut "${t.trim().slice(0, 30)}" ${why}`);
+  for (const root of roots) {
+    const walk = doc.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    for (let n; (n = walk.nextNode());) {
+      if (!n.nodeValue.trim()) continue;
+      const el = n.parentElement;
+      if (!visible(el) || el.closest('[hidden], select, option')) continue;
+      const cs = getComputedStyle(el);
+      if (cs.textOverflow === 'ellipsis' && el.scrollWidth > el.clientWidth + 1) { say(n.nodeValue, 'shortened with …'); continue; }
+      const range = doc.createRange(); range.selectNodeContents(n);
+      const r = range.getBoundingClientRect();
+      if (!r.width) continue;
+      if (r.left < -1 || r.top < -1 || r.right > W + 1 || r.bottom > H + 1) { say(n.nodeValue, 'off screen'); continue; }
+      for (let a = el; a && a !== root.parentElement; a = a.parentElement) {
+        const acs = getComputedStyle(a);
+        const clips = acs.overflowX !== 'visible' || acs.overflowY !== 'visible';
+        if (!clips && !a.matches(boxes)) continue;
+        const b = a.getBoundingClientRect();
+        const scrolls = a.matches('.settings') && a.scrollHeight > a.clientHeight + 1;
+        const outX = r.left < b.left - 1 || r.right > b.right + 1;
+        // vertical: fully scrolled out of view is fine; half in, half out isn't (unless faded for scrolling)
+        const partY = (r.top < b.top - 1 && r.bottom > b.top + 1) || (r.bottom > b.bottom + 1 && r.top < b.bottom - 1);
+        const outY = scrolls ? false : (r.top < b.top - 1 || r.bottom > b.bottom + 1);
+        if (outX || outY || partY) { say(n.nodeValue, `sticks out of ${a.id ? '#' + a.id : a.classList[0] ? '.' + a.classList[0] : a.tagName.toLowerCase()}`); break; }
+        // a scrolling list with rounded corners: keep text off the corners
+        if (scrolls && clips) {
+          const rad = parseFloat(acs.borderTopLeftRadius) || 0;
+          if (rad && r.left < b.left + rad * .3 && (r.top < b.top + rad * .3 || r.bottom > b.bottom - rad * .3) && r.bottom > b.top && r.top < b.bottom) { say(n.nodeValue, 'in a rounded corner'); break; }
+        }
+      }
+    }
+  }
   return found;
 }
 
@@ -61,8 +104,11 @@ async function load(frame, id) {
   frame.src = 'table.html?game=' + id + '&t=' + Math.random();
   await new Promise(r => { frame.onload = r; });
   const st = frame.contentDocument.createElement('style');
-  st.textContent = '*, *::before, *::after { transition: none !important; animation: none !important; }';
+  st.textContent = '*, *::before, *::after { transition: none !important; animation: none !important; } #localWarn { display: none !important; }';
   frame.contentDocument.head.appendChild(st);
+  // The localhost warning never shows on the real site; measure the lobby the way TVs see it.
+  const lw = frame.contentDocument.getElementById('localWarn');
+  if (lw) frame.contentWindow.dispatchEvent(new Event('resize'));
   for (let i = 0; i < 40; i++) {
     const d = frame.contentDocument;
     if (d && d.body.classList.contains('in-lobby') && d.querySelectorAll('.seat').length) break;

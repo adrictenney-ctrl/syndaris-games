@@ -1,7 +1,7 @@
 // Night Lights on the table: the five rockets climbing into the night sky, hint and fuse tokens,
 // the deck, the discards — but never anyone's hand (that's on everyone else's phones).
-import * as E from './nightlights.js?v=94';
-import { partyTable, esc, who } from './table-party.js?v=94';
+import * as E from './nightlights.js?v=95';
+import { partyTable, esc, who } from './table-party.js?v=95';
 
 const named = (ctx, t) => esc(t).replace(/@(\d+)@/g, (_, s) => esc(ctx.nameOf(Number(s))));
 export default partyTable(E, {

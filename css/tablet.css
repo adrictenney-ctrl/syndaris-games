@@ -1,0 +1,51 @@
+/* Home page: each game shown on a tablet, its screen a picture of that game's table being played
+   (tables/<id>-c.webp / -v.webp, made by tools/shoot-tables.mjs). Sized with --s like the old boxes:
+   the tablet is about 1.45 × --s wide. The stage gives the perspective. */
+.box-stage { --s: 120px; perspective: 900px; perspective-origin: 30% 20%; }
+.tablet {
+  --w: calc(var(--s) * 1.45); --h: calc(var(--s) * .94); --bz: calc(var(--s) * .055);
+  position: relative; width: var(--w); height: var(--h); box-sizing: border-box; padding: var(--bz);
+  border-radius: calc(var(--s) * .1);
+  background: linear-gradient(145deg, #2c2c33, #121216 55%, #1d1d23);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .14),            /* glass edge */
+    0 0 0 calc(var(--s) * .012) #3a3a42,                  /* metal band */
+    calc(var(--s) * .02) calc(var(--s) * .03) 0 calc(var(--s) * .012) #08080a,   /* its thickness */
+    0 calc(var(--s) * .08) calc(var(--s) * .16) rgba(0, 0, 0, .55);
+  transform: rotateX(12deg) rotateY(-20deg) rotateZ(1deg);
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+}
+/* the front camera, on the short side */
+.tablet::before {
+  content: ''; position: absolute; left: calc(var(--bz) * .42); top: 50%; width: calc(var(--bz) * .34); height: calc(var(--bz) * .34);
+  margin-top: calc(var(--bz) * -.17); border-radius: 50%; background: #0a0a0d; box-shadow: inset 0 0 0 1px rgba(120, 140, 200, .35);
+}
+.tablet .tb-screen {
+  position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: calc(var(--s) * .035);
+  background: #0e2a20;
+}
+.tablet .tb-screen img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* light on the glass */
+.tablet .tb-screen::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .05) 32%, transparent 33%, transparent 70%, rgba(255, 255, 255, .06));
+}
+
+/* Classic: a champagne edge on the dark glass */
+html:not([data-style="vibrant"]) .tablet { box-shadow:
+  inset 0 0 0 1px rgba(205, 180, 135, .4),
+  0 0 0 calc(var(--s) * .012) #4a3f2e,
+  calc(var(--s) * .02) calc(var(--s) * .03) 0 calc(var(--s) * .012) #0a0806,
+  0 calc(var(--s) * .08) calc(var(--s) * .16) rgba(0, 0, 0, .6); }
+
+/* Vibrant: a bright rubber case in the game's own colour */
+.tablet.vivid {
+  background: linear-gradient(150deg, color-mix(in srgb, var(--c1) 80%, #fff), var(--c1) 45%, var(--c2));
+  box-shadow:
+    inset 0 0 0 calc(var(--s) * .012) rgba(255, 255, 255, .35),
+    calc(var(--s) * .02) calc(var(--s) * .035) 0 calc(var(--s) * .006) var(--c2),
+    0 calc(var(--s) * .035) 0 calc(var(--s) * .01) #1b1352,
+    0 calc(var(--s) * .1) calc(var(--s) * .18) rgba(10, 6, 60, .5);
+}
+.tablet.vivid::before { background: #1b1352; box-shadow: none; }
+.tablet.vivid .tb-screen { box-shadow: 0 0 0 calc(var(--s) * .01) #1b1352; }

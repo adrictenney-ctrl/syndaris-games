@@ -1,8 +1,8 @@
 // Rack 'Em on the table: the deck and the discard pile, and each player's rack drawn as ten
 // card edges standing in a wooden tray. At the end of a hand every rack is shown.
-import * as R from './rackem.js?v=94';
-import { snap } from './cards.js?v=94';
-import { centerMsg, clearMsg } from './table-hearts.js?v=94';
+import * as R from './rackem.js?v=95';
+import { snap } from './cards.js?v=95';
+import { centerMsg, clearMsg } from './table-hearts.js?v=95';
 
 let root = null, key = '';
 // A Rack 'Em card: a long card with its number at the left end, shaded by value.

@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { whosaidthatT } from './table-talk.js?v=94';
+import { whosaidthatT } from './table-talk.js?v=95';
 
 export default whosaidthatT;

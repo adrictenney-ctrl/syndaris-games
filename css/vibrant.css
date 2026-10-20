@@ -272,7 +272,7 @@ html[data-style="vibrant"] .spot .pic {
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%); mask-image: linear-gradient(90deg, transparent 0, #000 24%);
 }
 html[data-style="vibrant"] .spot .pic::before, html[data-style="vibrant"] .spot .pic::after { display: none; }
-html[data-style="vibrant"] .spot .stage { position: absolute; left: 39%; bottom: 36px; padding: 0; --s: 168px; z-index: 2; }
+html[data-style="vibrant"] .spot .stage { position: absolute; left: 37%; bottom: 62px; padding: 0; --s: 158px; z-index: 2; }
 html[data-style="vibrant"] .spot .info { padding: 44px 30px 60px 96px; max-width: 560px; text-shadow: none; }
 html[data-style="vibrant"] .spot .kicker, html[data-style="vibrant"] .spot .tags { display: none; }
 html[data-style="vibrant"] .spot h1 {
@@ -401,13 +401,13 @@ html[data-style="vibrant"] .art::before, html[data-style="vibrant"] .spot .pic::
 
 /* ================================================================ TILES LIKE THE REFERENCE */
 /* The picture fills the whole tile; the name, players and time are printed over it, bottom left.
-   The game's box stands in the bottom-right corner. */
+   The game's tablet (showing its table) stands in the bottom-right corner. */
 html[data-style="vibrant"] .box { overflow: hidden; }
 html[data-style="vibrant"] .art { margin: 0; aspect-ratio: 4 / 3; border-radius: 20px; box-shadow: none; }
 html[data-style="vibrant"] .art .cover { border-radius: 0; }
 html[data-style="vibrant"] .art::after { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .18); border-radius: 20px; }
-html[data-style="vibrant"] .info-row { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; min-height: 0; padding: 0 96px 14px 16px; pointer-events: none; }
-html[data-style="vibrant"] .info-row .box-stage { left: auto; right: 14px; bottom: 14px; --s: 70px; }
+html[data-style="vibrant"] .info-row { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; min-height: 0; padding: 0 118px 14px 16px; pointer-events: none; }
+html[data-style="vibrant"] .info-row .box-stage { left: auto; right: 14px; bottom: 14px; --s: 68px; }
 html[data-style="vibrant"] .box h3 {
   font-size: 27px; margin: 0 0 6px;
   text-shadow: 2px 0 0 #1b1352, -2px 0 0 #1b1352, 0 2px 0 #1b1352, 0 -2px 0 #1b1352, 1.5px 1.5px 0 #1b1352, -1.5px -1.5px 0 #1b1352, 1.5px -1.5px 0 #1b1352, -1.5px 1.5px 0 #1b1352, 0 4px 0 #1b1352;
@@ -421,8 +421,8 @@ html[data-style="vibrant"] .meta .who, html[data-style="vibrant"] .meta .time {
 html[data-style="vibrant"] .meta .who svg, html[data-style="vibrant"] .meta .time svg { width: 17px; height: 17px; opacity: 1; filter: drop-shadow(0 1px 0 #1b1352); }
 html[data-style="vibrant"] a.box:hover .art .cover { will-change: transform; }
 @media (max-width: 600px) {
-  html[data-style="vibrant"] .info-row { padding: 0 60px 10px 10px; }
-  html[data-style="vibrant"] .info-row .box-stage { right: 8px; bottom: 10px; --s: 46px; }
+  html[data-style="vibrant"] .info-row { padding: 0 74px 10px 10px; }
+  html[data-style="vibrant"] .info-row .box-stage { right: 8px; bottom: 10px; --s: 42px; }
   html[data-style="vibrant"] .box h3 { font-size: 19px; }
   html[data-style="vibrant"] .meta { gap: 10px; }
   html[data-style="vibrant"] .meta .who, html[data-style="vibrant"] .meta .time { font-size: 12px; }

@@ -7,6 +7,8 @@ OUT="../play-on-display-site"
 rm -rf "$OUT"
 mkdir -p "$OUT"
 cp css/*.css js/*.js index.html play.html table.html icon.svg icon-vibrant.svg manifest.webmanifest tv.apk "$OUT"/
+# The home page tablets' pictures of each table (tools/shoot-tables.mjs) keep their folder.
+cp -r tables "$OUT"/
 # Point the pages at the flat files: "css/x.css" -> "x.css", "./js/x.js" -> "./x.js".
 sed -i -E "s#([\"'(])(\./)?(css|js)/#\1\2#g" "$OUT"/*.html
 echo "Built $(ls "$OUT" | wc -l) files in $OUT"

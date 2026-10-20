@@ -1,8 +1,8 @@
 // Cornerstones on a phone: pick one of your pieces, turn or flip it, tap the board to put it
 // there (a preview shows where it lands — grey means it can't go there), then Place.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=94';
-import { boardSVG, pieceSVG } from './table-cornerstones.js?v=94';
-import { PIECES, COLOR, COLOR_NAME, shape, canPlace } from './cornerstones.js?v=94';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=95';
+import { boardSVG, pieceSVG } from './table-cornerstones.js?v=95';
+import { PIECES, COLOR, COLOR_NAME, shape, canPlace } from './cornerstones.js?v=95';
 
 let ctx = null, piece = null, rot = 0, flip = false, pos = null, wasMyTurn = false;
 export function reset() { piece = null; pos = null; document.getElementById('csPhone')?.remove(); }
