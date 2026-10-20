@@ -179,3 +179,10 @@ html[data-style="vibrant"][data-skin] #toast { font-family: var(--k-body-font); 
 
 /* A long label on the big button may wrap rather than run past it (some styles' fonts are wide). */
 html[data-style="vibrant"][data-skin] button.big { white-space: normal; text-wrap: balance; }
+
+/* Small buttons: on the tabletop they use the tabletop's colours; inside a panel, the panel's. */
+html[data-style="vibrant"][data-skin] #toolbar .tool { color: var(--k-tool-ink, var(--k-felt-ink)); }
+html[data-style="vibrant"][data-skin] .lobby-info .tool, html[data-style="vibrant"][data-skin] .lobby-info button:not(.big):not(.rules-btn),
+html[data-style="vibrant"][data-skin] .rules-card .tool {
+  color: var(--k-ghost-ink); background: var(--k-ghost-bg); border: .2vmin solid var(--k-ghost-line); border-radius: var(--k-btn-radius); font-family: var(--k-btn-font, var(--k-body-font));
+}

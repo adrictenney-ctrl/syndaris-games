@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { cornerkingsT } from './table-cardgames.js?v=99';
+import { cornerkingsT } from './table-cardgames.js?v=100';
 
 export default cornerkingsT;

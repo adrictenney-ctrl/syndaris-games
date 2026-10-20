@@ -1,6 +1,6 @@
 // Four Up on a phone: the frame — tap a column to drop your disc.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=99';
-import { disc, frameHTML } from './table-fourup.js?v=99';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=100';
+import { disc, frameHTML } from './table-fourup.js?v=100';
 
 let ctx = null, wasMyTurn = false;
 export function reset() { document.getElementById('fuPhone')?.remove(); }

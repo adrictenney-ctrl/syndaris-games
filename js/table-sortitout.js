@@ -1,5 +1,5 @@
 // Sort It Out on the table — the quiz-show screen (see table-quiz.js).
-import { QUIZ } from './quiz-games.js?v=99';
-import { quizTable } from './table-quiz.js?v=99';
+import { QUIZ } from './quiz-games.js?v=100';
+import { quizTable } from './table-quiz.js?v=100';
 
 export default quizTable(QUIZ.sortitout, { id: 'sortitout' });

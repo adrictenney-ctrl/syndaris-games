@@ -1,9 +1,9 @@
 // Hot Dice on the table: the dice tumble onto a red felt tray; dice set aside this turn sit on
 // a brass rail above, with the turn's running total.
-import * as H from './hotdice.js?v=99';
-import { dieHTML } from './table-yacht.js?v=99';
-import { snap } from './cards.js?v=99';
-import { centerMsg, clearMsg } from './table-hearts.js?v=99';
+import * as H from './hotdice.js?v=100';
+import { dieHTML } from './table-yacht.js?v=100';
+import { snap } from './cards.js?v=100';
+import { centerMsg, clearMsg } from './table-hearts.js?v=100';
 
 let root = null, key = '', lastRoll = -1;
 

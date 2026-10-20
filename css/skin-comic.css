@@ -1,0 +1,59 @@
+/* COMIC BOOK — a halftone blue page; paper-white panels with thick ink outlines and hard offset
+   shadows; yellow halftone seats; speech bubbles; caption boxes. Headings in Bangers, the rest in
+   Comic Neue. Wins land with a POW! starburst (and a little shake, unless motion is turned down). */
+html[data-style="vibrant"][data-skin="comic"] {
+  --k-title-font: 'Bangers', 'Comic Neue', cursive;
+  --k-body-font: 'Comic Neue', 'Comic Sans MS', cursive;
+  --k-num-font: 'Bangers', 'Comic Neue', cursive;
+  --k-accent: #ffd400; --k-accent-ink: #111111; --k-eyebrow: #c4141d;
+  --k-ink: #111111;
+  --k-dots: radial-gradient(circle, rgba(255, 255, 255, .16) 22%, transparent 26%) 0 0 / 1.4vmin 1.4vmin;
+  --k-felt-base: #1553b8;
+  --k-felt:
+    radial-gradient(ellipse 52% 46% at 50% 50%, rgba(255, 255, 255, .1), transparent 72%),
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 255, 255, .05) 0 4deg, transparent 4deg 12deg),
+    var(--k-dots),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 50%, rgba(5, 20, 60, .5)),
+    #1553b8;
+  --k-felt-ink: #ffffff; --k-felt-btn: #fffdf5; --k-felt-line: #111111; --k-tool-ink: #111111; --k-print: rgba(255, 255, 255, .55); --k-rail: #111111; --k-rail-radius: .6vmin;
+  --k-panel-bg: #fffdf5; --k-panel-ink: #111111; --k-panel-mute: #333333; --k-panel-line: #111111; --k-panel-radius: .6vmin; --k-panel-bw: .45vmin;
+  --k-panel-shadow: .9vmin .9vmin 0 #111111;
+  --k-plate-bg: radial-gradient(circle, rgba(0, 0, 0, .12) 20%, transparent 24%) 0 0 / 1vmin 1vmin, #ffd400; --k-plate-ink: #111111; --k-plate-mute: #2b2b2b; --k-plate-line: #111111;
+  --k-plate-radius: .5vmin; --k-plate-bw: .4vmin; --k-plate-shadow: .6vmin .6vmin 0 #111111;
+  --k-tent-bg: #fffdf5; --k-tent-ink: #111111; --k-tent-mute: #333333; --k-tent-radius: .5vmin; --k-tent-bw: .45vmin; --k-tent-line: #111111;
+  --k-tent-shadow: .8vmin .8vmin 0 #111111; --k-qr: #111111;
+  --k-go-bg: #c4141d; --k-go-ink: #ffffff; --k-go-edge: #111111; --k-go-bw: .35vmin; --k-go-line: #111111; --k-btn-radius: .5vmin;
+  --k-ghost-bg: #fffdf5; --k-ghost-ink: #111111; --k-ghost-line: #111111; --k-ghost-hover: #fff3a6; --k-ghost-icon: #1e6fe8;
+  --k-select-bg: #ffffff; --k-select-ink: #111111; --k-select-line: #111111;
+  --k-slip-bg: #fffdf5; --k-slip-ink: #111111; --k-slip-mute: #333333; --k-slip-line: #111111; --k-slip-radius: .6vmin; --k-slip-bw: .5vmin;
+  --k-slip-shadow: 1.1vmin 1.1vmin 0 #111111; --k-slip-title: #c4141d; --k-slip-title-shadow: .3vmin .3vmin 0 #111111;
+  --k-slip-row: rgba(30, 111, 232, .1); --k-slip-win: #ffd400; --k-slip-num: #111111;
+  --k-room: repeating-conic-gradient(from 0deg at 50% 0%, rgba(255, 255, 255, .06) 0 4deg, transparent 4deg 12deg), radial-gradient(circle, rgba(255, 255, 255, .16) 22%, transparent 26%) 0 0 / 10px 10px, #1553b8;
+  --k-room-mute: #e4ecff; --k-room-title-shadow: 3px 3px 0 #111111;
+  --k-pbtn-bg: #fffdf5; --k-pbtn-ink: #111111; --k-pbtn-line: #111111; --k-pbtn-edge: #111111;
+  --k-input-bg: #ffffff; --k-input-ink: #111111; --k-input-line: #111111; --k-input-mute: #6a6a6a;
+}
+html[data-skin="comic"] .game-title { letter-spacing: .03em; }
+html[data-skin="comic"] body, html[data-skin="comic"] .settings, html[data-skin="comic"] .meta { font-weight: 700; }
+/* bold outlined buttons with a hard shadow that press flat */
+html[data-skin="comic"] button.big, html[data-skin="comic"] button.primary, html[data-skin="comic"] .panel-btn, html[data-skin="comic"] button.ghost { box-shadow: .5vmin .5vmin 0 #111111; }
+html[data-skin="comic"] button.big:active, html[data-skin="comic"] button.primary:active, html[data-skin="comic"] .panel-btn:active { transform: translate(.4vmin, .4vmin); box-shadow: 0 0 0 #111; }
+html[data-skin="comic"] .seat-actions button, html[data-skin="comic"] .rules-btn, html[data-skin="comic"] .tool { box-shadow: .3vmin .3vmin 0 #111111; }
+/* the game's one-line pitch is a yellow caption box */
+html[data-skin="comic"] .game-blurb { display: inline-block; padding: .4vmin 1.2vmin; background: #ffd400; color: #111; border: .3vmin solid #111; box-shadow: .4vmin .4vmin 0 #111; }
+/* a seat's message is a speech bubble with a tail */
+html[data-skin="comic"] .bubble { border: .35vmin solid #111; border-radius: 2.4vmin; box-shadow: .4vmin .4vmin 0 #111; }
+html[data-skin="comic"] .bubble::after { content: ''; position: absolute; left: 30%; bottom: -1.3vmin; width: 1.6vmin; height: 1.6vmin; background: #fffdf5; border-right: .35vmin solid #111; border-bottom: .35vmin solid #111; transform: skewX(-25deg) rotate(45deg); }
+/* the winner: a POW! starburst behind the headline */
+html[data-skin="comic"] #overlay h2 { position: relative; z-index: 1; }
+html[data-skin="comic"] #overlay::before {
+  content: ''; position: absolute; left: 50%; top: -7vmin; width: 22vmin; height: 15vmin; translate: -50% 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 150'%3E%3Cpath d='M110 4l14 30 30-22 0 34 38-12-18 32 40 8-34 20 30 26-40 0 10 34-32-18-14 34-16-32-30 22 4-34-38 10 22-30-40-10 36-18-28-26 40 4-6-36 32 18z' fill='%23ffd400' stroke='%23111' stroke-width='5' stroke-linejoin='round'/%3E%3Ctext x='110' y='92' text-anchor='middle' font-family='Bangers, Impact, sans-serif' font-size='52' fill='%23e8202a' stroke='%23111' stroke-width='3' paint-order='stroke' transform='rotate(-8 110 80)'%3EPOW!%3C/text%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes comicPop { from { transform: translate(-50%, -50%) scale(.6) rotate(-4deg); opacity: 0; } 60% { transform: translate(-50%, -50%) scale(1.06) rotate(1deg); } }
+  @keyframes comicShake { 0%, 100% { translate: 0 0; } 20% { translate: -.6vmin .3vmin; } 40% { translate: .5vmin -.4vmin; } 60% { translate: -.4vmin -.2vmin; } 80% { translate: .3vmin .3vmin; } }
+  @keyframes comicBurst { from { transform: scale(0) rotate(-30deg); } 70% { transform: scale(1.2) rotate(6deg); } }
+  html[data-skin="comic"] #overlay { animation: comicPop .35s cubic-bezier(.2, 1.4, .4, 1), comicShake .4s linear .3s; }
+  html[data-skin="comic"] #overlay::before { animation: comicBurst .45s cubic-bezier(.2, 1.4, .4, 1) .1s both; }
+}

@@ -1,4 +1,4 @@
 // See table-social.js.
-import { mindmeldT } from './table-social.js?v=99';
+import { mindmeldT } from './table-social.js?v=100';
 
 export default mindmeldT;

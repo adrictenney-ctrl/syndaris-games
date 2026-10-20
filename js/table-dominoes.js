@@ -1,8 +1,8 @@
 // Dominoes on the table: the line of play laid out in rows (read left to right, top to bottom),
 // the two open ends called out big on either side, and the boneyard.
-import * as D from './dominoes.js?v=99';
-import { snap } from './cards.js?v=99';
-import { centerMsg, clearMsg } from './table-hearts.js?v=99';
+import * as D from './dominoes.js?v=100';
+import { snap } from './cards.js?v=100';
+import { centerMsg, clearMsg } from './table-hearts.js?v=100';
 
 let root = null, key = '';
 const PIP = { 0: [], 1: [[1, 1]], 2: [[0, 0], [2, 2]], 3: [[0, 0], [1, 1], [2, 2]], 4: [[0, 0], [2, 0], [0, 2], [2, 2]], 5: [[0, 0], [2, 0], [1, 1], [0, 2], [2, 2]], 6: [[0, 0], [2, 0], [0, 1], [2, 1], [0, 2], [2, 2]] };

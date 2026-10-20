@@ -1,7 +1,7 @@
 // Bull Pen on the table: the four rows (with the danger of a sixth card), then everyone's picks
 // flipped together and slid into place, lowest first.
-import * as E from './bullpen.js?v=99';
-import { partyTable, esc, who, doneRow } from './table-party.js?v=99';
+import * as E from './bullpen.js?v=100';
+import { partyTable, esc, who, doneRow } from './table-party.js?v=100';
 
 const card = (v, extra = '') => `<span class="bp-card b${E.bulls(v)} ${extra}"><b>${v}</b><small>${'🐂'.repeat(E.bulls(v))}</small></span>`;
 export default partyTable(E, {
