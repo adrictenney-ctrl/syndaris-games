@@ -1,7 +1,7 @@
 // Five-Card Draw on a phone: your five cards, the betting buttons, and at the draw tap the
 // cards you want to throw away.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=96';
-import { CAP } from './drawpoker.js?v=96';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=97';
+import { CAP } from './drawpoker.js?v=97';
 
 let toss = [], wasMyTurn = false, lastHand = -1;
 export function reset() { toss = []; lastHand = -1; }

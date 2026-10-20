@@ -59,8 +59,11 @@ async function shoot(b, id, style) {
   await b.send('Page.navigate', { url: `${site}/table.html?game=${id}` });
   for (let i = 0; i < 40; i++) { await wait(150); if (await b.js(`!!document.querySelector('.seat') && document.body.classList.contains('in-lobby')`)) break; }
   await wait(600);
-  // Bots in every seat, then start (games where bots can't play just show their seats).
-  await b.js(`document.querySelectorAll('.seat.empty .addbot').forEach(x => x.click())`);
+  // As many bots as the game takes, spread around the table, then start (games where bots can't
+  // play just show their seats).
+  const G = GAMES[id], seats = G.layout.length, n = Math.min(G.max, seats);
+  const botSeats = [...new Set(Array.from({ length: n }, (_, i) => Math.round(i * seats / n)))];
+  await b.js(`(() => { const all = document.querySelectorAll('.seat'); ${JSON.stringify(botSeats)}.forEach(i => all[i]?.querySelector('.addbot')?.click()); })()`);
   await wait(300);
   const started = await b.js(`(() => { const s = document.getElementById('startBtn'); if (s.disabled) return false; s.click(); return true; })()`);
   await b.js(`(() => { const st = document.createElement('style'); st.textContent = ${JSON.stringify(HIDE)}; document.head.appendChild(st); })()`);
@@ -92,7 +95,11 @@ const notStarted = [];
 await Promise.all(Array.from({ length: Math.min(jobs, work.length) }, async (_, j) => {
   const b = await browser(9600 + j);
   for (let w; (w = work.shift());) {
-    try { if (!(await shoot(b, ...w))) notStarted.push(w.join(' ')); }
+    try {
+      let ok = false;
+      for (let t = 0; t < 3 && !ok; t++) ok = await shoot(b, ...w);   // a busy machine can miss the start; try again
+      if (!ok) notStarted.push(w.join(' '));
+    }
     catch (e) { console.log('failed', w.join(' '), e.message); }
     if (++done % 20 === 0) console.log(`${done} pictures`);
   }

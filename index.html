@@ -20,8 +20,8 @@
     // Classic is bought with Dough: only use it when the signed-in account owns it.
     if (podStyle !== 'classic' || !podOwned.includes('classic')) { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
   </script>
-  <link rel="stylesheet" href="css/cards.css?v=96">
-  <link rel="stylesheet" href="css/tablet.css?v=96">
+  <link rel="stylesheet" href="css/cards.css?v=97">
+  <link rel="stylesheet" href="css/tablet.css?v=97">
   <style>
     html { background: var(--onyx); }
     body {
@@ -300,6 +300,8 @@
     .code-row[hidden] { display: none; }
     .code-row input { flex: 1; min-width: 0; padding: 10px 14px; border-radius: 12px; outline: none; font: 600 14px/1.2 var(--ui); color: var(--ivory); background: rgba(255, 248, 230, .05); border: 1px solid var(--hairline-hi); }
     .code-row input:focus { border-color: var(--champagne); }
+    .gift-go { display: inline-flex; align-items: center; gap: 6px; }
+    .gift-go svg { width: 15px; height: 15px; }
     .code-msg { margin: 8px 2px 0; font: 600 13px/1.4 var(--ui); color: var(--mute); }
     .code-msg[hidden] { display: none; }
     .shop-go { padding: 10px 18px; border: 0; border-radius: 99px; cursor: pointer; font: 800 12.5px/1 var(--ui); letter-spacing: .1em; text-transform: uppercase; color: #17130c; background: linear-gradient(180deg, var(--champagne-hi), var(--champagne)); }
@@ -358,7 +360,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=96">
+  <link rel="stylesheet" href="css/vibrant.css?v=97">
 </head>
 <body class="home">
   <header class="bar">
@@ -397,6 +399,11 @@
       <div class="code-row" id="amountRow" hidden>
         <input id="amountIn" type="number" min="1" max="1000000" step="1" inputmode="numeric" placeholder="How much Dough?" aria-label="How much Dough?">
         <button type="button" class="shop-go" id="amountGo">Add</button>
+        <button type="button" class="shop-go gift-go" id="giftOpen" aria-expanded="false" title="Gift it to someone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>Gift</button>
+      </div>
+      <div class="code-row" id="giftRow" hidden>
+        <input id="giftTo" type="email" placeholder="Their email or Google account" aria-label="Their email or Google account" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="120">
+        <button type="button" class="shop-go" id="giftGo">Send gift</button>
       </div>
       <p class="code-msg" id="codeMsg" hidden></p>
       <p class="caps set-label pc-label">Family</p>
@@ -434,10 +441,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=96"></script>
+  <script type="module" src="js/tvnav.js?v=97"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=96';
-    import { sceneSVG } from './js/covers.js?v=96';
+    import { GAMES } from './js/games.js?v=97';
+    import { sceneSVG } from './js/covers.js?v=97';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
@@ -707,7 +714,7 @@
     });
     opts.forEach(o => o.addEventListener('click', () => { const st = o.dataset.style; if (owns(st)) { shop(''); setStyle(st); } else offer(st); }));
     pill.onclick = () => document.getElementById('openSettings').click();
-    // Codes: shown to signed-in players only. A Dough code asks how much to add.
+    // Codes: shown to signed-in players only. A Dough code asks how much to add (or gift).
     const codeRow = document.getElementById('codeRow'), amountRow = document.getElementById('amountRow');
     const codeIn = document.getElementById('codeIn'), amountIn = document.getElementById('amountIn'), codeMsg = document.getElementById('codeMsg');
     const say = t => { codeMsg.hidden = !t; codeMsg.textContent = t || ''; };
@@ -722,16 +729,41 @@
       const n = Math.floor(Number(amountIn.value));
       if (!(n > 0) || n > 1e6) { say('Type a number from 1 to 1,000,000.'); return; }
       const b = document.getElementById('amountGo'); b.disabled = true;
-      try { const total = await D.redeemDough(codeOk, n); say(`Added ${n.toLocaleString()} Dough. You have ${total.toLocaleString()}.`); amountIn.value = ''; amountRow.hidden = true; codeRow.hidden = false; codeOk = ''; }
+      try { const total = await D.redeemDough(codeOk, n); say(`Added ${n.toLocaleString()} Dough. You have ${total.toLocaleString()}.`); amountIn.value = ''; amountRow.hidden = giftRow.hidden = true; codeRow.hidden = false; codeOk = ''; }
       catch (err) { say(err?.code === 'signin' ? 'Sign in first.' : 'Couldn’t add it right now. Try again in a moment.'); }
       b.disabled = false;
     };
+    // Gift: send the amount to someone else's email instead (they get it when they sign in with it).
+    const giftRow = document.getElementById('giftRow'), giftTo = document.getElementById('giftTo'), giftOpen = document.getElementById('giftOpen');
+    giftOpen.onclick = () => { giftRow.hidden = !giftRow.hidden; giftOpen.setAttribute('aria-expanded', String(!giftRow.hidden)); if (!giftRow.hidden) giftTo.focus(); };
+    const sendGift = async () => {
+      const n = Math.floor(Number(amountIn.value));
+      if (!(n > 0) || n > 1e6) { say('Type how much Dough to gift (1 to 1,000,000).'); amountIn.focus(); return; }
+      if (!D.emailOk(giftTo.value)) { say('Type their email address (for a Google account, their Gmail address).'); giftTo.focus(); return; }
+      const b = document.getElementById('giftGo'); b.disabled = true;
+      try {
+        const g = await D.giftDough(codeOk, giftTo.value, n);
+        say(`Gifted ${n.toLocaleString()} Dough to ${g.to}. They'll get it next time they sign in with that email.`);
+        amountIn.value = giftTo.value = ''; giftRow.hidden = amountRow.hidden = true; codeRow.hidden = false; codeOk = '';
+      } catch (err) { say(err?.code === 'signin' ? 'Sign in first.' : 'Couldn’t send it right now. Try again in a moment.'); }
+      b.disabled = false;
+    };
+    document.getElementById('giftGo').onclick = sendGift;
+    giftTo.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); sendGift(); } });
+    // A gift arrived for this account.
+    addEventListener('pod-gift', e => {
+      const note = document.createElement('div');
+      note.className = 'home-note'; note.setAttribute('role', 'status');
+      note.textContent = `You got ${Number(e.detail.amount).toLocaleString()} Dough from ${e.detail.from || 'a friend'}!`;
+      document.body.appendChild(note);
+      setTimeout(() => note.remove(), 7000);
+    });
     document.getElementById('codeGo').onclick = useCode;
     document.getElementById('amountGo').onclick = addDough;
     codeIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); useCode(); } });
     amountIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addDough(); } });
-    const showCodes = () => { codeRow.hidden = !wallet.signedIn || !amountRow.hidden; if (!wallet.signedIn) { amountRow.hidden = true; say(''); } };
-    if (!onTV) import('./js/dough.js?v=3').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); }); }).catch(() => {});
+    const showCodes = () => { codeRow.hidden = !wallet.signedIn || !amountRow.hidden; if (!wallet.signedIn) { amountRow.hidden = giftRow.hidden = true; say(''); } };
+    if (!onTV) import('./js/dough.js?v=4').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); }); }).catch(() => {});
     // ---- Parent Controls (Settings → Family). They're kept in step with the parent's account; when
     // the list of turned-off games changes, the page reloads so they disappear (or come back) everywhere.
     const pcBtn = document.getElementById('openParental'), pcSum = document.getElementById('pcSummary');

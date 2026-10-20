@@ -1,8 +1,8 @@
 // Trick-taking games on the card kit: Whist, Exactly (Oh Hell), Setback (Pitch), Raven (a Rook-style
 // game), Mission Tricks (co-op missions), Schnapsen, Pinochle and Bridge. Hands on phones; the
 // trick, trump, bids and (in Bridge) the dummy on the table.
-import { shuffle, sfx, announce } from './party.js?v=96';
-import { trickEngine, deck52, deckOf, SYM, SUITS, SUIT_NAME, RANKS, rv, cardEl, cardOpt, sortHand } from './cardkit.js?v=96';
+import { shuffle, sfx, announce } from './party.js?v=97';
+import { trickEngine, deck52, deckOf, SYM, SUITS, SUIT_NAME, RANKS, rv, cardEl, cardOpt, sortHand } from './cardkit.js?v=97';
 
 const R = n => Math.floor(Math.random() * n);
 const dealOut = (g, deck, n) => { g.hand = g.seats.map(() => []); for (let k = 0; k < n; k++) for (const s of g.order) g.hand[s].push(deck.pop()); return deck; };

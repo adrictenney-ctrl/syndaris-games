@@ -757,6 +757,10 @@ deep jewel tones (emerald, sapphire, oxblood, aubergine) only as quiet glows beh
   Codes are kept only as SHA-256 fingerprints. A Dough code asks how much to add; the write carries a second
   fingerprint (`devGrant`) that only the Firestore rule knows, then clears it. That rule clause is deliberately not
   kept in this repo.
+- **Gifts:** after a Dough code, **Gift** sends the amount to someone's email (a Google account is its Gmail address)
+  instead: `gifts/{id} = { to, amount, from, createdAt }`. It waits until someone signs in with that email, then is
+  added to their wallet and removed in one step (`giftClaim` marks the write, then clears). Only the person signed in
+  with that email can read a gift; creating one needs the code's grant on the sender's own wallet in the same write.
 
 ## Parent Controls
 

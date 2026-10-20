@@ -1,13 +1,13 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=96';
+import * as K from './chefskiss.js?v=97';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=96';
-import { movable } from './gesture.js?v=96';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=97';
+import { movable } from './gesture.js?v=97';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=96';
+import { topPicks } from './laugh-engine.js?v=97';
 
 // ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the

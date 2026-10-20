@@ -6,7 +6,7 @@
 //
 // Wins collected while signed out wait on this device (pending) and are paid in on sign-in.
 import { db, auth, onUser, currentUser } from './firebase.js?v=3';
-import { doc, getDoc, setDoc, updateDoc, onSnapshot, increment, arrayUnion, runTransaction, serverTimestamp, deleteField } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import { doc, getDoc, getDocs, setDoc, updateDoc, onSnapshot, increment, arrayUnion, runTransaction, serverTimestamp, deleteField, writeBatch, collection, query, where } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 export const WIN_DOUGH = 10;
 // Styles for sale. Vibrant is the free default; more will be added here later.
@@ -39,6 +39,8 @@ export function watchWallet(cb) {
     try {
       await ensureWallet(u);
       await payPending();
+      // Gifts waiting for this email: added now, and the page is told so it can say so.
+      claimGifts(u).then(got => got.forEach(g => dispatchEvent(new CustomEvent('pod-gift', { detail: g })))).catch(() => {});
       stop = onSnapshot(ref(u.uid), s => {
         const d = s.data() || {};
         const styles = Array.isArray(d.styles) ? d.styles : [];
@@ -116,4 +118,47 @@ export async function redeemDough(code, amount) {
   });
   await updateDoc(ref(u.uid), { devGrant: deleteField(), updatedAt: serverTimestamp() }).catch(() => {});
   return total;
+}
+
+// Gifts. A Dough code can send its amount to someone else's email (a Google account is its Gmail
+// address) instead: gifts/{id} = { to, amount, from, createdAt }. The sender's own wallet carries the
+// code's grant fingerprint in the same write (the rules check it there, so the gift itself never holds
+// it). The gift waits until someone signs in with that email; then it's added to their wallet and
+// the gift is removed, in one step.
+export const emailOk = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(e || '').trim());
+export async function giftDough(code, email, amount) {
+  const u = currentUser();
+  if (!u) throw Object.assign(new Error('Sign in first'), { code: 'signin' });
+  if (await checkCode(code) !== 'dough') throw Object.assign(new Error('Unknown code'), { code: 'bad' });
+  const to = String(email || '').trim().toLowerCase(), add = Math.floor(Number(amount));
+  if (!emailOk(to)) throw Object.assign(new Error('Email'), { code: 'email' });
+  if (!(add > 0) || add > 1e6) throw Object.assign(new Error('Amount'), { code: 'amount' });
+  await ensureWallet(u);
+  const grant = await sha256('pod-dev-grant:' + norm(code));
+  const batch = writeBatch(db);
+  batch.update(ref(u.uid), { devGrant: grant, updatedAt: serverTimestamp() });
+  batch.set(doc(collection(db, 'gifts')), { to, amount: add, from: nameOf(u), createdAt: serverTimestamp() });
+  await batch.commit();
+  await updateDoc(ref(u.uid), { devGrant: deleteField(), updatedAt: serverTimestamp() }).catch(() => {});
+  return { to, amount: add };
+}
+
+// Collect any gifts waiting for the signed-in player's email. Returns [{ amount, from }].
+async function claimGifts(u) {
+  const email = (u.email || '').toLowerCase();
+  if (!email) return [];
+  const got = [];
+  const snap = await getDocs(query(collection(db, 'gifts'), where('to', '==', email)));
+  for (const g of snap.docs) {
+    const { amount, from } = g.data();
+    try {
+      const batch = writeBatch(db);
+      batch.update(ref(u.uid), { dough: increment(amount), giftClaim: g.id, updatedAt: serverTimestamp() });
+      batch.delete(g.ref);
+      await batch.commit();
+      got.push({ amount, from });
+    } catch {}
+  }
+  if (got.length) await updateDoc(ref(u.uid), { giftClaim: deleteField(), updatedAt: serverTimestamp() }).catch(() => {});
+  return got;
 }

@@ -21,3 +21,13 @@ test('the code box is plain: hidden until signed in, no hint of what codes exist
   assert.match(home, /placeholder="Have a code\?"/);
   assert.doesNotMatch(home, /developer|dev code|cheat/i);
 });
+
+test('a Dough code can be gifted to an email instead', () => {
+  assert.match(home, /id="giftOpen"[^>]*>[\s\S]*?Gift<\/button>/);
+  assert.match(home, /placeholder="Their email or Google account"/);
+  assert.match(dough, /export async function giftDough\(/);
+  // the gift itself never carries the grant fingerprint; the sender's wallet does, in the same write
+  const gift = dough.slice(dough.indexOf('export async function giftDough('), dough.indexOf('async function claimGifts('));
+  assert.match(gift, /batch\.set\(doc\(collection\(db, 'gifts'\)\), \{ to, amount: add, from: nameOf\(u\), createdAt: serverTimestamp\(\) \}\)/);
+  assert.match(dough, /where\('to', '==', email\)/, 'gifts are collected by the signed-in email');
+});

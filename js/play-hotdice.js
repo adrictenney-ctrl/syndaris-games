@@ -1,8 +1,8 @@
 // Hot Dice on a phone: roll, tap the scoring dice to keep (the points add up as you tap), then
 // Roll again or Bank.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=96';
-import { dieHTML } from './table-yacht.js?v=96';
-import { scoreSet } from './hotdice.js?v=96';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=97';
+import { dieHTML } from './table-yacht.js?v=97';
+import { scoreSet } from './hotdice.js?v=97';
 
 let ctx = null, keep = [], wasMyTurn = false, lastRoll = -1;
 export function reset() { keep = []; document.getElementById('hdPhone')?.remove(); }

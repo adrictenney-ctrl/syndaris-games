@@ -1,6 +1,6 @@
 // Texas Hold'em on a player's phone: hole cards, betting controls.
-import { GAMES } from './games.js?v=96';
-import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=96';
+import { GAMES } from './games.js?v=97';
+import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=97';
 
 const LAYOUT = GAMES.holdem.layout;
 let ctx = null;
