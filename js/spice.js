@@ -91,6 +91,14 @@ const REC = {
   'Role frame': { all: [c => `a terrible new name for ${c.bare}`, c => `the award for the best ${c.bare}`, c => `a rejected theme for ${c.bare}`], tags: { register: ['casual'] } },
   'Status flip': { all: [c => `what ${c.bare} ${c.v('is', 'are')} secretly planning`, c => `if ${c.bare} ran the world`, c => `the official rules for ${c.bare}`], tags: { register: ['official_sounding'] } },
 };
+// A Recipe idea that's already a whole prompt ("The worst thing to say at prom") keeps every word;
+// these add a twist after it instead.
+const PROMPT = {
+  'Wrong word': { all: [t => `${t}, but on the moon`, t => `${t}, in total silence`, t => `${t}, at a fancy wedding`], tags: { tone: ['dry'] } },
+  'Role frame': { all: [t => `${t}, according to Grandma`, t => `${t}, according to your dog`, t => `${t}, according to a pirate`], tags: { register: ['casual'] } },
+  'Status flip': { all: [t => `${t}, if you ran the school`, t => `${t}, by royal order`, t => `${t}, if the principal did it`], tags: { register: ['official_sounding'] } },
+};
+const isPrompt = t => /^(the|what|why|how|who|where|when|if|your|my|a|an)\b/i.test(t) && t.split(/\s+/).length >= 4;
 
 function tagsFor(core, extra, type) {
   const tags = {
@@ -113,7 +121,8 @@ export function spiceItUp(text, type = 'ingredient', level = 'mild', deckHeat = 
   try {
     const core = coreOf(text);
     if (!core || core.bare.length < 2) return [];
-    const book = type === 'recipe' ? REC : ING;
+    const whole = type === 'recipe' && isPrompt(core.text);
+    const book = type === 'recipe' ? (whole ? PROMPT : REC) : ING;
     const names = Object.keys(book);
     // Shuffle the techniques so each tap can offer a different mix.
     for (let i = names.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [names[i], names[j]] = [names[j], names[i]]; }
@@ -123,7 +132,7 @@ export function spiceItUp(text, type = 'ingredient', level = 'mild', deckHeat = 
       if (out.length >= want) break;
       const T = book[technique];
       const pool = type === 'recipe' ? T.all : level === 'mild' ? T.mild : [...T.mild, ...T.more];
-      const made = cap(clean(pool[Math.floor(rng() * pool.length)](core)));
+      const made = cap(clean(pool[Math.floor(rng() * pool.length)](whole ? core.text.replace(/[?.!]+$/, '') : core)));
       // Every version keeps the player's idea, and actually changes it.
       if (!made.toLowerCase().includes(core.bare.toLowerCase()) || made.toLowerCase() === core.text.toLowerCase()) continue;
       out.push({ text: made.slice(0, 120), technique, tags: tagsFor(core, T.tags, type) });

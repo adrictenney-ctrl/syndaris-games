@@ -74,8 +74,9 @@ test('4. the prompt keeps the player’s idea and the level; Recipes get 80 char
   assert.match(p, /Table level: hot/);
   assert.match(p, /text="The worst thing to say at prom"/);
   assert.match(p, /exactly 3 different options/);
-  const long = tidyOptions([{ text: 'x '.repeat(70) }], { type: 'signature_recipe', text: 'y' });
-  assert.ok(long[0].text.length <= 80);
+  // Too long: discarded (and asked again), never cut off mid-joke.
+  const kept = tidyOptions([{ text: 'x '.repeat(70) }, { text: 'A short one' }], { type: 'signature_recipe', text: 'y' });
+  assert.deepEqual(kept.map(o => o.text), ['A short one']);
 });
 
 test('4. nothing is saved until the player picks Use this or Keep mine', () => {

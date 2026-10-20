@@ -51,17 +51,18 @@ export function jsonFrom(raw) {
   try { return JSON.parse(s.slice(a, b + 1)); } catch { return null; }
 }
 
-// Options that pass the server-side rules: non-empty, within the length limits (trimmed, cut at a
-// word if needed), clean words, different from each other.
+// Options that pass the server-side rules: non-empty, within the length limits, clean words,
+// different from each other. An option that's too long is discarded (and the caller asks again)
+// rather than cut off mid-joke; a too-long flavor line is just left off.
 export function tidyOptions(list, card) {
   const max = LIMITS[card.type];
-  const cut = (t, n) => { t = clean(t); if (t.length <= n) return t; const c = t.slice(0, n); return (c.lastIndexOf(' ') > n * 0.6 ? c.slice(0, c.lastIndexOf(' ')) : c).replace(/[,;:\-–—\s]+$/, ''); };
   const seen = new Set();
   const out = [];
   for (const o of Array.isArray(list) ? list : []) {
-    const text = cut(o?.text, max);
-    if (!text || seen.has(text.toLowerCase()) || text.toLowerCase() === card.text.toLowerCase()) continue;
-    let flavor = card.type === 'snack' ? cut(o?.flavor, LIMITS.flavor) : '';
+    const text = clean(o?.text);
+    if (!text || text.length > max || seen.has(text.toLowerCase()) || text.toLowerCase() === card.text.toLowerCase()) continue;
+    let flavor = card.type === 'snack' ? clean(o?.flavor) : '';
+    if (flavor.length > LIMITS.flavor) flavor = '';
     if (/^(null|none|n\/a)$/i.test(flavor)) flavor = '';
     if (!familyFriendly(text) || (flavor && !familyFriendly(flavor))) continue;
     seen.add(text.toLowerCase());
@@ -120,7 +121,7 @@ export async function seasonCard(card, env, fetchImpl = fetch) {
   } else {
     // No model configured yet: the built-in technique templates stand in (same rules, same checks).
     const kind = card.type === 'signature_recipe' ? 'recipe' : 'ingredient';
-    for (let k = 0; k < 4 && options.length < 3; k++) {
+    for (let k = 0; k < 12 && options.length < 3; k++) {
       const got = spiceItUp(card.text, kind, card.level, null, Math.random, 3).map(x => ({ text: x.text, flavor: card.flavor }));
       for (const o of tidyOptions(got, card)) if (options.length < 3 && !options.some(x => x.text.toLowerCase() === o.text.toLowerCase())) options.push(o);
     }
