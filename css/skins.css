@@ -1,0 +1,181 @@
+/* Style skins (bought in Settings, like Classic): Retro Arcade, Neon Night, Cozy Café, Comic Book,
+   Game Show, Sketchbook, Midnight Luxe, Paper Craft. A skin sits on top of Vibrant
+   (html[data-style="vibrant"][data-skin="…"]) so every layout, size and position stays exactly the
+   same; it only changes colours, fonts, borders, textures and effects.
+
+   Each skin file (css/skin-<id>.css) sets the --k-* variables below, plus its own flourishes.
+   This file applies them to the pieces every game shares: the table and its seats, the lobby panel,
+   the join card, buttons, menus, the scoring slip, How to play, the corner controls and the phone.
+
+   Readability: games draw their own text on the table (often in white), so every skin keeps a dark
+   tabletop and phone background. Light looks (paper, cream, notebook) go on the things placed on
+   it, and inside those the text colours are switched to the skin's dark ink. */
+
+html[data-style="vibrant"][data-skin] {
+  --display: var(--k-title-font);
+  --ui: var(--k-body-font);
+  --serif: var(--k-body-font);
+  --num: var(--k-num-font);
+  --v-sun: var(--k-accent);
+  --v-go: var(--k-go-bg);
+  --v-go2: var(--k-go-bg);
+  --v-go-edge: var(--k-go-edge);
+  --v-lav: var(--k-accent);
+  --brass: var(--k-accent);
+  --brass-hi: var(--k-accent);
+  --champagne: var(--k-go-bg);
+  --champagne-hi: var(--k-go-bg);
+}
+html[data-skin] body { font-family: var(--k-body-font); }
+/* Playing cards keep their printed faces in every style. */
+html[data-skin] .card { --display: 'Cormorant Garamond', Georgia, serif; --num: 'DM Serif Display', Georgia, serif; --serif: 'Cormorant Garamond', Georgia, serif; }
+
+/* ---------------------------------------------------------------- the table */
+html[data-style="vibrant"][data-skin] #felt { background: var(--k-felt-base) !important; }
+html[data-style="vibrant"][data-skin] #felt::before { background: var(--k-felt) !important; background-blend-mode: normal !important; }
+html[data-style="vibrant"][data-skin] #rail .brass { border-color: var(--k-rail, rgba(255, 255, 255, .16)); border-radius: var(--k-rail-radius, 3vmin); }
+html[data-style="vibrant"][data-skin] #print { color: var(--k-print, rgba(255, 255, 255, .45)); }
+html[data-style="vibrant"][data-skin] #print text { font-family: var(--k-body-font) !important; }
+html[data-style="vibrant"][data-skin] #watermark { color: var(--k-accent); }
+
+/* Text colours inside a light or dark piece follow that piece (game text that uses the tokens too). */
+html[data-skin] .plate, html[data-skin] .mt-felt {
+  --ivory: var(--k-plate-ink); --ink: var(--k-plate-ink); --gold-ink: var(--k-plate-mute); --mute: var(--k-plate-mute); --gold-faint: var(--k-plate-line);
+}
+html[data-skin] .lobby-info, html[data-skin] .rules-card {
+  --ivory: var(--k-panel-ink); --ink: var(--k-panel-ink); --gold-ink: var(--k-panel-mute); --mute: var(--k-panel-mute); --gold-faint: var(--k-panel-line);
+}
+html[data-skin] #overlay {
+  --ivory: var(--k-slip-ink); --ink: var(--k-slip-ink); --gold-ink: var(--k-slip-mute); --mute: var(--k-slip-mute); --gold-faint: var(--k-slip-line); --paper-ink: var(--k-slip-ink);
+}
+html[data-skin] .tent { --paper-ink: var(--k-tent-ink); }
+
+/* seats */
+html[data-style="vibrant"][data-skin] .plate {
+  color: var(--k-plate-ink); background: var(--k-plate-bg); backdrop-filter: none;
+  border: var(--k-plate-bw, .22vmin) solid var(--k-plate-line); border-radius: var(--k-plate-radius); box-shadow: var(--k-plate-shadow);
+}
+html[data-style="vibrant"][data-skin] .who .name { color: var(--k-plate-ink); text-shadow: var(--k-name-shadow, none); }
+html[data-style="vibrant"][data-skin] .seat.empty .who .name { color: var(--k-plate-mute); }
+html[data-style="vibrant"][data-skin] .seat.turn .plate { border-color: var(--k-accent); box-shadow: var(--k-plate-shadow), 0 0 0 .3vmin var(--k-accent), 0 0 4vmin color-mix(in srgb, var(--k-accent) 55%, transparent); }
+html[data-style="vibrant"][data-skin] .seat.turn .who .name { color: var(--k-plate-ink); }
+html[data-style="vibrant"][data-skin] .meta { color: var(--k-plate-mute); }
+html[data-style="vibrant"][data-skin] .bubble { font-family: var(--k-body-font); color: var(--k-slip-ink); background: var(--k-slip-bg); box-shadow: var(--k-plate-shadow); border-radius: var(--k-btn-radius); }
+
+/* buttons: the go button, and the plain ones (seats, How to play, corner controls) */
+html[data-style="vibrant"][data-skin] button.big {
+  font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-go-ink); background: var(--k-go-bg);
+  border: var(--k-go-bw, 0) solid var(--k-go-line, transparent); border-radius: var(--k-btn-radius);
+  box-shadow: 0 .6vmin 0 var(--k-go-edge), 0 1.6vmin 3vmin rgba(0, 0, 0, .3); text-shadow: none;
+}
+html[data-style="vibrant"][data-skin] button.big:active { transform: translateY(.5vmin); box-shadow: 0 .1vmin 0 var(--k-go-edge); }
+html[data-style="vibrant"][data-skin] button.big:disabled { color: var(--k-panel-mute); background: var(--k-ghost-bg); border: .2vmin solid var(--k-panel-line); box-shadow: none; }
+html[data-style="vibrant"][data-skin] .seat-actions button,
+html[data-style="vibrant"][data-skin] .rules-btn,
+html[data-style="vibrant"][data-skin] #overlay .tool {
+  font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-ghost-ink); background: var(--k-ghost-bg); border: .2vmin solid var(--k-ghost-line); border-radius: var(--k-btn-radius);
+}
+html[data-style="vibrant"][data-skin] .rules-btn svg { color: var(--k-ghost-icon, var(--k-accent)); }
+html[data-style="vibrant"][data-skin] .rules-btn:hover, html[data-style="vibrant"][data-skin] .rules-btn:focus-visible,
+html[data-style="vibrant"][data-skin] .seat-actions button:hover { border-color: var(--k-accent); background: var(--k-ghost-hover, var(--k-ghost-bg)); }
+/* the corner controls sit on the tabletop */
+html[data-style="vibrant"][data-skin] .tool { font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-felt-ink); background: var(--k-felt-btn); border-color: var(--k-felt-line); border-radius: var(--k-btn-radius); }
+html[data-style="vibrant"][data-skin] .sizer { color: var(--k-felt-ink); border-color: var(--k-felt-line); border-radius: var(--k-btn-radius); font-family: var(--k-btn-font, var(--k-body-font)); }
+html[data-style="vibrant"][data-skin] .sizer input { accent-color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .pill { color: var(--k-felt-ink); font-family: var(--k-btn-font, var(--k-body-font)); }
+
+/* the lobby */
+html[data-style="vibrant"][data-skin] .lobby-info {
+  color: var(--k-panel-ink); background: var(--k-panel-bg); backdrop-filter: none;
+  border: var(--k-panel-bw, .22vmin) solid var(--k-panel-line); border-radius: var(--k-panel-radius); box-shadow: var(--k-panel-shadow);
+}
+html[data-style="vibrant"][data-skin] .game-title { color: var(--k-panel-ink); font-family: var(--k-title-font); text-shadow: var(--k-title-shadow, none); }
+html[data-style="vibrant"][data-skin] .game-blurb, html[data-style="vibrant"][data-skin] .back, html[data-style="vibrant"][data-skin] .url { color: var(--k-panel-mute); }
+html[data-style="vibrant"][data-skin] .eyebrow { color: var(--k-eyebrow, var(--k-accent)); }
+html[data-style="vibrant"][data-skin] .lobby-info .settings {
+  color: var(--k-panel-ink); background: var(--k-settings-bg, transparent); border: var(--k-settings-border, 0); border-radius: var(--k-settings-radius, var(--k-panel-radius)); box-shadow: none;
+}
+html[data-style="vibrant"][data-skin] .settings select { color: var(--k-select-ink); background: var(--k-select-bg); border: .15vmin solid var(--k-select-line); border-radius: var(--k-btn-radius); font-family: var(--k-body-font); }
+html[data-style="vibrant"][data-skin] .settings select option { color: #111; background: #fff; }
+html[data-style="vibrant"][data-skin] .settings input { accent-color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .warn { color: var(--k-panel-ink); }
+html[data-style="vibrant"][data-skin] .mirror { color: var(--k-felt-ink); }
+
+/* the join card */
+html[data-style="vibrant"][data-skin] .tent {
+  color: var(--k-tent-ink); background: var(--k-tent-bg); border-radius: var(--k-tent-radius); box-shadow: var(--k-tent-shadow);
+  border: var(--k-tent-bw, 0) solid var(--k-tent-line, transparent);
+}
+html[data-style="vibrant"][data-skin] #qr svg path, html[data-style="vibrant"][data-skin] #qr svg rect[fill="black"] { fill: var(--k-qr, #111); }
+html[data-style="vibrant"][data-skin] .tent-cap { font-family: var(--k-title-font); white-space: normal; text-wrap: balance; }
+html[data-style="vibrant"][data-skin] .tent-room, html[data-style="vibrant"][data-skin] .tent-note { color: var(--k-tent-mute); }
+html[data-style="vibrant"][data-skin] .tent-room b { color: var(--k-tent-ink); font-family: var(--k-num-font); }
+
+/* the scoring slip (end of a hand, the winner) */
+html[data-style="vibrant"][data-skin] #overlay {
+  color: var(--k-slip-ink); background: var(--k-slip-bg); border: var(--k-slip-bw, .3vmin) solid var(--k-slip-line);
+  border-radius: var(--k-slip-radius); box-shadow: var(--k-slip-shadow);
+}
+html[data-style="vibrant"][data-skin] #overlay h2 { color: var(--k-slip-title, var(--k-slip-ink)); font-family: var(--k-title-font); text-shadow: var(--k-slip-title-shadow, none); }
+html[data-style="vibrant"][data-skin] #overlay .hint { color: var(--k-slip-mute); }
+html[data-style="vibrant"][data-skin] #overlay .scoreline, html[data-style="vibrant"][data-skin] #overlay .scores { border-top-color: var(--k-slip-line); }
+html[data-style="vibrant"][data-skin] #overlay .scores li { background: var(--k-slip-row); }
+html[data-style="vibrant"][data-skin] #overlay .scores li:first-child { background: var(--k-slip-win); box-shadow: inset 0 0 0 .2vmin var(--k-accent); }
+html[data-style="vibrant"][data-skin] #overlay .scores li::after { border-bottom-color: var(--k-slip-line); }
+html[data-style="vibrant"][data-skin] #overlay .scores li b { color: var(--k-slip-num, var(--k-slip-ink)); font-family: var(--k-num-font); }
+
+/* How to play */
+html[data-style="vibrant"][data-skin] .rules-card {
+  color: var(--k-panel-ink); background: var(--k-rules-bg, var(--k-panel-bg)); border: var(--k-panel-bw, .22vmin) solid var(--k-panel-line);
+  border-radius: var(--k-panel-radius); box-shadow: var(--k-panel-shadow);
+}
+html[data-style="vibrant"][data-skin] .rules-head, html[data-style="vibrant"][data-skin] .rules-foot { border-color: var(--k-panel-line); }
+html[data-style="vibrant"][data-skin] .rules-head h2 { font-family: var(--k-title-font); text-shadow: none; }
+html[data-style="vibrant"][data-skin] .rules-eyebrow, html[data-style="vibrant"][data-skin] .rules-body h3 { color: var(--k-eyebrow, var(--k-accent)); }
+html[data-style="vibrant"][data-skin] .rules-players { color: var(--k-panel-mute); }
+html[data-style="vibrant"][data-skin] .rules-steps li::before { color: var(--k-accent-ink); background: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .rules-win { background: var(--k-ghost-bg); border-color: var(--k-panel-line); }
+html[data-style="vibrant"][data-skin] .rules-x { color: var(--k-panel-ink); background: var(--k-ghost-bg); border-color: var(--k-panel-line); }
+
+/* ---------------------------------------------------------------- the phone */
+html[data-style="vibrant"][data-skin] body.phone::before { background: var(--k-room) !important; background-blend-mode: normal !important; }
+html[data-style="vibrant"][data-skin] body.phone { color: var(--k-felt-ink); }
+html[data-style="vibrant"][data-skin] #app h1, html[data-style="vibrant"][data-skin] #app h2, html[data-style="vibrant"][data-skin] #statusMain { font-family: var(--k-title-font); text-shadow: var(--k-room-title-shadow, 0 3px 0 rgba(0, 0, 0, .35)); }
+html[data-style="vibrant"][data-skin] #app .sub, html[data-style="vibrant"][data-skin] #waitMsg,
+html[data-style="vibrant"][data-skin] #statusSub, html[data-style="vibrant"][data-skin] #handHint, html[data-style="vibrant"][data-skin] .field { color: var(--k-room-mute); }
+html[data-style="vibrant"][data-skin] #app .eyebrow { color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .field input {
+  font-family: var(--k-body-font); color: var(--k-input-ink); background: var(--k-input-bg); border: 2px solid var(--k-input-line); border-radius: var(--k-btn-radius);
+}
+html[data-style="vibrant"][data-skin] .field input::placeholder { color: var(--k-input-mute); }
+html[data-style="vibrant"][data-skin] .field input:focus { border-color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] button.primary, html[data-style="vibrant"][data-skin] .panel-btn.go {
+  font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-go-ink); background: var(--k-go-bg); border: var(--k-go-bw, 0) solid var(--k-go-line, transparent);
+  border-radius: var(--k-btn-radius); box-shadow: 0 5px 0 var(--k-go-edge), 0 12px 24px rgba(0, 0, 0, .3);
+}
+html[data-style="vibrant"][data-skin] button.primary:active, html[data-style="vibrant"][data-skin] .panel-btn.go:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--k-go-edge); }
+html[data-style="vibrant"][data-skin] button.ghost, html[data-style="vibrant"][data-skin] .panel-btn {
+  font-family: var(--k-btn-font, var(--k-body-font)); color: var(--k-pbtn-ink); background: var(--k-pbtn-bg); border: 2px solid var(--k-pbtn-line);
+  border-radius: var(--k-btn-radius); box-shadow: 0 4px 0 var(--k-pbtn-edge, rgba(0, 0, 0, .35));
+}
+html[data-style="vibrant"][data-skin] .panel-btn.on, html[data-style="vibrant"][data-skin] .panel-btn.rank.on, html[data-style="vibrant"][data-skin] .panel-btn.who.on {
+  color: var(--k-accent-ink); background: var(--k-accent); border-color: transparent; box-shadow: 0 4px 0 var(--k-pbtn-edge, rgba(0, 0, 0, .35));
+}
+html[data-style="vibrant"][data-skin] .spinner { border-top-color: var(--k-accent); }
+html[data-style="vibrant"][data-skin] .mt-felt {
+  font-family: var(--k-title-font); color: var(--k-plate-mute); background: var(--k-plate-bg); border: 4px solid var(--k-plate-line); border-radius: var(--k-plate-radius); box-shadow: var(--k-plate-shadow);
+}
+html[data-style="vibrant"][data-skin] .seatbtn { font-family: var(--k-btn-font, var(--k-body-font)); border-radius: var(--k-btn-radius); }
+html[data-style="vibrant"][data-skin] #toast { font-family: var(--k-body-font); color: var(--k-slip-ink); background: var(--k-slip-bg); border-radius: var(--k-btn-radius); }
+
+/* ---------------------------------------------------------------- calm motion */
+/* Every skin keeps its moving effects inside @media (prefers-reduced-motion: no-preference); this is
+   the backstop for anyone who asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html[data-skin] #overlay, html[data-skin] #overlay *, html[data-skin] #overlay::before, html[data-skin] #overlay::after,
+  html[data-skin] body::after, html[data-skin] #felt::after, html[data-skin] .game-title, html[data-skin] .game-title::after,
+  html[data-skin] .plate::before, html[data-skin] .plate::after, html[data-skin] .lobby-info::before, html[data-skin] .lobby-info::after { animation: none !important; }
+}
+
+/* A long label on the big button may wrap rather than run past it (some styles' fonts are wide). */
+html[data-style="vibrant"][data-skin] button.big { white-space: normal; text-wrap: balance; }

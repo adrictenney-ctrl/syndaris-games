@@ -1,9 +1,9 @@
 // Stack Up on a phone: the four build piles along the top, your stock and discard piles in the
 // middle, your hand at the bottom. Tap a card (hand, stock or a discard top), then tap a build
 // pile to play it. To end your turn, tap a hand card and then one of your discard piles.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=97';
-import { suCard, buildCard } from './table-stackup.js?v=97';
-import { fits, WILD } from './stackup.js?v=97';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=99';
+import { suCard, buildCard } from './table-stackup.js?v=99';
+import { fits, WILD } from './stackup.js?v=99';
 
 let sel = null, wasMyTurn = false, ctx = null;
 export function reset() { sel = null; document.getElementById('suPhone')?.remove(); }

@@ -1,0 +1,57 @@
+/* COZY CAFÉ — a warm wooden café table; cream paper cards with soft grain and gentle shadows,
+   latte, sage and blush accents; little doodles (cups, croissants, steam, plants) in the corners.
+   Headings in Fredoka, the rest in Nunito. */
+html[data-style="vibrant"][data-skin="cafe"] {
+  --k-title-font: 'Fredoka', 'Nunito', sans-serif;
+  --k-body-font: 'Nunito', system-ui, sans-serif;
+  --k-num-font: 'Fredoka', 'Nunito', sans-serif;
+  --k-accent: #f2c4c0; --k-accent-ink: #3f2716; --k-eyebrow: #7a5230;
+  --k-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .32 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  --k-doodles: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' fill='none' stroke='%23fff6e9' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' opacity='.22'%3E%3Cpath d='M40 120h56v34a22 22 0 0 1-22 22h-12a22 22 0 0 1-22-22z'/%3E%3Cpath d='M96 130h8a10 10 0 0 1 0 20h-8'/%3E%3Cpath d='M58 104c-6-8 6-12 0-20M74 104c-6-8 6-12 0-20'/%3E%3Cpath d='M30 186h84'/%3E%3Cpath d='M180 60c20-24 70-24 90 0-10 12-24 18-45 18s-35-6-45-18z'/%3E%3Cpath d='M205 50l6 22M225 46v26M245 50l-6 22'/%3E%3Cpath d='M200 220c0-22 14-34 30-36M230 184c8 12 20 18 34 14M230 184v70'/%3E%3Cpath d='M214 254h32l-4 26h-24z'/%3E%3C/svg%3E");
+  --k-felt-base: #4e321d;
+  --k-felt:
+    var(--k-doodles) 1.5% 2% / 26vmin 26vmin no-repeat,
+    var(--k-doodles) 98.5% 98% / 26vmin 26vmin no-repeat,
+    radial-gradient(ellipse 52% 46% at 50% 50%, rgba(255, 238, 210, .1), transparent 72%),
+    repeating-linear-gradient(92deg, rgba(0, 0, 0, .08) 0 .3vmin, transparent .3vmin 3.2vmin, rgba(255, 220, 180, .05) 3.2vmin 3.5vmin, transparent 3.5vmin 7vmin),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 50%, rgba(25, 12, 4, .55)),
+    #5c3b22;
+  --k-felt-ink: #fff3e2; --k-felt-btn: rgba(255, 246, 233, .1); --k-felt-line: rgba(255, 238, 214, .45); --k-print: rgba(255, 236, 210, .45); --k-rail: rgba(255, 236, 210, .25); --k-rail-radius: 3vmin;
+  --k-panel-bg: var(--k-grain) 0 0 / 160px, #fff6e9; --k-panel-ink: #3f2716; --k-panel-mute: #7a5230; --k-panel-line: #e6cdb3; --k-panel-radius: 2.4vmin; --k-panel-bw: .2vmin;
+  --k-panel-shadow: 0 .6vmin 0 #d9b99b, 0 2.4vmin 4vmin rgba(30, 14, 4, .35);
+  --k-settings-bg: rgba(217, 185, 155, .22);
+  --k-plate-bg: var(--k-grain) 0 0 / 160px, #fbeedd; --k-plate-ink: #3f2716; --k-plate-mute: #6b4728; --k-plate-line: #d9b99b; --k-plate-radius: 2.4vmin; --k-plate-bw: .2vmin;
+  --k-plate-shadow: 0 .5vmin 0 #c9a582, 0 1.4vmin 2.6vmin rgba(30, 14, 4, .3);
+  --k-tent-bg: var(--k-grain) 0 0 / 160px, #fff6e9; --k-tent-ink: #3f2716; --k-tent-mute: #7a5230; --k-tent-radius: 2.4vmin;
+  --k-tent-shadow: 0 .7vmin 0 #d9b99b, 0 2.4vmin 4vmin rgba(30, 14, 4, .4); --k-qr: #3f2716;
+  --k-go-bg: #a8c3a0; --k-go-ink: #23361f; --k-go-edge: #7f9b77; --k-btn-radius: 99px;
+  --k-ghost-bg: #f2c4c0; --k-ghost-ink: #3f2716; --k-ghost-line: #e0a9a3; --k-ghost-hover: #f5d0cc; --k-ghost-icon: #7a5230;
+  --k-select-bg: #fffaf2; --k-select-ink: #3f2716; --k-select-line: #d9b99b;
+  --k-slip-bg: var(--k-grain) 0 0 / 160px, #fff6e9; --k-slip-ink: #3f2716; --k-slip-mute: #7a5230; --k-slip-line: #e6cdb3; --k-slip-radius: 2.6vmin; --k-slip-bw: .2vmin;
+  --k-slip-shadow: 0 .8vmin 0 #d9b99b, 0 3vmin 7vmin rgba(30, 14, 4, .5); --k-slip-title: #5c3b22;
+  --k-slip-row: rgba(217, 185, 155, .25); --k-slip-win: #f9dcd8; --k-slip-num: #5c3b22;
+  --k-room: repeating-linear-gradient(92deg, rgba(0, 0, 0, .08) 0 2px, transparent 2px 22px, rgba(255, 220, 180, .05) 22px 24px, transparent 24px 48px), radial-gradient(ellipse 120% 80% at 50% 0%, rgba(255, 220, 180, .12), transparent 70%), #5c3b22;
+  --k-room-mute: #f0dcc4; --k-room-title-shadow: 0 3px 0 rgba(30, 14, 4, .4);
+  --k-pbtn-bg: #fff6e9; --k-pbtn-ink: #3f2716; --k-pbtn-line: #d9b99b; --k-pbtn-edge: #c9a582;
+  --k-input-bg: #fff6e9; --k-input-ink: #3f2716; --k-input-line: #d9b99b; --k-input-mute: #9a7a5c;
+}
+html[data-skin="cafe"] .game-title, html[data-skin="cafe"] #overlay h2, html[data-skin="cafe"] .tent-cap { font-weight: 600; }
+/* pill buttons with a little squish */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-skin="cafe"] button.big:active, html[data-skin="cafe"] button.primary:active, html[data-skin="cafe"] .panel-btn:active, html[data-skin="cafe"] .rules-btn:active { transform: scale(.96, .92); }
+}
+/* winner: steam rises from a mug over the slip; the winner gets a latte-art heart */
+html[data-skin="cafe"] #overlay::before {
+  content: ''; position: absolute; left: 50%; top: -9vmin; width: 12vmin; height: 12vmin; translate: -50% 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M36 34c-8-9 8-13 0-24M50 34c-8-9 8-13 0-24M64 34c-8-9 8-13 0-24' stroke='%23fff6e9' stroke-width='4'/%3E%3Cpath d='M22 44h52v24a20 20 0 0 1-20 20H42a20 20 0 0 1-20-20z' fill='%23fff6e9' stroke='%237a5230' stroke-width='4'/%3E%3Cpath d='M74 50h6a9 9 0 0 1 0 18h-6' stroke='%237a5230' stroke-width='4'/%3E%3Cpath d='M48 60c-4-5-12 0-6 6l6 5 6-5c6-6-2-11-6-6z' fill='%23d9b99b'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+html[data-skin="cafe"] #overlay .scores li:first-child::before {
+  content: ''; order: -1; width: 2.6vmin; height: 2.6vmin; flex: none; margin-right: .4vmin;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%237a5230'/%3E%3Ccircle cx='20' cy='20' r='15' fill='%23c79a6e'/%3E%3Cpath d='M20 29c-7-6-11-9-11-14a5.5 5.5 0 0 1 11-1 5.5 5.5 0 0 1 11 1c0 5-4 8-11 14z' fill='%23fff6e9'/%3E%3Cpath d='M20 29V15' stroke='%23c79a6e' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes cafeSteam { 0% { transform: translateY(1.4vmin); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-1vmin); opacity: .9; } }
+  @keyframes cafeIn { from { transform: translate(-50%, -46%); opacity: 0; } }
+  html[data-skin="cafe"] #overlay { animation: cafeIn .5s cubic-bezier(.2, .8, .3, 1); }
+  html[data-skin="cafe"] #overlay::before { animation: cafeSteam 1.6s ease-out both; }
+}

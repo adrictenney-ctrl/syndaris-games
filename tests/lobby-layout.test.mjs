@@ -18,7 +18,8 @@ test('table.js measures the seat bands for the lobby', () => {
 
 test('the lobby panel is capped to the free middle and its settings scroll', () => {
   const rule = css.slice(css.indexOf('body.in-lobby .lobby-info {'));
-  assert.match(rule, /max-height: calc\(var\(--lob-b, 100vh\) - var\(--lob-t, 0px\)/);
+  assert.match(rule, /max-height: calc\(\(var\(--lob-b, 100vh\) - var\(--lob-t, 0px\)/);
+  assert.match(css, /body\.in-lobby \.lobby-main \{ zoom: var\(--lz, 1\); \}/, 'a last-resort shrink to fit');
   assert.match(js, /function plateRects\(\)/);
   assert.match(js, /--lob-t/);
   assert.match(css, /body\.in-lobby \.lobby-info \.settings \{[^}]*overflow-y: auto/);
@@ -44,4 +45,15 @@ test('nothing in the lobby gets cut off', () => {
   assert.match(js, /function settingsFit\(\)/);
   // seat names clip with "…", so their clip box needs room for letter tails
   assert.match(css, /\.who \.name \{ padding-block: \.16em; margin-block: -\.16em; \}/);
+});
+
+test('style skins: picked before drawing, shared engine, one file per skin', () => {
+  const boot = readFileSync(new URL('../js/skin-boot.js', import.meta.url), 'utf8');
+  const skins = [...boot.matchAll(/^\s{4}(\w+): 'family=/gm)].map(m => m[1]);
+  assert.deepEqual(skins, ['arcade', 'neon', 'cafe', 'comic', 'gameshow', 'sketch', 'luxe', 'paper']);
+  for (const page of ['table.html', 'play.html', 'index.html'])
+    assert.match(readFileSync(new URL('../' + page, import.meta.url), 'utf8'), /<script src="js\/skin-boot\.js\?v=\d+" data-page="\w+"><\/script>/, page);
+  const engine = readFileSync(new URL('../css/skins.css', import.meta.url), 'utf8');
+  assert.match(engine, /prefers-reduced-motion: reduce/);
+  assert.match(js, /de\.dataset\.skin \|\|/, 'the phones get the table\'s skin');
 });

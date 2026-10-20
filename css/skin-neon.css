@@ -1,0 +1,59 @@
+/* NEON NIGHT — a dim room, dark glass panels with glowing tube outlines (purple, blue, magenta,
+   mint), a soft haze. Titles in Monoton, the rest in Rajdhani. No big white areas. */
+html[data-style="vibrant"][data-skin="neon"] {
+  --k-title-font: 'Monoton', 'Rajdhani', sans-serif;
+  --k-body-font: 'Rajdhani', 'Segoe UI', sans-serif;
+  --k-num-font: 'Rajdhani', 'Segoe UI', sans-serif;
+  --k-accent: #3dffb5; --k-accent-ink: #07070f; --k-eyebrow: #ff3dcb;
+  --k-felt-base: #07070f;
+  --k-felt:
+    radial-gradient(ellipse 45% 40% at 22% 30%, rgba(176, 38, 255, .22), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 80% 70%, rgba(45, 155, 255, .2), transparent 70%),
+    radial-gradient(ellipse 50% 44% at 50% 51%, transparent 96.5%, rgba(255, 61, 203, .55) 97% 97.6%, transparent 98.2%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 50%, rgba(0, 0, 0, .7)),
+    #07070f;
+  --k-felt-ink: #ece8ff; --k-felt-btn: rgba(20, 14, 40, .7); --k-felt-line: #b026ff; --k-print: rgba(255, 61, 203, .55); --k-rail: rgba(176, 38, 255, .55); --k-rail-radius: 2vmin;
+  --k-panel-bg: rgba(16, 11, 34, .82); --k-panel-ink: #f2eeff; --k-panel-mute: #b9b2d9; --k-panel-line: #b026ff; --k-panel-radius: 1.4vmin; --k-panel-bw: .22vmin;
+  --k-panel-shadow: 0 0 1.2vmin #b026ff, 0 0 4vmin rgba(176, 38, 255, .45), inset 0 0 1.4vmin rgba(176, 38, 255, .3);
+  --k-plate-bg: rgba(12, 12, 30, .85); --k-plate-ink: #f2eeff; --k-plate-mute: #a9d6ff; --k-plate-line: #2d9bff; --k-plate-radius: 1.4vmin; --k-plate-bw: .22vmin;
+  --k-plate-shadow: 0 0 1vmin #2d9bff, 0 0 3vmin rgba(45, 155, 255, .4), inset 0 0 1vmin rgba(45, 155, 255, .25);
+  --k-tent-bg: #e6e0ff; --k-tent-ink: #120a2a; --k-tent-mute: #4d3f80; --k-tent-radius: 1.4vmin; --k-tent-bw: .25vmin; --k-tent-line: #ff3dcb;
+  --k-tent-shadow: 0 0 1.2vmin #ff3dcb, 0 0 4vmin rgba(255, 61, 203, .45); --k-qr: #120a2a;
+  --k-go-bg: rgba(61, 255, 181, .12); --k-go-ink: #3dffb5; --k-go-edge: rgba(61, 255, 181, .35); --k-go-bw: .25vmin; --k-go-line: #3dffb5; --k-btn-radius: 99px;
+  --k-ghost-bg: rgba(255, 255, 255, .05); --k-ghost-ink: #f2eeff; --k-ghost-line: #ff3dcb; --k-ghost-hover: rgba(255, 61, 203, .14); --k-ghost-icon: #ff3dcb;
+  --k-select-bg: rgba(255, 255, 255, .06); --k-select-ink: #f2eeff; --k-select-line: #2d9bff;
+  --k-slip-bg: rgba(12, 8, 28, .94); --k-slip-ink: #f2eeff; --k-slip-mute: #b9b2d9; --k-slip-line: #ff3dcb; --k-slip-radius: 1.6vmin; --k-slip-bw: .25vmin;
+  --k-slip-shadow: 0 0 1.4vmin #ff3dcb, 0 0 5vmin rgba(255, 61, 203, .45), 0 3vmin 7vmin rgba(0, 0, 0, .7);
+  --k-slip-title: #ffffff; --k-slip-title-shadow: 0 0 .6vmin #ff3dcb, 0 0 2vmin #ff3dcb, 0 0 4vmin #b026ff;
+  --k-slip-row: rgba(255, 255, 255, .05); --k-slip-win: rgba(61, 255, 181, .12); --k-slip-num: #3dffb5;
+  --k-title-shadow: 0 0 .5vmin #b026ff, 0 0 1.8vmin #b026ff, 0 0 3.6vmin rgba(176, 38, 255, .7);
+  --k-name-shadow: 0 0 1.2vmin rgba(45, 155, 255, .7);
+  --k-room: radial-gradient(ellipse 70% 40% at 20% 10%, rgba(176, 38, 255, .3), transparent 70%), radial-gradient(ellipse 70% 40% at 90% 90%, rgba(45, 155, 255, .25), transparent 70%), #07070f;
+  --k-room-mute: #b9b2d9; --k-room-title-shadow: 0 0 6px #b026ff, 0 0 18px #b026ff;
+  --k-pbtn-bg: rgba(16, 11, 34, .85); --k-pbtn-ink: #f2eeff; --k-pbtn-line: #2d9bff; --k-pbtn-edge: rgba(45, 155, 255, .35);
+  --k-input-bg: rgba(16, 11, 34, .85); --k-input-ink: #f2eeff; --k-input-line: #b026ff; --k-input-mute: #8079a6;
+}
+/* Monoton is a display face: titles a touch smaller and spaced, body text a little heavier */
+html[data-skin="neon"] .game-title { font-size: 5.4vmin; letter-spacing: .04em; line-height: 1.15; }
+html[data-skin="neon"] body.many-seats .game-title { font-size: 4.4vmin; }
+html[data-skin="neon"] #overlay h2 { font-size: 5vmin; letter-spacing: .04em; }
+html[data-skin="neon"] .tent-cap, html[data-skin="neon"] .rules-head h2 { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: .04em; }
+html[data-skin="neon"] .who .name { font-family: 'Rajdhani', sans-serif; font-weight: 700; }
+html[data-skin="neon"] body, html[data-skin="neon"] .settings, html[data-skin="neon"] .game-blurb { font-weight: 600; }
+/* neon tubes: outlined buttons that brighten on press */
+html[data-skin="neon"] button.big:not(:disabled), html[data-skin="neon"] button.primary { box-shadow: 0 0 1vmin rgba(61, 255, 181, .7), inset 0 0 1vmin rgba(61, 255, 181, .35); text-shadow: 0 0 .8vmin rgba(61, 255, 181, .8); }
+html[data-skin="neon"] button.big:not(:disabled):active, html[data-skin="neon"] button.primary:active { transform: none; background: rgba(61, 255, 181, .3); color: #fff; box-shadow: 0 0 2.4vmin #3dffb5, inset 0 0 1.6vmin rgba(61, 255, 181, .6); }
+html[data-skin="neon"] .seat-actions button, html[data-skin="neon"] .rules-btn, html[data-skin="neon"] .tool { box-shadow: 0 0 .7vmin rgba(255, 61, 203, .45); }
+html[data-skin="neon"] .rules-btn:active, html[data-skin="neon"] .seat-actions button:active { box-shadow: 0 0 1.8vmin #ff3dcb; color: #fff; }
+@media (prefers-reduced-motion: no-preference) {
+  /* elements flicker on like a sign warming up */
+  @keyframes neonOn { 0% { opacity: 0; } 8% { opacity: .9; } 12% { opacity: .2; } 20% { opacity: 1; } 26% { opacity: .5; } 34%, 100% { opacity: 1; } }
+  @keyframes neonPulse { 0%, 100% { text-shadow: var(--k-slip-title-shadow); } 50% { text-shadow: 0 0 .8vmin #ff3dcb, 0 0 3vmin #ff3dcb, 0 0 6vmin #b026ff; } }
+  @keyframes neonBuzz { 0%, 100% { opacity: 1; } 3% { opacity: .55; } 5% { opacity: 1; } 41% { opacity: 1; } 42% { opacity: .7; } 43% { opacity: 1; } }
+  @keyframes neonSlip { from { transform: translate(-50%, -50%); opacity: 0; } }
+  html[data-skin="neon"] .lobby-info, html[data-skin="neon"] .plate, html[data-skin="neon"] .tent { animation: neonOn .9s linear both; }
+  html[data-skin="neon"] .plate { animation-delay: .15s; }
+  html[data-skin="neon"] #overlay { animation: neonSlip .2s ease-out, neonOn .8s linear; }
+  html[data-skin="neon"] #overlay h2 { animation: neonOn 1s linear, neonPulse 2.4s ease-in-out 1s infinite; }
+  html[data-skin="neon"] .game-title { animation: neonBuzz 7s linear infinite; }
+}

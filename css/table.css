@@ -777,8 +777,8 @@ body.in-lobby #lobby { top: calc((var(--lob-t, var(--edge-t)) + var(--lob-b, cal
 /* The game panel never grows past that space; a long settings list scrolls inside it. */
 body.in-lobby .lobby-info {
   box-sizing: border-box; display: flex; flex-direction: column; min-height: 0;
-  max-height: calc(var(--lob-b, 100vh) - var(--lob-t, 0px) - var(--mirror-h) - 2.4vmin);
-  max-width: min(var(--info-w) + var(--info-pad-x), calc(100vw - var(--edge-l) - var(--edge-r) - var(--tent-span)));
+  max-height: calc((var(--lob-b, 100vh) - var(--lob-t, 0px) - var(--mirror-h) - 2.4vmin) / var(--lz, 1));
+  max-width: calc(min(var(--info-w) + var(--info-pad-x), calc(100vw - var(--edge-l) - var(--edge-r) - var(--tent-span))) / var(--lz, 1));
 }
 body.in-lobby .lobby-info > * { flex: none; }
 body.in-lobby .lobby-info .settings { flex: 0 1 auto; min-height: 5.6vmin; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
@@ -814,3 +814,5 @@ body.in-lobby .game-title { white-space: normal; text-wrap: balance; overflow-wr
 body:is([data-game="chess"], [data-game="powerup"], [data-game="checkers"], [data-game="backgammon"]) .seat.empty .who .name { font-size: 2.9vmin; }
 /* Upright, the top seats' tiles sit against the table edge in the lobby (their card fan is empty). */
 body.in-lobby.upright .seat.side-2 { justify-content: flex-end; }
+/* When nothing else makes the lobby card fit, table.js shrinks it a little (--lz, never below 72%). */
+body.in-lobby .lobby-main { zoom: var(--lz, 1); }

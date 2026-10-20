@@ -13,80 +13,70 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-  <script>
-    // Style from Settings. A join link from a Vibrant table carries ?look=vibrant, so the phone matches the TV.
-    // Vibrant is the default; Classic only when someone picked it (or the table is Classic).
-    (() => {
-      try {
-        const look = new URLSearchParams(location.search).get('look');
-        if (look === 'vibrant' || look === 'classic') localStorage.setItem('pod.style', look);
-        if (localStorage.getItem('pod.style') === 'classic') return;
-      } catch {}
-      document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg';
-    })();
-  </script>
-  <link rel="stylesheet" href="css/cards.css?v=97">
-  <link rel="stylesheet" href="css/play.css?v=97">
-  <link rel="stylesheet" href="css/backgammon.css?v=97">
-  <link rel="stylesheet" href="css/sketch.css?v=97">
-  <link rel="stylesheet" href="css/chefskiss.css?v=97">
-  <link rel="stylesheet" href="css/insidejob.css?v=97">
-  <link rel="stylesheet" href="css/crown.css?v=97">
-  <link rel="stylesheet" href="css/hollow.css?v=97">
-  <link rel="stylesheet" href="css/casino.css?v=97">
-  <link rel="stylesheet" href="css/checkers.css?v=97">
-  <link rel="stylesheet" href="css/yacht.css?v=97">
-  <link rel="stylesheet" href="css/spoons.css?v=97">
-  <link rel="stylesheet" href="css/doubt.css?v=97">
-  <link rel="stylesheet" href="css/cashout.css?v=97">
-  <link rel="stylesheet" href="css/crazy8.css?v=97">
-  <link rel="stylesheet" href="css/skyline.css?v=97">
-  <link rel="stylesheet" href="css/lowtide.css?v=97">
-  <link rel="stylesheet" href="css/duels.css?v=97">
-  <link rel="stylesheet" href="css/sonar.css?v=97">
-  <link rel="stylesheet" href="css/milestones.css?v=97">
-  <link rel="stylesheet" href="css/wrongnumber.css?v=97">
-  <link rel="stylesheet" href="css/scribble.css?v=97">
-  <link rel="stylesheet" href="css/manor.css?v=97">
-  <link rel="stylesheet" href="css/warfront.css?v=97">
-  <link rel="stylesheet" href="css/ironroutes.css?v=97">
-  <link rel="stylesheet" href="css/homestead.css?v=97">
-  <link rel="stylesheet" href="css/wordsmith.css?v=97">
-  <link rel="stylesheet" href="css/cardgames.css?v=97">
-  <link rel="stylesheet" href="css/social.css?v=97">
-  <link rel="stylesheet" href="css/words.css?v=97">
-  <link rel="stylesheet" href="css/choice.css?v=97">
-  <link rel="stylesheet" href="css/quiz.css?v=97">
-  <link rel="stylesheet" href="css/party4.css?v=97">
-  <link rel="stylesheet" href="css/party3.css?v=97">
-  <link rel="stylesheet" href="css/party2.css?v=97">
-  <link rel="stylesheet" href="css/race.css?v=97">
-  <link rel="stylesheet" href="css/dice.css?v=97">
-  <link rel="stylesheet" href="css/boards.css?v=97">
-  <link rel="stylesheet" href="css/roles.css?v=97">
-  <link rel="stylesheet" href="css/decks.css?v=97">
-  <link rel="stylesheet" href="css/classic.css?v=97">
-  <link rel="stylesheet" href="css/war.css?v=97">
-  <link rel="stylesheet" href="css/tricks.css?v=97">
-  <link rel="stylesheet" href="css/words4fun.css?v=97">
-  <link rel="stylesheet" href="css/hardsell.css?v=97">
-  <link rel="stylesheet" href="css/houserules.css?v=97">
-  <link rel="stylesheet" href="css/bannerraid.css?v=97">
-  <link rel="stylesheet" href="css/fieldagents.css?v=97">
-  <link rel="stylesheet" href="css/dialitin.css?v=97">
-  <link rel="stylesheet" href="css/pileup.css?v=97">
-  <link rel="stylesheet" href="css/luckystreak.css?v=97">
-  <link rel="stylesheet" href="css/passpot.css?v=97">
-  <link rel="stylesheet" href="css/tessera.css?v=97">
-  <link rel="stylesheet" href="css/gearworks.css?v=97">
-  <link rel="stylesheet" href="css/redline.css?v=97">
-  <link rel="stylesheet" href="css/grandprix.css?v=97">
-  <link rel="stylesheet" href="css/spires.css?v=97">
-  <link rel="stylesheet" href="css/kaboom.css?v=97">
-  <link rel="stylesheet" href="css/nestegg.css?v=97">
-  <link rel="stylesheet" href="css/cardart.css?v=97">
-  <link rel="stylesheet" href="css/talk.css?v=97">
-  <link rel="stylesheet" href="css/vibrant.css?v=97">
+  <!-- Style: the join link carries the table's look (?look=…), so the phone matches the TV. -->
+  <script src="js/skin-boot.js?v=99" data-page="phone"></script>
+  <link rel="stylesheet" href="css/cards.css?v=99">
+  <link rel="stylesheet" href="css/play.css?v=99">
+  <link rel="stylesheet" href="css/backgammon.css?v=99">
+  <link rel="stylesheet" href="css/sketch.css?v=99">
+  <link rel="stylesheet" href="css/chefskiss.css?v=99">
+  <link rel="stylesheet" href="css/insidejob.css?v=99">
+  <link rel="stylesheet" href="css/crown.css?v=99">
+  <link rel="stylesheet" href="css/hollow.css?v=99">
+  <link rel="stylesheet" href="css/casino.css?v=99">
+  <link rel="stylesheet" href="css/checkers.css?v=99">
+  <link rel="stylesheet" href="css/yacht.css?v=99">
+  <link rel="stylesheet" href="css/spoons.css?v=99">
+  <link rel="stylesheet" href="css/doubt.css?v=99">
+  <link rel="stylesheet" href="css/cashout.css?v=99">
+  <link rel="stylesheet" href="css/crazy8.css?v=99">
+  <link rel="stylesheet" href="css/skyline.css?v=99">
+  <link rel="stylesheet" href="css/lowtide.css?v=99">
+  <link rel="stylesheet" href="css/duels.css?v=99">
+  <link rel="stylesheet" href="css/sonar.css?v=99">
+  <link rel="stylesheet" href="css/milestones.css?v=99">
+  <link rel="stylesheet" href="css/wrongnumber.css?v=99">
+  <link rel="stylesheet" href="css/scribble.css?v=99">
+  <link rel="stylesheet" href="css/manor.css?v=99">
+  <link rel="stylesheet" href="css/warfront.css?v=99">
+  <link rel="stylesheet" href="css/ironroutes.css?v=99">
+  <link rel="stylesheet" href="css/homestead.css?v=99">
+  <link rel="stylesheet" href="css/wordsmith.css?v=99">
+  <link rel="stylesheet" href="css/cardgames.css?v=99">
+  <link rel="stylesheet" href="css/social.css?v=99">
+  <link rel="stylesheet" href="css/words.css?v=99">
+  <link rel="stylesheet" href="css/choice.css?v=99">
+  <link rel="stylesheet" href="css/quiz.css?v=99">
+  <link rel="stylesheet" href="css/party4.css?v=99">
+  <link rel="stylesheet" href="css/party3.css?v=99">
+  <link rel="stylesheet" href="css/party2.css?v=99">
+  <link rel="stylesheet" href="css/race.css?v=99">
+  <link rel="stylesheet" href="css/dice.css?v=99">
+  <link rel="stylesheet" href="css/boards.css?v=99">
+  <link rel="stylesheet" href="css/roles.css?v=99">
+  <link rel="stylesheet" href="css/decks.css?v=99">
+  <link rel="stylesheet" href="css/classic.css?v=99">
+  <link rel="stylesheet" href="css/war.css?v=99">
+  <link rel="stylesheet" href="css/tricks.css?v=99">
+  <link rel="stylesheet" href="css/words4fun.css?v=99">
+  <link rel="stylesheet" href="css/hardsell.css?v=99">
+  <link rel="stylesheet" href="css/houserules.css?v=99">
+  <link rel="stylesheet" href="css/bannerraid.css?v=99">
+  <link rel="stylesheet" href="css/fieldagents.css?v=99">
+  <link rel="stylesheet" href="css/dialitin.css?v=99">
+  <link rel="stylesheet" href="css/pileup.css?v=99">
+  <link rel="stylesheet" href="css/luckystreak.css?v=99">
+  <link rel="stylesheet" href="css/passpot.css?v=99">
+  <link rel="stylesheet" href="css/tessera.css?v=99">
+  <link rel="stylesheet" href="css/gearworks.css?v=99">
+  <link rel="stylesheet" href="css/redline.css?v=99">
+  <link rel="stylesheet" href="css/grandprix.css?v=99">
+  <link rel="stylesheet" href="css/spires.css?v=99">
+  <link rel="stylesheet" href="css/kaboom.css?v=99">
+  <link rel="stylesheet" href="css/nestegg.css?v=99">
+  <link rel="stylesheet" href="css/cardart.css?v=99">
+  <link rel="stylesheet" href="css/talk.css?v=99">
+  <link rel="stylesheet" href="css/vibrant.css?v=99">
   <script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.1/dist/mqtt.min.js"></script>
 </head>
 <body class="phone">
@@ -140,6 +130,6 @@
     <div id="netbar" hidden></div>
     <div id="toast"></div>
   </main>
-  <script type="module" src="js/play.js?v=97"></script>
+  <script type="module" src="js/play.js?v=99"></script>
 </body>
 </html>

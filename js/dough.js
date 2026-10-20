@@ -13,6 +13,15 @@ export const WIN_DOUGH = 10;
 export const STYLES = {
   vibrant: { name: 'Vibrant', price: 0 },
   classic: { name: 'Classic', price: 100 },
+  // skins: Vibrant's layout with their own look on the table and phones
+  arcade: { name: 'Retro Arcade', price: 100 },
+  neon: { name: 'Neon Night', price: 100 },
+  cafe: { name: 'Cozy Café', price: 100 },
+  comic: { name: 'Comic Book', price: 100 },
+  gameshow: { name: 'Game Show', price: 100 },
+  sketch: { name: 'Sketchbook', price: 100 },
+  luxe: { name: 'Midnight Luxe', price: 100 },
+  paper: { name: 'Paper Craft', price: 100 },
 };
 
 const LS = { pending: 'pod.dough.pending', owned: 'pod.owned', seen: 'pod.dough.seen' };

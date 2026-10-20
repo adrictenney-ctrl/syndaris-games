@@ -13,15 +13,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-  <script>
-    // The home page style (Settings): classic black-and-gold, or vibrant game-night colours.
-    // Vibrant is the default; Classic only when someone picked it in Settings.
-    let podStyle = null, podOwned = []; try { podStyle = localStorage.getItem('pod.style'); podOwned = JSON.parse(localStorage.getItem('pod.owned')) || []; } catch {}
-    // Classic is bought with Dough: only use it when the signed-in account owns it.
-    if (podStyle !== 'classic' || !podOwned.includes('classic')) { document.documentElement.dataset.style = 'vibrant'; document.querySelector('link[rel="icon"]').href = 'icon-vibrant.svg'; }
-  </script>
-  <link rel="stylesheet" href="css/cards.css?v=97">
-  <link rel="stylesheet" href="css/tablet.css?v=97">
+  <!-- Style from Settings: Vibrant (free), Classic or a skin (bought; skins dress the table and phones). -->
+  <script src="js/skin-boot.js?v=99" data-page="home"></script>
+  <link rel="stylesheet" href="css/cards.css?v=99">
+  <link rel="stylesheet" href="css/tablet.css?v=99">
   <style>
     html { background: var(--onyx); }
     body {
@@ -288,6 +283,34 @@
     .sw-vibrant b { background: linear-gradient(100deg, #5a1fa0, #e0303f 60%, #ff8a2a); }
     .sw-vibrant i { background: linear-gradient(160deg, #ff5a4e, #c8203a); }
     .sw-vibrant i:nth-of-type(2) { background: linear-gradient(160deg, #2fd08f, #0e8a5a); } .sw-vibrant i:nth-of-type(3) { background: linear-gradient(160deg, #4a95ff, #1f4fd6); }
+    /* the skins (they dress the table and the phones) */
+    .sw-arcade { background: #0a0a12; box-shadow: inset 0 0 0 2px #ff2e88; }
+    .sw-arcade b { background: repeating-linear-gradient(90deg, #ff2e88 0 6px, #ffe600 6px 12px); border-radius: 0; }
+    .sw-arcade i { background: #12121e; border-radius: 0; box-shadow: inset 0 0 0 2px #00e5ff, 3px 3px 0 #006b78; }
+    .sw-arcade i:nth-of-type(2) { box-shadow: inset 0 0 0 2px #a6ff00, 3px 3px 0 #4c7a00; }
+    .sw-neon { background: radial-gradient(circle at 25% 30%, rgba(176, 38, 255, .5), transparent 60%), radial-gradient(circle at 80% 80%, rgba(45, 155, 255, .4), transparent 60%), #07070f; }
+    .sw-neon b { background: transparent; box-shadow: inset 0 0 0 2px #ff3dcb, 0 0 8px #ff3dcb; }
+    .sw-neon i { background: rgba(12, 12, 30, .8); box-shadow: inset 0 0 0 2px #2d9bff, 0 0 6px #2d9bff; }
+    .sw-neon i:nth-of-type(2) { box-shadow: inset 0 0 0 2px #3dffb5, 0 0 6px #3dffb5; }
+    .sw-cafe { background: repeating-linear-gradient(92deg, rgba(0, 0, 0, .1) 0 2px, transparent 2px 14px), #5c3b22; }
+    .sw-cafe b { background: #fff6e9; border-radius: 8px; }
+    .sw-cafe i { background: #fbeedd; border-radius: 9px; } .sw-cafe i:nth-of-type(2) { background: #a8c3a0; } .sw-cafe i:nth-of-type(3) { background: #f2c4c0; }
+    .sw-comic { background: radial-gradient(circle, rgba(255, 255, 255, .25) 1.2px, transparent 1.6px) 0 0 / 6px 6px, #1553b8; }
+    .sw-comic b { background: #fffdf5; border-radius: 2px; box-shadow: inset 0 0 0 2px #111, 3px 3px 0 #111; }
+    .sw-comic i { background: radial-gradient(circle, rgba(0, 0, 0, .18) 1px, transparent 1.4px) 0 0 / 5px 5px, #ffd400; border-radius: 2px; box-shadow: inset 0 0 0 2px #111; }
+    .sw-comic i:nth-of-type(2) { background-color: #e8202a; }
+    .sw-gameshow { background: radial-gradient(ellipse at 50% 0%, rgba(245, 197, 66, .35), transparent 60%), #0b1640; }
+    .sw-gameshow b { background: radial-gradient(circle, #ffe9a0 0 1.6px, transparent 2px) 0 0 / 8px 8px, #13235e; box-shadow: inset 0 0 0 2px #f5c542; }
+    .sw-gameshow i { background: linear-gradient(#b81f33, #7d1322); border-top: 4px solid #f5c542; }
+    .sw-sketch { background: #26324a; }
+    .sw-sketch b { background: repeating-linear-gradient(#fbfbf7 0 7px, #bfd4f2 7px 8px); box-shadow: inset 6px 0 0 -4px #f2a7a7, inset 0 0 0 1.5px #222; border-radius: 3px; transform: rotate(-1deg); }
+    .sw-sketch i { background: #fbfbf7; box-shadow: inset 0 0 0 1.5px #222; border-radius: 4px; transform: rotate(1.5deg); } .sw-sketch i:nth-of-type(2) { background: #ffe45c; transform: rotate(-1.5deg); }
+    .sw-luxe { background: radial-gradient(ellipse at 50% 30%, rgba(201, 162, 77, .2), transparent 60%), #0d0d0d; }
+    .sw-luxe b { background: linear-gradient(100deg, transparent 30%, rgba(241, 227, 195, .35) 50%, transparent 70%), #1c1c1c; box-shadow: inset 0 0 0 1px #c9a24d; }
+    .sw-luxe i { background: #1c1c1c; box-shadow: inset 0 0 0 1px #c9a24d; } .sw-luxe i:nth-of-type(2) { background: #0f5c4a; }
+    .sw-paper { background: repeating-linear-gradient(90deg, rgba(0, 0, 0, .1) 0 2px, transparent 2px 7px), #6b4a2b; }
+    .sw-paper b { background: #e3c9a3; border-radius: 2px; box-shadow: 0 2px 0 #b48a5c; }
+    .sw-paper i { background: #17bebb; border-radius: 2px; box-shadow: 0 2px 0 rgba(0, 0, 0, .3); } .sw-paper i:nth-of-type(2) { background: #ffc914; } .sw-paper i:nth-of-type(3) { background: #e4572e; }
     .set-note { margin: 16px 2px 0; font-family: var(--ui); font-size: 12.5px; color: var(--mute); }
     /* ---------- Dough and the style shop ---------- */
     .loaf { width: 1.15em; height: 1.15em; vertical-align: -.2em; margin-right: .2em; }
@@ -360,7 +383,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=97">
+  <link rel="stylesheet" href="css/vibrant.css?v=99">
 </head>
 <body class="home">
   <header class="bar">
@@ -441,10 +464,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=97"></script>
+  <script type="module" src="js/tvnav.js?v=99"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=97';
-    import { sceneSVG } from './js/covers.js?v=97';
+    import { GAMES } from './js/games.js?v=99';
+    import { sceneSVG } from './js/covers.js?v=99';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
@@ -671,21 +694,33 @@
     // ---- Settings: pick the page style (saved per device).
     const dlg = document.getElementById('settings');
     const theme = document.querySelector('meta[name="theme-color"]');
+    // The skins in the shop (each dresses the table and the phones; the home page stays Vibrant).
+    // A skin is listed here once it's finished.
+    const SKIN_SHOP = [
+      ['arcade', 'Retro Arcade', 'Pixel frames, hot pinks and 8-bit glow'],
+      ['neon', 'Neon Night', 'Glowing tube outlines for a dim room'],
+    ];
+    const LOAF0 = dlg.querySelector('[data-price="classic"] svg').outerHTML;
+    dlg.querySelector('.styles').insertAdjacentHTML('beforeend', SKIN_SHOP.map(([id, name, sub]) =>
+      `<button type="button" class="style-opt" data-style="${id}" role="radio"><span class="sw sw-${id}"><b></b><i></i><i></i><i></i></span><strong>${name}</strong><small>${sub}</small><em class="style-price" data-price="${id}">${LOAF0}100</em></button>`).join(''));
     const opts = [...dlg.querySelectorAll('.style-opt')];
-    const curStyle = () => document.documentElement.dataset.style === 'vibrant' ? 'vibrant' : 'classic';
+    const curStyle = () => document.documentElement.dataset.skin || (document.documentElement.dataset.style === 'vibrant' ? 'vibrant' : 'classic');
     const markStyle = () => {
       opts.forEach(o => o.setAttribute('aria-checked', o.dataset.style === curStyle()));
-      theme.content = curStyle() === 'vibrant' ? '#231a86' : '#0c0b0a';
+      theme.content = curStyle() === 'classic' ? '#0c0b0a' : '#231a86';
     };
     function setStyle(st) {
-      if (st === 'vibrant') document.documentElement.dataset.style = st; else delete document.documentElement.dataset.style;
+      const skin = SKIN_SHOP.some(([id]) => id === st);
+      if (st === 'classic') delete document.documentElement.dataset.style; else document.documentElement.dataset.style = 'vibrant';
+      if (skin) document.documentElement.dataset.skin = st; else delete document.documentElement.dataset.skin;
       try { localStorage.setItem('pod.style', st); } catch {}
-      document.querySelector('link[rel="icon"]').href = st === 'vibrant' ? 'icon-vibrant.svg' : 'icon.svg';
+      document.querySelector('link[rel="icon"]').href = st === 'classic' ? 'icon.svg' : 'icon-vibrant.svg';
       markStyle();
       redrawBoxes();
     }
     // ---- Dough and the style shop. Vibrant is free; other styles are bought with Dough.
     const PRICES = { vibrant: 0, classic: 100 }, NAMES = { vibrant: 'Vibrant', classic: 'Classic' };
+    SKIN_SHOP.forEach(([id, name]) => { PRICES[id] = 100; NAMES[id] = name; });
     const LOAF = "<svg class=\"loaf\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 11c0-3.5 3.6-6 8-6s8 2.5 8 6c0 1.2-.8 2-2 2v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5c-1.2 0-2-.8-2-2z\" fill=\"#e8b45a\" stroke=\"#7a4a14\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/><path d=\"M9 9l1 2M12 8.5l1 2M15 9l1 2\" stroke=\"#7a4a14\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>";
     let wallet = { signedIn: false, dough: 0, styles: [] }, D = null;
     const owns = st => !PRICES[st] || wallet.styles.includes(st);
@@ -763,7 +798,7 @@
     codeIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); useCode(); } });
     amountIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addDough(); } });
     const showCodes = () => { codeRow.hidden = !wallet.signedIn || !amountRow.hidden; if (!wallet.signedIn) { amountRow.hidden = giftRow.hidden = true; say(''); } };
-    if (!onTV) import('./js/dough.js?v=4').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); }); }).catch(() => {});
+    if (!onTV) import('./js/dough.js?v=5').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); }); }).catch(() => {});
     // ---- Parent Controls (Settings → Family). They're kept in step with the parent's account; when
     // the list of turned-off games changes, the page reloads so they disappear (or come back) everywhere.
     const pcBtn = document.getElementById('openParental'), pcSum = document.getElementById('pcSummary');

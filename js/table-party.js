@@ -2,9 +2,9 @@
 // and a center(g, ctx) that returns the middle of the table as HTML; this handles the rest —
 // redrawing when something changes, the shared clock (.pt-clock, from g.endAt), sounds
 // (g.sfx), scores on the name plates and the end-of-game card.
-import { ding, buzzer, chime, sad, thud } from './sfx.js?v=97';
-import { partyClock } from './table-dontsay.js?v=97';
-import { esc, TEAMS } from './party.js?v=97';
+import { ding, buzzer, chime, sad, thud } from './sfx.js?v=99';
+import { partyClock } from './table-dontsay.js?v=99';
+import { esc, TEAMS } from './party.js?v=99';
 
 const SFX = { ding, buzzer, chime, sad, thud };
 export { esc, TEAMS };

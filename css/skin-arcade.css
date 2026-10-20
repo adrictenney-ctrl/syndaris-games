@@ -1,0 +1,83 @@
+/* RETRO ARCADE — black cabinet, hot pink / cyan / lime / yellow, pixel frames, 8-bit shadows,
+   faint CRT scanlines. Headings and scores in Press Start 2P, the rest in VT323. */
+html[data-style="vibrant"][data-skin="arcade"] {
+  --k-title-font: 'Press Start 2P', 'VT323', monospace;
+  --k-body-font: 'VT323', 'Courier New', monospace;
+  --k-num-font: 'Press Start 2P', 'VT323', monospace;
+  --k-btn-font: 'Press Start 2P', monospace;
+  --k-accent: #ffe600; --k-accent-ink: #0a0a12; --k-eyebrow: #00e5ff;
+  --k-felt-base: #0a0a12;
+  --k-felt:
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255, 46, 136, .14), transparent 70%),
+    linear-gradient(rgba(0, 229, 255, .07) 1px, transparent 1px) 0 0 / 4vmin 4vmin,
+    linear-gradient(90deg, rgba(0, 229, 255, .07) 1px, transparent 1px) 0 0 / 4vmin 4vmin,
+    #0a0a12;
+  --k-felt-ink: #e8f9ff; --k-felt-btn: #12121e; --k-felt-line: #00e5ff; --k-print: rgba(0, 229, 255, .45); --k-rail: #ff2e88; --k-rail-radius: 0;
+  --k-panel-bg: #12121e; --k-panel-ink: #ffffff; --k-panel-mute: #b9c6e4; --k-panel-line: #ff2e88; --k-panel-radius: 0; --k-panel-bw: .45vmin;
+  --k-panel-shadow: .6vmin .6vmin 0 #ff2e88;
+  --k-plate-bg: #12121e; --k-plate-ink: #ffffff; --k-plate-mute: #a8f4ff; --k-plate-line: #00e5ff; --k-plate-radius: 0; --k-plate-bw: .4vmin;
+  --k-plate-shadow: .5vmin .5vmin 0 #006b78;
+  --k-tent-bg: #ffffff; --k-tent-ink: #0a0a12; --k-tent-mute: #4a3a6a; --k-tent-radius: 0; --k-tent-bw: .5vmin; --k-tent-line: #a6ff00;
+  --k-tent-shadow: .7vmin .7vmin 0 #a6ff00; --k-qr: #0a0a12;
+  --k-go-bg: #a6ff00; --k-go-ink: #0a0a12; --k-go-edge: #4c7a00; --k-btn-radius: 0;
+  --k-ghost-bg: #1b1b2c; --k-ghost-ink: #ffffff; --k-ghost-line: #00e5ff; --k-ghost-hover: #23233a;
+  --k-select-bg: #1b1b2c; --k-select-ink: #ffffff; --k-select-line: #00e5ff;
+  --k-slip-bg: #0a0a12; --k-slip-ink: #ffffff; --k-slip-mute: #b9c6e4; --k-slip-line: #ff2e88; --k-slip-radius: 0; --k-slip-bw: .5vmin;
+  --k-slip-shadow: .8vmin .8vmin 0 #ff2e88, 0 3vmin 7vmin rgba(0, 0, 0, .6); --k-slip-title: #ffe600; --k-slip-title-shadow: .4vmin .4vmin 0 #ff2e88;
+  --k-slip-row: #1b1b2c; --k-slip-win: #2a2a10; --k-slip-num: #a6ff00;
+  --k-title-shadow: .35vmin .35vmin 0 #ff2e88, 0 0 1.6vmin rgba(0, 229, 255, .45);
+  --k-room: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 46, 136, .2), transparent 70%), linear-gradient(rgba(0, 229, 255, .07) 1px, transparent 1px) 0 0 / 22px 22px, linear-gradient(90deg, rgba(0, 229, 255, .07) 1px, transparent 1px) 0 0 / 22px 22px, #0a0a12;
+  --k-room-mute: #b9c6e4; --k-room-title-shadow: 3px 3px 0 #ff2e88;
+  --k-pbtn-bg: #12121e; --k-pbtn-ink: #ffffff; --k-pbtn-line: #00e5ff; --k-pbtn-edge: #006b78;
+  --k-input-bg: #12121e; --k-input-ink: #ffffff; --k-input-line: #00e5ff; --k-input-mute: #7f8bb0;
+  /* VT323 is drawn small: even out the letter heights so body text reads at the same size */
+  font-size-adjust: .56;
+}
+/* pixel frames: stepped corners on panels, seats and buttons */
+html[data-skin="arcade"] .lobby-info, html[data-skin="arcade"] .plate, html[data-skin="arcade"] #overlay, html[data-skin="arcade"] .rules-card {
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' shape-rendering='crispEdges'%3E%3Cpath d='M4 0h4v4H4zM0 4h4v4H0zM8 4h4v4H8zM4 8h4v4H4z' fill='%23ff2e88'/%3E%3C/svg%3E") 4 / var(--k-panel-bw) stretch;
+}
+html[data-skin="arcade"] .plate { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' shape-rendering='crispEdges'%3E%3Cpath d='M4 0h4v4H4zM0 4h4v4H0zM8 4h4v4H8zM4 8h4v4H4z' fill='%2300e5ff'/%3E%3C/svg%3E"); border-image-width: var(--k-plate-bw); }
+html[data-skin="arcade"] .seat.turn .plate { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' shape-rendering='crispEdges'%3E%3Cpath d='M4 0h4v4H4zM0 4h4v4H0zM8 4h4v4H8zM4 8h4v4H4z' fill='%23ffe600'/%3E%3C/svg%3E"); }
+/* headings and scores in pixels: Press Start 2P is wide, so a little smaller */
+html[data-skin="arcade"] .game-title { font-size: 4.4vmin; line-height: 1.3; }
+html[data-skin="arcade"] body.many-seats .game-title { font-size: 3.6vmin; }
+html[data-skin="arcade"] #overlay h2 { font-size: 3.8vmin; line-height: 1.4; }
+html[data-skin="arcade"] .tent-cap { font-size: 1.7vmin; line-height: 1.5; white-space: normal; }
+html[data-skin="arcade"] .eyebrow, html[data-skin="arcade"] .rules-btn, html[data-skin="arcade"] button.big, html[data-skin="arcade"] .tool, html[data-skin="arcade"] .seat-actions button { font-size-adjust: none; letter-spacing: .06em; }
+html[data-skin="arcade"] button.big { font-size: 1.5vmin; }
+html[data-skin="arcade"] .rules-head h2 { font-size: 3.4vmin; line-height: 1.35; }
+html[data-skin="arcade"] .who .name { font-family: var(--k-body-font); font-size: 4vmin; letter-spacing: .04em; }
+html[data-skin="arcade"] body.many-seats .who .name { font-size: 3.4vmin; }
+/* chunky buttons press down 4px */
+html[data-skin="arcade"] button.big, html[data-skin="arcade"] button.primary, html[data-skin="arcade"] .panel-btn, html[data-skin="arcade"] button.ghost { box-shadow: .5vmin .5vmin 0 #4c7a00; }
+html[data-skin="arcade"] button.big:active, html[data-skin="arcade"] button.primary:active, html[data-skin="arcade"] .panel-btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 transparent; }
+/* faint CRT scanlines over the whole screen */
+html[data-skin="arcade"] body::after {
+  content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .35) 0 1px, transparent 1px 3px); opacity: .17;
+}
+/* winner: blinking text, a pixel star burst, a score that counts up */
+html[data-skin="arcade"] #overlay::before {
+  content: ''; position: absolute; left: 50%; top: -5vmin; width: 26vmin; height: 10vmin; translate: -50% 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 20' shape-rendering='crispEdges'%3E%3Cg fill='%23ffe600'%3E%3Cpath d='M4 8h2v2H4zM2 10h6v2H2zM4 12h2v2H4z'/%3E%3Cpath d='M44 4h2v2h-2zM42 6h6v2h-6zM44 8h2v2h-2z'/%3E%3C/g%3E%3Cg fill='%23ff2e88'%3E%3Cpath d='M14 2h2v2h-2zM12 4h6v2h-6zM14 6h2v2h-2z'/%3E%3Cpath d='M36 12h2v2h-2zM34 14h6v2h-6zM36 16h2v2h-2z'/%3E%3C/g%3E%3Cg fill='%2300e5ff'%3E%3Ccircle cx='26' cy='6' r='3'/%3E%3Cpath d='M24 4h4v4h-4z'/%3E%3C/g%3E%3Cg fill='%23a6ff00'%3E%3Cpath d='M22 14h2v2h-2zM30 14h2v2h-2zM8 16h2v2H8z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes arcadeBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: .25; } }
+  @keyframes arcadeBurst { from { transform: scale(.4); opacity: 0; } 60% { transform: scale(1.15); opacity: 1; } }
+  @keyframes arcadeIn { from { transform: translate(-50%, -50%) scale(.6); opacity: 0; } 70% { transform: translate(-50%, -50%) scale(1.04); } }
+  @keyframes arcadeCount { from { opacity: 0; transform: translateY(1vmin); } }
+  html[data-skin="arcade"] #overlay { animation: arcadeIn .35s steps(5); }
+  html[data-skin="arcade"] #overlay h2 { animation: arcadeBlink .9s steps(1) 4; }
+  html[data-skin="arcade"] #overlay::before { animation: arcadeBurst .6s steps(6); }
+  html[data-skin="arcade"] #overlay .scores li b { animation: arcadeCount .5s steps(6) both; }
+  html[data-skin="arcade"] #overlay .scores li:nth-child(2) b { animation-delay: .15s; }
+  html[data-skin="arcade"] #overlay .scores li:nth-child(3) b { animation-delay: .3s; }
+  html[data-skin="arcade"] #overlay .scores li:nth-child(n+4) b { animation-delay: .45s; }
+}
+/* playing cards keep their own printed type size */
+html[data-skin="arcade"] .card, html[data-skin="arcade"] #qr, html[data-skin="arcade"] .tent-room b { font-size-adjust: none; }
+/* seat names: VT323's tall letters get room above and below, and names fit their tiles */
+html[data-skin="arcade"] .who .name { font-size: 3.1vmin; line-height: 1.25; padding-block: .25em; margin-block: -.25em; }
+html[data-skin="arcade"] body.many-seats .who .name { font-size: 3vmin; }
+html[data-skin="arcade"] button.big { font-size: 1.3vmin; line-height: 1.6; }

@@ -1,8 +1,8 @@
 // Spades on a phone: bid how many tricks you'll take (0 is Nil), then play — tap a bright card
 // twice, or swipe it up.
-import { $, setHud, setStatus } from './phone-kit.js?v=97';
-import { playHand } from './play-hearts.js?v=97';
-import { teamOf, partnerOf } from './spades.js?v=97';
+import { $, setHud, setStatus } from './phone-kit.js?v=99';
+import { playHand } from './play-hearts.js?v=99';
+import { teamOf, partnerOf } from './spades.js?v=99';
 
 let wasMyTurn = false, pick = null, lastHand = -1;
 export function reset() { pick = null; lastHand = -1; }

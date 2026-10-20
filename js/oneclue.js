@@ -3,8 +3,8 @@
 // table — but any clue that someone else also wrote is crossed out first, so be original! The
 // guesser has one try. Get it and the team scores; a wrong guess also costs the next card; passing
 // costs nothing. How many of the 13 can you get?
-import { base, shuffle, deal, same, core, cleanText, sfx, left, announce, waiting } from './party.js?v=97';
-import { LISTS } from './sketch-words.js?v=97';
+import { base, shuffle, deal, same, core, cleanText, sfx, left, announce, waiting } from './party.js?v=99';
+import { LISTS } from './sketch-words.js?v=99';
 
 export const WORDS = [...new Set([...LISTS.easy, ...LISTS.medium])].filter(w => !w.includes(' '));
 export function createGame(settings, players) {
