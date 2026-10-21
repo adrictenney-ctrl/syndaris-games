@@ -749,8 +749,9 @@ deep jewel tones (emerald, sapphire, oxblood, aubergine) only as quiet glows beh
   Scribble Chain: the last guess in a book that matches the original word scores a point; points carry over
   through "Play again".
 - **Signed out?** The win waits on that phone and is paid in the next time the player signs in on the home page.
-- **Spending:** Settings is also the style shop. Vibrant is free; Classic costs **100 Dough**. Owned styles are stored
-  on the account; Classic only applies on a device whose signed-in account owns it.
+- **Spending:** Settings is also the style shop. Vibrant is free; the eight skins (Retro Arcade, Neon Night, Cozy Café,
+  Comic Book, Game Show, Sketchbook, Midnight Luxe, Paper Craft) cost **100 Dough** each. Owned styles are stored on the
+  account; a skin only applies on a device whose signed-in account owns it. (Classic was retired.)
 - **Storage:** Firestore `users/{uid} = { name, dough, styles, updatedAt }`, protected by the security rules
   (only you can read or change yours; Dough rises by at most 10 per change; a style can only be bought at its price).
 - **Codes:** Settings has a "Have a code?" box for signed-in players (`checkCode` / `redeemDough` in `js/dough.js`).

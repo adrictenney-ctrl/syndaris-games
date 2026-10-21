@@ -1,6 +1,5 @@
 // Picks the page's style before anything is drawn (loaded in <head> on the home page, the table and
 // the phone; the page is named by data-page on the script tag).
-//   classic          the black-and-gold card room (bought)
 //   vibrant          the free default
 //   a skin (below)   Vibrant's layout with that skin's look on top (bought): the home page, the table
 //                    and the phone
@@ -42,13 +41,12 @@
   try {
     if (page === 'phone') {
       const look = new URLSearchParams(location.search).get('look');
-      if (look === 'vibrant' || look === 'classic' || SKINS[look]) localStorage.setItem('pod.style', look);
+      if (look === 'vibrant' || SKINS[look]) localStorage.setItem('pod.style', look);
     }
     st = localStorage.getItem('pod.style');
   } catch {}
-  const paid = st === 'classic' || !!SKINS[st];
-  if (paid && page !== 'phone' && !read('pod.owned', []).includes(st)) st = 'vibrant';
-  if (st === 'classic') return;   // Classic is the pages' own look
+  // (Classic, the old black-and-gold look, is no longer offered: anyone who had it gets Vibrant.)
+  if (SKINS[st] && page !== 'phone' && !read('pod.owned', []).includes(st)) st = 'vibrant';
   d.dataset.style = 'vibrant';
   const icon = document.querySelector('link[rel="icon"]');
   if (icon) icon.href = 'icon-vibrant.svg';

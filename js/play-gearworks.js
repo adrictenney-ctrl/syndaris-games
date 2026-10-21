@@ -1,9 +1,9 @@
 // Gearworks on a phone: pick your action for the round (each tile shows how strong it is for
 // you), then make the choices the actions ask for — which blueprints to recycle, which robot
 // to assemble, how many parts to upgrade.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=104';
-import * as W from './gearworks.js?v=104';
-import { gwCard, robotSVG, ACT_COLOR } from './table-gearworks.js?v=104';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=105';
+import * as W from './gearworks.js?v=105';
+import { gwCard, robotSVG, ACT_COLOR } from './table-gearworks.js?v=105';
 
 let ctx = null, sel = [], pairs = 0, lastKey = '', wasMyTurn = false;
 

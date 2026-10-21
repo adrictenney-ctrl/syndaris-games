@@ -12,7 +12,6 @@ export const WIN_DOUGH = 10;
 // Styles for sale. Vibrant is the free default; more will be added here later.
 export const STYLES = {
   vibrant: { name: 'Vibrant', price: 0 },
-  classic: { name: 'Classic', price: 100 },
   // skins: Vibrant's layout with their own look on the table and phones
   arcade: { name: 'Retro Arcade', price: 100 },
   neon: { name: 'Neon Night', price: 100 },

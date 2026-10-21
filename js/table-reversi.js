@@ -1,8 +1,8 @@
 // Reversi on the table: a green baize board in a dark frame; discs flip when trapped. Tap a
 // glowing square on the table or play from your phone.
-import * as R from './reversi.js?v=104';
-import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=104';
-import { snap } from './cards.js?v=104';
+import * as R from './reversi.js?v=105';
+import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=105';
+import { snap } from './cards.js?v=105';
 
 let root = null, gameRef = null, ctxRef = null, lastMove = -1;
 export const disc = (who, cls = '') => (who == null ? '' : `<i class="rv-disc d${who} ${cls}"></i>`);

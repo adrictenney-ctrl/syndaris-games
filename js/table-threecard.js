@@ -1,4 +1,4 @@
 // See table-casinolive.js.
-import { threecardTable } from './table-casinolive.js?v=104';
+import { threecardTable } from './table-casinolive.js?v=105';
 
 export default threecardTable;

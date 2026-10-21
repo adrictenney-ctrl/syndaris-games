@@ -1,12 +1,11 @@
-// Photographs every game's table for the home page tablets: tables/<id>-c.webp (Classic) and
-// tables/<id>-v.webp (Vibrant). Each table gets bots in every seat and the game started; the bots
+// Photographs every game's table for the home page tablets: tables/<id>-v.webp. Each table gets bots in every seat and the game started; the bots
 // play (on a sped-up clock) and the picture is taken from halfway through, with the menus and corner
 // controls hidden.
 //
 // Needs Chrome and the site running locally (the "table" server in .claude/launch.json, port 8090).
 //   node tools/shoot-tables.mjs                 every game, both styles
 //   node tools/shoot-tables.mjs gofish chess    just these games
-// Options: --styles=classic,vibrant  --jobs=4  --port=8090
+// Options: --styles=vibrant  --jobs=4  --port=8090
 import { spawn } from 'node:child_process';
 import { existsSync, mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -16,7 +15,7 @@ import { GAMES } from '../js/games.js';
 const args = process.argv.slice(2);
 const opt = (k, d) => (args.find(a => a.startsWith(`--${k}=`)) || '').split('=')[1] || d;
 const ids = args.filter(a => !a.startsWith('--')).length ? args.filter(a => !a.startsWith('--')) : Object.keys(GAMES);
-const styles = opt('styles', 'classic,vibrant').split(',');
+const styles = opt('styles', 'vibrant').split(',');
 const jobs = +opt('jobs', 4), site = `http://localhost:${opt('port', 8090)}`;
 const CHROME = ['C:/Program Files/Google/Chrome/Application/chrome.exe', '/usr/bin/google-chrome', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'];
 const OUT = new URL('../tables/', import.meta.url);
