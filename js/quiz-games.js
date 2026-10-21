@@ -1,9 +1,9 @@
 // The quiz-show games: each is a question source plus a few rules for the quiz kit.
-import { quizEngine } from './quizkit.js?v=102';
-import { shuffle, pick } from './party.js?v=102';
-import { COUNTRIES, flagImg, TRUE_FALSE, EMOJI, BIGGER, RIDDLES, ODD_ONE, ANIMALS, PROVERBS, EVENTS, OPPOSITES, CLUES } from './quiz-data.js?v=102';
-import { CATS, Q as TRIVIA } from './trivia-bank.js?v=102';
-import { LISTS } from './sketch-words.js?v=102';
+import { quizEngine } from './quizkit.js?v=103';
+import { shuffle, pick } from './party.js?v=103';
+import { COUNTRIES, flagImg, TRUE_FALSE, EMOJI, BIGGER, RIDDLES, ODD_ONE, ANIMALS, PROVERBS, EVENTS, OPPOSITES, CLUES } from './quiz-data.js?v=103';
+import { CATS, Q as TRIVIA } from './trivia-bank.js?v=103';
+import { LISTS } from './sketch-words.js?v=103';
 
 const R = n => Math.floor(Math.random() * n);
 const others = (list, right, n, key = x => x) => shuffle(list.filter(x => key(x) !== key(right))).slice(0, n);

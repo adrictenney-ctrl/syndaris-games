@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { missiontricksT } from './table-cardgames.js?v=102';
+import { missiontricksT } from './table-cardgames.js?v=103';
 
 export default missiontricksT;

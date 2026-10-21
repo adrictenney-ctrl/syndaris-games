@@ -1,0 +1,86 @@
+/* PAPER CRAFT — a corrugated cardboard table with paper cut-outs layered behind; panels and seats
+   cut from coloured paper with slightly uneven edges, layered shadows and washi tape on the corners;
+   paper-tab buttons that lift and flatten. Baloo 2 for headings, Quicksand for the rest. Wins pop up
+   like a pop-up book, with paper confetti and the winner on a cut-out ribbon. */
+html[data-style="vibrant"][data-skin="paper"] {
+  --k-title-font: 'Baloo 2', 'Chewy', 'Nunito', sans-serif;
+  --k-body-font: 'Quicksand', 'Nunito', sans-serif;
+  --k-num-font: 'Baloo 2', 'Nunito', sans-serif;
+  --k-accent: #17bebb; --k-accent-ink: #0d2b2a; --k-eyebrow: #a8371a;
+  --k-shapes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cg opacity='.2'%3E%3Ccircle cx='70' cy='80' r='46' fill='%23e4572e'/%3E%3Cpath d='M400 40l60 100H340z' fill='%23ffc914'/%3E%3Crect x='360' y='360' width='90' height='90' rx='6' fill='%2317bebb' transform='rotate(12 405 405)'/%3E%3Cpath d='M60 420c30-50 90-50 120 0-30 40-90 40-120 0z' fill='%2376448a'/%3E%3C/g%3E%3C/svg%3E");
+  --k-cardboard: repeating-linear-gradient(90deg, rgba(0, 0, 0, .09) 0 .25vmin, transparent .25vmin 1.1vmin);
+  --k-felt-base: #6b4a2b;
+  --k-felt:
+    var(--k-shapes) 0 0 / 52vmin 52vmin,
+    var(--k-cardboard),
+    radial-gradient(ellipse 52% 46% at 50% 50%, rgba(255, 230, 190, .1), transparent 72%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 50%, rgba(30, 16, 4, .5)),
+    #6b4a2b;
+  --k-felt-ink: #fff4e3; --k-felt-btn: #e3c9a3; --k-felt-line: #3a2614; --k-tool-ink: #3a2614; --k-print: rgba(255, 238, 210, .45); --k-rail: rgba(255, 238, 210, .3); --k-rail-radius: 1vmin;
+  --k-panel-bg: #e3c9a3; --k-panel-ink: #2e1d0e; --k-panel-mute: #5e4126; --k-panel-line: transparent; --k-panel-radius: .5vmin; --k-panel-bw: 0;
+  --k-panel-shadow: .4vmin .5vmin 0 #b48a5c, .8vmin 1vmin 0 rgba(0, 0, 0, .18), 0 2.6vmin 4vmin rgba(20, 10, 2, .4);
+  --k-settings-bg: #f2e2c6;
+  --k-plate-bg: #ffc914; --k-plate-ink: #2e1d0e; --k-plate-mute: #4a3216; --k-plate-line: transparent; --k-plate-radius: .5vmin; --k-plate-bw: 0;
+  --k-plate-shadow: .3vmin .4vmin 0 #c99a00, .7vmin .9vmin 0 rgba(0, 0, 0, .18);
+  --k-tent-bg: #fffaf0; --k-tent-ink: #2e1d0e; --k-tent-mute: #5e4126; --k-tent-radius: .5vmin; --k-tent-shadow: .4vmin .5vmin 0 #d8c9a8, .8vmin 1vmin 0 rgba(0, 0, 0, .2); --k-qr: #2e1d0e;
+  --k-go-bg: #c4421d; --k-go-ink: #ffffff; --k-go-edge: #7a2810; --k-btn-radius: .5vmin;
+  --k-ghost-bg: #fffaf0; --k-ghost-ink: #2e1d0e; --k-ghost-line: #b48a5c; --k-ghost-hover: #fff1d6; --k-ghost-icon: #76448a;
+  --k-select-bg: #fffaf0; --k-select-ink: #2e1d0e; --k-select-line: #b48a5c;
+  --k-slip-bg: #fffaf0; --k-slip-ink: #2e1d0e; --k-slip-mute: #5e4126; --k-slip-line: transparent; --k-slip-radius: .5vmin; --k-slip-bw: 0;
+  --k-slip-shadow: .5vmin .6vmin 0 #d8c9a8, 1vmin 1.2vmin 0 rgba(0, 0, 0, .2), 0 3vmin 7vmin rgba(20, 10, 2, .5); --k-slip-title: #ffffff;
+  --k-slip-row: rgba(23, 190, 187, .12); --k-slip-win: #ffc914; --k-slip-num: #2e1d0e;
+  --k-room: var(--k-shapes) 0 0 / 360px 360px, repeating-linear-gradient(90deg, rgba(0, 0, 0, .09) 0 2px, transparent 2px 9px), #6b4a2b;
+  --k-room-mute: #f3dfc2; --k-room-title-shadow: 2px 3px 0 #3a2614;
+  --k-pbtn-bg: #e3c9a3; --k-pbtn-ink: #2e1d0e; --k-pbtn-line: #b48a5c; --k-pbtn-edge: #8a6440;
+  --k-input-bg: #fffaf0; --k-input-ink: #2e1d0e; --k-input-line: #b48a5c; --k-input-mute: #8a6e50;
+  /* home page */
+  --k-bar: #4f351d;
+  --k-spot: var(--k-shapes) 90% 30% / 420px 420px, repeating-linear-gradient(90deg, rgba(0, 0, 0, .08) 0 2px, transparent 2px 9px), #17bebb;
+  --k-spot-radius: 6px; --k-spot-shadow: 6px 8px 0 #0e8a88, 12px 16px 0 rgba(0, 0, 0, .2), 0 26px 50px rgba(20, 10, 2, .4); --k-spot-ink: #ffffff;
+  --k-spot-title-shadow: 3px 3px 0 #0d4f4e, -2px -2px 0 #0d4f4e, 2px -2px 0 #0d4f4e, -2px 2px 0 #0d4f4e, 5px 6px 0 #0d4f4e; --k-spot-text-shadow: 2px 2px 0 #0d4f4e;
+  --k-nav-radius: 6px; --k-dots-bg: #4f351d;
+  --k-tile-radius: 6px; --k-tile-shadow: 5px 6px 0 rgba(0, 0, 0, .25), 9px 11px 0 rgba(0, 0, 0, .12); --k-tile-hover: 7px 9px 0 rgba(0, 0, 0, .25), 12px 15px 0 rgba(0, 0, 0, .12);
+  --k-tile-inset: inset 0 0 0 4px #fffaf0; --k-tile-text-shadow: 2px 0 0 #2e1d0e, -2px 0 0 #2e1d0e, 0 2px 0 #2e1d0e, 0 -2px 0 #2e1d0e, 3px 4px 0 #2e1d0e;
+  --k-dialog-bg: #4f351d; --k-dialog-line: #b48a5c; --k-dialog-soft: rgba(255, 244, 227, .08); --k-dialog-mute: #f3dfc2;
+}
+html[data-skin="paper"] .game-title, html[data-skin="paper"] #overlay h2, html[data-skin="paper"] .spot h1, html[data-skin="paper"] .box h3 { font-weight: 800; }
+html[data-skin="paper"] body, html[data-skin="paper"] .settings { font-weight: 600; }
+/* cut paper: slightly uneven edges */
+html[data-skin="paper"] .lobby-info, html[data-skin="paper"] .plate, html[data-skin="paper"] .tent, html[data-skin="paper"] #overlay {
+  border-radius: .9vmin .3vmin 1vmin .4vmin / .4vmin 1vmin .3vmin .8vmin;
+}
+html[data-skin="paper"] .seat:nth-child(3n) .plate { background: #17bebb; }
+html[data-skin="paper"] .seat:nth-child(3n) .plate, html[data-skin="paper"] .seat:nth-child(3n) .plate * { --k-plate-ink: #0d2b2a; }
+html[data-skin="paper"] .seat:nth-child(3n+1) .plate { background: #f6a27e; }
+/* washi tape on the corners */
+html[data-skin="paper"] .lobby-info, html[data-skin="paper"] .tent, html[data-skin="paper"] #overlay { position: relative; }
+html[data-skin="paper"] .lobby-info::after, html[data-skin="paper"] .tent::after, html[data-skin="paper"] #overlay::after {
+  content: ''; position: absolute; top: -1.2vmin; left: 50%; width: 12vmin; height: 2.6vmin; translate: -50% 0; rotate: -3deg; pointer-events: none;
+  background: repeating-linear-gradient(45deg, rgba(118, 68, 138, .55) 0 .7vmin, rgba(255, 255, 255, .45) .7vmin 1.4vmin); box-shadow: 0 .2vmin .4vmin rgba(0, 0, 0, .15);
+}
+html[data-skin="paper"] .tent::after { width: 8vmin; background: repeating-linear-gradient(45deg, rgba(23, 190, 187, .6) 0 .7vmin, rgba(255, 255, 255, .45) .7vmin 1.4vmin); }
+/* paper tabs: lift on hover, flatten on tap */
+html[data-skin="paper"] button.big, html[data-skin="paper"] .rules-btn, html[data-skin="paper"] .seat-actions button, html[data-skin="paper"] button.primary, html[data-skin="paper"] .panel-btn, html[data-skin="paper"] .chip { transition: transform .15s, box-shadow .15s; }
+html[data-skin="paper"] button.big:not(:disabled):hover, html[data-skin="paper"] .rules-btn:hover, html[data-skin="paper"] .chip:hover { transform: translateY(-.4vmin); }
+html[data-skin="paper"] button.big:active, html[data-skin="paper"] button.primary:active, html[data-skin="paper"] .panel-btn:active { transform: translateY(.3vmin); box-shadow: 0 0 0 transparent; }
+/* the winner rides a cut-out ribbon */
+html[data-skin="paper"] #overlay h2 { position: relative; display: inline-block; padding: .4vmin 5vmin .8vmin; color: #fff; text-shadow: .2vmin .3vmin 0 #7a2810; }
+html[data-skin="paper"] #overlay h2::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: #c4421d; clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%); box-shadow: 0 .4vmin 0 #7a2810;
+}
+html[data-skin="paper"] #overlay::before {
+  content: ''; position: absolute; inset: -5vmin -3vmin auto; height: 14vmin; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='110'%3E%3Crect x='20' y='20' width='14' height='9' fill='%23e4572e' transform='rotate(25 27 24)'/%3E%3Crect x='90' y='70' width='14' height='9' fill='%2317bebb' transform='rotate(-30 97 74)'/%3E%3Crect x='160' y='16' width='14' height='9' fill='%23ffc914' transform='rotate(50 167 20)'/%3E%3Ccircle cx='230' cy='80' r='6' fill='%2376448a'/%3E%3Crect x='270' y='30' width='14' height='9' fill='%23e4572e' transform='rotate(-15 277 34)'/%3E%3Ccircle cx='55' cy='90' r='5' fill='%23ffc914'/%3E%3C/svg%3E") 0 0 / 30vmin auto repeat-x;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes paperPop { from { transform: translate(-50%, -50%) perspective(900px) rotateX(-75deg); transform-origin: 50% 100%; opacity: 0; } }
+  @keyframes paperFold { from { transform: perspective(600px) rotateX(-90deg); transform-origin: 50% 100%; } }
+  @keyframes paperFall { from { transform: translateY(-6vmin) rotate(-8deg); opacity: 0; } 25% { opacity: 1; } to { transform: translateY(5vmin) rotate(6deg); opacity: 0; } }
+  html[data-skin="paper"] #overlay { animation: paperPop .7s cubic-bezier(.2, 1.2, .4, 1); }
+  html[data-skin="paper"] #overlay h2 { animation: paperFold .6s cubic-bezier(.2, 1.2, .4, 1) .35s both; }
+  html[data-skin="paper"] #overlay::before { animation: paperFall 2.8s ease-in .5s infinite; }
+}
+/* Baloo 2 has a tall line: the paper gets a little more room above and below the names */
+html[data-skin="paper"] .plate { padding-top: 1.5vmin; padding-bottom: 1.4vmin; }
+html[data-skin="paper"] .who .name { line-height: 1.15; }

@@ -1,7 +1,7 @@
 // Most Likely To on the table: the question, then bars of votes for each player with the winner
 // crowned.
-import * as E from './mostlikely.js?v=102';
-import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=102';
+import * as E from './mostlikely.js?v=103';
+import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=103';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {

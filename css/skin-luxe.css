@@ -1,0 +1,74 @@
+/* MIDNIGHT LUXE — black velvet, charcoal panels with thin gold-foil borders and art-deco corners,
+   champagne type, a deep emerald accent. Playfair Display for headings, Lato for the rest. Slow
+   gold shimmer across titles; wins arrive with a gold-foil flip, champagne sparkles and a deco frame.
+   Classy and calm: fades, no bounce. */
+html[data-style="vibrant"][data-skin="luxe"] {
+  --k-title-font: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --k-body-font: 'Lato', 'Segoe UI', sans-serif;
+  --k-num-font: 'Playfair Display', Georgia, serif;
+  --k-btn-font: 'Lato', 'Segoe UI', sans-serif;
+  --k-accent: #c9a24d; --k-accent-ink: #0d0d0d; --k-eyebrow: #c9a24d;
+  --k-velvet: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  --k-deco: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%23c9a24d' stroke-width='1.6'%3E%3Cg transform='rotate(0 20 20)'%3E%3Cpath d='M3 30V3h27M9 30V9h21'/%3E%3Cpath d='M15 15l6 6' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 4.4vmin 4.4vmin no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%23c9a24d' stroke-width='1.6'%3E%3Cg transform='rotate(90 20 20)'%3E%3Cpath d='M3 30V3h27M9 30V9h21'/%3E%3Cpath d='M15 15l6 6' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E") 100% 0 / 4.4vmin 4.4vmin no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%23c9a24d' stroke-width='1.6'%3E%3Cg transform='rotate(180 20 20)'%3E%3Cpath d='M3 30V3h27M9 30V9h21'/%3E%3Cpath d='M15 15l6 6' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E") 100% 100% / 4.4vmin 4.4vmin no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%23c9a24d' stroke-width='1.6'%3E%3Cg transform='rotate(270 20 20)'%3E%3Cpath d='M3 30V3h27M9 30V9h21'/%3E%3Cpath d='M15 15l6 6' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E") 0 100% / 4.4vmin 4.4vmin no-repeat;
+  --k-felt-base: #0d0d0d;
+  --k-felt:
+    var(--k-velvet) 0 0 / 200px,
+    radial-gradient(ellipse 50% 44% at 50% 50%, rgba(201, 162, 77, .08), transparent 72%),
+    radial-gradient(ellipse 52% 46% at 50% 50%, transparent 96.6%, rgba(201, 162, 77, .45) 96.9% 97.3%, transparent 97.6%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 50%, rgba(0, 0, 0, .7)),
+    #121212;
+  --k-felt-ink: #f1e3c3; --k-felt-btn: transparent; --k-felt-line: rgba(201, 162, 77, .6); --k-print: rgba(201, 162, 77, .5); --k-rail: rgba(201, 162, 77, .5); --k-rail-radius: .4vmin;
+  --k-panel-bg: var(--k-deco), var(--k-velvet) 0 0 / 200px, #1c1c1c; --k-panel-ink: #f1e3c3; --k-panel-mute: #cbb88c; --k-panel-line: #c9a24d;
+  --k-panel-radius: .3vmin; --k-panel-bw: .12vmin; --k-panel-shadow: 0 0 0 .5vmin #1c1c1c, 0 0 0 .62vmin rgba(201, 162, 77, .5), 0 3vmin 6vmin rgba(0, 0, 0, .7);
+  --k-plate-bg: var(--k-velvet) 0 0 / 200px, #1a1a1a; --k-plate-ink: #f1e3c3; --k-plate-mute: #cbb88c; --k-plate-line: #c9a24d; --k-plate-radius: .3vmin; --k-plate-bw: .12vmin;
+  --k-plate-shadow: 0 1.4vmin 3vmin rgba(0, 0, 0, .6);
+  --k-tent-bg: #f1e3c3; --k-tent-ink: #0d0d0d; --k-tent-mute: #4a3f28; --k-tent-radius: .3vmin; --k-tent-bw: .15vmin; --k-tent-line: #c9a24d;
+  --k-tent-shadow: 0 0 0 .5vmin #f1e3c3, 0 0 0 .65vmin #c9a24d, 0 3vmin 6vmin rgba(0, 0, 0, .7); --k-qr: #0d0d0d;
+  --k-go-bg: transparent; --k-go-ink: #e6c879; --k-go-edge: transparent; --k-go-bw: .15vmin; --k-go-line: #c9a24d; --k-btn-radius: .2vmin;
+  --k-ghost-bg: transparent; --k-ghost-ink: #f1e3c3; --k-ghost-line: rgba(201, 162, 77, .6); --k-ghost-hover: rgba(201, 162, 77, .1); --k-ghost-icon: #c9a24d;
+  --k-select-bg: #121212; --k-select-ink: #f1e3c3; --k-select-line: rgba(201, 162, 77, .6);
+  --k-slip-bg: var(--k-velvet) 0 0 / 200px, linear-gradient(180deg, #1f1f1f, #141414); --k-slip-ink: #f1e3c3; --k-slip-mute: #cbb88c; --k-slip-line: #c9a24d;
+  --k-slip-radius: .3vmin; --k-slip-bw: .15vmin; --k-slip-shadow: 0 0 0 .6vmin #141414, 0 0 0 .75vmin #c9a24d, 0 4vmin 8vmin rgba(0, 0, 0, .75);
+  --k-slip-title: #e6c879; --k-slip-row: rgba(241, 227, 195, .05); --k-slip-win: rgba(15, 92, 74, .55); --k-slip-num: #e6c879;
+  --k-room: var(--k-velvet) 0 0 / 200px, radial-gradient(ellipse 70% 40% at 50% 0%, rgba(201, 162, 77, .12), transparent 70%), #0d0d0d;
+  --k-room-mute: #cbb88c; --k-room-title-shadow: none;
+  --k-pbtn-bg: transparent; --k-pbtn-ink: #f1e3c3; --k-pbtn-line: rgba(201, 162, 77, .6); --k-pbtn-edge: transparent;
+  --k-input-bg: #141414; --k-input-ink: #f1e3c3; --k-input-line: rgba(201, 162, 77, .6); --k-input-mute: #8a7c5c;
+  /* home page */
+  --k-bar: rgba(13, 13, 13, .95);
+  --k-spot: var(--k-velvet) 0 0 / 200px, radial-gradient(ellipse 50% 70% at 75% 45%, rgba(201, 162, 77, .18), transparent 70%), linear-gradient(120deg, #0f5c4a 0%, #0b3b30 45%, #0d0d0d 100%);
+  --k-spot-radius: 4px; --k-spot-shadow: inset 0 0 0 1px #c9a24d, inset 0 0 0 8px #0d0d0d, inset 0 0 0 9px rgba(201, 162, 77, .5), 0 26px 50px rgba(0, 0, 0, .6); --k-spot-ink: #f1e3c3;
+  --k-spot-title-shadow: 0 2px 18px rgba(0, 0, 0, .6); --k-spot-text-shadow: none; --k-nav-radius: 2px; --k-dots-bg: #0d0d0d;
+  --k-tile-radius: 4px; --k-tile-shadow: 0 0 0 1px #c9a24d, 0 0 0 6px #141414, 0 0 0 7px rgba(201, 162, 77, .45), 0 18px 30px rgba(0, 0, 0, .55);
+  --k-tile-hover: 0 0 0 1px #e6c879, 0 0 0 6px #141414, 0 0 0 7px #c9a24d, 0 0 30px rgba(201, 162, 77, .35);
+  --k-tile-inset: inset 0 -70px 60px -20px rgba(0, 0, 0, .55); --k-tile-text-shadow: 0 2px 10px rgba(0, 0, 0, .9), 0 0 2px #000;
+  --k-dialog-bg: #161616; --k-dialog-line: rgba(201, 162, 77, .6); --k-dialog-soft: rgba(241, 227, 195, .05); --k-dialog-mute: #cbb88c;
+}
+/* slim gold-outlined buttons, uppercase with letter spacing */
+html[data-skin="luxe"] button.big, html[data-skin="luxe"] .rules-btn, html[data-skin="luxe"] .seat-actions button, html[data-skin="luxe"] .tool,
+html[data-skin="luxe"] button.primary, html[data-skin="luxe"] .panel-btn, html[data-skin="luxe"] .play-btn, html[data-skin="luxe"] .chip { text-transform: uppercase; letter-spacing: .22em; font-weight: 700; }
+html[data-skin="luxe"] button.big:not(:disabled):hover, html[data-skin="luxe"] button.primary:hover, html[data-skin="luxe"] .play-btn:hover { background: rgba(201, 162, 77, .12); color: #f1e3c3; }
+html[data-skin="luxe"] button.big, html[data-skin="luxe"] button.primary, html[data-skin="luxe"] .play-btn { box-shadow: none; }
+html[data-skin="luxe"] .game-title, html[data-skin="luxe"] #overlay h2, html[data-skin="luxe"] .spot h1 { font-weight: 700; letter-spacing: .01em; }
+/* art-deco corners on the seats */
+html[data-skin="luxe"] .plate { background: var(--k-deco), var(--k-plate-bg); }
+/* gold foil on titles, with a slow shimmer */
+html[data-skin="luxe"] .game-title, html[data-skin="luxe"] #overlay h2, html[data-skin="luxe"] .spot h1, html[data-skin="luxe"] .section-head h2 {
+  background: linear-gradient(100deg, #b8913c 0%, #e6c879 30%, #fff1c9 45%, #e6c879 60%, #b8913c 100%) 0 0 / 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none;
+}
+/* champagne sparkles round the winner */
+html[data-skin="luxe"] #overlay::before {
+  content: ''; position: absolute; inset: -4vmin; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='120' fill='%23f1e3c3'%3E%3Cpath d='M20 20l2 6 6 2-6 2-2 6-2-6-6-2 6-2z'/%3E%3Cpath d='M170 14l1.5 4.5 4.5 1.5-4.5 1.5-1.5 4.5-1.5-4.5-4.5-1.5 4.5-1.5z'/%3E%3Cpath d='M184 96l2 6 6 2-6 2-2 6-2-6-6-2 6-2z' fill='%23e6c879'/%3E%3Cpath d='M12 100l1.5 4.5 4.5 1.5-4.5 1.5-1.5 4.5-1.5-4.5-4.5-1.5 4.5-1.5z' fill='%23e6c879'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes luxeShimmer { 0%, 70% { background-position: 100% 0; } 100% { background-position: -50% 0; } }
+  @keyframes luxeFlip { from { transform: translate(-50%, -50%) perspective(1200px) rotateY(80deg); opacity: 0; } to { transform: translate(-50%, -50%) perspective(1200px) rotateY(0); opacity: 1; } }
+  @keyframes luxeTwinkle { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+  @keyframes luxeFade { from { opacity: 0; } }
+  html[data-skin="luxe"] .game-title, html[data-skin="luxe"] #overlay h2, html[data-skin="luxe"] .spot h1 { animation: luxeShimmer 7s ease-in-out infinite; }
+  html[data-skin="luxe"] #overlay { animation: luxeFlip .9s cubic-bezier(.25, .8, .25, 1); }
+  html[data-skin="luxe"] #overlay::before { animation: luxeTwinkle 2.4s ease-in-out infinite; }
+  html[data-skin="luxe"] .lobby-info, html[data-skin="luxe"] .plate, html[data-skin="luxe"] .tent { animation: luxeFade .8s ease-out both; }
+}

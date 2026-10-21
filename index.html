@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <!-- Style from Settings: Vibrant (free), Classic or a skin (bought; skins dress the table and phones). -->
-  <script src="js/skin-boot.js?v=102" data-page="home"></script>
-  <link rel="stylesheet" href="css/cards.css?v=102">
-  <link rel="stylesheet" href="css/tablet.css?v=102">
+  <script src="js/skin-boot.js?v=103" data-page="home"></script>
+  <link rel="stylesheet" href="css/cards.css?v=103">
+  <link rel="stylesheet" href="css/tablet.css?v=103">
   <style>
     html { background: var(--onyx); }
     body {
@@ -383,7 +383,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=102">
+  <link rel="stylesheet" href="css/vibrant.css?v=103">
 </head>
 <body class="home">
   <header class="bar">
@@ -464,10 +464,10 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=102"></script>
+  <script type="module" src="js/tvnav.js?v=103"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=102';
-    import { sceneSVG } from './js/covers.js?v=102';
+    import { GAMES } from './js/games.js?v=103';
+    import { sceneSVG } from './js/covers.js?v=103';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
@@ -695,7 +695,6 @@
     const dlg = document.getElementById('settings');
     const theme = document.querySelector('meta[name="theme-color"]');
     // The skins in the shop (each dresses the table and the phones; the home page stays Vibrant).
-    // A skin is listed here once it's finished.
     const SKIN_SHOP = [
       ['arcade', 'Retro Arcade', 'Pixel frames, hot pinks and 8-bit glow'],
       ['neon', 'Neon Night', 'Glowing tube outlines for a dim room'],
@@ -703,6 +702,8 @@
       ['comic', 'Comic Book', 'Ink outlines, halftone dots and POW!'],
       ['gameshow', 'Game Show', 'Gold podiums, marquee lights, a big buzzer'],
       ['sketch', 'Sketchbook', 'Notebook pages, pen doodles and highlighter'],
+      ['luxe', 'Midnight Luxe', 'Black velvet, gold foil and art deco'],
+      ['paper', 'Paper Craft', 'Cut paper, washi tape and cardboard'],
     ];
     const LOAF0 = dlg.querySelector('[data-price="classic"] svg').outerHTML;
     dlg.querySelector('.styles').insertAdjacentHTML('beforeend', SKIN_SHOP.map(([id, name, sub]) =>

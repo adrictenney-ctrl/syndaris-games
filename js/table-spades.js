@@ -1,8 +1,8 @@
 // Spades on the table: the trick in the middle, a spade printed on the felt, each player's
 // bid and tricks on their plate, team scores and bags above the trick.
-import * as P from './spades.js?v=102';
-import { trickView } from './trickview.js?v=102';
-import { centerMsg, clearMsg } from './table-hearts.js?v=102';
+import * as P from './spades.js?v=103';
+import { trickView } from './trickview.js?v=103';
+import { centerMsg, clearMsg } from './table-hearts.js?v=103';
 
 const tv = trickView();
 
