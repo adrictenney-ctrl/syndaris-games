@@ -1,0 +1,84 @@
+/* SKETCHBOOK — a graphite desk with notebook pages on it: ruled blue lines, a red margin, wobbly
+   pen outlines, slight tilts, highlighter buttons, pencil doodles. Permanent Marker for headings,
+   Patrick Hand for everything else. The winner gets circled with a scribble and a doodled crown.
+   (The tabletop stays dark so every game's own white text keeps reading; the paper is on top.) */
+html[data-style="vibrant"][data-skin="sketch"] {
+  --k-title-font: 'Permanent Marker', 'Patrick Hand', cursive;
+  --k-body-font: 'Patrick Hand', 'Comic Sans MS', cursive;
+  --k-num-font: 'Permanent Marker', 'Patrick Hand', cursive;
+  --k-accent: #ffe45c; --k-accent-ink: #222222; --k-eyebrow: #2f6db5;
+  --k-paper: repeating-linear-gradient(transparent 0 2.9vmin, #bfd4f2 2.9vmin 3.05vmin), linear-gradient(90deg, transparent 2.4vmin, #f2a7a7 2.4vmin 2.6vmin, transparent 2.6vmin), #fbfbf7;
+  --k-pen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' fill='none' stroke='%23222' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M4 5c12-1.5 30 1 52-.5M55.5 4c1 14-1 34 .5 52M56 55.5c-16 1-34-1.2-52 .4M4.5 56C3 40 5 22 3.6 4.5'/%3E%3C/svg%3E");
+  --k-doodles: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' fill='none' stroke='%23dfe6f2' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' opacity='.16'%3E%3Cpath d='M60 60l10 22 24 3-18 16 5 24-21-12-21 12 5-24-18-16 24-3z'/%3E%3Cpath d='M300 80c30-10 60 10 60 40M350 112l10 10 12-8'/%3E%3Cpath d='M80 330c40-30 80 30 120 0s80 30 120 0'/%3E%3Ccircle cx='330' cy='320' r='26'/%3E%3Cpath d='M318 314h0M342 314h0M318 332c8 6 16 6 24 0'/%3E%3C/svg%3E");
+  --k-felt-base: #263046;
+  --k-felt:
+    var(--k-doodles) 0 0 / 42vmin 42vmin,
+    radial-gradient(ellipse 52% 46% at 50% 50%, rgba(255, 255, 255, .05), transparent 72%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 50%, rgba(8, 12, 22, .55)),
+    #263046;
+  --k-felt-ink: #f4f6fb; --k-felt-btn: #fbfbf7; --k-felt-line: #f4f6fb; --k-tool-ink: #222222; --k-print: rgba(223, 230, 242, .45); --k-rail: rgba(223, 230, 242, .3); --k-rail-radius: 1vmin;
+  --k-panel-bg: var(--k-paper); --k-panel-ink: #222222; --k-panel-mute: #4a4a4a; --k-panel-line: transparent; --k-panel-radius: .4vmin; --k-panel-bw: 0;
+  --k-panel-shadow: .4vmin .6vmin 0 rgba(0, 0, 0, .25), 0 2vmin 4vmin rgba(0, 0, 0, .35);
+  --k-settings-bg: rgba(255, 228, 92, .18);
+  --k-plate-bg: var(--k-paper); --k-plate-ink: #222222; --k-plate-mute: #4a4a4a; --k-plate-line: transparent; --k-plate-radius: .4vmin; --k-plate-bw: 0;
+  --k-plate-shadow: .3vmin .5vmin 0 rgba(0, 0, 0, .3);
+  --k-tent-bg: #fbfbf7; --k-tent-ink: #222222; --k-tent-mute: #4a4a4a; --k-tent-radius: .4vmin; --k-tent-shadow: .4vmin .6vmin 0 rgba(0, 0, 0, .3); --k-qr: #222222;
+  --k-go-bg: #ffe45c; --k-go-ink: #222222; --k-go-edge: #b8a020; --k-go-bw: .3vmin; --k-go-line: #222222; --k-btn-radius: .6vmin;
+  --k-ghost-bg: #fbfbf7; --k-ghost-ink: #222222; --k-ghost-line: #222222; --k-ghost-hover: #fff3a8; --k-ghost-icon: #2f6db5;
+  --k-select-bg: #ffffff; --k-select-ink: #222222; --k-select-line: #222222;
+  --k-slip-bg: var(--k-paper); --k-slip-ink: #222222; --k-slip-mute: #4a4a4a; --k-slip-line: transparent; --k-slip-radius: .4vmin; --k-slip-bw: 0;
+  --k-slip-shadow: .5vmin .8vmin 0 rgba(0, 0, 0, .3), 0 3vmin 7vmin rgba(0, 0, 0, .45); --k-slip-title: #222222;
+  --k-slip-row: rgba(74, 144, 226, .1); --k-slip-win: rgba(255, 228, 92, .55); --k-slip-num: #222222;
+  --k-room: var(--k-doodles) 0 0 / 300px 300px, radial-gradient(ellipse 120% 80% at 50% 0%, rgba(255, 255, 255, .06), transparent 70%), #263046;
+  --k-room-mute: #d5dceb; --k-room-title-shadow: 2px 3px 0 rgba(0, 0, 0, .35);
+  --k-pbtn-bg: #fbfbf7; --k-pbtn-ink: #222222; --k-pbtn-line: #222222; --k-pbtn-edge: rgba(0, 0, 0, .35);
+  --k-input-bg: #fbfbf7; --k-input-ink: #222222; --k-input-line: #222222; --k-input-mute: #7a7a7a;
+  /* home page */
+  --k-bar: #1d2536;
+  --k-spot: var(--k-doodles) 85% 40% / 360px 360px, repeating-linear-gradient(transparent 0 30px, rgba(191, 212, 242, .22) 30px 32px), #2e3a55;
+  --k-spot-radius: 6px; --k-spot-shadow: 6px 8px 0 rgba(0, 0, 0, .35), inset 0 0 0 3px rgba(244, 246, 251, .5); --k-spot-ink: #ffffff;
+  --k-spot-title-shadow: 3px 3px 0 #1d2536; --k-spot-text-shadow: 1px 2px 0 #1d2536; --k-nav-radius: 8px; --k-dots-bg: #1d2536;
+  --k-tile-radius: 4px; --k-tile-shadow: 0 0 0 3px #fbfbf7, 0 0 0 5px #222, 5px 7px 0 5px rgba(0, 0, 0, .3); --k-tile-hover: 0 0 0 3px #ffe45c, 0 0 0 5px #222, 7px 10px 0 5px rgba(0, 0, 0, .3);
+  --k-tile-inset: none; --k-tile-text-shadow: 2px 0 0 #222, -2px 0 0 #222, 0 2px 0 #222, 0 -2px 0 #222, 2px 3px 0 #222;
+  --k-dialog-bg: #2e3a55; --k-dialog-line: #f4f6fb; --k-dialog-soft: rgba(255, 255, 255, .07); --k-dialog-mute: #d5dceb;
+}
+html[data-skin="sketch"] body, html[data-skin="sketch"] .settings { font-size-adjust: .5; }
+html[data-skin="sketch"] .card { font-size-adjust: none; }
+/* wobbly pen outlines and slight tilts on the paper */
+html[data-skin="sketch"] .lobby-info, html[data-skin="sketch"] .plate, html[data-skin="sketch"] #overlay, html[data-skin="sketch"] .rules-card, html[data-skin="sketch"] .tent,
+html[data-skin="sketch"] button.big, html[data-skin="sketch"] .seat-actions button, html[data-skin="sketch"] .rules-btn {
+  border: .32vmin solid transparent; border-image: var(--k-pen) 10 / .32vmin / .1vmin stretch;
+}
+html[data-skin="sketch"] .seat:nth-child(odd) .plate { rotate: -1deg; }
+html[data-skin="sketch"] .seat:nth-child(even) .plate { rotate: .8deg; }
+html[data-skin="sketch"] .lobby-info { rotate: -.4deg; }
+html[data-skin="sketch"] .tent { transform: rotate(1.8deg); }
+/* a scribbled underline under headings */
+html[data-skin="sketch"] .game-title { position: relative; padding-bottom: 1.4vmin; }
+html[data-skin="sketch"] .game-title::after {
+  content: ''; position: absolute; left: 0; bottom: 0; width: min(100%, 34vmin); height: 1.4vmin; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 8c30-6 60 4 92-2s70 2 104-3M10 12c40-4 90 2 150-3' fill='none' stroke='%234a90e2' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+}
+/* buttons fill in with highlighter when pressed */
+html[data-skin="sketch"] button.big:active, html[data-skin="sketch"] .rules-btn:active, html[data-skin="sketch"] .seat-actions button:active,
+html[data-skin="sketch"] button.primary:active, html[data-skin="sketch"] .panel-btn:active { background: linear-gradient(transparent 20%, #ff7aa8 20% 85%, transparent 85%), #fbfbf7; }
+/* the winner: circled with a scribble, a doodled crown on top */
+html[data-skin="sketch"] #overlay h2 { position: relative; display: inline-block; padding: 0 2vmin; }
+html[data-skin="sketch"] #overlay h2::after {
+  content: ''; position: absolute; inset: -1.6vmin -1vmin; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 100' preserveAspectRatio='none'%3E%3Cpath pathLength='1' d='M40 18C120-4 260 2 286 40s-40 58-150 56S6 82 10 50 70 6 160 8' fill='none' stroke='%23ff7aa8' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+}
+html[data-skin="sketch"] #overlay::before {
+  content: ''; position: absolute; left: 50%; top: -5.5vmin; width: 11vmin; height: 7vmin; translate: -50% 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 70' fill='%23ffe45c' stroke='%23222' stroke-width='3.5' stroke-linejoin='round'%3E%3Cpath d='M10 60L6 18l26 22L55 8l23 32 26-22-4 42z'/%3E%3Cpath d='M10 60c30 4 62 4 90 0' fill='none'/%3E%3Ccircle cx='55' cy='8' r='5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sketchCircle { from { clip-path: inset(0 100% 0 0); } }
+  @keyframes sketchCrown { from { transform: translateY(-2vmin) rotate(-12deg); opacity: 0; } }
+  @keyframes sketchIn { from { transform: translate(-50%, -50%) rotate(-3deg) scale(.95); opacity: 0; } }
+  html[data-skin="sketch"] #overlay { animation: sketchIn .4s ease-out; }
+  html[data-skin="sketch"] #overlay h2::after { animation: sketchCircle .8s ease-out .3s both; }
+  html[data-skin="sketch"] #overlay::before { animation: sketchCrown .5s cubic-bezier(.2, 1.4, .4, 1) .9s both; }
+}
+/* the disabled start button keeps its pen outline (the shared rule resets the border) */
+html[data-style="vibrant"][data-skin="sketch"] button.big:disabled { border: .32vmin solid transparent; border-image: var(--k-pen) 10 / .32vmin / .1vmin stretch; }

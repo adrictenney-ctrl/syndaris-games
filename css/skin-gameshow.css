@@ -1,0 +1,86 @@
+/* GAME SHOW — a navy stage under a sweeping spotlight; gold-trimmed podiums with lit nameplates,
+   marquee bulbs chasing round the title, a big gold buzzer. Headings in Anton, the rest in
+   Montserrat. Wins get the curtain-and-spotlight reveal with gold confetti. */
+html[data-style="vibrant"][data-skin="gameshow"] {
+  --k-title-font: 'Anton', 'Bebas Neue', Impact, sans-serif;
+  --k-body-font: 'Montserrat', 'Segoe UI', sans-serif;
+  --k-num-font: 'Anton', Impact, sans-serif;
+  --k-accent: #f5c542; --k-accent-ink: #0b1640; --k-eyebrow: #f5c542;
+  --k-felt-base: #0b1640;
+  --k-felt:
+    radial-gradient(ellipse 40% 55% at 50% 40%, rgba(255, 236, 170, .16), transparent 70%),
+    repeating-conic-gradient(from -90deg at 50% 120%, rgba(255, 255, 255, .035) 0 3deg, transparent 3deg 9deg),
+    radial-gradient(ellipse 52% 46% at 50% 50%, transparent 96.4%, rgba(245, 197, 66, .7) 96.8% 97.6%, transparent 98%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 45%, rgba(2, 6, 24, .7)),
+    #0b1640;
+  --k-felt-ink: #ffffff; --k-felt-btn: rgba(11, 22, 64, .85); --k-felt-line: #f5c542; --k-print: rgba(245, 197, 66, .55); --k-rail: #f5c542; --k-rail-radius: 2vmin;
+  --k-panel-bg: linear-gradient(180deg, #172a6e, #0f1d52); --k-panel-ink: #ffffff; --k-panel-mute: #c9d2f0; --k-panel-line: #f5c542; --k-panel-radius: 1.6vmin; --k-panel-bw: .35vmin;
+  --k-panel-shadow: 0 0 0 .3vmin #9c7a1c, 0 1vmin 0 #050b26, 0 2.6vmin 5vmin rgba(0, 0, 0, .5);
+  --k-plate-bg: linear-gradient(180deg, #c42236, #7d1322); --k-plate-ink: #ffffff; --k-plate-mute: #ffe3e7; --k-plate-line: #f5c542; --k-plate-radius: 1vmin; --k-plate-bw: .3vmin;
+  --k-plate-shadow: 0 .7vmin 0 #4a0b14, 0 1.6vmin 3vmin rgba(0, 0, 0, .45);
+  --k-tent-bg: #ffffff; --k-tent-ink: #0b1640; --k-tent-mute: #3a4a80; --k-tent-radius: 1.2vmin; --k-tent-bw: .4vmin; --k-tent-line: #f5c542;
+  --k-tent-shadow: 0 1vmin 0 #9c7a1c, 0 2.6vmin 5vmin rgba(0, 0, 0, .5); --k-qr: #0b1640;
+  --k-go-bg: radial-gradient(ellipse 80% 60% at 50% 25%, #ffe9a0, #f5c542 55%, #d9a514); --k-go-ink: #0b1640; --k-go-edge: #9c7a1c; --k-btn-radius: 99px;
+  --k-ghost-bg: rgba(255, 255, 255, .08); --k-ghost-ink: #ffffff; --k-ghost-line: #f5c542; --k-ghost-hover: rgba(245, 197, 66, .18); --k-ghost-icon: #f5c542;
+  --k-select-bg: #0b1640; --k-select-ink: #ffffff; --k-select-line: #f5c542;
+  --k-slip-bg: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 233, 160, .25), transparent 70%), #13235e; --k-slip-ink: #ffffff; --k-slip-mute: #c9d2f0;
+  --k-slip-line: #f5c542; --k-slip-radius: 2vmin; --k-slip-bw: .4vmin;
+  --k-slip-shadow: 0 0 0 .4vmin #9c7a1c, 0 1.2vmin 0 #050b26, 0 3vmin 7vmin rgba(0, 0, 0, .6); --k-slip-title: #f5c542; --k-slip-title-shadow: 0 .5vmin 0 #5a3f00;
+  --k-slip-row: rgba(255, 255, 255, .07); --k-slip-win: rgba(245, 197, 66, .22); --k-slip-num: #f5c542;
+  --k-title-shadow: 0 .5vmin 0 #050b26;
+  --k-room: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255, 236, 170, .22), transparent 70%), repeating-conic-gradient(from -90deg at 50% 120%, rgba(255, 255, 255, .035) 0 3deg, transparent 3deg 9deg), #0b1640;
+  --k-room-mute: #c9d2f0; --k-room-title-shadow: 0 4px 0 #050b26;
+  --k-pbtn-bg: rgba(19, 35, 94, .9); --k-pbtn-ink: #ffffff; --k-pbtn-line: #f5c542; --k-pbtn-edge: #050b26;
+  --k-input-bg: #13235e; --k-input-ink: #ffffff; --k-input-line: #f5c542; --k-input-mute: #9aa8d6;
+  /* home page */
+  --k-bar: #08102e;
+  --k-spot: radial-gradient(ellipse 30% 70% at 72% 40%, rgba(255, 236, 170, .3), transparent 70%), repeating-linear-gradient(90deg, #a51a2c 0 28px, #8a1424 28px 30px, #b81f33 30px 58px), #a51a2c;
+  --k-spot-radius: 20px; --k-spot-shadow: inset 0 0 0 5px #f5c542, inset 0 0 0 9px #9c7a1c, 0 10px 0 #050b26, 0 26px 50px rgba(0, 0, 0, .5); --k-spot-ink: #ffffff;
+  --k-spot-title-shadow: 0 5px 0 #4a0b14, 0 0 30px rgba(245, 197, 66, .5); --k-spot-text-shadow: 0 2px 0 #4a0b14;
+  --k-dots-bg: #08102e;
+  --k-tile-radius: 16px; --k-tile-shadow: 0 0 0 4px #f5c542, 0 8px 0 4px #9c7a1c, 0 18px 30px rgba(0, 0, 0, .45); --k-tile-hover: 0 0 0 4px #ffe9a0, 0 0 30px rgba(245, 197, 66, .7), 0 10px 0 4px #9c7a1c;
+  --k-tile-text-shadow: 2px 0 0 #0b1640, -2px 0 0 #0b1640, 0 2px 0 #0b1640, 0 -2px 0 #0b1640, 0 4px 0 #0b1640;
+  --k-dialog-bg: #0f1d52; --k-dialog-line: #f5c542; --k-dialog-soft: rgba(255, 255, 255, .07); --k-dialog-mute: #c9d2f0;
+}
+html[data-skin="gameshow"] .game-title, html[data-skin="gameshow"] #overlay h2, html[data-skin="gameshow"] .spot h1, html[data-skin="gameshow"] .box h3,
+html[data-skin="gameshow"] .section-head h2, html[data-skin="gameshow"] .brand span { letter-spacing: .04em; text-transform: uppercase; font-weight: 400; }
+html[data-skin="gameshow"] body, html[data-skin="gameshow"] .settings { font-weight: 600; }
+/* the podium: a gold trim on top and a lit nameplate */
+html[data-skin="gameshow"] .plate { border-top-width: .8vmin; }
+html[data-skin="gameshow"] .who .name { text-shadow: 0 0 1.2vmin rgba(255, 240, 200, .6); }
+/* the go button is a glossy buzzer */
+html[data-skin="gameshow"] button.big:not(:disabled), html[data-skin="gameshow"] button.primary { box-shadow: 0 .6vmin 0 #9c7a1c, 0 0 2.4vmin rgba(245, 197, 66, .55), inset 0 .3vmin 0 rgba(255, 255, 255, .6); }
+/* scores on lit panels */
+html[data-skin="gameshow"] #overlay .scores li b { padding: .2vmin 1vmin; border-radius: .6vmin; background: #050b26; box-shadow: inset 0 0 0 .2vmin #f5c542; text-shadow: 0 0 1vmin rgba(245, 197, 66, .8); }
+/* marquee bulbs round the lobby card and the slip */
+html[data-skin="gameshow"] .lobby-info, html[data-skin="gameshow"] #overlay { position: relative; }
+html[data-skin="gameshow"] .lobby-info::before, html[data-skin="gameshow"] #overlay::after {
+  content: ''; position: absolute; inset: .7vmin; border-radius: 1.2vmin; pointer-events: none; padding: .9vmin;
+  background: radial-gradient(circle, #fff6d0 0 28%, #f5c542 34%, transparent 46%) 0 0 / 2.2vmin 2.2vmin;
+  -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: .9;
+}
+/* gold confetti over the winner */
+html[data-skin="gameshow"] #overlay::before {
+  content: ''; position: absolute; inset: -6vmin -4vmin auto; height: 18vmin; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='120'%3E%3Cg fill='%23f5c542'%3E%3Crect x='20' y='20' width='10' height='5' transform='rotate(30 25 22)'/%3E%3Crect x='80' y='60' width='10' height='5' transform='rotate(-20 85 62)'/%3E%3Crect x='150' y='14' width='10' height='5' transform='rotate(60 155 16)'/%3E%3Crect x='220' y='70' width='10' height='5' transform='rotate(10 225 72)'/%3E%3Crect x='270' y='30' width='10' height='5' transform='rotate(-40 275 32)'/%3E%3C/g%3E%3Cg fill='%23fff3c4'%3E%3Ccircle cx='50' cy='90' r='3'/%3E%3Ccircle cx='120' cy='40' r='3'/%3E%3Ccircle cx='190' cy='96' r='3'/%3E%3Ccircle cx='250' cy='10' r='3'/%3E%3C/g%3E%3Cg fill='%23d7263d'%3E%3Crect x='110' y='96' width='9' height='4' transform='rotate(45 114 98)'/%3E%3Crect x='240' y='100' width='9' height='4' transform='rotate(-30 244 102)'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 30vmin auto repeat-x;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes gsChase { to { background-position: 2.2vmin 0; } }
+  @keyframes gsCurtain { from { clip-path: inset(0 50% 0 50%); filter: brightness(1.6); } }
+  @keyframes gsConfetti { from { transform: translateY(-8vmin); opacity: 0; } 20% { opacity: 1; } to { transform: translateY(6vmin); opacity: 0; } }
+  @keyframes gsSweep { 0%, 100% { transform: translateX(-30%) rotate(-8deg); } 50% { transform: translateX(30%) rotate(8deg); } }
+  html[data-skin="gameshow"] .lobby-info::before, html[data-skin="gameshow"] #overlay::after { animation: gsChase .9s steps(2) infinite; }
+  html[data-skin="gameshow"] #overlay { animation: gsCurtain .7s cubic-bezier(.3, .8, .2, 1); }
+  html[data-skin="gameshow"] #overlay::before { animation: gsConfetti 2.6s ease-in .4s infinite; }
+  /* a spotlight sweeping across the stage */
+  html[data-skin="gameshow"] #felt::after {
+    content: ''; position: absolute; inset: -20% 25%; pointer-events: none; z-index: 1;
+    background: radial-gradient(ellipse 30% 60% at 50% 40%, rgba(255, 244, 210, .08), transparent 70%);
+    animation: gsSweep 14s ease-in-out infinite;
+  }
+}
+html[data-skin="gameshow"] .seat.empty .who .name { font-size: 3vmin; }
+html[data-skin="gameshow"] body.many-seats .seat.empty .who .name { font-size: 2.6vmin; }
+html[data-skin="gameshow"] .seat.empty .who .name { font-family: var(--k-title-font); font-weight: 400; letter-spacing: .03em; }

@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { schnapsenT } from './table-cardgames.js?v=101';
+import { schnapsenT } from './table-cardgames.js?v=102';
 
 export default schnapsenT;

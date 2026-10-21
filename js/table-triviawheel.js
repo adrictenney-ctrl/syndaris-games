@@ -1,8 +1,8 @@
 // Trivia Wheel on the table: the six-colour wheel spins and lands on a category, the question
 // and its four answers appear, then the right answer lights up. Each player's wedges are shown
 // as a little pie beside their name.
-import * as E from './triviawheel.js?v=101';
-import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=101';
+import * as E from './triviawheel.js?v=102';
+import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=102';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const N = E.CATS.length;

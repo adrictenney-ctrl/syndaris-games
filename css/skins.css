@@ -269,3 +269,6 @@ html[data-style="vibrant"][data-skin] .pc-games input:checked + i { background: 
 html[data-style="vibrant"][data-skin] .acct-init { color: var(--k-accent-ink); background: var(--k-accent); }
 html[data-style="vibrant"][data-skin] .home-note { border-color: var(--k-accent); }
 html[data-style="vibrant"][data-skin] .join input::placeholder { color: var(--k-input-mute); opacity: 1; }
+
+/* Seat names: some skins' fonts have tall letters, so the clip box (for long names) gets more room. */
+html[data-style="vibrant"][data-skin] .who .name { padding-block: .3em; margin-block: -.3em; }
