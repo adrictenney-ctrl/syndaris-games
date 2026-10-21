@@ -1,7 +1,7 @@
 // Secret-choice games: everyone decides on their own phone at the same moment, then the table
 // reveals what happened. Lowest Unique, Split or Steal, Two-Thirds, Vulture Bids, Treasure Run,
 // Ticker, Gala Auction, Three Fronts, Lemonade Stand, Fish Pond, Mystery Boxes, Standoff.
-import { base, shuffle, pick, sfx, left, waiting, announce, finish } from './party.js?v=107';
+import { base, shuffle, pick, sfx, left, waiting, announce, finish } from './party.js?v=108';
 
 const R = n => Math.floor(Math.random() * n);
 // Shared shape: rounds of "everyone chooses" → reveal → next.

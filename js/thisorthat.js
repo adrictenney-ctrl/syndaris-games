@@ -1,7 +1,7 @@
 // This or That: an impossible choice goes up on the table — "Fly or be invisible?" Everyone secretly
 // picks their own answer on their phone, then predicts which side MOST of the room picked. The vote
 // is revealed as a tug of war: +1 if you predicted the majority (a tie means everyone's right).
-import { base, deal, sfx, left, waiting, finish } from './party.js?v=107';
+import { base, deal, sfx, left, waiting, finish } from './party.js?v=108';
 
 export const PAIRS = [
   ['Fly', 'Be invisible'], ['Beach', 'Mountains'], ['Cats', 'Dogs'], ['Sweet', 'Savoury'], ['Early bird', 'Night owl'], ['Pizza forever', 'Burgers forever'],

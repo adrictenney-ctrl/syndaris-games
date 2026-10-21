@@ -1,9 +1,9 @@
 // Word games: Five Letters, Word Gallows, Long Word, Target Number, Speed Typist, Word Chain,
 // Ghost Letters, Slow Reveal, Acro Race, Fib Finder. Phones hold your guesses and answers; the
 // table shows the board, the clock and the reveal. The word list (dict.js) is loaded by the table.
-import { base, shuffle, pick, same, core, norm, cleanText, sfx, left, waiting, announce, finish } from './party.js?v=107';
-import { loadDict, isWord, hasPrefix, randomWord } from './dict.js?v=107';
-import { FIVE, GALLOWS, FIBS, REVEAL } from './word-data.js?v=107';
+import { base, shuffle, pick, same, core, norm, cleanText, sfx, left, waiting, announce, finish } from './party.js?v=108';
+import { loadDict, isWord, hasPrefix, randomWord } from './dict.js?v=108';
+import { FIVE, GALLOWS, FIBS, REVEAL } from './word-data.js?v=108';
 
 const R = n => Math.floor(Math.random() * n);
 const ABC = 'abcdefghijklmnopqrstuvwxyz'.split('');

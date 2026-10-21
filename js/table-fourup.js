@@ -1,8 +1,8 @@
 // Four Up on the table: a walnut frame standing on the felt. Tap a column on the table or on
 // your phone; the disc drops to the lowest free slot.
-import * as F from './fourup.js?v=107';
-import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=107';
-import { snap } from './cards.js?v=107';
+import * as F from './fourup.js?v=108';
+import { seriesTimer, BEST_OF, LEVEL, applyLevel, duelPlate, duelOverlay, seriesText } from './duel.js?v=108';
+import { snap } from './cards.js?v=108';
 
 let root = null, gameRef = null, ctxRef = null, lastMove = -1;
 export const disc = (who, cls = '') => `<i class="fu-disc s${who} ${cls}"></i>`;

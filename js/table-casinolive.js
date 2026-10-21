@@ -1,6 +1,6 @@
 // Table screens for the live casino games (casino-live.js).
-import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=107';
-import { liftoff, ridethebus, threecard, islandstud, multAt, BUS_STAGES, pretty, isRed } from './casino-live.js?v=107';
+import { partyTable, esc, clock, doneRow, who } from './table-party.js?v=108';
+import { liftoff, ridethebus, threecard, islandstud, multAt, BUS_STAGES, pretty, isRed } from './casino-live.js?v=108';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const settings = s => `<label>Starting chips ${opt('chips', s, [[200, '200'], [500, '500'], [1000, '1,000']])}</label><label>Rounds ${opt('rounds', s, [[5, '5'], [8, '8'], [10, '10'], [15, '15']])}</label>`;

@@ -272,3 +272,8 @@ html[data-style="vibrant"][data-skin] .join input::placeholder { color: var(--k-
 
 /* Seat names: some skins' fonts have tall letters, so the clip box (for long names) gets more room. */
 html[data-style="vibrant"][data-skin] .who .name { padding-block: .3em; margin-block: -.3em; }
+
+/* Wide fonts (Arcade, Neon) must not make seat tiles wider than Vibrant's: the empty-seat hint wraps instead,
+   so tiles in the corners stay on screen and neighbours down a side never touch. */
+html[data-style="vibrant"][data-skin] .seat.empty .plate { max-width: min(100%, 30vmin); }
+html[data-style="vibrant"][data-skin] .seat.empty .meta { flex-wrap: wrap; text-align: center; letter-spacing: 0; }
