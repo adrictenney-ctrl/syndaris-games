@@ -102,8 +102,11 @@ export async function buyStyle(id) {
 const CODES = {
   '06387caf46ccc5834c704240a2c7bfaa296b33fb41a8308f984f54766d94ddb8': 'dough',   // choose an amount
   'c6a7e8b1655085b129236c8c7aa2fea4e4a550a069c024353706db590e9ad6a7': 'jackpot', // a fixed 1,000,000,000,000
+  '96023603e735e3962dcd4b894cc74433449b14046e17e490387f152c94be4cbd': 'jackpot2', // a fixed 100,000,000,000,000
 };
-export const JACKPOT = 1e12;
+// What the fixed-amount codes add.
+export const FIXED = { jackpot: 1e12, jackpot2: 1e14 };
+export const JACKPOT = FIXED.jackpot;
 const norm = t => String(t || '').toLowerCase().replace(/\s+/g, ' ').trim();
 async function sha256(text) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
@@ -118,8 +121,8 @@ export async function redeemDough(code, amount) {
   const u = currentUser();
   if (!u) throw Object.assign(new Error('Sign in first'), { code: 'signin' });
   const kind = await checkCode(code);
-  if (kind !== 'dough' && kind !== 'jackpot') throw Object.assign(new Error('Unknown code'), { code: 'bad' });
-  const add = kind === 'jackpot' ? JACKPOT : Math.floor(Number(amount));
+  if (kind !== 'dough' && !FIXED[kind]) throw Object.assign(new Error('Unknown code'), { code: 'bad' });
+  const add = FIXED[kind] || Math.floor(Number(amount));
   if (kind === 'dough' && (!(add > 0) || add > 1e6)) throw Object.assign(new Error('Amount'), { code: 'amount' });
   await ensureWallet(u);
   const grant = await sha256('pod-dev-grant:' + norm(code));

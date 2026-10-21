@@ -1,7 +1,7 @@
 // Bluff Dice on the table: a cup for each player with how many dice are under it, the current bid
 // in the middle, and — when someone calls Liar — every cup lifted, with the dice that count lit up.
-import * as E from './bluffdice.js?v=109';
-import { partyTable, esc, who } from './table-party.js?v=109';
+import * as E from './bluffdice.js?v=110';
+import { partyTable, esc, who } from './table-party.js?v=110';
 
 const cup = (g, ctx, s) => {
   const lift = g.phase === 'reveal' || g.phase === 'over', f = g.reveal?.bid.f;

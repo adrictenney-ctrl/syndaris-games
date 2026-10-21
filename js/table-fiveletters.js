@@ -1,4 +1,4 @@
 // See table-words.js.
-import { fivelettersT } from './table-words.js?v=109';
+import { fivelettersT } from './table-words.js?v=110';
 
 export default fivelettersT;

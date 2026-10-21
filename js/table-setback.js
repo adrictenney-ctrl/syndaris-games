@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { setbackT } from './table-cardgames.js?v=109';
+import { setbackT } from './table-cardgames.js?v=110';
 
 export default setbackT;

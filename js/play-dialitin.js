@@ -1,9 +1,9 @@
 // Dial It In on a phone. The Reader picks a spectrum, sees the secret target, and types a
 // clue. Their teammates drag the needle (everyone on the team moves the same dial) and lock
 // it in. The other team calls left or right.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=109';
-import * as D from './dialitin.js?v=109';
-import { dialSVG } from './table-dialitin.js?v=109';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=110';
+import * as D from './dialitin.js?v=110';
+import { dialSVG } from './table-dialitin.js?v=110';
 
 let ctx = null, pick = null, draft = '', local = null, lastSent = 0, sendT = null, dragging = false, wasMyTurn = false, lastRound = -1;
 
