@@ -3,7 +3,7 @@
 // property left and get half your bid back. The last bidder pays in full for the best one.
 // Part two — selling: a row of cheques goes up, and everyone secretly picks a property from their
 // hand on their phone at the same time. The best property gets the biggest cheque. Most money wins.
-import { base, shuffle, sfx, announce, waiting } from './party.js?v=108';
+import { base, shuffle, sfx, announce, waiting } from './party.js?v=109';
 
 export const PROPS = [null, 'Cardboard box', 'Tent', 'Outhouse', 'Igloo', 'Dog kennel', 'Treehouse', 'Caravan', 'Shed', 'Houseboat', 'Cabin',
   'Bungalow', 'Cottage', 'Lighthouse', 'Windmill', 'Farmhouse', 'Townhouse', 'Loft', 'Chalet', 'Beach house', 'Barn conversion',

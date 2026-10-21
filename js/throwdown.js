@@ -1,7 +1,7 @@
 // Throwdown: a rock-paper-scissors tournament. The table draws the bracket; every match in a round
 // plays at once. Pick your throw secretly on your phone — both throws flip on the table together.
 // First to two wins takes the match and moves on. Last one standing is the champion.
-import { base, shuffle, sfx, announce } from './party.js?v=108';
+import { base, shuffle, sfx, announce } from './party.js?v=109';
 
 export const THROWS = [{ n: 'Rock', e: '🪨' }, { n: 'Paper', e: '📄' }, { n: 'Scissors', e: '✂️' }];
 const beats = (a, b) => (a - b + 3) % 3 === 1;   // paper beats rock, scissors beat paper, rock beats scissors

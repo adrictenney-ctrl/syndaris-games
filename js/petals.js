@@ -3,7 +3,7 @@
 // challenge: "I can flip 4 Petals". Others raise or pass. The highest bidder flips — their own
 // stack first, then the top discs of anyone else's — and must not hit a Thorn. Make it and you
 // score; win two challenges to win the game. Hit a Thorn and you lose a disc for good.
-import { base, shuffle, sfx, announce } from './party.js?v=108';
+import { base, shuffle, sfx, announce } from './party.js?v=109';
 
 export function createGame(settings, players) {
   const g = base(settings, players, {});

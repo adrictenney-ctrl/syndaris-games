@@ -99,7 +99,11 @@ export async function buyStyle(id) {
 
 // Codes (Settings → "Have a code?"). Only fingerprints are kept here, never the codes themselves.
 // A code is matched without caring about capitals or extra spaces.
-const CODES = { '06387caf46ccc5834c704240a2c7bfaa296b33fb41a8308f984f54766d94ddb8': 'dough' };
+const CODES = {
+  '06387caf46ccc5834c704240a2c7bfaa296b33fb41a8308f984f54766d94ddb8': 'dough',   // choose an amount
+  'c6a7e8b1655085b129236c8c7aa2fea4e4a550a069c024353706db590e9ad6a7': 'jackpot', // a fixed 1,000,000,000,000
+};
+export const JACKPOT = 1e12;
 const norm = t => String(t || '').toLowerCase().replace(/\s+/g, ' ').trim();
 async function sha256(text) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
@@ -113,9 +117,10 @@ export async function checkCode(code) { return CODES[await sha256('pod-code:' + 
 export async function redeemDough(code, amount) {
   const u = currentUser();
   if (!u) throw Object.assign(new Error('Sign in first'), { code: 'signin' });
-  if (await checkCode(code) !== 'dough') throw Object.assign(new Error('Unknown code'), { code: 'bad' });
-  const add = Math.floor(Number(amount));
-  if (!(add > 0) || add > 1e6) throw Object.assign(new Error('Amount'), { code: 'amount' });
+  const kind = await checkCode(code);
+  if (kind !== 'dough' && kind !== 'jackpot') throw Object.assign(new Error('Unknown code'), { code: 'bad' });
+  const add = kind === 'jackpot' ? JACKPOT : Math.floor(Number(amount));
+  if (kind === 'dough' && (!(add > 0) || add > 1e6)) throw Object.assign(new Error('Amount'), { code: 'amount' });
   await ensureWallet(u);
   const grant = await sha256('pod-dev-grant:' + norm(code));
   let total = 0;

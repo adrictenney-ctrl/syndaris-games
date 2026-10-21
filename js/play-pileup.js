@@ -1,8 +1,8 @@
 // Pile Up on a phone: your hand, with the cards you can play lifted. Tap one to play it (wilds
 // ask for a suit). When a draw pile is coming your way, answer it or take it.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=108';
-import * as U from './pileup.js?v=108';
-import { puCard, suitSVG, SUIT_COLOR } from './table-pileup.js?v=108';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=109';
+import * as U from './pileup.js?v=109';
+import { puCard, suitSVG, SUIT_COLOR } from './table-pileup.js?v=109';
 
 let ctx = null, wild = null, wasMyTurn = false;
 
