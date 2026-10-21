@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { tonkT } from './table-cardgames.js?v=106';
+import { tonkT } from './table-cardgames.js?v=107';
 
 export default tonkT;
