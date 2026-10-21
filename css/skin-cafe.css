@@ -67,3 +67,6 @@ html[data-style="vibrant"][data-skin="cafe"] {
   --k-tile-text-shadow: 2px 0 0 #3f2716, -2px 0 0 #3f2716, 0 2px 0 #3f2716, 0 -2px 0 #3f2716, 0 4px 0 #3f2716;
   --k-dialog-bg: #4a2f1c; --k-dialog-ink: #fff6e9; --k-dialog-mute: #ecd5bc; --k-dialog-line: #8a6440; --k-dialog-soft: rgba(255, 246, 233, .08);
 }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="cafe"] .art .cover, html[data-skin="cafe"] .spot .pic svg, html[data-skin="cafe"] .tb-screen > svg { filter: sepia(.3) saturate(.85) brightness(1.02); }

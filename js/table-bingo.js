@@ -1,8 +1,8 @@
 // Bingo on the table: the ball just called, big, and the caller's board of all 75 numbers with
 // every called one lit. With the "host calls" pace, tap Next ball.
-import * as B from './bingo.js?v=105';
-import { chime, ding } from './sfx.js?v=105';
-import { centerMsg, clearMsg } from './table-hearts.js?v=105';
+import * as B from './bingo.js?v=106';
+import { chime, ding } from './sfx.js?v=106';
+import { centerMsg, clearMsg } from './table-hearts.js?v=106';
 
 let root = null, key = '', gameRef = null, ctxRef = null, lastBall = null;
 const PAT = { line: 'Any line', corners: 'Four corners', full: 'Full card' };

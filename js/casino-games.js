@@ -1,6 +1,6 @@
 // Casino games on the casino kit: bets go on phones, the action happens on the table.
-import { casinoEngine } from './casinokit.js?v=105';
-import { shuffle } from './party.js?v=105';
+import { casinoEngine } from './casinokit.js?v=106';
+import { shuffle } from './party.js?v=106';
 
 const R = n => Math.floor(Math.random() * n);
 const die = () => 1 + R(6);

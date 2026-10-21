@@ -72,3 +72,6 @@ html[data-skin="luxe"] #overlay::before {
   html[data-skin="luxe"] #overlay::before { animation: luxeTwinkle 2.4s ease-in-out infinite; }
   html[data-skin="luxe"] .lobby-info, html[data-skin="luxe"] .plate, html[data-skin="luxe"] .tent { animation: luxeFade .8s ease-out both; }
 }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="luxe"] .art .cover, html[data-skin="luxe"] .spot .pic svg, html[data-skin="luxe"] .tb-screen > svg { filter: sepia(.45) saturate(.75) contrast(1.12) brightness(.88); }

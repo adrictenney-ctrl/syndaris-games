@@ -1,7 +1,7 @@
 // Hearts on a phone: pick three cards to pass, then play — tap a bright card twice, or swipe
 // it up. Cards you can't play are dimmed.
-import { $, toast, setHud, setStatus, renderHand, flyCard } from './phone-kit.js?v=105';
-import { cardName } from './tricks.js?v=105';
+import { $, toast, setHud, setStatus, renderHand, flyCard } from './phone-kit.js?v=106';
+import { cardName } from './tricks.js?v=106';
 
 let ctx = null, picks = [], selected = null, lastHand = -1, wasMyTurn = false;
 

@@ -1,3 +1,3 @@
 // Round Table: Rebel Cell with characters (the Seer, the Knife, and friends).
-import { rebelMode } from './table-rebelcell.js?v=105';
+import { rebelMode } from './table-rebelcell.js?v=106';
 export default rebelMode(true);

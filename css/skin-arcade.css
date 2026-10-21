@@ -99,3 +99,6 @@ html[data-skin="arcade"] .brand span { font-size: 15px; }
 html[data-skin="arcade"] .section-head h2 { font-size: 22px; }
 html[data-skin="arcade"] .set-head h2 { font-size: 18px; }
 html[data-skin="arcade"] .join input { font-family: var(--k-body-font); font-size: 22px; letter-spacing: .2em; }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="arcade"] .art .cover, html[data-skin="arcade"] .spot .pic svg, html[data-skin="arcade"] .tb-screen > svg { filter: saturate(1.35) contrast(1.12); }

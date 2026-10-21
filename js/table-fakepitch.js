@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { fakepitchT } from './table-talk.js?v=105';
+import { fakepitchT } from './table-talk.js?v=106';
 
 export default fakepitchT;

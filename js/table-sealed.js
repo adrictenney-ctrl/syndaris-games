@@ -1,7 +1,7 @@
 // Sealed Letter on the table: the deck, each player's played cards in a row (so everyone can count
 // what's gone), who's shielded or out, the last few plays, and the seals won.
-import * as E from './sealed.js?v=105';
-import { partyTable, esc, who } from './table-party.js?v=105';
+import * as E from './sealed.js?v=106';
+import { partyTable, esc, who } from './table-party.js?v=106';
 
 const card = (v, cls = '') => `<span class="sl-tcard ${cls}"><b>${E.CARDS[v].e}</b><small>${v}</small></span>`;
 const named = (ctx, t) => esc(t).replace(/@(\d+)@/g, (_, s) => esc(ctx.nameOf(Number(s))));

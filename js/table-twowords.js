@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { twowordsT } from './table-talk.js?v=105';
+import { twowordsT } from './table-talk.js?v=106';
 
 export default twowordsT;

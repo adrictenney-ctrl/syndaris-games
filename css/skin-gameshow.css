@@ -84,3 +84,6 @@ html[data-skin="gameshow"] #overlay::before {
 html[data-skin="gameshow"] .seat.empty .who .name { font-size: 3vmin; }
 html[data-skin="gameshow"] body.many-seats .seat.empty .who .name { font-size: 2.6vmin; }
 html[data-skin="gameshow"] .seat.empty .who .name { font-family: var(--k-title-font); font-weight: 400; letter-spacing: .03em; }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="gameshow"] .art .cover, html[data-skin="gameshow"] .spot .pic svg, html[data-skin="gameshow"] .tb-screen > svg { filter: saturate(1.15) contrast(1.06); }

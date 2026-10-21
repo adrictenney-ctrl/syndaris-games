@@ -72,3 +72,6 @@ html[data-style="vibrant"][data-skin="neon"] {
 html[data-skin="neon"] .spot h1 { font-size: clamp(40px, 4.4vw, 66px); line-height: 1.05; }
 html[data-skin="neon"] .box h3 { font-size: 21px; letter-spacing: .03em; }
 html[data-skin="neon"] .brand span { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: .06em; }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="neon"] .art .cover, html[data-skin="neon"] .spot .pic svg, html[data-skin="neon"] .tb-screen > svg { filter: saturate(1.25) brightness(.92) contrast(1.1); }

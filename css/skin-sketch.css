@@ -82,3 +82,6 @@ html[data-skin="sketch"] #overlay::before {
 }
 /* the disabled start button keeps its pen outline (the shared rule resets the border) */
 html[data-style="vibrant"][data-skin="sketch"] button.big:disabled { border: .32vmin solid transparent; border-image: var(--k-pen) 10 / .32vmin / .1vmin stretch; }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="sketch"] .art .cover, html[data-skin="sketch"] .spot .pic svg, html[data-skin="sketch"] .tb-screen > svg { filter: saturate(.8) contrast(1.05); }

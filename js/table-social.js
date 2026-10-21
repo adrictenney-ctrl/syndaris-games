@@ -1,8 +1,8 @@
 // Table screens for the social games (social-games.js).
-import { partyTable, esc, clock, doneRow, sc, who, teamScores, TEAMS } from './table-party.js?v=105';
-import * as S from './social-games.js?v=105';
-import { art as dreamArt } from './dreamcards.js?v=105';
-import { fitCanvas, paint } from './sketch-pad.js?v=105';
+import { partyTable, esc, clock, doneRow, sc, who, teamScores, TEAMS } from './table-party.js?v=106';
+import * as S from './social-games.js?v=106';
+import { art as dreamArt } from './dreamcards.js?v=106';
+import { fitCanvas, paint } from './sketch-pad.js?v=106';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 const nm = (ctx, s) => esc(ctx.nameOf(s));

@@ -70,3 +70,6 @@ html[data-style="vibrant"][data-skin="comic"] {
   --k-dialog-bg: #0f3f8f; --k-dialog-ink: #ffffff; --k-dialog-mute: #dbe6ff; --k-dialog-line: #111111; --k-dialog-soft: rgba(255, 255, 255, .1);
 }
 html[data-skin="comic"] .box h3 { letter-spacing: .03em; }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="comic"] .art .cover, html[data-skin="comic"] .spot .pic svg, html[data-skin="comic"] .tb-screen > svg { filter: saturate(1.45) contrast(1.18); }

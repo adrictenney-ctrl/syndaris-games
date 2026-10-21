@@ -1,4 +1,4 @@
 // See table-social.js.
-import { copycatT } from './table-social.js?v=105';
+import { copycatT } from './table-social.js?v=106';
 
 export default copycatT;

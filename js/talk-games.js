@@ -2,9 +2,9 @@
 // Interrogation, Translate This, Draw Your Partner, Excuses Excuses, Lip Reader, Two Words,
 // Guilty Conscience, Plot Twist. Secrets and writing on the phones; the reveal, the reading and
 // the votes on the table.
-import { base, shuffle, pick, same, cleanText, sfx, left, waiting, finish } from './party.js?v=105';
-import { LISTS } from './sketch-words.js?v=105';
-import * as D from './talk-data.js?v=105';
+import { base, shuffle, pick, same, cleanText, sfx, left, waiting, finish } from './party.js?v=106';
+import { LISTS } from './sketch-words.js?v=106';
+import * as D from './talk-data.js?v=106';
 
 const R = n => Math.floor(Math.random() * n);
 const strokes = st => (Array.isArray(st) ? st.slice(0, 400).map(x => ({ c: x.c | 0, w: x.w | 0, p: (Array.isArray(x.p) ? x.p : []).slice(0, 2000).map(v => Math.round(v) || 0) })) : []);

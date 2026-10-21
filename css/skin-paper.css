@@ -84,3 +84,6 @@ html[data-skin="paper"] #overlay::before {
 /* Baloo 2 has a tall line: the paper gets a little more room above and below the names */
 html[data-skin="paper"] .plate { padding-top: 1.5vmin; padding-bottom: 1.4vmin; }
 html[data-skin="paper"] .who .name { line-height: 1.15; }
+
+/* the game covers: printed in this style's colours (index.html picks the palette), with a matching finish */
+html[data-skin="paper"] .art .cover, html[data-skin="paper"] .spot .pic svg, html[data-skin="paper"] .tb-screen > svg { filter: sepia(.1) saturate(.95) contrast(1.04); }
