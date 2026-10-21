@@ -1,7 +1,7 @@
 // Close Call on the table: the question, then the betting mat — every guess in a row from low to
 // high with its odds and whose it is, bets stacked on top — and the answer flipped at the end.
-import * as E from './closecall.js?v=103';
-import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=103';
+import * as E from './closecall.js?v=104';
+import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=104';
 
 export default partyTable(E, {
   id: 'closecall',

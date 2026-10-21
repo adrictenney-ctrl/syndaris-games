@@ -1,8 +1,8 @@
 // Doodle Bluff on the table: while everyone draws, just the clock; then each drawing big on an
 // easel, the list of titles to vote on, and the reveal of who fooled whom.
-import * as E from './doodlebluff.js?v=103';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=103';
-import { fitCanvas, paint } from './sketch-pad.js?v=103';
+import * as E from './doodlebluff.js?v=104';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=104';
+import { fitCanvas, paint } from './sketch-pad.js?v=104';
 
 export default partyTable(E, {
   id: 'doodlebluff',

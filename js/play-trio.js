@@ -1,6 +1,6 @@
 // Trio on a phone: the same board — tap a square on your turn.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=103';
-import { mark } from './table-trio.js?v=103';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=104';
+import { mark } from './table-trio.js?v=104';
 
 let ctx = null, wasMyTurn = false;
 export function reset() { document.getElementById('trPhone')?.remove(); }

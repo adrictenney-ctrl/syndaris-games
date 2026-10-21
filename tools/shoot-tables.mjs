@@ -57,7 +57,10 @@ async function shoot(b, id, style) {
   await wait(300);
   await b.js(`localStorage.clear(); localStorage.setItem('pod.style', '${style}'); localStorage.setItem('pod.owned', '["classic"]'); localStorage.setItem('syndaris.table.upright', '0')`);
   await b.send('Page.navigate', { url: `${site}/table.html?game=${id}` });
-  for (let i = 0; i < 40; i++) { await wait(150); if (await b.js(`!!document.querySelector('.seat') && document.body.classList.contains('in-lobby')`)) break; }
+  // Wait for the table to draw (a busy machine can take a while); no seats means try again.
+  let ready = false;
+  for (let i = 0; i < 130 && !ready; i++) { await wait(150); ready = await b.js(`!!document.querySelector('.seat') && document.body.classList.contains('in-lobby')`); }
+  if (!ready) return 'retry';
   await wait(600);
   // As many bots as the game takes, spread around the table, then start (games where bots can't
   // play just show their seats).
@@ -85,6 +88,8 @@ async function shoot(b, id, style) {
     }
     pick = frames[Math.floor(frames.length / 2)] || await snap();
   }
+  // A picture of an empty table (about 3.7 KB) means the game never drew: try again.
+  if (!pick || pick.length < 7000 || !(await b.js(`document.querySelectorAll('.seat').length > 0`))) return 'retry';
   writeFileSync(new URL(`${id}-${style[0]}.webp`, OUT), Buffer.from(pick, 'base64'));
   return started;
 }
@@ -96,9 +101,10 @@ await Promise.all(Array.from({ length: Math.min(jobs, work.length) }, async (_, 
   const b = await browser(9600 + j);
   for (let w; (w = work.shift());) {
     try {
-      let ok = false;
-      for (let t = 0; t < 3 && !ok; t++) ok = await shoot(b, ...w);   // a busy machine can miss the start; try again
-      if (!ok) notStarted.push(w.join(' '));
+      let ok = 'retry';
+      for (let t = 0; t < 4 && ok !== true; t++) ok = await shoot(b, ...w);   // a busy machine can miss the start; try again
+      if (ok === 'retry') console.log('no picture', w.join(' '));
+      else if (!ok) notStarted.push(w.join(' '));
     }
     catch (e) { console.log('failed', w.join(' '), e.message); }
     if (++done % 20 === 0) console.log(`${done} pictures`);

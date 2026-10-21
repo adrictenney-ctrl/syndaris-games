@@ -4,9 +4,9 @@
 // table reveals every chain, page by page, to see how far the word drifted.
 // Scoring: whoever writes the LAST guess in a book gets a point if it matches the original word.
 // Points carry over through "Play again"; whoever leads when the table goes back to the lobby wins.
-import { LISTS } from './sketch-words.js?v=103';
-import { same } from './party.js?v=103';
-import { SCRIBBLE_WORDS } from './scribble-words.js?v=103';
+import { LISTS } from './sketch-words.js?v=104';
+import { same } from './party.js?v=104';
+import { SCRIBBLE_WORDS } from './scribble-words.js?v=104';
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // Scribble Chain draws from the shared easy and medium lists plus its own big list (no repeats).

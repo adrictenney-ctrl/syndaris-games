@@ -781,7 +781,7 @@ body.in-lobby .lobby-info {
   max-width: calc(min(var(--info-w) + var(--info-pad-x), calc(100vw - var(--edge-l) - var(--edge-r) - var(--tent-span))) / var(--lz, 1));
 }
 body.in-lobby .lobby-info > * { flex: none; }
-body.in-lobby .lobby-info .settings { flex: 0 1 auto; min-height: 5.6vmin; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+body.in-lobby .lobby-info .settings { flex: 0 1 auto; min-height: 5.6vmin; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
 
 /* The corner controls sit in one row: in the corner when no seat is there, else at the inner
    corner of the seat tiles (table.js picks, --tb-right / --tb-bottom). */
@@ -790,8 +790,6 @@ body.in-lobby #toolbar {
   flex-direction: row; align-items: center; gap: 1vmin;
 }
 body.in-lobby #toolbar .pill { white-space: nowrap; }
-html[data-style="vibrant"] body.in-lobby .lobby-info .settings { scrollbar-color: rgba(255, 255, 255, .35) transparent; }
-body.in-lobby .lobby-info .settings { scrollbar-color: rgba(218, 188, 118, .4) transparent; }
 /* A settings list that scrolls: room inside the box so nothing touches its edges or rounded corners,
    and whole settings snap into view (table.js trims the box to end between two settings). */
 body.in-lobby .lobby-info .settings { box-sizing: border-box; padding: .9vmin 1vmin; scroll-padding: .9vmin; scroll-snap-type: y proximity; }

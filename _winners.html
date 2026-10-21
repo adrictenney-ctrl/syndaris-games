@@ -4,10 +4,10 @@
 <script type="module">
 // Dev only: play every game to the end with computer players (clock fast-forwarded) and report
 // what each one records about who won.
-const { GAMES } = await import('./js/games.js?v=103');
+const { GAMES } = await import('./js/games.js?v=104');
 const realNow = Date.now.bind(Date); let skew = 0; Date.now = () => realNow() + skew;
 const ids = (new URLSearchParams(location.search).get('ids') || Object.keys(GAMES).join(',')).split(',');
-const src = await (await fetch('./js/table.js?v=103')).text();
+const src = await (await fetch('./js/table.js?v=104')).text();
 const FILE = Object.fromEntries([...src.matchAll(/import (\w+) from '\.\/(table-[\w-]+)\.js/g)].map(m => [m[1], m[2]]));
 const W = await import('./js/winners.js?v=' + Date.now());
 const rows = [];
