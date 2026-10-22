@@ -1,8 +1,8 @@
 // Old Maid on the table: everyone's hand as a face-down fan on their plate, the discarded pairs
 // heaped in the middle, and who's taking from whom.
-import * as O from './oldmaid.js?v=110';
-import { cardEl, snap } from './cards.js?v=110';
-import { centerMsg, clearMsg } from './table-hearts.js?v=110';
+import * as O from './oldmaid.js?v=111';
+import { cardEl, snap } from './cards.js?v=111';
+import { centerMsg, clearMsg } from './table-hearts.js?v=111';
 
 let root = null, key = '';
 

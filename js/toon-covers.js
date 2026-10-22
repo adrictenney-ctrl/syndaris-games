@@ -1,6 +1,6 @@
 // The Vibrant style's cover art: a cartoon picture for every game, drawn from the kit in toon.js.
 // Each recipe returns the objects (in a 600 × 400 frame; the title sits over the bottom left on a tile).
-import { K, P, fan, backdrop, shadowDef, INK } from './toon.js?v=110';
+import { K, P, fan, backdrop, shadowDef, INK } from './toon.js?v=111';
 
 const R = '#e8303c', Y = '#ffc93a', G = '#22b97a', B = '#3f86f2', V = '#8a55ef', O = '#ff8f2e', PK = '#f0509c', T = '#18b2c9', D = '#2f2950', WH = '#ffffff';
 const c = (rank, suit) => ['card', { rank, suit }];

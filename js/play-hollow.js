@@ -1,8 +1,8 @@
 // Hollowmere on a phone: your secret character (hold to peek), what you've learned, your
 // choices at night, and nominating and voting by day.
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=110';
-import { CHARS, KIND_NAME } from './hollow-chars.js?v=110';
-import { fmt, sheetHTML } from './table-hollow.js?v=110';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=111';
+import { CHARS, KIND_NAME } from './hollow-chars.js?v=111';
+import { fmt, sheetHTML } from './table-hollow.js?v=111';
 
 let ctx = null, panelKey = '', cardKey = '', picks = [], mode = null, notesSeen = 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

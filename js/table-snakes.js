@@ -1,9 +1,9 @@
 // Snakes & Ladders on the table: a hand-painted 10×10 board — cream and sage squares, wooden
 // ladders, striped snakes — with everyone's token on it and the last roll's die.
-import * as S from './snakes.js?v=110';
-import { dieHTML } from './table-yacht.js?v=110';
-import { snap } from './cards.js?v=110';
-import { centerMsg, clearMsg } from './table-hearts.js?v=110';
+import * as S from './snakes.js?v=111';
+import { dieHTML } from './table-yacht.js?v=111';
+import { snap } from './cards.js?v=111';
+import { centerMsg, clearMsg } from './table-hearts.js?v=111';
 
 let root = null, key = '';
 const XY = n => { const [c, r] = S.cell(n); return [c * 10 + 5, (9 - r) * 10 + 5]; };

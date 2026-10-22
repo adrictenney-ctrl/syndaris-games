@@ -107,6 +107,8 @@ const CODES = {
 // What the fixed-amount codes add.
 export const FIXED = { jackpot: 1e12, jackpot2: 1e14 };
 export const JACKPOT = FIXED.jackpot;
+// Who is signed in, for the code box's messages.
+export const whoAmI = () => { const u = currentUser(); return u ? { email: u.email || '', verified: !!u.emailVerified } : null; };
 const norm = t => String(t || '').toLowerCase().replace(/\s+/g, ' ').trim();
 async function sha256(text) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));

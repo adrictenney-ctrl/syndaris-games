@@ -1,7 +1,7 @@
 // Old Maid on a phone: your hand (pairs are thrown away for you), and on your turn the next
 // player's cards face down — tap one to take it.
-import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=110';
-import { MAID } from './oldmaid.js?v=110';
+import { $, setHud, setStatus, renderHand, cardEl } from './phone-kit.js?v=111';
+import { MAID } from './oldmaid.js?v=111';
 
 let wasMyTurn = false;
 export function reset() { document.getElementById('omPick')?.remove(); }
