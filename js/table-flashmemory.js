@@ -1,5 +1,5 @@
 // Flash Memory on the table — the quiz-show screen (see table-quiz.js).
-import { QUIZ } from './quiz-games.js?v=112';
-import { quizTable } from './table-quiz.js?v=112';
+import { QUIZ } from './quiz-games.js?v=113';
+import { quizTable } from './table-quiz.js?v=113';
 
 export default quizTable(QUIZ.flashmemory, { id: 'flashmemory' });

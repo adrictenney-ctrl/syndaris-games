@@ -1,9 +1,9 @@
 // Kaboom Critters on a phone: your hand. Tap a card to pick it (a critter picks its twin
 // too), then Play — or just Draw to end your turn. When anyone plays an action, a big
 // Nuh-uh! button appears if you hold one.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=112';
-import * as K from './kaboom.js?v=112';
-import { kcCard } from './table-kaboom.js?v=112';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=113';
+import * as K from './kaboom.js?v=113';
+import { kcCard } from './table-kaboom.js?v=113';
 
 let ctx = null, sel = [], targeting = false, wasMyTurn = false, lastMove = -1, lastGift = -1;
 

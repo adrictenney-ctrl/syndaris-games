@@ -1,8 +1,8 @@
 // Shape & Shade on the table: the tiles laid out on a dark slate, growing in every direction;
 // the last move outlined.
-import * as Q from './shapeshade.js?v=112';
-import { snap } from './cards.js?v=112';
-import { centerMsg, clearMsg } from './table-hearts.js?v=112';
+import * as Q from './shapeshade.js?v=113';
+import { snap } from './cards.js?v=113';
+import { centerMsg, clearMsg } from './table-hearts.js?v=113';
 
 let root = null, key = '';
 export const qTile = (id, cls = '') => { const t = Q.tile(id); return `<span class="qs-tile ${cls}" style="--c:${Q.COLORS[t.c]}">${Q.SHAPES[t.s]}</span>`; };

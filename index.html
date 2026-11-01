@@ -9,12 +9,18 @@
   <link rel="icon" href="icon-vibrant.svg">
   <link rel="manifest" href="manifest.webmanifest">
   <script>
-    // The landing page is for new visitors. The TV app (and anything carrying settings, like a game
-    // turned off in Parent Controls) goes straight on to the games.
+    // The landing page shows once: the first visit on a device. After that (or for anyone who has
+    // already used the site here), the address goes straight to the games. The TV app, and anything
+    // carrying settings (like a game turned off in Parent Controls), always goes straight there too.
     (() => {
       const q = new URLSearchParams(location.search);
-      const tv = /PlayOnDisplayTV/.test(navigator.userAgent) || q.has('tv') || q.has('blocked');
-      if (tv) location.replace('games.html' + location.search);
+      let seen = false;
+      try {
+        seen = !!(localStorage.getItem('pod.seenLanding') || localStorage.getItem('syndaris.table.v2') || localStorage.getItem('pod.favs'));
+        localStorage.setItem('pod.seenLanding', '1');
+      } catch {}
+      const skip = seen || /PlayOnDisplayTV/.test(navigator.userAgent) || q.has('tv') || q.has('blocked');
+      if (skip) location.replace('games.html' + location.search);
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -30,3 +30,8 @@ test('the TV app skips the landing page', () => {
   assert.match(page, /PlayOnDisplayTV/);
   assert.match(page, /location\.replace\('games\.html' \+ location\.search\)/);
 });
+
+test('the landing page shows once per device', () => {
+  assert.match(page, /localStorage\.setItem\('pod\.seenLanding', '1'\)/);
+  assert.match(page, /const skip = seen \|\|/);
+});

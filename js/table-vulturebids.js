@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { vulturebidsT } from './table-choice.js?v=112';
+import { vulturebidsT } from './table-choice.js?v=113';
 
 export default vulturebidsT;

@@ -1,7 +1,7 @@
 // Same Brain on the table: the question, then the answers grouped into pens — the biggest pen
 // scores — and who's holding the Odd Sock.
-import * as E from './samebrain.js?v=112';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=112';
+import * as E from './samebrain.js?v=113';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=113';
 
 export default partyTable(E, {
   id: 'samebrain',
