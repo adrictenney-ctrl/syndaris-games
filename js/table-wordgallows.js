@@ -1,4 +1,4 @@
 // See table-words.js.
-import { wordgallowsT } from './table-words.js?v=113';
+import { wordgallowsT } from './table-words.js?v=114';
 
 export default wordgallowsT;

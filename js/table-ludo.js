@@ -1,10 +1,10 @@
 // The race-home games on the table (Ludo, Pop-Up Race, Marble Rush): the track runs round a
 // square board; each side has its yard of pieces, its start square (an arrow) and its home lane
 // running in to the middle. Pieces are in the owner's seat colour.
-import * as H from './racehome.js?v=113';
-import { dieHTML } from './table-yacht.js?v=113';
-import { snap } from './cards.js?v=113';
-import { centerMsg, clearMsg } from './table-hearts.js?v=113';
+import * as H from './racehome.js?v=114';
+import { dieHTML } from './table-yacht.js?v=114';
+import { snap } from './cards.js?v=114';
+import { centerMsg, clearMsg } from './table-hearts.js?v=114';
 
 // Geometry on a 100×100 board.
 const IN = 13;

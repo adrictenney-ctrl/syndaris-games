@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <!-- Style from Settings: Vibrant (free), Classic or a skin (bought; skins dress the table and phones). -->
-  <script src="js/skin-boot.js?v=113" data-page="home"></script>
-  <link rel="stylesheet" href="css/cards.css?v=113">
-  <link rel="stylesheet" href="css/tablet.css?v=113">
+  <script src="js/skin-boot.js?v=114" data-page="home"></script>
+  <link rel="stylesheet" href="css/cards.css?v=114">
+  <link rel="stylesheet" href="css/tablet.css?v=114">
   <style>
     html { background: var(--onyx); }
     body {
@@ -379,7 +379,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=113">
+  <link rel="stylesheet" href="css/vibrant.css?v=114">
 </head>
 <body class="home">
   <header class="bar">
@@ -456,10 +456,11 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=113"></script>
+  <script type="module" src="js/tvnav.js?v=114"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=113';
-    import { sceneSVG } from './js/covers.js?v=113';
+    import { GAMES } from './js/games.js?v=114';
+    import { ALIASES, nearWord } from './js/search-aliases.js?v=114';
+    import { sceneSVG } from './js/covers.js?v=114';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
@@ -609,7 +610,15 @@
     const qEl = document.getElementById('q'), qClear = document.getElementById('qClear');
     const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’'&!.,]/g, '').replace(/\s+/g, ' ').trim();
     const hay = id => norm(`${GAMES[id].name} ${GAMES[id].blurb} ${KIND_NAME[KIND[id]]} ${id}`);
-    const matches = id => !q.trim() || norm(q).split(' ').every(w => hay(id).includes(w));
+    // Other names people know a game by (js/search-aliases.js): only used to match, never shown.
+    // A search finds a game if it starts one of those names, or is within a typo or two of one.
+    const flat = t => norm(t).replace(/ /g, '');
+    const aliasHit = id => {
+      const nq = flat(q);
+      if (nq.length < 3) return false;
+      return (ALIASES[id] || []).some(a => { const na = flat(a); return na.startsWith(nq) || nearWord(nq, na); });
+    };
+    const matches = id => !q.trim() || norm(q).split(' ').every(w => hay(id).includes(w)) || aliasHit(id);
     const setQ = v => { qEl.value = q = v; qClear.hidden = !q; draw(); };
     qEl.addEventListener('input', () => setQ(qEl.value));
     qEl.addEventListener('keydown', e => {
@@ -688,6 +697,12 @@
       // Starred games come first (in Favorites, in the order they were starred).
       if (cat === 'fav' && !searching) show = favs.filter(id => show.includes(id));
       else show = [...show.filter(isFav), ...show.filter(id => !isFav(id))];
+      // Searching: the closest matches first (a game's own name, or exactly the other name typed).
+      if (searching) {
+        const nq = flat(q), rank = id => flat(GAMES[id].name) === nq || (ALIASES[id] || []).some(a => flat(a) === nq) ? 0
+          : flat(GAMES[id].name).startsWith(nq) || (ALIASES[id] || []).some(a => flat(a).startsWith(nq)) ? 1 : 2;
+        show = show.map((id, i) => [rank(id), i, id]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
+      }
       shelf.replaceChildren(...show.map(id => tiles[id]));
       if (!show.length) {
         const p = document.createElement('p');
