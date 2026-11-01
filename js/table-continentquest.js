@@ -1,5 +1,5 @@
 // Continent Quest on the table — the quiz-show screen (see table-quiz.js).
-import { QUIZ } from './quiz-games.js?v=111';
-import { quizTable } from './table-quiz.js?v=111';
+import { QUIZ } from './quiz-games.js?v=112';
+import { quizTable } from './table-quiz.js?v=112';
 
 export default quizTable(QUIZ.continentquest, { id: 'continentquest' });

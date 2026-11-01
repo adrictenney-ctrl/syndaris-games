@@ -1,4 +1,4 @@
 // See table-casinolive.js.
-import { liftoffTable } from './table-casinolive.js?v=111';
+import { liftoffTable } from './table-casinolive.js?v=112';
 
 export default liftoffTable;

@@ -51,7 +51,7 @@ test('style skins: picked before drawing, shared engine, one file per skin', () 
   const boot = readFileSync(new URL('../js/skin-boot.js', import.meta.url), 'utf8');
   const skins = [...boot.matchAll(/^\s{4}(\w+): 'family=/gm)].map(m => m[1]);
   assert.deepEqual(skins, ['arcade', 'neon', 'cafe', 'comic', 'gameshow', 'sketch', 'luxe', 'paper']);
-  for (const page of ['table.html', 'play.html', 'index.html'])
+  for (const page of ['table.html', 'play.html', 'games.html'])
     assert.match(readFileSync(new URL('../' + page, import.meta.url), 'utf8'), /<script src="js\/skin-boot\.js\?v=\d+" data-page="\w+"><\/script>/, page);
   const engine = readFileSync(new URL('../css/skins.css', import.meta.url), 'utf8');
   assert.match(engine, /prefers-reduced-motion: reduce/);

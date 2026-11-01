@@ -1,8 +1,8 @@
 // Cash Out on a player's phone: the pot, your score, and one big button — CASH OUT —
 // that works any time after the first roll. When it's your roll, tap Roll (or shake).
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=111';
-import { SAFE } from './cashout.js?v=111';
-import { dieHTML } from './table-yacht.js?v=111';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=112';
+import { SAFE } from './cashout.js?v=112';
+import { dieHTML } from './table-yacht.js?v=112';
 
 let ctx = null, panelKey = '', wasMyRoll = false, shakeOn = false, lastShake = 0;
 

@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 const dough = readFileSync(new URL('../js/dough.js', import.meta.url), 'utf8');
-const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const home = readFileSync(new URL('../games.html', import.meta.url), 'utf8');
 
 test('codes are stored only as SHA-256 fingerprints', () => {
   const m = dough.match(/const CODES = \{([^}]*)\}/);
