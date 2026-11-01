@@ -1,6 +1,6 @@
 // Veto on the table screen: draw pile, discard pile, direction ring, current colour.
-import * as C from './veto.js?v=114';
-import { cardEl, snap } from './cards.js?v=114';
+import * as C from './veto.js?v=115';
+import { cardEl, snap } from './cards.js?v=115';
 
 let pile = [];          // discard pile elements on the felt, oldest first
 let pileRound = null;

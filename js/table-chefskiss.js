@@ -1,13 +1,13 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=114';
+import * as K from './chefskiss.js?v=115';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=114';
-import { movable } from './gesture.js?v=114';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=115';
+import { movable } from './gesture.js?v=115';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=114';
+import { topPicks } from './laugh-engine.js?v=115';
 
 // ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
@@ -102,6 +102,9 @@ function updateClocks() {
   }
 }
 
+// "30 seconds", "1 minute", "1½ minutes", "Off"
+const timeLabel = v => (!v ? 'Off' : v < 60 ? v + ' seconds' : v === 60 ? '1 minute' : v % 60 ? Math.floor(v / 60) + '\u00bd minutes' : v / 60 + ' minutes');
+
 function renderSlip() {
   const slip = root.querySelector('.ck-slip');
   slip.hidden = !slipOpen;
@@ -110,8 +113,8 @@ function renderSlip() {
   const opt = (vals, cur, label) => vals.map(v => `<option value="${v}" ${v === cur ? 'selected' : ''}>${label(v)}</option>`).join('');
   slip.innerHTML = `
     <h4>Timers</h4>
-    <label>Recipe Card pick <select data-k="recipeTime">${opt([0, 5, 10, 15], s.recipeTime, v => (v ? v + ' seconds' : 'Off'))}</select></label>
-    <label>Ingredient Card pick <select data-k="ingredientTime">${opt([0, 10, 15, 20, 30], s.ingredientTime, v => (v ? v + ' seconds' : 'Off'))}</select></label>
+    <label>Recipe Card pick <select data-k="recipeTime">${opt(K.RECIPE_TIMES, s.recipeTime, timeLabel)}</select></label>
+    <label>Ingredient Card pick <select data-k="ingredientTime">${opt(K.INGREDIENT_TIMES, s.ingredientTime, timeLabel)}</select></label>
     <label>Game length <select data-k="length">${opt([0, 30, 60, 120], s.length, v => (v ? (v === 120 ? '2 hours' : v + ' minutes') : 'No timer'))}</select></label>
     <p class="hint">The Chef's decision never has a timer.</p>
     <div class="row"><button class="tool" data-a="end" type="button">End the game now</button><button class="tool" data-a="close" type="button">Done</button></div>`;
@@ -220,14 +223,16 @@ export default {
   defaults: { ...K.DEFAULTS },
 
   settingsHTML(s) {
+    // a timer saved from before the timers got longer shows (and starts) as the new default
+    s = { ...s, recipeTime: K.RECIPE_TIMES.includes(Number(s.recipeTime)) ? Number(s.recipeTime) : K.DEFAULTS.recipeTime, ingredientTime: K.INGREDIENT_TIMES.includes(Number(s.ingredientTime)) ? Number(s.ingredientTime) : K.DEFAULTS.ingredientTime };
     const sel = (key, vals, label) => `<select data-set="${key}">${vals.map(v => `<option value="${v}" ${v === s[key] ? 'selected' : ''}>${label(v)}</option>`).join('')}</select>`;
     return `
       <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
       <label>House Recipes ${sel('houseRecipes', [1, 2, 0], v => ['Off', 'Mix in (up to 1 of 3)', 'Replace (players’ first)'][v])}</label>
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
-      <label>Recipe timer ${sel('recipeTime', [0, 5, 10, 15], v => (v ? `${v} s` : 'off'))}</label>
-      <label>Ingredient timer ${sel('ingredientTime', [0, 10, 15, 20, 30], v => (v ? `${v} s` : 'off'))}</label>
+      <label>Recipe timer ${sel('recipeTime', K.RECIPE_TIMES, timeLabel)}</label>
+      <label>Ingredient timer ${sel('ingredientTime', K.INGREDIENT_TIMES, timeLabel)}</label>
       <label>Teams ${sel('teams', [0, 2, 3, 4], v => (v ? `${v} teams` : 'no teams'))}</label>
       <label class="ck-check"><input type="checkbox" data-set="laugh" ${s.laugh !== false ? 'checked' : ''}> Laugh Engine (funny-card hints &amp; ideas)</label>
       ${s.laugh !== false ? `<p class="ck-si" data-si-status>${siLine()}</p>` : ''}${(s.laugh !== false ? startSi() : stopSi(), '')}`;

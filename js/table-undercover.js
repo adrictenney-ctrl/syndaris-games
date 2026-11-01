@@ -1,4 +1,4 @@
 // See table-social.js.
-import { undercoverT } from './table-social.js?v=114';
+import { undercoverT } from './table-social.js?v=115';
 
 export default undercoverT;

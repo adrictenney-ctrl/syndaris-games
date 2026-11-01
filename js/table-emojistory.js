@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { emojistoryT } from './table-talk.js?v=114';
+import { emojistoryT } from './table-talk.js?v=115';
 
 export default emojistoryT;

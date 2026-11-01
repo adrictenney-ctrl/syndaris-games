@@ -1,13 +1,13 @@
-// Chef's Kiss on a phone. Cards arrive face down: touch one to turn it over, then slide it
+// Chef's Kiss on a phone. Cards arrive face up: slide one
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=114';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=114';
-import { movable } from './gesture.js?v=114';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=115';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=115';
+import { movable } from './gesture.js?v=115';
 import { TEAMS } from './chefskiss-config.js?v=3';
 import { openWorkshop, myCards } from './ck-workshop.js?v=1';
 import { makeCustomCard } from './ck-custom.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=114';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=115';
 
 let ctx = null, v = null;
 let flipped = new Set();
@@ -109,7 +109,6 @@ function send(a) { ctx.send(a); }
 
 function playCard(c, el) {
   if (!canPlay(c)) return;
-  if (!flipped.has(c.id)) { flip(c.id); return; }
   el?.classList.add('fly');
   navigator.vibrate?.(20);
   selected = null;
@@ -126,6 +125,7 @@ function flip(id) {
 function renderHandRow() {
   const row = $('#ckPhone .ckp-hand');
   const cards = handCards() || [];
+  cards.forEach(c => flipped.add(c.id));   // every card arrives face up, ready to play
   const funny = !isRecipeTurn() && choosing() ? laughIds : [];
   const key = cards.map(c => c.id + (flipped.has(c.id) ? '+' : '-')).join(',') + `|${selected}|${v.phase}|${v.isChef}|${v.mine.length}|${funny.join(',')}`;
   if (key === handKey) return;
@@ -337,7 +337,7 @@ export function render(c) {
   } else if (v.phase === 'play') {
     if (v.isChef) setStatus('Apprentices are choosing…', `${v.played} of ${v.expected} cards in`);
     else if (!v.playing) setStatus('Welcome to the kitchen!', "You'll be dealt in next round.");
-    else if (!v.mine.length) setStatus('Play your best pairing', 'Touch a card to turn it over, then slide it up.');
+    else if (!v.mine.length) setStatus('Play your best pairing', 'Slide a card up to play it.');
     else setStatus('Card played!', `Waiting for the others · ${v.played} of ${v.expected} in`);
   } else if (v.phase === 'judge') {
     if (v.isChef) setStatus("Award the Chef's Kiss", 'Tap your favorite pairing. Let them lobby you first!');

@@ -110,17 +110,25 @@ export const DEFAULTS = {
   level: 0,           // the table's one deck: 0 = Mild (elementary), 1 = Medium (middle school), 2 = Hot (high school)
   target: 7,          // Chef's Kisses to win (0 = no target)
   length: 60,         // minutes (0 = no game timer)
-  recipeTime: 10,     // seconds for the Chef to pick a Recipe Card (0 = off)
-  ingredientTime: 15, // seconds for Apprentices to play (0 = off)
+  recipeTime: 30,     // seconds for the Chef to pick a Recipe Card (0 = off) — SPEC.md 6.2
+  ingredientTime: 60, // seconds for Apprentices to play (0 = off) — SPEC.md 6.2
   teams: 0,           // 0 = everyone for themselves, else 2–4 teams
   laugh: true,        // the Laugh Engine: funny-card highlights and "Make me a card" on the phones
   houseRecipes: 1,    // players' Signature Recipes: 0 = Off, 1 = Mix in (at most 1 of 3), 2 = Replace
 };
 const MAX_CUSTOM = 30;  // custom cards one player can have at a table at once
 
+// The timer choices offered in the lobby and the in-game slip (seconds; 0 = off).
+export const RECIPE_TIMES = [0, 15, 30, 45, 60, 90];
+export const INGREDIENT_TIMES = [0, 30, 45, 60, 90, 120, 180];
+// A setting saved from before the timers got longer moves up to the new default.
+const fixTimes = s => ({ ...s,
+  recipeTime: RECIPE_TIMES.includes(Number(s.recipeTime)) ? Number(s.recipeTime) : DEFAULTS.recipeTime,
+  ingredientTime: INGREDIENT_TIMES.includes(Number(s.ingredientTime)) ? Number(s.ingredientTime) : DEFAULTS.ingredientTime });
+
 export function createGame(settings, players) {
   const g = {
-    settings: { ...DEFAULTS, ...settings },
+    settings: fixTimes({ ...DEFAULTS, ...settings }),
     id: now().toString(36),
     seats: [],
     scores: new Array(players.length).fill(0),
@@ -345,8 +353,8 @@ export function applyAction(g, seat, a) {
     case 'timers': {
       // The host can change the timers mid-game.
       const s = g.settings;
-      if ([0, 5, 10, 15].includes(Number(a.recipeTime))) s.recipeTime = Number(a.recipeTime);
-      if ([0, 10, 15, 20, 30].includes(Number(a.ingredientTime))) s.ingredientTime = Number(a.ingredientTime);
+      if (RECIPE_TIMES.includes(Number(a.recipeTime))) s.recipeTime = Number(a.recipeTime);
+      if (INGREDIENT_TIMES.includes(Number(a.ingredientTime))) s.ingredientTime = Number(a.ingredientTime);
       if ([0, 30, 60, 120].includes(Number(a.length))) s.length = Number(a.length);
       if (g.phase === 'recipe') g.endsAt = s.recipeTime ? now() + s.recipeTime * 1000 : 0;
       if (g.phase === 'play') g.endsAt = s.ingredientTime ? now() + s.ingredientTime * 1000 : 0;

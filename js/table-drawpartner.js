@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { drawpartnerT } from './table-talk.js?v=114';
+import { drawpartnerT } from './table-talk.js?v=115';
 
 export default drawpartnerT;

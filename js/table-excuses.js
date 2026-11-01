@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { excusesT } from './table-talk.js?v=114';
+import { excusesT } from './table-talk.js?v=115';
 
 export default excusesT;

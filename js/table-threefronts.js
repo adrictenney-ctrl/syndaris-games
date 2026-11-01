@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { threefrontsT } from './table-choice.js?v=114';
+import { threefrontsT } from './table-choice.js?v=115';
 
 export default threefrontsT;

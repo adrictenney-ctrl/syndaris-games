@@ -1,8 +1,8 @@
 // Unicorn Chaos on the table: each player's stable (their unicorns in a row, with any Upgrades
 // and Downgrades beside them), the card being played right now, and who can still stop it.
-import * as U from './unicorns.js?v=114';
-import { snap } from './cards.js?v=114';
-import { centerMsg, clearMsg } from './table-hearts.js?v=114';
+import * as U from './unicorns.js?v=115';
+import { snap } from './cards.js?v=115';
+import { centerMsg, clearMsg } from './table-hearts.js?v=115';
 
 let root = null, key = '';
 const TYPE = { unicorn: 'Unicorn', magic: 'Magic', up: 'Upgrade', down: 'Downgrade', instant: 'Instant' };
