@@ -1,8 +1,8 @@
 // Code Breaker on a phone: tap a slot, then a colour, to build four pegs — as the secret code
 // (code-maker) or as your next guess (breaker). Your earlier guesses and their keys are listed.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=115';
-import { peg, rowsHTML } from './table-codebreaker.js?v=115';
-import { COLORS, PEGS } from './codebreaker.js?v=115';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=116';
+import { peg, rowsHTML } from './table-codebreaker.js?v=116';
+import { COLORS, PEGS } from './codebreaker.js?v=116';
 
 let ctx = null, pegs = [null, null, null, null], slot = 0, wasMyTurn = false, lastKey = '';
 export function reset() { pegs = [null, null, null, null]; slot = 0; document.getElementById('cbPhone')?.remove(); }

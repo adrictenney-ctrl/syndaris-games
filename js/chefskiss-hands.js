@@ -1,7 +1,7 @@
 // The Laugh Engine's hand building (SPEC.md Section 8). Pure functions over the master card
 // database, so they can be tested on their own. Every round, after the Chef picks a Recipe Card,
-// each Apprentice gets a fresh 7-card hand: 6 on-target cards (likely funny with this Recipe) and
-// 1 random eligible card, shuffled together (approved by Al, 17 Oct 2026; CARD_RULES.md Section 7).
+// each Apprentice gets a fresh 5-card hand: 4 on-target cards (likely funny with this Recipe) and
+// 1 random eligible card, shuffled together (CARD_RULES.md Section 7).
 // The slot labels stay with the table; players never see them.
 import { CONFIG, rank } from './chefskiss-config.js?v=3';
 import { answerFit } from './ck-custom.js?v=1';

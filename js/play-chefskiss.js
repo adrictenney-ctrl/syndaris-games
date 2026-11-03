@@ -1,17 +1,16 @@
 // Chef's Kiss on a phone. Cards arrive face up: slide one
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=115';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=115';
-import { movable } from './gesture.js?v=115';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=116';
+import { face, wireBulbs, esc } from './ck-face.js?v=116';
+import { movable } from './gesture.js?v=116';
 import { TEAMS } from './chefskiss-config.js?v=3';
 import { openWorkshop, myCards } from './ck-workshop.js?v=1';
 import { makeCustomCard } from './ck-custom.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=115';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=116';
 
 let ctx = null, v = null;
-let flipped = new Set();
-let selected = null, chosen = -1;
+let chosen = -1;
 let handKey = '', panelKey = '', boardKey = '', recipeKey = '';
 let endsAt = 0, tickT = null, gameId = null;
 let workshop = null;   // the Card Workshop panel, when it's open
@@ -21,7 +20,7 @@ let laughKey = '', laughIds = [];
 
 // ---------------------------------------------------------------- stored on this phone only
 
-const LS = { deck: 'pod.ck.deck', life: 'pod.ck.lifetime', counted: 'pod.ck.counted', flips: 'pod.ck.flips' };
+const LS = { deck: 'pod.ck.deck', life: 'pod.ck.lifetime', counted: 'pod.ck.counted' };
 const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
 const write = (k, val) => { try { localStorage.setItem(k, JSON.stringify(val)); } catch {} };
 const lifetime = () => read(LS.life, 0);
@@ -38,7 +37,7 @@ function countKiss(key) {
 
 export function reset() {
   handKey = panelKey = boardKey = recipeKey = '';
-  selected = null; chosen = -1;
+  chosen = -1;
   laughKey = ''; laughIds = []; laughFrom = ''; clearTimeout(laughTimer);
   clearInterval(tickT);
   document.getElementById('ckPhone')?.remove();
@@ -111,38 +110,30 @@ function playCard(c, el) {
   if (!canPlay(c)) return;
   el?.classList.add('fly');
   navigator.vibrate?.(20);
-  selected = null;
   setTimeout(() => send(c.kind === 'r' ? { type: 'recipe', id: c.id } : { type: 'play', id: c.id }), el ? 180 : 0);
-}
-
-function flip(id) {
-  flipped.add(id);
-  write(LS.flips, { game: gameId, ids: [...flipped] });
-  handKey = '';
-  renderHandRow();
 }
 
 function renderHandRow() {
   const row = $('#ckPhone .ckp-hand');
   const cards = handCards() || [];
-  cards.forEach(c => flipped.add(c.id));   // every card arrives face up, ready to play
   const funny = !isRecipeTurn() && choosing() ? laughIds : [];
-  const key = cards.map(c => c.id + (flipped.has(c.id) ? '+' : '-')).join(',') + `|${selected}|${v.phase}|${v.isChef}|${v.mine.length}|${funny.join(',')}`;
+  const key = cards.map(c => c.id).join(',') + `|${v.phase}|${v.isChef}|${v.mine.length}|${funny.join(',')}`;
   if (key === handKey) return;
   handKey = key;
   row.innerHTML = '';
   row.classList.toggle('resting', !(isRecipeTurn() || (v.phase === 'play' && v.playing && !v.mine.length)));
   for (const c of cards) {
     const wrap = document.createElement('div');
-    wrap.className = 'ckp-slot' + (selected === c.id ? ' sel' : '') + (funny.includes(c.id) ? ' laugh' : '');
-    wrap.innerHTML = (flipped.has(c.id) ? face(c) : back(c.kind)) + (funny.includes(c.id) ? '<em class="ckp-laugh">😂 Funny pick</em>' : '');
+    wrap.className = 'ckp-slot' + (funny.includes(c.id) ? ' laugh' : '');
+    wrap.innerHTML = face(c) + (funny.includes(c.id) ? '<em class="ckp-laugh">😂 Funny pick</em>' : '');
     row.appendChild(wrap);
     gestures(wrap, c);
   }
   wireBulbs(row);
 }
 
-// Touch to turn a card over; slide it up to play it.
+// Cards are face up. Swipe left or right to browse the row (the browser scrolls it); slide a card up
+// to play it. A plain tap does nothing.
 function gestures(wrap, c) {
   let x0 = 0, y0 = 0, dy = 0, drag = false, down = false;
   wrap.addEventListener('pointerdown', e => {
@@ -153,7 +144,7 @@ function gestures(wrap, c) {
     if (!down) return;
     const dx = e.clientX - x0;
     dy = e.clientY - y0;
-    if (!drag && dy < -12 && Math.abs(dy) > Math.abs(dx) && flipped.has(c.id) && canPlay(c)) {
+    if (!drag && dy < -12 && Math.abs(dy) > Math.abs(dx) && canPlay(c)) {
       drag = true;
       try { wrap.setPointerCapture(e.pointerId); } catch {}
       $('#ckPhone .ckp-zone').classList.add('hot');
@@ -164,17 +155,9 @@ function gestures(wrap, c) {
     if (!down) return;
     down = false;
     $('#ckPhone .ckp-zone')?.classList.remove('hot');
-    if (drag) {
-      if (dy < -90 && e.type === 'pointerup') return playCard(c, wrap);
-      wrap.style.transform = '';
-      return;
-    }
-    if (e.type !== 'pointerup' || Math.abs(e.clientX - x0) + Math.abs(e.clientY - y0) > 10) return;
-    if (!flipped.has(c.id)) return flip(c.id);
-    selected = selected === c.id ? null : c.id;
-    handKey = panelKey = '';
-    renderHandRow();
-    renderPanel();
+    if (!drag) return;
+    if (dy < -90 && e.type === 'pointerup') return playCard(c, wrap);
+    wrap.style.transform = '';
   };
   wrap.addEventListener('pointerup', up);
   wrap.addEventListener('pointercancel', up);
@@ -226,7 +209,7 @@ function renderBoard() {
 }
 
 function renderPanel() {
-  const key = [v.phase, v.round, v.isChef, v.playing, v.mine.length, selected, chosen].join('|');
+  const key = [v.phase, v.round, v.isChef, v.playing, v.mine.length, chosen].join('|');
   if (key === panelKey) return;
   panelKey = key;
   const p = $('#panel');
@@ -242,8 +225,6 @@ function renderPanel() {
     return;
   }
   if (v.phase === 'over') return;
-  const sel = (handCards() || []).find(c => c.id === selected);
-  if (sel && canPlay(sel)) btn(sel.kind === 'r' ? 'Use this Recipe Card' : 'Play this card', 'go', () => playCard(sel, document.querySelector('#ckPhone .ckp-slot.sel')));
   btn('✎ Card Workshop', '', () => openCards());
   if (v.laugh && choosing() && v.recipe) btn('✨ Make me a card', '', () => openCards('snack'));
   if (row.childElementCount) p.appendChild(row);
@@ -303,12 +284,9 @@ export function render(c) {
   const you = c.st.you;
   if (v.id !== gameId) {
     gameId = v.id;
-    const saved = read(LS.flips, {});
-    flipped = new Set(saved.game === gameId ? saved.ids : []);
     handKey = panelKey = boardKey = recipeKey = '';
   }
   if (v.phase !== 'judge') chosen = -1;
-  if (selected && !(handCards() || []).some(x => x.id === selected)) selected = null;
   endsAt = v.left !== null ? Date.now() + v.left : 0;
   clearInterval(tickT);
   tickT = setInterval(showClock, 250);
@@ -332,12 +310,12 @@ export function render(c) {
     const won = v.winners?.includes(you);
     setStatus(won ? '🏆 You win!' : v.winners?.length ? `${v.winners.map(i => c.nameOf(i)).join(' & ')} win${v.winners.length > 1 ? '' : 's'}!` : 'Game over', won ? 'Bonus Chef\'s Kiss added to your lifetime count' : 'The real win is the laughs. Look at the table.');
   } else if (v.phase === 'recipe') {
-    if (v.isChef) setStatus("You're the Chef!", 'Touch your Recipe Cards to turn them over, then slide one up.');
-    else setStatus(`${chefName} is the Chef`, 'They are picking a Recipe Card. Your new hand of 7 arrives as soon as they do.');
+    if (v.isChef) setStatus("You're the Chef!", 'Swipe to browse your Recipe Cards, then slide one up.');
+    else setStatus(`${chefName} is the Chef`, 'They are picking a Recipe Card. Your new hand of 5 arrives as soon as they do.');
   } else if (v.phase === 'play') {
     if (v.isChef) setStatus('Apprentices are choosing…', `${v.played} of ${v.expected} cards in`);
     else if (!v.playing) setStatus('Welcome to the kitchen!', "You'll be dealt in next round.");
-    else if (!v.mine.length) setStatus('Play your best pairing', 'Slide a card up to play it.');
+    else if (!v.mine.length) setStatus('Play your best pairing', 'Swipe to browse, then slide a card up to play it.');
     else setStatus('Card played!', `Waiting for the others · ${v.played} of ${v.expected} in`);
   } else if (v.phase === 'judge') {
     if (v.isChef) setStatus("Award the Chef's Kiss", 'Tap your favorite pairing. Let them lobby you first!');

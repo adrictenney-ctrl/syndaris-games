@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { cardgolfT } from './table-cardgames.js?v=115';
+import { cardgolfT } from './table-cardgames.js?v=116';
 
 export default cardgolfT;

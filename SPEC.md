@@ -132,8 +132,8 @@ Put these values in one config module. Defaults marked TODO-AL are product decis
  "targetScoreOptions": [5, 7, 10],
  "defaultTargetScore": 7,
  "gameTimerOptionsMin": [null, 15, 30, 45],
- "handSize": 7,
- "handMix": { "onTarget": 6, "random": 1 },
+ "handSize": 5,
+ "handMix": { "onTarget": 4, "random": 1 },
  "handRefresh": "full",
  "recipeChoices": 3,
  "timers": {
@@ -165,7 +165,7 @@ TODO-AL items:
 - tie handling (Section 6.6)
 - the final Spice It Up button label (`"Salt and Pepper"` is the candidate)
 
-**Approved, not open:** `handMix` = 6 on-target + 1 random (Al, 17 Oct 2026).
+**Approved, not open:** `handMix` = 4 on-target + 1 random. **Changed 3 Nov 2026:** the hand is now **5 cards: 4 on-target + 1 random**, face up. On the phone, swipe left or right to browse and slide up to play; a tap does nothing. Card size is unchanged. This replaces 6 + 1 wherever it appears below.
 
 ---
 
@@ -541,7 +541,7 @@ function literalScore(card, recipe):
  return overlap(card.tags, recipe.literalTags) + (recipe.id in card.literalFor ? 3 : 0)
 ```
 
-### 8.3 Building the 7-card hand (APPROVED 17 Oct 2026: 6 on-target + 1 random)
+### 8.3 Building the 5-card hand (3 Nov 2026: 4 on-target + 1 random; was 6 + 1)
 
 The safe and wild slots are **removed**. In the 17 Oct blind test, the safe slot was rated DUD 43% of the time and the wild slot 38%, against 31% for random cards and 24% for on-target cards. The wild slot becomes a plain random eligible card.
 
@@ -813,7 +813,7 @@ Each milestone ships behind its own PR(s). It is done only when every box is che
 
 **Tests:**
 - `buildHand` returns 7 unique eligible cards;
-- slot counts 6 on-target + 1 random when data exists, and no `safe` or `wild` slot values anywhere;
+- slot counts 4 on-target + 1 random when data exists, and no `safe` or `wild` slot values anywhere;
 - `isDud` never uses the slot (a winning random or on-target card is a dud only by the literal checks);
 - running `buildHand` over `cards.json` passes schema validation and returns 7 cards per Recipe;
 - falls back to random when tags are missing;

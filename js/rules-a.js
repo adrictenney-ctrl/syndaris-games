@@ -84,7 +84,7 @@ export const RULES_A = {
     goal: 'Make the funniest pairing and win the Chef’s Kiss from the Chef.',
     play: [
       'Each round one player is the Chef and picks one of three Recipe Cards (the prompt).',
-      'Everyone else is an Apprentice and gets a fresh hand of 7 Ingredient Cards. Each Apprentice plays exactly one card that pairs best with the Recipe.',
+      'Everyone else is an Apprentice and gets a fresh hand of 5 Ingredient Cards, face up on their phone. Swipe left or right to browse, then slide a card up to play it. Each Apprentice plays exactly one card that pairs best with the Recipe.',
       'The cards are shown without names, in a shuffled order. Read them out and lobby the Chef!',
       'The Chef awards exactly one Chef’s Kiss (1 point). The Chef role then passes to the left.',
       'Card Workshop on your phone: write your own Signature Recipes and Snack cards and bring them to the table.',

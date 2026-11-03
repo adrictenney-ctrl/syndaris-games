@@ -151,11 +151,9 @@ body[data-game="chefskiss"] { background: linear-gradient(180deg, #12363e, #0715
 .ckp-hand::-webkit-scrollbar { display: none; }
 .ckp-hand[hidden] { display: none; }
 .ckp-hand.resting .ckp-slot { filter: saturate(.75) brightness(.9); }
-.ckp-slot { flex: none; scroll-snap-align: center; touch-action: pan-x; transition: transform .25s cubic-bezier(.2, .9, .3, 1.2), filter .2s; cursor: pointer; }
+.ckp-slot { flex: none; scroll-snap-align: center; touch-action: pan-x; transition: transform .25s cubic-bezier(.2, .9, .3, 1.2), filter .2s; cursor: grab; }
 .ckp-slot:first-child { margin-left: auto; }
 .ckp-slot:last-child { margin-right: auto; }
-.ckp-slot.sel { transform: translateY(-16px); }
-.ckp-slot.sel .ck-card { box-shadow: 0 0 0 3px #e3cf9f, 0 12px 26px rgba(0, 0, 0, .5); }
 .ckp-slot.fly { transition: transform .3s ease-in, opacity .3s ease-in; transform: translateY(-80vh) rotate(-8deg) scale(.8) !important; opacity: 0; }
 @keyframes ckWiggle { 25% { transform: rotate(-2deg); } 75% { transform: rotate(2deg); } }
 .ckp-board { width: 100%; display: flex; flex-direction: column; align-items: center; }

@@ -7,8 +7,8 @@ export const CONFIG = {
   targetScoreOptions: [5, 7, 10],
   defaultTargetScore: 7,
   gameTimerOptionsMin: [null, 15, 30, 45],
-  handSize: 7,
-  handMix: { onTarget: 6, random: 1 },   // approved by Al, 17 Oct 2026
+  handSize: 5,
+  handMix: { onTarget: 4, random: 1 },   // five cards, one still random (3 Nov 2026; was 6 + 1)
   handRefresh: 'full',
   recipeChoices: 3,
   timers: { recipePickSec: 30, playSec: 60, kissSec: null, resultSec: 6, disconnectGraceSec: 60, joinTimeoutSec: 15 },

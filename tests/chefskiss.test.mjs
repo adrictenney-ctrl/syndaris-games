@@ -110,12 +110,13 @@ test('buildHand returns 7 unique eligible cards', () => {
   }
 });
 
-test('hands are 6 on-target + 1 random when the data is there, and nothing else', () => {
-  assert.deepEqual(CONFIG.handMix, { onTarget: 6, random: 1 });
+test('hands are 4 on-target + 1 random when the data is there, and nothing else', () => {
+  assert.equal(CONFIG.handSize, 5);
+  assert.deepEqual(CONFIG.handMix, { onTarget: 4, random: 1 });
   for (const r of recipes.slice(0, 60)) {
     const hand = buildHand(CARDS, r, table(r.level), { dealtThisRound: new Set() }, makeRng(r.id));
     const n = s => hand.filter(h => h.slot === s).length;
-    assert.deepEqual([n('on_target'), n('random')], [6, 1], r.id);
+    assert.deepEqual([n('on_target'), n('random')], [4, 1], r.id);
   }
 });
 
@@ -124,12 +125,12 @@ test('no safe or wild slot code is left in the engine', () => {
   assert.doesNotMatch(read('../js/chefskiss-config.js'), /safe:|wild:/);
 });
 
-test("buildHand over Al's test deck returns 7 cards per Recipe, aimed at the combos", () => {
+test("buildHand over Al's test deck returns 5 cards per Recipe, aimed at the combos", () => {
   const deck = FIXTURE.filter(c => c.type === 'ingredient');
   for (const r of FIXTURE.filter(c => c.type === 'recipe')) {
     const hand = buildHand(deck, r, table('medium'), { dealtThisRound: new Set() }, makeRng(r.id));
-    assert.equal(hand.length, 7, r.id);
-    assert.equal(new Set(hand.map(h => h.cardId)).size, 7);
+    assert.equal(hand.length, 5, r.id);
+    assert.equal(new Set(hand.map(h => h.cardId)).size, 5);
     for (const h of hand) assert.deepEqual(validateCard(deck.find(c => c.id === h.cardId)), []);
     // The on-target cards should match the Recipe's combos better than the deck does on average.
     const on = hand.filter(h => h.slot === 'on_target').map(h => targetScore(deck.find(c => c.id === h.cardId), r));
@@ -238,7 +239,7 @@ test('the Chef gets 3 Recipe choices and hands are dealt only after the pick', (
   assert.equal(Object.keys(g.hands).length, 0);
   pickRecipe(g);
   assert.equal(g.phase, 'play');
-  for (const s of g.apprentices) assert.equal(g.hands[s].length, 7);
+  for (const s of g.apprentices) assert.equal(g.hands[s].length, 5);
   const all = g.apprentices.flatMap(s => g.hands[s]);
   assert.equal(new Set(all).size, all.length, 'no card in two hands');
 });
@@ -251,7 +252,7 @@ test('hands are rebuilt fresh every round and played cards never come back', () 
     pickRecipe(g);
     const hands = g.apprentices.map(s => [...g.hands[s]]);
     for (const h of hands) {
-      assert.equal(h.length, 7);
+      assert.equal(h.length, 5);
       for (const id of h) assert.ok(!played.includes(id), 'a played card was dealt again');
     }
     if (last) assert.notDeepEqual(hands, last);
@@ -327,4 +328,13 @@ test('a Mild table only ever deals Mild cards', () => {
     for (const s of g.apprentices) for (const id of g.hands[s]) assert.equal(byId.get(id).level, 'mild');
     finishRound(g);
   }
+});
+
+test('phone hand: face up, swipe to browse, slide up to play, a tap selects nothing', () => {
+  const phone = readFileSync(new URL('../js/play-chefskiss.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(phone, /flipped|function flip|selected|Play this card/);
+  assert.match(phone, /if \(dy < -90 && e\.type === 'pointerup'\) return playCard\(c, wrap\);/);
+  const css = readFileSync(new URL('../css/chefskiss.css', import.meta.url), 'utf8');
+  assert.match(css, /\.ckp-hand \{\s*--w: min\(40vw, 172px\)/, 'card size unchanged');
+  assert.match(css, /\.ckp-slot \{[^}]*touch-action: pan-x/);
 });

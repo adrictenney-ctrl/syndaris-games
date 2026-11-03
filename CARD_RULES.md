@@ -7,7 +7,9 @@
 
 > **Al's direction (17 Oct 2026):** improving each card is the priority. **Si Spice It Up** is a key feature. Its tagline: *"The Si doesn't change your card, it pulls out the flavor."* **"Salt and Pepper"** is a candidate name for the button.
 
-> **Approved 17 Oct 2026:** the new hand is **6 on-target cards + 1 random card**. The safe slot is dropped, and the wild slot becomes a random card. A safe-slot win is no longer an automatic dud (see Section 7).
+> **Changed 3 Nov 2026:** the hand is now **5 cards: 4 on-target + 1 random**, face up. On the phone, swipe left or right to browse and slide up to play; a tap does nothing. Card size is unchanged. This replaces 6 + 1 wherever it appears below.
+>
+> **Approved 17 Oct 2026 (hand size since changed):** the new hand is **6 on-target cards + 1 random card**. The safe slot is dropped, and the wild slot becomes a random card. A safe-slot win is no longer an automatic dud (see Section 7).
 
 ---
 

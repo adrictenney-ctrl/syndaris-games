@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { lemonadeT } from './table-choice.js?v=115';
+import { lemonadeT } from './table-choice.js?v=116';
 
 export default lemonadeT;

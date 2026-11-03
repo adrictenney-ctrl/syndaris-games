@@ -1,8 +1,8 @@
 // Hard Sell on a phone. Sellers tap two words to make a product, then lock it in and get ready
 // to pitch it out loud. The Customer can swap who they are once, opens the shop, moves the
 // spotlight from pitch to pitch, and buys the winner.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=115';
-import { wordCard, productHTML, customerCard } from './table-hardsell.js?v=115';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=116';
+import { wordCard, productHTML, customerCard } from './table-hardsell.js?v=116';
 
 let ctx = null, sel = [], wasMyTurn = false, lastRound = -1;
 

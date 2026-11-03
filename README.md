@@ -117,10 +117,10 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
 
 - **Each round** one player is the **Chef**; everyone else is an **Apprentice**. The first Chef is the first player at
   the table, and the Chef moves one seat to the left each round.
-- **The Chef** is dealt three fresh Recipe Cards each round (face down; touch one to turn it over) and slides one up
+- **The Chef** is dealt three fresh Recipe Cards each round (face up; swipe to browse) and slides one up
   into the selection area. It appears on the table.
-- **Apprentices** get a fresh hand of seven Ingredient Cards as soon as the Recipe is picked, also face down until
-  touched, and slide up the one that pairs best. The table shows face-down cards as they come in.
+- **Apprentices** get a fresh hand of five Ingredient Cards as soon as the Recipe is picked, also face up, swipe left
+  or right to browse, and slide up the one that pairs best (a tap does nothing). The table shows face-down cards as they come in.
 - **Lobby the Chef:** when everyone has played, the cards are revealed on the table and on the Chef's phone, in a
   random order. There's no timer on the Chef's decision. The Chef **must** award exactly one Chef's Kiss (1 point),
   either on their phone or by tapping a card on the table. Then the table shows who played what.

@@ -1,8 +1,8 @@
 // Redline on the table: the Redline Ring with a speed-limit sign at every corner line, the
 // cars with their gears, and — as each car moves — the cards it played.
-import * as R from './redline.js?v=115';
-import { circuitSVG } from './circuit.js?v=115';
-import { snap } from './cards.js?v=115';
+import * as R from './redline.js?v=116';
+import { circuitSVG } from './circuit.js?v=116';
+import { snap } from './cards.js?v=116';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

@@ -187,7 +187,7 @@ test('9. no hand has more than 2 Snack cards, and every Apprentice plays exactly
       const snacks = g.hands[s].filter(id => id.startsWith('cc_'));
       assert.ok(snacks.length <= SNACKS_PER_HAND, `${snacks.length} snacks`);
       for (const id of snacks) assert.equal(g.custom[id].seat, s, 'only your own snacks');
-      assert.equal(g.hands[s].length, 7);
+      assert.equal(g.hands[s].length, 5);
     }
     for (const s of g.apprentices) {
       assert.equal(K.applyAction(g, s, { type: 'play', id: g.hands[s][0] }), null);
