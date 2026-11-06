@@ -8,15 +8,17 @@ import { GAMES } from '../js/games.js';
 const page = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const body = page.slice(page.indexOf('<body>'));
 
-test('the landing page has the headline, the picture, the three steps and one button', () => {
+test('the landing page has the headline, the picture, the three steps and its two buttons', () => {
   assert.match(body, /<h1>Games where the table plays and <em>your phone controls\.<\/em><\/h1>/);
   assert.match(body, /iPad on the table/);
   assert.match(body, /TV on the wall/);
   for (const step of ['Glance at the table', 'Act on your phone', 'See it on the table']) assert.ok(body.includes(step), step);
   const links = body.match(/<a\b/g) || [], buttons = body.match(/<button\b/g) || [];
-  assert.equal(links.length + buttons.length, 1, 'exactly one thing to click');
+  assert.equal(links.length + buttons.length, 2, 'Try a game and Browse all games, nothing else');
   assert.match(body, /<a class="try" href="table\.html\?game=trio">Try a game<\/a>/);
   assert.ok(GAMES.trio, 'the game it opens exists');
+  assert.ok(body.indexOf('class="try"') < body.indexOf('class="browse"'), 'the games button sits under Try a game');
+  assert.match(body, /<a class="browse" href="games\.html">Browse all games<\/a>/);
 });
 
 test('no menu or game list on the landing page; the games live in games.html', () => {

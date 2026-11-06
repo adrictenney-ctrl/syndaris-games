@@ -113,6 +113,13 @@
     .try:hover, .try:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 0 var(--go-deep), 0 22px 40px rgba(6, 3, 34, .5); outline: none; }
     .try:focus-visible { box-shadow: 0 0 0 4px #fff, 0 8px 0 var(--go-deep); }
     .try:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--go-deep); }
+    /* the quieter way in: straight to the games */
+    .browse {
+      display: table; margin: 18px auto 0; padding: 12px 30px; border-radius: 999px; text-decoration: none;
+      font-family: var(--ui); font-weight: 800; font-size: clamp(16px, 1.9vw, 19px); color: #fff;
+      background: rgba(8, 5, 44, .45); border: 2px solid rgba(255, 255, 255, .35); transition: background .15s, border-color .15s;
+    }
+    .browse:hover, .browse:focus-visible { background: rgba(255, 255, 255, .14); border-color: #fff; outline: none; }
     .cta p { margin: 16px 0 0; color: var(--mute); font-size: clamp(14px, 1.5vw, 16px); }
 
     /* ---------- why it works ---------- */
@@ -272,7 +279,8 @@
 
     <section class="cta">
       <a class="try" href="table.html?game=trio">Try a game</a>
-      <p>Opens Tic Tac Toe on this screen. Scan the code with your phone to play against a friend or the computer.</p>
+      <a class="browse" href="games.html">Browse all games</a>
+      <p>Try a game opens Tic Tac Toe on this screen. Scan the code with your phone to play against a friend or the computer.</p>
     </section>
 
     <section class="why" aria-labelledby="whyTitle">
