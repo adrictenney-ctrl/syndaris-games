@@ -1,0 +1,501 @@
+card_id,type,text,subject,answer_type,source,crew_fix,reason
+rc_d004,recipe,The real reason we had a surprise fire drill,event,thinglike,medium_batch7.json,b,459 strong matches in all cards; 3.44 fitting per 4-card hand in expansion alone; Crew reworded (was: The real reason the fire alarm went off); retagged in working copy (new text: cause of a fire drill (event/thing))
+rc_d005,recipe,The worst thing to say on the morning announcements,event,speech,medium_batch8.json,c,98 strong matches in all cards; 1.82 fitting per 4-card hand in expansion alone; Crew replaced (was: A rejected yearbook quote); retagged in working copy (new text: a line said on announcements (speech))
+rc_d006,recipe,The worst thing to hear from your lab partner,person,sound/speech,medium_batch8.json,a,107 strong matches in all cards; 2.28 fitting per 4-card hand in expansion alone
+rc_d007,recipe,What's actually in the teachers' lounge fridge,food,thinglike,medium_batch6.json,,337 strong matches in all cards; 3.09 fitting per 4-card hand in expansion alone
+rc_d009,recipe,A terrible thing to write on your science poster,thing,speech,medium_batch6.json,a,139 strong matches in all cards; 1.64 fitting per 4-card hand in expansion alone
+rc_d012,recipe,The worst thing to find in your locker,thing,thinglike,medium_batch6.json,,294 strong matches in all cards; 2.58 fitting per 4-card hand in expansion alone
+rc_d013,recipe,The worst thing to say during a class presentation,action,speech,medium_batch8.json,a,99 strong matches in all cards; 2.40 fitting per 4-card hand in expansion alone
+rc_d014,recipe,The newest item in the vending machine,food,thinglike,medium_batch8.json,,265 strong matches in all cards; 1.77 fitting per 4-card hand in expansion alone
+rc_d015,recipe,What the substitute teacher is secretly writing down,person,thinglike,medium_batch6.json,,470 strong matches in all cards; 3.09 fitting per 4-card hand in expansion alone
+rc_d021,recipe,What my phone has seen,thing,thinglike,medium_batch7.json,,395 strong matches in all cards; 2.00 fitting per 4-card hand in expansion alone
+rc_d022,recipe,The worst thing to accidentally post online,pop_culture,speech,medium_batch8.json,a,85 strong matches in all cards; 2.07 fitting per 4-card hand in expansion alone
+rc_d025,recipe,The newest dance move at the school dance,action,action/event,medium_batch2.json,a,145 strong matches in all cards; 2.10 fitting per 4-card hand in expansion alone
+rc_d029,recipe,The worst job at a water park,place,thinglike,medium_batch6.json,,234 strong matches in all cards; 2.12 fitting per 4-card hand in expansion alone
+rc_d030,recipe,What really caused the power outage,event,thinglike,medium_batch6.json,,362 strong matches in all cards; 2.26 fitting per 4-card hand in expansion alone
+rc_d032,recipe,The most dramatic way to quit gym class,action,action/event,medium_batch10.json,a,166 strong matches in all cards; 2.37 fitting per 4-card hand in expansion alone
+rc_d033,recipe,The worst thing to say to the principal,action,speech,medium_batch5.json,a,193 strong matches in all cards; 1.91 fitting per 4-card hand in expansion alone
+rc_d036,recipe,What really happens at the PTA meeting,event,thinglike,medium_batch9.json,,507 strong matches in all cards; 3.28 fitting per 4-card hand in expansion alone
+rc_d038,recipe,What the custodian finds under the bleachers,place,thinglike,medium_batch4.json,,294 strong matches in all cards; 2.58 fitting per 4-card hand in expansion alone
+rc_d040,recipe,A terrible theme for the eighth-grade dance,event,thinglike,medium_batch5.json,,257 strong matches in all cards; 1.65 fitting per 4-card hand in expansion alone
+rc_d041,recipe,What the class pet would say on a podcast,animal,speech,medium_batch7.json,a,205 strong matches in all cards; 2.23 fitting per 4-card hand in expansion alone
+rc_d042,recipe,The worst thing to bring to band practice,thing,thinglike,medium_batch5.json,,380 strong matches in all cards; 3.38 fitting per 4-card hand in expansion alone
+rc_d043,recipe,The real reason my homework is late,action,thinglike,medium_batch9.json,,236 strong matches in all cards; 2.54 fitting per 4-card hand in expansion alone
+rc_d045,recipe,The worst thing to bring to a pool party,event,thinglike,medium_batch8.json,,394 strong matches in all cards; 3.01 fitting per 4-card hand in expansion alone
+rc_d046,recipe,What the vending machine is thinking,thing,thinglike,medium_batch8.json,,489 strong matches in all cards; 2.57 fitting per 4-card hand in expansion alone
+rc_d049,recipe,The worst thing to say at the dinner table,action,speech,medium_batch2.json,a,95 strong matches in all cards; 2.39 fitting per 4-card hand in expansion alone
+rc_d051,recipe,The worst gift for a teacher,thing,thinglike,medium_batch5.json,,324 strong matches in all cards; 2.89 fitting per 4-card hand in expansion alone
+rc_d052,recipe,The worst thing to see on the class slideshow,pop_culture,thinglike,medium_batch8.json,,493 strong matches in all cards; 2.78 fitting per 4-card hand in expansion alone
+rc_d055,recipe,The worst thing to use as a bookmark,thing,thinglike,medium_batch5.json,,312 strong matches in all cards; 2.93 fitting per 4-card hand in expansion alone
+rc_d056,recipe,The most embarrassing thing in your search history,pop_culture,thinglike,medium_batch6.json,,205 strong matches in all cards; 2.07 fitting per 4-card hand in expansion alone
+rc_d057,recipe,The worst thing to bring to the science fair,event,thinglike,medium_batch7.json,,380 strong matches in all cards; 3.38 fitting per 4-card hand in expansion alone
+rc_d060,recipe,A terrible thing to yell during a basketball game,action,action/event/speech,medium_batch9.json,a,357 strong matches in all cards; 2.17 fitting per 4-card hand in expansion alone
+rc_d061,recipe,The newest emoji,pop_culture,thinglike,medium_batch9.json,,315 strong matches in all cards; 1.91 fitting per 4-card hand in expansion alone
+rc_d062,recipe,What my little brother thinks I do all day,person,action/event/thinglike,medium_batch8.json,a,313 strong matches in all cards; 4.00 fitting per 4-card hand in expansion alone
+rc_d066,recipe,The real reason the class goldfish quit,animal,thinglike,medium_batch9.json,,428 strong matches in all cards; 2.63 fitting per 4-card hand in expansion alone
+rc_d067,recipe,The worst way to start middle school,event,action/event,medium_batch3.json,a,133 strong matches in all cards; 1.97 fitting per 4-card hand in expansion alone
+rc_d070,recipe,The worst thing to see on a school lunch tray,food,thinglike,medium_batch7.json,,534 strong matches in all cards; 2.83 fitting per 4-card hand in expansion alone
+rc_d071,recipe,The newest sport at recess,action,action/event,medium_batch6.json,a,145 strong matches in all cards; 2.10 fitting per 4-card hand in expansion alone
+rc_d073,recipe,The worst thing to text your mom,pop_culture,speech,medium_batch9.json,a,99 strong matches in all cards; 2.40 fitting per 4-card hand in expansion alone
+rc_d075,recipe,The worst thing to bring to a birthday party,event,thinglike,medium_batch7.json,,514 strong matches in all cards; 3.04 fitting per 4-card hand in expansion alone
+rc_d077,recipe,The worst ringtone for a teacher,thing,sound/speech,medium_batch9.json,a,191 strong matches in all cards; 2.55 fitting per 4-card hand in expansion alone
+rc_d080,recipe,What my dog searches for online,animal,thinglike,medium_batch6.json,,225 strong matches in all cards; 1.89 fitting per 4-card hand in expansion alone
+rc_d081,recipe,The secret ingredient in cafeteria pizza,food,thinglike,medium_batch6.json,,311 strong matches in all cards; 2.64 fitting per 4-card hand in expansion alone
+rc_d084,recipe,The next big thing at the school store,thing,thinglike,medium_batch9.json,,189 strong matches in all cards; 1.57 fitting per 4-card hand in expansion alone
+rc_d086,recipe,The worst thing to sit on in class,thing,thinglike,medium_batch6.json,,294 strong matches in all cards; 2.58 fitting per 4-card hand in expansion alone
+rc_d088,recipe,The worst thing to hear from the back seat,person,sound/speech,medium_batch7.json,a,97 strong matches in all cards; 2.21 fitting per 4-card hand in expansion alone
+rc_d091,recipe,What really happened to the class fish,animal,thinglike,medium_batch5.json,,428 strong matches in all cards; 2.63 fitting per 4-card hand in expansion alone
+rc_d092,recipe,The newest school subject,event,thinglike,medium_batch7.json,,645 strong matches in all cards; 2.98 fitting per 4-card hand in expansion alone
+rc_d093,recipe,What my cat thinks about my homework,animal,thinglike,medium_batch7.json,,203 strong matches in all cards; 2.55 fitting per 4-card hand in expansion alone
+rc_d096,recipe,The worst snack to eat in a quiet room,food,food,medium_batch5.json,a,71 strong matches in all cards; 1.32 fitting per 4-card hand in expansion alone; retagged in working copy (quiet-room snack: targets loud/awkward/huge food)
+rc_d098,recipe,The newest flavor of potato chip,food,food,medium_batch2.json,a,100 strong matches in all cards; 1.24 fitting per 4-card hand in expansion alone
+rc_d103,recipe,The most dramatic way to leave a group chat,action,action/event,medium_batch3.json,a,178 strong matches in all cards; 2.37 fitting per 4-card hand in expansion alone
+rc_d104,recipe,What my grandparents think the internet is,pop_culture,thinglike,medium_batch4.json,,571 strong matches in all cards; 2.78 fitting per 4-card hand in expansion alone
+rc_d105,recipe,A terrible thing to fill a piñata with,food,thinglike,medium_batch5.json,,571 strong matches in all cards; 3.08 fitting per 4-card hand in expansion alone
+rc_d106,recipe,The worst thing to sign in someone's yearbook,thing,speech,medium_batch8.json,a,157 strong matches in all cards; 2.02 fitting per 4-card hand in expansion alone
+rc_d107,recipe,What really goes on in the band room,place,thinglike,medium_batch6.json,,478 strong matches in all cards; 2.94 fitting per 4-card hand in expansion alone
+rc_d109,recipe,The real reason the teacher needs coffee,person,thinglike,medium_batch9.json,,550 strong matches in all cards; 3.32 fitting per 4-card hand in expansion alone
+rc_d110,recipe,A rejected talent for the talent show,action,action/event,medium_batch7.json,a,126 strong matches in all cards; 2.26 fitting per 4-card hand in expansion alone
+rc_d112,recipe,What my alarm clock is trying to tell me,thing,sound/speech,medium_batch1.json,a,167 strong matches in all cards; 1.86 fitting per 4-card hand in expansion alone
+rc_d118,recipe,The worst thing to whisper during a test,action,speech,medium_batch4.json,a,99 strong matches in all cards; 2.40 fitting per 4-card hand in expansion alone
+rc_d119,recipe,A rejected Thanksgiving side dish,food,food,medium_batch2.json,a,123 strong matches in all cards; 1.84 fitting per 4-card hand in expansion alone; retagged in working copy (Thanksgiving side dish: targets gross/absurd/fancy food)
+rc_d121,recipe,The worst thing to bring on a camping trip,event,thinglike,medium_batch4.json,,365 strong matches in all cards; 3.06 fitting per 4-card hand in expansion alone
+rc_d122,recipe,The worst sound to hear during silent reading,event,sound/speech,medium_batch2.json,a,214 strong matches in all cards; 2.23 fitting per 4-card hand in expansion alone
+rc_d123,recipe,What the principal says in a voicemail,person,speech,medium_batch7.json,a,"153 strong matches in all cards; 1.64 fitting per 4-card hand in expansion alone; retagged in working copy (principal voicemail: spoken lines that sound official, dramatic or absurd)"
+rc_d125,recipe,The worst thing to accidentally microwave,food,thinglike,medium_batch5.json,,484 strong matches in all cards; 2.98 fitting per 4-card hand in expansion alone
+rc_d126,recipe,What's really at the bottom of the ball pit,place,thinglike,medium_batch4.json,,339 strong matches in all cards; 2.68 fitting per 4-card hand in expansion alone
+rc_d130,recipe,A terrible thing to put on a birthday cake,food,thinglike,medium_batch4.json,,677 strong matches in all cards; 3.09 fitting per 4-card hand in expansion alone
+rc_d132,recipe,What really lives in the school basement,place,thinglike,medium_batch4.json,,242 strong matches in all cards; 2.38 fitting per 4-card hand in expansion alone
+rc_d135,recipe,What the ref is really thinking,person,thinglike,medium_batch6.json,,470 strong matches in all cards; 3.09 fitting per 4-card hand in expansion alone
+rc_d136,recipe,The worst thing to see on a pizza menu,food,food,medium_batch3.json,a,"142 strong matches in all cards; 1.48 fitting per 4-card hand in expansion alone; retagged in working copy (pizza-menu Recipe: targets weird food, fancy food, huge food)"
+rc_d137,recipe,The worst thing to borrow from your brother,thing,thinglike,medium_batch7.json,,294 strong matches in all cards; 2.58 fitting per 4-card hand in expansion alone
+rc_d139,recipe,The newest school fundraiser,event,thinglike,medium_batch4.json,,654 strong matches in all cards; 3.09 fitting per 4-card hand in expansion alone
+rc_d140,recipe,The worst way to end a book report,action,action/event,medium_batch1.json,a,133 strong matches in all cards; 1.97 fitting per 4-card hand in expansion alone
+rc_d142,recipe,The worst thing to see on a road trip,event,thinglike,medium_batch7.json,,590 strong matches in all cards; 2.56 fitting per 4-card hand in expansion alone
+rc_d143,recipe,What's really behind the teacher's desk,place,thinglike,medium_batch5.json,,435 strong matches in all cards; 3.15 fitting per 4-card hand in expansion alone
+rc_d144,recipe,The worst thing to drop in the pool,thing,thinglike,medium_batch9.json,,214 strong matches in all cards; 2.53 fitting per 4-card hand in expansion alone
+rc_d145,recipe,The worst thing to be allergic to at school,feeling,thinglike,medium_batch5.json,,413 strong matches in all cards; 2.93 fitting per 4-card hand in expansion alone
+rc_d146,recipe,What my phone does when I'm asleep,thing,action/event/thinglike,medium_batch8.json,a,423 strong matches in all cards; 4.00 fitting per 4-card hand in expansion alone
+rc_d147,recipe,The worst thing to hear at the orthodontist,person,sound/speech,medium_batch9.json,a,203 strong matches in all cards; 1.88 fitting per 4-card hand in expansion alone
+rc_d153,recipe,What my calculator secretly thinks about,thing,thinglike,medium_batch8.json,,327 strong matches in all cards; 2.78 fitting per 4-card hand in expansion alone
+rc_d158,recipe,The worst thing to get in a goodie bag,thing,thinglike,medium_batch5.json,,498 strong matches in all cards; 3.00 fitting per 4-card hand in expansion alone
+rc_d161,recipe,The worst thing to step in at recess,thing,thinglike,medium_batch4.json,,323 strong matches in all cards; 2.66 fitting per 4-card hand in expansion alone
+rc_d162,recipe,The newest way to get out of chores,action,action/event,medium_batch9.json,,153 strong matches in all cards; 2.70 fitting per 4-card hand in expansion alone
+rc_d163,recipe,What my older sister keeps in her room,thing,thinglike,medium_batch9.json,,382 strong matches in all cards; 2.83 fitting per 4-card hand in expansion alone
+rc_d164,recipe,The worst thing to say in a thank-you note,action,speech,medium_batch6.json,a,80 strong matches in all cards; 1.82 fitting per 4-card hand in expansion alone
+rc_d167,recipe,A terrible password for the school computer,thing,thinglike,medium_batch4.json,,225 strong matches in all cards; 1.92 fitting per 4-card hand in expansion alone
+rc_d168,recipe,The worst thing to find in a library book,thing,thinglike,medium_batch7.json,,240 strong matches in all cards; 2.67 fitting per 4-card hand in expansion alone
+rc_d169,recipe,What the janitor's keys really open,thing,thinglike,medium_batch8.json,,613 strong matches in all cards; 3.39 fitting per 4-card hand in expansion alone
+rc_d174,recipe,The worst thing to get caught singing,action,thinglike,medium_batch9.json,,205 strong matches in all cards; 2.07 fitting per 4-card hand in expansion alone
+rc_d177,recipe,The worst coach's pep talk,person,speech,medium_batch6.json,a,155 strong matches in all cards; 1.76 fitting per 4-card hand in expansion alone
+rc_d179,recipe,The worst thing to see in a school hallway,place,thinglike,medium_batch9.json,,478 strong matches in all cards; 2.94 fitting per 4-card hand in expansion alone
+rc_d180,recipe,What the class gerbil writes in its diary,animal,speech,medium_batch5.json,a,165 strong matches in all cards; 2.05 fitting per 4-card hand in expansion alone
+rc_d181,recipe,The newest thing banned from the cafeteria,food,thinglike,medium_batch6.json,,657 strong matches in all cards; 3.12 fitting per 4-card hand in expansion alone
+rc_d183,recipe,A terrible name for a new energy drink,food,any,medium_batch8.json,,571 strong matches in all cards; 4.00 fitting per 4-card hand in expansion alone
+rc_d184,recipe,The worst thing to bring to Grandma's house,event,thinglike,medium_batch9.json,,496 strong matches in all cards; 2.38 fitting per 4-card hand in expansion alone
+rc_d186,recipe,The worst way to celebrate a touchdown,action,action/event,medium_batch9.json,a,166 strong matches in all cards; 2.37 fitting per 4-card hand in expansion alone
+rc_d189,recipe,A terrible name for a yearbook,thing,any,medium_batch8.json,,734 strong matches in all cards; 4.00 fitting per 4-card hand in expansion alone
+rc_d190,recipe,The newest thing in the lost and found,thing,thinglike,medium_batch8.json,,380 strong matches in all cards; 3.38 fitting per 4-card hand in expansion alone
+rc_d192,recipe,The worst thing to hand in instead of homework,thing,thinglike,medium_batch7.json,,483 strong matches in all cards; 3.03 fitting per 4-card hand in expansion alone
+rc_d194,recipe,What the hall monitor does for fun,person,action/event/thinglike,medium_batch9.json,a,630 strong matches in all cards; 4.00 fitting per 4-card hand in expansion alone
+rc_d199,recipe,A rejected Halloween costume idea,pop_culture,thinglike,medium_batch7.json,,287 strong matches in all cards; 1.79 fitting per 4-card hand in expansion alone
+ic_d047,ingredient,Your dad's dance at the school dance,person,thinglike,medium_batch1.json,,strong match for 44 expansion Recipes and 104 of all 200
+ic_d048,ingredient,A wizard with a parking ticket,person,thinglike,medium_batch7.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d050,ingredient,A pirate captain at parent-teacher night,person,thinglike,medium_batch9.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d051,ingredient,A knight in the cafeteria line,person,thinglike,medium_batch7.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d054,ingredient,A ninja on hall monitor duty,person,thinglike,medium_batch9.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d055,ingredient,An astronaut working the drive-thru,person,thinglike,medium_batch9.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d056,ingredient,A mermaid at swim team tryouts,person,thinglike,medium_batch5.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d059,ingredient,A spy in the yearbook club,person,thinglike,medium_batch7.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d064,ingredient,A secret agent on recess duty,person,thinglike,medium_batch5.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d069,ingredient,A superhero with seasonal allergies,person,thinglike,medium_batch4.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d070,ingredient,A magician with stage fright,person,thinglike,medium_batch10.json,,strong match for 49 expansion Recipes and 105 of all 200
+ic_d071,ingredient,A raccoon running the school store,animal,thinglike,medium_batch8.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d072,ingredient,A goat on the student council,animal,thinglike,medium_batch4.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d074,ingredient,A pigeon delivering homework late,animal,thinglike,medium_batch10.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d076,ingredient,A hamster studying for finals,animal,thinglike,medium_batch6.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d077,ingredient,A cat grading essays,animal,thinglike,medium_batch6.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d078,ingredient,A goose patrolling the parking lot,animal,thinglike,medium_batch6.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d080,ingredient,A dog doing a book report,animal,thinglike,medium_batch1.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d081,ingredient,A possum playing dead during gym,animal,thinglike,medium_batch6.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d082,ingredient,A beaver building a science fair project,animal,thinglike,medium_batch9.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d083,ingredient,A crow collecting lost earbuds,animal,thinglike,medium_batch9.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d084,ingredient,An owl offering tutoring services,animal,thinglike,medium_batch8.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d085,ingredient,A turtle winning the mile run,animal,thinglike,medium_batch1.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d087,ingredient,A sheep with a bad haircut,animal,thinglike,medium_batch8.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d088,ingredient,A penguin in a group project,animal,thinglike,medium_batch5.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d089,ingredient,A bulldog as the team captain,animal,thinglike,medium_batch6.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d090,ingredient,A chihuahua with anger management,animal,thinglike,medium_batch9.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d091,ingredient,A cat livestreaming its nap,animal,thinglike,medium_batch2.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d093,ingredient,A horse taking driver's ed,animal,thinglike,medium_batch6.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d094,ingredient,A duck auditioning for the musical,animal,thinglike,medium_batch8.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d095,ingredient,A badger on yearbook staff,animal,thinglike,medium_batch7.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d097,ingredient,An octopus doing everyone's homework,animal,thinglike,medium_batch8.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d100,ingredient,A raccoon in a lab coat,animal,thinglike,medium_batch2.json,,strong match for 37 expansion Recipes and 87 of all 200
+ic_d101,ingredient,A goose chasing the principal,animal,thinglike,medium_batch8.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d102,ingredient,A dog eating the science project,animal,thinglike,medium_batch9.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d103,ingredient,A cat walking across the keyboard,animal,thinglike,medium_batch6.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d104,ingredient,A puppy chewing your retainer,animal,thinglike,medium_batch9.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d106,ingredient,A pigeon in the cafeteria,animal,thinglike,medium_batch4.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d108,ingredient,A bird on the school bus,animal,thinglike,medium_batch10.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d109,ingredient,A goat eating the soccer net,animal,thinglike,medium_batch5.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d110,ingredient,A llama spitting at the photographer,animal,thinglike,medium_batch9.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d111,ingredient,A seagull with a french fry,animal,thinglike,medium_batch4.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d113,ingredient,A cat knocking over trophies,animal,thinglike,medium_batch5.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d114,ingredient,A class pet staging an escape,animal,thinglike,medium_batch3.json,,strong match for 39 expansion Recipes and 90 of all 200
+ic_d130,ingredient,The mystery meat taco,food,food/thinglike,medium_batch4.json,,strong match for 41 expansion Recipes and 99 of all 200
+ic_d135,ingredient,A burrito left in a backpack,food,food/thinglike,medium_batch4.json,,strong match for 41 expansion Recipes and 99 of all 200
+ic_d138,ingredient,Lukewarm chicken nuggets,food,food/thinglike,medium_batch2.json,,strong match for 41 expansion Recipes and 99 of all 200
+ic_d143,ingredient,Microwaved fish in the teachers' lounge,food,food/thinglike,medium_batch10.json,,strong match for 41 expansion Recipes and 99 of all 200
+ic_d169,ingredient,A pizza with a lawyer,food,food/thinglike,medium_batch4.json,,strong match for 46 expansion Recipes and 104 of all 200
+ic_d188,ingredient,A backpack that won't zip,thing,thinglike,medium_batch8.json,,strong match for 24 expansion Recipes and 72 of all 200
+ic_d205,ingredient,A stapler with tenure,thing,thinglike,medium_batch8.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d206,ingredient,A detention slip in calligraphy,thing,thinglike,medium_batch10.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d207,ingredient,A laminated list of the class rules,thing,thinglike,medium_batch9.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d208,ingredient,A whiteboard marker with a lawyer,thing,thinglike,medium_batch6.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d209,ingredient,A vending machine demanding a resume,thing,thinglike,medium_batch7.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d210,ingredient,A pencil sharpener's terms and conditions,thing,thinglike,medium_batch8.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d211,ingredient,A fire drill with a dress code,thing,thinglike,medium_batch9.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d213,ingredient,A homework assignment with a sequel,thing,thinglike,medium_batch4.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d216,ingredient,A seating chart negotiated by diplomats,thing,thinglike,medium_batch4.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d217,ingredient,A report card with footnotes,thing,thinglike,medium_batch4.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d218,ingredient,A lost-and-found with a reception desk,thing,thinglike,medium_batch4.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d219,ingredient,A cafeteria tray with a warranty,thing,thinglike,medium_batch3.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d220,ingredient,A gym locker with a doorman,thing,thinglike,medium_batch5.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d221,ingredient,A school bell with a snooze button,thing,thinglike,medium_batch5.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d222,ingredient,A bake sale with a security team,thing,thinglike,medium_batch4.json,,strong match for 27 expansion Recipes and 68 of all 200
+ic_d237,ingredient,A whoopee cushion on the principal's chair,thing,sound/thinglike,medium_batch8.json,,strong match for 20 expansion Recipes and 51 of all 200
+ic_d244,ingredient,A drawer of soy sauce packets,thing,thinglike,medium_batch7.json,,strong match for 19 expansion Recipes and 47 of all 200
+ic_d272,ingredient,Explaining the internet to Grandpa,action,action/event/speech,medium_batch8.json,,strong match for 28 expansion Recipes and 41 of all 200
+ic_d274,ingredient,Pretending to text when alone,action,action/event/speech,medium_batch6.json,,strong match for 28 expansion Recipes and 41 of all 200
+ic_d278,ingredient,Practicing an acceptance speech in the mirror,action,action/event/speech,medium_batch2.json,,strong match for 28 expansion Recipes and 41 of all 200
+ic_d280,ingredient,Reading the dictionary for fun,action,action/event/speech,medium_batch10.json,,strong match for 28 expansion Recipes and 41 of all 200
+ic_d285,ingredient,Starting the science project at midnight,action,action/event,medium_batch8.json,,strong match for 10 expansion Recipes and 18 of all 200
+ic_d300,ingredient,The school parking lot at pickup,place,thinglike,medium_batch1.json,,strong match for 8 expansion Recipes and 29 of all 200
+ic_d311,ingredient,A gym class on a pirate ship,place,thinglike,medium_batch3.json,,strong match for 31 expansion Recipes and 78 of all 200
+ic_d313,ingredient,A study hall in a bounce house,place,thinglike,medium_batch9.json,,strong match for 31 expansion Recipes and 78 of all 200
+ic_d316,ingredient,A school bus with a hot tub,place,thinglike,medium_batch7.json,,strong match for 31 expansion Recipes and 78 of all 200
+ic_d333,ingredient,Picture day with a bad haircut,event,event/thinglike,medium_batch2.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d334,ingredient,The middle school dance's slow song,event,event/thinglike,medium_batch6.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d335,ingredient,Parent-teacher night with both parents,event,event/thinglike,medium_batch10.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d336,ingredient,A field trip to the sewage plant,event,event/thinglike,medium_batch3.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d337,ingredient,The class play with no rehearsal,event,event/thinglike,medium_batch6.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d338,ingredient,A talent show act with no talent,event,event/thinglike,medium_batch1.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d339,ingredient,A surprise party for the wrong person,event,event/thinglike,medium_batch3.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d340,ingredient,A spelling bee in sweatpants,event,event/thinglike,medium_batch1.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d341,ingredient,Career day with a mime,event,event/thinglike,medium_batch8.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d342,ingredient,A school assembly about hand-washing,event,event/thinglike,medium_batch2.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d343,ingredient,The band concert's squeaky clarinet solo,event,event/sound/thinglike,medium_batch6.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d344,ingredient,A pep rally with no pep,event,event/thinglike,medium_batch5.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d345,ingredient,Show-and-tell with a live chicken,event,event/thinglike,medium_batch10.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d346,ingredient,Gym class square dancing,event,event/thinglike,medium_batch2.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d347,ingredient,A yearbook signing with nobody,event,event/thinglike,medium_batch6.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d348,ingredient,A group photo where everyone blinks,event,event/thinglike,medium_batch9.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d351,ingredient,A sleepover where nobody sleeps,event,event/thinglike,medium_batch9.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d352,ingredient,A carpool karaoke breakdown,event,event/sound/thinglike,medium_batch4.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d353,ingredient,A wedding where the ring bearer runs,event,event/thinglike,medium_batch10.json,,strong match for 18 expansion Recipes and 45 of all 200
+ic_d363,ingredient,A fan club for the school janitor,pop_culture,thinglike,medium_batch5.json,,strong match for 25 expansion Recipes and 56 of all 200
+ic_d369,ingredient,A blooper reel of the school play,pop_culture,thinglike,medium_batch5.json,,strong match for 25 expansion Recipes and 56 of all 200
+ic_d378,ingredient,The Sunday night homework panic,feeling,event/thinglike,medium_batch9.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d380,ingredient,That feeling when the bell won't ring,feeling,event/thinglike,medium_batch5.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d382,ingredient,The Monday morning blues,feeling,event/thinglike,medium_batch3.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d383,ingredient,The guilt of an overdue library book,feeling,event/thinglike,medium_batch6.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d384,ingredient,Pre-test stomach butterflies,feeling,event/thinglike,medium_batch1.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d385,ingredient,The joy of a canceled quiz,feeling,event/thinglike,medium_batch5.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d386,ingredient,The sadness of a dropped popsicle,feeling,event/thinglike,medium_batch8.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d389,ingredient,The dread of an unread text,feeling,event/speech/thinglike,medium_batch8.json,,strong match for 24 expansion Recipes and 44 of all 200
+ic_d390,ingredient,The disappointment of raisins instead of chocolate,feeling,event/thinglike,medium_batch3.json,,strong match for 19 expansion Recipes and 39 of all 200
+ic_d392,ingredient,A tornado made of homework,nature,thinglike,medium_batch4.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d393,ingredient,A snowstorm of glitter,nature,thinglike,medium_batch2.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d395,ingredient,A rainbow that's slightly off,nature,thinglike,medium_batch10.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d396,ingredient,A heat wave in the gym,nature,thinglike,medium_batch3.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d397,ingredient,A blizzard of paper airplanes,nature,thinglike,medium_batch10.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d399,ingredient,An avalanche of laundry,nature,thinglike,medium_batch7.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d402,ingredient,A mud slide at recess,nature,thinglike,medium_batch4.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d403,ingredient,A lightning bolt with bad aim,nature,thinglike,medium_batch5.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d404,ingredient,A grumpy sunrise,nature,thinglike,medium_batch6.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d405,ingredient,A moody cloud,nature,thinglike,medium_batch9.json,,strong match for 41 expansion Recipes and 92 of all 200
+ic_d419,ingredient,Speed-reading the cereal box,action,action/event/speech,medium_batch2.json,,strong match for 13 expansion Recipes and 20 of all 200
+ic_d420,ingredient,A hoodie with main-character energy,thing,thinglike,medium_batch1.json,,strong match for 25 expansion Recipes and 62 of all 200
+ic_d425,ingredient,A gaming chair at the dinner table,thing,thinglike,medium_batch3.json,,strong match for 26 expansion Recipes and 63 of all 200
+ic_d427,ingredient,A ring light in the bathroom,thing,thinglike,medium_batch3.json,,strong match for 25 expansion Recipes and 62 of all 200
+ic_d433,ingredient,Low battery at the worst time,thing,thinglike,medium_batch10.json,,strong match for 25 expansion Recipes and 62 of all 200
+ic_d434,ingredient,A loading screen that never ends,thing,thinglike,medium_batch10.json,,strong match for 25 expansion Recipes and 62 of all 200
+ic_d436,ingredient,A captcha you keep failing,thing,thinglike,medium_batch10.json,,strong match for 25 expansion Recipes and 62 of all 200
+ic_d440,ingredient,Your older sister's skincare routine,person,thinglike,medium_batch4.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d441,ingredient,A brother hogging the bathroom,person,thinglike,medium_batch7.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d442,ingredient,The twins switching classes,person,thinglike,medium_batch2.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d444,ingredient,Your step-dad's grilling apron,person,thinglike,medium_batch1.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d445,ingredient,Grandpa's thermostat rules,person,thinglike,medium_batch3.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d446,ingredient,Grandma's purse full of candy,person,thinglike,medium_batch6.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d447,ingredient,"Mom's ""we have food at home""",person,speech/thinglike,medium_batch5.json,,strong match for 36 expansion Recipes and 77 of all 200
+ic_d448,ingredient,Dad's lawnmower obsession,person,thinglike,medium_batch4.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d449,ingredient,The family's group chat drama,person,speech/thinglike,medium_batch10.json,,strong match for 36 expansion Recipes and 77 of all 200
+ic_d450,ingredient,Your cousin's sticky handshake,person,thinglike,medium_batch2.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d451,ingredient,The ice cream truck driver's playlist,person,sound/thinglike,medium_batch9.json,,strong match for 34 expansion Recipes and 75 of all 200
+ic_d452,ingredient,The neighbor's leaf blower at dawn,person,thinglike,medium_batch7.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d453,ingredient,A mail carrier dodging the dog,person,thinglike,medium_batch2.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d454,ingredient,The pizza guy who knows your name,person,thinglike,medium_batch6.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d470,ingredient,The last slice of pizza,food,food/thinglike,medium_batch2.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d472,ingredient,A soda shaken by your brother,food,food/thinglike,medium_batch6.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d473,ingredient,An overflowing milkshake,food,food/thinglike,medium_batch9.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d474,ingredient,Soup in a zipper bag,food,food/thinglike,medium_batch3.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d475,ingredient,Spaghetti in a hurricane,food,food/thinglike,medium_batch3.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d476,ingredient,A taco shell that shatters,food,food/thinglike,medium_batch6.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d477,ingredient,A ketchup bottle that toots,food,food/sound/thinglike,medium_batch5.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d478,ingredient,A burnt marshmallow fireball,food,food/thinglike,medium_batch4.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d479,ingredient,A melting popsicle race,food,food/thinglike,medium_batch8.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d480,ingredient,A juice box squirt to the face,food,food/thinglike,medium_batch2.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d481,ingredient,A pie in the face,food,food/thinglike,medium_batch4.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d482,ingredient,A jelly donut explosion,food,food/sound/thinglike,medium_batch3.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d483,ingredient,Gum stuck in your braces,food,food/thinglike,medium_batch8.json,,strong match for 28 expansion Recipes and 54 of all 200
+ic_d498,ingredient,A janitor with a knighthood,person,thinglike,medium_batch9.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d500,ingredient,A substitute teacher with a butler,person,thinglike,medium_batch9.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d501,ingredient,A crossing guard in a tuxedo,person,thinglike,medium_batch6.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d502,ingredient,A bus driver with a monocle,person,thinglike,medium_batch4.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d503,ingredient,A hall monitor with a cape,person,thinglike,medium_batch3.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d504,ingredient,A camp counselor with a top hat,person,thinglike,medium_batch5.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d505,ingredient,A babysitter in a ball gown,person,thinglike,medium_batch9.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d507,ingredient,A paperboy with a private jet,person,thinglike,medium_batch6.json,,strong match for 48 expansion Recipes and 103 of all 200
+ic_d537,ingredient,A thank-you card to the stapler,action,action/event,medium_batch9.json,,moved from base in pass 3 (exchange); strong match for 2 expansion Recipes and 18 of all 200
+ic_d555,ingredient,A twelve-page permission slip,thing,thinglike,medium_batch1.json,,strong match for 16 expansion Recipes and 41 of all 200
+ic_d563,ingredient,"A sign that says ""no running"" everywhere",thing,speech/thinglike,medium_batch5.json,,strong match for 21 expansion Recipes and 47 of all 200
+ic_d565,ingredient,A paper clip with ambition,thing,thinglike,medium_batch3.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d566,ingredient,A tiny umbrella for a pencil,thing,thinglike,medium_batch10.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d567,ingredient,A grain of rice with a face,thing,thinglike,medium_batch4.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d568,ingredient,A mini fridge for one grape,thing,thinglike,medium_batch6.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d569,ingredient,A bookmark the size of a stamp,thing,thinglike,medium_batch9.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d570,ingredient,A thimble of hot chocolate,food,food/thinglike,medium_batch7.json,,strong match for 28 expansion Recipes and 67 of all 200
+ic_d571,ingredient,A trophy for an ant,thing,thinglike,medium_batch5.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d572,ingredient,A doll house for the hamster,thing,thinglike,medium_batch5.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d574,ingredient,A crumb with a backstory,thing,thinglike,medium_batch10.json,,strong match for 27 expansion Recipes and 66 of all 200
+ic_d578,ingredient,A goat who eats paste,animal,thinglike,medium_batch2.json,,strong match for 37 expansion Recipes and 88 of all 200
+ic_d592,ingredient,A trombone in the cafeteria,thing,sound/thinglike,medium_batch3.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d593,ingredient,A tuba in a tiny car,thing,sound/thinglike,medium_batch8.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d594,ingredient,A recorder solo at midnight,thing,sound/thinglike,medium_batch5.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d596,ingredient,A drum set in the library,thing,sound/thinglike,medium_batch6.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d597,ingredient,A trumpet full of spit,thing,sound/thinglike,medium_batch5.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d600,ingredient,A bagpipe at a sleepover,thing,sound/thinglike,medium_batch1.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d601,ingredient,A whistle in the movie theater,thing,sound/thinglike,medium_batch8.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d604,ingredient,A violin with a squeak,thing,sound/thinglike,medium_batch7.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d605,ingredient,A harmonica at the dentist,thing,sound/thinglike,medium_batch9.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d606,ingredient,A banjo solo nobody asked for,thing,sound/thinglike,medium_batch2.json,,strong match for 25 expansion Recipes and 65 of all 200
+ic_d608,ingredient,A soccer ball on the roof,thing,thinglike,medium_batch5.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d609,ingredient,A frisbee stuck in a tree,thing,thinglike,medium_batch4.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d610,ingredient,A baseball through the window,thing,thinglike,medium_batch7.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d611,ingredient,A basketball that won't bounce,thing,thinglike,medium_batch5.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d612,ingredient,A volleyball with a face,thing,thinglike,medium_batch8.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d613,ingredient,A tennis ball in the dog's mouth,thing,thinglike,medium_batch10.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d614,ingredient,A hockey puck in the soup,thing,thinglike,medium_batch8.json,,strong match for 27 expansion Recipes and 65 of all 200
+ic_d615,ingredient,A football full of pudding,thing,thinglike,medium_batch5.json,,strong match for 27 expansion Recipes and 65 of all 200
+ic_d616,ingredient,A jump rope tangled in braces,thing,thinglike,medium_batch2.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d617,ingredient,A hula hoop around a goat,thing,thinglike,medium_batch10.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d618,ingredient,A kickball over the fence,thing,thinglike,medium_batch5.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d619,ingredient,A golf ball in the toilet,thing,thinglike,medium_batch9.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d620,ingredient,A bowling ball down the stairs,thing,thinglike,medium_batch4.json,,strong match for 26 expansion Recipes and 64 of all 200
+ic_d621,ingredient,A referee with blurry glasses,person,thinglike,medium_batch9.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d622,ingredient,A coach with a pet rock,person,thinglike,medium_batch4.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d624,ingredient,A cheerleader in a cast,person,thinglike,medium_batch9.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d625,ingredient,A goalie afraid of the ball,person,thinglike,medium_batch3.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d626,ingredient,A pitcher with butterfingers,person,thinglike,medium_batch6.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d627,ingredient,A swim coach in a bathtub,person,thinglike,medium_batch1.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d629,ingredient,A wrestling champ in footie pajamas,person,thinglike,medium_batch5.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d630,ingredient,A track star in slippers,person,thinglike,medium_batch1.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d631,ingredient,A karate master in bunny slippers,person,thinglike,medium_batch5.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d632,ingredient,A chess champion at dodgeball,person,thinglike,medium_batch1.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d633,ingredient,A marathon runner on a scooter,person,thinglike,medium_batch2.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d635,ingredient,A gymnast in a phone booth,person,thinglike,medium_batch1.json,,strong match for 49 expansion Recipes and 104 of all 200
+ic_d636,ingredient,A food fight in the cafeteria,event,event/thinglike,medium_batch8.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d637,ingredient,A water balloon fight at church,event,event/thinglike,medium_batch4.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d638,ingredient,A snowball fight in the library,event,event/thinglike,medium_batch10.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d639,ingredient,A pillow fight on the bus,event,event/thinglike,medium_batch5.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d640,ingredient,A pie-eating contest gone wrong,event,event/thinglike,medium_batch6.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d641,ingredient,A burping contest at the wedding,event,event/sound/thinglike,medium_batch6.json,,strong match for 21 expansion Recipes and 51 of all 200
+ic_d642,ingredient,A hot dog-eating contest for vegans,event,event/thinglike,medium_batch10.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d643,ingredient,A chicken dance at graduation,event,event/thinglike,medium_batch2.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d645,ingredient,A dance-off with the principal,event,event/thinglike,medium_batch7.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d646,ingredient,A staring contest with the cat,event,event/thinglike,medium_batch10.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d647,ingredient,A tickle war during a test,event,event/thinglike,medium_batch10.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d648,ingredient,A thumb war for the last fry,event,event/thinglike,medium_batch5.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d649,ingredient,A rock-paper-scissors championship,event,event/thinglike,medium_batch4.json,,strong match for 20 expansion Recipes and 49 of all 200
+ic_d666,ingredient,A sock puppet with a French accent,thing,thinglike,medium_batch3.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d667,ingredient,A teddy bear with a grudge,thing,thinglike,medium_batch7.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d669,ingredient,A toaster with a temper,thing,thinglike,medium_batch7.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d670,ingredient,A fridge with commitment issues,thing,thinglike,medium_batch10.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d672,ingredient,A mirror with brutal honesty,thing,thinglike,medium_batch3.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d673,ingredient,A clock running late,thing,thinglike,medium_batch5.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d675,ingredient,A microwave with an attitude,thing,thinglike,medium_batch9.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d676,ingredient,A vacuum afraid of dust,thing,thinglike,medium_batch4.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d677,ingredient,A robot vacuum with road rage,thing,thinglike,medium_batch7.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d678,ingredient,A smart speaker giving bad advice,thing,thinglike,medium_batch1.json,,strong match for 24 expansion Recipes and 60 of all 200
+ic_d679,ingredient,A smoke alarm cheering you on,thing,sound/thinglike,medium_batch2.json,,strong match for 25 expansion Recipes and 61 of all 200
+ic_d713,ingredient,A light-up backpack in eighth grade,thing,thinglike,medium_batch3.json,,strong match for 24 expansion Recipes and 72 of all 200
+ic_d719,ingredient,A matching family T-shirt,thing,thinglike,medium_batch9.json,,strong match for 24 expansion Recipes and 72 of all 200
+ic_d720,ingredient,A school bus with your mom driving,thing,thinglike,medium_batch8.json,,strong match for 24 expansion Recipes and 72 of all 200
+ic_d737,ingredient,A news anchor at laser tag,person,thinglike,medium_batch5.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d738,ingredient,A president in detention,person,thinglike,medium_batch7.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d740,ingredient,A senator at a lemonade stand,person,thinglike,medium_batch8.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d741,ingredient,A famous chef at a cafeteria,person,thinglike,medium_batch3.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d742,ingredient,A movie star in the carpool line,person,thinglike,medium_batch10.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d743,ingredient,A rock star at the PTA meeting,person,thinglike,medium_batch9.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d745,ingredient,A ballerina working construction,person,thinglike,medium_batch2.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d746,ingredient,A lawyer at a slumber party,person,thinglike,medium_batch7.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d747,ingredient,A surgeon carving a pumpkin,person,thinglike,medium_batch4.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d748,ingredient,A scientist at the ball pit,person,thinglike,medium_batch2.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d749,ingredient,A professor at the playground,person,thinglike,medium_batch2.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d750,ingredient,A mayor at a sandcastle contest,person,thinglike,medium_batch9.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d751,ingredient,A billionaire at a garage sale,person,thinglike,medium_batch1.json,,strong match for 47 expansion Recipes and 105 of all 200
+ic_d763,ingredient,A treasure map to the fridge,thing,thinglike,medium_batch1.json,,strong match for 36 expansion Recipes and 84 of all 200
+ic_d767,ingredient,A dog with a side hustle,animal,thinglike,medium_batch7.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d768,ingredient,A cat pretending to be busy,animal,thinglike,medium_batch5.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d770,ingredient,A hamster with a gym membership,animal,thinglike,medium_batch6.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d771,ingredient,A guinea pig news anchor,animal,thinglike,medium_batch10.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d772,ingredient,A gecko selling insurance,animal,thinglike,medium_batch4.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d773,ingredient,A shark at the dentist,animal,thinglike,medium_batch6.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d774,ingredient,An alligator lifeguard,animal,thinglike,medium_batch6.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d776,ingredient,A tortoise with a sports car,animal,thinglike,medium_batch3.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d777,ingredient,A flamingo on one roller skate,animal,thinglike,medium_batch7.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d778,ingredient,A panda eating a salad bar,animal,thinglike,medium_batch6.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d779,ingredient,A zebra at the crosswalk,animal,thinglike,medium_batch7.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d780,ingredient,A giraffe at a limbo contest,animal,thinglike,medium_batch8.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d781,ingredient,A polar bear at the beach,animal,thinglike,medium_batch10.json,,strong match for 32 expansion Recipes and 73 of all 200
+ic_d782,ingredient,A stapler on a coffee break,thing,thinglike,medium_batch1.json,,strong match for 24 expansion Recipes and 61 of all 200
+ic_d797,ingredient,The kid with a hundred keychains,person,thinglike,medium_batch7.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d798,ingredient,A friend narrating your basketball game,person,speech/thinglike,medium_batch6.json,,strong match for 36 expansion Recipes and 77 of all 200
+ic_d799,ingredient,The student council's campaign posters,person,thinglike,medium_batch9.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d800,ingredient,A sibling with a walkie-talkie,person,thinglike,medium_batch5.json,,strong match for 34 expansion Recipes and 73 of all 200
+ic_d811,ingredient,"Yelling ""I'm fine!"" after tripping",action,action/event/sound/speech,medium_batch11.json,,strong match for 18 expansion Recipes and 30 of all 200
+ic_d819,ingredient,"""Technically, the dog ate it""",action,action/event/speech,medium_batch11.json,,moved from base in pass 3 (exchange); strong match for 26 expansion Recipes and 51 of all 200
+ic_d823,ingredient,"""Group project? I work alone.""",action,action/event/speech,medium_batch11.json,,strong match for 23 expansion Recipes and 47 of all 200
+ic_d828,ingredient,"Saying ""bless you"" to a robot",action,action/event/speech,medium_batch11.json,,strong match for 29 expansion Recipes and 47 of all 200
+ic_dr2_001,ingredient,Gym Sock Sweat Splash,food,food/thinglike,crew_round2.csv,round 2 (written for rc_d031),strong match for 41 expansion Recipes and 99 of all 200
+ic_dr2_002,ingredient,Coach's Leftover Pickle Juice,food,food/thinglike,crew_round2.csv,round 2 (written for rc_d031),strong match for 41 expansion Recipes and 99 of all 200
+ic_dr2_003,ingredient,Retired Quarterback Lemonade,food,food/thinglike,crew_round2.csv,round 2 (written for rc_d031),strong match for 52 expansion Recipes and 119 of all 200
+ic_dr2_004,ingredient,Hurricane Lightning Lime,food,food/thinglike,crew_round2.csv,round 2 (written for rc_d031),strong match for 45 expansion Recipes and 104 of all 200
+ic_dr2_011,ingredient,"""By law, recess is now indoors forever.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d005),strong match for 29 expansion Recipes and 55 of all 200
+ic_dr2_012,ingredient,"""Today's lunch is officially unidentified.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d005),strong match for 20 expansion Recipes and 52 of all 200
+ic_dr2_013,ingredient,"""The superintendent is hiding in the vents.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d005),strong match for 29 expansion Recipes and 55 of all 200
+ic_dr2_014,ingredient,"""Happy birthday to me, nobody else.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d005),strong match for 15 expansion Recipes and 44 of all 200
+ic_dr2_015,ingredient,"""This announcement has no announcement.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d005),strong match for 29 expansion Recipes and 55 of all 200
+ic_dr2_016,ingredient,"""The mayor requests your silence. Forever.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d005),strong match for 29 expansion Recipes and 55 of all 200
+ic_dr2_017,ingredient,"""Thank you, thank you, my loyal subjects.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d022),strong match for 29 expansion Recipes and 47 of all 200
+ic_dr2_018,ingredient,"""Accidentally sat on the cake again.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d022),strong match for 17 expansion Recipes and 47 of all 200
+ic_dr2_019,ingredient,"""My cat is my lawyer now.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d022),strong match for 29 expansion Recipes and 47 of all 200
+ic_dr2_020,ingredient,"""Dear Diary, Grandma beat me at Fortnite.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d022),strong match for 29 expansion Recipes and 47 of all 200
+ic_dr2_031,ingredient,"Insisting everyone call you ""Your Highness""",action,action/event,crew_round2.csv,round 2 (written for rc_d067),strong match for 29 expansion Recipes and 55 of all 200
+ic_dr2_044,ingredient,Quietly reading the rulebook,action,action/event,crew_round2.csv,round 2 (written for rc_d071),strong match for 29 expansion Recipes and 55 of all 200
+ic_dr2_047,ingredient,"""No cap, your kid is lowkey failing.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d123),strong match for 30 expansion Recipes and 48 of all 200
+ic_dr2_050,ingredient,Barking the final paragraph,action,action/event/sound,crew_round2.csv,round 2 (written for rc_d140),strong match for 16 expansion Recipes and 33 of all 200
+ic_dr2_052,ingredient,Requesting a royal drumroll,action,action/event/sound,crew_round2.csv,round 2 (written for rc_d140),strong match for 17 expansion Recipes and 43 of all 200
+ic_dr2_057,ingredient,"""My dog already ate it, thanks!""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d164),strong match for 29 expansion Recipes and 47 of all 200
+ic_dr2_059,ingredient,"""Thanks for the volcano. It erupted.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d164),strong match for 20 expansion Recipes and 39 of all 200
+ic_dr2_060,ingredient,"""Please stop sending these. Love, me.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d164),strong match for 29 expansion Recipes and 47 of all 200
+ic_dr2_061,ingredient,"""Play like the squirrels taught you!""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d177),strong match for 29 expansion Recipes and 47 of all 200
+ic_dr2_062,ingredient,"""Don't sweat on me, though.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d177),strong match for 16 expansion Recipes and 47 of all 200
+ic_dr2_064,ingredient,"""Just try not to cry this time.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_d177),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx001,ingredient,"""I have named the frog Sir Reginald""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d006),strong match for 30 expansion Recipes and 60 of all 200
+ic_dx002,ingredient,"""Kindly do all of it""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d006),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx003,ingredient,"""I may have mixed the wrong ones""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d006),strong match for 18 expansion Recipes and 30 of all 200
+ic_dx004,ingredient,"""The fire was a minor setback""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d006),strong match for 25 expansion Recipes and 50 of all 200
+ic_dx005,ingredient,"""Your goggles are on upside down, sir""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d006),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx006,ingredient,"""Results: the mold won""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d009),strong match for 30 expansion Recipes and 62 of all 200
+ic_dx007,ingredient,"""My hypothesis is vibes""",pop_culture,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d009),strong match for 43 expansion Recipes and 90 of all 200
+ic_dx008,ingredient,"""Do not lick the volcano""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d009),strong match for 21 expansion Recipes and 53 of all 200
+ic_dx009,ingredient,"""Sources: trust me, bro""",pop_culture,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d009),strong match for 24 expansion Recipes and 57 of all 200
+ic_dx010,ingredient,"""Conclusion: it smelled weird""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d009),strong match for 30 expansion Recipes and 62 of all 200
+ic_dx011,ingredient,"""I shall now take no questions""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d013),strong match for 29 expansion Recipes and 56 of all 200
+ic_dx012,ingredient,"""This pencil changed my life""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d013),strong match for 28 expansion Recipes and 48 of all 200
+ic_dx013,ingredient,"""Okay, who moved my notecards?""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d013),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx014,ingredient,"""Please hold your applause forever""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d013),strong match for 29 expansion Recipes and 56 of all 200
+ic_dx015,ingredient,"""Slide two is just my cat""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d013),strong match for 28 expansion Recipes and 48 of all 200
+ic_dx016,ingredient,"""Dear internet, I have news""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d022),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx018,ingredient,"""My retainer, a love story""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d022),strong match for 30 expansion Recipes and 62 of all 200
+ic_dx019,ingredient,"""Live from the nurse's office""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d022),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx020,ingredient,"""My toenail, a documentary""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d022),strong match for 30 expansion Recipes and 62 of all 200
+ic_dx027,ingredient,Submitting a formal resignation letter,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_d032),strong match for 21 expansion Recipes and 48 of all 200
+ic_dx034,ingredient,"""Today's episode: the lettuce situation""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d041),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx035,ingredient,"""Like and subscribe, or no pellets""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d041),strong match for 21 expansion Recipes and 48 of all 200
+ic_dx038,ingredient,"""Breaking news: more lettuce""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d041),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx039,ingredient,"""So who broke the microwave?""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d049),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx040,ingredient,"""Pass the ketchup, peasant""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d049),strong match for 31 expansion Recipes and 47 of all 200
+ic_dx042,ingredient,"""May I speak to the chef?""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d049),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx043,ingredient,"""In the grand scheme, peas are pointless""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d049),strong match for 28 expansion Recipes and 55 of all 200
+ic_dx044,ingredient,"""Excuse me, sir, that was traveling""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d060),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx045,ingredient,"""That's a foul on my feelings!""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d060),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx046,ingredient,"""Referee, I demand a recount""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d060),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx056,ingredient,Giving a speech to the whole gym,action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d067),strong match for 30 expansion Recipes and 56 of all 200
+ic_dx058,ingredient,Announcing yourself with a trumpet,action,action/event/sound/speech,crew:new_ingredients_tagged.json,new (written for rc_d067),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx064,ingredient,"""Don't open the fridge. Trust me.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d073),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx065,ingredient,"""Dearest Mother, the Wi-Fi has fallen""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d073),strong match for 29 expansion Recipes and 56 of all 200
+ic_dx066,ingredient,"""Dear Mother, I require nuggets""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d073),strong match for 31 expansion Recipes and 47 of all 200
+ic_dx067,ingredient,"""Emergency: I am bored""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d073),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx070,ingredient,"The lunch bell, but slower",thing,sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d077),strong match for 28 expansion Recipes and 73 of all 200
+ic_dx071,ingredient,A kazoo version of the fire drill,thing,sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d077),strong match for 22 expansion Recipes and 57 of all 200
+ic_dx072,ingredient,"""Are we there yet?"" times forty",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d088),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx074,ingredient,"""Mom, he's breathing my air""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d088),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx075,ingredient,"""Driver, kindly take the scenic route""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d088),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx076,ingredient,"""Is the ocean still out there?""",nature,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d088),strong match for 42 expansion Recipes and 99 of all 200
+ic_dx077,ingredient,Imported extra-crunchy celery,food,food/sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d096),strong match for 46 expansion Recipes and 105 of all 200
+ic_dx079,ingredient,Kettle chips served on a platter,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d096),strong match for 41 expansion Recipes and 96 of all 200
+ic_dx080,ingredient,"A whole raw onion, politely",food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d096),strong match for 53 expansion Recipes and 120 of all 200
+ic_dx081,ingredient,"Caviar crackers, extra crunchy",food,food/sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d096),strong match for 46 expansion Recipes and 105 of all 200
+ic_dx082,ingredient,Bus seat flavor,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d098),strong match for 41 expansion Recipes and 99 of all 200
+ic_dx083,ingredient,Sharpened pencil flavor,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d098),strong match for 40 expansion Recipes and 95 of all 200
+ic_dx084,ingredient,Gym locker room flavor,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d098),strong match for 41 expansion Recipes and 99 of all 200
+ic_dx085,ingredient,Outer space flavor,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d098),strong match for 29 expansion Recipes and 76 of all 200
+ic_dx086,ingredient,Old gym sock flavor,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d098),strong match for 41 expansion Recipes and 99 of all 200
+ic_dx087,ingredient,Leaving with a three-page speech,action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d103),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx090,ingredient,"""Stay cool. Return my pencil.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d106),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx091,ingredient,"""Have a regal summer""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d106),strong match for 29 expansion Recipes and 45 of all 200
+ic_dx092,ingredient,"""Signed, the moon""",nature,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d106),strong match for 54 expansion Recipes and 120 of all 200
+ic_dx094,ingredient,"""Best wishes from your locker neighbor""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d106),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx095,ingredient,Reading the lunch menu dramatically,action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d110),strong match for 23 expansion Recipes and 51 of all 200
+ic_dx096,ingredient,Burping the morning announcements,action,action/event/sound/speech,crew:new_ingredients_tagged.json,new (written for rc_d110),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx098,ingredient,"""Rise, your majesty. Or don't.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d112),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx099,ingredient,"""The universe has started without you""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d112),strong match for 28 expansion Recipes and 55 of all 200
+ic_dx100,ingredient,"""Your homework remains undone, sire""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d112),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx101,ingredient,"""Good morning, your royal sleepiness""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d112),strong match for 29 expansion Recipes and 45 of all 200
+ic_dx102,ingredient,"""Beep. Beep. Beep. I mean it.""",action,action/event/sound/speech,crew:new_ingredients_tagged.json,new (written for rc_d112),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx103,ingredient,"""I have forgotten my own name""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d118),strong match for 28 expansion Recipes and 48 of all 200
+ic_dx104,ingredient,"""My pencil just died""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d118),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx105,ingredient,"""Psst... what class is this?""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d118),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx106,ingredient,"""Pardon me, may I borrow your brain?""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d118),strong match for 29 expansion Recipes and 45 of all 200
+ic_dx107,ingredient,"""Your answer looks lonely""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d118),strong match for 28 expansion Recipes and 56 of all 200
+ic_dx108,ingredient,"Turkey-flavored gelatin, chilled",food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d119),strong match for 53 expansion Recipes and 120 of all 200
+ic_dx109,ingredient,"Gravy soup, served elegantly",food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d119),strong match for 53 expansion Recipes and 120 of all 200
+ic_dx110,ingredient,Artisanal canned yams,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d119),strong match for 53 expansion Recipes and 120 of all 200
+ic_dx111,ingredient,"Brussels sprout pudding, deluxe",food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d119),strong match for 53 expansion Recipes and 120 of all 200
+ic_dx112,ingredient,Marshmallow green beans au gratin,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d119),strong match for 52 expansion Recipes and 120 of all 200
+ic_dx113,ingredient,"Thunder, but it's your stomach",thing,sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d122),strong match for 26 expansion Recipes and 69 of all 200
+ic_dx114,ingredient,A sneeze heard in three states,thing,sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d122),strong match for 38 expansion Recipes and 102 of all 200
+ic_dx115,ingredient,A bag of chips crunching politely,thing,sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d122),strong match for 43 expansion Recipes and 103 of all 200
+ic_dx116,ingredient,"A pencil sharpener, louder than thunder",thing,sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d122),strong match for 29 expansion Recipes and 79 of all 200
+ic_dx117,ingredient,Someone's stomach singing opera,thing,sound/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d122),strong match for 46 expansion Recipes and 101 of all 200
+ic_dx118,ingredient,"""Hey fam, principal here. No cap.""",pop_culture,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d123),strong match for 32 expansion Recipes and 66 of all 200
+ic_dx119,ingredient,"""Call me back. It's about the goat.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d123),strong match for 23 expansion Recipes and 52 of all 200
+ic_dx120,ingredient,"""Remember dial-up? Me neither.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d123),strong match for 29 expansion Recipes and 52 of all 200
+ic_dx121,ingredient,"""This is your principal. Nobody panic.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d123),strong match for 21 expansion Recipes and 48 of all 200
+ic_dx122,ingredient,"""Detention? In this economy?""",pop_culture,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d123),strong match for 24 expansion Recipes and 57 of all 200
+ic_dx123,ingredient,Pineapple and pickle supreme,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d136),strong match for 50 expansion Recipes and 112 of all 200
+ic_dx124,ingredient,"The chef's tasting pizza, $90",food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d136),strong match for 41 expansion Recipes and 96 of all 200
+ic_dx125,ingredient,"Anchovy-stuffed crust, extra fancy",food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d136),strong match for 47 expansion Recipes and 107 of all 200
+ic_dx126,ingredient,Pepperoni wrapped in gold leaf,food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d136),strong match for 41 expansion Recipes and 96 of all 200
+ic_dx127,ingredient,"Truffle pizza for one, $80",food,food/thinglike,crew:new_ingredients_tagged.json,new (written for rc_d136),strong match for 41 expansion Recipes and 96 of all 200
+ic_dx132,ingredient,"Inviting questions, then leaving",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d140),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx135,ingredient,Texting your teacher a sticker,action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d146),strong match for 18 expansion Recipes and 44 of all 200
+ic_dx138,ingredient,"""Your braces caught a pea""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d147),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx141,ingredient,"""Your retainer has a smell""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d147),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx142,ingredient,"""We found last year's popcorn""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d147),strong match for 20 expansion Recipes and 52 of all 200
+ic_dx144,ingredient,"""Your fruitcake is now a doorstop""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d164),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx145,ingredient,"""Please send money next time""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d164),strong match for 21 expansion Recipes and 48 of all 200
+ic_dx146,ingredient,"""Thanks for the used gum""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d164),strong match for 20 expansion Recipes and 52 of all 200
+ic_dx147,ingredient,"""Your gift was enormous. And damp.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d164),strong match for 19 expansion Recipes and 52 of all 200
+ic_dx148,ingredient,"""Win this one for my knee""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d177),strong match for 23 expansion Recipes and 48 of all 200
+ic_dx149,ingredient,"""Losing builds character. Build more.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d177),strong match for 21 expansion Recipes and 48 of all 200
+ic_dx151,ingredient,"""Sweat is just your body crying""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d177),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx152,ingredient,"""Smell that? That's victory.""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d177),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx153,ingredient,"""Day 40: the wheel goes nowhere""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d180),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx154,ingredient,"""The tall one sneezed on me""",action,action/event/sound/speech,crew:new_ingredients_tagged.json,new (written for rc_d180),strong match for 16 expansion Recipes and 47 of all 200
+ic_dx155,ingredient,"""My heart belongs to carrots""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d180),strong match for 29 expansion Recipes and 50 of all 200
+ic_dx156,ingredient,"""Official report: still a gerbil""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d180),strong match for 29 expansion Recipes and 55 of all 200
+ic_dx157,ingredient,"""Escape attempt nine: the rug""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_d180),strong match for 18 expansion Recipes and 30 of all 200

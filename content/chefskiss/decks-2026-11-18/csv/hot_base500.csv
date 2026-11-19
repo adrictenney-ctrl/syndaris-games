@@ -1,0 +1,501 @@
+card_id,type,text,subject,answer_type,source,crew_fix,reason
+rc_s001,recipe,"The worst thing to list under ""special skills""",thing,action/event,spicy_batch3.json,,294 strong matches in all cards; 1.06 fitting per 4-card hand in base
+rc_s002,recipe,My college essay is secretly about,feeling,thinglike,spicy_batch2.json,,536 strong matches in all cards; 3.53 fitting per 4-card hand in base
+rc_s003,recipe,The real reason I failed my driver's test,event,thinglike,spicy_batch3.json,,497 strong matches in all cards; 3.89 fitting per 4-card hand in base
+rc_s010,recipe,My guidance counselor's backup plan for me,person,thinglike,spicy_batch3.json,,318 strong matches in all cards; 3.68 fitting per 4-card hand in base
+rc_s013,recipe,"What Mom really means by ""we'll see""",person,speech/thinglike,spicy_batch8.json,,237 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s016,recipe,A rejected yearbook superlative,pop_culture,thinglike,spicy_batch2.json,,345 strong matches in all cards; 3.29 fitting per 4-card hand in base
+rc_s017,recipe,The real reason the group project is late,event,thinglike,spicy_batch2.json,,351 strong matches in all cards; 3.87 fitting per 4-card hand in base
+rc_s018,recipe,The worst thing to accidentally send to your boss,pop_culture,thinglike,spicy_batch1.json,,459 strong matches in all cards; 3.90 fitting per 4-card hand in base
+rc_s019,recipe,What's really in the senior lounge,place,thinglike,spicy_batch10.json,,360 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_s020,recipe,The worst theme for prom,event,thinglike,spicy_batch10.json,,329 strong matches in all cards; 3.26 fitting per 4-card hand in base
+rc_s023,recipe,The worst thing to hear at orientation,event,sound/speech,spicy_batch2.json,,237 strong matches in all cards; 1.60 fitting per 4-card hand in base
+rc_s024,recipe,My dad's newest hobby,person,thinglike,spicy_batch5.json,,420 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_s027,recipe,The worst job for an overthinker,person,thinglike,spicy_batch10.json,,399 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_s031,recipe,What the school board really argues about,event,thinglike,spicy_batch5.json,,353 strong matches in all cards; 3.71 fitting per 4-card hand in base
+rc_s032,recipe,A rejected title for my memoir,thing,any,spicy_batch10.json,,273 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s034,recipe,The worst thing to order at a fancy restaurant,food,thinglike,spicy_batch4.json,,437 strong matches in all cards; 3.73 fitting per 4-card hand in base
+rc_s037,recipe,What my phone knows about me,thing,thinglike,spicy_batch5.json,,237 strong matches in all cards; 3.83 fitting per 4-card hand in base
+rc_s038,recipe,The worst excuse for missing curfew,action,action/event/speech,spicy_batch4.json,,432 strong matches in all cards; 1.70 fitting per 4-card hand in base
+rc_s039,recipe,A terrible name for a podcast,pop_culture,any,spicy_batch10.json,,549 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s040,recipe,The newest thing my parents are worried about,feeling,thinglike,spicy_batch5.json,,456 strong matches in all cards; 3.87 fitting per 4-card hand in base
+rc_s042,recipe,What my houseplant thinks of me,nature,thinglike,spicy_batch5.json,,339 strong matches in all cards; 3.66 fitting per 4-card hand in base
+rc_s043,recipe,A terrible motto for a summer camp,thing,any,spicy_batch9.json,,695 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s045,recipe,The worst thing to hear during a haircut,event,sound/speech,spicy_batch8.json,,277 strong matches in all cards; 1.87 fitting per 4-card hand in base
+rc_s047,recipe,The worst thing to find in a rental car,thing,thinglike,spicy_batch3.json,,280 strong matches in all cards; 3.94 fitting per 4-card hand in base
+rc_s048,recipe,A rejected name for a college dorm,place,any,spicy_batch1.json,,672 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s049,recipe,The worst thing to say to a customer,action,speech,spicy_batch2.json,,259 strong matches in all cards; 1.65 fitting per 4-card hand in base
+rc_s050,recipe,What your future self wants you to know,person,thinglike,spicy_batch2.json,,468 strong matches in all cards; 3.49 fitting per 4-card hand in base
+rc_s052,recipe,My new professional headline,pop_culture,any,spicy_batch8.json,,713 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s054,recipe,What my sibling would sell my stuff for,person,thinglike,spicy_batch1.json,,247 strong matches in all cards; 3.88 fitting per 4-card hand in base
+rc_s056,recipe,The newest requirement for graduation,event,thinglike,spicy_batch6.json,,474 strong matches in all cards; 3.54 fitting per 4-card hand in base
+rc_s068,recipe,What seniors secretly leave behind for freshmen,thing,thinglike,spicy_batch3.json,b,456 strong matches in all cards; 3.57 fitting per 4-card hand in base; Crew reworded (was: A rejected tradition for senior year); retagged in working copy (new text: things seniors leave behind)
+rc_s069,recipe,What my parents are secretly saving for,person,thinglike,spicy_batch3.json,,174 strong matches in all cards; 3.82 fitting per 4-card hand in base
+rc_s070,recipe,The worst thing to hear your boss say on Friday,person,sound/speech,spicy_batch7.json,,282 strong matches in all cards; 1.73 fitting per 4-card hand in base
+rc_s071,recipe,A terrible name for a food truck,place,any,spicy_batch6.json,,327 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s072,recipe,The most honest college essay topic,feeling,thinglike,spicy_batch4.json,,536 strong matches in all cards; 3.53 fitting per 4-card hand in base
+rc_s074,recipe,The worst job for someone with senioritis,person,thinglike,spicy_batch1.json,,390 strong matches in all cards; 3.61 fitting per 4-card hand in base
+rc_s075,recipe,A rejected mascot for the debate team,person,any,spicy_batch7.json,,332 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s076,recipe,What the cafeteria's mystery meat identifies as,food,thinglike,spicy_batch1.json,,294 strong matches in all cards; 3.94 fitting per 4-card hand in base
+rc_s079,recipe,The worst way to spend your first paycheck,action,action/event,spicy_batch4.json,,294 strong matches in all cards; 1.03 fitting per 4-card hand in base
+rc_s080,recipe,The newest thing Dad is an expert on,person,thinglike,spicy_batch6.json,,420 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_s082,recipe,A rejected tagline for my hometown,place,any,spicy_batch1.json,,851 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s083,recipe,What adulting really means,feeling,thinglike,spicy_batch1.json,,258 strong matches in all cards; 3.83 fitting per 4-card hand in base
+rc_s086,recipe,A terrible name for a high school musical,event,any,spicy_batch6.json,,733 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s088,recipe,What really goes on in the teachers' group chat,pop_culture,thinglike,spicy_batch7.json,,448 strong matches in all cards; 3.74 fitting per 4-card hand in base
+rc_s091,recipe,The newest thing on my bucket list,feeling,thinglike,spicy_batch5.json,,669 strong matches in all cards; 3.63 fitting per 4-card hand in base
+rc_s094,recipe,The real reason I'm always tired,feeling,thinglike,spicy_batch10.json,,456 strong matches in all cards; 3.87 fitting per 4-card hand in base
+rc_s096,recipe,The worst thing to hear over a store intercom,event,sound/speech,spicy_batch5.json,,277 strong matches in all cards; 1.87 fitting per 4-card hand in base
+rc_s098,recipe,The worst thing to get as a graduation present,thing,thinglike,spicy_batch2.json,,442 strong matches in all cards; 3.51 fitting per 4-card hand in base
+rc_s100,recipe,What my teacher is grading at midnight,person,thinglike,spicy_batch2.json,,312 strong matches in all cards; 3.67 fitting per 4-card hand in base
+rc_s101,recipe,A terrible name for an apartment complex,place,any,spicy_batch5.json,,672 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s102,recipe,The worst thing to discover in a group project doc,pop_culture,thinglike,spicy_batch2.json,,477 strong matches in all cards; 3.92 fitting per 4-card hand in base
+rc_s103,recipe,My parents' newest attempt to be cool,person,thinglike,spicy_batch3.json,,184 strong matches in all cards; 3.78 fitting per 4-card hand in base
+rc_s104,recipe,The worst thing to find in your car's cup holder,thing,thinglike,spicy_batch4.json,,249 strong matches in all cards; 3.95 fitting per 4-card hand in base
+rc_s105,recipe,What the crossing guard has seen,person,thinglike,spicy_batch5.json,,337 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_s106,recipe,The newest excuse to get out of family game night,action,action/event/speech,spicy_batch8.json,,432 strong matches in all cards; 1.70 fitting per 4-card hand in base
+rc_s108,recipe,A rejected college major,event,thinglike,spicy_batch10.json,,474 strong matches in all cards; 3.54 fitting per 4-card hand in base
+rc_s109,recipe,The worst thing to hear from a mechanic,person,sound/speech,spicy_batch9.json,,241 strong matches in all cards; 1.73 fitting per 4-card hand in base
+rc_s110,recipe,What my self-care routine actually looks like,feeling,thinglike,spicy_batch7.json,,669 strong matches in all cards; 3.63 fitting per 4-card hand in base
+rc_s111,recipe,The worst thing to wear to a college interview,thing,thinglike,spicy_batch3.json,,361 strong matches in all cards; 3.62 fitting per 4-card hand in base
+rc_s112,recipe,What really happens in the student parking lot,place,thinglike,spicy_batch1.json,,360 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_s114,recipe,The worst thing to hear from your GPS,thing,sound/speech,spicy_batch6.json,,252 strong matches in all cards; 1.55 fitting per 4-card hand in base
+rc_s116,recipe,The worst thing to find in your graduation gown pocket,thing,thinglike,spicy_batch5.json,,249 strong matches in all cards; 3.95 fitting per 4-card hand in base
+rc_s117,recipe,What my younger self would think of me,person,thinglike,spicy_batch3.json,,171 strong matches in all cards; 3.46 fitting per 4-card hand in base
+rc_s119,recipe,What I really learned in health class,event,thinglike,spicy_batch2.json,,436 strong matches in all cards; 3.73 fitting per 4-card hand in base
+rc_s120,recipe,The worst thing to see in the family group chat,pop_culture,thinglike,spicy_batch1.json,,418 strong matches in all cards; 3.82 fitting per 4-card hand in base
+rc_s124,recipe,The worst thing to hear right before a speech,event,sound/speech,spicy_batch3.json,,277 strong matches in all cards; 1.87 fitting per 4-card hand in base
+rc_s125,recipe,The worst thing to admit to your lab partner,action,thinglike,spicy_batch5.json,,457 strong matches in all cards; 3.88 fitting per 4-card hand in base
+rc_s126,recipe,What really happens during a free period,event,thinglike,spicy_batch4.json,,356 strong matches in all cards; 3.86 fitting per 4-card hand in base
+rc_s128,recipe,A rejected chore for the family chore chart,action,thinglike,spicy_batch10.json,,498 strong matches in all cards; 3.55 fitting per 4-card hand in base
+rc_s129,recipe,The worst thing to receive in a group gift,thing,thinglike,spicy_batch4.json,,442 strong matches in all cards; 3.51 fitting per 4-card hand in base
+rc_s133,recipe,What really keeps teachers going in May,feeling,thinglike,spicy_batch10.json,,389 strong matches in all cards; 3.87 fitting per 4-card hand in base
+rc_s134,recipe,The worst thing to hear from a substitute teacher,person,sound/speech,spicy_batch2.json,,241 strong matches in all cards; 1.73 fitting per 4-card hand in base
+rc_s135,recipe,A rejected name for a new holiday sale,event,any,spicy_batch6.json,,681 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s136,recipe,What my neighbors think I'm doing,person,thinglike,spicy_batch3.json,,174 strong matches in all cards; 3.82 fitting per 4-card hand in base
+rc_s138,recipe,A terrible tagline for a gym,place,any,spicy_batch2.json,,744 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s139,recipe,The worst thing to do at a wedding,action,thinglike,spicy_batch4.json,,619 strong matches in all cards; 3.59 fitting per 4-card hand in base
+rc_s140,recipe,What my car smells like,thing,thinglike,spicy_batch1.json,,294 strong matches in all cards; 3.94 fitting per 4-card hand in base
+rc_s142,recipe,The worst thing to bring to a potluck,food,thinglike,spicy_batch7.json,,625 strong matches in all cards; 3.58 fitting per 4-card hand in base
+rc_s144,recipe,A rejected sport for the school,event,action/event,spicy_batch9.json,,391 strong matches in all cards; 1.01 fitting per 4-card hand in base
+rc_s148,recipe,A terrible name for a hiking trail,nature,any,spicy_batch7.json,,345 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s149,recipe,The worst thing to see on your first apartment tour,place,thinglike,spicy_batch10.json,,510 strong matches in all cards; 3.57 fitting per 4-card hand in base
+rc_s155,recipe,The worst thing to hear in a group fitness class,event,sound/speech,spicy_batch1.json,,277 strong matches in all cards; 1.87 fitting per 4-card hand in base
+rc_s157,recipe,What my future kids will roast me for,person,thinglike,spicy_batch1.json,,401 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_s158,recipe,The newest award at the senior banquet,event,thinglike,spicy_batch5.json,,619 strong matches in all cards; 3.59 fitting per 4-card hand in base
+rc_s163,recipe,A terrible name for an online store,pop_culture,any,spicy_batch9.json,,549 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s167,recipe,A rejected gift for Father's Day,thing,thinglike,spicy_batch4.json,,442 strong matches in all cards; 3.51 fitting per 4-card hand in base
+rc_s170,recipe,The worst thing to discover about your new roommate,person,thinglike,spicy_batch10.json,,420 strong matches in all cards; 3.89 fitting per 4-card hand in base
+rc_s171,recipe,What my sneakers have survived,thing,thinglike,spicy_batch4.json,,334 strong matches in all cards; 3.73 fitting per 4-card hand in base
+rc_s176,recipe,A terrible name for a fantasy league,pop_culture,any,spicy_batch10.json,,549 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s178,recipe,What my laundry pile is plotting,thing,thinglike,spicy_batch6.json,,327 strong matches in all cards; 3.82 fitting per 4-card hand in base
+rc_s185,recipe,What my principal does on summer vacation,person,action/event/thinglike,spicy_batch1.json,,554 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s187,recipe,A terrible caption for your senior photo,pop_culture,any,spicy_batch1.json,,717 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s191,recipe,A rejected name for the school's new wing,place,any,spicy_batch6.json,,699 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s192,recipe,What my study playlist is secretly made of,pop_culture,sound/speech,spicy_batch7.json,,227 strong matches in all cards; 1.26 fitting per 4-card hand in base
+rc_s194,recipe,A terrible name for a meal-prep company,food,any,spicy_batch9.json,,641 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_s195,recipe,The worst thing to find in a rideshare,thing,thinglike,spicy_batch3.json,,280 strong matches in all cards; 3.94 fitting per 4-card hand in base
+rc_s196,recipe,"What Grandpa thinks ""the cloud"" is",nature,thinglike,spicy_batch2.json,,516 strong matches in all cards; 3.89 fitting per 4-card hand in base
+rc_s198,recipe,The real reason the pep rally got canceled,event,thinglike,spicy_batch5.json,c,550 strong matches in all cards; 3.15 fitting per 4-card hand in base; Crew replaced (was: A rejected flavor of school spirit); retagged in working copy (new text: cause of a canceled pep rally (event/thing))
+rc_s199,recipe,The worst thing to hear from a fortune teller,person,sound/speech,spicy_batch7.json,,241 strong matches in all cards; 1.73 fitting per 4-card hand in base
+rc_s201,recipe,The worst thing to hear from the school nurse,person,sound/speech,spicy_batch5.json,,300 strong matches in all cards; 2.93 fitting per 4-card hand in base
+ic_s001,ingredient,"Dad replying ""k"" to everything",person,speech/thinglike,spicy_batch5.json,,strong match for 49 base Recipes
+ic_s003,ingredient,"A parent just learning what ""slay"" means",person,speech/thinglike,spicy_batch1.json,,strong match for 49 base Recipes
+ic_s005,ingredient,Mom asking if you've eaten in all caps,person,speech/thinglike,spicy_batch1.json,,strong match for 49 base Recipes
+ic_s007,ingredient,"A parent signing texts ""Love, Mom""",person,speech/thinglike,spicy_batch1.json,,strong match for 49 base Recipes
+ic_s008,ingredient,"Your aunt commenting ""beautiful"" on everything",person,speech/thinglike,spicy_batch7.json,,strong match for 49 base Recipes
+ic_s009,ingredient,Grandpa's accidental video call at 3 a.m.,person,speech/thinglike,spicy_batch8.json,,strong match for 49 base Recipes
+ic_s010,ingredient,Your dad narrating his parallel parking,person,speech/thinglike,spicy_batch4.json,,strong match for 49 base Recipes
+ic_s011,ingredient,Mom's group chat with the other moms,person,speech/thinglike,spicy_batch3.json,,strong match for 49 base Recipes
+ic_s014,ingredient,A dad joke delivered at graduation,person,speech/thinglike,spicy_batch3.json,,strong match for 49 base Recipes
+ic_s015,ingredient,Your uncle asking about your future plans,person,speech/thinglike,spicy_batch4.json,,strong match for 49 base Recipes
+ic_s018,ingredient,"Mom's ""we need to talk"" text",person,speech/thinglike,spicy_batch7.json,,strong match for 49 base Recipes
+ic_s020,ingredient,"Your mom saying ""no cap"" correctly",person,speech/thinglike,spicy_batch3.json,,strong match for 49 base Recipes
+ic_s024,ingredient,An admissions officer reading your fun fact,person,speech/thinglike,spicy_batch7.json,,strong match for 54 base Recipes
+ic_s025,ingredient,A hiring manager asking your greatest weakness,person,speech/thinglike,spicy_batch1.json,,strong match for 54 base Recipes
+ic_s027,ingredient,A shift manager with a whistle,person,sound/thinglike,spicy_batch3.json,,strong match for 52 base Recipes
+ic_s028,ingredient,"The SAT proctor's dramatic ""pencils down""",person,speech/thinglike,spicy_batch7.json,,strong match for 54 base Recipes
+ic_s034,ingredient,A DMV employee on their lunch break,person,thinglike,spicy_batch6.json,,strong match for 46 base Recipes
+ic_s037,ingredient,The AP teacher's syllabus speech,person,speech/thinglike,spicy_batch7.json,,strong match for 54 base Recipes
+ic_s038,ingredient,A principal hosting a podcast,person,speech/thinglike,spicy_batch6.json,,strong match for 54 base Recipes
+ic_s042,ingredient,The senior with ten unread emails,person,speech/thinglike,spicy_batch8.json,,strong match for 55 base Recipes
+ic_s045,ingredient,"The group project member who ""did the slides""",person,speech/thinglike,spicy_batch2.json,,strong match for 55 base Recipes
+ic_s050,ingredient,Someone who replies all to the whole school,person,speech/thinglike,spicy_batch9.json,,strong match for 55 base Recipes
+ic_s062,ingredient,Decision fatigue at the cafeteria,feeling,event/thinglike,spicy_batch3.json,,strong match for 16 base Recipes
+ic_s064,ingredient,Nostalgia for last Tuesday,feeling,event/thinglike,spicy_batch5.json,,strong match for 16 base Recipes
+ic_s069,ingredient,A cover letter for your dog,thing,speech/thinglike,spicy_batch4.json,,strong match for 46 base Recipes
+ic_s070,ingredient,"A résumé listing ""breathing"" as a skill",thing,speech/thinglike,spicy_batch10.json,,strong match for 46 base Recipes
+ic_s071,ingredient,A terms of service for your friendship,thing,thinglike,spicy_batch8.json,,strong match for 37 base Recipes
+ic_s073,ingredient,A formal apology to your houseplant,thing,speech/thinglike,spicy_batch8.json,,strong match for 46 base Recipes
+ic_s074,ingredient,A performance review for your sibling,thing,speech/thinglike,spicy_batch10.json,,strong match for 46 base Recipes
+ic_s076,ingredient,A non-disclosure agreement for the group chat,thing,speech/thinglike,spicy_batch6.json,,strong match for 46 base Recipes
+ic_s081,ingredient,A doctor's note for senioritis,thing,speech/thinglike,spicy_batch6.json,,strong match for 46 base Recipes
+ic_s087,ingredient,A memo about the last donut,thing,speech/thinglike,spicy_batch8.json,,strong match for 46 base Recipes
+ic_s091,ingredient,A restraining order against Mondays,thing,thinglike,spicy_batch2.json,,strong match for 37 base Recipes
+ic_s092,ingredient,"A playlist titled ""study vibes"" that's all screaming",pop_culture,sound/speech/thinglike,spicy_batch7.json,,strong match for 52 base Recipes
+ic_s094,ingredient,A comment section arguing about cereal,pop_culture,speech/thinglike,spicy_batch8.json,,strong match for 52 base Recipes
+ic_s095,ingredient,A fan account for the lunch lady,pop_culture,thinglike,spicy_batch7.json,,strong match for 40 base Recipes
+ic_s097,ingredient,A podcast hosted by two seniors,pop_culture,speech/thinglike,spicy_batch8.json,,strong match for 52 base Recipes
+ic_s100,ingredient,A trending audio of your sneeze,pop_culture,sound/thinglike,spicy_batch2.json,,strong match for 51 base Recipes
+ic_s101,ingredient,A dramatic reading of the syllabus,pop_culture,speech/thinglike,spicy_batch8.json,,strong match for 52 base Recipes
+ic_s112,ingredient,"Calling your teacher ""bro"" by accident",action,action/event/speech,spicy_batch1.json,,strong match for 31 base Recipes
+ic_s113,ingredient,"Replying ""you too"" to ""happy birthday""",action,action/event/speech,spicy_batch5.json,,strong match for 31 base Recipes
+ic_s114,ingredient,Sending a text to the wrong group chat,action,action/event/speech,spicy_batch3.json,,strong match for 31 base Recipes
+ic_s116,ingredient,Introducing yourself twice to the same person,action,action/event,spicy_batch3.json,,strong match for 18 base Recipes
+ic_s117,ingredient,"Saying ""love you"" to the pizza delivery guy",action,action/event/speech,spicy_batch6.json,,strong match for 31 base Recipes
+ic_s119,ingredient,Asking for the manager at your own job,action,action/event/speech,spicy_batch3.json,,strong match for 31 base Recipes
+ic_s123,ingredient,Clapping when the plane lands,action,action/event/sound,spicy_batch1.json,,strong match for 30 base Recipes
+ic_s124,ingredient,"Answering ""what's your five-year plan""",action,action/event/speech,spicy_batch10.json,,strong match for 31 base Recipes
+ic_s125,ingredient,"Signing a birthday card ""Regards""",action,action/event/speech,spicy_batch10.json,,strong match for 31 base Recipes
+ic_s127,ingredient,Laughing at a joke you didn't hear,action,action/event/speech,spicy_batch6.json,,strong match for 31 base Recipes
+ic_s131,ingredient,"Typing ""lol"" with a straight face",action,action/event/speech,spicy_batch10.json,,strong match for 31 base Recipes
+ic_s133,ingredient,Leaving a voicemail by accident,action,action/event/speech,spicy_batch5.json,,strong match for 31 base Recipes
+ic_s143,ingredient,Writing a thank-you email to your alarm clock,action,action/event/sound/speech,spicy_batch10.json,,strong match for 29 base Recipes
+ic_s146,ingredient,Filing a complaint with your mom,action,action/event/speech,spicy_batch4.json,,strong match for 29 base Recipes
+ic_s148,ingredient,Starting a podcast about your nap schedule,action,action/event/speech,spicy_batch6.json,,strong match for 29 base Recipes
+ic_s150,ingredient,Interviewing your grandma for a podcast,action,action/event/speech,spicy_batch1.json,,strong match for 29 base Recipes
+ic_s152,ingredient,A reply-all email to the entire district,thing,speech/thinglike,spicy_batch6.json,,strong match for 55 base Recipes
+ic_s154,ingredient,A voicemail from your dentist,thing,speech/thinglike,spicy_batch9.json,,strong match for 55 base Recipes
+ic_s155,ingredient,"An autocorrect that changed ""duck""",thing,speech/thinglike,spicy_batch9.json,,strong match for 55 base Recipes
+ic_s168,ingredient,A check-engine light that's always on,thing,thinglike,spicy_batch1.json,,strong match for 49 base Recipes
+ic_s169,ingredient,A car horn that plays a polka,thing,sound/thinglike,spicy_batch4.json,,strong match for 59 base Recipes
+ic_s175,ingredient,An air freshener shaped like a taco,thing,thinglike,spicy_batch2.json,,strong match for 49 base Recipes
+ic_s178,ingredient,A dashboard full of french fries,thing,thinglike,spicy_batch1.json,,strong match for 49 base Recipes
+ic_s179,ingredient,A car radio stuck on talk radio,thing,speech/thinglike,spicy_batch4.json,,strong match for 60 base Recipes
+ic_s180,ingredient,A hand-me-down sedan named Gerald,thing,thinglike,spicy_batch2.json,,strong match for 49 base Recipes
+ic_s181,ingredient,A road-trip snack bag emptied in a mile,thing,thinglike,spicy_batch5.json,,strong match for 49 base Recipes
+ic_s184,ingredient,A laptop updating during the exam,thing,thinglike,spicy_batch8.json,,strong match for 46 base Recipes
+ic_s185,ingredient,A printer jam at 7:59 a.m.,thing,thinglike,spicy_batch1.json,,strong match for 46 base Recipes
+ic_s190,ingredient,A calculator that only does division,thing,thinglike,spicy_batch7.json,,strong match for 46 base Recipes
+ic_s191,ingredient,A group project doc with no edits,thing,thinglike,spicy_batch1.json,,strong match for 46 base Recipes
+ic_s192,ingredient,"An inbox with 4,000 unread emails",thing,speech/thinglike,spicy_batch2.json,,strong match for 50 base Recipes
+ic_s193,ingredient,A browser with sixty tabs open,thing,thinglike,spicy_batch1.json,,strong match for 46 base Recipes
+ic_s194,ingredient,A keyboard missing the letter E,thing,speech/thinglike,spicy_batch1.json,,strong match for 50 base Recipes
+ic_s202,ingredient,A backpack holding four years of crumbs,thing,thinglike,spicy_batch7.json,,strong match for 46 base Recipes
+ic_s203,ingredient,Instant ramen as a lifestyle,food,food/thinglike,spicy_batch5.json,,strong match for 57 base Recipes
+ic_s204,ingredient,Cereal for all three meals,food,food/thinglike,spicy_batch1.json,,strong match for 57 base Recipes
+ic_s206,ingredient,Coffee with more milk than coffee,food,food/thinglike,spicy_batch10.json,,strong match for 57 base Recipes
+ic_s208,ingredient,Toast with an attitude,food,food/thinglike,spicy_batch6.json,,strong match for 57 base Recipes
+ic_s213,ingredient,Avocado toast with student debt,food,food/thinglike,spicy_batch4.json,,strong match for 57 base Recipes
+ic_s214,ingredient,A granola bar for emotional support,food,food/thinglike,spicy_batch8.json,,strong match for 57 base Recipes
+ic_s215,ingredient,Cafeteria pizza with a résumé,food,food/thinglike,spicy_batch5.json,,strong match for 57 base Recipes
+ic_s216,ingredient,A frozen burrito still frozen in the middle,food,food/thinglike,spicy_batch4.json,,strong match for 57 base Recipes
+ic_s217,ingredient,A lunch packed by Dad with a note,food,food/speech/thinglike,spicy_batch4.json,,strong match for 70 base Recipes
+ic_s218,ingredient,A protein shake with no protein,food,food/thinglike,spicy_batch4.json,,strong match for 57 base Recipes
+ic_s219,ingredient,Mom's mystery casserole Tuesday,food,food/thinglike,spicy_batch3.json,,strong match for 57 base Recipes
+ic_s220,ingredient,A drive-thru order read like a speech,food,food/speech/thinglike,spicy_batch5.json,,strong match for 70 base Recipes
+ic_s221,ingredient,Free samples as a dinner plan,food,food/thinglike,spicy_batch5.json,,strong match for 57 base Recipes
+ic_s227,ingredient,A llama giving a commencement speech,animal,speech/thinglike,spicy_batch2.json,,strong match for 65 base Recipes
+ic_s229,ingredient,A parrot as your public speaking coach,animal,speech/thinglike,spicy_batch6.json,,strong match for 65 base Recipes
+ic_s231,ingredient,A dog writing your letter of recommendation,animal,speech/thinglike,spicy_batch10.json,,strong match for 65 base Recipes
+ic_s243,ingredient,A cat walking across your video call,animal,speech/thinglike,spicy_batch3.json,,strong match for 73 base Recipes
+ic_s244,ingredient,A goose chasing you at graduation,animal,thinglike,spicy_batch7.json,,strong match for 60 base Recipes
+ic_s246,ingredient,A hamster escaping during the job interview,animal,speech/thinglike,spicy_batch7.json,,strong match for 73 base Recipes
+ic_s247,ingredient,A squirrel crashing the outdoor ceremony,animal,sound/thinglike,spicy_batch5.json,,strong match for 72 base Recipes
+ic_s248,ingredient,A parrot repeating your mom's phone call,animal,speech/thinglike,spicy_batch4.json,,strong match for 73 base Recipes
+ic_s269,ingredient,A prom held in a laundromat,place,thinglike,spicy_batch7.json,,strong match for 50 base Recipes
+ic_s271,ingredient,A college tour of a bouncy castle,place,thinglike,spicy_batch1.json,,strong match for 50 base Recipes
+ic_s274,ingredient,A homecoming dance in the DMV,place,thinglike,spicy_batch6.json,,strong match for 50 base Recipes
+ic_s275,ingredient,A driver's test in a parking garage maze,place,thinglike,spicy_batch3.json,,strong match for 50 base Recipes
+ic_s276,ingredient,A senior trip to the tax office,place,thinglike,spicy_batch9.json,,strong match for 50 base Recipes
+ic_s277,ingredient,A job interview in an elevator,place,speech/thinglike,spicy_batch7.json,,strong match for 63 base Recipes
+ic_s278,ingredient,A pep rally in the library,place,thinglike,spicy_batch2.json,,strong match for 50 base Recipes
+ic_s279,ingredient,A library with a DJ booth,place,sound/thinglike,spicy_batch7.json,,strong match for 62 base Recipes
+ic_s280,ingredient,A cafeteria with a dress code,place,thinglike,spicy_batch10.json,,strong match for 50 base Recipes
+ic_s281,ingredient,A locker room with a concierge,place,thinglike,spicy_batch4.json,,strong match for 50 base Recipes
+ic_s283,ingredient,A school hallway with surge pricing,place,thinglike,spicy_batch2.json,,strong match for 50 base Recipes
+ic_s304,ingredient,A press conference about your report card,event,event/thinglike,spicy_batch9.json,,strong match for 48 base Recipes
+ic_s305,ingredient,A board meeting about dinner plans,event,event/thinglike,spicy_batch3.json,,strong match for 48 base Recipes
+ic_s306,ingredient,A summit on the household thermostat,event,event/thinglike,spicy_batch3.json,,strong match for 48 base Recipes
+ic_s307,ingredient,An election for family car DJ,event,event/sound/thinglike,spicy_batch3.json,,strong match for 55 base Recipes
+ic_s308,ingredient,A tribunal for whoever ate the leftovers,event,event/thinglike,spicy_batch3.json,,strong match for 48 base Recipes
+ic_s309,ingredient,A peace treaty over the bathroom schedule,event,event/thinglike,spicy_batch4.json,,strong match for 48 base Recipes
+ic_s310,ingredient,A performance review for the family dog,event,event/speech/thinglike,spicy_batch6.json,,strong match for 56 base Recipes
+ic_s311,ingredient,A merger of two friend groups,event,event/thinglike,spicy_batch3.json,,strong match for 48 base Recipes
+ic_s312,ingredient,A hostile takeover of the TV remote,event,event/thinglike,spicy_batch6.json,,strong match for 48 base Recipes
+ic_s313,ingredient,A shareholders' meeting about allowance,event,event/thinglike,spicy_batch9.json,,strong match for 48 base Recipes
+ic_s314,ingredient,A ribbon-cutting for your new desk,event,event/thinglike,spicy_batch5.json,,strong match for 48 base Recipes
+ic_s316,ingredient,A recount of the family pizza vote,event,event/thinglike,spicy_batch7.json,,strong match for 48 base Recipes
+ic_s318,ingredient,A filibuster at the dinner table,event,event/speech/thinglike,spicy_batch6.json,,strong match for 56 base Recipes
+ic_s319,ingredient,A town hall about the group chat name,event,event/speech/thinglike,spicy_batch8.json,,strong match for 56 base Recipes
+ic_s320,ingredient,An emergency session on the Wi-Fi password,event,event/thinglike,spicy_batch2.json,,strong match for 48 base Recipes
+ic_s321,ingredient,A formal inquiry into the missing charger,event,event/thinglike,spicy_batch8.json,,strong match for 48 base Recipes
+ic_s322,ingredient,An appeal on the grounding verdict,event,event/thinglike,spicy_batch4.json,,strong match for 48 base Recipes
+ic_s323,ingredient,A budget hearing for prom tickets,event,event/thinglike,spicy_batch3.json,,strong match for 48 base Recipes
+ic_s324,ingredient,A barista who speaks only in poetry,person,speech/thinglike,spicy_batch4.json,,strong match for 69 base Recipes
+ic_s325,ingredient,A janitor with a doctorate in philosophy,person,thinglike,spicy_batch2.json,,strong match for 59 base Recipes
+ic_s326,ingredient,A grocery bagger with a monocle,person,thinglike,spicy_batch2.json,,strong match for 59 base Recipes
+ic_s327,ingredient,A parking attendant in a tuxedo,person,thinglike,spicy_batch7.json,,strong match for 59 base Recipes
+ic_s328,ingredient,A lifeguard with a string quartet,person,sound/thinglike,spicy_batch1.json,,strong match for 67 base Recipes
+ic_s329,ingredient,A delivery driver with a red carpet,person,thinglike,spicy_batch10.json,,strong match for 59 base Recipes
+ic_s330,ingredient,A cashier who announces every item,person,thinglike,spicy_batch9.json,,strong match for 59 base Recipes
+ic_s331,ingredient,A pizza delivery with a violinist,person,thinglike,spicy_batch3.json,,strong match for 59 base Recipes
+ic_s332,ingredient,A hall monitor with a velvet rope,person,thinglike,spicy_batch7.json,,strong match for 59 base Recipes
+ic_s333,ingredient,A lunch lady with five stars,person,thinglike,spicy_batch2.json,,strong match for 59 base Recipes
+ic_s334,ingredient,A crossing guard with an orchestra,person,sound/thinglike,spicy_batch6.json,,strong match for 67 base Recipes
+ic_s335,ingredient,A school bus driver with a top hat,person,thinglike,spicy_batch10.json,,strong match for 59 base Recipes
+ic_s336,ingredient,A custodian with a fan club,person,thinglike,spicy_batch3.json,,strong match for 59 base Recipes
+ic_s337,ingredient,A summer camp counselor with a press agent,person,thinglike,spicy_batch6.json,,strong match for 59 base Recipes
+ic_s338,ingredient,A designer backpack full of crumbs,thing,thinglike,spicy_batch1.json,,strong match for 58 base Recipes
+ic_s339,ingredient,A velvet rope at the vending machine,thing,thinglike,spicy_batch3.json,,strong match for 58 base Recipes
+ic_s340,ingredient,A minivan with gold trim,thing,thinglike,spicy_batch1.json,,strong match for 58 base Recipes
+ic_s341,ingredient,A gold-plated graphing calculator,thing,thinglike,spicy_batch8.json,,strong match for 58 base Recipes
+ic_s342,ingredient,A monogrammed lunch bag,thing,thinglike,spicy_batch2.json,,strong match for 58 base Recipes
+ic_s343,ingredient,A leather-bound planner with nothing in it,thing,thinglike,spicy_batch6.json,,strong match for 58 base Recipes
+ic_s344,ingredient,A personal chef for instant noodles,thing,thinglike,spicy_batch5.json,,strong match for 58 base Recipes
+ic_s345,ingredient,A grand piano in a dorm room,thing,sound/thinglike,spicy_batch10.json,,strong match for 69 base Recipes
+ic_s346,ingredient,A butler for your houseplants,thing,thinglike,spicy_batch2.json,,strong match for 58 base Recipes
+ic_s347,ingredient,A tasting menu of cafeteria tater tots,food,food/thinglike,spicy_batch6.json,,strong match for 58 base Recipes
+ic_s348,ingredient,A wax-sealed invitation to a study group,thing,thinglike,spicy_batch9.json,,strong match for 58 base Recipes
+ic_s364,ingredient,A homework assignment due on Mars,thing,thinglike,spicy_batch10.json,,strong match for 45 base Recipes
+ic_s367,ingredient,A group chat with aliens,thing,speech/thinglike,spicy_batch3.json,,strong match for 46 base Recipes
+ic_s377,ingredient,An inbox the size of the universe,thing,thinglike,spicy_batch1.json,,strong match for 45 base Recipes
+ic_s381,ingredient,Sneezing on the class presentation,action,action/event/sound,spicy_batch5.json,,strong match for 35 base Recipes
+ic_s391,ingredient,Clipping toenails during a video call,action,action/event/speech,spicy_batch5.json,,strong match for 36 base Recipes
+ic_s392,ingredient,"The silence after ""any questions?""",feeling,event/speech/thinglike,spicy_batch4.json,,strong match for 54 base Recipes
+ic_s394,ingredient,"That face when the waiter says ""enjoy""",feeling,event/speech/thinglike,spicy_batch7.json,,strong match for 54 base Recipes
+ic_s395,ingredient,Accidentally making eye contact through a window,feeling,event/thinglike,spicy_batch10.json,,strong match for 41 base Recipes
+ic_s396,ingredient,Laughing alone at your own joke,feeling,action/event/speech,spicy_batch3.json,,strong match for 30 base Recipes
+ic_s397,ingredient,"Walking the wrong way after ""goodbye""",feeling,action/event/speech,spicy_batch10.json,,strong match for 30 base Recipes
+ic_s398,ingredient,Pretending to text in an empty room,feeling,action/event/speech,spicy_batch6.json,,strong match for 30 base Recipes
+ic_s399,ingredient,A senator at the bake sale,person,thinglike,spicy_batch7.json,,strong match for 56 base Recipes
+ic_s400,ingredient,A famous violinist at the school talent show,person,thinglike,spicy_batch8.json,,strong match for 56 base Recipes
+ic_s401,ingredient,A surgeon carving the Thanksgiving turkey,person,thinglike,spicy_batch2.json,,strong match for 56 base Recipes
+ic_s402,ingredient,A nuclear physicist making toast,person,thinglike,spicy_batch4.json,,strong match for 56 base Recipes
+ic_s403,ingredient,An Olympic sprinter in the lunch line,person,thinglike,spicy_batch5.json,,strong match for 56 base Recipes
+ic_s404,ingredient,A news anchor reading your report card,person,speech/thinglike,spicy_batch6.json,,strong match for 61 base Recipes
+ic_s405,ingredient,A movie director filming your chores,person,thinglike,spicy_batch9.json,,strong match for 56 base Recipes
+ic_s406,ingredient,A movie-trailer voice describing a pop quiz,person,thinglike,spicy_batch10.json,,strong match for 56 base Recipes
+ic_s407,ingredient,A nature documentary narrator at prom,person,thinglike,spicy_batch3.json,,strong match for 56 base Recipes
+ic_s408,ingredient,A sports commentator at the dinner table,person,thinglike,spicy_batch4.json,,strong match for 56 base Recipes
+ic_s409,ingredient,A diplomat negotiating the remote,person,thinglike,spicy_batch5.json,,strong match for 56 base Recipes
+ic_s410,ingredient,A museum curator for your sock drawer,person,thinglike,spicy_batch5.json,,strong match for 56 base Recipes
+ic_s411,ingredient,A wedding planner for your study group,person,thinglike,spicy_batch8.json,,strong match for 56 base Recipes
+ic_s412,ingredient,A personal trainer for your thumbs,person,thinglike,spicy_batch6.json,,strong match for 56 base Recipes
+ic_s413,ingredient,A motivational speaker at a nap,person,speech/thinglike,spicy_batch6.json,,strong match for 61 base Recipes
+ic_s414,ingredient,A professional critic at a lemonade stand,person,thinglike,spicy_batch4.json,,strong match for 56 base Recipes
+ic_s415,ingredient,A rocket scientist at the school science fair,person,thinglike,spicy_batch9.json,,strong match for 56 base Recipes
+ic_s416,ingredient,A superhero with a student loan,person,thinglike,spicy_batch3.json,,strong match for 57 base Recipes
+ic_s417,ingredient,A wizard working retail,person,thinglike,spicy_batch5.json,,strong match for 57 base Recipes
+ic_s418,ingredient,A vampire with a morning shift,person,thinglike,spicy_batch1.json,,strong match for 57 base Recipes
+ic_s419,ingredient,A ghost on the dance committee,person,thinglike,spicy_batch2.json,,strong match for 57 base Recipes
+ic_s420,ingredient,A pirate filing taxes,person,thinglike,spicy_batch1.json,,strong match for 57 base Recipes
+ic_s421,ingredient,A knight in driver's ed,person,thinglike,spicy_batch6.json,,strong match for 57 base Recipes
+ic_s422,ingredient,A time traveler stuck in study hall,person,thinglike,spicy_batch4.json,,strong match for 57 base Recipes
+ic_s423,ingredient,A secret agent at a job fair,person,thinglike,spicy_batch4.json,,strong match for 57 base Recipes
+ic_s424,ingredient,A mermaid with a lifeguard certification,person,thinglike,spicy_batch6.json,,strong match for 57 base Recipes
+ic_s425,ingredient,A dragon on the homeowners' board,person,thinglike,spicy_batch3.json,,strong match for 57 base Recipes
+ic_s426,ingredient,A zombie at a networking event,person,thinglike,spicy_batch6.json,,strong match for 57 base Recipes
+ic_s427,ingredient,A genie with a customer service line,person,thinglike,spicy_batch3.json,,strong match for 57 base Recipes
+ic_s428,ingredient,A robot applying to art school,person,thinglike,spicy_batch7.json,,strong match for 57 base Recipes
+ic_s429,ingredient,A cowboy in the carpool lane,person,thinglike,spicy_batch3.json,,strong match for 57 base Recipes
+ic_s430,ingredient,An astronaut in a minivan,person,thinglike,spicy_batch4.json,,strong match for 57 base Recipes
+ic_s431,ingredient,A ninja doing group projects,person,thinglike,spicy_batch7.json,,strong match for 57 base Recipes
+ic_s432,ingredient,A sorcerer with a learner's permit,person,thinglike,spicy_batch8.json,,strong match for 57 base Recipes
+ic_s433,ingredient,A fairy godmother with a waitlist,person,thinglike,spicy_batch10.json,,strong match for 57 base Recipes
+ic_s434,ingredient,A phone case with a personality crisis,thing,thinglike,spicy_batch10.json,,strong match for 51 base Recipes
+ic_s435,ingredient,An earbud lost in the couch forever,thing,thinglike,spicy_batch7.json,,strong match for 51 base Recipes
+ic_s436,ingredient,A charger with abandonment issues,thing,thinglike,spicy_batch10.json,,strong match for 51 base Recipes
+ic_s437,ingredient,A backpack carrying emotional baggage,thing,thinglike,spicy_batch7.json,,strong match for 51 base Recipes
+ic_s438,ingredient,A planner with plot twists,thing,thinglike,spicy_batch2.json,,strong match for 51 base Recipes
+ic_s439,ingredient,A highlighter used on every single line,thing,thinglike,spicy_batch9.json,,strong match for 51 base Recipes
+ic_s440,ingredient,A study guide that's just doodles,thing,thinglike,spicy_batch4.json,,strong match for 51 base Recipes
+ic_s441,ingredient,A pencil sharpener with a vendetta,thing,thinglike,spicy_batch7.json,,strong match for 51 base Recipes
+ic_s442,ingredient,A sticky note with a secret,thing,speech/thinglike,spicy_batch2.json,,strong match for 62 base Recipes
+ic_s443,ingredient,A dry-erase marker that's dry,thing,thinglike,spicy_batch3.json,,strong match for 51 base Recipes
+ic_s444,ingredient,A graphing calculator with ambitions,thing,thinglike,spicy_batch1.json,,strong match for 51 base Recipes
+ic_s445,ingredient,A flash card with one word,thing,thinglike,spicy_batch3.json,,strong match for 51 base Recipes
+ic_s446,ingredient,A textbook with a spine of steel,thing,thinglike,spicy_batch6.json,,strong match for 51 base Recipes
+ic_s486,ingredient,A coupon that expired yesterday,thing,thinglike,spicy_batch9.json,,strong match for 20 base Recipes
+ic_s487,ingredient,A raccoon riding a shopping cart,animal,thinglike,spicy_batch8.json,,strong match for 67 base Recipes
+ic_s488,ingredient,A goat on a rooftop,animal,thinglike,spicy_batch9.json,,strong match for 67 base Recipes
+ic_s489,ingredient,A cat in a backpack,animal,thinglike,spicy_batch9.json,,strong match for 67 base Recipes
+ic_s491,ingredient,A pigeon riding the subway,animal,thinglike,spicy_batch8.json,,strong match for 67 base Recipes
+ic_s492,ingredient,A squirrel water-skiing,animal,thinglike,spicy_batch9.json,,strong match for 67 base Recipes
+ic_s493,ingredient,A golden retriever carrying the mail,animal,thinglike,spicy_batch9.json,,strong match for 67 base Recipes
+ic_s494,ingredient,A duck walking into a bank,animal,thinglike,spicy_batch1.json,,strong match for 67 base Recipes
+ic_s495,ingredient,A horse in the drive-thru,animal,thinglike,spicy_batch10.json,,strong match for 67 base Recipes
+ic_s496,ingredient,A goose stopping traffic,animal,thinglike,spicy_batch6.json,,strong match for 67 base Recipes
+ic_s497,ingredient,A turtle in the fast lane,animal,thinglike,spicy_batch5.json,,strong match for 67 base Recipes
+ic_s498,ingredient,A bear at a campground picnic table,animal,thinglike,spicy_batch9.json,,strong match for 67 base Recipes
+ic_s499,ingredient,A seal on a paddleboard,animal,thinglike,spicy_batch8.json,,strong match for 67 base Recipes
+ic_s500,ingredient,A moose in a parking lot,animal,thinglike,spicy_batch9.json,,strong match for 67 base Recipes
+ic_s502,ingredient,A heat wave in the band room,nature,sound/thinglike,spicy_batch4.json,,strong match for 59 base Recipes
+ic_s503,ingredient,A snow day announced at 5:59 a.m.,nature,thinglike,spicy_batch3.json,,strong match for 55 base Recipes
+ic_s506,ingredient,A rainbow during the worst week,nature,thinglike,spicy_batch1.json,,strong match for 55 base Recipes
+ic_s507,ingredient,A hurricane named after your teacher,nature,thinglike,spicy_batch6.json,,strong match for 55 base Recipes
+ic_s509,ingredient,A pollen storm on picture day,nature,thinglike,spicy_batch1.json,,strong match for 55 base Recipes
+ic_s511,ingredient,An earthquake during your speech,nature,speech/thinglike,spicy_batch7.json,,strong match for 62 base Recipes
+ic_s512,ingredient,A mud puddle at the bus stop,nature,thinglike,spicy_batch2.json,,strong match for 55 base Recipes
+ic_s513,ingredient,A fog so thick you skip school,nature,thinglike,spicy_batch1.json,,strong match for 55 base Recipes
+ic_s528,ingredient,A diploma in reply-all,thing,speech/thinglike,spicy_batch2.json,,strong match for 46 base Recipes
+ic_s543,ingredient,"A mechanic saying ""huh, that's weird""",person,speech/thinglike,spicy_batch3.json,,strong match for 45 base Recipes
+ic_s548,ingredient,Going viral for sneezing,action,action/event/sound,spicy_batch10.json,,strong match for 29 base Recipes
+ic_s566,ingredient,"A self-checkout yelling ""unexpected item""",thing,sound/speech/thinglike,spicy_batch10.json,,strong match for 52 base Recipes
+ic_s567,ingredient,An automatic door that ignores you,thing,thinglike,spicy_batch4.json,,strong match for 42 base Recipes
+ic_s568,ingredient,A hand dryer as loud as a jet,thing,sound/thinglike,spicy_batch6.json,,strong match for 51 base Recipes
+ic_s571,ingredient,A turnstile with strong opinions,thing,speech/thinglike,spicy_batch5.json,,strong match for 52 base Recipes
+ic_s572,ingredient,A photo booth that only captures sneezes,thing,sound/thinglike,spicy_batch5.json,,strong match for 51 base Recipes
+ic_s573,ingredient,Gourmet gas-station nachos,food,food/thinglike,spicy_batch3.json,,strong match for 61 base Recipes
+ic_s574,ingredient,Artisanal toast with a forty-word description,food,food/thinglike,spicy_batch10.json,,strong match for 61 base Recipes
+ic_s575,ingredient,A deconstructed peanut butter sandwich,food,food/thinglike,spicy_batch4.json,,strong match for 61 base Recipes
+ic_s576,ingredient,Instant noodles plated like fine dining,food,food/thinglike,spicy_batch7.json,,strong match for 61 base Recipes
+ic_s577,ingredient,A grilled cheese with a soup consultant,food,food/thinglike,spicy_batch1.json,,strong match for 61 base Recipes
+ic_s578,ingredient,Truffle oil on cafeteria fries,food,food/thinglike,spicy_batch2.json,,strong match for 61 base Recipes
+ic_s579,ingredient,A cheese board for one sad cracker,food,food/thinglike,spicy_batch8.json,,strong match for 61 base Recipes
+ic_s580,ingredient,Cereal served with a waiter's flourish,food,food/thinglike,spicy_batch2.json,,strong match for 61 base Recipes
+ic_s581,ingredient,A tasting flight of energy-free sodas,food,food/thinglike,spicy_batch1.json,,strong match for 61 base Recipes
+ic_s582,ingredient,Imported spring water for the dog,food,food/thinglike,spicy_batch6.json,,strong match for 61 base Recipes
+ic_s583,ingredient,Cupcakes with edible gold for a hamster,food,food/thinglike,spicy_batch6.json,,strong match for 61 base Recipes
+ic_s584,ingredient,Five-star frozen pizza reviews,food,food/speech/thinglike,spicy_batch8.json,,strong match for 76 base Recipes
+ic_s585,ingredient,A chef's kiss on microwave pasta,food,food/thinglike,spicy_batch1.json,,strong match for 61 base Recipes
+ic_s586,ingredient,A fondue fountain at a study session,food,food/thinglike,spicy_batch2.json,,strong match for 61 base Recipes
+ic_s587,ingredient,A cloth napkin for a corn dog,food,food/thinglike,spicy_batch8.json,,strong match for 61 base Recipes
+ic_s588,ingredient,A little brother reading your texts aloud,person,speech/thinglike,spicy_batch4.json,,strong match for 55 base Recipes
+ic_s593,ingredient,A preschooler explaining taxes,person,speech/thinglike,spicy_batch8.json,,strong match for 55 base Recipes
+ic_s595,ingredient,"A nephew calling you ""old""",person,speech/thinglike,spicy_batch1.json,,strong match for 55 base Recipes
+ic_s598,ingredient,A snow day the day after a holiday,event,event/thinglike,spicy_batch2.json,,strong match for 48 base Recipes
+ic_s599,ingredient,Senior year lasting three weeks,event,event/thinglike,spicy_batch7.json,,strong match for 48 base Recipes
+ic_s600,ingredient,A Monday that feels like a Thursday,event,event/thinglike,spicy_batch1.json,,strong match for 48 base Recipes
+ic_s601,ingredient,A three-day weekend in the middle of finals,event,event/thinglike,spicy_batch8.json,,strong match for 48 base Recipes
+ic_s602,ingredient,The first warm day of spring in class,event,event/thinglike,spicy_batch9.json,,strong match for 48 base Recipes
+ic_s603,ingredient,The last ten minutes of a shift,event,event/thinglike,spicy_batch8.json,,strong match for 48 base Recipes
+ic_s604,ingredient,A power outage during the season finale,event,event/thinglike,spicy_batch7.json,,strong match for 48 base Recipes
+ic_s605,ingredient,Daylight saving time on prom weekend,event,event/thinglike,spicy_batch9.json,,strong match for 48 base Recipes
+ic_s606,ingredient,The longest red light in town,event,event/thinglike,spicy_batch2.json,,strong match for 48 base Recipes
+ic_s607,ingredient,A leap day with homework,event,event/thinglike,spicy_batch8.json,,strong match for 48 base Recipes
+ic_s608,ingredient,A Friday the 13th driving test,event,event/thinglike,spicy_batch5.json,,strong match for 48 base Recipes
+ic_s610,ingredient,A holiday break that ends Thursday,event,event/thinglike,spicy_batch7.json,,strong match for 48 base Recipes
+ic_s611,ingredient,A smart speaker that misunderstands everything,thing,thinglike,spicy_batch5.json,,strong match for 49 base Recipes
+ic_s613,ingredient,A thermostat war in the family,thing,thinglike,spicy_batch10.json,,strong match for 49 base Recipes
+ic_s615,ingredient,A doorbell camera catching you dancing,thing,sound/thinglike,spicy_batch5.json,,strong match for 59 base Recipes
+ic_s616,ingredient,A baby monitor picking up your phone call,thing,speech/thinglike,spicy_batch2.json,,strong match for 60 base Recipes
+ic_s617,ingredient,A fridge with a touchscreen and no food,thing,thinglike,spicy_batch10.json,,strong match for 49 base Recipes
+ic_s618,ingredient,A toaster that only does dark mode,thing,thinglike,spicy_batch5.json,,strong match for 49 base Recipes
+ic_s620,ingredient,A ceiling fan wobbling dramatically,thing,thinglike,spicy_batch4.json,,strong match for 49 base Recipes
+ic_s622,ingredient,A shower that goes from ice to lava,thing,thinglike,spicy_batch4.json,,strong match for 49 base Recipes
+ic_s624,ingredient,A bathroom scale with opinions,thing,speech/thinglike,spicy_batch9.json,,strong match for 60 base Recipes
+ic_s625,ingredient,A terms-and-conditions audiobook,pop_culture,thinglike,spicy_batch3.json,,strong match for 37 base Recipes
+ic_s626,ingredient,A season finale of the school announcements,pop_culture,speech/thinglike,spicy_batch6.json,,strong match for 48 base Recipes
+ic_s627,ingredient,An investigative podcast about a missing stapler,pop_culture,speech/thinglike,spicy_batch1.json,,strong match for 48 base Recipes
+ic_s633,ingredient,A sequel to the fire drill,pop_culture,thinglike,spicy_batch2.json,,strong match for 37 base Recipes
+ic_s639,ingredient,Sending your teacher a thank-you email,action,action/event/speech,spicy_batch5.json,,strong match for 24 base Recipes
+ic_s642,ingredient,Leaving a five-star review for your grandma,action,action/event/speech,spicy_batch10.json,,strong match for 24 base Recipes
+ic_s652,ingredient,Calling your grandparents just because,action,action/event/speech,spicy_batch2.json,,strong match for 24 base Recipes
+ic_s653,ingredient,A hall pass with a security clearance,thing,thinglike,spicy_batch3.json,,strong match for 51 base Recipes
+ic_s654,ingredient,A stapler with diplomatic immunity,thing,thinglike,spicy_batch7.json,,strong match for 51 base Recipes
+ic_s655,ingredient,A filing cabinet with a velvet rope,thing,thinglike,spicy_batch1.json,,strong match for 51 base Recipes
+ic_s656,ingredient,A printer with a union,thing,thinglike,spicy_batch2.json,,strong match for 51 base Recipes
+ic_s657,ingredient,A copy machine on strike,thing,thinglike,spicy_batch3.json,,strong match for 51 base Recipes
+ic_s658,ingredient,A whiteboard with a bodyguard,thing,thinglike,spicy_batch1.json,,strong match for 51 base Recipes
+ic_s659,ingredient,A coffee machine with tenure,thing,thinglike,spicy_batch10.json,,strong match for 51 base Recipes
+ic_s660,ingredient,A projector with stage fright,thing,thinglike,spicy_batch5.json,,strong match for 51 base Recipes
+ic_s661,ingredient,A microwave with a waiting list,thing,thinglike,spicy_batch1.json,,strong match for 51 base Recipes
+ic_s662,ingredient,A break room fridge with a constitution,thing,thinglike,spicy_batch2.json,,strong match for 51 base Recipes
+ic_s663,ingredient,A tip jar with a lawyer,thing,thinglike,spicy_batch10.json,,strong match for 51 base Recipes
+ic_s664,ingredient,A suggestion box full of complaints,thing,speech/thinglike,spicy_batch5.json,,strong match for 62 base Recipes
+ic_s665,ingredient,A lost-and-found with a receptionist,thing,thinglike,spicy_batch5.json,,strong match for 51 base Recipes
+ic_s666,ingredient,A swivel chair with a promotion,thing,thinglike,spicy_batch3.json,,strong match for 51 base Recipes
+ic_s667,ingredient,A drive-thru for college applications,place,thinglike,spicy_batch7.json,,strong match for 60 base Recipes
+ic_s668,ingredient,A spa day for your phone,place,thinglike,spicy_batch8.json,,strong match for 60 base Recipes
+ic_s669,ingredient,A nap pod in the principal's office,place,thinglike,spicy_batch7.json,,strong match for 60 base Recipes
+ic_s670,ingredient,A rooftop garden in a locker,place,thinglike,spicy_batch10.json,,strong match for 60 base Recipes
+ic_s671,ingredient,A pop-up shop in the cafeteria line,place,thinglike,spicy_batch2.json,,strong match for 60 base Recipes
+ic_s672,ingredient,A food truck selling homework,place,thinglike,spicy_batch3.json,,strong match for 60 base Recipes
+ic_s673,ingredient,A gym for your thumbs,place,thinglike,spicy_batch5.json,,strong match for 60 base Recipes
+ic_s674,ingredient,A museum of lost charger cables,place,thinglike,spicy_batch7.json,,strong match for 60 base Recipes
+ic_s675,ingredient,A theme park about taxes,place,thinglike,spicy_batch9.json,,strong match for 60 base Recipes
+ic_s676,ingredient,A bowling alley in a library,place,thinglike,spicy_batch4.json,,strong match for 60 base Recipes
+ic_s677,ingredient,A karaoke booth in the DMV,place,sound/thinglike,spicy_batch7.json,,strong match for 72 base Recipes
+ic_s678,ingredient,A drive-in movie in the school parking lot,place,thinglike,spicy_batch1.json,,strong match for 60 base Recipes
+ic_s679,ingredient,A water park in a dorm hallway,place,thinglike,spicy_batch2.json,,strong match for 60 base Recipes
+ic_s680,ingredient,A petting zoo in the chemistry lab,place,thinglike,spicy_batch8.json,,strong match for 60 base Recipes
+ic_s682,ingredient,A dog with a social media manager,animal,thinglike,spicy_batch8.json,,strong match for 62 base Recipes
+ic_s683,ingredient,A goose with a podcast,animal,speech/thinglike,spicy_batch7.json,,strong match for 75 base Recipes
+ic_s684,ingredient,A pigeon with influencer energy,animal,thinglike,spicy_batch2.json,,strong match for 62 base Recipes
+ic_s685,ingredient,A raccoon with a hustle mindset,animal,thinglike,spicy_batch1.json,,strong match for 62 base Recipes
+ic_s687,ingredient,A frog with a self-care Sunday,animal,thinglike,spicy_batch4.json,,strong match for 62 base Recipes
+ic_s688,ingredient,A llama with a personal brand,animal,thinglike,spicy_batch5.json,,strong match for 62 base Recipes
+ic_s689,ingredient,A parrot with a ring light,animal,thinglike,spicy_batch3.json,,strong match for 62 base Recipes
+ic_s691,ingredient,A possum with a nighttime routine,animal,thinglike,spicy_batch3.json,,strong match for 62 base Recipes
+ic_s693,ingredient,A bunny with a vision board,animal,thinglike,spicy_batch5.json,,strong match for 62 base Recipes
+ic_s694,ingredient,A seagull with a food blog,animal,thinglike,spicy_batch5.json,,strong match for 62 base Recipes
+ic_s696,ingredient,A gym bag left in a hot car,thing,thinglike,spicy_batch8.json,,strong match for 57 base Recipes
+ic_s697,ingredient,A retainer found in the couch cushions,thing,thinglike,spicy_batch9.json,,strong match for 57 base Recipes
+ic_s698,ingredient,Dorm room laundry with its own ecosystem,thing,thinglike,spicy_batch9.json,,strong match for 57 base Recipes
+ic_s699,ingredient,A water bottle growing something new,thing,thinglike,spicy_batch7.json,,strong match for 57 base Recipes
+ic_s700,ingredient,A car floor full of fossilized fries,thing,thinglike,spicy_batch9.json,,strong match for 57 base Recipes
+ic_s701,ingredient,A shared bathroom after a sleepover,thing,thinglike,spicy_batch4.json,,strong match for 57 base Recipes
+ic_s702,ingredient,A hairbrush belonging to the whole family,thing,thinglike,spicy_batch3.json,,strong match for 57 base Recipes
+ic_s703,ingredient,A coffee mug with a science project inside,thing,thinglike,spicy_batch2.json,,strong match for 57 base Recipes
+ic_s704,ingredient,A sock under the bed since sophomore year,thing,thinglike,spicy_batch7.json,,strong match for 57 base Recipes
+ic_s705,ingredient,A locker that smells like tuna,thing,thinglike,spicy_batch9.json,,strong match for 57 base Recipes
+ic_s706,ingredient,A sink full of mystery dishes,thing,thinglike,spicy_batch9.json,,strong match for 57 base Recipes
+ic_s707,ingredient,A tupperware nobody dares to open,thing,thinglike,spicy_batch7.json,,strong match for 57 base Recipes
+ic_s708,ingredient,A pillowcase that needs a fresh start,thing,thinglike,spicy_batch7.json,,strong match for 57 base Recipes
+ic_s711,ingredient,A theater kid's monologue at lunch,person,speech/thinglike,spicy_batch3.json,,strong match for 42 base Recipes
+ic_s712,ingredient,The debate team captain at dinner,person,speech/thinglike,spicy_batch10.json,,strong match for 42 base Recipes
+ic_s713,ingredient,A mathlete trash-talking politely,person,speech/thinglike,spicy_batch3.json,,strong match for 42 base Recipes
+ic_s724,ingredient,A cover letter for a lemonade stand,thing,speech/thinglike,spicy_batch1.json,,strong match for 54 base Recipes
+ic_s731,ingredient,"A to-do list that just says ""survive""",thing,speech/thinglike,spicy_batch10.json,,strong match for 54 base Recipes
+ic_s732,ingredient,"A planner with every day marked ""chill""",thing,speech/thinglike,spicy_batch1.json,,strong match for 54 base Recipes
+ic_s739,ingredient,A sudden passion for knitting during finals,feeling,event/thinglike,spicy_batch9.json,,strong match for 11 base Recipes
+ic_s756,ingredient,A senior hoodie with a typo,thing,thinglike,spicy_batch3.json,,strong match for 49 base Recipes
+ic_s757,ingredient,A class ring for the class hamster,thing,thinglike,spicy_batch2.json,,strong match for 49 base Recipes
+ic_s758,ingredient,A prom corsage made of tater tots,thing,thinglike,spicy_batch5.json,,strong match for 49 base Recipes
+ic_s759,ingredient,A boutonniere made of broccoli,thing,thinglike,spicy_batch5.json,,strong match for 49 base Recipes
+ic_s761,ingredient,A locker combination burned into your brain,thing,thinglike,spicy_batch4.json,,strong match for 49 base Recipes
+ic_s762,ingredient,A dorm mini fridge holding one pickle,thing,thinglike,spicy_batch6.json,,strong match for 49 base Recipes
+ic_s764,ingredient,A bunk bed with a doorbell,thing,sound/thinglike,spicy_batch8.json,,strong match for 59 base Recipes
+ic_s766,ingredient,A college acceptance letter for your dog,thing,speech/thinglike,spicy_batch9.json,,strong match for 60 base Recipes
+ic_s767,ingredient,A rejection letter from a pizza place,thing,speech/thinglike,spicy_batch7.json,,strong match for 60 base Recipes
+ic_s769,ingredient,A recommendation letter from your barber,thing,speech/thinglike,spicy_batch8.json,,strong match for 60 base Recipes
+ic_s770,ingredient,A student ID photo taken mid-blink,thing,thinglike,spicy_batch6.json,,strong match for 49 base Recipes
+ic_s774,ingredient,Grandpa's opinions on the thermostat,person,speech/thinglike,spicy_batch6.json,,strong match for 47 base Recipes
+ic_s778,ingredient,Your aunt's essential oils lecture,person,speech/thinglike,spicy_batch6.json,,strong match for 47 base Recipes
+ic_s779,ingredient,Your cousin's motivational vlog,person,speech/thinglike,spicy_batch7.json,,strong match for 47 base Recipes
+ic_s783,ingredient,An uncle's grill-master apron speech,person,speech/thinglike,spicy_batch5.json,,strong match for 47 base Recipes
+ic_s784,ingredient,A grandparent's strongly worded comment section,person,speech/thinglike,spicy_batch4.json,,strong match for 47 base Recipes
+ic_s786,ingredient,A family friend asking your SAT score,person,speech/thinglike,spicy_batch9.json,,strong match for 47 base Recipes
+ic_s791,ingredient,Arguing with a self-checkout machine,action,action/event/speech,spicy_batch3.json,,strong match for 29 base Recipes
+ic_s799,ingredient,Talking to plants about your future,action,action/event/speech,spicy_batch9.json,,strong match for 29 base Recipes
+ic_s801,ingredient,"Saying ""per my last email"" out loud",action,action/event/sound/speech,spicy_batch11.json,,strong match for 26 base Recipes
+ic_s802,ingredient,"""No offense, but...""",action,action/event/speech,spicy_batch11.json,,strong match for 32 base Recipes
+ic_s803,ingredient,"""I googled you""",action,action/event/speech,spicy_batch11.json,,strong match for 32 base Recipes
+ic_s804,ingredient,"Answering ""you too"" to ""congrats""",action,action/event/speech,spicy_batch11.json,,strong match for 32 base Recipes
+ic_s805,ingredient,"A kitten saying ""we need to talk""",animal,speech/thinglike,spicy_batch11.json,,strong match for 74 base Recipes
+ic_s807,ingredient,"A goose saying ""see you in court""",animal,speech/thinglike,spicy_batch11.json,,strong match for 74 base Recipes
+ic_s808,ingredient,"The GPS sighing ""recalculating... again""",thing,speech/thinglike,spicy_batch11.json,,strong match for 48 base Recipes
+ic_s809,ingredient,"""The universe owes me a refund""",nature,speech/thinglike,spicy_batch11.json,,strong match for 68 base Recipes
+ic_s810,ingredient,"The sun saying ""you're welcome""",nature,speech/thinglike,spicy_batch11.json,,strong match for 66 base Recipes
+ic_s811,ingredient,"""Sorry, my dog has my calendar""",action,action/event/speech,spicy_batch11.json,,strong match for 26 base Recipes
+ic_s812,ingredient,"Your coach saying ""we'll talk later""",person,speech/thinglike,spicy_batch11.json,,strong match for 58 base Recipes
+ic_s813,ingredient,"""I have peaked, and it's Tuesday""",feeling,event/speech/thinglike,spicy_batch11.json,,strong match for 19 base Recipes
+ic_s814,ingredient,"A substitute saying ""I'm also lost""",person,speech/thinglike,spicy_batch11.json,,strong match for 66 base Recipes
+ic_s815,ingredient,"Asking a lemonade stand for ""the manager""",action,action/event/speech,spicy_batch11.json,,strong match for 33 base Recipes
+ic_s816,ingredient,"A volcano saying ""I need a minute""",nature,speech/thinglike,spicy_batch11.json,,strong match for 66 base Recipes
+ic_s817,ingredient,"""Respectfully, that pop quiz was personal""",action,action/event/speech,spicy_batch11.json,,strong match for 23 base Recipes
+ic_s818,ingredient,"Your boss saying ""quick question"" at 4:59",person,speech/thinglike,spicy_batch11.json,,strong match for 54 base Recipes
+ic_s819,ingredient,"""Do I look like a morning person?""",action,action/event/speech,spicy_batch11.json,,strong match for 26 base Recipes
+ic_s820,ingredient,"A dog barking ""per my last bark""",animal,sound/speech/thinglike,spicy_batch11.json,,strong match for 74 base Recipes
+ic_s822,ingredient,"The class group chat saying ""anyone?""",pop_culture,speech/thinglike,spicy_batch11.json,,strong match for 52 base Recipes
+ic_s823,ingredient,"A guidance counselor asking ""so... plans?""",person,speech/thinglike,spicy_batch11.json,,strong match for 66 base Recipes
+ic_s824,ingredient,"A pigeon saying ""excuse you""",animal,speech/thinglike,spicy_batch11.json,,strong match for 64 base Recipes
+ic_s825,ingredient,"""I would like to file a complaint""",action,action/event/speech,spicy_batch11.json,,strong match for 23 base Recipes
+ic_s827,ingredient,"A toaster saying ""I don't do bagels""",thing,speech/thinglike,spicy_batch11.json,,strong match for 48 base Recipes
+ic_s828,ingredient,"The ocean saying ""I'm not salty, you are""",nature,speech/thinglike,spicy_batch11.json,,strong match for 84 base Recipes
+ic_s829,ingredient,"A cat signing emails ""Warmly, Whiskers""",animal,speech/thinglike,spicy_batch11.json,,strong match for 67 base Recipes
+ic_s830,ingredient,"Saying ""my bad"" to a revolving door",action,action/event/speech,spicy_batch11.json,,strong match for 32 base Recipes
+ic_s832,ingredient,Cafeteria nachos with a fan club,food,food/thinglike,spicy_batch11.json,,strong match for 72 base Recipes
+ic_s833,ingredient,Ramen cooked in a coffee maker,food,food/thinglike,spicy_batch11.json,,strong match for 57 base Recipes
+ic_s834,ingredient,A charcuterie board of gas station snacks,food,food/thinglike,spicy_batch11.json,,strong match for 64 base Recipes
+ic_s837,ingredient,"Pumpkin spice everything, including soup",food,food/thinglike,spicy_batch11.json,,strong match for 67 base Recipes
+ic_s842,ingredient,A five-course meal of vending machine chips,food,food/thinglike,spicy_batch11.json,,strong match for 67 base Recipes
+ic_s843,ingredient,Hot sauce on breakfast cereal,food,food/thinglike,spicy_batch11.json,,strong match for 65 base Recipes
+ic_sr2_002,ingredient,Speaking fluent pigeon,action,action/event/speech,crew_round2.csv,round 2 (written for rc_s001),pass 3: new card placed in base; strong match for 26 base Recipes
+ic_sr2_005,ingredient,"Adopting a llama ""for business""",action,action/event,crew_round2.csv,round 2 (written for rc_s079),pass 3: new card placed in base; strong match for 30 base Recipes
+ic_sx008,ingredient,"""Can I see the cafeteria's health score?""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_s009),strong match for 36 base Recipes
+ic_sx011,ingredient,"""Who ate onions before the test?""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_s014),strong match for 36 base Recipes
+ic_sx012,ingredient,"""In my day, cars had no brakes""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_s014),strong match for 34 base Recipes
+ic_sx034,ingredient,"""Thanks for the star you named after me""",nature,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_s055),strong match for 60 base Recipes
+ic_sx107,ingredient,"""How would you manage the ocean?""",nature,speech/thinglike,crew:new_ingredients_tagged.json,new (written for rc_s137),strong match for 65 base Recipes

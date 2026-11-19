@@ -117,6 +117,10 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
 
 - **Each round** one player is the **Chef**; everyone else is an **Apprentice**. The first Chef is the first player at
   the table, and the Chef moves one seat to the left each round.
+- **Decks (Al's 18 Nov 2026 release):** each level plays its free starter, 100 Recipes + 400 Ingredients, from
+  `content/chefskiss/decks-2026-11-18/decks/*_base.json` (`node tools/build-chefskiss-cards.mjs`). The $1.99 Expansion - 1
+  decks are in the same folder but not shipped: they wait for purchases (`js/chefskiss-decks.js` keeps them locked).
+  The holdout files are spare cards for a possible Expansion 2 and never ship. Older cards stay in the database, retired.
 - **The Chef** is dealt three fresh Recipe Cards each round (face up; swipe to browse) and slides one up
   into the selection area. It appears on the table.
 - **Apprentices** get a fresh hand of five Ingredient Cards as soon as the Recipe is picked, also face up, swipe left

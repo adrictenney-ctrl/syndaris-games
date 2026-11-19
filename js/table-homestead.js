@@ -1,9 +1,9 @@
 // Homestead on the table: the island — nineteen tiles in our own frontier palette, number
 // tokens, harbours on the coast, roads, cabins and manors in each player's colour, and the
 // Bandit. Beside it: the dice, the scores and what's happening.
-import * as H from './homestead.js?v=116';
-import { snap } from './cards.js?v=116';
-import { dieHTML } from './table-yacht.js?v=116';
+import * as H from './homestead.js?v=117';
+import { snap } from './cards.js?v=117';
+import { dieHTML } from './table-yacht.js?v=117';
 
 let root = null, key = '', lastRoll = -1;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

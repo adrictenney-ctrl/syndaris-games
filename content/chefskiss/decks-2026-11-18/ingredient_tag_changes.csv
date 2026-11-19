@@ -1,0 +1,289 @@
+card_id,text,old_deck,new_deck,old_tags,new_tags,old_answerTypes,new_answerTypes,why
+ic_s034,A DMV employee on their lunch break,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s087,A memo about the last donut,deck_hot_base,deck_hot_base,{},{},food speech thinglike,speech thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s094,A comment section arguing about cereal,deck_hot_base,deck_hot_base,{},{},food speech thinglike,speech thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s095,A fan account for the lunch lady,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s117,"Saying ""love you"" to the pizza delivery guy",deck_hot_base,deck_hot_base,{},{},action event food speech,action event speech,food audit: 'food' answer type removed (subject is not food)
+ic_s175,An air freshener shaped like a taco,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s178,A dashboard full of french fries,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s181,A road-trip snack bag emptied in a mile,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s305,A board meeting about dinner plans,deck_hot_base,deck_hot_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s308,A tribunal for whoever ate the leftovers,deck_hot_base,deck_hot_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s316,A recount of the family pizza vote,deck_hot_base,deck_hot_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s318,A filibuster at the dinner table,deck_hot_base,deck_hot_base,{},{},event food speech thinglike,event speech thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s331,A pizza delivery with a violinist,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s333,A lunch lady with five stars,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s342,A monogrammed lunch bag,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s344,A personal chef for instant noodles,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s347,A tasting menu of cafeteria tater tots,deck_hot_base,deck_hot_base,"{""subject"": [""thing""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_s402,A nuclear physicist making toast,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s403,An Olympic sprinter in the lunch line,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s408,A sports commentator at the dinner table,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s659,A coffee machine with tenure,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s700,A car floor full of fossilized fries,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s703,A coffee mug with a science project inside,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s705,A locker that smells like tuna,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s706,A sink full of mystery dishes,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s707,A tupperware nobody dares to open,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s711,A theater kid's monologue at lunch,deck_hot_base,deck_hot_base,{},{},food speech thinglike,speech thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s712,The debate team captain at dinner,deck_hot_base,deck_hot_base,{},{},food speech thinglike,speech thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s758,A prom corsage made of tater tots,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s759,A boutonniere made of broccoli,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s762,A dorm mini fridge holding one pickle,deck_hot_base,deck_hot_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s767,A rejection letter from a pizza place,deck_hot_base,deck_hot_base,{},{},food speech thinglike,speech thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_sr2_002,Speaking fluent pigeon,deck_hot_base,deck_hot_base,"{""tone"": [""dry""], ""register"": [""official_sounding""], ""status"": [""high""]}","{""tone"": [""silly""], ""register"": [""casual""], ""status"": [""low""]}",action event speech,action event speech,Crew tag review correction
+ic_sr2_005,"Adopting a llama ""for business""",deck_hot_base,deck_hot_base,{},{},action event speech,action event,Crew tag review correction
+ic_s035,An HR rep at a pizza place,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s083,A spreadsheet ranking your friends' snacks,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s084,A pie chart of your excuses,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s290,A family dinner the night before finals,deck_hot_exp1,deck_hot_exp1,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s527,A ribbon for best attendance at lunch,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s532,A coworker microwaving broccoli,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s562,A vending machine keeping your snack,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s734,A grocery list that's all snacks,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s785,A stepmom's labeled leftovers,deck_hot_exp1,deck_hot_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_sfr_001,Cafeteria Mystery Meat Marble,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_002,Expired Milk Chiffon,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_003,Sardine and Sprinkles Layer Cake,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_004,Garlic Breath Buttercream,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_005,Day-Old Gas Station Hot Dog Torte,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_006,Spaghetti Bolognese Upside-Down Cake,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""absurd""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""logic""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_007,A cake that is mostly candles,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""absurd""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""physical""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_008,"Frosted meatloaf, three tiers",(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""absurd""], ""scale"": [""huge""], ""register"": [""casual""], ""violation"": [""logic""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_009,Cheeseburger fondant with fries inside,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""absurd""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""logic""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_010,Imported anchovy mousse torte,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""fancy""], ""violation"": [""social""], ""status"": [""high""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_011,FDA-approved plain rice cake,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""dry""], ""scale"": [""everyday""], ""register"": [""official_sounding""], ""violation"": [""logic""], ""status"": [""high""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sfr_012,Notarized tofu sheet cake,(new card),deck_hot_exp1,,"{""subject"": [""food""], ""tone"": [""absurd""], ""scale"": [""everyday""], ""register"": [""official_sounding""], ""violation"": [""logic""], ""status"": [""high""]}",,food thinglike,"new: Crew food round, written for rc_s160"
+ic_sr2_015,"""Slide into her DMs with a casserole.""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sr2_019,Announcing an incoming meteor shower,deck_hot_exp1,deck_hot_exp1,"{""violation"": [""physical""]}","{""violation"": [""social""]}",action event speech,action event speech,Crew tag review correction
+ic_sr2_021,"""Would Your Majesty like fries?""",deck_hot_exp1,deck_hot_exp1,"{""tone"": [""dry""], ""register"": [""official_sounding""]}","{""tone"": [""silly""], ""register"": [""fancy""]}",action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sr2_023,"""This is the President. Large or medium?""",deck_hot_exp1,deck_hot_exp1,"{""tone"": [""dry""]}","{""tone"": [""absurd""]}",action event speech,action event speech,Crew tag review correction
+ic_sr2_024,"""Your order has been knighted.""",deck_hot_exp1,deck_hot_exp1,"{""tone"": [""dry""], ""register"": [""official_sounding""]}","{""tone"": [""silly""], ""register"": [""fancy""]}",action event speech,action event speech,Crew tag review correction
+ic_sr2_036,Funfetti pizza-crust surprise,deck_hot_exp1,deck_hot_exp1,"{""tone"": [""silly""]}","{""tone"": [""absurd""]}",food thinglike,food thinglike,Crew tag review correction
+ic_sx023,"""Always carry a spare potato""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx033,"""Your casserole is still in my car""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx042,Crying at any compliment,deck_hot_exp1,deck_hot_exp1,{},{},action event speech,action event,Crew tag review correction
+ic_sx053,"""See me. Bring snacks.""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx054,"""Your chalice of soda awaits""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx056,"""Krrsh... nuggets... krrsh... destiny""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx057,"""The ice cream machine works, actually""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx058,"""Would madam care for ketchup?""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx075,"""Is it legal to eat soup while driving?""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx094,"""How many fries fit in a nostril?""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx115,"""The Category Five Coffee Spill""",deck_hot_exp1,deck_hot_exp1,{},{},food speech thinglike,speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx118,"""Who left soup in the printer?""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx124,"""Kindly stop buying iced coffee""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx144,"""Is the break room soup communal?""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx151,"""I alphabetize the cereal. Is that okay?""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_sx152,"""I snore like a freight train""",deck_hot_exp1,deck_hot_exp1,"{""tone"": [""gross_mild""], ""scale"": [""everyday""]}","{""tone"": [""absurd""], ""scale"": [""huge""]}",action event sound speech,action event sound speech,Crew tag review correction
+ic_sx158,"""Per our last conversation, the yogurt was mine""",deck_hot_exp1,deck_hot_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_s053,The dread of checking your grades,deck_hot_exp1,deck_hot_holdout,{},{},event thinglike,event thinglike,moved deck_hot_exp1 -> deck_hot_holdout
+ic_s065,Your social battery at zero percent,deck_hot_exp1,deck_hot_holdout,{},{},event thinglike,event thinglike,moved deck_hot_exp1 -> deck_hot_holdout
+ic_s066,The joy of a free period,deck_hot_exp1,deck_hot_holdout,{},{},event thinglike,event thinglike,moved deck_hot_exp1 -> deck_hot_holdout
+ic_s067,Hangry during third period,deck_hot_exp1,deck_hot_holdout,{},{},event thinglike,event thinglike,moved deck_hot_exp1 -> deck_hot_holdout
+ic_s068,The regret of the snooze button,deck_hot_exp1,deck_hot_holdout,{},{},event thinglike,event thinglike,moved deck_hot_exp1 -> deck_hot_holdout
+ic_s139,Making a pro-and-con list about lunch,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s161,A diploma with a coffee stain,deck_hot_holdout,deck_hot_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s354,Breakdancing in the lunch line,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s378,Drinking the milk straight from the carton,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s380,Finding a sandwich from September in your locker,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s382,Eating cereal out of a mixing bowl,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s384,Picking pizza off the floor,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s387,Licking the frosting off the cake knife,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s389,Reusing a coffee cup from Tuesday,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s458,Asking for a raise at the snack bar,deck_hot_holdout,deck_hot_holdout,{},{},action event food speech,action event speech,food audit: 'food' answer type removed (subject is not food)
+ic_s551,Gatekeeping a sandwich shop,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s552,Charming the lunch lady for extra tots,deck_hot_holdout,deck_hot_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_s628,A cooking show about cereal,deck_hot_holdout,deck_hot_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s631,A spin-off series about the lunch lady,deck_hot_holdout,deck_hot_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_s740,Second-guessing your coffee order,deck_hot_holdout,deck_hot_holdout,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_sr2_025,Notarizing my own sandwiches,deck_hot_exp1,deck_hot_holdout,{},{},action event,action event,moved deck_hot_exp1 -> deck_hot_holdout
+ic_sr2_027,Filing complaints in perfect cursive,deck_hot_exp1,deck_hot_holdout,{},{},action event speech,action event,Crew tag review correction | moved deck_hot_exp1 -> deck_hot_holdout
+ic_sx005,"Two weeks' notice, spelled in fries",deck_hot_exp1,deck_hot_holdout,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food) | moved deck_hot_exp1 -> deck_hot_holdout
+ic_sx006,Clocking out forever with a bow,deck_hot_exp1,deck_hot_holdout,{},{},action event,action event,moved deck_hot_exp1 -> deck_hot_holdout
+ic_sx015,Proposing with a PowerPoint presentation,deck_hot_exp1,deck_hot_holdout,{},{},action event,action event,moved deck_hot_exp1 -> deck_hot_holdout
+ic_sx030,Handing everyone a business card,deck_hot_exp1,deck_hot_holdout,{},{},action event,action event,moved deck_hot_exp1 -> deck_hot_holdout
+ic_sx070,Parallel parking a shopping cart,deck_hot_exp1,deck_hot_holdout,{},{},action event,action event,moved deck_hot_exp1 -> deck_hot_holdout
+ic_d012,A lunch monitor with a whistle addiction,deck_medium_base,deck_medium_base,{},{},food sound thinglike,sound thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d018,Mr. Johnson's coffee mug collection,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d037,Dad explaining memes at dinner,deck_medium_base,deck_medium_base,{},{},food speech thinglike,speech thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d067,A mad scientist making toast,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d086,A seagull stealing someone's pizza crust,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d107,A squirrel stealing a whole bagel,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d158,A food critic tasting juice boxes,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d190,A retainer in the lunch trash,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d212,A trophy for perfect attendance at lunch,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d223,A lunch line with fast passes,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d224,A volcano made of mashed potatoes,deck_medium_base,deck_medium_base,"{""subject"": [""thing""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_d233,A gum wad holding up the bleachers,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d398,A flood of chocolate milk,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d499,A lunch lady in an evening gown,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d511,A board meeting about snack time,deck_medium_base,deck_medium_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d515,A trial for the stolen cookie,deck_medium_base,deck_medium_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d521,A courtroom drama over the last cookie,deck_medium_base,deck_medium_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d533,A lunchbox smelling of egg,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d547,A dog staring at your sandwich,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d553,A raccoon with stolen nachos,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d726,Halloween without candy,deck_medium_base,deck_medium_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d739,A judge at a pie contest,deck_medium_base,deck_medium_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d759,A fortune cookie with spoilers,deck_medium_base,deck_medium_base,"{""subject"": [""thing""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_d812,"""Who brought tuna to gym?""",deck_medium_base,deck_medium_base,{},{},action event food speech,action event speech,food audit: 'food' answer type removed (subject is not food)
+ic_d816,"""I hereby declare it Pizza Friday""",deck_medium_base,deck_medium_base,{},{},action event food speech,action event speech,food audit: 'food' answer type removed (subject is not food)
+ic_dfr_001,Shin Guard Sour Cream,(new card),deck_medium_base,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_d031"
+ic_dfr_002,Team Backwash Barbecue,(new card),deck_medium_base,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_d031"
+ic_dfr_003,Used Mouthguard Marinade,(new card),deck_medium_base,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_d031"
+ic_dfr_004,Varsity Captain's Sweatband Splash,(new card),deck_medium_base,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""high""]}",,food thinglike,"new: Crew food round, written for rc_d031"
+ic_dfr_005,Head Coach's Mystery Thermos,(new card),deck_medium_base,,"{""subject"": [""food""], ""tone"": [""gross_mild""], ""scale"": [""everyday""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""high""]}",,food thinglike,"new: Crew food round, written for rc_d031"
+ic_dx068,"""Kindly advise on dinner plans""",deck_medium_base,deck_medium_base,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dx069,A goat screaming the school song,deck_medium_base,deck_medium_base,"{""subject"": [""thing""]}","{""subject"": [""animal""]}",sound thinglike,sound thinglike,Crew tag review correction
+ic_d244,A drawer of soy sauce packets,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d390,The disappointment of raisins instead of chocolate,deck_medium_exp1,deck_medium_exp1,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d419,Speed-reading the cereal box,deck_medium_exp1,deck_medium_exp1,{},{},action event food speech,action event speech,food audit: 'food' answer type removed (subject is not food)
+ic_d425,A gaming chair at the dinner table,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d446,Grandma's purse full of candy,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d451,The ice cream truck driver's playlist,deck_medium_exp1,deck_medium_exp1,{},{},food sound thinglike,sound thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d454,The pizza guy who knows your name,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d570,A thimble of hot chocolate,deck_medium_exp1,deck_medium_exp1,"{""subject"": [""thing""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_d614,A hockey puck in the soup,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d615,A football full of pudding,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d640,A pie-eating contest gone wrong,deck_medium_exp1,deck_medium_exp1,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d642,A hot dog-eating contest for vegans,deck_medium_exp1,deck_medium_exp1,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d778,A panda eating a salad bar,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d782,A stapler on a coffee break,deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_dr2_011,"""By law, recess is now indoors forever.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""absurd""]}",action event speech,action event speech,Crew tag review correction
+ic_dr2_012,"""Today's lunch is officially unidentified.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""gross_mild""], ""register"": [""casual""], ""violation"": [""social""], ""status"": [""low""]}","{""tone"": [""absurd""], ""register"": [""official_sounding""], ""violation"": [""logic""], ""status"": [""high""]}",action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dr2_013,"""The superintendent is hiding in the vents.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""absurd""]}",action event speech,action event speech,Crew tag review correction
+ic_dr2_015,"""This announcement has no announcement.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""absurd""]}",action event speech,action event speech,Crew tag review correction
+ic_dr2_016,"""The mayor requests your silence. Forever.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""absurd""]}",action event speech,action event speech,Crew tag review correction
+ic_dr2_017,"""Thank you, thank you, my loyal subjects.""",deck_medium_exp1,deck_medium_exp1,"{""register"": [""casual""], ""violation"": [""logic""], ""status"": [""low""]}","{""register"": [""fancy""], ""violation"": [""social""], ""status"": [""high""]}",action event speech,action event speech,Crew tag review correction
+ic_dr2_018,"""Accidentally sat on the cake again.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""awkward""], ""violation"": [""social""]}","{""tone"": [""absurd""], ""violation"": [""physical""]}",action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dr2_031,"Insisting everyone call you ""Your Highness""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""], ""register"": [""official_sounding""], ""violation"": [""logic""]}","{""tone"": [""silly""], ""register"": [""fancy""], ""violation"": [""social""]}",action event speech,action event,Crew tag review correction
+ic_dr2_044,Quietly reading the rulebook,deck_medium_exp1,deck_medium_exp1,{},{},action event speech,action event,Crew tag review correction
+ic_dr2_052,Requesting a royal drumroll,deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""], ""register"": [""official_sounding""], ""violation"": [""logic""]}","{""tone"": [""silly""], ""register"": [""fancy""], ""violation"": [""social""]}",action event sound,action event sound,Crew tag review correction
+ic_dr2_060,"""Please stop sending these. Love, me.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""silly""], ""violation"": [""logic""]}","{""tone"": [""awkward""], ""violation"": [""social""]}",action event speech,action event speech,Crew tag review correction
+ic_dr2_064,"""Just try not to cry this time.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""gross_mild""]}","{""tone"": [""dry""]}",action event speech,action event speech,Crew tag review correction
+ic_dx027,Submitting a formal resignation letter,deck_medium_exp1,deck_medium_exp1,{},{},action event speech,action event,Crew tag review correction
+ic_dx040,"""Pass the ketchup, peasant""",deck_medium_exp1,deck_medium_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dx066,"""Dear Mother, I require nuggets""",deck_medium_exp1,deck_medium_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dx070,"The lunch bell, but slower",deck_medium_exp1,deck_medium_exp1,{},{},food thinglike,sound thinglike,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dx072,"""Are we there yet?"" times forty",deck_medium_exp1,deck_medium_exp1,"{""scale"": [""tiny""]}","{""scale"": [""huge""]}",action event speech,action event speech,Crew tag review correction
+ic_dx077,Imported extra-crunchy celery,deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""awkward""]}",food sound thinglike,food sound thinglike,Crew tag review correction
+ic_dx079,Kettle chips served on a platter,deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""awkward""]}",food thinglike,food thinglike,Crew tag review correction
+ic_dx081,"Caviar crackers, extra crunchy",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""awkward""]}",food sound thinglike,food sound thinglike,Crew tag review correction
+ic_dx095,Reading the lunch menu dramatically,deck_medium_exp1,deck_medium_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dx115,A bag of chips crunching politely,deck_medium_exp1,deck_medium_exp1,{},{},food sound thinglike,sound thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_dx121,"""This is your principal. Nobody panic.""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dry""]}","{""tone"": [""dramatic""]}",action event speech,action event speech,Crew tag review correction
+ic_dx142,"""We found last year's popcorn""",deck_medium_exp1,deck_medium_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dx146,"""Thanks for the used gum""",deck_medium_exp1,deck_medium_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_dx148,"""Win this one for my knee""",deck_medium_exp1,deck_medium_exp1,"{""tone"": [""dramatic""], ""status"": [""high""]}","{""tone"": [""nostalgic""], ""status"": [""low""]}",action event speech,action event speech,Crew tag review correction
+ic_d250,Clapping alone at the assembly,deck_medium_base,deck_medium_holdout,{},{},action event sound,action event sound,moved deck_medium_base -> deck_medium_holdout
+ic_d255,Dropping your lunch tray in slow motion,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_d260,Wearing the same outfit as the teacher,deck_medium_base,deck_medium_holdout,{},{},action event,action event,moved deck_medium_base -> deck_medium_holdout
+ic_d264,Turning in homework with a ketchup stain,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_d271,Rehearsing an argument in the shower,deck_medium_base,deck_medium_holdout,{},{},action event speech,action event speech,moved deck_medium_base -> deck_medium_holdout
+ic_d288,Chewing gum from under a desk,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_d290,Double-dipping the chips,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_d297,Eating the crust off the floor,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_d299,Clipping toenails at the dinner table,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_d306,The bottom of a locker in May,deck_medium_base,deck_medium_holdout,{},{},thinglike,thinglike,moved deck_medium_base -> deck_medium_holdout
+ic_d356,A meme about the lunch lady,deck_medium_holdout,deck_medium_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d366,A cooking show for burnt toast,deck_medium_holdout,deck_medium_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_d543,Writing a love letter to pizza,deck_medium_holdout,deck_medium_holdout,{},{},action event food speech,action event speech,food audit: 'food' answer type removed (subject is not food)
+ic_d573,A single sprinkle on a donut,deck_medium_base,deck_medium_holdout,"{""subject"": [""thing""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food | moved deck_medium_base -> deck_medium_holdout"
+ic_dr2_025,Pretending to lay an egg,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_dx050,Running a secret snack empire,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_dx063,Professional lunch-line cutting,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_dx133,Ordering caviar to the house,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_dx160,Spiking the ball into the snack bar,deck_medium_holdout,deck_medium_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m013,A squirrel doing the dishes,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m030,A cat ordering pizza,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m055,A dog licking your sandwich,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m059,A slimy slug sandwich,deck_mild_base,deck_mild_base,"{""subject"": [""animal""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_m060,A pigeon on your pizza,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m062,A seagull stealing fries,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m095,A dinosaur who loves broccoli,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m226,A wad of chewed gum,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m243,A fridge-sized juice box,deck_mild_base,deck_mild_base,"{""subject"": [""thing""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_m297,A chef who burns cereal,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m316,Uncle Fred's mystery meatloaf,deck_mild_base,deck_mild_base,"{""subject"": [""person""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_m317,The lunch lady's magic ladle,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m325,The ice cream truck driver,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m337,A baby with spaghetti hair,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m515,A squirrel with your sandwich,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m520,A dog at dinner,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m537,A mailman delivering pizza,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m538,A dentist who loves candy,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m551,Falling asleep in your cereal,deck_mild_base,deck_mild_base,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m694,Sticky jelly fingers,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m698,A drippy ice cream cone,deck_mild_base,deck_mild_base,"{""subject"": [""thing""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"food audit: really a food, subject set to food"
+ic_m701,Bubble gum on your shoe,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m707,A golden lunch tray,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m716,Moonwalking to breakfast,deck_mild_base,deck_mild_base,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m751,Our teacher's secret snack drawer,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m756,The pizza delivery dog,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m757,A grumpy ice cream man,deck_mild_base,deck_mild_base,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m786,A marshmallow-eating contest,deck_mild_base,deck_mild_base,{},{},event food thinglike,event thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m818,With a bucket of pudding,deck_mild_base,deck_mild_base,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_mr2_020,Grandma's stinky cabbage soup,deck_mild_base,deck_mild_base,"{""subject"": [""person""]}","{""subject"": [""food""]}",food thinglike,food thinglike,"Crew tag review correction | food audit: really a food, subject set to food"
+ic_m429,A cloud that rains juice,deck_mild_exp1,deck_mild_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m436,A rainbow made of spaghetti,deck_mild_exp1,deck_mild_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m465,A spoon that hates soup,deck_mild_exp1,deck_mild_exp1,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m600,A cookie jar burglar alarm,deck_mild_exp1,deck_mild_exp1,{},{},food sound thinglike,sound thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_mfr_001,Mount Everest Mint Chip,(new card),deck_mild_exp1,,"{""subject"": [""food""], ""tone"": [""absurd""], ""scale"": [""huge""], ""register"": [""kid""], ""violation"": [""physical""], ""status"": [""low""]}",,food thinglike,"new: Crew food round, written for rc_m005"
+ic_mfr_002,The Senator's Sensible Sherbet,(new card),deck_mild_exp1,,"{""subject"": [""food""], ""tone"": [""dry""], ""scale"": [""everyday""], ""register"": [""official_sounding""], ""violation"": [""logic""], ""status"": [""high""]}",,food thinglike,"new: Crew food round, written for rc_m005"
+ic_mr2_037,A grandpa who's mostly mustache,deck_mild_exp1,deck_mild_exp1,"{""tone"": [""silly""]}","{""tone"": [""absurd""]}",thinglike,thinglike,Crew tag review correction
+ic_mr2_038,A skyscraper with feelings,deck_mild_exp1,deck_mild_exp1,"{""violation"": [""physical""]}","{""violation"": [""logic""]}",thinglike,thinglike,Crew tag review correction
+ic_mr2_040,A cloud scared of heights,deck_mild_exp1,deck_mild_exp1,"{""violation"": [""physical""]}","{""violation"": [""logic""]}",thinglike,thinglike,Crew tag review correction
+ic_mr2_046,A Texas-sized sandwich,deck_mild_holdout,deck_mild_exp1,{},{},food thinglike,food thinglike,moved deck_mild_holdout -> deck_mild_exp1
+ic_mr2_057,"""Let's call the fire department.""",deck_mild_exp1,deck_mild_exp1,"{""tone"": [""silly""], ""scale"": [""everyday""], ""violation"": [""logic""]}","{""tone"": [""absurd""], ""scale"": [""huge""], ""violation"": [""physical""]}",action event speech,action event speech,Crew tag review correction
+ic_mr2_060,"""We found last Halloween's candy.""",deck_mild_exp1,deck_mild_exp1,"{""tone"": [""silly""], ""violation"": [""logic""]}","{""tone"": [""gross_mild""], ""violation"": [""social""]}",action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mr2_063,"""You smell like honey ham.""",deck_mild_exp1,deck_mild_exp1,"{""tone"": [""gross_mild""]}","{""tone"": [""silly""]}",action event speech,action event speech,Crew tag review correction
+ic_mr2_064,"""Want my broccoli instead?""",deck_mild_exp1,deck_mild_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mr2_092,Hamster Cheek Cherry,deck_mild_exp1,deck_mild_exp1,"{""tone"": [""silly""]}","{""tone"": [""gross_mild""]}",food thinglike,food thinglike,Crew tag review correction
+ic_mx021,Dodgeball with soggy noodles,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx022,Hot potato with stinky shoes,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx023,Burping the lunch menu,deck_mild_exp1,deck_mild_exp1,{},{},action event food sound,action event sound,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx050,Hugging a warm pancake,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx063,Mopping with spaghetti,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx065,Rolling off like a burrito,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx079,Juggling sandwiches at lunch,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx081,Writing it in ketchup,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx102,"""Did you brush with pudding?""",deck_mild_exp1,deck_mild_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx105,"""Is that a whole meatball?""",deck_mild_exp1,deck_mild_exp1,{},{},action event food speech,action event speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx110,"""Want my cheese sandwich?""",deck_mild_exp1,deck_mild_exp1,"{""subject"": [""food""]}","{""subject"": [""action""]}",food speech thinglike,speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx111,"""Try my broccoli muffin!""",deck_mild_exp1,deck_mild_exp1,"{""subject"": [""food""]}","{""subject"": [""action""]}",food speech thinglike,speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx114,Recess is now silent reading,deck_mild_exp1,deck_mild_exp1,{},{},action event speech,action event,Crew tag review correction
+ic_mx115,Sandbox snacks are allowed,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx118,Mud pies count as lunch,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx126,Everybody shares one juice box,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_mx128,Gum goes under the seat,deck_mild_exp1,deck_mild_exp1,{},{},action event food,action event,Crew tag review correction | food audit: 'food' answer type removed (subject is not food)
+ic_m009,Fancy broccoli with a mustache,deck_mild_exp1,deck_mild_holdout,{},{},food thinglike,food thinglike,moved deck_mild_exp1 -> deck_mild_holdout
+ic_m341,Sneezing on the cake,deck_mild_holdout,deck_mild_holdout,{},{},action event food sound,action event sound,food audit: 'food' answer type removed (subject is not food)
+ic_m344,Stepping in gum,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m352,Dancing in the cereal aisle,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m365,Brushing teeth with ketchup,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m369,A pancake fort,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m371,Taking a bath in pudding,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m374,Eating cereal with a fork,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m384,Juggling eggs,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m391,A sandbox full of spaghetti,deck_mild_holdout,deck_mild_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m395,A jello bouncy house,deck_mild_holdout,deck_mild_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m397,A bedroom made of candy,deck_mild_holdout,deck_mild_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m453,A movie starring a potato,deck_mild_holdout,deck_mild_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_m549,Milk coming out your nose,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m553,Getting gum in your hair,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m559,Spilling juice on Grandma,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m561,Ice cream on your shoe,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m582,A playground on the moon,deck_mild_exp1,deck_mild_holdout,{},{},thinglike,thinglike,moved deck_mild_exp1 -> deck_mild_holdout
+ic_m719,Wearing goggles to dinner,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m721,Juggling dinner rolls,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m727,Feeding broccoli to the dog,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_m728,Talking to your sandwich,deck_mild_holdout,deck_mild_holdout,{},{},action event food speech,action event speech,food audit: 'food' answer type removed (subject is not food)
+ic_m732,Sneezing into the soup,deck_mild_holdout,deck_mild_holdout,{},{},action event food sound,action event sound,food audit: 'food' answer type removed (subject is not food)
+ic_m734,Slurping your cereal milk,deck_mild_holdout,deck_mild_holdout,{},{},action event food sound,action event sound,food audit: 'food' answer type removed (subject is not food)
+ic_m742,Skating on pudding,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_mr2_024,Guarding a giant birthday cake,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_mr2_041,Captain Lunch Lady,deck_mild_holdout,deck_mild_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_mr2_042,The Mayor of Snack Town,deck_mild_holdout,deck_mild_holdout,{},{},food thinglike,thinglike,food audit: 'food' answer type removed (subject is not food)
+ic_mx031,The spaghetti noodle wiggle,deck_mild_holdout,deck_mild_holdout,{},{},action event food,action event,food audit: 'food' answer type removed (subject is not food)
+ic_mx120,"""Your pillow is a waffle""",deck_mild_exp1,deck_mild_holdout,{},{},food speech thinglike,speech,Crew tag review correction | food audit: 'food' answer type removed (subject is not food) | moved deck_mild_exp1 -> deck_mild_holdout
