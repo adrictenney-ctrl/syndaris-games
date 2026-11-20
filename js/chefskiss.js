@@ -117,6 +117,7 @@ export const DEFAULTS = {
   houseRecipes: 1,    // players' Signature Recipes: 0 = Off, 1 = Mix in (at most 1 of 3), 2 = Replace
 };
 const MAX_CUSTOM = 30;  // custom cards one player can have at a table at once
+const OWN_MAX = 5;      // "Write your own card": free cards per account (a paid blank deck adds more later)
 
 // The timer choices offered in the lobby and the in-game slip (seconds; 0 = off).
 export const RECIPE_TIMES = [0, 15, 30, 45, 60, 90];
@@ -334,6 +335,22 @@ export function applyAction(g, seat, a) {
         answerTypes: c.type === 'signature_recipe' ? c.answerTypes : [], seat };
       return null;
     }
+    case 'mine': {
+      // "Write your own card": a signed-in player's account cards (up to 5 free). Only the ones
+      // for this table's deck join, as Snack cards dealt into that player's own hand.
+      g.custom = g.custom || {};
+      const list = Array.isArray(a.cards) ? a.cards.slice(0, OWN_MAX) : [];
+      const level = levelOf(g.settings), block = blockerOf(g);
+      for (const [id, c] of Object.entries(g.custom)) if (c.seat === seat && c.own) delete g.custom[id];
+      for (const c of list) {
+        if (!c || typeof c !== 'object' || !/^cc_o[\w-]{2,40}$/.test(String(c.id)) || c.level !== level) continue;
+        const card = { id: c.id, type: 'snack', level, text: String(c.text ?? '').replace(/[<>]/g, '').replace(/\s+/g, ' ').trim(), flavor: null };
+        if (validateCustomCard(card, level) || block(card.text)) continue;
+        if (g.custom[c.id] && g.custom[c.id].seat !== seat) continue;
+        g.custom[c.id] = { ...card, answerTypes: [], seat, own: true };
+      }
+      return null;
+    }
     case 'uncustom': {
       const c = g.custom?.[a.id];
       if (!c || c.seat !== seat) return null;
@@ -384,6 +401,7 @@ export function viewFor(g, seat) {
     hand: (g.hands[seat] || []).map(id => cardOf(g, id)).filter(Boolean),
     mine: (g.subs?.[seat] || []).map(id => cardOf(g, id)).filter(Boolean),
     myCustom: Object.values(g.custom || {}).filter(c => c.seat === seat).map(c => c.id),
+    myOwn: Object.values(g.custom || {}).filter(c => c.seat === seat && c.own).length,
     houseRecipes: HOUSE[g.settings.houseRecipes] || 'mix',
     played: Object.values(g.subs || {}).reduce((n, c) => n + c.length, 0),
     expected: (g.apprentices || []).filter(s => g.seats[s]).length,

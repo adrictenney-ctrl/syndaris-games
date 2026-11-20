@@ -146,6 +146,11 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
 - **One card per Apprentice per round**, at any table size (Double Vision is gone).
 - **Bot mode:** computer players can fill seats. With fewer than 4 people, bots fill the seats up to 4 when the game
   starts (lowest open seat first). They play a random card, and as Chef they pick a random winner.
+- **Write your own card** (`js/ck-owncards.js`): signed-in accounts write their own Ingredient Cards, 5 free per account,
+  saved in Firestore at `users/{uid}/ckcards/s1…s5`. Each card is permanent (the rules allow create only) and belongs to
+  one deck (Mild, Medium or Hot). The button sits next to Card level in the table lobby and in the phone lobby (which
+  shows the table's deck). When a game starts the phone sends its account's cards for that deck (`mine` action); the
+  table deals them only into that player's hand, as Snack cards. A paid blank deck (more slots) is planned.
 - **Card Workshop** (customizable cards, `js/ck-workshop.js`): "✎ Card Workshop" on the phone. Players write
   **Signature Recipes** (their own prompt cards, 80 characters, with "What kind of answer fits?" chips) and
   **Snack cards** (their own answer cards, 60 characters, with an optional flavor line). There are no Chef cards.

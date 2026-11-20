@@ -1,5 +1,5 @@
 // pegdrop on the table — see table-casino.js.
-import * as C from './casino-games.js?v=116';
-import { casinoTable } from './table-casino.js?v=116';
+import * as C from './casino-games.js?v=117';
+import { casinoTable } from './table-casino.js?v=117';
 
 export default casinoTable(C.pegdrop, { id: 'pegdrop' });

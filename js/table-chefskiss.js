@@ -1,13 +1,13 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=116';
+import * as K from './chefskiss.js?v=117';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=116';
-import { movable } from './gesture.js?v=116';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=117';
+import { movable } from './gesture.js?v=117';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=116';
+import { topPicks } from './laugh-engine.js?v=117';
 
 // ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
@@ -219,6 +219,17 @@ function message(g, ctx) {
   return '';
 }
 
+// "Write your own card" next to the Card level: opens the writer for whoever is signed in on this
+// screen, set to the deck selected here. (Players can also write theirs on their phone.)
+document.addEventListener('click', e => {
+  const b = e.target.closest?.('[data-ck-own]');
+  if (!b) return;
+  e.preventDefault();
+  const sel = b.parentElement?.querySelector('select[data-set="level"]');
+  const level = sel ? OFFICIAL_LEVELS[Number(sel.value)] : b.dataset.ckOwn;
+  import('./ck-owncards.js?v=1').then(m => m.openOwnCards({ level }));
+});
+
 export default {
   defaults: { ...K.DEFAULTS },
 
@@ -228,6 +239,7 @@ export default {
     const sel = (key, vals, label) => `<select data-set="${key}">${vals.map(v => `<option value="${v}" ${v === s[key] ? 'selected' : ''}>${label(v)}</option>`).join('')}</select>`;
     return `
       <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
+      <button type="button" class="tool ck-ownbtn" data-ck-own="${OFFICIAL_LEVELS[s.level] || 'mild'}">✎ Write your own card</button>
       <label>House Recipes ${sel('houseRecipes', [1, 2, 0], v => ['Off', 'Mix in (up to 1 of 3)', 'Replace (players’ first)'][v])}</label>
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
@@ -238,6 +250,7 @@ export default {
       ${s.laugh !== false ? `<p class="ck-si" data-si-status>${siLine()}</p>` : ''}${(s.laugh !== false ? startSi() : stopSi(), '')}`;
   },
 
+  lobbyInfo: s => ({ level: OFFICIAL_LEVELS[s?.level] || 'mild' }),
   create: (settings, players) => K.createGame(settings, players),
   act(g, seat, a) { const err = K.applyAction(g, seat, a); if (!err) laughRound(g); return err; },
   bot: K.botAction,

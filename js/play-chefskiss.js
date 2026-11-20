@@ -1,13 +1,13 @@
 // Chef's Kiss on a phone. Cards arrive face up: slide one
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=116';
-import { face, wireBulbs, esc } from './ck-face.js?v=116';
-import { movable } from './gesture.js?v=116';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=117';
+import { face, wireBulbs, esc } from './ck-face.js?v=117';
+import { movable } from './gesture.js?v=117';
 import { TEAMS } from './chefskiss-config.js?v=3';
 import { openWorkshop, myCards } from './ck-workshop.js?v=1';
 import { makeCustomCard } from './ck-custom.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=116';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=117';
 
 let ctx = null, v = null;
 let chosen = -1;
@@ -41,6 +41,7 @@ export function reset() {
   laughKey = ''; laughIds = []; laughFrom = ''; clearTimeout(laughTimer);
   clearInterval(tickT);
   document.getElementById('ckPhone')?.remove();
+  document.getElementById('ckOwnLobby')?.remove();
   workshop?.close(); workshop = null;
 }
 
@@ -51,6 +52,36 @@ export function renderLobby(c) {
   setHud('#hudC', null);
   setHud('#hudR', "Lifetime 💋", lifetime(), 'on this phone');
   document.getElementById('ckPhone')?.remove();
+  ownLobby(c.st.lobby?.level || 'mild');
+}
+
+// ---------------------------------------------------------------- "Write your own card"
+// Before the game: the deck the table is playing, and the button to write your own cards for it
+// (signed-in accounts, 5 free, permanent). When a game starts, this account's cards for the table's
+// deck are sent to the table, which deals them only into this player's hand.
+const LEVEL_NAME = { mild: 'Mild', medium: 'Medium', hot: 'Hot' };
+let ownSent = '';
+function ownLobby(level) {
+  let el = document.getElementById('ckOwnLobby');
+  if (!el) { el = document.createElement('div'); el.id = 'ckOwnLobby'; el.className = 'ck-ownlobby'; $('#panel').after(el); }
+  if (el.dataset.level === level) return;
+  el.dataset.level = level;
+  el.innerHTML = `<div class="ck-ownlobby-deck"><small>Table deck</small><b>${LEVEL_NAME[level]}</b></div>
+    <button type="button" class="panel-btn ck-ownbtn">✎ Write your own card</button>`;
+  el.querySelector('button').onclick = () => import('./ck-owncards.js?v=1').then(m => m.openOwnCards({ level, onSaved: () => { ownSent = ''; } }));
+}
+async function sendOwn() {
+  if (!v || v.phase === 'over') return;
+  const key = v.id + ':' + v.level;
+  if (ownSent === key) return;
+  ownSent = key;
+  try {
+    const m = await import('./ck-owncards.js?v=1');
+    const u = await m.whoIs();
+    if (!u) return;
+    const cards = (await m.loadMine(u)).filter(x => x.level === v.level);
+    if (cards.length) send({ type: 'mine', cards: m.tableCards(u.uid, cards) });
+  } catch { ownSent = ''; }
 }
 
 // ---------------------------------------------------------------- layout
@@ -286,6 +317,8 @@ export function render(c) {
     gameId = v.id;
     handKey = panelKey = boardKey = recipeKey = '';
   }
+  document.getElementById('ckOwnLobby')?.remove();
+  sendOwn();
   if (v.phase !== 'judge') chosen = -1;
   endsAt = v.left !== null ? Date.now() + v.left : 0;
   clearInterval(tickT);
