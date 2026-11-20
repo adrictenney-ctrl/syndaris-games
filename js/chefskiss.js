@@ -2,7 +2,8 @@
 // Recipe Card (the prompt). Everyone else is an Apprentice and plays the Ingredient Card
 // from their hand that they think pairs best with it. The Chef must award exactly one
 // Chef's Kiss (1 point). The Chef role then passes to the left.
-import { CARDS } from './chefskiss-db.js?v=3';
+import { CARDS } from './chefskiss-db.js?v=4';
+import { activeDecks } from './chefskiss-decks.js?v=1';
 import { CONFIG, OFFICIAL_LEVELS, TEAMS } from './chefskiss-config.js?v=3';
 import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=4';
 import { blockedWords, makeBlocker } from './parental.js?v=1';
@@ -61,7 +62,7 @@ export const levelOf = settings => OFFICIAL_LEVELS[settings.level] || 'mild';
 
 // Parent Controls: cards with a word this family blocked are never dealt (and can't be played).
 const blockerOf = g => makeBlocker(g.block);
-const tableOf = g => ({ level: levelOf(g.settings), usedCardIds: new Set(g.used), blocked: blockerOf(g) });
+const tableOf = g => ({ level: levelOf(g.settings), decks: activeDecks(levelOf(g.settings), g.settings.deckMode), usedCardIds: new Set(g.used), blocked: blockerOf(g) });
 const rngFor = (g, what) => makeRng(`${g.id}:${g.round}:${what}`);
 
 // The Chef is dealt fresh Recipe Card choices every round. House Recipes (the host's setting):
@@ -107,6 +108,7 @@ function dealHands(g) {
 // ---------------------------------------------------------------- setup
 
 export const DEFAULTS = {
+  deckMode: 'base',   // which of the level's decks: 'base' (free starter) until purchases exist (Al's spec Section 7)
   level: 0,           // the table's one deck: 0 = Mild (elementary), 1 = Medium (middle school), 2 = Hot (high school)
   target: 7,          // Chef's Kisses to win (0 = no target)
   length: 60,         // minutes (0 = no game timer)

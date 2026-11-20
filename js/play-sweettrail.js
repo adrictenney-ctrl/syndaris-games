@@ -1,8 +1,8 @@
 // Sweet Trail on a phone: one big Draw button and the card you got.
-import { racePhone, reset as baseReset } from './play-snakes.js?v=117';
-import { cardHTML } from './table-sweettrail.js?v=117';
-import { LEN } from './sweettrail.js?v=117';
-import { $, setHud } from './phone-kit.js?v=117';
+import { racePhone, reset as baseReset } from './play-snakes.js?v=118';
+import { cardHTML } from './table-sweettrail.js?v=118';
+import { LEN } from './sweettrail.js?v=118';
+import { $, setHud } from './phone-kit.js?v=118';
 
 export const reset = baseReset;
 export function renderLobby(c) {

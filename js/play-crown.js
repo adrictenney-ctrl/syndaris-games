@@ -1,8 +1,8 @@
 // Crown & Dagger on a phone: your secret role (hold to peek), your vote, and the edicts
 // when you're Regent or Steward.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=117';
-import { POWER_TEXT } from './crown.js?v=117';
-import { CROWN, DAGGER, edict, fmt } from './table-crown.js?v=117';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=118';
+import { POWER_TEXT } from './crown.js?v=118';
+import { CROWN, DAGGER, edict, fmt } from './table-crown.js?v=118';
 
 let ctx = null, panelKey = '', roleKey = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

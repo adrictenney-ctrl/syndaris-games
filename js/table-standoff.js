@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { standoffT } from './table-choice.js?v=117';
+import { standoffT } from './table-choice.js?v=118';
 
 export default standoffT;

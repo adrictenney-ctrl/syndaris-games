@@ -14,6 +14,8 @@
 
 ---
 
+> **18 Nov 2026 deck release (Al):** the live decks are the three free starters (`deck_mild_base`, `deck_medium_base`, `deck_hot_base`, 100 Recipes + 400 Ingredients each). The Expansion - 1 decks and the base/expansion/mixed setting wait for purchases. Hand: 5 cards, 4 on-target + 1 random. Full details: `content/chefskiss/decks-2026-11-18/`.
+
 ## 0. First instructions to the agent
 
 1. **Inspect the existing code first.** Before writing anything, read the repo and the current build behind playondisplay.com. Then fill in Section 3 (TODO-ADRIC) with what you find: the stack, the repo layout, hosting, realtime transport, how bots work, and how rooms and seats work.

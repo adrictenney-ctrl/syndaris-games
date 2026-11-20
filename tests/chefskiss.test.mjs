@@ -41,22 +41,16 @@ test('family deck cards are only Mild, Medium or Hot (never Spicy or Hellfire Sc
   for (const c of active) assert.ok(OFFICIAL_LEVELS.includes(c.level), `${c.id} is ${c.level}`);
 });
 
-test('at least 150 Recipe Cards and 600 Ingredient Cards per level', () => {
+// Al's 18 Nov 2026 release: each level plays its free starter, exactly 100 Recipes + 400 Ingredients.
+test('each level is its free starter deck: exactly 100 Recipe Cards and 400 Ingredient Cards', () => {
   for (const level of OFFICIAL_LEVELS) {
-    assert.ok(recipes.filter(c => c.level === level).length >= 150, `${level} recipes`);
-    assert.ok(ingredients.filter(c => c.level === level).length >= 600, `${level} ingredients`);
+    assert.equal(recipes.filter(c => c.level === level).length, 100, `${level} recipes`);
+    assert.equal(ingredients.filter(c => c.level === level).length, 400, `${level} ingredients`);
+    for (const c of active.filter(c => c.level === level)) assert.deepEqual(c.deckIds, [`deck_${level}_base`], c.id);
   }
 });
 
-// SPEC.md Section 15, approved 18 Oct 2026. Al's finished decks meet these; they aren't in the repo yet.
-test('200 Recipe Cards and 800 Ingredient Cards per level', { todo: "waiting for Al's 18 Oct 2026 decks" }, () => {
-  for (const level of OFFICIAL_LEVELS) {
-    assert.ok(recipes.filter(c => c.level === level).length >= 200, `${level} recipes`);
-    assert.ok(ingredients.filter(c => c.level === level).length >= 800, `${level} ingredients`);
-  }
-});
-
-test('every card has 1–2 tags on all 6 axes (CARD_RULES.md Section 3)', { todo: "waiting for Al's 18 Oct 2026 decks" }, () => {
+test('every card has 1–2 tags on all 6 axes (CARD_RULES.md Section 3)', () => {
   for (const c of active) for (const d of DIMS) assert.ok(c.tags[d].length >= 1 && c.tags[d].length <= 2, `${c.id} ${d}`);
 });
 
@@ -70,9 +64,7 @@ test('every card is tagged and every Recipe has funnyTargetCombos and literalTag
   }
 });
 
-test('pop-culture Ingredient Cards say when they are from', () => {
-  for (const c of ingredients) if (c.tags.subject.includes('pop_culture')) assert.ok(c.culture.born, c.id);
-});
+// (The 18 Nov decks leave culture dates empty on every card, by design: Al's spec Section 3.)
 
 test('no two cards share the same text', () => {
   const seen = new Set();
@@ -191,7 +183,7 @@ test('the same seed always deals the same hand', () => {
 });
 
 test('cards already played this game are not dealt again', () => {
-  const used = ingredients.filter(c => c.level === 'mild').slice(0, 400).map(c => c.id);
+  const used = ingredients.filter(c => c.level === 'mild').slice(0, 300).map(c => c.id);
   const hand = buildHand(CARDS, someRecipe(), table('mild', used), { dealtThisRound: new Set() }, makeRng('used'));
   for (const h of hand) assert.ok(!used.includes(h.cardId));
 });

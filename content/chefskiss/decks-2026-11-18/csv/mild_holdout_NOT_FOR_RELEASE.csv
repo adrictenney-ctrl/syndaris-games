@@ -1,0 +1,255 @@
+card_id,type,text,subject,answer_type,source,crew_fix,reason
+ic_m001,ingredient,A cat doing homework,animal,thinglike,mild_batch1.json,,near-duplicate of a base card
+ic_m007,ingredient,A hamster in a crown,animal,thinglike,mild_batch1.json,,cut first: animal in an outfit
+ic_m014,ingredient,A frog in rain boots,animal,thinglike,mild_batch4.json,,cut first: animal in an outfit
+ic_m017,ingredient,A snail with roller skates,animal,thinglike,mild_batch9.json,,near-duplicate of a base card
+ic_m018,ingredient,A chicken crossing guard,animal,thinglike,mild_batch6.json,,near-duplicate of a base card
+ic_m035,ingredient,A bear in pajamas,animal,thinglike,mild_batch2.json,,cut first: animal in an outfit
+ic_m037,ingredient,A skunk wearing perfume,animal,thinglike,mild_batch5.json,,cut first: animal in an outfit
+ic_m067,ingredient,A bus-sized bunny,animal,thinglike,mild_batch4.json,,near-duplicate of a base card
+ic_m068,ingredient,A car-sized ladybug,animal,thinglike,mild_batch5.json,,near-duplicate of a base card
+ic_m077,ingredient,A dog in a tuxedo,animal,thinglike,mild_batch5.json,,cut first: animal in an outfit
+ic_m078,ingredient,A pigeon with a briefcase,animal,thinglike,mild_batch8.json,,cut first: animal in an outfit
+ic_m079,ingredient,A top-hat snail,animal,thinglike,mild_batch2.json,,cut first: animal in an outfit
+ic_m080,ingredient,A cat in a ballgown,animal,thinglike,mild_batch2.json,,cut first: animal in an outfit
+ic_m082,ingredient,A walrus with a monocle,animal,thinglike,mild_batch7.json,,cut first: animal in an outfit
+ic_m083,ingredient,A bow-tied mouse,animal,thinglike,mild_batch4.json,,cut first: animal in an outfit
+ic_m084,ingredient,A frog wearing earmuffs,animal,thinglike,mild_batch6.json,,cut first: animal in an outfit
+ic_m126,ingredient,A hot dog in slippers,food,food/thinglike,mild_batch3.json,,near-duplicate of a base card
+ic_m135,ingredient,Cold mac and cheese,food,food/thinglike,mild_batch8.json,,near-duplicate of a base card
+ic_m139,ingredient,Fish sticks in jello,food,food/thinglike,mild_batch7.json,,near-duplicate of a base card
+ic_m163,ingredient,A pea-sized pizza,food,food/thinglike,mild_batch9.json,,near-duplicate of a base card
+ic_m164,ingredient,A teeny tiny taco,food,food/thinglike,mild_batch2.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m195,ingredient,A bossy night-light,thing,thinglike,mild_batch4.json,,near-duplicate of a base card
+ic_m203,ingredient,A jealous teddy bear,thing,thinglike,mild_batch9.json,,near-duplicate of a base card
+ic_m211,ingredient,A rubber duck in charge,thing,thinglike,mild_batch2.json,,near-duplicate of a base card
+ic_m232,ingredient,A giant rubber duck,thing,thinglike,mild_batch6.json,,near-duplicate of a base card
+ic_m238,ingredient,A gigantic yo-yo,thing,thinglike,mild_batch8.json,,near-duplicate of a base card
+ic_m245,ingredient,A teeny tiny trampoline,thing,thinglike,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m246,ingredient,A bicycle for a bug,thing,thinglike,mild_batch7.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m247,ingredient,A toothbrush for an ant,thing,thinglike,mild_batch9.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m248,ingredient,A pea-sized soccer ball,thing,thinglike,mild_batch4.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m249,ingredient,A doll-sized lawnmower,thing,thinglike,mild_batch3.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m250,ingredient,A sock for a hamster,thing,thinglike,mild_batch3.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m270,ingredient,A pogo stick on ice,thing,thinglike,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m271,ingredient,A wobbly wagon,thing,thinglike,mild_batch7.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m272,ingredient,A leaky bouncy castle,thing,thinglike,mild_batch9.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m278,ingredient,A bubble that won't pop,thing,thinglike,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m280,ingredient,A squeaky shopping cart,thing,sound/thinglike,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m284,ingredient,A bike with square wheels,thing,thinglike,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m285,ingredient,A pool noodle sword,thing,thinglike,mild_batch6.json,,near-duplicate of a base card
+ic_m299,ingredient,A lifeguard who can't swim,person,thinglike,mild_batch6.json,,near-duplicate of a base card
+ic_m310,ingredient,Grandpa doing cartwheels,person,thinglike,mild_batch6.json,,near-duplicate of a base card
+ic_m323,ingredient,A mail carrier on stilts,person,thinglike,mild_batch2.json,,near-duplicate of a base card
+ic_m326,ingredient,Grandpa's knock-knock jokes,person,speech/thinglike,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 0 expansion Recipes)
+ic_m339,ingredient,Picking your nose,action,action/event,mild_batch2.json,,pass 3: moved out of base (new card took its slot)
+ic_m340,ingredient,Licking the slide,action,action/event,mild_batch3.json,,pass 3: moved out of base (new card took its slot)
+ic_m341,ingredient,Sneezing on the cake,action,action/event/sound,mild_batch3.json,,pass 3: moved out of base (new card took its slot)
+ic_m344,ingredient,Stepping in gum,action,action/event,mild_batch4.json,,pass 3: moved out of base (new card took its slot)
+ic_m345,ingredient,Drinking bathwater,action,action/event,mild_batch6.json,,pass 3: moved out of base (new card took its slot)
+ic_m346,ingredient,Licking the window,action,action/event,mild_batch2.json,,pass 3: moved out of base (new card took its slot)
+ic_m347,ingredient,Belly flopping,action,action/event,mild_batch5.json,,pass 3: moved out of base (new card took its slot)
+ic_m350,ingredient,Chewing with your mouth open,action,action/event,mild_batch2.json,,pass 3: moved out of base (new card took its slot)
+ic_m352,ingredient,Dancing in the cereal aisle,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m353,ingredient,Wearing pajamas to school,action,action/event,mild_batch9.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m354,ingredient,Hopping everywhere all day,action,action/event,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m355,ingredient,Talking like a pirate,action,action/event/speech,mild_batch7.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m357,ingredient,Walking backwards everywhere,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m358,ingredient,Singing to the toilet,action,action/event/sound,mild_batch4.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m359,ingredient,Hugging a cactus,action,action/event,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m362,ingredient,Tickling a grumpy cat,action,action/event,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m363,ingredient,Barking at the mail carrier,action,action/event/sound,mild_batch2.json,,near-duplicate of a base card
+ic_m364,ingredient,Racing a snail,action,action/event,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m365,ingredient,Brushing teeth with ketchup,action,action/event,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m366,ingredient,Wearing socks on your hands,action,action/event,mild_batch7.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m367,ingredient,Sleeping in the bathtub,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m368,ingredient,Riding a cow to school,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m369,ingredient,A pancake fort,action,action/event,mild_batch2.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m370,ingredient,Giving the dog a haircut,action,action/event,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m371,ingredient,Taking a bath in pudding,action,action/event,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m373,ingredient,Kissing a frog,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m374,ingredient,Eating cereal with a fork,action,action/event,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m375,ingredient,Painting the cat,action,action/event,mild_batch4.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m376,ingredient,Shoes on the wrong feet,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m377,ingredient,Bouncing on the ceiling,action,action/event,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m378,ingredient,Sneezing so hard you fly,action,action/event/sound,mild_batch3.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m379,ingredient,Jumping over the house,action,action/event,mild_batch9.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m380,ingredient,Swimming in the air,action,action/event,mild_batch9.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m381,ingredient,Running faster than a car,action,action/event,mild_batch4.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m382,ingredient,Walking on the ceiling,action,action/event,mild_batch3.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m383,ingredient,Burping a bubble,action,action/event/sound,mild_batch6.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m384,ingredient,Juggling eggs,action,action/event,mild_batch5.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m385,ingredient,Hiccupping for a week,action,action/event/sound,mild_batch6.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m386,ingredient,Floating like a balloon,action,action/event,mild_batch6.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m387,ingredient,A playground for snails,place,thinglike,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m388,ingredient,A school for dogs,place,thinglike,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m389,ingredient,A bathtub full of frogs,place,thinglike,mild_batch9.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m390,ingredient,A treehouse with an elevator,place,thinglike,mild_batch4.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m391,ingredient,A sandbox full of spaghetti,place,thinglike,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m392,ingredient,A library for cats,place,thinglike,mild_batch7.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m393,ingredient,A swimming pool of slime,place,thinglike,mild_batch9.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m394,ingredient,A doghouse hot tub,place,thinglike,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m395,ingredient,A jello bouncy house,place,thinglike,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m396,ingredient,A closet full of bees,place,thinglike,mild_batch2.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m397,ingredient,A bedroom made of candy,place,thinglike,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m398,ingredient,A backyard full of chickens,place,thinglike,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m399,ingredient,A garage full of balloons,place,thinglike,mild_batch4.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m400,ingredient,A laundry room for ghosts,place,thinglike,mild_batch2.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m401,ingredient,A zoo for bugs,place,thinglike,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m406,ingredient,The bottom of your backpack,place,thinglike,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 3 expansion Recipes)
+ic_m407,ingredient,Under the couch cushions,place,thinglike,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 3 expansion Recipes)
+ic_m410,ingredient,The car wash,place,thinglike,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 3 expansion Recipes)
+ic_m412,ingredient,Bath time,place,thinglike,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 3 expansion Recipes)
+ic_m415,ingredient,A tea party for dinosaurs,event,event/thinglike,mild_batch3.json,,near-duplicate of a base card
+ic_m421,ingredient,A talent show for pets,event,event/thinglike,mild_batch5.json,,near-duplicate of a base card
+ic_m428,ingredient,A sneezing tree,nature,sound/thinglike,mild_batch8.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m438,ingredient,A leaf pile that sneezes,nature,sound/thinglike,mild_batch9.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m442,ingredient,Brain freeze,feeling,event/thinglike,mild_batch5.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m444,ingredient,The hiccups,feeling,event/sound/thinglike,mild_batch4.json,,near-duplicate of a base card
+ic_m449,ingredient,Being hangry,feeling,action/event,mild_batch5.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m451,ingredient,A real-life cartoon dog,pop_culture,thinglike,mild_batch4.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m453,ingredient,A movie starring a potato,pop_culture,thinglike,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m458,ingredient,A superhero mop movie,pop_culture,thinglike,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m460,ingredient,Breaking news: a sneeze,pop_culture,action/sound,mild_batch5.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m461,ingredient,A homework-eating printer,thing,thinglike,mild_batch4.json,,near-duplicate of a base card
+ic_m463,ingredient,A Band-Aid that sings,thing,sound/thinglike,mild_batch5.json,,near-duplicate of a base card
+ic_m466,ingredient,A sippy cup with attitude,thing,thinglike,mild_batch3.json,,near-duplicate of a base card
+ic_m478,ingredient,A runaway shopping cart,thing,thinglike,mild_batch4.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m481,ingredient,A dog's party hat,thing,thinglike,mild_batch6.json,,cut first: animal in an outfit
+ic_m500,ingredient,A bunless hot dog,food,food/thinglike,mild_batch6.json,,near-duplicate of a base card
+ic_m501,ingredient,Cereal without milk,food,food/thinglike,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 15 expansion Recipes)
+ic_m504,ingredient,Skateboarding pizza,food,action/food,mild_batch6.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m508,ingredient,A peanut butter beard,food,food/thinglike,mild_batch2.json,,near-duplicate of a base card
+ic_m523,ingredient,A cheetah on roller skates,animal,thinglike,mild_batch7.json,,near-duplicate of a base card
+ic_m526,ingredient,A pogo stick kitty,animal,thinglike,mild_batch9.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m530,ingredient,A horse in rain boots,animal,thinglike,mild_batch7.json,,cut first: animal in an outfit
+ic_m532,ingredient,A party-hat worm,animal,thinglike,mild_batch9.json,,cut first: animal in an outfit
+ic_m535,ingredient,A tooth fairy on strike,person,thinglike,mild_batch2.json,,near-duplicate of a base card
+ic_m549,ingredient,Milk coming out your nose,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m552,ingredient,Forgetting your pants,action,action/event,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m553,ingredient,Getting gum in your hair,action,action/event,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m554,ingredient,Sitting on a whoopee cushion,action,action/event/sound,mild_batch2.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m555,ingredient,Tripping over nothing,action,action/event,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m556,ingredient,Getting your head stuck,action,action/event,mild_batch3.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m557,ingredient,Waving back at nobody,action,action/event,mild_batch9.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m558,ingredient,Sneezing during the quiet part,action,action/event/sound,mild_batch2.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m559,ingredient,Spilling juice on Grandma,action,action/event,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m560,ingredient,Getting caught licking frosting,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m561,ingredient,Ice cream on your shoe,action,action/event,mild_batch7.json,,near-duplicate of a base card
+ic_m562,ingredient,Putting a shirt on backwards,action,action/event,mild_batch6.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m563,ingredient,Getting tangled in the slinky,action,action/event,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m566,ingredient,Cannonballing into the kiddie pool,action,action/event,mild_batch4.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m568,ingredient,Socks with sandals,thing,thinglike,mild_batch3.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m569,ingredient,A broken crayon,thing,thinglike,mild_batch5.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m579,ingredient,A sticker on the cat,thing,thinglike,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m581,ingredient,A mismatched sock drawer,thing,thinglike,mild_batch6.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m583,ingredient,A cloud trampoline park,place,thinglike,mild_batch8.json,,trimmed: lower coverage/quality (strong match for 8 expansion Recipes)
+ic_m593,ingredient,A sock puppet with opinions,thing,speech/thinglike,mild_batch6.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m601,ingredient,A goat wearing a bib,animal,thinglike,mild_batch12.json,,cut first: animal in an outfit
+ic_m603,ingredient,A chicken in swim goggles,animal,thinglike,mild_batch10.json,,cut first: animal in an outfit
+ic_m606,ingredient,A pony in pajamas,animal,thinglike,mild_batch11.json,,cut first: animal in an outfit
+ic_m611,ingredient,A moose in mittens,animal,thinglike,mild_batch12.json,,cut first: animal in an outfit
+ic_m613,ingredient,An owl wearing a nightcap,animal,thinglike,mild_batch10.json,,cut first: animal in an outfit
+ic_m614,ingredient,A lamb in snow boots,animal,thinglike,mild_batch12.json,,cut first: animal in an outfit
+ic_m623,ingredient,A jumping snail,animal,thinglike,mild_batch10.json,,trimmed: lower coverage/quality (strong match for 14 expansion Recipes)
+ic_m659,ingredient,Yesterday's fish sticks,food,food/thinglike,mild_batch11.json,,near-duplicate of a base card
+ic_m660,ingredient,Broccoli ice cream,food,food/thinglike,mild_batch11.json,,near-duplicate of a base card
+ic_m688,ingredient,A pillow on vacation,thing,thinglike,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m690,ingredient,A worried bathtub drain,thing,thinglike,mild_batch10.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m718,ingredient,Brushing the dog's teeth,action,action/event,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m719,ingredient,Wearing goggles to dinner,action,action/event,mild_batch10.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m720,ingredient,Racing the bathtub drain,action,action/event,mild_batch11.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m721,ingredient,Juggling dinner rolls,action,action/event,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m722,ingredient,Reading to the goldfish,action,action/event/speech,mild_batch12.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m723,ingredient,Skipping to the dentist,action,action/event,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m724,ingredient,Tiptoeing past the cat,action,action/event,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m727,ingredient,Feeding broccoli to the dog,action,action/event,mild_batch10.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m728,ingredient,Talking to your sandwich,action,action/event/speech,mild_batch11.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m729,ingredient,Licking the beaters,action,action/event,mild_batch11.json,,pass 3: moved out of base (new card took its slot)
+ic_m732,ingredient,Sneezing into the soup,action,action/event/sound,mild_batch10.json,,pass 3: moved out of base (new card took its slot)
+ic_m734,ingredient,Slurping your cereal milk,action,action/event/sound,mild_batch12.json,,pass 3: moved out of base (new card took its slot)
+ic_m735,ingredient,Licking your plate clean,action,action/event,mild_batch12.json,,pass 3: moved out of base (new card took its slot)
+ic_m737,ingredient,Hiccupping bubbles,action,action/event/sound,mild_batch12.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m738,ingredient,Sneezing confetti,action,action/event/sound,mild_batch10.json,,"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_m739,ingredient,Jumping into a cloud,action,action/event,mild_batch11.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m740,ingredient,Bouncing off the walls,action,action/event,mild_batch10.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m741,ingredient,Sliding down a rainbow,action,action/event,mild_batch10.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m742,ingredient,Skating on pudding,action,action/event,mild_batch10.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m743,ingredient,Sleepwalking to the fridge,action,action/event,mild_batch10.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m744,ingredient,Riding a goat to school,action,action/event,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m769,ingredient,A bakery for birds,place,thinglike,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m770,ingredient,A gym for hamsters,place,thinglike,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m771,ingredient,A movie theater for ants,place,thinglike,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m772,ingredient,A restaurant for cats,place,thinglike,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m773,ingredient,A hotel for teddy bears,place,thinglike,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m774,ingredient,A dentist for sharks,place,thinglike,mild_batch11.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m776,ingredient,A school bus for ducks,place,thinglike,mild_batch10.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m778,ingredient,A spa for frogs,place,thinglike,mild_batch12.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m787,ingredient,A grumpy snowflake,nature,thinglike,mild_batch12.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m788,ingredient,A puddle with feelings,nature,thinglike,mild_batch10.json,,trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_m800,ingredient,The cat's report card,thing,thinglike,mild_batch12.json,,near-duplicate of a base card
+ic_m803,ingredient,Hopping on one foot,action,action/event,mild_batch13.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m805,ingredient,"Very slowly, like a snail",action,action/event,mild_batch13.json,,trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_m808,ingredient,Doing it in slow motion,action,action/event,mild_batch13.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m819,ingredient,Tiptoeing like a cartoon spy,action,action/event,mild_batch13.json,,pass 3: pushed out of the expansion by a stronger new card
+ic_m820,ingredient,Pretending to be a statue,action,action/event,mild_batch13.json,,trimmed: lower coverage/quality (strong match for 16 expansion Recipes)
+ic_mr2_006,ingredient,Taking over the school board,action,action/event,crew_round2.csv,round 2 (written for rc_m009),trimmed: lower coverage/quality (strong match for 33 expansion Recipes)
+ic_mr2_007,ingredient,A moon-sized yarn ball,thing,thinglike,crew_round2.csv,round 2 (written for rc_m009),trimmed: lower coverage/quality (strong match for 40 expansion Recipes)
+ic_mr2_008,ingredient,An official complaint letter,thing,speech/thinglike,crew_round2.csv,round 2 (written for rc_m009),trimmed: lower coverage/quality (strong match for 40 expansion Recipes)
+ic_mr2_009,ingredient,Buying the whole neighborhood,action,action/event,crew_round2.csv,round 2 (written for rc_m009),trimmed: lower coverage/quality (strong match for 28 expansion Recipes)
+ic_mr2_010,ingredient,Burping during the wedding vows,action,action/event/sound,crew_round2.csv,round 2 (written for rc_m009),"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_mr2_011,ingredient,Getting knighted by the queen,action,action/event,crew_round2.csv,round 2 (written for rc_m009),trimmed: lower coverage/quality (strong match for 33 expansion Recipes)
+ic_mr2_013,ingredient,A very important announcement,thing,speech/thinglike,crew_round2.csv,round 2 (written for rc_m010),trimmed: lower coverage/quality (strong match for 40 expansion Recipes)
+ic_mr2_014,ingredient,The doorbell said something rude,thing,sound/speech/thinglike,crew_round2.csv,round 2 (written for rc_m010),trimmed: lower coverage/quality (strong match for 8 expansion Recipes)
+ic_mr2_016,ingredient,"Nobody said ""bless you""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m010),trimmed: lower coverage/quality (strong match for 6 expansion Recipes)
+ic_mr2_017,ingredient,A parade only he sees,event,event/thinglike,crew_round2.csv,round 2 (written for rc_m010),trimmed: lower coverage/quality (strong match for 8 expansion Recipes)
+ic_mr2_023,ingredient,Official royal crown polisher,thing,thinglike,crew_round2.csv,round 2 (written for rc_m013),trimmed: lower coverage/quality (strong match for 38 expansion Recipes)
+ic_mr2_024,ingredient,Guarding a giant birthday cake,action,action/event,crew_round2.csv,round 2 (written for rc_m013),trimmed: lower coverage/quality (strong match for 33 expansion Recipes)
+ic_mr2_025,ingredient,Holding up the sky,action,action/event,crew_round2.csv,round 2 (written for rc_m013),trimmed: lower coverage/quality (strong match for 28 expansion Recipes)
+ic_mr2_026,ingredient,"Museum ""Do Not Touch"" guard",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m013),trimmed: lower coverage/quality (strong match for 19 expansion Recipes)
+ic_mr2_027,ingredient,Official sock smell tester,thing,thinglike,crew_round2.csv,round 2 (written for rc_m013),"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_mr2_028,ingredient,Flying the space shuttle,action,action/event,crew_round2.csv,round 2 (written for rc_m013),trimmed: lower coverage/quality (strong match for 28 expansion Recipes)
+ic_mr2_030,ingredient,Being elected president,action,action/event,crew_round2.csv,round 2 (written for rc_m015),trimmed: lower coverage/quality (strong match for 33 expansion Recipes)
+ic_mr2_031,ingredient,A gold medal in swimming,thing,thinglike,crew_round2.csv,round 2 (written for rc_m015),near-duplicate of a base card
+ic_mr2_034,ingredient,Remembering anything at all,action,action/event,crew_round2.csv,round 2 (written for rc_m015),trimmed: lower coverage/quality (strong match for 16 expansion Recipes)
+ic_mr2_036,ingredient,Kids stop tapping the glass,thing,thinglike,crew_round2.csv,round 2 (written for rc_m015),trimmed: lower coverage/quality (strong match for 7 expansion Recipes)
+ic_mr2_039,ingredient,Sir Reginald the Hiccup,thing,sound/thinglike,crew_round2.csv,round 2 (written for rc_m089),trimmed: lower coverage/quality (strong match for 32 expansion Recipes)
+ic_mr2_041,ingredient,Captain Lunch Lady,person,thinglike,crew_round2.csv,round 2 (written for rc_m093),trimmed: lower coverage/quality (strong match for 46 expansion Recipes)
+ic_mr2_042,ingredient,The Mayor of Snack Town,person,thinglike,crew_round2.csv,round 2 (written for rc_m093),trimmed: lower coverage/quality (strong match for 46 expansion Recipes)
+ic_mr2_043,ingredient,A mountain wearing sneakers,nature,thinglike,crew_round2.csv,round 2 (written for rc_m093),trimmed: lower coverage/quality (strong match for 45 expansion Recipes)
+ic_mr2_044,ingredient,A toddler with a jetpack,person,thinglike,crew_round2.csv,round 2 (written for rc_m093),trimmed: lower coverage/quality (strong match for 15 expansion Recipes)
+ic_mr2_045,ingredient,Becoming the school principal,action,action/event,crew_round2.csv,round 2 (written for rc_m096),trimmed: lower coverage/quality (strong match for 33 expansion Recipes)
+ic_m009,ingredient,Fancy broccoli with a mustache,food,food/thinglike,mild_batch1.json,,"crew-fix pass (18 Nov evening): swapped out for ""A Texas-sized sandwich"" (rc_m005); was: strong match for 14 expansion Recipes and 38 of all 200"
+ic_mr2_047,ingredient,Everyone burps when you talk,action,action/event/sound/speech,crew_round2.csv,round 2 (written for rc_m096),"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_mr2_048,ingredient,King of only Tuesdays,person,action,crew_round2.csv,round 2 (written for rc_m096),trimmed: lower coverage/quality (strong match for 31 expansion Recipes)
+ic_mr2_049,ingredient,The Fancy Butler Bow,action,action/event,crew_round2.csv,round 2 (written for rc_m100),trimmed: lower coverage/quality (strong match for 35 expansion Recipes)
+ic_mr2_050,ingredient,The Earthquake Wiggle,action,action/event,crew_round2.csv,round 2 (written for rc_m100),trimmed: lower coverage/quality (strong match for 28 expansion Recipes)
+ic_mr2_051,ingredient,The Sneeze-and-Freeze,action,action/event/sound,crew_round2.csv,round 2 (written for rc_m100),"trimmed: Mild gross-out cap (bodily gross-out: burps, socks, sneezes...)"
+ic_mr2_052,ingredient,The Grandpa Lawnmower,action,action/event,crew_round2.csv,round 2 (written for rc_m100),trimmed: lower coverage/quality (strong match for 16 expansion Recipes)
+ic_mr2_054,ingredient,"""Oops. Wrong tooth.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m154),trimmed: lower coverage/quality (strong match for 6 expansion Recipes)
+ic_mr2_055,ingredient,"""I'll need a bigger drill.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m154),trimmed: lower coverage/quality (strong match for 29 expansion Recipes)
+ic_mr2_061,ingredient,"""You may kiss my ring.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m164),trimmed: lower coverage/quality (strong match for 38 expansion Recipes)
+ic_mr2_062,ingredient,"""I shall need your cave.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m164),trimmed: lower coverage/quality (strong match for 38 expansion Recipes)
+ic_mr2_066,ingredient,"""My mom is bigger.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m164),trimmed: lower coverage/quality (strong match for 29 expansion Recipes)
+ic_mr2_067,ingredient,"""You're not my boss!""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m164),trimmed: lower coverage/quality (strong match for 6 expansion Recipes)
+ic_mr2_071,ingredient,Playing tag with bulldozers,action,action/event,crew_round2.csv,round 2 (written for rc_m179),trimmed: lower coverage/quality (strong match for 28 expansion Recipes)
+ic_mr2_072,ingredient,Recess lasting until bedtime,event,event/thinglike,crew_round2.csv,round 2 (written for rc_m179),trimmed: lower coverage/quality (strong match for 8 expansion Recipes)
+ic_mr2_079,ingredient,"""The dog licked your pillow.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m184),trimmed: lower coverage/quality (strong match for 31 expansion Recipes)
+ic_mr2_080,ingredient,"""Brush your toes too.""",action,action/event/speech,crew_round2.csv,round 2 (written for rc_m184),trimmed: lower coverage/quality (strong match for 31 expansion Recipes)
+ic_mr2_083,ingredient,Pushing the bus uphill,action,action/event,crew_round2.csv,round 2 (written for rc_m187),trimmed: lower coverage/quality (strong match for 28 expansion Recipes)
+ic_mr2_086,ingredient,Crayon Box Crunch,food,food/sound/thinglike,crew_round2.csv,round 2 (written for rc_m198),near-duplicate of a base card
+ic_mr2_091,ingredient,Barking Grape,food,action/food/sound,crew_round2.csv,round 2 (written for rc_m198),trimmed: lower coverage/quality (strong match for 9 expansion Recipes)
+ic_mx011,ingredient,Napping on the piano,action,action/event/sound,crew:new_ingredients_tagged.json,new (written for rc_m016),pass 3: pushed out of the expansion by a stronger new card
+ic_mx013,ingredient,"""Your mom said it's fine""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m016),pass 3: pushed out of the expansion by a stronger new card
+ic_mx031,ingredient,The spaghetti noodle wiggle,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m053),trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_mx048,ingredient,Counting sheep out loud,action,action/event/sound,crew:new_ingredients_tagged.json,new (written for rc_m106),near-duplicate of a base card
+ic_mx054,ingredient,"""My goldfish needed it""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m111),trimmed: lower coverage/quality (strong match for 19 expansion Recipes)
+ic_mx064,ingredient,"""The floor is my closet""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m122),pass 3: pushed out of the expansion by a stronger new card
+ic_mx103,ingredient,"""I need a bigger mirror""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m154),pass 3: pushed out of the expansion by a stronger new card
+ic_mx106,ingredient,With a fork and knife,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m161),trimmed: lower coverage/quality (strong match for 33 expansion Recipes)
+ic_mx107,ingredient,Peeling it with your toes,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m161),trimmed: lower coverage/quality (strong match for 5 expansion Recipes)
+ic_mx112,ingredient,"""Please wipe your paws""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m164),trimmed: lower coverage/quality (strong match for 34 expansion Recipes)
+ic_mx120,ingredient,"""Your pillow is a waffle""",thing,speech,crew:new_ingredients_tagged.json,new (written for rc_m184),"food round 18 Nov evening: swapped out for ""Mount Everest Mint Chip"" (rc_m005); was: strong match for 8 expansion Recipes and 24 of all 200"
+ic_m582,ingredient,A playground on the moon,place,thinglike,mild_batch7.json,,"food round 18 Nov evening: swapped out for ""The Senator's Sensible Sherbet"" (rc_m005); was: strong match for 8 expansion Recipes and 23 of all 200"
+rc_m046_original_wording,recipe_text_only,The newest recess game,event,,mild_batch3.json,c,record only: original wording replaced by Crew fix (same ID now carries the new text)
+rc_m140_original_wording,recipe_text_only,What the moon does all day,nature,,mild_batch7.json,b,record only: original wording replaced by Crew fix (same ID now carries the new text)

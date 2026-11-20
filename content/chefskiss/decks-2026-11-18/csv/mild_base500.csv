@@ -1,0 +1,501 @@
+card_id,type,text,subject,answer_type,source,crew_fix,reason
+rc_m001,recipe,A terrible name for a puppy,animal,any,mild_batch1.json,,284 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m002,recipe,What the dog secretly does at night,animal,action/event/thinglike,mild_batch1.json,,266 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m003,recipe,The worst thing to find in your lunchbox,food,thinglike,mild_batch1.json,,241 strong matches in all cards; 3.27 fitting per 4-card hand in base
+rc_m007,recipe,A silly name for a new kitten,animal,any,mild_batch9.json,,306 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m012,recipe,The worst pet to bring to school,animal,thinglike,mild_batch2.json,,173 strong matches in all cards; 3.62 fitting per 4-card hand in base
+rc_m014,recipe,The worst animal to share a bed with,animal,thinglike,mild_batch3.json,,173 strong matches in all cards; 3.62 fitting per 4-card hand in base
+rc_m019,recipe,The worst thing to leave for the tooth fairy,thing,thinglike,mild_batch3.json,,193 strong matches in all cards; 2.68 fitting per 4-card hand in base
+rc_m020,recipe,What the bus driver is secretly thinking,person,thinglike,mild_batch2.json,,611 strong matches in all cards; 2.52 fitting per 4-card hand in base
+rc_m023,recipe,What Santa does in July,person,action/event/thinglike,mild_batch3.json,,822 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m025,recipe,What the lunch lady is really cooking,person,thinglike,mild_batch5.json,,611 strong matches in all cards; 2.52 fitting per 4-card hand in base
+rc_m026,recipe,The worst thing for a babysitter to forget,person,thinglike,mild_batch3.json,,611 strong matches in all cards; 2.52 fitting per 4-card hand in base
+rc_m027,recipe,Mom's newest rule,person,action/event,mild_batch6.json,,110 strong matches in all cards; 1.56 fitting per 4-card hand in base
+rc_m030,recipe,The tooth fairy's newest side job,person,thinglike,mild_batch4.json,,611 strong matches in all cards; 2.52 fitting per 4-card hand in base
+rc_m034,recipe,A terrible pizza topping,food,food,mild_batch2.json,,135 strong matches in all cards; 1.28 fitting per 4-card hand in base
+rc_m035,recipe,The worst thing to dip in ketchup,food,thinglike,mild_batch4.json,,354 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m037,recipe,What's really in the mystery meat,food,thinglike,mild_batch5.json,,354 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m038,recipe,The newest flavor of juice box,food,food,mild_batch2.json,,135 strong matches in all cards; 1.28 fitting per 4-card hand in base
+rc_m039,recipe,The worst birthday cake ever,food,thinglike,mild_batch3.json,,354 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m040,recipe,A rejected cereal mascot,food,any,mild_batch5.json,,306 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m042,recipe,What's hiding in the back of the fridge,food,thinglike,mild_batch4.json,,354 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m043,recipe,The yuckiest dessert in the world,food,food,mild_batch5.json,,135 strong matches in all cards; 1.28 fitting per 4-card hand in base
+rc_m051,recipe,A brand-new holiday,event,thinglike,mild_batch4.json,,206 strong matches in all cards; 3.86 fitting per 4-card hand in base
+rc_m055,recipe,The worst thing to bring on a field trip,event,thinglike,mild_batch4.json,,207 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_m056,recipe,The worst thing to do in the bathtub,event,thinglike,mild_batch3.json,,207 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_m058,recipe,The worst thing to see at the zoo,event,thinglike,mild_batch4.json,,207 strong matches in all cards; 3.86 fitting per 4-card hand in base
+rc_m059,recipe,The weirdest thing at the county fair,event,thinglike,mild_batch4.json,,207 strong matches in all cards; 3.84 fitting per 4-card hand in base
+rc_m063,recipe,The worst bedtime story ever,event,thinglike,mild_batch5.json,,207 strong matches in all cards; 3.86 fitting per 4-card hand in base
+rc_m065,recipe,The worst toy ever invented,thing,thinglike,mild_batch2.json,,186 strong matches in all cards; 3.31 fitting per 4-card hand in base
+rc_m066,recipe,A rejected crayon color,thing,thinglike,mild_batch2.json,,186 strong matches in all cards; 3.31 fitting per 4-card hand in base
+rc_m067,recipe,The worst thing to find under your bed,thing,thinglike,mild_batch2.json,,186 strong matches in all cards; 3.31 fitting per 4-card hand in base
+rc_m071,recipe,The worst thing to find in your sock,thing,thinglike,mild_batch5.json,,186 strong matches in all cards; 3.31 fitting per 4-card hand in base
+rc_m076,recipe,What the vacuum cleaner is afraid of,thing,thinglike,mild_batch8.json,,186 strong matches in all cards; 3.31 fitting per 4-card hand in base
+rc_m078,recipe,What's really in the teachers' lounge,place,thinglike,mild_batch4.json,,186 strong matches in all cards; 2.98 fitting per 4-card hand in base
+rc_m079,recipe,The worst place for a nap,place,thinglike,mild_batch5.json,,186 strong matches in all cards; 2.98 fitting per 4-card hand in base
+rc_m081,recipe,What's hiding in the school basement,place,thinglike,mild_batch3.json,,186 strong matches in all cards; 2.98 fitting per 4-card hand in base
+rc_m087,recipe,What's really behind the dentist's door,place,thinglike,mild_batch8.json,,186 strong matches in all cards; 2.98 fitting per 4-card hand in base
+rc_m090,recipe,The newest song on the radio,pop_culture,any,mild_batch7.json,,268 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m092,recipe,The worst sidekick for a superhero,pop_culture,thinglike,mild_batch2.json,,143 strong matches in all cards; 3.24 fitting per 4-card hand in base
+rc_m094,recipe,A rejected movie title,pop_culture,any,mild_batch8.json,,268 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m097,recipe,The worst cartoon ever,pop_culture,thinglike,mild_batch4.json,,143 strong matches in all cards; 3.24 fitting per 4-card hand in base
+rc_m098,recipe,A terrible name for a pirate ship,pop_culture,any,mild_batch6.json,,268 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m099,recipe,A silly name for a dragon,pop_culture,any,mild_batch3.json,,268 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m103,recipe,What makes Dad scream,feeling,action/event/thinglike,mild_batch3.json,,295 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m104,recipe,The thing that scares monsters,feeling,thinglike,mild_batch4.json,,208 strong matches in all cards; 3.88 fitting per 4-card hand in base
+rc_m109,recipe,The worst thing to dream about,feeling,thinglike,mild_batch2.json,,208 strong matches in all cards; 3.88 fitting per 4-card hand in base
+rc_m113,recipe,The worst job in the world,person,thinglike,mild_batch4.json,,212 strong matches in all cards; 3.68 fitting per 4-card hand in base
+rc_m115,recipe,My new nickname at school,person,any,mild_batch6.json,,344 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m116,recipe,What I want to be when I grow up,person,thinglike,mild_batch2.json,,212 strong matches in all cards; 3.68 fitting per 4-card hand in base
+rc_m119,recipe,The newest member of the family,person,thinglike,mild_batch4.json,,212 strong matches in all cards; 3.68 fitting per 4-card hand in base
+rc_m120,recipe,The worst thing to be famous for,person,thinglike,mild_batch2.json,,212 strong matches in all cards; 3.68 fitting per 4-card hand in base
+rc_m126,recipe,How I really brushed my teeth,action,action/event,mild_batch9.json,,133 strong matches in all cards; 1.42 fitting per 4-card hand in base
+rc_m127,recipe,The worst way to eat spaghetti,action,action/event,mild_batch9.json,,133 strong matches in all cards; 1.45 fitting per 4-card hand in base
+rc_m131,recipe,The worst way to wash the dog,action,action/event,mild_batch4.json,,133 strong matches in all cards; 1.08 fitting per 4-card hand in base
+rc_m132,recipe,The worst way to stop hiccups,action,action/event,mild_batch4.json,,133 strong matches in all cards; 1.45 fitting per 4-card hand in base
+rc_m133,recipe,The secret to winning tag,action,action/event,mild_batch4.json,,130 strong matches in all cards; 1.04 fitting per 4-card hand in base
+rc_m137,recipe,The real reason it's raining,nature,thinglike,mild_batch4.json,,306 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m138,recipe,What's really at the end of the rainbow,nature,thinglike,mild_batch8.json,,306 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m139,recipe,The worst thing to plant in the garden,nature,thinglike,mild_batch3.json,,306 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m142,recipe,What really makes thunder,nature,sound/speech/thinglike,mild_batch7.json,,327 strong matches in all cards; 3.59 fitting per 4-card hand in base
+rc_m143,recipe,The worst thing to find in a puddle,nature,thinglike,mild_batch5.json,,306 strong matches in all cards; 3.43 fitting per 4-card hand in base
+rc_m145,recipe,A terrible name for a teddy bear,thing,any,mild_batch2.json,,309 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m146,recipe,The newest toy at the store,thing,thinglike,mild_batch3.json,,260 strong matches in all cards; 3.35 fitting per 4-card hand in base
+rc_m150,recipe,The worst thing to keep in your pocket,thing,thinglike,mild_batch3.json,,260 strong matches in all cards; 3.35 fitting per 4-card hand in base
+rc_m153,recipe,The worst thing to bring to the beach,place,thinglike,mild_batch12.json,,224 strong matches in all cards; 3.46 fitting per 4-card hand in base
+rc_m155,recipe,What the teddy bear does all day,thing,action/event/thinglike,mild_batch11.json,,319 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m156,recipe,The newest ride at the park,place,thinglike,mild_batch10.json,,230 strong matches in all cards; 3.96 fitting per 4-card hand in base
+rc_m157,recipe,The worst thing to share with your brother,action,thinglike,mild_batch11.json,,480 strong matches in all cards; 3.30 fitting per 4-card hand in base
+rc_m158,recipe,What the dog would buy at the store,animal,thinglike,mild_batch11.json,,160 strong matches in all cards; 3.22 fitting per 4-card hand in base
+rc_m159,recipe,The worst thing to find in the mailbox,thing,thinglike,mild_batch12.json,,429 strong matches in all cards; 3.89 fitting per 4-card hand in base
+rc_m162,recipe,What really makes the toast pop up,thing,thinglike,mild_batch10.json,,500 strong matches in all cards; 3.88 fitting per 4-card hand in base
+rc_m163,recipe,The worst thing to wear to a wedding,thing,thinglike,mild_batch11.json,,204 strong matches in all cards; 3.77 fitting per 4-card hand in base
+rc_m166,recipe,The worst animal to have as a teacher,animal,thinglike,mild_batch10.json,,523 strong matches in all cards; 3.66 fitting per 4-card hand in base
+rc_m167,recipe,What the moon eats for breakfast,nature,thinglike,mild_batch10.json,,368 strong matches in all cards; 3.09 fitting per 4-card hand in base
+rc_m168,recipe,The worst thing to do at the library,place,thinglike,mild_batch12.json,,237 strong matches in all cards; 3.91 fitting per 4-card hand in base
+rc_m170,recipe,What the scarecrow is secretly afraid of,person,thinglike,mild_batch12.json,,506 strong matches in all cards; 3.78 fitting per 4-card hand in base
+rc_m171,recipe,The worst thing to hide in a pillow,thing,thinglike,mild_batch11.json,,389 strong matches in all cards; 3.04 fitting per 4-card hand in base
+rc_m172,recipe,The worst prize at the fair,thing,thinglike,mild_batch11.json,,168 strong matches in all cards; 3.68 fitting per 4-card hand in base
+rc_m173,recipe,A silly name for a race car,thing,any,mild_batch10.json,,300 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m174,recipe,The real reason the cat won't come inside,animal,thinglike,mild_batch10.json,,253 strong matches in all cards; 3.88 fitting per 4-card hand in base
+rc_m175,recipe,The worst thing to get stuck in a tree,nature,thinglike,mild_batch10.json,,454 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m176,recipe,What the garbage truck dreams about,thing,thinglike,mild_batch11.json,,399 strong matches in all cards; 3.16 fitting per 4-card hand in base
+rc_m177,recipe,The worst thing to see in the rearview mirror,thing,thinglike,mild_batch12.json,,203 strong matches in all cards; 3.89 fitting per 4-card hand in base
+rc_m178,recipe,The worst thing to find in Grandma's cookie jar,food,thinglike,mild_batch10.json,,508 strong matches in all cards; 3.89 fitting per 4-card hand in base
+rc_m180,recipe,The worst thing for a snowman to eat,nature,thinglike,mild_batch12.json,,428 strong matches in all cards; 3.13 fitting per 4-card hand in base
+rc_m181,recipe,What's really making that noise in the closet,place,sound/speech/thinglike,mild_batch11.json,,608 strong matches in all cards; 3.96 fitting per 4-card hand in base
+rc_m182,recipe,The worst thing to bring to a sleepover,event,thinglike,mild_batch12.json,,399 strong matches in all cards; 3.74 fitting per 4-card hand in base
+rc_m185,recipe,What the kitten wants for its birthday,animal,thinglike,mild_batch11.json,,444 strong matches in all cards; 3.14 fitting per 4-card hand in base
+rc_m186,recipe,The worst thing to pour on pancakes,food,thinglike,mild_batch10.json,,180 strong matches in all cards; 3.40 fitting per 4-card hand in base
+rc_m188,recipe,The worst thing to find on your pizza,food,thinglike,mild_batch12.json,,263 strong matches in all cards; 3.27 fitting per 4-card hand in base
+rc_m189,recipe,What the penguin packs for vacation,animal,thinglike,mild_batch11.json,,278 strong matches in all cards; 3.92 fitting per 4-card hand in base
+rc_m190,recipe,The worst thing to bring to the doctor,place,thinglike,mild_batch10.json,,235 strong matches in all cards; 3.91 fitting per 4-card hand in base
+rc_m191,recipe,A silly thing to keep in a piggy bank,thing,thinglike,mild_batch10.json,,208 strong matches in all cards; 3.96 fitting per 4-card hand in base
+rc_m192,recipe,What the baby is really dreaming about,person,thinglike,mild_batch12.json,,174 strong matches in all cards; 3.85 fitting per 4-card hand in base
+rc_m193,recipe,The worst thing to use as a hat,thing,thinglike,mild_batch12.json,,163 strong matches in all cards; 3.60 fitting per 4-card hand in base
+rc_m194,recipe,The worst thing to hide from Mom,thing,thinglike,mild_batch12.json,,468 strong matches in all cards; 3.79 fitting per 4-card hand in base
+rc_m195,recipe,A terrible name for a hamster wheel,thing,any,mild_batch12.json,,356 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m196,recipe,What the umbrella does when it's sunny,thing,action/event/thinglike,mild_batch12.json,,285 strong matches in all cards; 4.00 fitting per 4-card hand in base
+rc_m197,recipe,The worst thing to bring to a picnic with ants,event,thinglike,mild_batch10.json,,478 strong matches in all cards; 3.88 fitting per 4-card hand in base
+rc_m199,recipe,The worst thing to find in your slipper,thing,thinglike,mild_batch12.json,,488 strong matches in all cards; 2.92 fitting per 4-card hand in base
+rc_m200,recipe,A terrible name for a tooth fairy,person,any,mild_batch11.json,,345 strong matches in all cards; 4.00 fitting per 4-card hand in base
+ic_m002,ingredient,A burping fairy,person,sound/thinglike,mild_batch1.json,,strong match for 55 base Recipes
+ic_m003,ingredient,A shy fire truck,thing,thinglike,mild_batch1.json,,strong match for 23 base Recipes
+ic_m004,ingredient,A house-sized pancake,food,food/thinglike,mild_batch1.json,,strong match for 64 base Recipes
+ic_m005,ingredient,Grandpa's stinky sock collection,thing,thinglike,mild_batch1.json,,strong match for 49 base Recipes
+ic_m006,ingredient,A sleepy race car,thing,thinglike,mild_batch1.json,,strong match for 21 base Recipes
+ic_m008,ingredient,A dragon scared of kittens,animal,thinglike,mild_batch1.json,,strong match for 73 base Recipes
+ic_m010,ingredient,A toothless tooth fairy,person,thinglike,mild_batch1.json,,strong match for 51 base Recipes
+ic_m013,ingredient,A squirrel doing the dishes,animal,thinglike,mild_batch4.json,,strong match for 43 base Recipes
+ic_m020,ingredient,A puppy brushing its teeth,animal,thinglike,mild_batch8.json,,strong match for 40 base Recipes
+ic_m021,ingredient,A bunny doing karate,animal,thinglike,mild_batch7.json,,strong match for 40 base Recipes
+ic_m022,ingredient,A goldfish playing piano,animal,sound/thinglike,mild_batch7.json,,strong match for 40 base Recipes
+ic_m024,ingredient,A pig in bubbles,animal,thinglike,mild_batch7.json,,strong match for 40 base Recipes
+ic_m025,ingredient,A llama on a swing,animal,thinglike,mild_batch5.json,,strong match for 40 base Recipes
+ic_m026,ingredient,A sheep counting kids,animal,thinglike,mild_batch9.json,,strong match for 40 base Recipes
+ic_m027,ingredient,An octopus tying shoelaces,animal,thinglike,mild_batch4.json,,strong match for 40 base Recipes
+ic_m028,ingredient,A penguin selling lemonade,animal,thinglike,mild_batch3.json,,strong match for 40 base Recipes
+ic_m029,ingredient,A parrot who tattles,animal,speech/thinglike,mild_batch7.json,,strong match for 40 base Recipes
+ic_m030,ingredient,A cat ordering pizza,animal,thinglike,mild_batch7.json,,strong match for 43 base Recipes
+ic_m032,ingredient,A worm doing push-ups,animal,thinglike,mild_batch7.json,,strong match for 40 base Recipes
+ic_m033,ingredient,A hedgehog getting a hug,animal,thinglike,mild_batch2.json,,strong match for 40 base Recipes
+ic_m034,ingredient,A beaver building a sandcastle,animal,thinglike,mild_batch6.json,,strong match for 40 base Recipes
+ic_m038,ingredient,A giraffe on a trike,animal,thinglike,mild_batch2.json,,strong match for 40 base Recipes
+ic_m054,ingredient,A burping hippo,animal,sound/thinglike,mild_batch2.json,,strong match for 58 base Recipes
+ic_m055,ingredient,A dog licking your sandwich,animal,thinglike,mild_batch3.json,,strong match for 58 base Recipes
+ic_m056,ingredient,A goat eating homework,animal,thinglike,mild_batch5.json,,strong match for 58 base Recipes
+ic_m057,ingredient,A llama that spits,animal,thinglike,mild_batch7.json,,strong match for 58 base Recipes
+ic_m058,ingredient,A sneezing elephant,animal,sound/thinglike,mild_batch3.json,,strong match for 58 base Recipes
+ic_m059,ingredient,A slimy slug sandwich,food,food/thinglike,mild_batch9.json,,strong match for 58 base Recipes
+ic_m060,ingredient,A pigeon on your pizza,animal,thinglike,mild_batch2.json,,strong match for 58 base Recipes
+ic_m061,ingredient,A cat throwing up hairballs,animal,thinglike,mild_batch6.json,,strong match for 58 base Recipes
+ic_m062,ingredient,A seagull stealing fries,animal,thinglike,mild_batch6.json,,strong match for 58 base Recipes
+ic_m063,ingredient,A puppy with stinky breath,animal,thinglike,mild_batch3.json,,strong match for 58 base Recipes
+ic_m064,ingredient,A frog in the bathtub,animal,thinglike,mild_batch4.json,,strong match for 58 base Recipes
+ic_m065,ingredient,A stinky wet dog,animal,thinglike,mild_batch5.json,,strong match for 58 base Recipes
+ic_m075,ingredient,A mouse-sized lion,animal,thinglike,mild_batch6.json,,strong match for 33 base Recipes
+ic_m081,ingredient,A poodle eating with forks,animal,thinglike,mild_batch5.json,,strong match for 70 base Recipes
+ic_m085,ingredient,A dog who's the mayor,animal,thinglike,mild_batch9.json,,strong match for 67 base Recipes
+ic_m086,ingredient,A cat running the school,animal,thinglike,mild_batch8.json,,strong match for 67 base Recipes
+ic_m087,ingredient,A hamster police officer,animal,thinglike,mild_batch3.json,,strong match for 67 base Recipes
+ic_m088,ingredient,A goose crossing guard,animal,thinglike,mild_batch6.json,,strong match for 67 base Recipes
+ic_m089,ingredient,A raccoon bus driver,animal,thinglike,mild_batch3.json,,strong match for 67 base Recipes
+ic_m090,ingredient,A squirrel lifeguard,animal,thinglike,mild_batch3.json,,strong match for 67 base Recipes
+ic_m091,ingredient,A turtle mail carrier,animal,thinglike,mild_batch6.json,,strong match for 67 base Recipes
+ic_m092,ingredient,An owl with a clipboard,animal,thinglike,mild_batch2.json,,strong match for 67 base Recipes
+ic_m093,ingredient,A bossy bulldog,animal,thinglike,mild_batch4.json,,strong match for 67 base Recipes
+ic_m094,ingredient,A chicken who's the principal,animal,thinglike,mild_batch6.json,,strong match for 67 base Recipes
+ic_m095,ingredient,A dinosaur who loves broccoli,animal,thinglike,mild_batch7.json,,strong match for 49 base Recipes
+ic_m096,ingredient,A shark that's vegetarian,animal,thinglike,mild_batch4.json,,strong match for 46 base Recipes
+ic_m097,ingredient,A cat who loves baths,animal,thinglike,mild_batch5.json,,strong match for 46 base Recipes
+ic_m098,ingredient,A bat with a night-light,animal,thinglike,mild_batch5.json,,strong match for 46 base Recipes
+ic_m099,ingredient,A fish that can't swim,animal,thinglike,mild_batch2.json,,strong match for 46 base Recipes
+ic_m100,ingredient,A dog that hates walks,animal,thinglike,mild_batch3.json,,strong match for 46 base Recipes
+ic_m101,ingredient,A super slow cheetah,animal,thinglike,mild_batch3.json,,strong match for 46 base Recipes
+ic_m102,ingredient,A lazy bee,animal,thinglike,mild_batch8.json,,strong match for 46 base Recipes
+ic_m103,ingredient,A grumpy puppy,animal,thinglike,mild_batch6.json,,strong match for 46 base Recipes
+ic_m104,ingredient,A shy peacock,animal,thinglike,mild_batch8.json,,strong match for 46 base Recipes
+ic_m105,ingredient,A quiet rooster,animal,thinglike,mild_batch7.json,,strong match for 46 base Recipes
+ic_m106,ingredient,A bossy kitten,animal,thinglike,mild_batch9.json,,strong match for 46 base Recipes
+ic_m107,ingredient,A polite tiger,animal,thinglike,mild_batch8.json,,strong match for 46 base Recipes
+ic_m108,ingredient,A gentle shark,animal,thinglike,mild_batch9.json,,strong match for 46 base Recipes
+ic_m122,ingredient,A talking cheese stick,food,food/speech/thinglike,mild_batch5.json,,strong match for 25 base Recipes
+ic_m129,ingredient,Soggy cereal,food,food/thinglike,mild_batch3.json,,strong match for 57 base Recipes
+ic_m130,ingredient,A half-eaten sandwich,food,food/thinglike,mild_batch5.json,,strong match for 57 base Recipes
+ic_m131,ingredient,A moldy orange,food,food/thinglike,mild_batch2.json,,strong match for 57 base Recipes
+ic_m132,ingredient,Green milk,food,food/thinglike,mild_batch5.json,,strong match for 57 base Recipes
+ic_m133,ingredient,Ketchup on ice cream,food,food/thinglike,mild_batch8.json,,strong match for 57 base Recipes
+ic_m134,ingredient,Pickle juice popsicle,food,food/thinglike,mild_batch6.json,,strong match for 57 base Recipes
+ic_m136,ingredient,A hair in your soup,food,food/thinglike,mild_batch4.json,,strong match for 57 base Recipes
+ic_m137,ingredient,A squished banana,food,food/thinglike,mild_batch3.json,,strong match for 57 base Recipes
+ic_m138,ingredient,Broccoli for dessert,food,food/thinglike,mild_batch2.json,,strong match for 57 base Recipes
+ic_m140,ingredient,Peanut butter on a pickle,food,food/thinglike,mild_batch5.json,,strong match for 57 base Recipes
+ic_m141,ingredient,Mustard in your milk,food,food/thinglike,mild_batch7.json,,strong match for 57 base Recipes
+ic_m142,ingredient,A sock in the spaghetti,food,food/thinglike,mild_batch6.json,,strong match for 57 base Recipes
+ic_m143,ingredient,Gum under the table,food,food/thinglike,mild_batch8.json,,strong match for 57 base Recipes
+ic_m145,ingredient,Spinach milkshake,food,food/thinglike,mild_batch6.json,,strong match for 57 base Recipes
+ic_m146,ingredient,Sardine pudding,food,food/thinglike,mild_batch9.json,,strong match for 57 base Recipes
+ic_m147,ingredient,Mushy peas everywhere,food,food/thinglike,mild_batch2.json,,strong match for 57 base Recipes
+ic_m148,ingredient,Toothpaste on toast,food,food/thinglike,mild_batch9.json,,strong match for 57 base Recipes
+ic_m149,ingredient,A car-sized meatball,food,food/thinglike,mild_batch5.json,,strong match for 64 base Recipes
+ic_m150,ingredient,A gigantic pickle,food,food/thinglike,mild_batch8.json,,strong match for 64 base Recipes
+ic_m152,ingredient,A donut house,food,food/thinglike,mild_batch8.json,,strong match for 64 base Recipes
+ic_m153,ingredient,A bathtub of pudding,food,food/thinglike,mild_batch4.json,,strong match for 64 base Recipes
+ic_m154,ingredient,A swimming pool of jello,food,food/thinglike,mild_batch2.json,,strong match for 64 base Recipes
+ic_m155,ingredient,A mountain of mashed potatoes,food,food/thinglike,mild_batch9.json,,strong match for 64 base Recipes
+ic_m156,ingredient,A sandwich taller than Dad,food,food/thinglike,mild_batch5.json,,strong match for 64 base Recipes
+ic_m157,ingredient,A canoe-sized carrot,food,food/thinglike,mild_batch9.json,,strong match for 64 base Recipes
+ic_m158,ingredient,A cookie bigger than you,food,food/thinglike,mild_batch4.json,,strong match for 64 base Recipes
+ic_m159,ingredient,A slide made of cheese,food,food/thinglike,mild_batch6.json,,strong match for 64 base Recipes
+ic_m160,ingredient,A river of chocolate milk,food,food/thinglike,mild_batch4.json,,strong match for 64 base Recipes
+ic_m161,ingredient,A playground-sized pizza,food,food/thinglike,mild_batch3.json,,strong match for 64 base Recipes
+ic_m162,ingredient,A popcorn snowstorm,food,food/thinglike,mild_batch8.json,,strong match for 64 base Recipes
+ic_m169,ingredient,Fancy chicken nuggets,food,food/thinglike,mild_batch4.json,,strong match for 63 base Recipes
+ic_m170,ingredient,Nuggets on a silver tray,food,food/thinglike,mild_batch9.json,,strong match for 63 base Recipes
+ic_m171,ingredient,A hot dog with cufflinks,food,food/thinglike,mild_batch4.json,,strong match for 63 base Recipes
+ic_m172,ingredient,Fancy fish sticks,food,food/thinglike,mild_batch8.json,,strong match for 63 base Recipes
+ic_m173,ingredient,Mac and cheese in crystal,food,food/thinglike,mild_batch3.json,,strong match for 63 base Recipes
+ic_m174,ingredient,A candlelit jelly sandwich,food,food/thinglike,mild_batch4.json,,strong match for 63 base Recipes
+ic_m175,ingredient,Gold-wrapped tater tots,food,food/thinglike,mild_batch2.json,,strong match for 63 base Recipes
+ic_m176,ingredient,Grilled cheese on fine china,food,food/thinglike,mild_batch7.json,,strong match for 63 base Recipes
+ic_m177,ingredient,Broccoli with a permission slip,food,food/thinglike,mild_batch7.json,,strong match for 37 base Recipes
+ic_m178,ingredient,A cookie's hall pass,food,food/thinglike,mild_batch6.json,,strong match for 37 base Recipes
+ic_m179,ingredient,Grapes waiting in line,food,food/thinglike,mild_batch9.json,,strong match for 37 base Recipes
+ic_m180,ingredient,An apple's report card,food,food/thinglike,mild_batch2.json,,strong match for 37 base Recipes
+ic_m181,ingredient,A sandwich on time-out,food,food/thinglike,mild_batch4.json,,strong match for 37 base Recipes
+ic_m182,ingredient,A potato on jury duty,food,food/thinglike,mild_batch5.json,,strong match for 37 base Recipes
+ic_m183,ingredient,Spaghetti taking attendance,food,food/thinglike,mild_batch7.json,,strong match for 37 base Recipes
+ic_m184,ingredient,A cracker in detention,food,food/thinglike,mild_batch8.json,,strong match for 37 base Recipes
+ic_m185,ingredient,Juice box homework,food,food/thinglike,mild_batch7.json,,strong match for 37 base Recipes
+ic_m214,ingredient,Dad's stinky sneakers,thing,thinglike,mild_batch8.json,,strong match for 49 base Recipes
+ic_m215,ingredient,A sticky remote control,thing,thinglike,mild_batch2.json,,strong match for 49 base Recipes
+ic_m216,ingredient,A crusty sock,thing,thinglike,mild_batch6.json,,strong match for 49 base Recipes
+ic_m217,ingredient,A smelly gym bag,thing,thinglike,mild_batch9.json,,strong match for 49 base Recipes
+ic_m218,ingredient,A soggy bath towel,thing,thinglike,mild_batch9.json,,strong match for 49 base Recipes
+ic_m219,ingredient,A slimy toothbrush,thing,thinglike,mild_batch3.json,,strong match for 49 base Recipes
+ic_m220,ingredient,Wet socks,thing,thinglike,mild_batch4.json,,strong match for 49 base Recipes
+ic_m221,ingredient,A lunchbox from last week,thing,thinglike,mild_batch5.json,,strong match for 49 base Recipes
+ic_m222,ingredient,A tissue someone used,thing,thinglike,mild_batch7.json,,strong match for 49 base Recipes
+ic_m223,ingredient,A drooly pacifier,thing,thinglike,mild_batch3.json,,strong match for 49 base Recipes
+ic_m224,ingredient,Muddy boots on the couch,thing,thinglike,mild_batch9.json,,strong match for 49 base Recipes
+ic_m225,ingredient,A sticky doorknob,thing,thinglike,mild_batch8.json,,strong match for 49 base Recipes
+ic_m226,ingredient,A wad of chewed gum,thing,thinglike,mild_batch7.json,,strong match for 49 base Recipes
+ic_m227,ingredient,A smelly diaper,thing,thinglike,mild_batch3.json,,strong match for 49 base Recipes
+ic_m228,ingredient,Toenail clippings,thing,thinglike,mild_batch9.json,,strong match for 49 base Recipes
+ic_m229,ingredient,Earwax on a Q-tip,thing,thinglike,mild_batch3.json,,strong match for 49 base Recipes
+ic_m230,ingredient,A stinky hamster cage,thing,thinglike,mild_batch5.json,,strong match for 49 base Recipes
+ic_m231,ingredient,A crusty paintbrush,thing,thinglike,mild_batch3.json,,strong match for 49 base Recipes
+ic_m233,ingredient,A tree-sized toothbrush,thing,thinglike,mild_batch7.json,,strong match for 53 base Recipes
+ic_m234,ingredient,A sneaker house,thing,thinglike,mild_batch8.json,,strong match for 53 base Recipes
+ic_m235,ingredient,A bus-sized backpack,thing,thinglike,mild_batch8.json,,strong match for 53 base Recipes
+ic_m236,ingredient,A skyscraper made of Legos,thing,thinglike,mild_batch7.json,,strong match for 53 base Recipes
+ic_m237,ingredient,A mile-long sock,thing,thinglike,mild_batch8.json,,strong match for 53 base Recipes
+ic_m239,ingredient,A building-sized beach ball,thing,thinglike,mild_batch3.json,,strong match for 53 base Recipes
+ic_m240,ingredient,A pillow fort skyscraper,thing,thinglike,mild_batch6.json,,strong match for 53 base Recipes
+ic_m241,ingredient,A lake-sized bathtub,thing,thinglike,mild_batch6.json,,strong match for 53 base Recipes
+ic_m242,ingredient,A giant teddy bear,thing,thinglike,mild_batch4.json,,strong match for 53 base Recipes
+ic_m243,ingredient,A fridge-sized juice box,food,food/thinglike,mild_batch3.json,,strong match for 56 base Recipes
+ic_m244,ingredient,A paper airplane with seats,thing,thinglike,mild_batch5.json,,strong match for 53 base Recipes
+ic_m251,ingredient,A toilet with a crown,thing,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m252,ingredient,A golden toilet plunger,thing,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m253,ingredient,A diamond-covered lunchbox,thing,thinglike,mild_batch6.json,,strong match for 50 base Recipes
+ic_m254,ingredient,A fancy flyswatter,thing,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m255,ingredient,A velvet trash can,thing,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m256,ingredient,A sparkly mop,thing,thinglike,mild_batch7.json,,strong match for 50 base Recipes
+ic_m257,ingredient,A rubber duck butler,thing,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m258,ingredient,A silver baby rattle,thing,sound/thinglike,mild_batch5.json,,strong match for 50 base Recipes
+ic_m259,ingredient,A chandelier in a doghouse,thing,thinglike,mild_batch6.json,,strong match for 50 base Recipes
+ic_m260,ingredient,A vending machine with rules,thing,thinglike,mild_batch7.json,,strong match for 29 base Recipes
+ic_m261,ingredient,A doorbell with a job,thing,sound/thinglike,mild_batch7.json,,strong match for 29 base Recipes
+ic_m262,ingredient,A broom running for president,thing,thinglike,mild_batch9.json,,strong match for 29 base Recipes
+ic_m263,ingredient,A refrigerator on vacation,thing,thinglike,mild_batch8.json,,strong match for 29 base Recipes
+ic_m264,ingredient,A traffic cone with feelings,thing,thinglike,mild_batch7.json,,strong match for 29 base Recipes
+ic_m265,ingredient,A sandbox with a guard,thing,thinglike,mild_batch7.json,,strong match for 29 base Recipes
+ic_m266,ingredient,A trampoline license,thing,thinglike,mild_batch9.json,,strong match for 29 base Recipes
+ic_m267,ingredient,A swing set timetable,thing,thinglike,mild_batch7.json,,strong match for 29 base Recipes
+ic_m268,ingredient,A crayon box meeting,thing,thinglike,mild_batch5.json,,strong match for 29 base Recipes
+ic_m269,ingredient,A toy box security guard,thing,thinglike,mild_batch8.json,,strong match for 29 base Recipes
+ic_m282,ingredient,Forty-seven rubber chickens,thing,thinglike,mild_batch9.json,,strong match for 14 base Recipes
+ic_m287,ingredient,A superhero afraid of spiders,person,thinglike,mild_batch6.json,,strong match for 50 base Recipes
+ic_m288,ingredient,A pirate who gets seasick,person,thinglike,mild_batch3.json,,strong match for 50 base Recipes
+ic_m289,ingredient,A wizard with no wand,person,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m290,ingredient,A clown who's very serious,person,thinglike,mild_batch5.json,,strong match for 50 base Recipes
+ic_m291,ingredient,A firefighter afraid of candles,person,thinglike,mild_batch2.json,,strong match for 50 base Recipes
+ic_m292,ingredient,A cowboy riding a bike,person,thinglike,mild_batch6.json,,strong match for 50 base Recipes
+ic_m293,ingredient,A pool noodle knight,person,thinglike,mild_batch5.json,,strong match for 50 base Recipes
+ic_m294,ingredient,A clumsy ninja,person,thinglike,mild_batch7.json,,strong match for 50 base Recipes
+ic_m295,ingredient,A princess who loves mud,person,thinglike,mild_batch5.json,,strong match for 50 base Recipes
+ic_m296,ingredient,A ballerina in boots,person,thinglike,mild_batch6.json,,strong match for 50 base Recipes
+ic_m297,ingredient,A chef who burns cereal,person,thinglike,mild_batch4.json,,strong match for 53 base Recipes
+ic_m298,ingredient,A doctor with hiccups,person,sound/thinglike,mild_batch3.json,,strong match for 50 base Recipes
+ic_m300,ingredient,An astronaut who gets carsick,person,thinglike,mild_batch5.json,,strong match for 50 base Recipes
+ic_m301,ingredient,A mermaid with sneakers,person,thinglike,mild_batch3.json,,strong match for 50 base Recipes
+ic_m302,ingredient,A robot that cries,person,thinglike,mild_batch2.json,,strong match for 50 base Recipes
+ic_m303,ingredient,A magician who sneezes rabbits,person,sound/thinglike,mild_batch3.json,,strong match for 50 base Recipes
+ic_m304,ingredient,A giant who's very shy,person,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m305,ingredient,A snowman in summer,person,thinglike,mild_batch8.json,,strong match for 50 base Recipes
+ic_m306,ingredient,Santa on a skateboard,person,thinglike,mild_batch3.json,,strong match for 50 base Recipes
+ic_m307,ingredient,The Easter Bunny on vacation,person,thinglike,mild_batch8.json,,strong match for 50 base Recipes
+ic_m308,ingredient,A pirate with a chicken,person,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m309,ingredient,A superhero in pajamas,person,thinglike,mild_batch9.json,,strong match for 50 base Recipes
+ic_m313,ingredient,The babysitter's snoring,person,sound/thinglike,mild_batch5.json,,strong match for 23 base Recipes
+ic_m314,ingredient,A substitute who only whispers,person,speech/thinglike,mild_batch7.json,,strong match for 23 base Recipes
+ic_m316,ingredient,Uncle Fred's mystery meatloaf,food,food/thinglike,mild_batch9.json,,strong match for 26 base Recipes
+ic_m317,ingredient,The lunch lady's magic ladle,person,thinglike,mild_batch6.json,,strong match for 26 base Recipes
+ic_m325,ingredient,The ice cream truck driver,person,thinglike,mild_batch3.json,,strong match for 26 base Recipes
+ic_m329,ingredient,A puppy who licks everything,animal,thinglike,mild_batch6.json,,strong match for 36 base Recipes
+ic_m337,ingredient,A baby with spaghetti hair,person,thinglike,mild_batch8.json,,strong match for 26 base Recipes
+ic_m342,ingredient,A bathtub burp,thing,sound/thinglike,mild_batch8.json,,strong match for 45 base Recipes
+ic_m343,ingredient,Eating a booger,action,action/event,mild_batch3.json,,strong match for 9 base Recipes
+ic_m349,ingredient,Tooting in yoga class,action,action/event/sound,mild_batch8.json,,strong match for 10 base Recipes
+ic_m351,ingredient,A sneeze on the window,thing,sound/thinglike,mild_batch3.json,,strong match for 45 base Recipes
+ic_m356,ingredient,Hiding in the laundry basket,action,action/event,mild_batch4.json,,strong match for 2 base Recipes
+ic_m360,ingredient,Waving at strangers' dogs,action,action/event,mild_batch2.json,,strong match for 2 base Recipes
+ic_m361,ingredient,Naming every ant,action,action/event,mild_batch2.json,,strong match for 2 base Recipes
+ic_m372,ingredient,Doing cartwheels in church,action,action/event,mild_batch7.json,,strong match for 2 base Recipes
+ic_m402,ingredient,The school nurse's office,place,thinglike,mild_batch5.json,,strong match for 5 base Recipes
+ic_m403,ingredient,The back seat forever,place,thinglike,mild_batch9.json,,strong match for 5 base Recipes
+ic_m404,ingredient,The doctor's waiting room,place,thinglike,mild_batch3.json,,strong match for 5 base Recipes
+ic_m405,ingredient,The dentist's chair,place,thinglike,mild_batch8.json,,strong match for 5 base Recipes
+ic_m408,ingredient,The lost and found box,place,thinglike,mild_batch6.json,,strong match for 5 base Recipes
+ic_m409,ingredient,Grandma's junk drawer,place,thinglike,mild_batch8.json,,strong match for 5 base Recipes
+ic_m411,ingredient,Bedtime stalling,place,thinglike,mild_batch5.json,,strong match for 5 base Recipes
+ic_m414,ingredient,A wedding for two snails,event,event/thinglike,mild_batch8.json,,strong match for 15 base Recipes
+ic_m418,ingredient,A bubble bath party,event,event/thinglike,mild_batch2.json,,strong match for 15 base Recipes
+ic_m422,ingredient,A dump field trip,event,event/thinglike,mild_batch4.json,,strong match for 15 base Recipes
+ic_m424,ingredient,A wedding food fight,event,event/thinglike,mild_batch2.json,,strong match for 15 base Recipes
+ic_m425,ingredient,An octopus tickle fight,event,event/thinglike,mild_batch7.json,,strong match for 15 base Recipes
+ic_m426,ingredient,A water balloon war,event,event/thinglike,mild_batch7.json,,strong match for 15 base Recipes
+ic_m432,ingredient,A rock with a face,nature,thinglike,mild_batch6.json,,strong match for 14 base Recipes
+ic_m434,ingredient,A snowball that won't melt,nature,thinglike,mild_batch7.json,,strong match for 14 base Recipes
+ic_m435,ingredient,A sleepy sunflower,nature,thinglike,mild_batch4.json,,strong match for 14 base Recipes
+ic_m441,ingredient,The sillies,feeling,event/thinglike,mild_batch9.json,,strong match for 9 base Recipes
+ic_m443,ingredient,Ants in your pants,feeling,event/thinglike,mild_batch4.json,,strong match for 9 base Recipes
+ic_m445,ingredient,Butterflies in your tummy,feeling,event/thinglike,mild_batch2.json,,strong match for 9 base Recipes
+ic_m446,ingredient,A case of the giggles,feeling,event/thinglike,mild_batch7.json,,strong match for 9 base Recipes
+ic_m447,ingredient,Bed head,feeling,event/thinglike,mild_batch3.json,,strong match for 9 base Recipes
+ic_m448,ingredient,Pins and needles,feeling,event/thinglike,mild_batch4.json,,strong match for 9 base Recipes
+ic_m450,ingredient,A sugar rush,feeling,event/thinglike,mild_batch8.json,,strong match for 9 base Recipes
+ic_m459,ingredient,A puppet show for goldfish,pop_culture,thinglike,mild_batch2.json,,strong match for 15 base Recipes
+ic_m494,ingredient,Grandma's lumpy oatmeal,food,food/thinglike,mild_batch2.json,,strong match for 25 base Recipes
+ic_m495,ingredient,Popcorn that won't stop popping,food,food/sound/thinglike,mild_batch8.json,,strong match for 25 base Recipes
+ic_m497,ingredient,A carrot stick sword,food,food/thinglike,mild_batch2.json,,strong match for 25 base Recipes
+ic_m509,ingredient,A dog chasing its tail,animal,thinglike,mild_batch6.json,,strong match for 36 base Recipes
+ic_m512,ingredient,A cat sitting on homework,animal,thinglike,mild_batch7.json,,strong match for 36 base Recipes
+ic_m513,ingredient,A dog hogging the bed,animal,thinglike,mild_batch7.json,,strong match for 36 base Recipes
+ic_m515,ingredient,A squirrel with your sandwich,animal,thinglike,mild_batch5.json,,strong match for 39 base Recipes
+ic_m517,ingredient,A parrot that copies Dad,animal,thinglike,mild_batch4.json,,strong match for 36 base Recipes
+ic_m520,ingredient,A dog at dinner,animal,thinglike,mild_batch7.json,,strong match for 39 base Recipes
+ic_m521,ingredient,A duck chasing kids,animal,thinglike,mild_batch8.json,,strong match for 36 base Recipes
+ic_m522,ingredient,A bunny chewing the wires,animal,thinglike,mild_batch3.json,,strong match for 36 base Recipes
+ic_m537,ingredient,A mailman delivering pizza,person,thinglike,mild_batch7.json,,strong match for 35 base Recipes
+ic_m538,ingredient,A dentist who loves candy,person,thinglike,mild_batch6.json,,strong match for 35 base Recipes
+ic_m541,ingredient,A zookeeper riding a duck,person,thinglike,mild_batch6.json,,strong match for 32 base Recipes
+ic_m543,ingredient,A barber who's bald,person,thinglike,mild_batch4.json,,strong match for 32 base Recipes
+ic_m545,ingredient,A teacher who never knows,person,thinglike,mild_batch4.json,,strong match for 32 base Recipes
+ic_m546,ingredient,A babysitter who naps,person,thinglike,mild_batch2.json,,strong match for 32 base Recipes
+ic_m547,ingredient,A ghost who says boo-hoo,person,speech/thinglike,mild_batch5.json,,strong match for 32 base Recipes
+ic_m548,ingredient,A vampire who loves garlic,person,thinglike,mild_batch7.json,,strong match for 32 base Recipes
+ic_m550,ingredient,Wearing two different shoes,action,action/event,mild_batch5.json,,strong match for 2 base Recipes
+ic_m551,ingredient,Falling asleep in your cereal,action,action/event,mild_batch2.json,,strong match for 2 base Recipes
+ic_m564,ingredient,A marker mustache,action,action/event,mild_batch3.json,,strong match for 2 base Recipes
+ic_m565,ingredient,Falling off a beanbag,action,action/event,mild_batch3.json,,strong match for 2 base Recipes
+ic_m588,ingredient,A kitchen ball pit,place,thinglike,mild_batch3.json,,strong match for 15 base Recipes
+ic_m589,ingredient,A bedroom with a waterfall,place,thinglike,mild_batch8.json,,strong match for 15 base Recipes
+ic_m590,ingredient,A classroom inside a whale,place,thinglike,mild_batch4.json,,strong match for 15 base Recipes
+ic_m596,ingredient,A doorbell that plays burps,thing,sound/thinglike,mild_batch4.json,,strong match for 16 base Recipes
+ic_m604,ingredient,A mouse with a flashlight,animal,thinglike,mild_batch10.json,,strong match for 40 base Recipes
+ic_m607,ingredient,A goose on roller skates,animal,thinglike,mild_batch12.json,,strong match for 40 base Recipes
+ic_m608,ingredient,A rabbit reading bedtime stories,animal,speech/thinglike,mild_batch11.json,,strong match for 40 base Recipes
+ic_m609,ingredient,A crab with a backpack,animal,thinglike,mild_batch10.json,,strong match for 40 base Recipes
+ic_m612,ingredient,A koala on a scooter,animal,thinglike,mild_batch10.json,,strong match for 40 base Recipes
+ic_m615,ingredient,A cat licking the butter,animal,thinglike,mild_batch11.json,,strong match for 58 base Recipes
+ic_m616,ingredient,A goat chewing your shoelace,animal,thinglike,mild_batch12.json,,strong match for 58 base Recipes
+ic_m617,ingredient,A bird pooping on Dad,animal,thinglike,mild_batch11.json,,strong match for 58 base Recipes
+ic_m618,ingredient,A hamster stuffing its cheeks,animal,thinglike,mild_batch10.json,,strong match for 58 base Recipes
+ic_m619,ingredient,A drooling bulldog,animal,thinglike,mild_batch10.json,,strong match for 58 base Recipes
+ic_m620,ingredient,A puppy rolling in mud,animal,thinglike,mild_batch12.json,,strong match for 58 base Recipes
+ic_m621,ingredient,A burping frog choir,animal,sound/thinglike,mild_batch12.json,,strong match for 58 base Recipes
+ic_m631,ingredient,A beagle with a badge,animal,thinglike,mild_batch11.json,,strong match for 67 base Recipes
+ic_m632,ingredient,A turtle teaching math,animal,thinglike,mild_batch12.json,,strong match for 67 base Recipes
+ic_m633,ingredient,A parrot reading the news,animal,speech/thinglike,mild_batch10.json,,strong match for 67 base Recipes
+ic_m634,ingredient,A bulldog security guard,animal,thinglike,mild_batch12.json,,strong match for 67 base Recipes
+ic_m635,ingredient,A poodle hall monitor,animal,thinglike,mild_batch10.json,,strong match for 67 base Recipes
+ic_m636,ingredient,A hamster principal,animal,thinglike,mild_batch12.json,,strong match for 67 base Recipes
+ic_m637,ingredient,A goat referee,animal,thinglike,mild_batch11.json,,strong match for 67 base Recipes
+ic_m638,ingredient,A rabbit weather reporter,animal,thinglike,mild_batch11.json,,strong match for 67 base Recipes
+ic_m642,ingredient,A muffin in a helmet,food,food/thinglike,mild_batch11.json,,strong match for 25 base Recipes
+ic_m644,ingredient,A banana phone call,food,food/speech/thinglike,mild_batch12.json,,strong match for 25 base Recipes
+ic_m647,ingredient,A taco doing yoga,food,food/thinglike,mild_batch11.json,,strong match for 25 base Recipes
+ic_m649,ingredient,A pancake wearing a cape,food,food/thinglike,mild_batch10.json,,strong match for 25 base Recipes
+ic_m650,ingredient,A cupcake with braces,food,food/thinglike,mild_batch10.json,,strong match for 25 base Recipes
+ic_m652,ingredient,A strawberry with freckles,food,food/thinglike,mild_batch10.json,,strong match for 25 base Recipes
+ic_m656,ingredient,A pretzel doing gymnastics,food,food/thinglike,mild_batch10.json,,strong match for 25 base Recipes
+ic_m657,ingredient,Ketchup on cereal,food,food/thinglike,mild_batch12.json,,strong match for 57 base Recipes
+ic_m658,ingredient,Pickle-flavored lollipops,food,food/thinglike,mild_batch10.json,,strong match for 57 base Recipes
+ic_m661,ingredient,A lick of a lemon,food,food/thinglike,mild_batch12.json,,strong match for 57 base Recipes
+ic_m662,ingredient,Sock-flavored gum,food,food/thinglike,mild_batch12.json,,strong match for 57 base Recipes
+ic_m663,ingredient,Cold soggy fries,food,food/thinglike,mild_batch11.json,,strong match for 57 base Recipes
+ic_m664,ingredient,Mayonnaise on a donut,food,food/thinglike,mild_batch12.json,,strong match for 57 base Recipes
+ic_m665,ingredient,Jelly on hot dogs,food,food/thinglike,mild_batch10.json,,strong match for 57 base Recipes
+ic_m666,ingredient,Hot sauce in apple juice,food,food/thinglike,mild_batch10.json,,strong match for 57 base Recipes
+ic_m667,ingredient,Soup with a fly,food,food/thinglike,mild_batch12.json,,strong match for 57 base Recipes
+ic_m668,ingredient,Mashed potato hair gel,food,food/thinglike,mild_batch12.json,,strong match for 57 base Recipes
+ic_m669,ingredient,Peas in your pudding,food,food/thinglike,mild_batch10.json,,strong match for 57 base Recipes
+ic_m670,ingredient,A sneezed-on salad,food,food/sound/thinglike,mild_batch12.json,,strong match for 57 base Recipes
+ic_m671,ingredient,Egg yolk on your shirt,food,food/thinglike,mild_batch10.json,,strong match for 57 base Recipes
+ic_m672,ingredient,Juice served in a teacup,food,food/thinglike,mild_batch12.json,,strong match for 63 base Recipes
+ic_m673,ingredient,Applesauce with a tiny umbrella,food,food/thinglike,mild_batch12.json,,strong match for 63 base Recipes
+ic_m674,ingredient,Cereal served by a butler,food,food/thinglike,mild_batch12.json,,strong match for 63 base Recipes
+ic_m675,ingredient,Pizza with a cloth napkin,food,food/thinglike,mild_batch11.json,,strong match for 63 base Recipes
+ic_m676,ingredient,Grapes on a silver spoon,food,food/thinglike,mild_batch10.json,,strong match for 63 base Recipes
+ic_m677,ingredient,A peanut butter tasting party,food,food/thinglike,mild_batch10.json,,strong match for 63 base Recipes
+ic_m694,ingredient,Sticky jelly fingers,thing,thinglike,mild_batch11.json,,strong match for 49 base Recipes
+ic_m695,ingredient,A sweaty baseball glove,thing,thinglike,mild_batch12.json,,strong match for 49 base Recipes
+ic_m696,ingredient,Grandpa's dentures in a glass,thing,thinglike,mild_batch11.json,,strong match for 49 base Recipes
+ic_m697,ingredient,A booger on the window,thing,thinglike,mild_batch10.json,,strong match for 49 base Recipes
+ic_m698,ingredient,A drippy ice cream cone,food,food/thinglike,mild_batch10.json,,strong match for 49 base Recipes
+ic_m699,ingredient,Wet sand in your swimsuit,thing,thinglike,mild_batch10.json,,strong match for 49 base Recipes
+ic_m700,ingredient,Mud in your socks,thing,thinglike,mild_batch12.json,,strong match for 49 base Recipes
+ic_m701,ingredient,Bubble gum on your shoe,thing,thinglike,mild_batch11.json,,strong match for 49 base Recipes
+ic_m702,ingredient,A spitty trumpet,thing,sound/thinglike,mild_batch12.json,,strong match for 49 base Recipes
+ic_m703,ingredient,A soggy Band-Aid,thing,thinglike,mild_batch10.json,,strong match for 49 base Recipes
+ic_m704,ingredient,A crumb-filled car seat,thing,thinglike,mild_batch12.json,,strong match for 49 base Recipes
+ic_m705,ingredient,Dog hair on everything,thing,thinglike,mild_batch11.json,,strong match for 49 base Recipes
+ic_m706,ingredient,A crystal sippy cup,thing,thinglike,mild_batch10.json,,strong match for 50 base Recipes
+ic_m707,ingredient,A golden lunch tray,thing,thinglike,mild_batch12.json,,strong match for 53 base Recipes
+ic_m708,ingredient,A chandelier in a treehouse,thing,thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m709,ingredient,A trophy for best burp,thing,sound/thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m710,ingredient,A gold medal for napping,thing,thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m711,ingredient,A toothbrush on a pillow,thing,thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m712,ingredient,An official nap schedule,thing,thinglike,mild_batch12.json,,strong match for 29 base Recipes
+ic_m713,ingredient,A homework contract,thing,thinglike,mild_batch12.json,,strong match for 29 base Recipes
+ic_m714,ingredient,A sign-up sheet for bedtime,thing,thinglike,mild_batch11.json,,strong match for 29 base Recipes
+ic_m715,ingredient,Hugging the mailbox,action,action/event,mild_batch12.json,,strong match for 2 base Recipes
+ic_m716,ingredient,Moonwalking to breakfast,action,action/event,mild_batch11.json,,strong match for 2 base Recipes
+ic_m717,ingredient,Saying hello to every tree,action,action/event/speech,mild_batch11.json,,strong match for 3 base Recipes
+ic_m725,ingredient,Clapping for the toaster,action,action/event/sound,mild_batch10.json,,strong match for 3 base Recipes
+ic_m726,ingredient,Giving the moon a name,action,action/event,mild_batch12.json,,strong match for 2 base Recipes
+ic_m731,ingredient,Burping during grace,action,action/event/sound,mild_batch11.json,,strong match for 10 base Recipes
+ic_m751,ingredient,Our teacher's secret snack drawer,person,thinglike,mild_batch12.json,,strong match for 26 base Recipes
+ic_m756,ingredient,The pizza delivery dog,person,thinglike,mild_batch10.json,,strong match for 26 base Recipes
+ic_m757,ingredient,A grumpy ice cream man,person,thinglike,mild_batch10.json,,strong match for 26 base Recipes
+ic_m758,ingredient,A knight on a tricycle,person,thinglike,mild_batch12.json,,strong match for 50 base Recipes
+ic_m759,ingredient,A mermaid in a bathtub,person,thinglike,mild_batch10.json,,strong match for 50 base Recipes
+ic_m760,ingredient,A magician's runaway rabbit,person,thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m761,ingredient,An astronaut in floaties,person,thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m762,ingredient,A clown at the library,person,thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m763,ingredient,A ninja in squeaky shoes,person,sound/thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m764,ingredient,A robot in a tutu,person,thinglike,mild_batch12.json,,strong match for 50 base Recipes
+ic_m765,ingredient,A ghost in a raincoat,person,thinglike,mild_batch10.json,,strong match for 50 base Recipes
+ic_m766,ingredient,A dragon at the dentist,person,thinglike,mild_batch11.json,,strong match for 50 base Recipes
+ic_m767,ingredient,A snowman at the beach,person,thinglike,mild_batch10.json,,strong match for 50 base Recipes
+ic_m768,ingredient,A hair salon for dogs,place,thinglike,mild_batch10.json,,strong match for 15 base Recipes
+ic_m775,ingredient,A barber shop for sheep,place,thinglike,mild_batch10.json,,strong match for 15 base Recipes
+ic_m777,ingredient,A laundromat for monsters,place,thinglike,mild_batch11.json,,strong match for 15 base Recipes
+ic_m779,ingredient,A tea party for ants,event,event/thinglike,mild_batch12.json,,strong match for 15 base Recipes
+ic_m780,ingredient,A parade of lawn mowers,event,event/thinglike,mild_batch10.json,,strong match for 15 base Recipes
+ic_m781,ingredient,A sock puppet wedding,event,event/thinglike,mild_batch10.json,,strong match for 15 base Recipes
+ic_m782,ingredient,A snowball fight in July,event,event/thinglike,mild_batch11.json,,strong match for 15 base Recipes
+ic_m783,ingredient,A talent show for vegetables,event,event/thinglike,mild_batch10.json,,strong match for 15 base Recipes
+ic_m784,ingredient,A race between slugs,event,event/thinglike,mild_batch10.json,,strong match for 15 base Recipes
+ic_m785,ingredient,A pajama day for pets,event,event/thinglike,mild_batch12.json,,strong match for 15 base Recipes
+ic_m786,ingredient,A marshmallow-eating contest,event,event/thinglike,mild_batch12.json,,strong match for 15 base Recipes
+ic_m790,ingredient,A ticklish cloud,nature,thinglike,mild_batch12.json,,strong match for 14 base Recipes
+ic_m792,ingredient,A daisy wearing sunglasses,nature,thinglike,mild_batch10.json,,strong match for 14 base Recipes
+ic_m793,ingredient,A pumpkin with a toothache,nature,thinglike,mild_batch11.json,,strong match for 14 base Recipes
+ic_m797,ingredient,A squirrel's shopping list,animal,thinglike,mild_batch12.json,,strong match for 40 base Recipes
+ic_m798,ingredient,A bunny's pencil case,animal,thinglike,mild_batch11.json,,strong match for 40 base Recipes
+ic_m799,ingredient,A tricycle parking ticket,thing,thinglike,mild_batch12.json,,strong match for 29 base Recipes
+ic_m801,ingredient,Using a leaf blower,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m802,ingredient,With a giant sponge,action,action/event,mild_batch13.json,,strong match for 19 base Recipes
+ic_m804,ingredient,Asking the kitten for help,action,action/event/speech,mild_batch13.json,,strong match for 14 base Recipes
+ic_m806,ingredient,Bowing politely to everyone,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m807,ingredient,Riding a very fast turtle,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m809,ingredient,Wearing oven mitts,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m810,ingredient,While singing opera loudly,action,action/event/sound,mild_batch13.json,,strong match for 17 base Recipes
+ic_m811,ingredient,Writing a very polite letter,action,action/event/speech,mild_batch13.json,,strong match for 17 base Recipes
+ic_m812,ingredient,Rolling there like a log,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m813,ingredient,Using a trampoline,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m814,ingredient,With a royal trumpet fanfare,action,action/event/sound,mild_batch13.json,,strong match for 17 base Recipes
+ic_m815,ingredient,Holding your breath forever,action,action/event,mild_batch13.json,,strong match for 19 base Recipes
+ic_m816,ingredient,Racing a goose,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m817,ingredient,Upside down on a skateboard,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m818,ingredient,With a bucket of pudding,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m821,ingredient,Using only your elbows,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m822,ingredient,Bouncing on a giant ball,action,action/event,mild_batch13.json,,strong match for 19 base Recipes
+ic_m823,ingredient,"Saying ""excuse me"" to everything",action,action/event/speech,mild_batch13.json,,strong match for 17 base Recipes
+ic_m824,ingredient,Curtsying to the bathtub,action,action/event,mild_batch13.json,,strong match for 15 base Recipes
+ic_m825,ingredient,Using a fire hose,action,action/event,mild_batch13.json,,strong match for 19 base Recipes
+ic_mr2_005,ingredient,A royal coronation ceremony,event,event/thinglike,crew_round2.csv,round 2 (written for rc_m009),pass 3: new card placed in base; strong match for 60 base Recipes
+ic_mr2_012,ingredient,A secret volcano lair,place,thinglike,crew_round2.csv,round 2 (written for rc_m009),pass 3: new card placed in base; strong match for 58 base Recipes
+ic_mr2_015,ingredient,A giant meatball rolling by,food,food/thinglike,crew_round2.csv,round 2 (written for rc_m010),pass 3: new card placed in base; strong match for 64 base Recipes
+ic_mr2_018,ingredient,A spaceship landed next door,event,event/thinglike,crew_round2.csv,round 2 (written for rc_m010),pass 3: new card placed in base; strong match for 66 base Recipes
+ic_mr2_019,ingredient,He's running for mayor,person,thinglike,crew_round2.csv,round 2 (written for rc_m010),pass 3: new card placed in base; strong match for 55 base Recipes
+ic_mr2_020,ingredient,Grandma's stinky cabbage soup,food,food/thinglike,crew_round2.csv,round 2 (written for rc_m010),pass 3: new card placed in base; strong match for 58 base Recipes
+ic_mr2_021,ingredient,Judge of the Supreme Court,person,thinglike,crew_round2.csv,round 2 (written for rc_m013),pass 3: new card placed in base; strong match for 55 base Recipes
+ic_mr2_022,ingredient,Waiter at a fancy restaurant,person,thinglike,crew_round2.csv,round 2 (written for rc_m013),pass 3: new card placed in base; strong match for 68 base Recipes
+ic_mr2_029,ingredient,A castle made of bubbles,place,thinglike,crew_round2.csv,round 2 (written for rc_m015),pass 3: new card placed in base; strong match for 58 base Recipes
+ic_mr2_032,ingredient,A private waterpark,place,thinglike,crew_round2.csv,round 2 (written for rc_m015),pass 3: new card placed in base; strong match for 58 base Recipes
+ic_mr2_033,ingredient,Tea with the queen,event,event/thinglike,crew_round2.csv,round 2 (written for rc_m015),pass 3: new card placed in base; strong match for 70 base Recipes
+ic_mr2_035,ingredient,A spaceship made of glass,thing,thinglike,crew_round2.csv,round 2 (written for rc_m015),pass 3: new card placed in base; strong match for 53 base Recipes
+ic_mx012,ingredient,Practicing royal waves,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m016),strong match for 15 base Recipes
+ic_mx016,ingredient,Talking only in rhymes,action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m021),strong match for 17 base Recipes
+ic_mx045,ingredient,Turning into a giant noodle,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m088),strong match for 19 base Recipes
+ic_mx046,ingredient,Growing a ten-foot nose,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m088),strong match for 19 base Recipes
+ic_mx047,ingredient,Making royal speeches nonstop,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m088),strong match for 15 base Recipes
+ic_mx053,ingredient,"""It is being officially reviewed""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m111),strong match for 20 base Recipes
+ic_mx057,ingredient,"""Farewell, peasants!""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m121),strong match for 17 base Recipes
+ic_mx059,ingredient,Bowing until you fall over,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m121),strong match for 21 base Recipes
+ic_mx070,ingredient,Asking the crosswalk politely,action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m124),strong match for 17 base Recipes
+ic_mx072,ingredient,"""Excuse me, Mister Car""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m124),strong match for 17 base Recipes
+ic_mx077,ingredient,Handing out royal invitations,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m128),strong match for 15 base Recipes
+ic_mx080,ingredient,"""My deepest apologies, madam""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m129),strong match for 17 base Recipes
+ic_mx082,ingredient,Sending a fancy sorry card,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m129),strong match for 15 base Recipes
+ic_mx084,ingredient,Tumbling down a big hill,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m130),strong match for 19 base Recipes
+ic_mx085,ingredient,Being pulled by a butler,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m130),strong match for 15 base Recipes
+ic_mx089,ingredient,Asking the couch nicely,action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m134),strong match for 17 base Recipes
+ic_mx092,ingredient,A goodbye parade with tubas,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m135),strong match for 15 base Recipes
+ic_mx093,ingredient,A formal goodbye ceremony,action,action/event,crew:new_ingredients_tagged.json,new (written for rc_m135),strong match for 15 base Recipes
+ic_mx109,ingredient,"""Good evening, Your Majesty""",action,action/event/speech,crew:new_ingredients_tagged.json,new (written for rc_m164),strong match for 17 base Recipes
+ic_mx125,ingredient,Mandatory sing-along to school,action,action/event/sound,crew:new_ingredients_tagged.json,new (written for rc_m187),strong match for 17 base Recipes
