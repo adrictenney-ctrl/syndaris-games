@@ -265,6 +265,8 @@ body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
 .ck-si-file { cursor: pointer; }
 
 .ck-lock { margin: 0; font-size: .8em; opacity: .8; flex-basis: 100%; }
+/* The deck pickers stay narrow; their long locked choices show in full when opened. */
+.settings select[data-set="deckMode"], .settings select[data-set="capsule"] { width: 19vmin; max-width: 19vmin; text-overflow: ellipsis; }
 
 /* ---------- "Write your own card" (account cards: 5 free, permanent) ---------- */
 .ck-ownbtn { white-space: nowrap; }

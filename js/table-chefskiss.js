@@ -1,14 +1,14 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=119';
+import * as K from './chefskiss.js?v=120';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
-import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned } from './chefskiss-decks.js?v=2';
+import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=119';
-import { movable } from './gesture.js?v=119';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=120';
+import { movable } from './gesture.js?v=120';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=119';
+import { topPicks } from './laugh-engine.js?v=120';
 
 // ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
@@ -227,7 +227,16 @@ function deckSelect(s) {
   return `<label>Cards <select data-set="deckMode">${DECK_MODES.map(m => {
     const locked = m !== 'base' && !open;
     return `<option value="${m}" ${m === cur ? 'selected' : ''} ${locked ? 'disabled' : ''}>${locked ? '🔒 ' : ''}${MODE_LABEL[m]}${locked ? ' (499 Dough in the Shop)' : ''}</option>`;
-  }).join('')}</select></label>`;
+  }).join('')}</select></label>${capsuleSelect(s)}`;
+}
+// Time Capsule: off, every unlocked decade mixed in, or one decade alone (Medium only).
+function capsuleSelect(s) {
+  const level = OFFICIAL_LEVELS[s.level] || 'mild', mine = unlocked();
+  const opts = [['off', 'Off', false], ['mix', 'Mix in my decades', !CAPSULES.some(id => mine.includes(id))]];
+  if (CAPSULE_ALONE_LEVELS.includes(level)) for (const id of CAPSULES) opts.push([id, `${DECKS[id].decade} only`, !mine.includes(id)]);
+  let cur = s.capsule || 'off';
+  if (!opts.some(([v, , locked]) => v === cur && !locked)) cur = 'off';
+  return `<label>Time Capsule <select data-set="capsule">${opts.map(([v, label, locked]) => `<option value="${v}" ${v === cur ? 'selected' : ''} ${locked ? 'disabled' : ''}>${locked ? '🔒 ' : ''}${label}${locked ? ' (499 Bread in the Shop)' : ''}</option>`).join('')}</select></label>`;
 }
 
 // "Write your own card" next to the Card level: opens the writer for whoever is signed in on this
@@ -248,13 +257,19 @@ const unlocked = () => [...new Set([...tvOwned, ...seatOwned])];
 function watchTv() {
   if (watching || typeof window === 'undefined') return;
   watching = true;
-  import('./dough.js?v=12').then(m => m.watchDecks(list => { tvOwned = cleanOwned(list); redrawLobby?.(); })).catch(() => {});
+  import('./dough.js?v=13').then(m => m.watchDecks(list => { tvOwned = cleanOwned(list); redrawLobby?.(); })).catch(() => {});
 }
 
 export default {
   defaults: { ...K.DEFAULTS },
   lobbyPlayers(players, redraw) { seatOwned = cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : []))); redrawLobby = redraw; watchTv(); },
-  applySetting(s, key, el) { if (key === 'deckMode') { s.deckMode = DECK_MODES.includes(el.value) ? el.value : 'base'; return true; } return false; },
+  applySetting(s, key, el) {
+    // A new level changes which Cards and Time Capsule choices are open: draw the settings again.
+    if (key === 'level') { s.level = Number(el.value); setTimeout(() => redrawLobby?.()); return true; }
+    if (key === 'deckMode') { s.deckMode = DECK_MODES.includes(el.value) ? el.value : 'base'; return true; }
+    if (key === 'capsule') { s.capsule = el.value === 'mix' || CAPSULES.includes(el.value) ? el.value : 'off'; return true; }
+    return false;
+  },
 
   settingsHTML(s) {
     // a timer saved from before the timers got longer shows (and starts) as the new default
@@ -279,7 +294,8 @@ export default {
   create(settings, players) {
     const owned = [...new Set([...tvOwned, ...cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : [])))])];
     const level = OFFICIAL_LEVELS[settings.level] || 'mild';
-    return K.createGame({ ...settings, deckMode: playableMode(level, settings.deckMode, owned) }, players);
+    const deckMode = playableMode(level, settings.deckMode, owned);
+    return K.createGame({ ...settings, deckMode, decks: tableDecks(level, deckMode, settings.capsule, owned) }, players);
   },
   act(g, seat, a) { const err = K.applyAction(g, seat, a); if (!err) laughRound(g); return err; },
   bot: K.botAction,

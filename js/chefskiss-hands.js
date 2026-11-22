@@ -5,7 +5,7 @@
 // The slot labels stay with the table; players never see them.
 import { CONFIG, rank } from './chefskiss-config.js?v=3';
 import { answerFit } from './ck-custom.js?v=1';
-import { inDecks } from './chefskiss-decks.js?v=2';
+import { inDecks } from './chefskiss-decks.js?v=3';
 
 const DIMS = ['subject', 'tone', 'scale', 'register', 'violation', 'status'];
 export const TAG_WEIGHTS = { subject: 1.0, tone: 1.5, scale: 1.0, register: 1.0, violation: 1.0, status: 1.0 };
@@ -141,7 +141,7 @@ export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.
 // The Chef's Recipe Card choices: eligible Recipes, weighted toward fresh ones with funnyTargets,
 // avoiding two choices with the same main subject when possible (SPEC.md Section 8.3).
 export function recipeChoices(cards, table, rng, n = CONFIG.recipeChoices) {
-  const ok = c => c && c.status === 'active' && c.type === 'recipe' && c.source !== 'organic' && c.level === table.level && inDecks(c, table.decks) && !table.blocked?.(c.text);
+  const ok = c => c && c.status === 'active' && c.type === 'recipe' && c.source !== 'organic' && c.level === table.level && inDecks(c, table.decks) && (!table.decadeFilter?.length || table.decadeFilter.includes(c.decade)) && !table.blocked?.(c.text);
   let pool = cards.filter(c => ok(c) && !table.usedCardIds?.has?.(c.id));
   if (pool.length < n) pool = cards.filter(ok);
   const weight = c => fresh(c) * (combosOf(c).length ? 1 : 0.3) + 0.01;

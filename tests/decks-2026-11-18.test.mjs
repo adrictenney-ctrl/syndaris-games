@@ -43,8 +43,8 @@ test('1. counts: six release decks of 100 + 400, unique IDs, no clash with the o
   assert.ok(old.length >= 2439, 'the old live cards are kept, retired');
   for (const c of old) assert.ok(!ids.has(c.id), `old id ${c.id} reused`);
   for (const c of CARDS) assert.ok(!(c.deckIds || []).some(d => /holdout/.test(d)), `${c.id} must never ship`);
-  // the live cards are exactly the three starters and the three Expansion - 1 decks
-  assert.deepEqual(new Set(active.map(c => c.id)), new Set(LEVELS.flatMap(l => [`${l}_base`, `${l}_expansion1`].flatMap(f => { const d = deck(f); return [...d.recipes, ...d.ingredients].map(c => c.id); }))));
+  // the live cards are exactly the three starters, the three Expansion - 1 decks and the Time Capsules
+  assert.deepEqual(new Set(active.filter(c => !c.deckIds.some(d => d.startsWith('deck_timecapsule_'))).map(c => c.id)), new Set(LEVELS.flatMap(l => [`${l}_base`, `${l}_expansion1`].flatMap(f => { const d = deck(f); return [...d.recipes, ...d.ingredients].map(c => c.id); }))));
   for (const f of LEVELS.map(l => `${l}_holdout_NOT_FOR_RELEASE`)) for (const c of deck(f).ingredients) assert.ok(!CARDS.some(x => x.id === c.id && x.status === 'active'), `holdout ${c.id} is live`);
 });
 
@@ -162,7 +162,7 @@ test('6. deck mode: starter, Expansion - 1 alone, or both; a locked Expansion pl
 
 test('the table only plays an Expansion someone at it owns, and the Shop sells each for 499 Dough', () => {
   const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
-  assert.match(read('../js/table-chefskiss.js'), /deckMode: playableMode\(level, settings\.deckMode, owned\)/);
+  assert.match(read('../js/table-chefskiss.js'), /const deckMode = playableMode\(level, settings\.deckMode, owned\)/);
   assert.match(read('../js/dough.js'), /deck_mild_exp1: \{ name: 'Mild Expansion - 1', price: 499 \}[\s\S]*deck_medium_exp1: \{ name: 'Medium Expansion - 1', price: 499 \}[\s\S]*deck_hot_exp1: \{ name: 'Hot Expansion - 1', price: 499 \}/);
   assert.match(read('../js/bread.js'), /data-deck=/);
 });

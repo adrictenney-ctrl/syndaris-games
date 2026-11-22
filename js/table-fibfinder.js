@@ -1,4 +1,4 @@
 // See table-words.js.
-import { fibfinderT } from './table-words.js?v=119';
+import { fibfinderT } from './table-words.js?v=120';
 
 export default fibfinderT;

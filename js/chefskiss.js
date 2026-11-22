@@ -2,8 +2,8 @@
 // Recipe Card (the prompt). Everyone else is an Apprentice and plays the Ingredient Card
 // from their hand that they think pairs best with it. The Chef must award exactly one
 // Chef's Kiss (1 point). The Chef role then passes to the left.
-import { CARDS } from './chefskiss-db.js?v=5';
-import { activeDecks } from './chefskiss-decks.js?v=2';
+import { CARDS } from './chefskiss-db.js?v=6';
+import { activeDecks } from './chefskiss-decks.js?v=3';
 import { CONFIG, OFFICIAL_LEVELS, TEAMS } from './chefskiss-config.js?v=3';
 import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=4';
 import { blockedWords, makeBlocker } from './parental.js?v=1';
@@ -62,7 +62,7 @@ export const levelOf = settings => OFFICIAL_LEVELS[settings.level] || 'mild';
 
 // Parent Controls: cards with a word this family blocked are never dealt (and can't be played).
 const blockerOf = g => makeBlocker(g.block);
-const tableOf = g => ({ level: levelOf(g.settings), decks: activeDecks(levelOf(g.settings), g.settings.deckMode), usedCardIds: new Set(g.used), blocked: blockerOf(g) });
+const tableOf = g => ({ level: levelOf(g.settings), decks: Array.isArray(g.settings.decks) && g.settings.decks.length ? g.settings.decks : activeDecks(levelOf(g.settings), g.settings.deckMode), usedCardIds: new Set(g.used), blocked: blockerOf(g) });
 const rngFor = (g, what) => makeRng(`${g.id}:${g.round}:${what}`);
 
 // The Chef is dealt fresh Recipe Card choices every round. House Recipes (the host's setting):

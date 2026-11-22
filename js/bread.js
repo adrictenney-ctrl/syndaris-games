@@ -99,15 +99,18 @@ async function sendGift(f) {
 }
 
 const EXPANSIONS = [['deck_mild_exp1', 'Mild Expansion - 1'], ['deck_medium_exp1', 'Medium Expansion - 1'], ['deck_hot_exp1', 'Hot Expansion - 1']];
+const CAPSULES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'].map(d => [`deck_timecapsule_${d}`, `Time Capsule: ${d}`]);
 const LOAF = '<svg class="loaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11c0-3.5 3.6-6 8-6s8 2.5 8 6c0 1.2-.8 2-2 2v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5c-1.2 0-2-.8-2-2z" fill="#e8b45a" stroke="#7a4a14" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 9l1 2M12 8.5l1 2M15 9l1 2" stroke="#7a4a14" stroke-width="1.3" stroke-linecap="round"/></svg>';
 async function buyDeck(id, btn) {
-  const name = EXPANSIONS.find(x => x[0] === id)?.[1] || 'that deck';
-  if (!state.signedIn) { deckMsg = 'Sign in to buy Expansions with your Dough.'; return redraw(); }
-  if (state.dough < 499) { deckMsg = `${name} costs 499 Dough. You have ${fmt(state.dough)}. Win games to earn 10 Dough each!`; return redraw(); }
+  const capsule = CAPSULES.some(x => x[0] === id), coin = capsule ? 'Bread' : 'Dough';
+  const name = [...EXPANSIONS, ...CAPSULES].find(x => x[0] === id)?.[1] || 'that deck';
+  if (!state.signedIn) { deckMsg = `Sign in to buy decks with your ${coin}.`; return redraw(); }
+  const have = capsule ? state.bread : state.dough;
+  if (have < 499) { deckMsg = `${name} costs 499 ${coin}. You have ${fmt(have)}.${capsule ? '' : ' Win games to earn 10 Dough each!'}`; return redraw(); }
   if (btn.dataset.sure !== '1') { btn.dataset.sure = '1'; btn.innerHTML = 'Buy for 499?'; return; }
   btn.disabled = true;
   try { await opts.buyDeck(id); deckMsg = `${name} is yours! Pick it next to Card level in Chef's Kiss.`; }
-  catch (e) { deckMsg = e?.code === 'poor' ? 'Not enough Dough yet.' : e?.code === 'permission-denied' ? 'Firebase said no (the new rules may not be published yet).' : 'Couldn\u2019t buy it right now. Check your connection and try again.'; }
+  catch (e) { deckMsg = e?.code === 'poor' ? `Not enough ${coin} yet.` : e?.code === 'permission-denied' ? 'Firebase said no (the new rules may not be published yet).' : 'Couldn\u2019t buy it right now. Check your connection and try again.'; }
   redraw();
 }
 
@@ -119,6 +122,12 @@ function draw() {
     <ul class="cart-packs">${EXPANSIONS.map(([id, name]) => { const own = state.decks.includes(id); return `<li class="cart-pack">
       <span class="cart-amt"><b>${name}</b></span>
       <button type="button" class="cart-buy dough" data-deck="${id}" ${own ? 'disabled' : ''}>${own ? 'Yours ✓' : '499 Dough'}</button>
+    </li>`; }).join('')}</ul>
+    <h3 class="cart-h">Chef's Kiss Time Capsules</h3>
+    <p class="cart-sub">One decade each, 500 cards (mostly Medium, some Mild and Hot). Turn them on under Time Capsule, next to Card level.${state.signedIn ? ` You have ${SLICE}<b>${fmt(state.bread)}</b> Bread.` : ''}</p>
+    <ul class="cart-packs">${CAPSULES.map(([id, name]) => { const own = state.decks.includes(id); return `<li class="cart-pack">
+      <span class="cart-amt"><b>${name}</b></span>
+      <button type="button" class="cart-buy bread" data-deck="${id}" ${own ? 'disabled' : ''}>${own ? 'Yours ✓' : '499 Bread'}</button>
     </li>`; }).join('')}</ul>
     ${deckMsg ? `<p class="cart-note" role="status">${esc(deckMsg)}</p>` : ''}
     <h3 class="cart-h">Bread</h3>

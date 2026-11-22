@@ -105,6 +105,8 @@ export const DECK_SHOP = {
   deck_mild_exp1: { name: 'Mild Expansion - 1', price: 499 },
   deck_medium_exp1: { name: 'Medium Expansion - 1', price: 499 },
   deck_hot_exp1: { name: 'Hot Expansion - 1', price: 499 },
+  // Time Capsules: 499 Bread each
+  ...Object.fromEntries(['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'].map(d => [`deck_timecapsule_${d}`, { name: `Time Capsule: ${d}`, price: 499, currency: 'bread' }])),
 };
 export async function buyDeck(id) {
   const u = currentUser(), item = DECK_SHOP[id];
@@ -116,8 +118,9 @@ export async function buyDeck(id) {
     const d = s.data() || { dough: 0 };
     const owned = Array.isArray(d.decks) ? d.decks : [];
     if (owned.includes(id)) return;
-    if ((d.dough || 0) < item.price) throw Object.assign(new Error('Not enough Dough'), { code: 'poor', have: d.dough || 0 });
-    tx.update(ref(u.uid), { dough: (d.dough || 0) - item.price, decks: [...owned, id], updatedAt: serverTimestamp() });
+    const coin = item.currency === 'bread' ? 'bread' : 'dough', have = d[coin] || 0;
+    if (have < item.price) throw Object.assign(new Error('Not enough ' + coin), { code: 'poor', have });
+    tx.update(ref(u.uid), { [coin]: have - item.price, decks: [...owned, id], updatedAt: serverTimestamp() });
   });
 }
 // The decks the signed-in account owns, as they change (read only: no wallet is made). cb([...ids]).

@@ -67,6 +67,9 @@ const release = RELEASE_FILES.every(f => fs.existsSync(path.join(RELEASE, f)));
 const DECKS = release ? RELEASE : path.join(SRC, 'decks');
 const deckFiles = release ? RELEASE_FILES : fs.existsSync(DECKS) ? fs.readdirSync(DECKS).filter(n => /.json$/i.test(n)).sort((a, b) => a.localeCompare(b, 'en', { numeric: true })) : [];
 const deckMode = deckFiles.length > 0;
+// Al's Time Capsule decks (21 Nov 2026): one decade each, 500 cards, heat set per card.
+const TIMECAPSULE = path.join(SRC, 'timecapsule');
+const capsuleFiles = release && fs.existsSync(TIMECAPSULE) ? fs.readdirSync(TIMECAPSULE).filter(n => /^timecapsule_\d{4}s\.json$/i.test(n)).sort() : [];
 // The level a deck file's cards belong to. "spicy_batch" files are the Hot (high school) deck: the
 // name is older than the 19 Oct 2026 rename. "college_batch" files are the Spicy (college) deck.
 const levelOfFile = name => (/^mild_/i.test(name) ? 'mild' : /^medium_/i.test(name) ? 'medium' : /^(spicy|hot)_/i.test(name) ? 'hot' : /^college_/i.test(name) ? 'spicy' : null);
@@ -78,11 +81,12 @@ function checkTagObj(g, where, label, partial) {
   }
   if (!partial) for (const axis of ['subject', 'tone', 'scale', 'register']) if (!g?.[axis]?.length) fail(where, `${label}: needs a ${axis} tag`);
 }
-for (const file of deckFiles) {
-  const fileLevel = levelOfFile(file);
-  if (!fileLevel) { fail(file, 'unknown deck file name (expected mild_, medium_, spicy_ or college_batch…)'); continue; }
+for (const file of [...deckFiles, ...capsuleFiles]) {
+  const capsule = capsuleFiles.includes(file);
+  const fileLevel = capsule ? null : levelOfFile(file);
+  if (!capsule && !fileLevel) { fail(file, 'unknown deck file name (expected mild_, medium_, spicy_ or college_batch…)'); continue; }
   let data;
-  try { data = JSON.parse(fs.readFileSync(path.join(DECKS, file), 'utf8')); } catch (e) { fail(file, 'not valid JSON: ' + e.message); continue; }
+  try { data = JSON.parse(fs.readFileSync(path.join(capsule ? TIMECAPSULE : DECKS, file), 'utf8')); } catch (e) { fail(file, 'not valid JSON: ' + e.message); continue; }
   const list = Array.isArray(data) ? data : [...(data.recipes || []), ...(data.ingredients || []), ...(data.cards || [])];
   list.forEach((d, i) => {
     const where = `${file}#${i + 1}${d?.id ? ' ' + d.id : ''}`;
@@ -93,10 +97,11 @@ for (const file of deckFiles) {
     const text = String(d.text || '').trim();
     if (!text || text.length > 120) fail(where, 'text must be 1–120 characters');
     // Every card in a file must be that file's level (a "spicy_batch" card may still say "spicy": it's Hot).
-    const level = d.level === fileLevel || (fileLevel === 'hot' && d.level === 'spicy') ? fileLevel : null;
-    if (!level) fail(where, `level "${d.level}" doesn't match the ${fileLevel} deck`);
+    // (Time Capsule cards set their heat per card: Mild, Medium or Hot.)
+    const level = capsule ? (['mild', 'medium', 'hot'].includes(d.level) ? d.level : null) : d.level === fileLevel || (fileLevel === 'hot' && d.level === 'spicy') ? fileLevel : null;
+    if (!level) fail(where, capsule ? `level "${d.level}" must be mild, medium or hot` : `level "${d.level}" doesn't match the ${fileLevel} deck`);
     checkTagObj(d.tags, where, 'tags', false);
-    const c = { id: d.id, type, level: level || fileLevel, text, tags: fill(d.tags), where, hint: String(d.hint || d.flavor || '').trim(),
+    const c = { id: d.id, type, level: level || fileLevel || 'medium', text, ...(capsule && d.decade ? { decadeOf: String(d.decade) } : {}), tags: fill(d.tags), where, hint: String(d.hint || d.flavor || '').trim(),
       meta: { knownness: d.audience?.knownness || 4, born: d.culture?.born ?? null, peak: d.culture?.peak ?? null, stale: d.culture?.stale ?? null } };
     if (type === 'recipe') {
       const combos = (Array.isArray(d.funnyTargetCombos) ? d.funnyTargetCombos : []).filter(x => x && typeof x === 'object');
@@ -111,7 +116,7 @@ for (const file of deckFiles) {
     if (Array.isArray(d.answerTypes)) c.answerTypes = d.answerTypes;
     if (d.aaCategory) c.aaCategory = d.aaCategory;
     if (Array.isArray(d.deckIds) && d.deckIds.length) c.deckIds = d.deckIds;
-    if (release && !(c.deckIds || []).every(x => /^deck_(mild|medium|hot)_(base|exp1)$/.test(x))) fail(where, 'only the starter and Expansion - 1 decks ship');
+    if (release && !(c.deckIds || []).every(x => (capsule ? /^deck_timecapsule_\d{4}s$/ : /^deck_(mild|medium|hot)_(base|exp1)$/).test(x))) fail(where, 'only the starter, Expansion - 1 and Time Capsule decks ship');
     cards.push(c);
   });
 }
@@ -192,7 +197,7 @@ const records = [];
 const used = new Set();
 for (const c of cards) {
   const prev = c.id ? byId.get(c.id) : byKey.get(`${c.type}|${c.text}`);
-  const decade = c.meta.born ? `${Math.floor(Number(c.meta.born) / 10) * 10}s` : undefined;
+  const decade = c.decadeOf || (c.meta.born ? `${Math.floor(Number(c.meta.born) / 10) * 10}s` : undefined);
   const r = {
     id: c.id || (prev ? prev.id : prefix[c.type] + String(++next[c.type]).padStart(6, '0')),
     type: c.type,
