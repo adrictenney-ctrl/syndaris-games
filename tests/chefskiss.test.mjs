@@ -41,13 +41,14 @@ test('family deck cards are only Mild, Medium or Hot (never Spicy or Hellfire Sc
   for (const c of active) assert.ok(OFFICIAL_LEVELS.includes(c.level), `${c.id} is ${c.level}`);
 });
 
-// Al's 18 Nov 2026 release: each level plays its free starter, exactly 100 Recipes + 400 Ingredients.
-test('each level is its free starter deck: exactly 100 Recipe Cards and 400 Ingredient Cards', () => {
-  for (const level of OFFICIAL_LEVELS) {
-    assert.equal(recipes.filter(c => c.level === level).length, 100, `${level} recipes`);
-    assert.equal(ingredients.filter(c => c.level === level).length, 400, `${level} ingredients`);
-    for (const c of active.filter(c => c.level === level)) assert.deepEqual(c.deckIds, [`deck_${level}_base`], c.id);
+// Al's 18 Nov 2026 release: each level has its free starter and its Expansion - 1, each exactly
+// 100 Recipes + 400 Ingredients.
+test('each level: a starter and an Expansion - 1, each exactly 100 Recipe Cards and 400 Ingredient Cards', () => {
+  for (const level of OFFICIAL_LEVELS) for (const deck of [`deck_${level}_base`, `deck_${level}_exp1`]) {
+    assert.equal(recipes.filter(c => c.level === level && c.deckIds.includes(deck)).length, 100, `${deck} recipes`);
+    assert.equal(ingredients.filter(c => c.level === level && c.deckIds.includes(deck)).length, 400, `${deck} ingredients`);
   }
+  for (const c of active) assert.equal(c.deckIds.length, 1, c.id);
 });
 
 test('every card has 1–2 tags on all 6 axes (CARD_RULES.md Section 3)', () => {

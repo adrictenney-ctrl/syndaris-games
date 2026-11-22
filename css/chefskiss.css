@@ -264,6 +264,8 @@ body[data-game="chefskiss"] #panel { padding-bottom: 12px; }
 .ck-si small { flex-basis: 100%; opacity: .75; }
 .ck-si-file { cursor: pointer; }
 
+.ck-lock { margin: 0; font-size: .8em; opacity: .8; flex-basis: 100%; }
+
 /* ---------- "Write your own card" (account cards: 5 free, permanent) ---------- */
 .ck-ownbtn { white-space: nowrap; }
 .settings .ck-ownbtn { font-size: .9em; padding: .5vmin 1.4vmin; }

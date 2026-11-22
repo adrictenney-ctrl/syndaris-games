@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <!-- Style from Settings: Vibrant (free), Classic or a skin (bought; skins dress the table and phones). -->
-  <script src="js/skin-boot.js?v=118" data-page="home"></script>
-  <link rel="stylesheet" href="css/cards.css?v=118">
-  <link rel="stylesheet" href="css/tablet.css?v=118">
+  <script src="js/skin-boot.js?v=119" data-page="home"></script>
+  <link rel="stylesheet" href="css/cards.css?v=119">
+  <link rel="stylesheet" href="css/tablet.css?v=119">
   <style>
     html { background: var(--onyx); }
     body {
@@ -387,6 +387,12 @@
     .gift-bread label { display: grid; gap: 4px; font-size: 14px; font-weight: 600; }
     .gift-bread input { font: inherit; font-weight: 400; min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--hairline-hi); background: rgba(255, 248, 230, .06); color: inherit; }
     .gift-msg { margin: 0; font-size: 14px; }
+    .cart-h { margin: 18px 0 4px; font-size: 17px; }
+    .cart-h.first { margin-top: 2px; }
+    .cart-sub .loaf { width: 18px; height: 18px; vertical-align: -4px; }
+    .cart-sub { margin: 0 0 10px; font-size: 14px; opacity: .8; }
+    .cart-buy.dough { white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+    .cart-buy .loaf { width: 18px; height: 18px; }
     @media (max-width: 600px) { .gear span { display: none; } .gear { padding: 0 10px; } .styles { gap: 8px; } }
 
     /* ---------- TV: just the library, every game on one screen ---------- */
@@ -402,7 +408,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=118">
+  <link rel="stylesheet" href="css/vibrant.css?v=119">
 </head>
 <body class="home">
   <header class="bar">
@@ -479,11 +485,11 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=118"></script>
+  <script type="module" src="js/tvnav.js?v=119"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=118';
-    import { ALIASES, nearWord } from './js/search-aliases.js?v=118';
-    import { sceneSVG } from './js/covers.js?v=118';
+    import { GAMES } from './js/games.js?v=119';
+    import { ALIASES, nearWord } from './js/search-aliases.js?v=119';
+    import { sceneSVG } from './js/covers.js?v=119';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
@@ -867,10 +873,10 @@
     codeIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); useCode(); } });
     amountIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addDough(); } });
     const showCodes = () => { codeRow.hidden = !wallet.signedIn || !amountRow.hidden; if (!wallet.signedIn) { amountRow.hidden = giftRow.hidden = true; say(''); } };
-    if (!onTV) import('./js/dough.js?v=11').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); B?.setBread(w); }); }).catch(() => {});
+    if (!onTV) import('./js/dough.js?v=12').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); B?.setBread(w); }); }).catch(() => {});
     // The shop (cart button): Bread packs. Bread is only ever bought.
     let B = null;
-    if (!onTV) import('./js/bread.js?v=2').then(m => { B = m; m.mountCart(document.getElementById('doughPill'), { signIn: () => document.getElementById('openAccount')?.click(), canGift: () => D?.canGiftBread() || false, gift: (to, n) => D.giftBread(to, n) }); m.setBread(wallet); }).catch(() => {});
+    if (!onTV) import('./js/bread.js?v=3').then(m => { B = m; m.mountCart(document.getElementById('doughPill'), { signIn: () => document.getElementById('openAccount')?.click(), canGift: () => D?.canGiftBread() || false, gift: (to, n) => D.giftBread(to, n), buyDeck: id => D.buyDeck(id) }); m.setBread(wallet); }).catch(() => {});
     // ---- Parent Controls (Settings → Family). They're kept in step with the parent's account; when
     // the list of turned-off games changes, the page reloads so they disappear (or come back) everywhere.
     const pcBtn = document.getElementById('openParental'), pcSum = document.getElementById('pcSummary');

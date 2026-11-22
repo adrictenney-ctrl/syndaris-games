@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { galaauctionT } from './table-choice.js?v=118';
+import { galaauctionT } from './table-choice.js?v=119';
 
 export default galaauctionT;

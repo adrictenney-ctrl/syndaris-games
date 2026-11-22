@@ -1,13 +1,14 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=118';
+import * as K from './chefskiss.js?v=119';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
+import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned } from './chefskiss-decks.js?v=2';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=118';
-import { movable } from './gesture.js?v=118';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=119';
+import { movable } from './gesture.js?v=119';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=118';
+import { topPicks } from './laugh-engine.js?v=119';
 
 // ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
@@ -219,6 +220,16 @@ function message(g, ctx) {
   return '';
 }
 
+// The deck setting: Starter deck, Expansion - 1 only, or both. A locked Expansion shows a lock.
+function deckSelect(s) {
+  const level = OFFICIAL_LEVELS[s.level] || 'mild', open = unlocked().includes(expansionOf(level));
+  const cur = playableMode(level, s.deckMode, unlocked());
+  return `<label>Cards <select data-set="deckMode">${DECK_MODES.map(m => {
+    const locked = m !== 'base' && !open;
+    return `<option value="${m}" ${m === cur ? 'selected' : ''} ${locked ? 'disabled' : ''}>${locked ? '🔒 ' : ''}${MODE_LABEL[m]}${locked ? ' (499 Dough in the Shop)' : ''}</option>`;
+  }).join('')}</select></label>`;
+}
+
 // "Write your own card" next to the Card level: opens the writer for whoever is signed in on this
 // screen, set to the deck selected here. (Players can also write theirs on their phone.)
 document.addEventListener('click', e => {
@@ -230,8 +241,20 @@ document.addEventListener('click', e => {
   import('./ck-owncards.js?v=1').then(m => m.openOwnCards({ level }));
 });
 
+// Expansions unlocked at this table: owned by the account signed in on this screen, or by any player
+// sitting at the table (their phone tells the table). Checked again when a game starts.
+let tvOwned = [], seatOwned = [], redrawLobby = null, watching = false;
+const unlocked = () => [...new Set([...tvOwned, ...seatOwned])];
+function watchTv() {
+  if (watching || typeof window === 'undefined') return;
+  watching = true;
+  import('./dough.js?v=12').then(m => m.watchDecks(list => { tvOwned = cleanOwned(list); redrawLobby?.(); })).catch(() => {});
+}
+
 export default {
   defaults: { ...K.DEFAULTS },
+  lobbyPlayers(players, redraw) { seatOwned = cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : []))); redrawLobby = redraw; watchTv(); },
+  applySetting(s, key, el) { if (key === 'deckMode') { s.deckMode = DECK_MODES.includes(el.value) ? el.value : 'base'; return true; } return false; },
 
   settingsHTML(s) {
     // a timer saved from before the timers got longer shows (and starts) as the new default
@@ -239,6 +262,7 @@ export default {
     const sel = (key, vals, label) => `<select data-set="${key}">${vals.map(v => `<option value="${v}" ${v === s[key] ? 'selected' : ''}>${label(v)}</option>`).join('')}</select>`;
     return `
       <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
+      ${deckSelect(s)}
       <button type="button" class="tool ck-ownbtn" data-ck-own="${OFFICIAL_LEVELS[s.level] || 'mild'}">✎ Write your own card</button>
       <label>House Recipes ${sel('houseRecipes', [1, 2, 0], v => ['Off', 'Mix in (up to 1 of 3)', 'Replace (players’ first)'][v])}</label>
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
@@ -251,7 +275,12 @@ export default {
   },
 
   lobbyInfo: s => ({ level: OFFICIAL_LEVELS[s?.level] || 'mild' }),
-  create: (settings, players) => K.createGame(settings, players),
+  // A locked Expansion falls back to the starter deck (Al's spec Section 7).
+  create(settings, players) {
+    const owned = [...new Set([...tvOwned, ...cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : [])))])];
+    const level = OFFICIAL_LEVELS[settings.level] || 'mild';
+    return K.createGame({ ...settings, deckMode: playableMode(level, settings.deckMode, owned) }, players);
+  },
   act(g, seat, a) { const err = K.applyAction(g, seat, a); if (!err) laughRound(g); return err; },
   bot: K.botAction,
   view: (g, seat) => laughView(g, seat, K.viewFor(g, seat)),

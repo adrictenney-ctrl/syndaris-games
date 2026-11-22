@@ -1,13 +1,13 @@
 // Chef's Kiss on a phone. Cards arrive face up: slide one
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=118';
-import { face, wireBulbs, esc } from './ck-face.js?v=118';
-import { movable } from './gesture.js?v=118';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=119';
+import { face, wireBulbs, esc } from './ck-face.js?v=119';
+import { movable } from './gesture.js?v=119';
 import { TEAMS } from './chefskiss-config.js?v=3';
 import { openWorkshop, myCards } from './ck-workshop.js?v=1';
 import { makeCustomCard } from './ck-custom.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=118';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=119';
 
 let ctx = null, v = null;
 let chosen = -1;
@@ -53,6 +53,7 @@ export function renderLobby(c) {
   setHud('#hudR', "Lifetime 💋", lifetime(), 'on this phone');
   document.getElementById('ckPhone')?.remove();
   ownLobby(c.st.lobby?.level || 'mild');
+  sendOwns(c);
 }
 
 // ---------------------------------------------------------------- "Write your own card"
@@ -69,6 +70,22 @@ function ownLobby(level) {
   el.innerHTML = `<div class="ck-ownlobby-deck"><small>Table deck</small><b>${LEVEL_NAME[level]}</b></div>
     <button type="button" class="panel-btn ck-ownbtn">✎ Write your own card</button>`;
   el.querySelector('button').onclick = () => import('./ck-owncards.js?v=1').then(m => m.openOwnCards({ level, onSaved: () => { ownSent = ''; } }));
+}
+// The Expansions this account owns unlock them at the table (sent once per room and account).
+let ownsSent = '';
+async function sendOwns(c) {
+  try {
+    const m = await import('./ck-owncards.js?v=1');
+    const u = await m.whoIs();
+    if (!u) return;
+    const key = c.st.room + ':' + u.uid;
+    if (ownsSent === key) return;
+    ownsSent = key;
+    const { db } = await import('./firebase.js?v=3');
+    const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
+    const decks = (await getDoc(doc(db, 'users', u.uid))).data()?.decks;
+    if (Array.isArray(decks) && decks.length) c.raw({ t: 'owns', decks });
+  } catch { ownsSent = ''; }
 }
 async function sendOwn() {
   if (!v || v.phase === 'over') return;
@@ -319,6 +336,7 @@ export function render(c) {
   }
   document.getElementById('ckOwnLobby')?.remove();
   sendOwn();
+  sendOwns(c);
   if (v.phase !== 'judge') chosen = -1;
   endsAt = v.left !== null ? Date.now() + v.left : 0;
   clearInterval(tickT);

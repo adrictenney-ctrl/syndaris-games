@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { foolsdefenseT } from './table-cardgames.js?v=118';
+import { foolsdefenseT } from './table-cardgames.js?v=119';
 
 export default foolsdefenseT;

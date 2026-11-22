@@ -54,7 +54,7 @@ export function watchWallet(cb) {
         const d = s.data() || {};
         const styles = Array.isArray(d.styles) ? d.styles : [];
         write(LS.owned, styles);
-        cb({ signedIn: true, dough: d.dough || 0, bread: d.bread || 0, styles, name: d.name || nameOf(u) });
+        cb({ signedIn: true, dough: d.dough || 0, bread: d.bread || 0, styles, decks: Array.isArray(d.decks) ? d.decks : [], name: d.name || nameOf(u) });
       }, () => cb({ signedIn: true, dough: 0, styles: read(LS.owned, []), offline: true }));
     } catch { cb({ signedIn: true, dough: 0, styles: read(LS.owned, []), offline: true }); }
   });
@@ -95,6 +95,38 @@ export async function buyStyle(id) {
     if ((d.styles || []).includes(id)) return;
     if ((d.dough || 0) < item.price) throw Object.assign(new Error('Not enough Dough'), { code: 'poor', have: d.dough || 0 });
     tx.update(ref(u.uid), { dough: increment(-item.price), styles: arrayUnion(id), updatedAt: serverTimestamp() });
+  });
+}
+
+// ---------------------------------------------------------------- Chef's Kiss Expansions
+// Each Expansion - 1 (Mild, Medium, Hot) is bought separately for 499 Dough. Owned decks are kept on
+// the wallet as decks: [...ids]; the rules only allow adding one known deck for exactly its price.
+export const DECK_SHOP = {
+  deck_mild_exp1: { name: 'Mild Expansion - 1', price: 499 },
+  deck_medium_exp1: { name: 'Medium Expansion - 1', price: 499 },
+  deck_hot_exp1: { name: 'Hot Expansion - 1', price: 499 },
+};
+export async function buyDeck(id) {
+  const u = currentUser(), item = DECK_SHOP[id];
+  if (!u) throw Object.assign(new Error('Sign in first'), { code: 'signin' });
+  if (!item) throw new Error('No such deck');
+  await ensureWallet(u);
+  await runTransaction(db, async tx => {
+    const s = await tx.get(ref(u.uid));
+    const d = s.data() || { dough: 0 };
+    const owned = Array.isArray(d.decks) ? d.decks : [];
+    if (owned.includes(id)) return;
+    if ((d.dough || 0) < item.price) throw Object.assign(new Error('Not enough Dough'), { code: 'poor', have: d.dough || 0 });
+    tx.update(ref(u.uid), { dough: (d.dough || 0) - item.price, decks: [...owned, id], updatedAt: serverTimestamp() });
+  });
+}
+// The decks the signed-in account owns, as they change (read only: no wallet is made). cb([...ids]).
+export function watchDecks(cb) {
+  let stop = null;
+  return onUser(u => {
+    stop?.(); stop = null;
+    if (!u) return cb([]);
+    stop = onSnapshot(ref(u.uid), s => cb(Array.isArray(s.data()?.decks) ? s.data().decks : []), () => cb([]));
   });
 }
 

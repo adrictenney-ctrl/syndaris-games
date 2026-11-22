@@ -7,7 +7,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { CARDS } from '../js/chefskiss-db.js';
 import { CONFIG } from '../js/chefskiss-config.js';
 import { buildHand, makeRng, targetScore, literalScore } from '../js/chefskiss-hands.js';
-import { DECKS, activeDecks, inDecks } from '../js/chefskiss-decks.js';
+import { DECKS, activeDecks, inDecks, playableMode, EXPANSION_PRICE } from '../js/chefskiss-decks.js';
 import * as K from '../js/chefskiss.js';
 
 const DIR = new URL('../content/chefskiss/decks-2026-11-18/', import.meta.url);
@@ -32,7 +32,7 @@ function csv(text) {
   return body.filter(r => r.length > 1).map(r => Object.fromEntries(head.map((h, i) => [h, r[i]])));
 }
 
-test('1. counts: six release decks of 100 + 400, unique IDs, no clash with the old cards, no holdout or paid card shipped', () => {
+test('1. counts: six release decks of 100 + 400, unique IDs, no clash with the old cards, no holdout card shipped', () => {
   const ids = new Map();
   for (const f of FILES) {
     const d = deck(f);
@@ -42,8 +42,10 @@ test('1. counts: six release decks of 100 + 400, unique IDs, no clash with the o
   const old = CARDS.filter(c => c.status === 'retired');
   assert.ok(old.length >= 2439, 'the old live cards are kept, retired');
   for (const c of old) assert.ok(!ids.has(c.id), `old id ${c.id} reused`);
-  for (const c of CARDS) assert.ok(!(c.deckIds || []).some(d => /holdout|exp1/.test(d)), `${c.id} must not ship yet`);
-  assert.deepEqual(new Set(active.map(c => c.id)), new Set(LEVELS.flatMap(l => { const d = deck(`${l}_base`); return [...d.recipes, ...d.ingredients].map(c => c.id); })));
+  for (const c of CARDS) assert.ok(!(c.deckIds || []).some(d => /holdout/.test(d)), `${c.id} must never ship`);
+  // the live cards are exactly the three starters and the three Expansion - 1 decks
+  assert.deepEqual(new Set(active.map(c => c.id)), new Set(LEVELS.flatMap(l => [`${l}_base`, `${l}_expansion1`].flatMap(f => { const d = deck(f); return [...d.recipes, ...d.ingredients].map(c => c.id); }))));
+  for (const f of LEVELS.map(l => `${l}_holdout_NOT_FOR_RELEASE`)) for (const c of deck(f).ingredients) assert.ok(!CARDS.some(x => x.id === c.id && x.status === 'active'), `holdout ${c.id} is live`);
 });
 
 test('2. levels: only mild, medium and hot; no Spicy or Hellfire Scorpion card anywhere in the bundle', () => {
@@ -92,7 +94,8 @@ const EXPECTED = {
 test('4. engine parity: the nine acceptance rows from Section 10', () => {
   for (const l of LEVELS) {
     // the base row from the shipped card database, the expansion rows from the deck files
-    const b = { recipes: active.filter(c => c.level === l && c.type === 'recipe'), ingredients: active.filter(c => c.level === l && c.type === 'ingredient') };
+    const starter = active.filter(c => c.level === l && c.deckIds.includes(`deck_${l}_base`));
+    const b = { recipes: starter.filter(c => c.type === 'recipe'), ingredients: starter.filter(c => c.type === 'ingredient') };
     const e = deck(`${l}_expansion1`);
     const views = { base: [b.recipes, b.ingredients], expansion: [e.recipes, e.ingredients], mixed: [[...b.recipes, ...e.recipes], [...b.ingredients, ...e.ingredients]] };
     for (const [name, [R, P]] of Object.entries(views)) {
@@ -125,21 +128,43 @@ test('5. dealer: 5 cards a hand (4 on-target + 1 random), no card in two hands i
   assert.doesNotThrow(() => buildHand([], null, { level: 'mild', decks: activeDecks('mild') }, { dealtThisRound: new Set() }, makeRng('x')));
 });
 
-test('6. deck mode: base deals only the free starter; paid decks stay locked until purchases exist', () => {
-  assert.equal(DECKS.deck_mild_exp1.kind, 'expansion');
+test('6. deck mode: starter, Expansion - 1 alone, or both; a locked Expansion plays the starter', () => {
+  assert.equal(EXPANSION_PRICE, 499);
   for (const l of LEVELS) {
+    assert.equal(DECKS[`deck_${l}_exp1`].kind, 'expansion');
+    assert.equal(DECKS[`deck_${l}_exp1`].dough, 499);
     assert.deepEqual(activeDecks(l, 'base'), [`deck_${l}_base`]);
-    assert.deepEqual(activeDecks(l, 'expansion'), [`deck_${l}_base`], 'expansion is locked');
-    assert.deepEqual(activeDecks(l, 'mixed'), [`deck_${l}_base`], 'mixed is locked');
-    assert.ok(!inDecks({ deckIds: [`deck_${l}_exp1`] }, activeDecks(l)), 'an expansion card is never dealt');
+    assert.deepEqual(activeDecks(l, 'expansion'), [`deck_${l}_exp1`]);
+    assert.deepEqual(activeDecks(l, 'mixed'), [`deck_${l}_base`, `deck_${l}_exp1`]);
+    assert.ok(!inDecks({ deckIds: [`deck_${l}_exp1`] }, activeDecks(l)), 'a starter table never deals an expansion card');
+    // each Expansion is bought separately: owning one level's doesn't unlock another's
+    assert.equal(playableMode(l, 'mixed', []), 'base');
+    assert.equal(playableMode(l, 'expansion', [`deck_${l}_exp1`]), 'expansion');
+    for (const other of LEVELS.filter(o => o !== l)) assert.equal(playableMode(l, 'mixed', [`deck_${other}_exp1`]), 'base');
   }
   const players = [0, 1, 2, 3].map(i => ({ name: 'P' + i }));
-  const g = K.createGame({ level: 0 }, players);
-  assert.equal(g.settings.deckMode, 'base');
-  for (const s of Object.keys(g.hands)) for (const h of g.hands[s]) {
-    const c = CARDS.find(x => x.id === (h.cardId || h.id || h));
-    if (c) assert.ok(c.deckIds.includes('deck_mild_base'), c.id);
-  }
+  const deckOf = id => CARDS.find(x => x.id === id)?.deckIds || [];
+  const play = (mode, want) => {
+    const g = K.createGame({ level: 0, deckMode: mode, target: 0, length: 0 }, players);
+    for (let r = 0; r < 4; r++) {
+      for (const id of g.recipes[g.chef]) assert.ok(want.some(d => deckOf(id).includes(d)), `${mode} recipe ${id}`);
+      K.applyAction(g, g.chef, { type: 'recipe', id: g.recipes[g.chef][0] });
+      for (const s of g.apprentices) for (const id of g.hands[s]) assert.ok(want.some(d => deckOf(id).includes(d)), `${mode} card ${id}`);
+      for (const s of g.apprentices) K.applyAction(g, s, { type: 'play', id: g.hands[s][0] });
+      K.applyAction(g, g.chef, { type: 'kiss', i: 0 });
+      K.applyAction(g, g.chef, { type: 'next' });
+    }
+  };
+  play('base', ['deck_mild_base']);
+  play('expansion', ['deck_mild_exp1']);
+  play('mixed', ['deck_mild_base', 'deck_mild_exp1']);
+});
+
+test('the table only plays an Expansion someone at it owns, and the Shop sells each for 499 Dough', () => {
+  const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
+  assert.match(read('../js/table-chefskiss.js'), /deckMode: playableMode\(level, settings\.deckMode, owned\)/);
+  assert.match(read('../js/dough.js'), /deck_mild_exp1: \{ name: 'Mild Expansion - 1', price: 499 \}[\s\S]*deck_medium_exp1: \{ name: 'Medium Expansion - 1', price: 499 \}[\s\S]*deck_hot_exp1: \{ name: 'Hot Expansion - 1', price: 499 \}/);
+  assert.match(read('../js/bread.js'), /data-deck=/);
 });
 
 test('7. rejoin: deckMode survives the table being saved and reloaded', () => {

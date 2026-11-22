@@ -1,9 +1,9 @@
 // Pardon Me! on the table: the race-home board with a 60-square track, coloured slides on every
 // side, and the card just drawn shown big.
-import * as P from './pardon.js?v=118';
-import { boardSVG } from './table-ludo.js?v=118';
-import { snap } from './cards.js?v=118';
-import { centerMsg, clearMsg } from './table-hearts.js?v=118';
+import * as P from './pardon.js?v=119';
+import { boardSVG } from './table-ludo.js?v=119';
+import { snap } from './cards.js?v=119';
+import { centerMsg, clearMsg } from './table-hearts.js?v=119';
 
 let root = null, key = '', lastCard = -1;
 export const pmCard = c => (c == null ? '<div class="pm-card back">🎩</div>' : `<div class="pm-card ${c === 'P' ? 'pardon' : ''}"><b>${c === 'P' ? '🎩' : c}</b><small>${P.CARD_TEXT[c]}</small></div>`);

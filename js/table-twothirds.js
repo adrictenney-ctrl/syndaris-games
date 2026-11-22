@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { twothirdsT } from './table-choice.js?v=118';
+import { twothirdsT } from './table-choice.js?v=119';
 
 export default twothirdsT;
