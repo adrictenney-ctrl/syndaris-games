@@ -49,6 +49,7 @@ export function watchWallet(cb) {
       await payPending();
       // Gifts waiting for this email: added now, and the page is told so it can say so.
       claimGifts(u).then(got => got.forEach(g => dispatchEvent(new CustomEvent('pod-gift', { detail: g })))).catch(() => {});
+      claimBread(u).then(got => got.forEach(g => dispatchEvent(new CustomEvent('pod-gift', { detail: { ...g, kind: 'bread' } })))).catch(() => {});
       stop = onSnapshot(ref(u.uid), s => {
         const d = s.data() || {};
         const styles = Array.isArray(d.styles) ? d.styles : [];
@@ -159,6 +160,49 @@ export async function giftDough(code, email, amount) {
   await batch.commit();
   await updateDoc(ref(u.uid), { devGrant: deleteField(), updatedAt: serverTimestamp() }).catch(() => {});
   return { to, amount: add };
+}
+
+// ---------------------------------------------------------------- Bread gifts
+// Bread is bought, except that two accounts can gift it: breadGifts/{id} = { to, amount, from,
+// createdAt }. The Firestore rules decide who may (by the signed-in, verified email); this page only
+// knows the emails' fingerprints, to decide whether to show the gift box.
+const BREAD_GIFTERS = new Set([
+  'c77f2fd5bb105646afe465e5840f819776cb1e3b2b5299168eaa2848378bd22f',
+  '9502e6e251c255b6bb0ac1ea9e451a29d47ecd4f8d0c23e3b0c085526606058a',
+]);
+export const MAX_BREAD_GIFT = 1e15;
+export async function canGiftBread() {
+  const u = currentUser();
+  if (!u?.email) return false;
+  return BREAD_GIFTERS.has(await sha256('pod-bread-gifter:' + u.email.trim().toLowerCase()));
+}
+export async function giftBread(email, amount) {
+  const u = currentUser();
+  if (!u) throw Object.assign(new Error('Sign in first'), { code: 'signin' });
+  const to = String(email || '').trim().toLowerCase(), add = Math.floor(Number(amount));
+  if (!emailOk(to)) throw Object.assign(new Error('Email'), { code: 'email' });
+  if (!(add > 0) || add > MAX_BREAD_GIFT) throw Object.assign(new Error('Amount'), { code: 'amount' });
+  await setDoc(doc(collection(db, 'breadGifts')), { to, amount: add, from: nameOf(u), createdAt: serverTimestamp() });
+  return { to, amount: add };
+}
+// Collect Bread gifts waiting for the signed-in player's email: each is added and removed in one step.
+async function claimBread(u) {
+  const email = (u.email || '').toLowerCase();
+  if (!email) return [];
+  const got = [];
+  const snap = await getDocs(query(collection(db, 'breadGifts'), where('to', '==', email)));
+  for (const g of snap.docs) {
+    const { amount, from } = g.data();
+    try {
+      const batch = writeBatch(db);
+      batch.update(ref(u.uid), { bread: increment(amount), breadClaim: g.id, updatedAt: serverTimestamp() });
+      batch.delete(g.ref);
+      await batch.commit();
+      got.push({ amount, from });
+    } catch {}
+  }
+  if (got.length) await updateDoc(ref(u.uid), { breadClaim: deleteField(), updatedAt: serverTimestamp() }).catch(() => {});
+  return got;
 }
 
 // Collect any gifts waiting for the signed-in player's email. Returns [{ amount, from }].

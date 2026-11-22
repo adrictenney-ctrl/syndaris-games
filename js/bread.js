@@ -25,11 +25,13 @@ const fmt = n => Number(n || 0).toLocaleString();
 // How much Bread each dollar buys, for the "best value" note (the biggest pack).
 const best = PACKS.reduce((a, p) => (p.bread / p.usd > a.bread / a.usd ? p : a), PACKS[0]);
 
-let state = { signedIn: false, bread: 0 }, cartBtn = null, dlg = null;
+let state = { signedIn: false, bread: 0 }, cartBtn = null, dlg = null, opts = {}, gifter = false, giftMsg = '';
 
 // The cart button and its window, placed before `beforeEl` in the top bar.
-export function mountCart(beforeEl, { signIn } = {}) {
+// opts: { signIn(), canGift() -> Promise<bool>, gift(email, amount) -> Promise<{ to, amount }> }
+export function mountCart(beforeEl, o = {}) {
   if (cartBtn || !beforeEl) return;
+  opts = o;
   cartBtn = document.createElement('button');
   cartBtn.type = 'button';
   cartBtn.className = 'cart-btn';
@@ -42,27 +44,56 @@ export function mountCart(beforeEl, { signIn } = {}) {
   dlg.id = 'cart';
   dlg.setAttribute('aria-labelledby', 'cartTitle');
   document.body.appendChild(dlg);
+  dlg.addEventListener('submit', e => { if (e.target.closest('.gift-bread')) { e.preventDefault(); sendGift(e.target); } });
   dlg.addEventListener('click', e => {
     if (e.target === dlg) return dlg.close();
     const a = e.target.closest('[data-a]')?.dataset.a;
     if (a === 'close') dlg.close();
-    if (a === 'signin') { dlg.close(); signIn?.(); }
+    if (a === 'signin') { dlg.close(); opts.signIn?.(); }
   });
-  cartBtn.onclick = () => { draw(); dlg.showModal(); };
+  cartBtn.onclick = async () => {
+    giftMsg = ''; gifter = false; draw(); dlg.showModal();
+    gifter = state.signedIn && !!(await Promise.resolve(opts.canGift?.()).catch(() => false));
+    if (gifter && dlg.open) draw();
+  };
   paint();
 }
 
 // Called with the wallet whenever it changes: { signedIn, bread }.
 export function setBread(w) {
   state = { signedIn: !!w?.signedIn, bread: Number(w?.bread) || 0 };
+  if (!state.signedIn) gifter = false;
   paint();
-  if (dlg?.open) draw();
+  if (dlg?.open) redraw();
 }
 
 function paint() {
   if (!cartBtn) return;
   cartBtn.innerHTML = CART + (state.signedIn ? `<span class="cart-bread">${SLICE}<b>${fmt(state.bread)}</b></span>` : '');
   cartBtn.title = state.signedIn ? `Shop · You have ${fmt(state.bread)} Bread` : 'Shop';
+}
+
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+// Redraw the window, keeping whatever is typed in the gift box.
+function redraw() {
+  const f = dlg.querySelector('.gift-bread'), to = f?.elements.to.value, n = f?.elements.n.value;
+  draw();
+  const g = dlg.querySelector('.gift-bread');
+  if (g && f) { g.elements.to.value = to; g.elements.n.value = n; }
+}
+async function sendGift(f) {
+  const to = f.elements.to.value.trim(), n = Math.floor(Number(f.elements.n.value));
+  const say = m => { giftMsg = m; redraw(); };
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) return say('Type their email address.');
+  if (!(n > 0)) return say('Type how much Bread to gift.');
+  f.querySelector('[type="submit"]').disabled = true;
+  try {
+    const g = await opts.gift(to, n);
+    giftMsg = `Gifted ${fmt(g.amount)} Bread to ${g.to}. They'll get it next time they sign in with that email.`;
+    draw();
+  } catch (e) {
+    say(e?.code === 'amount' ? 'That amount is too big.' : e?.code === 'permission-denied' ? 'Firebase said no. Your account needs a confirmed email, and the new rules need to be published.' : 'Couldn\u2019t send it right now. Check your connection and try again.');
+  }
 }
 
 function draw() {
@@ -79,5 +110,12 @@ function draw() {
       ? (state.signedIn ? 'Payments are handled securely by Paddle.' : 'Sign in to buy Bread. It’s saved to your account.')
       : 'Coming soon: Bread isn’t for sale yet.'}</p>
     ${!state.signedIn ? '<button type="button" class="shop-go" data-a="signin">Sign in</button>' : ''}
+    ${gifter ? `<form class="gift-bread" novalidate>
+      <h3>${SLICE} Gift Bread</h3>
+      <label><span>Their email</span><input name="to" type="email" autocomplete="off" placeholder="friend@example.com" maxlength="120"></label>
+      <label><span>How much Bread</span><input name="n" type="number" min="1" step="1" inputmode="numeric" placeholder="1000"></label>
+      <button type="submit" class="shop-go">Gift Bread</button>
+      ${giftMsg ? `<p class="gift-msg" role="status">${esc(giftMsg)}</p>` : ''}
+    </form>` : ''}
   </div>`;
 }

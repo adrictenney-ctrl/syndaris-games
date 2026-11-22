@@ -17,11 +17,20 @@ test('Bread is not for sale yet', () => {
   assert.equal(BUY_LIVE, false);
 });
 
-test('the site never writes Bread (only the server adds it after a payment)', () => {
+test('the site only adds Bread when collecting a gift (payments: the server adds it)', () => {
   assert.doesNotMatch(read('../js/bread.js'), /firebase|firestore|setDoc|updateDoc/, 'the shop never touches the database');
-  assert.doesNotMatch(read('../js/dough.js'), /bread\s*:\s*(increment|\d)/, 'the wallet code only reads Bread');
+  // the rules check the gift and remove it in the same step
+  const writes = read('../js/dough.js').match(/bread\s*:\s*(increment|\d)[^\r\n]*/g) || [];
+  assert.deepEqual(writes, ['bread: increment(amount), breadClaim: g.id, updatedAt: serverTimestamp() });']);
 });
 
 test('the cart button is in the home page top bar', () => {
   assert.match(read('../games.html'), /bread\.js\?v=\d+'\)\.then\(m => \{ B = m; m\.mountCart\(document\.getElementById\('doughPill'\)/);
+});
+
+test('only the two gifter accounts see the Gift Bread box, and their emails are not in the site code', async () => {
+  const src = read('../js/dough.js') + read('../js/bread.js') + read('../games.html');
+  assert.doesNotMatch(src, /adric.tenney|alwaller228/);
+  const { createHash } = await import('node:crypto');
+  for (const e of ['adric.tenney@gmail.com', 'alwaller228@gmail.com']) assert.ok(src.includes(createHash('sha256').update('pod-bread-gifter:' + e).digest('hex')), e);
 });

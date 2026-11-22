@@ -382,6 +382,11 @@
     .cart-buy { min-width: 92px; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 0; cursor: pointer; font: 800 15px/1 var(--ui); color: #2a1a06; background: #e8b45a; }
     .cart-buy:disabled { cursor: not-allowed; opacity: .55; }
     .cart-note { margin: 12px 0 0; font-size: 14px; opacity: .8; }
+    .gift-bread { display: grid; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--hairline-hi); }
+    .gift-bread h3 { display: flex; align-items: center; gap: 6px; margin: 0; font-size: 17px; }
+    .gift-bread label { display: grid; gap: 4px; font-size: 14px; font-weight: 600; }
+    .gift-bread input { font: inherit; font-weight: 400; min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--hairline-hi); background: rgba(255, 248, 230, .06); color: inherit; }
+    .gift-msg { margin: 0; font-size: 14px; }
     @media (max-width: 600px) { .gear span { display: none; } .gear { padding: 0 10px; } .styles { gap: 8px; } }
 
     /* ---------- TV: just the library, every game on one screen ---------- */
@@ -853,7 +858,7 @@
     addEventListener('pod-gift', e => {
       const note = document.createElement('div');
       note.className = 'home-note'; note.setAttribute('role', 'status');
-      note.textContent = `You got ${Number(e.detail.amount).toLocaleString()} Dough from ${e.detail.from || 'a friend'}!`;
+      note.textContent = `You got ${Number(e.detail.amount).toLocaleString()} ${e.detail.kind === 'bread' ? 'Bread' : 'Dough'} from ${e.detail.from || 'a friend'}!`;
       document.body.appendChild(note);
       setTimeout(() => note.remove(), 7000);
     });
@@ -862,10 +867,10 @@
     codeIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); useCode(); } });
     amountIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addDough(); } });
     const showCodes = () => { codeRow.hidden = !wallet.signedIn || !amountRow.hidden; if (!wallet.signedIn) { amountRow.hidden = giftRow.hidden = true; say(''); } };
-    if (!onTV) import('./js/dough.js?v=10').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); B?.setBread(w); }); }).catch(() => {});
+    if (!onTV) import('./js/dough.js?v=11').then(m => { D = m; m.watchWallet(w => { wallet = w; refreshShop(); showCodes(); B?.setBread(w); }); }).catch(() => {});
     // The shop (cart button): Bread packs. Bread is only ever bought.
     let B = null;
-    if (!onTV) import('./js/bread.js?v=1').then(m => { B = m; m.mountCart(document.getElementById('doughPill'), { signIn: () => document.getElementById('openAccount')?.click() }); m.setBread(wallet); }).catch(() => {});
+    if (!onTV) import('./js/bread.js?v=2').then(m => { B = m; m.mountCart(document.getElementById('doughPill'), { signIn: () => document.getElementById('openAccount')?.click(), canGift: () => D?.canGiftBread() || false, gift: (to, n) => D.giftBread(to, n) }); m.setBread(wallet); }).catch(() => {});
     // ---- Parent Controls (Settings → Family). They're kept in step with the parent's account; when
     // the list of turned-off games changes, the page reloads so they disappear (or come back) everywhere.
     const pcBtn = document.getElementById('openParental'), pcSum = document.getElementById('pcSummary');

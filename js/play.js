@@ -185,7 +185,7 @@ function collectAwards(ids) {
   const fresh = ids.filter(id => !awardsSeen.has(id));
   if (!fresh.length) return;
   fresh.forEach(id => awardsSeen.add(id));
-  awardChain = awardChain.then(() => import('./dough.js?v=10')).then(async D => {
+  awardChain = awardChain.then(() => import('./dough.js?v=11')).then(async D => {
     for (const id of fresh) {
       const r = await D.collectWin(id).catch(() => ({}));
       if (r.paid) { toast('🏆 +10 Dough! Added to your account'); navigator.vibrate?.([60, 40, 120]); }
