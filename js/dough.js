@@ -53,7 +53,7 @@ export function watchWallet(cb) {
         const d = s.data() || {};
         const styles = Array.isArray(d.styles) ? d.styles : [];
         write(LS.owned, styles);
-        cb({ signedIn: true, dough: d.dough || 0, styles, name: d.name || nameOf(u) });
+        cb({ signedIn: true, dough: d.dough || 0, bread: d.bread || 0, styles, name: d.name || nameOf(u) });
       }, () => cb({ signedIn: true, dough: 0, styles: read(LS.owned, []), offline: true }));
     } catch { cb({ signedIn: true, dough: 0, styles: read(LS.owned, []), offline: true }); }
   });
