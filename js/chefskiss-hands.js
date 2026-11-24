@@ -110,6 +110,45 @@ function takeTopWithDiversity(ranked, n, maxSameSubject, rng) {
   return out;
 }
 
+// Does a card fit one whole combo (a tag on every axis the combo names)?
+export const fitsCombo = (card, combo) => Object.entries(combo || {}).every(([d, want]) =>
+  !Array.isArray(want) || !want.length || tagsOf(card)[d]?.some(t => want.includes(t)));
+
+// The on-target slots, spread over the Recipe's combos (playtest, 24 Nov 2026): each slot is
+// dealt for one combo in turn, so a hand mixes 2–3 kinds of joke instead of 4 of the same one
+// (before, the gross + social combo won most hands because tone counts 1.5). No more than 2
+// cards share a main subject or a main tone (relaxed only if the pool can't fill the hand).
+function spreadAcrossCombos(pool, recipe, n, rng, stats) {
+  const combos = combosOf(recipe);
+  const start = rng.int(combos.length);
+  const out = [];
+  const count = { subject: {}, tone: {} };
+  const main = (c, d) => tagsOf(c)[d][0] || '?';
+  for (let i = 0; i < n; i++) {
+    const combo = combos[(start + i) % combos.length];
+    const one = { ...recipe, funnyTargetCombos: [combo] };
+    const scored = pool.filter(c => !out.includes(c))
+      .map(c => ({ c, s: funnyScore(c, one, rng, stats) + (fitsCombo(c, combo) ? 1.5 : 0) }))
+      .sort((a, b) => b.s - a.s);
+    let ok = [];
+    for (const cap of [2, 3, Infinity]) {
+      ok = scored.filter(x => (count.subject[main(x.c, 'subject')] || 0) < cap && (count.tone[main(x.c, 'tone')] || 0) < cap);
+      if (ok.length) break;
+    }
+    if (!ok.length) break;
+    const top = ok.slice(0, Math.max(6, Math.ceil(ok.length / 8)));
+    const low = Math.min(...top.map(x => x.s));
+    const w = top.map(x => x.s - low + 0.25);
+    let r = rng() * w.reduce((a, b) => a + b, 0);
+    let k = 0;
+    while (k < top.length - 1 && (r -= w[k]) > 0) k++;
+    const pick = top[k].c;
+    out.push(pick);
+    for (const d of ['subject', 'tone']) count[d][main(pick, d)] = (count[d][main(pick, d)] || 0) + 1;
+  }
+  return out;
+}
+
 // One Apprentice's hand (SPEC.md Section 8.3). Returns [{ cardId, slot }]; marks the cards as dealt.
 // table: { level, usedCardIds: Set, decadeFilter? }   round: { dealtThisRound: Set }
 export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.handSize, mix = CONFIG.handMix, stats = null } = {}) {
@@ -124,7 +163,10 @@ export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.
     const ranked = pool.map(c => ({ c, s: funnyScore(c, recipe, rng, stats) })).sort((a, b) => b.s - a.s);
     // Mixed subjects keep a hand varied, unless the Recipe asked for one kind of answer (a Signature
     // Recipe's "What kind of answer fits?" chips).
-    const onTarget = takeTopWithDiversity(ranked, mix.onTarget, recipe?.source === 'organic' && recipe?.answerTypes?.length ? mix.onTarget : 2, rng);
+    const chips = recipe?.source === 'organic' && recipe?.answerTypes?.length;
+    const onTarget = !chips && combosOf(recipe).length > 1
+      ? spreadAcrossCombos(pool, recipe, mix.onTarget, rng, stats)
+      : takeTopWithDiversity(ranked, mix.onTarget, chips ? mix.onTarget : 2, rng);
     const rest = rng.shuffle(pool.filter(c => !onTarget.includes(c)));
     hand = [
       ...onTarget.map(c => ({ cardId: c.id, slot: 'on_target' })),

@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { ravenT } from './table-cardgames.js?v=120';
+import { ravenT } from './table-cardgames.js?v=121';
 
 export default ravenT;

@@ -5,7 +5,7 @@
 import { CARDS } from './chefskiss-db.js?v=6';
 import { activeDecks } from './chefskiss-decks.js?v=3';
 import { CONFIG, OFFICIAL_LEVELS, TEAMS } from './chefskiss-config.js?v=3';
-import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=4';
+import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=5';
 import { blockedWords, makeBlocker } from './parental.js?v=1';
 import { validateCustomCard, SNACKS_PER_HAND } from './ck-custom.js?v=1';
 export { TEAMS };

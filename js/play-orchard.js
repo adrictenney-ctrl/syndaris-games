@@ -1,8 +1,8 @@
 // Orchard on a phone: your tree, and a big Spin button.
-import { racePhone, reset as baseReset } from './play-snakes.js?v=120';
-import { treeSVG } from './table-orchard.js?v=120';
-import { SPIN } from './orchard.js?v=120';
-import { $, setHud } from './phone-kit.js?v=120';
+import { racePhone, reset as baseReset } from './play-snakes.js?v=121';
+import { treeSVG } from './table-orchard.js?v=121';
+import { SPIN } from './orchard.js?v=121';
+import { $, setHud } from './phone-kit.js?v=121';
 
 export const reset = baseReset;
 export function renderLobby(c) {

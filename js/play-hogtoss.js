@@ -1,6 +1,6 @@
 // Hog Toss on a phone: Toss the pigs, or Bank what you've built up this turn.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=120';
-import { pigSVG } from './table-hogtoss.js?v=120';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=121';
+import { pigSVG } from './table-hogtoss.js?v=121';
 
 let wasMyTurn = false;
 export function reset() { document.getElementById('hgPhone')?.remove(); }

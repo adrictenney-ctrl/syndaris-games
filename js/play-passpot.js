@@ -1,7 +1,7 @@
 // Pass the Pot on a phone: your chips, a big Roll button on your turn (or shake the phone),
 // and what your last throw did.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=120';
-import { ppDie, chipStack } from './table-passpot.js?v=120';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=121';
+import { ppDie, chipStack } from './table-passpot.js?v=121';
 
 let ctx = null, wasMyTurn = false, lastShake = 0, shakeOn = false;
 

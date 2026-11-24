@@ -570,6 +570,7 @@ function buildHand(player, recipe, table, round, rng):
  return hand
 ```
 
+- **Spread over the combos (playtest fix, 24 Nov 2026).** When the Recipe has 2 or more `funnyTargetCombos`, the 4 on-target slots are dealt one combo at a time, in turn (starting at a random combo), so a hand mixes the Recipe's different kinds of joke. A card that fits the whole combo scores +1.5. No more than 2 on-target cards share a main subject or a main tone (relaxed only if the pool runs short). Before this, `tone` weighing 1.5 let one combo (usually gross + social) win 3 or 4 of the 4 slots in about half of Mild hands.
 - There is **no** safe/literal pick and **no** "wild" selection rule. Do not keep the old code paths behind flags. Delete them.
 - `handRefresh: "full"` (default): every round, after the Recipe is picked, unplayed cards return to the pool and a new 7-card hand is built.
 - A card that is dealt but not played is **not** added to `usedCardIds`. It can be dealt again in later rounds, but not in two hands in the same round.

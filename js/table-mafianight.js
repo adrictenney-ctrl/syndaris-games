@@ -1,4 +1,4 @@
 // See table-social.js.
-import { mafianightT } from './table-social.js?v=120';
+import { mafianightT } from './table-social.js?v=121';
 
 export default mafianightT;
