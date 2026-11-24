@@ -1,8 +1,8 @@
 // Cornerstones on the table: the 20×20 board on a slate stand, each colour's starting corner
 // marked, the last piece outlined.
-import * as C from './cornerstones.js?v=122';
-import { snap } from './cards.js?v=122';
-import { centerMsg, clearMsg } from './table-hearts.js?v=122';
+import * as C from './cornerstones.js?v=123';
+import { snap } from './cards.js?v=123';
+import { centerMsg, clearMsg } from './table-hearts.js?v=123';
 
 let root = null, key = '';
 export function boardSVG(g, { ghost = null, ghostOk = true, tap = false } = {}) {

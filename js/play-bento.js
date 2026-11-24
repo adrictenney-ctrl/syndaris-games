@@ -1,8 +1,8 @@
 // Bento Box on a phone: your hand of lunch cards. Tap one to pick it (with chopsticks on your
 // tray you may pick two), then Lock in. Your tray is shown above.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=122';
-import { bnCard, spread } from './table-bento.js?v=122';
-import { roundScore, lanterns } from './bento.js?v=122';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=123';
+import { bnCard, spread } from './table-bento.js?v=123';
+import { roundScore, lanterns } from './bento.js?v=123';
 
 let sel = [], wasMyTurn = false, lastKey = '';
 export function reset() { sel = []; document.getElementById('bnPhone')?.remove(); }

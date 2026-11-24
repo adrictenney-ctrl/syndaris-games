@@ -1,7 +1,7 @@
 // Know Me on the table: who's in the hot seat, the question and its four answers, then their real
 // answer lit up with everyone's guesses on it.
-import * as E from './knowme.js?v=122';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=122';
+import * as E from './knowme.js?v=123';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=123';
 
 export default partyTable(E, {
   id: 'knowme',
