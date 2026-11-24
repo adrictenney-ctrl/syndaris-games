@@ -37,39 +37,62 @@ const hasTags = c => DIMS.some(d => tagsOf(c)[d].length);
 const combosOf = recipe => (Array.isArray(recipe?.funnyTargetCombos) ? recipe.funnyTargetCombos : []).filter(x => x && typeof x === 'object');
 const fresh = c => (typeof c?.freshness === 'number' ? c.freshness : 1);
 
-export function overlap(cardTags, targetTags) {
+export function overlap(cardTags, targetTags, rarity = null) {
   let s = 0;
   for (const d of DIMS) {
     const want = new Set(targetTags?.[d] || []);
-    for (const t of cardTags?.[d] || []) if (want.has(t)) s += TAG_WEIGHTS[d];
+    for (const t of cardTags?.[d] || []) if (want.has(t)) s += TAG_WEIGHTS[d] * (rarity ? rarity(d, t) : 1);
   }
   return s;
+}
+
+// Narrower tags (playtest, 24 Nov 2026): a match on a tag most of the deck shares ("everyday",
+// "casual") says little, so each tag counts by how rare it is among the cards being dealt.
+// A tag on a quarter of the pool counts 1x, half 0.5x, a tenth about 1.7x (between 0.25x and 2x).
+export function tagRarity(pool) {
+  const n = Math.max(1, pool.length);
+  const df = {};
+  for (const c of pool) for (const d of DIMS) for (const t of tagsOf(c)[d]) df[d + ':' + t] = (df[d + ':' + t] || 0) + 1;
+  return (d, t) => Math.min(2, Math.max(0.25, Math.log(n / (df[d + ':' + t] || 1)) / Math.log(4)));
 }
 
 export function literalScore(card, recipe) {
   return overlap(tagsOf(card), tagsOf(recipe, 'literalTags')) + ((card?.literalFor || []).includes(recipe?.id) ? 3 : 0);
 }
 
-// The pairings log isn't kept yet, so every pair uses the prior win rate (0.2) until it is.
+// What the table has learned (the win stats at /api/laugh-stats): { pairs: { recipeId: { cardId:
+// [plays, wins, exp] } }, cards: { cardId: [plays, wins, exp] } }, where exp is the wins expected by
+// chance. A card's "lift" is wins / expected: 1 = average, 2 = wins twice as often as chance. A pair
+// with few plays leans on the card's own lift, and a card with few plays leans on 1 (no data = 0.2,
+// the old prior, so hands are unchanged until rounds are logged). An older Map form still works.
 export const pairWinRate = (recipeId, cardId, stats) => {
-  const s = stats?.get?.(`${recipeId}|${cardId}`);
-  const prior = 0.2, weight = 5;
-  return s ? (s.wins + prior * weight) / (s.plays + weight) : prior;
+  const prior = 0.2;
+  if (stats?.get) {
+    const s = stats.get(`${recipeId}|${cardId}`);
+    return s ? (s.wins + prior * 5) / (s.plays + 5) : prior;
+  }
+  const c = stats?.cards?.[cardId], p = stats?.pairs?.[recipeId]?.[cardId];
+  if (!c && !p) return prior;
+  const cardLift = c ? (c[1] + 5) / (c[2] + 5) : 1;
+  const lift = p ? (p[1] + 3 * cardLift) / (p[2] + 3) : cardLift;
+  return prior * Math.min(4, Math.max(0.25, lift));
 };
 
 // How well a card fits the Recipe's funny targets: its best match against any one combo
 // (a card has to fit one whole technique, not bits of several).
-export const targetScore = (card, recipe) => Math.max(0, ...combosOf(recipe).map(combo => overlap(tagsOf(card), combo)));
+export const targetScore = (card, recipe, rarity = null) => Math.max(0, ...combosOf(recipe).map(combo => overlap(tagsOf(card), combo, rarity)));
 
-export function funnyScore(card, recipe, rng = Math.random, stats = null) {
-  const target = targetScore(card, recipe);
+export function funnyScore(card, recipe, rng = Math.random, stats = null, rarity = null) {
+  const target = targetScore(card, recipe, rarity);
   const literal = literalScore(card, recipe);
-  const history = pairWinRate(recipe?.id, card?.id, stats);
+  // Learned wins count on a log scale around the prior: no data = 3.0 x 0.2 (as before); a pair
+  // that wins 3x as often as chance adds about 6.6, one that wins half as often loses about 4.2.
+  const history = 0.6 + 6.0 * Math.log(pairWinRate(recipe?.id, card?.id, stats) / 0.2);
   // A Signature Recipe's "What kind of answer fits?" chips: cards of those kinds score higher.
   // (Official cards' answerTypes are Al's deck-review labels, used by his scorer, not by the dealer.)
   const chips = recipe?.source === 'organic' && recipe?.answerTypes?.length;
   const fit = chips ? 2.0 * answerFit(card, recipe.answerTypes) : 0;
-  return (2.0 * target - 1.5 * literal + 3.0 * history + fit) * (0.5 + 0.5 * fresh(card)) + rng() * 0.3;
+  return (2.0 * target - 1.5 * literal + history + fit) * (0.5 + 0.5 * fresh(card)) + rng() * 0.3;
 }
 
 // Which Ingredient Cards may be dealt at this table this round (SPEC.md Section 8.1).
@@ -118,7 +141,7 @@ export const fitsCombo = (card, combo) => Object.entries(combo || {}).every(([d,
 // dealt for one combo in turn, so a hand mixes 2–3 kinds of joke instead of 4 of the same one
 // (before, the gross + social combo won most hands because tone counts 1.5). No more than 2
 // cards share a main subject or a main tone (relaxed only if the pool can't fill the hand).
-function spreadAcrossCombos(pool, recipe, n, rng, stats) {
+function spreadAcrossCombos(pool, recipe, n, rng, stats, rarity) {
   const combos = combosOf(recipe);
   const start = rng.int(combos.length);
   const out = [];
@@ -128,7 +151,7 @@ function spreadAcrossCombos(pool, recipe, n, rng, stats) {
     const combo = combos[(start + i) % combos.length];
     const one = { ...recipe, funnyTargetCombos: [combo] };
     const scored = pool.filter(c => !out.includes(c))
-      .map(c => ({ c, s: funnyScore(c, one, rng, stats) + (fitsCombo(c, combo) ? 1.5 : 0) }))
+      .map(c => ({ c, s: funnyScore(c, one, rng, stats, rarity) + (fitsCombo(c, combo) ? 1.5 : 0) }))
       .sort((a, b) => b.s - a.s);
     let ok = [];
     for (const cap of [2, 3, Infinity]) {
@@ -160,12 +183,13 @@ export function buildHand(cards, recipe, table, round, rng, { handSize = CONFIG.
   if (!hasData) {
     hand = rng.shuffle([...pool]).slice(0, handSize).map(c => ({ cardId: c.id, slot: 'random' }));
   } else {
-    const ranked = pool.map(c => ({ c, s: funnyScore(c, recipe, rng, stats) })).sort((a, b) => b.s - a.s);
+    const rarity = tagRarity(pool);
+    const ranked = pool.map(c => ({ c, s: funnyScore(c, recipe, rng, stats, rarity) })).sort((a, b) => b.s - a.s);
     // Mixed subjects keep a hand varied, unless the Recipe asked for one kind of answer (a Signature
     // Recipe's "What kind of answer fits?" chips).
     const chips = recipe?.source === 'organic' && recipe?.answerTypes?.length;
     const onTarget = !chips && combosOf(recipe).length > 1
-      ? spreadAcrossCombos(pool, recipe, mix.onTarget, rng, stats)
+      ? spreadAcrossCombos(pool, recipe, mix.onTarget, rng, stats, rarity)
       : takeTopWithDiversity(ranked, mix.onTarget, chips ? mix.onTarget : 2, rng);
     const rest = rng.shuffle(pool.filter(c => !onTarget.includes(c)));
     hand = [

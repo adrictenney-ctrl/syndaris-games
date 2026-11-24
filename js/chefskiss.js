@@ -5,7 +5,7 @@
 import { CARDS } from './chefskiss-db.js?v=6';
 import { activeDecks } from './chefskiss-decks.js?v=3';
 import { CONFIG, OFFICIAL_LEVELS, TEAMS } from './chefskiss-config.js?v=3';
-import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=5';
+import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=6';
 import { blockedWords, makeBlocker } from './parental.js?v=1';
 import { validateCustomCard, SNACKS_PER_HAND } from './ck-custom.js?v=1';
 export { TEAMS };
@@ -92,14 +92,21 @@ function addSnacks(g, seat, hand, rng) {
 
 // After the Recipe is picked, every Apprentice (bots too) gets a fresh hand from the Laugh Engine.
 // Last round's unplayed cards go back in the pool; no card is in two hands in the same round.
+// What the tables have learned about which pairings win (the TV sets this; see ck-stats.js).
+let statsSource = null;
+export const useStats = fn => { statsSource = typeof fn === 'function' ? fn : null; };
+export const ENGINE = 'le-2.1';
+
 function dealHands(g) {
   const table = tableOf(g), round = { dealtThisRound: new Set() };
   const recipe = recordOf(g, g.recipe);
   const rng = rngFor(g, 'hands');
+  let stats = null;
+  try { stats = statsSource?.() || null; } catch {}
   g.hands = {};
   g.slots = {};
   for (const seat of rng.shuffle([...g.apprentices])) {
-    const hand = addSnacks(g, seat, buildHand(CARDS, recipe, table, round, rng), rng);
+    const hand = addSnacks(g, seat, buildHand(CARDS, recipe, table, round, rng, { stats }), rng);
     g.hands[seat] = hand.map(h => h.cardId);
     g.slots[seat] = Object.fromEntries(hand.map(h => [h.cardId, h.slot]));
   }
@@ -240,6 +247,21 @@ function kiss(g, i) {
   g.announce = { id: g.id + ':' + g.kisses, seat: custom ? -1 : w.seat, text: "💋 Chef's Kiss!" };
   g.phase = 'reveal';
   g.endsAt = now() + REVEAL_MS;
+}
+
+// The anonymous win stat for a judged round (SPEC.md 5.7): official card ids, slots and counts only,
+// never card text or who played what. Only rounds a person judged count (a bot Chef picks at random),
+// and players' own cards are left out (their ids are private).
+export function roundReport(g) {
+  if (!g || g.phase !== 'reveal' || !g.reveal || g.winner == null) return null;
+  if (g.seats[g.chef] !== 'human' || typeof g.recipe !== 'string' || !g.recipe.startsWith('rc_')) return null;
+  const official = c => typeof c === 'string' && c.startsWith('ic_');
+  const played = g.reveal.filter(r => official(r.c)).map(r => ({ id: r.c, slot: g.slots?.[r.seat]?.[r.c] || 'random' }));
+  if (played.length < 2) return null;
+  const w = g.reveal[g.winner]?.c;
+  const s = seated(g);
+  return { recipe: g.recipe, level: levelOf(g.settings), played, n: g.reveal.length, winner: official(w) ? w : null,
+    seats: s.length, bots: s.filter(i => g.seats[i] === 'bot').length, engine: ENGINE };
 }
 
 function finishRound(g) {

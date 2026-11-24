@@ -1,12 +1,14 @@
 // Cloudflare deploy settings for playondisplay.com.
 // Deploy with:  bash deploy-cloudflare.sh
 // The site is static files; worker/index.js only answers /api/* (Chef's Kiss "Add salt and pepper"
-// and the custom-card content check). Its model key is a secret, never in this file or the repo:
+// the custom-card content check, and the Laugh Engine win stats). Its model key is a secret, never in this file or the repo:
 //   wrangler secret put GEMINI_API_KEY
 {
   "name": "playondisplay",
   "compatibility_date": "2026-10-08",
   "main": "worker/index.js",
   "assets": { "directory": "../play-on-display-site", "binding": "ASSETS" },
-  "vars": { "GEMMA_MODEL": "gemma-3-27b-it" }
+  "vars": { "GEMMA_MODEL": "gemma-3-27b-it" },
+  // Chef's Kiss Laugh Engine win stats (worker/stats.js; schema in worker/migrations)
+  "d1_databases": [{ "binding": "STATS", "database_name": "pod-laugh-stats", "database_id": "f0322de7-64a6-4af5-824e-4411f2d3dba1", "migrations_dir": "worker/migrations" }]
 }

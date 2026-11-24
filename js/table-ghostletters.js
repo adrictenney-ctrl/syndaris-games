@@ -1,4 +1,4 @@
 // See table-words.js.
-import { ghostlettersT } from './table-words.js?v=121';
+import { ghostlettersT } from './table-words.js?v=122';
 
 export default ghostlettersT;

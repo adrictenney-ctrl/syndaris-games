@@ -577,6 +577,12 @@ function buildHand(player, recipe, table, round, rng):
 - Missing data falls back to random. If any field the engine needs is missing (tags, funnyTargetCombos, freshness, stats), treat it as empty or default and keep going. The engine MUST NOT throw or block a round.
 - Recipe choices: deal 3 eligible Recipes. Prefer ones with high freshness and non-empty `funnyTargetCombos` (weighted random), and avoid choices that share a subject.
 
+### 8.3a Learning from wins and narrower tags (24 Nov 2026)
+
+- **Win stats.** Every round a person judged (a bot Chef doesn't count) is reported by the TV to `POST /api/laugh-round`: official Recipe and Ingredient ids, each card's slot, the number of cards in the round, the winner, seat and bot counts, and `engineVersion`. No card text, names, seats or players' own cards (`cc_…`) are sent. The Worker (`worker/stats.js`) keeps the totals in Cloudflare D1 (`pod-laugh-stats`): per pair and per card, `plays`, `wins` and `exp` (wins expected by chance, the sum of 1 / cards in the round), plus one row per round. The TV fetches `GET /api/laugh-stats?r=<the 3 Recipe choices>` while the Chef chooses.
+- **How it's used.** `lift = wins / exp` (1 = average). A card's lift is smoothed with 5 expected wins at 1; a pair's lift with 3 expected wins at the card's lift; capped between 0.25 and 4. `pairWinRate = 0.2 x lift`, and in `funnyScore` the history term is `0.6 + 6.0 x ln(pairWinRate / 0.2)`: no data gives 0.6 (the old 3.0 x 0.2), so hands only change once rounds are logged.
+- **Rare tags count more.** In `overlap` for funny targets, each tag is weighted by how rare it is in the pool being dealt: `clamp(ln(N / count) / ln 4, 0.25, 2)` (a quarter of the pool = 1x). Literal checks and the dud metric stay unweighted.
+
 ### 8.4 Freshness
 
 ```text

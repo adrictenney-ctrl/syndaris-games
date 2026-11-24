@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { bigdeuceT } from './table-cardgames.js?v=121';
+import { bigdeuceT } from './table-cardgames.js?v=122';
 
 export default bigdeuceT;

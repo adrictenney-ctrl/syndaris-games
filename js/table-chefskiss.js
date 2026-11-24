@@ -1,14 +1,25 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=121';
+import * as K from './chefskiss.js?v=122';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=121';
-import { movable } from './gesture.js?v=121';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=122';
+import { movable } from './gesture.js?v=122';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=121';
+import { topPicks } from './laugh-engine.js?v=122';
+import { statsNow, prefetch, report } from './ck-stats.js?v=1';
+
+// ---------------------------------------------------------------- what the tables learn
+// Each judged round is reported (anonymously) and the stats for the next Recipe choices are
+// fetched, so the Laugh Engine deals more of the pairings that have won at other tables.
+K.useStats(statsNow);
+function learn(g) {
+  if (!g) return;
+  if (g.phase === 'recipe') prefetch(g.recipes?.[g.chef]);
+  if (g.phase === 'reveal') report(K.roundReport(g), g.id + ':' + g.round);
+}
 
 // ---------------------------------------------------------------- Laugh Engine Si (host only)
 // When the Laugh Engine is on and this screen can run Gemma, each round the table asks it (in the
@@ -295,13 +306,15 @@ export default {
     const owned = [...new Set([...tvOwned, ...cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : [])))])];
     const level = OFFICIAL_LEVELS[settings.level] || 'mild';
     const deckMode = playableMode(level, settings.deckMode, owned);
-    return K.createGame({ ...settings, deckMode, decks: tableDecks(level, deckMode, settings.capsule, owned) }, players);
+    const g = K.createGame({ ...settings, deckMode, decks: tableDecks(level, deckMode, settings.capsule, owned) }, players);
+    learn(g);
+    return g;
   },
-  act(g, seat, a) { const err = K.applyAction(g, seat, a); if (!err) laughRound(g); return err; },
+  act(g, seat, a) { const err = K.applyAction(g, seat, a); if (!err) { laughRound(g); learn(g); } return err; },
   bot: K.botAction,
   view: (g, seat) => laughView(g, seat, K.viewFor(g, seat)),
   turn: K.turn,
-  timer(g, players) { const t = K.timer(g, players); return t && { ms: t.ms, run: () => { t.run(); laughRound(g); } }; },
+  timer(g, players) { const t = K.timer(g, players); return t && { ms: t.ms, run: () => { t.run(); laughRound(g); learn(g); } }; },
   joinMidGame: () => true,
 
   plate(g, seat) {
