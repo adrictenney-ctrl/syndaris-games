@@ -1,7 +1,7 @@
 // This or That on the table: the two choices facing off, then a tug-of-war bar with everyone's dot
 // on the side they chose.
-import * as E from './thisorthat.js?v=124';
-import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=124';
+import * as E from './thisorthat.js?v=125';
+import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=125';
 
 export default partyTable(E, {
   id: 'thisorthat',

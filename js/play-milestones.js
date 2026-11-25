@@ -1,9 +1,9 @@
 // Milestones on a phone: your hand as a tidy row of cards (tap to pick). Draw first; then lay
 // down your stage (pick the cards, tap Lay down — the phone works out the groups), add a card to
 // any laid-down group, and finish by discarding one card.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=124';
-import { STAGES, stageText, fitsGroup, isSkip, solve } from './milestones.js?v=124';
-import { msCard, groupText } from './table-milestones.js?v=124';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=125';
+import { STAGES, stageText, fitsGroup, isSkip, solve } from './milestones.js?v=125';
+import { msCard, groupText } from './table-milestones.js?v=125';
 
 let ctx = null, picked = [], skipFor = null, wasMyTurn = false;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

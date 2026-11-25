@@ -181,13 +181,13 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
 - **Moving cards:** cards on the table (and the Recipe Card on your phone) can be dragged, pinched bigger or
   smaller, and twisted with two fingers. With a mouse, scroll to resize and Shift+scroll to rotate. Double-tap puts
   a card back.
-- **Ending:** play to 5, 7 or 10 Chef's Kisses, or no target. The game-length timer is 30 minutes, 60 minutes, 2
+- **Ending:** play to 5 (every table starts at 5), 7 or 10 Chef's Kisses, or no target. The game-length timer is 30 minutes, 60 minutes, 2
   hours, or none; when time is up the current round finishes and the most Chef's Kisses wins.
-- **Timers:** a Recipe Card timer (off, 5, 10 or 15 s) and an Ingredient Card timer (off, 10, 15, 20 or 30 s). When
+- **Timers:** a Recipe Card timer (off, 15, 30, 45, 60 or 90 s) and an Ingredient Card timer (off, 30, 45, 60, 90,
+  120 or 180 s). Both start off every time the table opens. When
   one runs out, a random card is played. The host can change any timer mid-game with **⏱ Timers** on the table,
   which also has "End the game now".
-- **Teams:** 2, 3 or 4 colored teams. Players are spread across the teams in seat order (latecomers join the
-  smallest team). Everyone still scores individually; team scores are the sum.
+- **No teams**, and the **Laugh Engine is always on** (neither is a setting).
 - **Card level:** Mild (elementary, the default), Medium (middle school) or **Hot** (high school, formerly called
   Spicy), chosen in the lobby. **One table, one deck:** a table deals only its own level's Recipe and Ingredient
   Cards, never a lower or higher one. All three are family-friendly. (Spicy is now the college tier, 17+, and

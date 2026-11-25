@@ -4,11 +4,10 @@
 // Chef's Kiss (1 point). The Chef role then passes to the left.
 import { CARDS } from './chefskiss-db.js?v=6';
 import { activeDecks } from './chefskiss-decks.js?v=3';
-import { CONFIG, OFFICIAL_LEVELS, TEAMS } from './chefskiss-config.js?v=3';
+import { CONFIG, OFFICIAL_LEVELS } from './chefskiss-config.js?v=3';
 import { buildHand, recipeChoices, makeRng } from './chefskiss-hands.js?v=6';
 import { blockedWords, makeBlocker } from './parental.js?v=1';
 import { validateCustomCard, SNACKS_PER_HAND } from './ck-custom.js?v=1';
-export { TEAMS };
 
 export const HAND = CONFIG.handSize;        // Ingredient Cards per Apprentice
 export const RECIPES = CONFIG.recipeChoices; // Recipe Cards to choose from
@@ -113,13 +112,14 @@ function dealHands(g) {
 export const DEFAULTS = {
   deckMode: 'base',   // which of the level's decks: 'base' (free starter) until purchases exist (Al's spec Section 7)
   level: 0,           // the table's one deck: 0 = Mild (elementary), 1 = Medium (middle school), 2 = Hot (high school)
-  target: 7,          // Chef's Kisses to win (0 = no target)
+  target: 5,          // Chef's Kisses to win (0 = no target); every new table starts here (FRESH)
   length: 60,         // minutes (0 = no game timer)
-  recipeTime: 30,     // seconds for the Chef to pick a Recipe Card (0 = off) — SPEC.md 6.2
-  ingredientTime: 60, // seconds for Apprentices to play (0 = off) — SPEC.md 6.2
-  teams: 0,           // 0 = everyone for themselves, else 2–4 teams
-  laugh: true,        // the Laugh Engine: funny-card highlights and "Make me a card" on the phones
+  recipeTime: 0,      // seconds for the Chef to pick a Recipe Card (0 = off); starts off (FRESH)
+  ingredientTime: 0,  // seconds for Apprentices to play (0 = off); starts off (FRESH)
 };
+// The Laugh Engine is always on and there are no teams (no settings for either).
+// These settings start at their default every time the table opens, whatever was picked last time.
+export const FRESH = ['target', 'recipeTime', 'ingredientTime'];
 const MAX_CUSTOM = 30;  // custom cards one player can have at a table at once
 const OWN_MAX = 5;      // "Write your own card": free cards per account (a paid blank deck adds more later)
 
@@ -133,11 +133,10 @@ const fixTimes = s => ({ ...s,
 
 export function createGame(settings, players) {
   const g = {
-    settings: fixTimes({ ...DEFAULTS, ...settings }),
+    settings: (({ teams, laugh, houseRecipes, ...s }) => fixTimes(s))({ ...DEFAULTS, ...settings }),
     id: now().toString(36),
     seats: [],
     scores: new Array(players.length).fill(0),
-    teams: new Array(players.length).fill(null),
     v: 2,              // the master card database version of the game
     block: blockedWords(),   // Parent Controls words on this screen (never sent to phones)
     used: [],          // cards used this game (played Ingredients, picked Recipes), so they aren't repeated
@@ -163,18 +162,6 @@ export function createGame(settings, players) {
 export function refreshSeats(g, players) {
   g.seats = players.map(p => (p ? (p.bot ? 'bot' : 'human') : null));
   while (g.scores.length < g.seats.length) g.scores.push(0);
-  const T = g.settings.teams;
-  if (T) {
-    g.seats.forEach((s, seat) => {
-      if (!s) { g.teams[seat] = null; return; }
-      if (g.teams[seat] !== null && g.teams[seat] !== undefined) return;
-      // New players join the smallest team.
-      const size = t => g.teams.filter((x, i) => x === t && g.seats[i]).length;
-      let best = 0;
-      for (let t = 1; t < T; t++) if (size(t) < size(best)) best = t;
-      g.teams[seat] = best;
-    });
-  }
 }
 
 const seated = g => g.seats.map((s, i) => (s ? i : -1)).filter(i => i >= 0);
@@ -272,17 +259,6 @@ function gameOver(g, why = 'players') {
   g.endsAt = 0;
   const best = Math.max(...g.scores);
   g.winners = best > 0 ? g.scores.map((s, i) => (s === best && g.seats[i] ? i : -1)).filter(i => i >= 0) : [];
-  if (g.settings.teams) {
-    const totals = teamTotals(g);
-    const top = Math.max(...totals);
-    g.winningTeams = top > 0 ? totals.map((t, i) => (t === top ? i : -1)).filter(i => i >= 0) : [];
-  }
-}
-
-export function teamTotals(g) {
-  const out = new Array(g.settings.teams || 0).fill(0);
-  g.teams.forEach((t, seat) => { if (t !== null && t !== undefined && out[t] !== undefined) out[t] += g.scores[seat]; });
-  return out;
 }
 
 // ---------------------------------------------------------------- the clock and the bots
@@ -430,13 +406,11 @@ export function viewFor(g, seat) {
     lastKiss: g.lastKiss || null,
     scores: g.scores,
     seats: g.seats,
-    teams: g.settings.teams ? g.teams : null,
-    teamTotals: g.settings.teams ? teamTotals(g) : null,
     target: g.settings.target,
     left: g.endsAt ? Math.max(0, g.endsAt - now()) : null,
     gameLeft: g.settings.length ? Math.max(0, g.startedAt + g.settings.length * 60000 - now()) : null,
     winners: g.winners || null,
-    laugh: !!g.settings.laugh,
+    laugh: true,
     level: levelOf(g.settings),
     winningTeams: g.winningTeams || null,
     why: g.why,

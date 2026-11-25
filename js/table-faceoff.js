@@ -1,7 +1,7 @@
 // Face Off on the table: the prompt with its two answers side by side (no names until the vote is
 // done), then the votes stacked under each and who wrote it. The final round lays out everyone's.
-import * as E from './faceoff.js?v=124';
-import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=124';
+import * as E from './faceoff.js?v=125';
+import { partyTable, esc, clock, doneRow, sc } from './table-party.js?v=125';
 
 export default partyTable(E, {
   id: 'faceoff',

@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { hottakesT } from './table-talk.js?v=124';
+import { hottakesT } from './table-talk.js?v=125';
 
 export default hottakesT;

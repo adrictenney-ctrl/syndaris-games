@@ -1,7 +1,7 @@
 // Dreamcards on the table: the storyteller's clue, then every played card laid out face up and
 // numbered for the vote, and at the reveal whose card was whose and who voted for it.
-import * as E from './dreamcards.js?v=124';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=124';
+import * as E from './dreamcards.js?v=125';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=125';
 
 export default partyTable(E, {
   id: 'dreamcards',

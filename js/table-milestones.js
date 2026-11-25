@@ -1,7 +1,7 @@
 // Milestones on the table: the deck and discard in the middle, and each player's laid-down
 // groups in front of their seat, so everyone can see where to add cards.
-import * as M from './milestones.js?v=124';
-import { snap } from './cards.js?v=124';
+import * as M from './milestones.js?v=125';
+import { snap } from './cards.js?v=125';
 
 let root = null, spots = {}, lastMove = -1;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

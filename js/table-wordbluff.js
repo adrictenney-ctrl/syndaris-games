@@ -1,7 +1,7 @@
 // Word Bluff on the table: the word, then every meaning numbered for the vote, then the reveal —
 // which was real, who wrote each fake and who fell for it.
-import * as E from './wordbluff.js?v=124';
-import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=124';
+import * as E from './wordbluff.js?v=125';
+import { partyTable, esc, clock, doneRow, sc, who } from './table-party.js?v=125';
 
 const opt = (k, s, list) => `<select data-set="${k}">${list.map(([v, t]) => `<option value="${v}" ${v === s[k] ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
 export default partyTable(E, {

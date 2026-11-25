@@ -1,14 +1,14 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=124';
+import * as K from './chefskiss.js?v=125';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=124';
-import { movable } from './gesture.js?v=124';
-import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=124';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=125';
+import { movable } from './gesture.js?v=125';
+import { startSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
+import { topPicks } from './laugh-engine.js?v=125';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
 
 // ---------------------------------------------------------------- what the tables learn
@@ -29,7 +29,7 @@ function learn(g) {
 const SI_MS = 12000;
 const roundKey = g => `${g.id}:${g.round}`;
 function laughRound(g) {
-  if (!g || !g.settings.laugh || siStatus().state !== 'ready' || g.phase !== 'play' || !g.recipe) return;
+  if (!g || siStatus().state !== 'ready' || g.phase !== 'play' || !g.recipe) return;
   const key = roundKey(g);
   if (g.si?.key === key) return;
   g.si = { key, picks: null, ideas: null };
@@ -56,7 +56,7 @@ function laughRound(g) {
 }
 // What each phone learns about it: whether the Si is on, and its picks/ideas for this round.
 function laughView(g, seat, v) {
-  v.laughSi = g.settings.laugh ? siStatus().state : 'off';
+  v.laughSi = siStatus().state;
   if (g.si && g.si.key === roundKey(g)) { v.siKey = g.si.key; v.siPicks = g.si.picks ? g.si.picks[seat] || [] : null; v.siIdeas = g.si.ideas || null; }
   return v;
 }
@@ -143,8 +143,7 @@ function renderSlip() {
 }
 
 function nameTag(seat, ctx, g) {
-  const t = g.settings.teams && g.teams[seat] !== null ? K.TEAMS[g.teams[seat]] : null;
-  return `<span class="ck-owner"><i style="background:var(--seat-${seat})"></i>${esc(ctx.nameOf(seat))}${t ? ` <em style="color:${t.c}">Team ${t.name}</em>` : ''}</span>`;
+  return `<span class="ck-owner"><i style="background:var(--seat-${seat})"></i>${esc(ctx.nameOf(seat))}</span>`;
 }
 
 function renderRecipe(g) {
@@ -273,6 +272,7 @@ function watchTv() {
 
 export default {
   defaults: { ...K.DEFAULTS },
+  fresh: K.FRESH,   // Play to 5, both timers off: every time the table opens
   lobbyPlayers(players, redraw) { seatOwned = cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : []))); redrawLobby = redraw; watchTv(); },
   applySetting(s, key, el) {
     // A new level changes which Cards and Time Capsule choices are open: draw the settings again.
@@ -294,9 +294,7 @@ export default {
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
       <label>Recipe timer ${sel('recipeTime', K.RECIPE_TIMES, timeLabel)}</label>
       <label>Ingredient timer ${sel('ingredientTime', K.INGREDIENT_TIMES, timeLabel)}</label>
-      <label>Teams ${sel('teams', [0, 2, 3, 4], v => (v ? `${v} teams` : 'no teams'))}</label>
-      <label class="ck-check"><input type="checkbox" data-set="laugh" ${s.laugh !== false ? 'checked' : ''}> Laugh Engine (funny-card hints &amp; ideas)</label>
-      ${s.laugh !== false ? `<p class="ck-si" data-si-status>${siLine()}</p>` : ''}${(s.laugh !== false ? startSi() : stopSi(), '')}`;
+      <p class="ck-si" data-si-status>${siLine()}</p>${(startSi(), '')}`;
   },
 
   lobbyInfo: s => ({ level: OFFICIAL_LEVELS[s?.level] || 'mild' }),
@@ -319,10 +317,6 @@ export default {
   plate(g, seat) {
     const badges = [];
     if (seat === g.chef && g.phase !== 'over') badges.push('<span class="badge alone">Chef</span>');
-    if (g.settings.teams && g.teams[seat] !== null && g.teams[seat] !== undefined) {
-      const t = K.TEAMS[g.teams[seat]];
-      badges.push(`<span class="badge" style="color:${t.c};border-color:${t.c}">Team ${t.name}</span>`);
-    }
     if (g.phase === 'play' && g.apprentices.includes(seat)) {
       badges.push(g.subs[seat]?.length ? '<span class="badge got">✓ played</span>' : '<span class="badge">choosing…</span>');
     }
@@ -347,7 +341,7 @@ export default {
   renderCenter(g, ctx) {
     gameRef = g;
     ctxRef = ctx;
-    if (g.settings.laugh) { startSi(); laughRound(g); }
+    startSi(); laughRound(g);
     document.getElementById('watermark').textContent = '';
     if (!root) build();
     const felt = document.getElementById('felt').getBoundingClientRect();
@@ -387,13 +381,10 @@ export default {
     const order = g.scores.map((s, i) => ({ s, i })).filter(x => g.seats[x.i]).sort((a, b) => b.s - a.s);
     const names = (g.winners || []).map(i => ctx.nameOf(i));
     const head = !names.length ? 'Thanks for playing!' : names.length > 1 ? `${names.join(' & ')} tie!` : `${names[0]} wins!`;
-    const teams = g.settings.teams ? `<ol class="scores">${K.teamTotals(g).map((t, i) => ({ t, i })).sort((a, b) => b.t - a.t)
-      .map(x => `<li><span style="color:${K.TEAMS[x.i].c}">Team ${K.TEAMS[x.i].name}</span> <b>${x.t}</b></li>`).join('')}</ol>` : '';
     return {
       key: 'over' + g.id,
       html: `<h2>${esc(head)}</h2>
         <p>${g.why === 'time' ? "Time's up!" : g.why === 'target' ? 'The target was reached.' : ''} The real win is the laughs.</p>
-        ${teams}
         <ol class="scores">${order.map(x => `<li>${esc(ctx.nameOf(x.i))} <b>${x.s} 💋</b></li>`).join('')}</ol>
         <div class="buttons"><button class="big" data-do="again">Play again</button><button class="big ghost" data-do="lobby">Back to lobby</button></div>`,
     };

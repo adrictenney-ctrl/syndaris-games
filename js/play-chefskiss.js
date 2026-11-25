@@ -1,13 +1,12 @@
 // Chef's Kiss on a phone. Cards arrive face up: slide one
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=124';
-import { face, wireBulbs, esc } from './ck-face.js?v=124';
-import { movable } from './gesture.js?v=124';
-import { TEAMS } from './chefskiss-config.js?v=3';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=125';
+import { face, wireBulbs, esc } from './ck-face.js?v=125';
+import { movable } from './gesture.js?v=125';
 import { openWorkshop, myCards } from './ck-workshop.js?v=1';
 import { makeCustomCard } from './ck-custom.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=124';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=125';
 
 let ctx = null, v = null;
 let chosen = -1;
@@ -347,10 +346,9 @@ export function render(c) {
   if (v.lastKiss && v.lastKiss.seat === you && countKiss(`${v.id}:${v.lastKiss.n}`)) navigator.vibrate?.([80, 60, 160]);
   if (v.phase === 'over' && v.winners?.includes(you)) countKiss(`${v.id}:bonus`);
 
-  const team = v.teams && v.teams[you] !== null && v.teams[you] !== undefined ? TEAMS[v.teams[you]] : null;
-  $('#whoami').innerHTML = `<i style="background:var(--seat-${you})"></i>${c.nameOf(you)}${v.isChef && v.phase !== 'over' ? ' · the Chef' : ''}${team ? ` · <span style="color:${team.c}">Team ${team.name}</span>` : ''}`;
+  $('#whoami').innerHTML = `<i style="background:var(--seat-${you})"></i>${c.nameOf(you)}${v.isChef && v.phase !== 'over' ? ' · the Chef' : ''}`;
   setHud('#hudL', "Chef's Kisses", v.scores[you] || 0, v.target ? `first to ${v.target}` : '');
-  setHud('#hudR', 'Lifetime 💋', lifetime(), team ? `team ${v.teamTotals[v.teams[you]]}` : 'on this phone');
+  setHud('#hudR', 'Lifetime 💋', lifetime(), 'on this phone');
 
   const chefName = c.nameOf(v.chef);
   const myTurn = (v.isChef && ['recipe', 'judge'].includes(v.phase)) || (v.phase === 'play' && v.playing && !v.mine.length);
