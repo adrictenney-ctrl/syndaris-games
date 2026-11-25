@@ -135,8 +135,8 @@ test('7. custom cards are dealt only at tables of their own level', () => {
 });
 
 // 8
-test('8. House Recipes: Mix in offers at most 1 Signature Recipe of 3; Replace puts them first', () => {
-  const mix = K.createGame({ level: 0, houseRecipes: 1, target: 0, length: 0 }, players(4));
+test('8. Signature Recipes are always mixed in: at most 1 of the 3 Recipe choices', () => {
+  const mix = K.createGame({ level: 0, target: 0, length: 0 }, players(4));
   for (let i = 0; i < 5; i++) K.applyAction(mix, 1, { type: 'custom', card: sig('My prompt number ' + i) });
   for (let round = 0; round < 5; round++) {
     K.applyAction(mix, mix.chef, { type: 'next' });
@@ -146,25 +146,22 @@ test('8. House Recipes: Mix in offers at most 1 Signature Recipe of 3; Replace p
     for (const s of mix.apprentices) K.applyAction(mix, s, { type: 'play', id: mix.hands[s][0] });
     K.applyAction(mix, mix.chef, { type: 'kiss', i: 0 }); K.applyAction(mix, mix.chef, { type: 'next' });
   }
-  const rep = K.createGame({ level: 0, houseRecipes: 2, target: 0, length: 0 }, players(4));
-  for (let i = 0; i < 2; i++) K.applyAction(rep, 1, { type: 'custom', card: sig('Replace prompt ' + i) });
-  K.applyAction(rep, rep.chef, { type: 'recipe', id: rep.recipes[rep.chef][2] });   // finish round 1 (dealt before the cards came)
-  for (const s of rep.apprentices) K.applyAction(rep, s, { type: 'play', id: rep.hands[s][0] });
-  K.applyAction(rep, rep.chef, { type: 'kiss', i: 0 }); K.applyAction(rep, rep.chef, { type: 'next' });
-  const ids = rep.recipes[rep.chef];
-  assert.equal(ids.length, 3);
-  assert.ok(ids[0].startsWith('cc_') && ids[1].startsWith('cc_'), 'Signature Recipes first');
-  assert.ok(!ids[2].startsWith('cc_'), 'standard Recipes fill in');
-  const off = K.createGame({ level: 0, houseRecipes: 0 }, players(4));
-  K.applyAction(off, 1, { type: 'custom', card: sig('Off prompt') });
-  K.applyAction(off, off.chef, { type: 'recipe', id: off.recipes[off.chef][0] });
-  for (const s of off.apprentices) K.applyAction(off, s, { type: 'play', id: off.hands[s][0] });
-  K.applyAction(off, off.chef, { type: 'kiss', i: 0 }); K.applyAction(off, off.chef, { type: 'next' });
-  assert.ok(off.recipes[off.chef].every(id => !id.startsWith('cc_')));
+  assert.doesNotMatch(read('../js/table-chefskiss.js'), /houseRecipes|House Recipes/, 'no lobby setting');
+  // an old saved setting can't turn them off or make them replace the standard Recipes
+  for (const houseRecipes of [0, 2]) {
+    const g = K.createGame({ level: 0, houseRecipes, target: 0, length: 0 }, players(4));
+    for (let i = 0; i < 3; i++) K.applyAction(g, 1, { type: 'custom', card: sig('Old setting prompt ' + houseRecipes + i) });
+    K.applyAction(g, g.chef, { type: 'recipe', id: g.recipes[g.chef][2] });
+    for (const s of g.apprentices) K.applyAction(g, s, { type: 'play', id: g.hands[s][0] });
+    K.applyAction(g, g.chef, { type: 'kiss', i: 0 }); K.applyAction(g, g.chef, { type: 'next' });
+    const ids = g.recipes[g.chef];
+    assert.equal(ids.length, 3);
+    assert.equal(ids.filter(id => id.startsWith('cc_')).length, 1, 'always exactly 1 when there are some');
+  }
 });
 
 test('a Signature Recipe deals cards that fit its answer types', () => {
-  const g = K.createGame({ level: 0, houseRecipes: 2, target: 0, length: 0 }, players(4));
+  const g = K.createGame({ level: 0, target: 0, length: 0 }, players(4));
   const c = sig('The best thing to eat at a sleepover', 'mild', ['food']);
   K.applyAction(g, 1, { type: 'custom', card: c });
   K.applyAction(g, g.chef, { type: 'recipe', id: g.recipes[g.chef][0] });

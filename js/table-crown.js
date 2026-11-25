@@ -1,6 +1,6 @@
 // Crown & Dagger on the table: the two edict tracks, the failed-council tracker, who is
 // Regent and who is up for Steward, and the votes once everyone has voted.
-import * as K from './crown.js?v=123';
+import * as K from './crown.js?v=124';
 
 let root = null, key = '';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);

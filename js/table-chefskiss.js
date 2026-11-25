@@ -1,14 +1,14 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=123';
+import * as K from './chefskiss.js?v=124';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=123';
-import { movable } from './gesture.js?v=123';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=124';
+import { movable } from './gesture.js?v=124';
 import { startSi, stopSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=123';
+import { topPicks } from './laugh-engine.js?v=124';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
 
 // ---------------------------------------------------------------- what the tables learn
@@ -290,7 +290,6 @@ export default {
       <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
       ${deckSelect(s)}
       <button type="button" class="tool ck-ownbtn" data-ck-own="${OFFICIAL_LEVELS[s.level] || 'mild'}">✎ Write your own card</button>
-      <label>House Recipes ${sel('houseRecipes', [1, 2, 0], v => ['Off', 'Mix in (up to 1 of 3)', 'Replace (players’ first)'][v])}</label>
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
       <label>Recipe timer ${sel('recipeTime', K.RECIPE_TIMES, timeLabel)}</label>

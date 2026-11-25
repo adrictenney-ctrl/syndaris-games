@@ -162,8 +162,8 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   (live preview, counters, drafts saved as you type), **Add salt and pepper** (three seasoned options: Use this,
   Tweak it, Keep mine, Shake again) and Saved (Play it at this table, Share with Cards from the Community).
   Cards are private, kept on the phone, and only for tables of their own level.
-  - **At the table:** "Play it at this table" brings a card in. **House Recipes** (lobby): Off, **Mix in**
-    (default: at most 1 of the Chef's 3 Recipe choices is a Signature Recipe) or Replace (Signature Recipes first).
+  - **At the table:** "Play it at this table" brings a card in. Signature Recipes are always mixed in:
+    at most 1 of the Chef's 3 Recipe choices is a Signature Recipe (no lobby setting).
     Snack cards go into their owner's hand, at most 2 per hand, taking the random slot first. Signature Recipes'
     answer types steer which cards are dealt. Who wrote a custom card is never shown, even when it wins.
   - **Add salt and pepper** runs on the server, never the phone: `POST /api/season-card` in the Worker

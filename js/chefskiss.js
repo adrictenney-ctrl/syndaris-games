@@ -65,17 +65,13 @@ const blockerOf = g => makeBlocker(g.block);
 const tableOf = g => ({ level: levelOf(g.settings), decks: Array.isArray(g.settings.decks) && g.settings.decks.length ? g.settings.decks : activeDecks(levelOf(g.settings), g.settings.deckMode), usedCardIds: new Set(g.used), blocked: blockerOf(g) });
 const rngFor = (g, what) => makeRng(`${g.id}:${g.round}:${what}`);
 
-// The Chef is dealt fresh Recipe Card choices every round. House Recipes (the host's setting):
-// Off, Mix in (default: at most 1 of the 3 is a Signature Recipe) or Replace (Signature Recipes
-// first, standard Recipe Cards fill in when they run out).
-export const HOUSE = ['off', 'mix', 'replace'];
+// The Chef is dealt fresh Recipe Card choices every round. Players' Signature Recipes are always
+// mixed in: at most 1 of the 3 choices is a Signature Recipe (there is no setting for this).
 function dealRecipes(g) {
   const rng = rngFor(g, 'recipes');
   let ids = recipeChoices(CARDS, tableOf(g), rng);
-  const house = HOUSE[g.settings.houseRecipes] || 'mix';
   const sig = rng.shuffle(activeCustom(g, 'signature_recipe').filter(c => !blockerOf(g)(c.text))).map(c => c.id);
-  if (house === 'mix' && sig.length) ids = [sig[0], ...ids.slice(0, RECIPES - 1)];
-  if (house === 'replace' && sig.length) ids = [...sig.slice(0, RECIPES), ...ids].slice(0, RECIPES);
+  if (sig.length) ids = [sig[0], ...ids.slice(0, RECIPES - 1)];
   g.recipes = { [g.chef]: ids };
 }
 
@@ -123,7 +119,6 @@ export const DEFAULTS = {
   ingredientTime: 60, // seconds for Apprentices to play (0 = off) — SPEC.md 6.2
   teams: 0,           // 0 = everyone for themselves, else 2–4 teams
   laugh: true,        // the Laugh Engine: funny-card highlights and "Make me a card" on the phones
-  houseRecipes: 1,    // players' Signature Recipes: 0 = Off, 1 = Mix in (at most 1 of 3), 2 = Replace
 };
 const MAX_CUSTOM = 30;  // custom cards one player can have at a table at once
 const OWN_MAX = 5;      // "Write your own card": free cards per account (a paid blank deck adds more later)
@@ -426,7 +421,6 @@ export function viewFor(g, seat) {
     mine: (g.subs?.[seat] || []).map(id => cardOf(g, id)).filter(Boolean),
     myCustom: Object.values(g.custom || {}).filter(c => c.seat === seat).map(c => c.id),
     myOwn: Object.values(g.custom || {}).filter(c => c.seat === seat && c.own).length,
-    houseRecipes: HOUSE[g.settings.houseRecipes] || 'mix',
     played: Object.values(g.subs || {}).reduce((n, c) => n + c.length, 0),
     expected: (g.apprentices || []).filter(s => g.seats[s]).length,
     reveal: g.reveal && ['judge', 'reveal'].includes(g.phase)

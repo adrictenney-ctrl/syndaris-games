@@ -1,6 +1,6 @@
 // Euchre on a player's phone: bidding buttons and the hand of cards.
-import { SEAT_NAME, SUITS, SUIT_SYMBOL, SUIT_NAME, cardLabel, suitOf, effSuit, isRed, teamOf, partnerOf } from './euchre.js?v=123';
-import { $, toast, setHud, setStatus, renderHand, flyCard, cardEl } from './phone-kit.js?v=123';
+import { SEAT_NAME, SUITS, SUIT_SYMBOL, SUIT_NAME, cardLabel, suitOf, effSuit, isRed, teamOf, partnerOf } from './euchre.js?v=124';
+import { $, toast, setHud, setStatus, renderHand, flyCard, cardEl } from './phone-kit.js?v=124';
 
 let selected = null;
 let goAlone = false;
