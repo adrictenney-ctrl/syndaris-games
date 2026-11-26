@@ -67,6 +67,9 @@
 .cks-cap { position: absolute; margin: 0; transform: translate(-50%, -50%); width: 30%; text-align: center; pointer-events: none; z-index: 200; font-size: 1.9vmin; font-weight: 800; line-height: 1.25; color: #fff; text-shadow: 0 .3vmin .8vmin rgba(10, 6, 60, .6); }
 .cks-cap span { display: block; opacity: .85; }
 .cks-cap b { display: block; margin-top: .8vmin; color: #ffd84a; font-size: 1.8vmin; }
+/* the 3D picker: one canvas (js/ck-deckspring.js); deck names for screen readers sit off screen */
+.cks-3d .cks-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cks-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .cks-card { will-change: auto; } .cks-card.cks-pop .cks-face { animation: none; } }
 
 /* ---------------------------------------------------------------- the lobby: the card spring beside the settings

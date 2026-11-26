@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { SLOTS, FRONT, quadAt, quadMatrix, ICONS, ASPECT } from '../js/ck-deckspring.js';
+import { SLOTS, FRONT, quadAt, quadMatrix, ICONS, ASPECT } from '../js/ck-deckspring-flat.js';
 import { DECK_MODES } from '../js/chefskiss-decks.js';
 
 const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
@@ -62,8 +62,8 @@ test('the table page: a stage beside the settings, the join card by the start bu
   assert.match(js, /go\.append\(tent, start\)/);
 });
 
-test('smooth: only transforms and opacity move, a card keeps its 3D (no opacity hint), and reduce motion is honoured', () => {
-  const css = read('../css/ck-deckspring.css'), js = read('../js/ck-deckspring.js');
+test('the flat picker (no WebGL 2): only transforms and opacity move, a card keeps its 3D (no opacity hint), and reduce motion is honoured', () => {
+  const css = read('../css/ck-deckspring.css'), js = read('../js/ck-deckspring-flat.js');
   assert.match(css, /\.cks-card \{[^}]*will-change: transform;/);
   assert.doesNotMatch(css, /will-change: [^;]*opacity/);
   assert.match(js, /matrix3d\(/);
@@ -72,4 +72,58 @@ test('smooth: only transforms and opacity move, a card keeps its 3D (no opacity 
   // keyboard, wheel, pointer (mouse, pen and touch) and screen readers
   for (const s of ["'keydown'", "'wheel'", "'pointerdown'", "'pointermove'", "'pointerup'", "role', 'listbox'", "'aria-activedescendant'", "'aria-selected'"]) assert.ok(js.includes(s), s);
   assert.match(css, /touch-action: none/);
+});
+
+// ---- the 3D picker (js/ck-deckspring.js)
+import * as D3 from '../js/ck-deckspring.js';
+
+test('3D: the camera is the photo\'s; places along the spring land where the photo has its cards', () => {
+  // a point at a distance from the camera projects back onto the same photo pixel
+  const P = D3.projection();
+  for (const [px, py, d] of [[1418, 622, 14.2], [628, 590, 15.25], [1330, 1640, 13.5]]) {
+    const [x, y, z] = D3.unproject(px, py, d);
+    const cx = P[0] * x + P[8] * z, cy = P[5] * y + P[9] * z, w = -z;
+    const u = D3.BOX.x + (cx / w * .5 + .5) * D3.BOX.w, v = D3.BOX.y + (1 - (cy / w * .5 + .5)) * D3.BOX.h;
+    assert.ok(Math.abs(u - px) < 1e-3 && Math.abs(v - py) < 1e-3, `${px},${py}`);
+  }
+  // the spring passes through every key exactly
+  for (const k of D3.KEYS) { const p = D3.poseAt(k.s); assert.ok(Math.abs(p.px - k.px) < 1e-9 && Math.abs(p.py - k.py) < 1e-9 && Math.abs(p.yaw - k.yaw) < 1e-9); }
+  assert.ok(Math.abs(D3.ASPECT - 1420 / 1780) < 1e-9);
+});
+
+test('3D: the front card faces you, nearer than the arc and drawn over everything; the spring is smooth', () => {
+  const f = D3.poseAt(0);
+  assert.equal(f.yaw % 360, 0); assert.equal(f.pitch, 0);
+  for (const k of D3.KEYS) if (k.s) {
+    if (k.s < 6) assert.ok(D3.poseAt(k.s).d > f.d, `place ${k.s} is farther than the front`);   // (the column comes toward the camera as it falls to the pile)
+    assert.ok(k.z < f.z, `place ${k.s} is drawn under the front`);
+  }
+  // down the right side each card is drawn over the one below it, as in the photo
+  for (let s = 1; s < 9; s++) assert.ok(D3.poseAt(s).z > D3.poseAt(s + 1).z);
+  // springing out of the stack the cards turn steadily toward you; then they lie back steadily
+  for (let s = -6; s < 0; s++) assert.ok(D3.poseAt(s + 1).yaw > D3.poseAt(s).yaw);
+  for (let s = 1; s < 8; s++) assert.ok(D3.poseAt(s + 1).pitch >= D3.poseAt(s).pitch);
+  // small steps along the spring are small moves on screen (no jumps)
+  for (let s = -13; s < 14; s += .05) {
+    const a = D3.poseAt(s), b = D3.poseAt(s + .05);
+    assert.ok(Math.hypot(a.px - b.px, a.py - b.py) < 30, `smooth at ${s.toFixed(2)}`);
+  }
+  // the card's model matrix is a pure rotation and a move
+  const m = D3.modelMatrix([1, 2, 3], [0, 0, Math.sin(.3), Math.cos(.3)]);
+  assert.ok(Math.abs(m[0] * m[0] + m[1] * m[1] + m[2] * m[2] - 1) < 1e-6);
+  assert.deepEqual([m[12], m[13], m[14]], [1, 2, 3]);
+});
+
+test('3D: WebGL 2 with no library; the flat picker stands in without it; no depth buffer for the cards', () => {
+  const js = read('../js/ck-deckspring.js');
+  assert.match(js, /getContext\('webgl2'/);
+  assert.match(js, /if \(!gl\) return mountFlat\(el, opts\);/);
+  assert.match(js, /catch \(err\) \{[^}]*return mountFlat\(el, opts\);/);
+  assert.match(js, /webglcontextlost/);
+  assert.doesNotMatch(js, /^import (?!.*ck-deckspring-flat)/m, 'only the flat picker is imported');
+  // the cards are layered by the photo's order (the depth buffer leaves holes on some GPUs)
+  assert.match(js, /gl\.disable\(gl\.DEPTH_TEST\);[\s\S]*list\.sort\(\(a, b\) => a\[0\] - b\[0\]\)/);
+  assert.doesNotMatch(js, /antialias: true/);
+  assert.doesNotMatch(js, /discard;/);
+  for (const s of ["'keydown'", "'wheel'", "'pointerdown'", "'pointermove'", "'pointerup'", "role', 'listbox'", "'aria-activedescendant'", "'aria-selected'", 'prefers-reduced-motion: reduce']) assert.ok(js.includes(s), s);
 });

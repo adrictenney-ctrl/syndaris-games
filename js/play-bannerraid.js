@@ -1,9 +1,9 @@
 // Banner Raid on a phone: your side of the field (always at the bottom). During setup tap two
 // of your pieces to swap them, or Shuffle; then Ready. In play tap a piece, then a glowing
 // square.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=128';
-import * as B from './bannerraid.js?v=128';
-import { fieldHTML, battleHTML } from './table-bannerraid.js?v=128';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=129';
+import * as B from './bannerraid.js?v=129';
+import { fieldHTML, battleHTML } from './table-bannerraid.js?v=129';
 
 let ctx = null, sel = null, wasMyTurn = false, lastMove = -1;
 

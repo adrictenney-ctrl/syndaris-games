@@ -1,4 +1,4 @@
 // See table-social.js.
-import { rateitT } from './table-social.js?v=128';
+import { rateitT } from './table-social.js?v=129';
 
 export default rateitT;

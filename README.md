@@ -189,10 +189,14 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   which also has "End the game now".
 - **No teams**, and the **Laugh Engine is always on** (neither is a setting).
 - **Deck picker** (`js/ck-deckspring.js`, `css/ck-deckspring.css`): in the table lobby the decks (Starter deck,
-  Expansion - 1, Starter + Expansion - 1) are cards in an arc of casino cards springing from a stack at the top,
-  down the right and into a pile at the bottom. The card facing out is the chosen deck. Drag along the arc (mouse
-  or touch), scroll, or use the arrow keys; it snaps to the nearest deck, and a flick carries on a few cards. A
-  locked deck shows a lock and its Shop price and isn't chosen. Reduce motion swaps the spring for a short fade.
+  Expansion - 1, Starter + Expansion - 1) are cards in a real-time 3D card spring, laid out after the reference
+  photo: a camera matched to the photo, thin bendable cards with rounded corners and edges, a key light with a glossy
+  coat, soft shadows (shadow map) on the cards and the table, gold foil on the deck cards. Drawn with WebGL 2 and no
+  library; the cards are layered in the photo's order rather than with a depth buffer (which leaves see-through specks
+  on some GPUs). Without WebGL 2 the flat version (`js/ck-deckspring-flat.js`) stands in. The card facing out is the
+  chosen deck. Drag along the arc (mouse or touch), scroll, or use the arrow keys; it snaps to the nearest deck, a
+  flick carries on a few cards, each card follows a moment after the one before and flexes, and at rest the front
+  card floats. A locked deck shows a lock and its Shop price and isn't chosen. Reduce motion: no float, a short fade.
   The settings sit beside it, with the join card by the start button. `_deckspring.html` previews it (not published).
 - **Card level:** Mild (elementary, the default), Medium (middle school) or **Hot** (high school, formerly called
   Spicy), chosen in the lobby. **One table, one deck:** a table deals only its own level's Recipe and Ingredient
