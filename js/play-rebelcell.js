@@ -1,7 +1,7 @@
 // Rebel Cell / Round Table on a phone: your secret role (hold to peek), the team picker for the
 // leader, Approve / Reject votes, and the secret Success / Sabotage cards on a mission.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=133';
-import { ROLE } from './rebel.js?v=133';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=134';
+import { ROLE } from './rebel.js?v=134';
 
 let ctx = null, team = [], wasMyTurn = false, peek = false;
 export function reset() { team = []; peek = false; document.getElementById('rbPhone')?.remove(); }

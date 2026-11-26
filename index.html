@@ -9,17 +9,15 @@
   <link rel="icon" href="icon-vibrant.svg">
   <link rel="manifest" href="manifest.webmanifest">
   <script>
-    // The landing page shows once: the first visit on a device. After that (or for anyone who has
-    // already used the site here), the address goes straight to the games. The TV app, and anything
-    // carrying settings (like a game turned off in Parent Controls), always goes straight there too.
+    // The landing page shows every visit until someone signs in on this device (js/firebase.js
+    // remembers that in pod.signedIn); from then on the address goes straight to the games, even
+    // after signing out. The TV app, and anything carrying settings (like a game turned off in
+    // Parent Controls), always goes straight there too.
     (() => {
       const q = new URLSearchParams(location.search);
-      let seen = false;
-      try {
-        seen = !!(localStorage.getItem('pod.seenLanding') || localStorage.getItem('syndaris.table.v2') || localStorage.getItem('pod.favs'));
-        localStorage.setItem('pod.seenLanding', '1');
-      } catch {}
-      const skip = seen || /PlayOnDisplayTV/.test(navigator.userAgent) || q.has('tv') || q.has('blocked');
+      let signedIn = false;
+      try { signedIn = !!localStorage.getItem('pod.signedIn'); } catch {}
+      const skip = signedIn || /PlayOnDisplayTV/.test(navigator.userAgent) || q.has('tv') || q.has('blocked');
       if (skip) location.replace('games.html' + location.search);
     })();
   </script>

@@ -1,13 +1,13 @@
 // Every painted-cover module (see the end of covers.js). All covers share one art direction:
 // still-life photographs of real props on a real table (still.js).
-import stillCasino from './art-still-casino.js?v=133';
-import stillCards from './art-still-cards.js?v=133';
-import stillCasino2 from './art-still-casino2.js?v=133';
-import stillBoard from './art-still-board.js?v=133';
-import stillStrategy from './art-still-strategy.js?v=133';
-import stillQuiz from './art-still-quiz.js?v=133';
-import stillParty from './art-still-party.js?v=133';
-import stillMind from './art-still-mind.js?v=133';
-import stillTalk from './art-still-talk.js?v=133';
+import stillCasino from './art-still-casino.js?v=134';
+import stillCards from './art-still-cards.js?v=134';
+import stillCasino2 from './art-still-casino2.js?v=134';
+import stillBoard from './art-still-board.js?v=134';
+import stillStrategy from './art-still-strategy.js?v=134';
+import stillQuiz from './art-still-quiz.js?v=134';
+import stillParty from './art-still-party.js?v=134';
+import stillMind from './art-still-mind.js?v=134';
+import stillTalk from './art-still-talk.js?v=134';
 
 export const ART = [stillCasino, stillCards, stillCasino2, stillBoard, stillStrategy, stillQuiz, stillParty, stillMind, stillTalk];

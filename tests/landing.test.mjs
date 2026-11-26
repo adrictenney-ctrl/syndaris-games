@@ -33,7 +33,9 @@ test('the TV app skips the landing page', () => {
   assert.match(page, /location\.replace\('games\.html' \+ location\.search\)/);
 });
 
-test('the landing page shows once per device', () => {
-  assert.match(page, /localStorage\.setItem\('pod\.seenLanding', '1'\)/);
-  assert.match(page, /const skip = seen \|\|/);
+test('the landing page shows every visit until someone signs in on the device', () => {
+  assert.match(page, /signedIn = !!localStorage\.getItem\('pod\.signedIn'\)/);
+  assert.match(page, /const skip = signedIn \|\|/);
+  assert.doesNotMatch(page, /pod\.seenLanding|syndaris\.table\.v2|pod\.favs/, 'having visited before no longer skips it');
+  assert.match(readFileSync(new URL('../js/firebase.js', import.meta.url), 'utf8'), /onAuthStateChanged\(auth, u => \{ if \(u\) try \{ localStorage\.setItem\('pod\.signedIn', '1'\); \} catch \{\} \}\);/);
 });

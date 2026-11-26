@@ -1,8 +1,8 @@
 // Field Agents on a phone. Handlers see the secret key and type a one-word clue with a number.
 // Their teammates tap a word, then Guess — or stop when they've had enough.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=133';
-import * as F from './fieldagents.js?v=133';
-import { gridHTML } from './table-fieldagents.js?v=133';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=134';
+import * as F from './fieldagents.js?v=134';
+import { gridHTML } from './table-fieldagents.js?v=134';
 
 let ctx = null, sel = null, num = 1, draft = '', wasMyTurn = false, lastMove = -1;
 

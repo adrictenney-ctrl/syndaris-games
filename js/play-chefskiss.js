@@ -1,12 +1,12 @@
 // Chef's Kiss on a phone. Cards arrive face up: slide one
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=133';
-import { face, wireBulbs, esc } from './ck-face.js?v=133';
-import { movable } from './gesture.js?v=133';
-import { openWorkshop, myCards } from './ck-workshop.js?v=1';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=134';
+import { face, wireBulbs, esc } from './ck-face.js?v=134';
+import { movable } from './gesture.js?v=134';
+import { openWorkshop, myCards } from './ck-workshop.js?v=2';
 import { makeCustomCard } from './ck-custom.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=133';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=134';
 
 let ctx = null, v = null;
 let chosen = -1;
@@ -68,19 +68,19 @@ function ownLobby(level) {
   el.dataset.level = level;
   el.innerHTML = `<div class="ck-ownlobby-deck"><small>Table deck</small><b>${LEVEL_NAME[level]}</b></div>
     <button type="button" class="panel-btn ck-ownbtn">✎ Write your own card</button>`;
-  el.querySelector('button').onclick = () => import('./ck-owncards.js?v=1').then(m => m.openOwnCards({ level, onSaved: () => { ownSent = ''; } }));
+  el.querySelector('button').onclick = () => import('./ck-owncards.js?v=2').then(m => m.openOwnCards({ level, onSaved: () => { ownSent = ''; } }));
 }
 // The Expansions this account owns unlock them at the table (sent once per room and account).
 let ownsSent = '';
 async function sendOwns(c) {
   try {
-    const m = await import('./ck-owncards.js?v=1');
+    const m = await import('./ck-owncards.js?v=2');
     const u = await m.whoIs();
     if (!u) return;
     const key = c.st.room + ':' + u.uid;
     if (ownsSent === key) return;
     ownsSent = key;
-    const { db } = await import('./firebase.js?v=3');
+    const { db } = await import('./firebase.js?v=4');
     const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
     const decks = (await getDoc(doc(db, 'users', u.uid))).data()?.decks;
     if (Array.isArray(decks) && decks.length) c.raw({ t: 'owns', decks });
@@ -92,7 +92,7 @@ async function sendOwn() {
   if (ownSent === key) return;
   ownSent = key;
   try {
-    const m = await import('./ck-owncards.js?v=1');
+    const m = await import('./ck-owncards.js?v=2');
     const u = await m.whoIs();
     if (!u) return;
     const cards = (await m.loadMine(u)).filter(x => x.level === v.level);
