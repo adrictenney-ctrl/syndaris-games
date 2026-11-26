@@ -1,8 +1,8 @@
 // Five-Card Draw on the table: the pot in the middle, bets on the plates, and at the showdown
 // everyone's five cards turned up in front of them.
-import * as D from './drawpoker.js?v=131';
-import { cardEl, snap } from './cards.js?v=131';
-import { centerMsg, clearMsg } from './table-hearts.js?v=131';
+import * as D from './drawpoker.js?v=132';
+import { cardEl, snap } from './cards.js?v=132';
+import { centerMsg, clearMsg } from './table-hearts.js?v=132';
 
 let root = null, key = '';
 

@@ -1,8 +1,8 @@
 // Pass the Phrase on a phone: when you're holding it, the phrase is shown big with Got it (pass
 // it on) and Skip. Everyone else sees whose turn it is.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=131';
-import { TEAMS } from './table-dontsay.js?v=131';
-import { buzzer } from './sfx.js?v=131';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=132';
+import { TEAMS } from './table-dontsay.js?v=132';
+import { buzzer } from './sfx.js?v=132';
 
 let ctx = null, wasMine = false, lastPhase = '';
 export function reset() { document.getElementById('ppPhone')?.remove(); }

@@ -1,6 +1,6 @@
 // Reversi on a phone: the board — tap a glowing square on your turn.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=131';
-import { disc, boardHTML } from './table-reversi.js?v=131';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=132';
+import { disc, boardHTML } from './table-reversi.js?v=132';
 
 let ctx = null, wasMyTurn = false;
 export function reset() { document.getElementById('rvPhone')?.remove(); }

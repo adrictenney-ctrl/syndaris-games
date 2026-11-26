@@ -1,5 +1,5 @@
 // War on a phone: one big button to flip your top card.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=131';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=132';
 
 let wasMyTurn = false;
 export function reset() {}

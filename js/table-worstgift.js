@@ -1,4 +1,4 @@
 // See table-talk.js.
-import { worstgiftT } from './table-talk.js?v=131';
+import { worstgiftT } from './table-talk.js?v=132';
 
 export default worstgiftT;

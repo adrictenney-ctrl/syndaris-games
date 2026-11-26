@@ -1,4 +1,4 @@
 // See table-social.js.
-import { storychainT } from './table-social.js?v=131';
+import { storychainT } from './table-social.js?v=132';
 
 export default storychainT;

@@ -127,3 +127,12 @@ test('3D: WebGL 2 with no library; the flat picker stands in without it; no dept
   assert.doesNotMatch(js, /discard;/);
   for (const s of ["'keydown'", "'wheel'", "'pointerdown'", "'pointermove'", "'pointerup'", "role', 'listbox'", "'aria-activedescendant'", "'aria-selected'", 'prefers-reduced-motion: reduce']) assert.ok(js.includes(s), s);
 });
+
+test('3D: no card ever flips over: every card shows its face all the way along the spring', () => {
+  // the card's face points at the camera wherever it is (never turned past edge on)
+  for (let s = -13; s <= 14; s += .01) {
+    const p = D3.poseAt(s), yaw = p.yaw * Math.PI / 180, pitch = p.pitch * Math.PI / 180;
+    const nz = Math.cos(yaw) * Math.cos(pitch);   // the face's normal toward the camera (+z)
+    assert.ok(nz > 0, `face shows at ${s.toFixed(2)}`);
+  }
+});

@@ -61,13 +61,15 @@ const Z = { '-13': .5, '-12': 1, '-11': 2, '-10': 3, '-9': 4, '-8': 5, '-7': 6, 
 const K = (s, px, py, d, yaw, pitch, roll, bend = 0, lift = 0) => ({ s, px, py, d: d != null ? d * NEAR : onTable(px, py, PILE_TOP + lift), yaw, pitch, roll, bend, z: Z[s] });
 const FLAT = 90 - 22;   // lying flat on the table, seen from the camera
 export const KEYS = [
-  K(-13, 640, 600, 15.32, 10, 0, 29),            // tucked under the far-left card (hidden)
-  K(-12, 628, 590, 15.25, 10, 0, 28, .01),       // the fan at the top: face up at the far left
-  K(-11, 661, 547, 15.15, 12, 0, 24, .01),
-  K(-10, 761, 452, 15.3, 205, 0, -22, .02),      // red backs
-  K(-9, 810, 402, 15.45, 214, 0, -17, .02),
-  K(-8, 860, 395, 15.6, 228, 0, -10, .02),
-  K(-7, 925, 368, 15.85, 250, 0, -6, .02),       // the last red back, turning over
+  // The fan at the top left: face up all the way round, each card turned a little more toward you
+  // than the one after it, so no card ever turns past edge on (nothing flips over).
+  K(-13, 640, 600, 15.32, 350, 0, 29),           // tucked under the far-left card (hidden)
+  K(-12, 628, 590, 15.25, 348, 0, 28, .01),
+  K(-11, 661, 547, 15.15, 340, 0, 24, .01),
+  K(-10, 761, 452, 15.3, 328, 0, 18, .02),
+  K(-9, 810, 402, 15.45, 316, 0, 12, .02),
+  K(-8, 860, 395, 15.6, 304, 0, 6, .02),
+  K(-7, 925, 368, 15.85, 292, 0, 0, .02),
   K(-6, 1036, 330, 15.8, 281, 0, -4, .03),       // springing out of it, turned away
   K(-5, 1066, 345, 15.7, 283, 0, -6, .03),
   K(-4, 1101, 368, 15.6, 286, 0, -8, .035),

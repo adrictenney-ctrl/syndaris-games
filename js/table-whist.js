@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { whistT } from './table-cardgames.js?v=131';
+import { whistT } from './table-cardgames.js?v=132';
 
 export default whistT;
