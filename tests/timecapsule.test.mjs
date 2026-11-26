@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { CARDS } from '../js/chefskiss-db.js';
-import { CAPSULES, DECADES, DECKS, tableDecks, CAPSULE_PRICE, cleanOwned } from '../js/chefskiss-decks.js';
+import { CAPSULES, DECADES, DECKS, tableDecks, CAPSULE_PRICE, cleanOwned, deckChoice } from '../js/chefskiss-decks.js';
 import { recipeChoices, makeRng } from '../js/chefskiss-hands.js';
 import * as K from '../js/chefskiss.js';
 
@@ -34,13 +34,15 @@ test('each Time Capsule costs 499 Bread and is unlocked on its own', () => {
   for (const id of CAPSULES) assert.equal(DECKS[id].bread, 499);
   assert.match(read('../js/dough.js'), /\[`deck_timecapsule_\$\{d\}`, \{ name: `Time Capsule: \$\{d\}`, price: 499, currency: 'bread' \}\]/);
   assert.deepEqual(cleanOwned(['deck_timecapsule_1990s', 'deck_nope']), ['deck_timecapsule_1990s']);
-  // owning one decade doesn't unlock another
-  assert.deepEqual(tableDecks('medium', 'base', 'mix', ['deck_timecapsule_1990s']), ['deck_medium_base', 'deck_timecapsule_1990s']);
-  assert.deepEqual(tableDecks('medium', 'base', 'mix', []), ['deck_medium_base']);
-  assert.deepEqual(tableDecks('medium', 'base', 'deck_timecapsule_1980s', ['deck_timecapsule_1990s']), ['deck_medium_base', 'deck_timecapsule_1990s']);
-  // a decade alone: Medium only (Mild and Hot are too thin), and only when owned
-  assert.deepEqual(tableDecks('medium', 'base', 'deck_timecapsule_1990s', ['deck_timecapsule_1990s']), ['deck_timecapsule_1990s']);
-  assert.deepEqual(tableDecks('mild', 'base', 'deck_timecapsule_1990s', ['deck_timecapsule_1990s']), ['deck_mild_base', 'deck_timecapsule_1990s']);
+  // each decade is its own deck: played on its own, at every level, only when owned
+  for (const level of ['mild', 'medium', 'hot']) assert.deepEqual(tableDecks(level, 'base', 'deck_timecapsule_1990s', ['deck_timecapsule_1990s']), ['deck_timecapsule_1990s']);
+  // owning one decade doesn't unlock another: the table plays its level's deck instead
+  assert.deepEqual(tableDecks('medium', 'base', 'deck_timecapsule_1980s', ['deck_timecapsule_1990s']), ['deck_medium_base']);
+  // 'mix' is gone: a table saved with it plays without the decades
+  assert.deepEqual(tableDecks('medium', 'base', 'mix', CAPSULES), ['deck_medium_base']);
+  // the chooser shows an owned decade as picked, otherwise the level's deck
+  assert.equal(deckChoice('hot', 'base', 'deck_timecapsule_1970s', ['deck_timecapsule_1970s']), 'deck_timecapsule_1970s');
+  assert.equal(deckChoice('hot', 'mixed', 'deck_timecapsule_1970s', []), 'base');
   // off: never a Time Capsule card
   assert.deepEqual(tableDecks('hot', 'mixed', 'off', ['deck_hot_exp1', ...CAPSULES]), ['deck_hot_base', 'deck_hot_exp1']);
 });
@@ -59,16 +61,13 @@ function play(level, decks, rounds = 6) {
   }
   return seen.map(id => byId.get(id)).filter(Boolean);
 }
-test('dealing: every card matches the table level; off never deals a Time Capsule card; mixed deals both; alone deals only that decade', () => {
+test('dealing: every card matches the table level; off never deals a Time Capsule card; a decade deals only that decade, at every level', () => {
   for (const level of LEVELS) {
     const off = play(level, tableDecks(level, 'base', 'off', CAPSULES));
     assert.ok(off.every(c => c.level === level && !c.decade), level + ' off');
-    const mix = play(level, tableDecks(level, 'base', 'mix', CAPSULES), 10);
-    assert.ok(mix.every(c => c.level === level), level + ' mixed: level');
-    assert.ok(mix.some(c => c.decade) && mix.some(c => !c.decade), level + ' mixed deals both');
+    const alone = play(level, tableDecks(level, 'base', 'deck_timecapsule_1970s', CAPSULES), 10);
+    assert.ok(alone.every(c => c.level === level && c.decade === '1970s'), level + ' 1970s night');
   }
-  const alone = play('medium', tableDecks('medium', 'base', 'deck_timecapsule_1970s', CAPSULES));
-  assert.ok(alone.every(c => c.level === 'medium' && c.decade === '1970s'), '1970s night');
 });
 
 test('Al\'s decade fix: a decade filter applies to the Recipe choices too', () => {
@@ -76,8 +75,11 @@ test('Al\'s decade fix: a decade filter applies to the Recipe choices too', () =
   for (let i = 0; i < 20; i++) for (const id of recipeChoices(CARDS, table, makeRng('r' + i))) assert.equal(byId.get(id).decade, '1960s');
 });
 
-test('the lobby has a Time Capsule setting and the Shop sells the six decks for Bread', () => {
-  assert.match(read('../js/table-chefskiss.js'), /Time Capsule <select data-set="capsule">/);
-  assert.match(read('../js/table-chefskiss.js'), /decks: tableDecks\(level, deckMode, settings\.capsule, owned\)/);
+test('each decade is a deck on the deck chooser (greyed out when nobody owns it); the Shop sells the six for Bread', () => {
+  const t = read('../js/table-chefskiss.js');
+  assert.doesNotMatch(t, /data-set="capsule"/, 'no Time Capsule dropdown');
+  assert.match(t, /for \(const id of CAPSULES\) \{\s*const locked = !mine\.includes\(id\);\s*decks\.push/);
+  assert.match(t, /decks: tableDecks\(level, deckMode, capsule, owned\)/);
+  assert.match(read('../js/ck-deckspring.js'), /greyed out: the whole card in greys/);
   assert.match(read('../js/bread.js'), /Chef's Kiss Time Capsules[\s\S]*499 Bread/);
 });

@@ -1,5 +1,5 @@
 // Emoji Phrase on the table — the quiz-show screen (see table-quiz.js).
-import { QUIZ } from './quiz-games.js?v=132';
-import { quizTable } from './table-quiz.js?v=132';
+import { QUIZ } from './quiz-games.js?v=133';
+import { quizTable } from './table-quiz.js?v=133';
 
 export default quizTable(QUIZ.emojiphrase, { id: 'emojiphrase' });

@@ -32,15 +32,18 @@ export function activeDecks(level, mode = 'base') {
 }
 // A card belongs to the table's decks if any of its deckIds is in the set.
 export const inDecks = (card, decks) => !decks || (card?.deckIds || []).some(d => decks.includes(d));
-// Time Capsule at a table: 'off', 'mix' (every unlocked decade mixed in with the cards above) or one
-// decade alone ("a 1990s night"). A decade alone is only offered at Medium: Mild and Hot have just
-// 20 Recipes and 80 Ingredients per decade (Al's README).
-export const CAPSULE_ALONE_LEVELS = ['medium'];
+// Time Capsule at a table: 'off' or one decade on its own ("a 1990s night"), picked like any deck
+// on the deck chooser (25 Nov 2026). At every level: Mild and Hot have 20 Recipes and 80 Ingredients
+// per decade (Medium 60 and 240), so a long game there sees cards come round again. ('mix', every
+// owned decade mixed in, is no longer offered; a table saved with it plays without them.)
+export const CAPSULE_ALONE_LEVELS = ['mild', 'medium', 'hot'];
 export function tableDecks(level, mode, capsule, owned = []) {
   const caps = CAPSULES.filter(id => owned.includes(id));
   if (CAPSULES.includes(capsule) && caps.includes(capsule) && CAPSULE_ALONE_LEVELS.includes(level)) return [capsule];
-  const decks = activeDecks(level, playableMode(level, mode, owned));
-  return capsule === 'mix' || CAPSULES.includes(capsule) ? [...decks, ...caps] : decks;
+  return activeDecks(level, playableMode(level, mode, owned));
 }
+// The deck the chooser shows as picked: an owned decade, else the level's playable mode.
+export const deckChoice = (level, mode, capsule, owned = []) =>
+  CAPSULES.includes(capsule) && owned.includes(capsule) ? capsule : playableMode(level, mode, owned);
 // Clean a list of deck ids sent by a phone (only known expansions).
 export const cleanOwned = list => (Array.isArray(list) ? list : []).filter(d => EXPANSIONS.includes(d)).slice(0, EXPANSIONS.length);

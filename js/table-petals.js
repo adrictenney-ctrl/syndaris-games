@@ -1,7 +1,7 @@
 // Petals & Thorns on the table: each player's face-down stack (just how many discs), their discs
 // left and wins, the current challenge, and the discs as they're flipped.
-import * as E from './petals.js?v=132';
-import { partyTable, esc, who } from './table-party.js?v=132';
+import * as E from './petals.js?v=133';
+import { partyTable, esc, who } from './table-party.js?v=133';
 
 export default partyTable(E, {
   id: 'petals',

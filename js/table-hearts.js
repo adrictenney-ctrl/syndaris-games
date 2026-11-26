@@ -1,7 +1,7 @@
 // Hearts on the table: the trick in the middle, a heart printed on the felt, each player's
 // points this hand and in total on their plate.
-import * as H from './hearts.js?v=132';
-import { trickView } from './trickview.js?v=132';
+import * as H from './hearts.js?v=133';
+import { trickView } from './trickview.js?v=133';
 
 const tv = trickView();
 let msgEl = null;

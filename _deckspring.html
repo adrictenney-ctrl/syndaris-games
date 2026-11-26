@@ -27,6 +27,7 @@
     { id: 'mixed', name: 'Starter + Expansion - 1', sub: '499 Dough in the Shop', icon: ICONS.both, locked: true },
   ];
   const six = [...three.map(d => ({ ...d, locked: false, sub: 'Yours' })), { id: 'x4', name: 'Family deck', sub: 'Sample', icon: ICONS.hat }, { id: 'x5', name: 'Holiday deck', sub: 'Sample', icon: ICONS.plus }, { id: 'x6', name: 'Custom deck', sub: 'Sample', icon: ICONS.both }];
+  for (const d of ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s']) three.push({ id: 'deck_timecapsule_' + d, name: d + ' Time Capsule', icon: ICONS.capsule, locked: d !== '1990s', sub: d !== '1990s' ? '499 Bread in the Shop' : 'A decade on its own' });
   window.A = mountDeckSpring(document.querySelector('#a'), { onSelect: log }); A.update({ decks: three, selected: 'base' });
   mountDeckSpring(document.querySelector('#b'), { onSelect: log }).update({ decks: six, selected: 'x4' });
 </script>

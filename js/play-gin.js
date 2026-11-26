@@ -1,7 +1,7 @@
 // Gin Rummy on a phone: your hand with its melds worked out and your deadwood counted. Draw,
 // then tap a card and Discard — or Knock once your deadwood is 10 or less.
-import { $, setHud, setStatus, renderHand, cardEl, flyCard } from './phone-kit.js?v=132';
-import { bestMelds } from './rummycore.js?v=132';
+import { $, setHud, setStatus, renderHand, cardEl, flyCard } from './phone-kit.js?v=133';
+import { bestMelds } from './rummycore.js?v=133';
 
 let sel = null, wasMyTurn = false;
 export function reset() { sel = null; }

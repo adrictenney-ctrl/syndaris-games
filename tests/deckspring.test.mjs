@@ -43,12 +43,12 @@ test('between two places a card turns and slides without shrinking; the transfor
 test('the lobby: the card spring replaces the Cards list; one card per deck, locked ones show the Shop price', () => {
   const t = read('../js/table-chefskiss.js');
   assert.match(t, /lobbyStage\(el, s, change\)/);
-  assert.match(t, /mountDeckSpring\(el, \{ onSelect: d => change\('deckMode', d\.id\) \}\)/);
+  assert.match(t, /mountDeckSpring\(el, \{ onSelect: d => change\('deck', d\.id\) \}\)/);
   assert.doesNotMatch(t, /data-set="deckMode"/, 'no Cards dropdown any more');
   for (const m of DECK_MODES) assert.match(t, new RegExp(`\\b${m}: \\{ name: '[^']+', sub: '[^']+', icon: '(${Object.keys(ICONS).join('|')})' \\}`), m);
   assert.match(t, /sub: locked \? '499 Dough in the Shop'/);
-  // the settings run in the mockup's order: Card level, Time Capsule, Play to, Game length, the two timers, Write your own card
-  const order = ["sel('level'", 'capsuleSelect(s)', "sel('target'", "sel('length'", "sel('recipeTime'", "sel('ingredientTime'", 'ck-ownbtn'];
+  // the settings run in the mockup's order (no Time Capsule list: decades are on the deck chooser): Card level, Play to, Game length, the two timers, Write your own card
+  const order = ["sel('level'", "sel('target'", "sel('length'", "sel('recipeTime'", "sel('ingredientTime'", 'ck-ownbtn'];
   const html = t.slice(t.indexOf('settingsHTML(s) {'));
   order.reduce((at, key) => { const i = html.indexOf(key); assert.ok(i > at, key); return i; }, -1);
 });

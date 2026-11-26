@@ -1,4 +1,4 @@
 // See table-words.js.
-import { wordchainT } from './table-words.js?v=132';
+import { wordchainT } from './table-words.js?v=133';
 
 export default wordchainT;

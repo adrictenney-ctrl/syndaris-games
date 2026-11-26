@@ -23,7 +23,7 @@
 //   the card is turned). Speed: SNAP, FOLLOW, LAG, GLIDE. Look: LIGHT, the shaders, the drawings.
 // With "reduce motion" on, cards jump to their places with a short fade, and nothing floats.
 
-import { mountDeckSpring as mountFlat, ICONS } from './ck-deckspring-flat.js?v=2';
+import { mountDeckSpring as mountFlat, ICONS } from './ck-deckspring-flat.js?v=3';
 export { ICONS };
 
 // ---------------------------------------------------------------- the camera and the spring
@@ -286,7 +286,13 @@ function drawDeck(d, W = 640) {
   // emblem: deep red disc with an ivory chef's hat (and a plus or a second hat)
   g.fillStyle = '#9b1722'; g.beginPath(); g.arc(W / 2, H * .37, W * .164, 0, Math.PI * 2); g.fill();
   const hat = (x, y, s, a = 1) => { g.save(); g.globalAlpha = a; g.translate(x, y); g.scale(s / 100, s / 100); g.translate(-50, -46); g.beginPath(); HAT(g); g.fillStyle = '#fbf3e2'; g.fill(); g.restore(); };
-  if (d.iconKey === 'both') { hat(W / 2 - W * .055, H * .365, W * .17, .7); hat(W / 2 + W * .045, H * .375, W * .19); }
+  const HOURGLASS = p => { p.moveTo(26, 8); p.lineTo(74, 8); p.lineTo(74, 16); p.lineTo(70, 16); p.bezierCurveTo(70, 30, 62, 40, 54, 50); p.bezierCurveTo(62, 60, 70, 70, 70, 84); p.lineTo(74, 84); p.lineTo(74, 92); p.lineTo(26, 92); p.lineTo(26, 84); p.lineTo(30, 84); p.bezierCurveTo(30, 70, 38, 60, 46, 50); p.bezierCurveTo(38, 40, 30, 30, 30, 16); p.lineTo(26, 16); p.closePath(); };
+  if (d.iconKey === 'capsule') {
+    g.save(); g.translate(W / 2, H * .37); g.scale(W * .2 / 100, W * .2 / 100); g.translate(-50, -50);
+    g.beginPath(); HOURGLASS(g); g.fillStyle = '#fbf3e2'; g.fill();
+    g.beginPath(); g.moveTo(40, 82); g.bezierCurveTo(42, 74, 46, 70, 50, 68); g.bezierCurveTo(54, 70, 58, 74, 60, 82); g.closePath(); g.moveTo(38, 24); g.lineTo(62, 24); g.bezierCurveTo(60, 32, 55, 38, 50, 42); g.bezierCurveTo(45, 38, 40, 32, 38, 24); g.fillStyle = '#d9b45a'; g.fill();
+    g.restore();
+  } else if (d.iconKey === 'both') { hat(W / 2 - W * .055, H * .365, W * .17, .7); hat(W / 2 + W * .045, H * .375, W * .19); }
   else hat(W / 2, H * .37, W * .2);
   if (d.iconKey === 'plus') {
     g.fillStyle = GOLD; g.beginPath(); g.arc(W / 2 + W * .1, H * .415, W * .048, 0, Math.PI * 2); g.fill();
@@ -315,7 +321,11 @@ function drawDeck(d, W = 640) {
     g.translate(W * .155, H * .072); g.scale(W * .075 / 100, W * .075 / 100); g.translate(-50, -46); g.beginPath(); HAT(g); g.fillStyle = '#9b1722'; g.fill(); g.restore();
   }
   if (d.locked) {
-    g.fillStyle = 'rgba(244,238,223,.55)'; g.fillRect(0, 0, W, H);
+    // greyed out: the whole card in greys, paler, with no gold shine; then the lock
+    const img = g.getImageData(0, 0, W, H), px = img.data;
+    for (let i = 0; i < px.length; i += 4) { const l = .3 * px[i] + .59 * px[i + 1] + .11 * px[i + 2]; px[i] = px[i + 1] = px[i + 2] = l * .78 + 44; }
+    g.putImageData(img, 0, 0);
+    f.clearRect(0, 0, W, H);
     g.save(); g.translate(W / 2, H * .37);
     g.fillStyle = 'rgba(24,18,52,.92)'; g.beginPath(); g.arc(0, 0, W * .12, 0, Math.PI * 2); g.fill();
     g.fillStyle = '#ffd84a'; rr(g, -W * .05, -W * .005, W * .1, W * .075, W * .012); g.fill();

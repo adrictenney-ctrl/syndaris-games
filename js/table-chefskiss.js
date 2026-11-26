@@ -1,16 +1,16 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=132';
+import * as K from './chefskiss.js?v=133';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
-import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
+import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, tableDecks, deckChoice, CAPSULE_PRICE } from './chefskiss-decks.js?v=4';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=132';
-import { movable } from './gesture.js?v=132';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=133';
+import { movable } from './gesture.js?v=133';
 import { startSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=132';
+import { topPicks } from './laugh-engine.js?v=133';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
-import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=6';
+import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=7';
 
 // ---------------------------------------------------------------- what the tables learn
 // Each judged round is reported (anonymously) and the stats for the next Recipe choices are
@@ -239,15 +239,6 @@ const DECK_CARD = {
   mixed: { name: 'Starter + Expansion - 1', sub: 'Both decks mixed', icon: 'both' },
 };
 let spring = null;
-// Time Capsule: off, every unlocked decade mixed in, or one decade alone (Medium only).
-function capsuleSelect(s) {
-  const level = OFFICIAL_LEVELS[s.level] || 'mild', mine = unlocked();
-  const opts = [['off', 'Off', false], ['mix', 'Mix in my decades', !CAPSULES.some(id => mine.includes(id))]];
-  if (CAPSULE_ALONE_LEVELS.includes(level)) for (const id of CAPSULES) opts.push([id, `${DECKS[id].decade} only`, !mine.includes(id)]);
-  let cur = s.capsule || 'off';
-  if (!opts.some(([v, , locked]) => v === cur && !locked)) cur = 'off';
-  return `<label>Time Capsule <select data-set="capsule">${opts.map(([v, label, locked]) => `<option value="${v}" ${v === cur ? 'selected' : ''} ${locked ? 'disabled' : ''}>${locked ? '🔒 ' : ''}${label}${locked ? ' (499 Bread in the Shop)' : ''}</option>`).join('')}</select></label>`;
-}
 
 // "Write your own card" next to the Card level: opens the writer for whoever is signed in on this
 // screen, set to the deck selected here. (Players can also write theirs on their phone.)
@@ -278,19 +269,30 @@ export default {
     // A new level changes which Cards and Time Capsule choices are open: draw the settings again.
     if (key === 'level') { s.level = Number(el.value); setTimeout(() => redrawLobby?.()); return true; }
     if (key === 'deckMode') { s.deckMode = DECK_MODES.includes(el.value) ? el.value : 'base'; return true; }
-    if (key === 'capsule') { s.capsule = el.value === 'mix' || CAPSULES.includes(el.value) ? el.value : 'off'; return true; }
+    // The deck chooser: a level's deck (Starter, Expansion - 1, both) or a Time Capsule decade on its own.
+    if (key === 'deck') {
+      if (CAPSULES.includes(el.value)) s.capsule = el.value;
+      else { s.deckMode = DECK_MODES.includes(el.value) ? el.value : 'base'; s.capsule = 'off'; }
+      return true;
+    }
     return false;
   },
 
   // The deck picker beside the settings: a card spring with one card per deck (js/ck-deckspring.js).
   lobbyStage(el, s, change) {
     const level = OFFICIAL_LEVELS[s.level] || 'mild', open = unlocked().includes(expansionOf(level));
+    const mine = unlocked();
     const decks = DECK_MODES.map(m => {
       const locked = m !== 'base' && !open;
       return { id: m, name: DECK_CARD[m].name, icon: ICONS[DECK_CARD[m].icon], locked, sub: locked ? '499 Dough in the Shop' : DECK_CARD[m].sub };
     });
-    if (!spring || spring.el !== el) spring = { el, api: mountDeckSpring(el, { onSelect: d => change('deckMode', d.id) }) };
-    spring.api.update({ decks, selected: playableMode(level, s.deckMode, unlocked()) });
+    // each Time Capsule decade is its own deck; one nobody here owns is shown greyed out
+    for (const id of CAPSULES) {
+      const locked = !mine.includes(id);
+      decks.push({ id, name: `${DECKS[id].decade} Time Capsule`, icon: ICONS.capsule, locked, sub: locked ? `${CAPSULE_PRICE} Bread in the Shop` : 'A decade on its own' });
+    }
+    if (!spring || spring.el !== el) spring = { el, api: mountDeckSpring(el, { onSelect: d => change('deck', d.id) }) };
+    spring.api.update({ decks, selected: deckChoice(level, s.deckMode, s.capsule, mine) });
   },
 
   settingsHTML(s) {
@@ -299,7 +301,6 @@ export default {
     const sel = (key, vals, label) => `<select data-set="${key}">${vals.map(v => `<option value="${v}" ${v === s[key] ? 'selected' : ''}>${label(v)}</option>`).join('')}</select>`;
     return `
       <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
-      ${capsuleSelect(s)}
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
       <label>Recipe timer ${sel('recipeTime', K.RECIPE_TIMES, timeLabel)}</label>
@@ -314,7 +315,8 @@ export default {
     const owned = [...new Set([...tvOwned, ...cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : [])))])];
     const level = OFFICIAL_LEVELS[settings.level] || 'mild';
     const deckMode = playableMode(level, settings.deckMode, owned);
-    const g = K.createGame({ ...settings, deckMode, decks: tableDecks(level, deckMode, settings.capsule, owned) }, players);
+    const capsule = CAPSULES.includes(settings.capsule) ? settings.capsule : 'off';
+    const g = K.createGame({ ...settings, deckMode, capsule, decks: tableDecks(level, deckMode, capsule, owned) }, players);
     learn(g);
     return g;
   },

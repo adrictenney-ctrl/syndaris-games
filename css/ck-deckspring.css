@@ -57,6 +57,7 @@
 .cks-dframe b { font: 400 27px/1.02 var(--display, 'Lilita One'), system-ui, sans-serif; letter-spacing: .5px; text-transform: uppercase; }
 .cks-dframe small { font: 800 14px/1.2 var(--ui, 'Nunito'), system-ui, sans-serif; color: #6a6478; }
 .cks-card.locked .cks-dframe > * { opacity: .45; }
+.cks-card.locked .cks-face > :not(.cks-lock) { filter: grayscale(1); }
 .cks-lock { position: absolute; left: 50%; top: 42%; width: 80px; height: 80px; margin: -40px 0 0 -40px; padding: 18px; box-sizing: border-box; border-radius: 50%; background: rgba(20, 16, 60, .88); color: #ffd84a; z-index: 2; }
 .cks-lock svg { width: 100%; height: 100%; }
 /* the chosen deck: a warm glow */
