@@ -1,8 +1,8 @@
 // Sketch & Guess on a phone. The drawer gets a sketch pad (what they draw shows up on the
 // table as they draw it); everyone else types their answer here.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=134';
-import { PALETTE, SIZES, ERASER, PAD_W, PAD_H } from './sketch.js?v=134';
-import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=134';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=135';
+import { PALETTE, SIZES, ERASER, PAD_W, PAD_H } from './sketch.js?v=135';
+import { fitCanvas, paint, drawStroke } from './sketch-pad.js?v=135';
 
 let ctx = null;
 let panelKey = '';

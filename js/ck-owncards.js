@@ -14,7 +14,7 @@ const MAX = LIMITS.snack;   // 60 characters, like any Ingredient Card a player 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
 const FS = 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-const fb = () => import('./firebase.js?v=4');
+const fb = () => import('./firebase.js?v=5');
 
 // The signed-in account (or null), once Firebase has had a moment to say.
 export async function whoIs() {

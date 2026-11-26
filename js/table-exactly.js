@@ -1,4 +1,4 @@
 // See table-cardgames.js.
-import { exactlyT } from './table-cardgames.js?v=134';
+import { exactlyT } from './table-cardgames.js?v=135';
 
 export default exactlyT;

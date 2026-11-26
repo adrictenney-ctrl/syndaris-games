@@ -1,4 +1,4 @@
 // See table-words.js.
-import { targetnumberT } from './table-words.js?v=134';
+import { targetnumberT } from './table-words.js?v=135';
 
 export default targetnumberT;

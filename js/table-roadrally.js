@@ -1,8 +1,8 @@
 // Road Rally on the table: one lane per player across the middle — a little car on a road with
 // mile markers, the light it's showing (green, red or a hazard), any speed limit, and its Aces.
-import * as R from './roadrally.js?v=134';
-import { snap } from './cards.js?v=134';
-import { centerMsg, clearMsg } from './table-hearts.js?v=134';
+import * as R from './roadrally.js?v=135';
+import { snap } from './cards.js?v=135';
+import { centerMsg, clearMsg } from './table-hearts.js?v=135';
 
 let root = null, key = '';
 const K = R.KINDS;

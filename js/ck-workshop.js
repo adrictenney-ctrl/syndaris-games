@@ -170,7 +170,7 @@ export function openWorkshop(opts) {
     const c = saved;
     shareMsg = '';
     try {
-      const [{ db }, fs] = await Promise.all([import('./firebase.js?v=4'), import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js')]);
+      const [{ db }, fs] = await Promise.all([import('./firebase.js?v=5'), import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js')]);
       await fs.setDoc(fs.doc(db, 'cardReviews', c.id), { cardId: c.id, type: c.type, level: c.level, text: c.text, flavor: c.flavor, answerTypes: c.answerTypes, ownerId: c.ownerId, status: 'pending_review', createdAt: fs.serverTimestamp() });
       const list = myCards().map(x => (x.id === c.id ? { ...x, status: 'pending_review', updatedAt: new Date().toISOString() } : x));
       saveCards(list); saved = list.find(x => x.id === c.id);

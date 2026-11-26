@@ -3,10 +3,10 @@
 // games. Everything is saved to their account in Firestore at parental/{uid} = { pin, games, words }
 // (the code is stored only as a hash), and a copy is kept on this screen (js/parental.js) so it
 // applies right away and keeps applying if someone signs out. Only the parent code changes it.
-import { db, onUser, currentUser, confirmOwner, signsInWithGoogle, authMessage } from './firebase.js?v=4';
+import { db, onUser, currentUser, confirmOwner, signsInWithGoogle, authMessage } from './firebase.js?v=5';
 import { doc, setDoc, deleteDoc, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 import { getParental, setParental, clearParental, hashPin, makeBlocker } from './parental.js?v=1';
-import { GAMES } from './games.js?v=134';
+import { GAMES } from './games.js?v=135';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const ref = uid => doc(db, 'parental', uid);

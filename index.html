@@ -9,9 +9,9 @@
   <link rel="icon" href="icon-vibrant.svg">
   <link rel="manifest" href="manifest.webmanifest">
   <script>
-    // The landing page shows every visit until someone signs in on this device (js/firebase.js
-    // remembers that in pod.signedIn); from then on the address goes straight to the games, even
-    // after signing out. The TV app, and anything carrying settings (like a game turned off in
+    // The landing page shows on every visit unless someone is signed in on this device (js/firebase.js
+    // keeps pod.signedIn while they are, and clears it when they sign out); then the address goes
+    // straight to the games. The TV app, and anything carrying settings (like a game turned off in
     // Parent Controls), always goes straight there too.
     (() => {
       const q = new URLSearchParams(location.search);

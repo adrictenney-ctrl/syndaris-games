@@ -36,8 +36,9 @@ import('https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js')
 getRedirectResult(auth).catch(() => {});
 
 export const onUser = cb => onAuthStateChanged(auth, cb);
-// Once someone has signed in on this device, the landing page (index.html) isn't shown here again.
-onAuthStateChanged(auth, u => { if (u) try { localStorage.setItem('pod.signedIn', '1'); } catch {} });
+// While someone is signed in on this device the landing page (index.html) isn't shown here; signing
+// out brings it back on the next visit.
+onAuthStateChanged(auth, u => { try { if (u) localStorage.setItem('pod.signedIn', '1'); else localStorage.removeItem('pod.signedIn'); } catch {} });
 export const currentUser = () => auth.currentUser;
 
 export async function signInGoogle() {
