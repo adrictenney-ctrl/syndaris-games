@@ -1,16 +1,16 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=135';
+import * as K from './chefskiss.js?v=136';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
-import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, tableDecks, deckChoice, CAPSULE_PRICE } from './chefskiss-decks.js?v=4';
+import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, tableDecks, deckChoice, CAPSULE_PRICE } from './chefskiss-decks.js?v=5';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=135';
-import { movable } from './gesture.js?v=135';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=136';
+import { movable } from './gesture.js?v=136';
 import { startSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=135';
+import { topPicks } from './laugh-engine.js?v=136';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
-import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=7';
+import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=8';
 
 // ---------------------------------------------------------------- what the tables learn
 // Each judged round is reported (anonymously) and the stats for the next Recipe choices are
@@ -258,7 +258,7 @@ const unlocked = () => [...new Set([...tvOwned, ...seatOwned])];
 function watchTv() {
   if (watching || typeof window === 'undefined') return;
   watching = true;
-  import('./dough.js?v=15').then(m => m.watchDecks(list => { tvOwned = cleanOwned(list); redrawLobby?.(); })).catch(() => {});
+  import('./dough.js?v=16').then(m => m.watchDecks(list => { tvOwned = cleanOwned(list); redrawLobby?.(); })).catch(() => {});
 }
 
 export default {
@@ -266,10 +266,10 @@ export default {
   fresh: K.FRESH,   // Play to 5, 30 minutes, both timers off: every time the table opens
   lobbyPlayers(players, redraw) { seatOwned = cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : []))); redrawLobby = redraw; watchTv(); },
   applySetting(s, key, el) {
-    // A new level changes which Cards and Time Capsule choices are open: draw the settings again.
+    // A new level changes which decks are open: draw the settings again.
     if (key === 'level') { s.level = Number(el.value); setTimeout(() => redrawLobby?.()); return true; }
     if (key === 'deckMode') { s.deckMode = DECK_MODES.includes(el.value) ? el.value : 'base'; return true; }
-    // The deck chooser: a level's deck (Starter, Expansion - 1, both) or a Time Capsule decade on its own.
+    // The deck chooser: a level's deck (Starter, Expansion - 1, both) or a Classic Cookbook (a decade) on its own.
     if (key === 'deck') {
       if (CAPSULES.includes(el.value)) s.capsule = el.value;
       else { s.deckMode = DECK_MODES.includes(el.value) ? el.value : 'base'; s.capsule = 'off'; }
@@ -286,10 +286,10 @@ export default {
       const locked = m !== 'base' && !open;
       return { id: m, name: DECK_CARD[m].name, icon: ICONS[DECK_CARD[m].icon], locked, sub: locked ? '499 Dough in the Shop' : DECK_CARD[m].sub };
     });
-    // each Time Capsule decade is its own deck; one nobody here owns is shown greyed out
+    // each Classic Cookbook (one decade) is its own deck; one nobody here owns is shown greyed out
     for (const id of CAPSULES) {
       const locked = !mine.includes(id);
-      decks.push({ id, name: `${DECKS[id].decade} Time Capsule`, icon: ICONS.capsule, locked, sub: locked ? `${CAPSULE_PRICE} Bread in the Shop` : 'A decade on its own' });
+      decks.push({ id, name: `${DECKS[id].decade} Classic Cookbook`, icon: ICONS.cookbook, locked, sub: locked ? `${CAPSULE_PRICE} Bread in the Shop` : 'A decade on its own' });
     }
     if (!spring || spring.el !== el) spring = { el, api: mountDeckSpring(el, { onSelect: d => change('deck', d.id) }) };
     spring.api.update({ decks, selected: deckChoice(level, s.deckMode, s.capsule, mine) });

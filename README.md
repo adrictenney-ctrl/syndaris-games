@@ -189,8 +189,8 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   which also has "End the game now".
 - **No teams**, and the **Laugh Engine is always on** (neither is a setting).
 - **Deck picker** (`js/ck-deckspring.js`, `css/ck-deckspring.css`): in the table lobby the decks (Starter deck,
-  Expansion - 1, Starter + Expansion - 1, and each Time Capsule decade, 2010s to 1960s, as its own deck played on its
-  own at any level; one nobody at the table owns is greyed out with a lock and its Shop price) are cards in a real-time 3D card spring, laid out after the reference
+  Expansion - 1, Starter + Expansion - 1, and each Classic Cookbook (one decade, 2010s to 1960s; the decks first called
+  Time Capsules) as its own deck played on its own at any level; one nobody at the table owns is greyed out with a lock and its Shop price) are cards in a real-time 3D card spring, laid out after the reference
   photo: a camera matched to the photo, thin bendable cards with rounded corners and edges, a key light with a glossy
   coat, soft shadows (shadow map) on the cards and the table, gold foil on the deck cards. Drawn with WebGL 2 and no
   library; the cards are layered in the photo's order rather than with a depth buffer (which leaves see-through specks

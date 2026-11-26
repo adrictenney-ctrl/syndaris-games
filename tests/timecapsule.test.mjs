@@ -32,7 +32,7 @@ test('six Time Capsule decks, each 100 + 400 with Al\'s heat split, all live and
 test('each Time Capsule costs 499 Bread and is unlocked on its own', () => {
   assert.equal(CAPSULE_PRICE, 499);
   for (const id of CAPSULES) assert.equal(DECKS[id].bread, 499);
-  assert.match(read('../js/dough.js'), /\[`deck_timecapsule_\$\{d\}`, \{ name: `Time Capsule: \$\{d\}`, price: 499, currency: 'bread' \}\]/);
+  assert.match(read('../js/dough.js'), /\[`deck_timecapsule_\$\{d\}`, \{ name: `Classic Cookbook: \$\{d\}`, price: 499, currency: 'bread' \}\]/);
   assert.deepEqual(cleanOwned(['deck_timecapsule_1990s', 'deck_nope']), ['deck_timecapsule_1990s']);
   // each decade is its own deck: played on its own, at every level, only when owned
   for (const level of ['mild', 'medium', 'hot']) assert.deepEqual(tableDecks(level, 'base', 'deck_timecapsule_1990s', ['deck_timecapsule_1990s']), ['deck_timecapsule_1990s']);
@@ -81,5 +81,14 @@ test('each decade is a deck on the deck chooser (greyed out when nobody owns it)
   assert.match(t, /for \(const id of CAPSULES\) \{\s*const locked = !mine\.includes\(id\);\s*decks\.push/);
   assert.match(t, /decks: tableDecks\(level, deckMode, capsule, owned\)/);
   assert.match(read('../js/ck-deckspring.js'), /greyed out: the whole card in greys/);
-  assert.match(read('../js/bread.js'), /Chef's Kiss Time Capsules[\s\S]*499 Bread/);
+  assert.match(read('../js/bread.js'), /Chef's Kiss Classic Cookbooks[\s\S]*499 Bread/);
+});
+
+test('players see them as Classic Cookbooks (the ids keep timecapsule, where owned decks are saved)', () => {
+  for (const id of CAPSULES) { assert.match(id, /^deck_timecapsule_\d{4}s$/); assert.equal(DECKS[id].name, `Classic Cookbook: ${DECKS[id].decade}`); }
+  for (const f of ['../js/bread.js', '../js/dough.js', '../js/table-chefskiss.js']) {
+    const shown = read(f).replace(/\/\/.*$/gm, '').replace(/deck_timecapsule/g, '');
+    assert.doesNotMatch(shown, /Time Capsule/, f);
+  }
+  assert.match(read('../js/table-chefskiss.js'), /name: `\$\{DECKS\[id\]\.decade\} Classic Cookbook`, icon: ICONS\.cookbook/);
 });

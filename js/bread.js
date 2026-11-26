@@ -99,7 +99,7 @@ async function sendGift(f) {
 }
 
 const EXPANSIONS = [['deck_mild_exp1', 'Mild Expansion - 1'], ['deck_medium_exp1', 'Medium Expansion - 1'], ['deck_hot_exp1', 'Hot Expansion - 1']];
-const CAPSULES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'].map(d => [`deck_timecapsule_${d}`, `Time Capsule: ${d}`]);
+const CAPSULES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'].map(d => [`deck_timecapsule_${d}`, `Classic Cookbook: ${d}`]);
 const LOAF = '<svg class="loaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11c0-3.5 3.6-6 8-6s8 2.5 8 6c0 1.2-.8 2-2 2v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5c-1.2 0-2-.8-2-2z" fill="#e8b45a" stroke="#7a4a14" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 9l1 2M12 8.5l1 2M15 9l1 2" stroke="#7a4a14" stroke-width="1.3" stroke-linecap="round"/></svg>';
 async function buyDeck(id, btn) {
   const capsule = CAPSULES.some(x => x[0] === id), coin = capsule ? 'Bread' : 'Dough';
@@ -118,13 +118,13 @@ function draw() {
   dlg.innerHTML = `<div class="cart-in">
     <div class="set-head"><h2 id="cartTitle">Shop</h2><button type="button" class="set-x" data-a="close" aria-label="Close">✕</button></div>
     <h3 class="cart-h first">Chef's Kiss Expansions</h3>
-    <p class="cart-sub">500 more cards each (100 Recipes, 400 Ingredients). Pick them under Cards, next to Card level.${state.signedIn ? ` You have ${LOAF}<b>${fmt(state.dough)}</b> Dough.` : ''}</p>
+    <p class="cart-sub">500 more cards each (100 Recipes, 400 Ingredients). Pick them on the deck cards in the Chef's Kiss lobby.${state.signedIn ? ` You have ${LOAF}<b>${fmt(state.dough)}</b> Dough.` : ''}</p>
     <ul class="cart-packs">${EXPANSIONS.map(([id, name]) => { const own = state.decks.includes(id); return `<li class="cart-pack">
       <span class="cart-amt"><b>${name}</b></span>
       <button type="button" class="cart-buy dough" data-deck="${id}" ${own ? 'disabled' : ''}>${own ? 'Yours ✓' : '499 Dough'}</button>
     </li>`; }).join('')}</ul>
-    <h3 class="cart-h">Chef's Kiss Time Capsules</h3>
-    <p class="cart-sub">One decade each, 500 cards (mostly Medium, some Mild and Hot). Turn them on under Time Capsule, next to Card level.${state.signedIn ? ` You have ${SLICE}<b>${fmt(state.bread)}</b> Bread.` : ''}</p>
+    <h3 class="cart-h">Chef's Kiss Classic Cookbooks</h3>
+    <p class="cart-sub">One decade each, 500 cards (mostly Medium, some Mild and Hot). Pick one on the deck cards in the Chef's Kiss lobby.${state.signedIn ? ` You have ${SLICE}<b>${fmt(state.bread)}</b> Bread.` : ''}</p>
     <ul class="cart-packs">${CAPSULES.map(([id, name]) => { const own = state.decks.includes(id); return `<li class="cart-pack">
       <span class="cart-amt"><b>${name}</b></span>
       <button type="button" class="cart-buy bread" data-deck="${id}" ${own ? 'disabled' : ''}>${own ? 'Yours ✓' : '499 Bread'}</button>

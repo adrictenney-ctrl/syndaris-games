@@ -7,7 +7,7 @@
 //   pickMode        → instead of spots, pick up to `maxPicks` numbers and stake one wager (keno-style)
 //   payPicks(g, picks) → return per chip for a pick-mode ticket
 // Options: chips (start), rounds, spinMs, minBet.
-import { base, sfx, left, waiting, announce } from './party.js?v=135';
+import { base, sfx, left, waiting, announce } from './party.js?v=136';
 
 export const CHIPS = [5, 25, 100, 500];
 export function casinoEngine(G) {

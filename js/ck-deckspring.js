@@ -23,7 +23,7 @@
 //   the card is turned). Speed: SNAP, FOLLOW, LAG, GLIDE. Look: LIGHT, the shaders, the drawings.
 // With "reduce motion" on, cards jump to their places with a short fade, and nothing floats.
 
-import { mountDeckSpring as mountFlat, ICONS } from './ck-deckspring-flat.js?v=3';
+import { mountDeckSpring as mountFlat, ICONS } from './ck-deckspring-flat.js?v=4';
 export { ICONS };
 
 // ---------------------------------------------------------------- the camera and the spring
@@ -286,11 +286,16 @@ function drawDeck(d, W = 640) {
   // emblem: deep red disc with an ivory chef's hat (and a plus or a second hat)
   g.fillStyle = '#9b1722'; g.beginPath(); g.arc(W / 2, H * .37, W * .164, 0, Math.PI * 2); g.fill();
   const hat = (x, y, s, a = 1) => { g.save(); g.globalAlpha = a; g.translate(x, y); g.scale(s / 100, s / 100); g.translate(-50, -46); g.beginPath(); HAT(g); g.fillStyle = '#fbf3e2'; g.fill(); g.restore(); };
-  const HOURGLASS = p => { p.moveTo(26, 8); p.lineTo(74, 8); p.lineTo(74, 16); p.lineTo(70, 16); p.bezierCurveTo(70, 30, 62, 40, 54, 50); p.bezierCurveTo(62, 60, 70, 70, 70, 84); p.lineTo(74, 84); p.lineTo(74, 92); p.lineTo(26, 92); p.lineTo(26, 84); p.lineTo(30, 84); p.bezierCurveTo(30, 70, 38, 60, 46, 50); p.bezierCurveTo(38, 40, 30, 30, 30, 16); p.lineTo(26, 16); p.closePath(); };
-  if (d.iconKey === 'capsule') {
-    g.save(); g.translate(W / 2, H * .37); g.scale(W * .2 / 100, W * .2 / 100); g.translate(-50, -50);
-    g.beginPath(); HOURGLASS(g); g.fillStyle = '#fbf3e2'; g.fill();
-    g.beginPath(); g.moveTo(40, 82); g.bezierCurveTo(42, 74, 46, 70, 50, 68); g.bezierCurveTo(54, 70, 58, 74, 60, 82); g.closePath(); g.moveTo(38, 24); g.lineTo(62, 24); g.bezierCurveTo(60, 32, 55, 38, 50, 42); g.bezierCurveTo(45, 38, 40, 32, 38, 24); g.fillStyle = '#d9b45a'; g.fill();
+  const BOOK = p => { p.moveTo(6, 24); p.bezierCurveTo(22, 18, 38, 20, 50, 30); p.bezierCurveTo(62, 20, 78, 18, 94, 24); p.lineTo(94, 80); p.bezierCurveTo(78, 74, 62, 76, 50, 86); p.bezierCurveTo(38, 76, 22, 74, 6, 80); p.closePath(); };
+  if (d.iconKey === 'cookbook') {
+    // an open cookbook: ivory pages, gold lines of a recipe, a red ribbon
+    g.save(); g.translate(W / 2, H * .37); g.scale(W * .22 / 100, W * .22 / 100); g.translate(-50, -55);
+    g.beginPath(); BOOK(g); g.fillStyle = '#fbf3e2'; g.fill();
+    g.strokeStyle = '#d9b45a'; g.lineWidth = 3; g.lineCap = 'round'; g.beginPath();
+    for (const y of [38, 48, 58, 68]) { g.moveTo(14, y + 1); g.bezierCurveTo(24, y - 2, 34, y - 1, 42, y + 3); g.moveTo(58, y + 3); g.bezierCurveTo(66, y - 1, 76, y - 2, 86, y + 1); }
+    g.stroke();
+    g.strokeStyle = '#c9a24c'; g.lineWidth = 2; g.beginPath(); g.moveTo(50, 31); g.lineTo(50, 85); g.stroke();
+    g.fillStyle = '#d8323e'; g.beginPath(); g.moveTo(62, 22); g.lineTo(68, 22); g.lineTo(68, 92); g.lineTo(65, 88); g.lineTo(62, 92); g.closePath(); g.fill();
     g.restore();
   } else if (d.iconKey === 'both') { hat(W / 2 - W * .055, H * .365, W * .17, .7); hat(W / 2 + W * .045, H * .375, W * .19); }
   else hat(W / 2, H * .37, W * .2);

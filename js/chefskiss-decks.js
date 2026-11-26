@@ -9,11 +9,12 @@ export const DECKS = {
   deck_hot_base: { level: 'hot', kind: 'base', price: 0, name: 'Hot' },
   deck_hot_exp1: { level: 'hot', kind: 'expansion', dough: EXPANSION_PRICE, baseDeck: 'deck_hot_base', name: 'Hot Expansion - 1' },
 };
-// Al's Time Capsule decks (21 Nov 2026): one decade each, 500 cards with heat set per card (most
+// Al's decade decks, the Classic Cookbooks (21 Nov 2026; first called Time Capsules, which the ids
+// still say: owned decks are saved under them): one decade each, 500 cards with heat set per card (most
 // Medium). Each is bought separately for 499 Bread.
 export const CAPSULE_PRICE = 499;   // Bread
 export const DECADES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'];
-for (const d of DECADES) DECKS[`deck_timecapsule_${d}`] = { level: 'mixed', kind: 'expansion', bread: CAPSULE_PRICE, decade: d, name: `Time Capsule: ${d}` };
+for (const d of DECADES) DECKS[`deck_timecapsule_${d}`] = { level: 'mixed', kind: 'expansion', bread: CAPSULE_PRICE, decade: d, name: `Classic Cookbook: ${d}` };
 export const CAPSULES = DECADES.map(d => `deck_timecapsule_${d}`);
 export const EXPANSIONS = Object.keys(DECKS).filter(id => DECKS[id].kind === 'expansion');
 export const expansionOf = level => `deck_${level}_exp1`;
@@ -32,7 +33,7 @@ export function activeDecks(level, mode = 'base') {
 }
 // A card belongs to the table's decks if any of its deckIds is in the set.
 export const inDecks = (card, decks) => !decks || (card?.deckIds || []).some(d => decks.includes(d));
-// Time Capsule at a table: 'off' or one decade on its own ("a 1990s night"), picked like any deck
+// A Classic Cookbook at a table (setting `capsule`): 'off' or one decade on its own ("a 1990s night"), picked like any deck
 // on the deck chooser (25 Nov 2026). At every level: Mild and Hot have 20 Recipes and 80 Ingredients
 // per decade (Medium 60 and 240), so a long game there sees cards come round again. ('mix', every
 // owned decade mixed in, is no longer offered; a table saved with it plays without them.)

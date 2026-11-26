@@ -126,7 +126,7 @@ const suit = (s, cls = '') => `<svg class="${cls}" viewBox="0 0 100 100" aria-hi
 export const ICONS = {
   hat: '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M27 60a17 17 0 0 1 3-33 20 20 0 0 1 40 0 17 17 0 0 1 3 33Z"/><path d="M30 64h40v15a5 5 0 0 1-5 5H35a5 5 0 0 1-5-5Z"/></svg>',
   plus: '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M17 58a15 15 0 0 1 3-29 17 17 0 0 1 34 0 15 15 0 0 1 3 29Z"/><path d="M20 62h34v13a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4Z"/><circle cx="72" cy="66" r="19"/><path d="M72 56v20M62 66h20" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>',
-  capsule: '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M26 8h48v8h-4c0 14-8 24-16 34 8 10 16 20 16 34h4v8H26v-8h4c0-14 8-24 16-34-8-10-16-20-16-34h-4Z"/><path d="M40 82c2-8 6-12 10-14 4 2 8 6 10 14Z" fill="#fff" opacity=".55"/></svg>',
+  cookbook: '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M6 24c16-6 32-4 44 6 12-10 28-12 44-6v56c-16-6-32-4-44 6-12-10-28-12-44-6Z"/><path d="M50 30v54M16 38c10-3 20-2 28 3M16 50c10-3 20-2 28 3M56 41c8-5 18-6 28-3M56 53c8-5 18-6 28-3" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/></svg>',
   both: '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M8 54a13 13 0 0 1 2-25 15 15 0 0 1 30 0 13 13 0 0 1 2 25Z" opacity=".55"/><path d="M10 58h30v12a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4Z" opacity=".55"/><path d="M42 62a16 16 0 0 1 3-31 19 19 0 0 1 37 0 16 16 0 0 1 3 31Z"/><path d="M45 66h37v14a5 5 0 0 1-5 5H50a5 5 0 0 1-5-5Z"/></svg>',
 };
 const LOCK = '<svg viewBox="0 0 100 100" aria-hidden="true"><rect x="22" y="44" width="56" height="44" rx="8"/><path d="M34 44V32a16 16 0 0 1 32 0v12" fill="none" stroke="currentColor" stroke-width="9"/></svg>';
