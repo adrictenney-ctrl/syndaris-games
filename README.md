@@ -188,6 +188,12 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   one runs out, a random card is played. The host can change any timer mid-game with **⏱ Timers** on the table,
   which also has "End the game now".
 - **No teams**, and the **Laugh Engine is always on** (neither is a setting).
+- **Deck picker** (`js/ck-deckspring.js`, `css/ck-deckspring.css`): in the table lobby the decks (Starter deck,
+  Expansion - 1, Starter + Expansion - 1) are cards in an arc of casino cards springing from a stack at the top,
+  down the right and into a pile at the bottom. The card facing out is the chosen deck. Drag along the arc (mouse
+  or touch), scroll, or use the arrow keys; it snaps to the nearest deck, and a flick carries on a few cards. A
+  locked deck shows a lock and its Shop price and isn't chosen. Reduce motion swaps the spring for a short fade.
+  The settings sit beside it, with the join card by the start button. `_deckspring.html` previews it (not published).
 - **Card level:** Mild (elementary, the default), Medium (middle school) or **Hot** (high school, formerly called
   Spicy), chosen in the lobby. **One table, one deck:** a table deals only its own level's Recipe and Ingredient
   Cards, never a lower or higher one. All three are family-friendly. (Spicy is now the college tier, 17+, and

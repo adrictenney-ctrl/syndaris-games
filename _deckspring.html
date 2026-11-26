@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Preview of the Chef's Kiss deck picker (js/ck-deckspring.js), big, with six sample decks. Not published. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deck spring preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/ck-deckspring.css">
+<style>
+  :root { --display: 'Lilita One', system-ui, sans-serif; --ui: 'Nunito', system-ui, sans-serif; }
+  body { margin: 0; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; gap: 2vmin; align-items: center; justify-items: center; background: radial-gradient(ellipse at 50% 40%, #4b3bd6, #23187e); font: 700 16px var(--ui); color: #fff; }
+  .s { height: 88vh; aspect-ratio: 800 / 940; }
+  #log { position: fixed; left: 12px; bottom: 8px; margin: 0; }
+</style></head><body>
+<div class="s" id="a"></div><div class="s" id="b"></div>
+<p id="log">onSelect: (none yet)</p>
+<script>
+  // ?timer: run on timers instead of animation frames (for checking it in a hidden window)
+  if (location.search.includes('timer')) window.requestAnimationFrame = f => setTimeout(() => f(performance.now()), 16);
+</script>
+<script type="module">
+  import { mountDeckSpring, ICONS } from './js/ck-deckspring.js';
+  const log = d => { document.querySelector('#log').textContent = 'onSelect: ' + d.name; };
+  const three = [
+    { id: 'base', name: 'Starter deck', sub: 'Free with every table', icon: ICONS.hat },
+    { id: 'expansion', name: 'Expansion - 1', sub: '499 Dough in the Shop', icon: ICONS.plus, locked: true },
+    { id: 'mixed', name: 'Starter + Expansion - 1', sub: '499 Dough in the Shop', icon: ICONS.both, locked: true },
+  ];
+  const six = [...three.map(d => ({ ...d, locked: false, sub: 'Yours' })), { id: 'x4', name: 'Family deck', sub: 'Sample', icon: ICONS.hat }, { id: 'x5', name: 'Holiday deck', sub: 'Sample', icon: ICONS.plus }, { id: 'x6', name: 'Custom deck', sub: 'Sample', icon: ICONS.both }];
+  window.A = mountDeckSpring(document.querySelector('#a'), { onSelect: log }); A.update({ decks: three, selected: 'base' });
+  mountDeckSpring(document.querySelector('#b'), { onSelect: log }).update({ decks: six, selected: 'x4' });
+</script>
+</body></html>

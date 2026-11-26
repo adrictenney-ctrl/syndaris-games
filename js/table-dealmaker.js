@@ -1,8 +1,8 @@
 // Deal Maker on the table: in front of each player, their property sets (a complete set glows)
 // and their bank total; in the middle the draw pile and whatever deal is happening right now.
-import * as D from './dealmaker.js?v=126';
-import { snap } from './cards.js?v=126';
-import { centerMsg, clearMsg } from './table-hearts.js?v=126';
+import * as D from './dealmaker.js?v=127';
+import { snap } from './cards.js?v=127';
+import { centerMsg, clearMsg } from './table-hearts.js?v=127';
 
 let root = null, key = '';
 const C = D.CARDS;

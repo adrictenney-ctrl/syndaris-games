@@ -1,0 +1,124 @@
+/* Chef's Kiss deck picker: the card spring (js/ck-deckspring.js), and the lobby around it. */
+
+.cks { position: relative; outline: none; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; border-radius: 2vmin; }
+.cks.cks-dragging { cursor: grabbing; }
+.cks:focus-visible { box-shadow: 0 0 0 .35vmin rgba(255, 216, 74, .85); }
+.cks-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.cks-cards { position: absolute; inset: 0; }
+.cks-cards.cks-swap { animation: dsSwap .26s ease-out; }
+@keyframes dsSwap { from { opacity: .35; transform: translateY(1.2%); } }
+.cks-card {
+  position: absolute; left: 0; top: 0; width: var(--dsw); height: var(--dsh); transform-style: preserve-3d; will-change: transform;   /* not opacity: that would flatten the card and hide its back */
+  font-size: calc(var(--dsw) / 100); color: #15151c;
+}
+.cks-face, .cks-back {
+  position: absolute; inset: 0; border-radius: 7em / 5em; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 0 0 .6em rgba(0, 0, 0, .14), 0 3em 6em rgba(8, 4, 40, .35);
+}
+/* white glossy stock with a thin border */
+.cks-face { background: linear-gradient(155deg, #ffffff 0%, #f7f6f2 55%, #ecebe6 100%); }
+.cks-face::before { content: ''; position: absolute; inset: 3.4em; border: .5em solid rgba(20, 20, 40, .08); border-radius: 5em / 3.6em; pointer-events: none; }
+.cks-face::after { content: ''; position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255, 255, 255, .7) 0 18%, rgba(255, 255, 255, 0) 34%); pointer-events: none; z-index: 2; }
+/* the red patterned back */
+.cks-back { transform: rotateY(180deg); background: #fbfaf6; }
+.cks-back::before {
+  content: ''; position: absolute; inset: 6em; border-radius: 3.6em / 2.6em;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .55) 0 7em, transparent 7.6em),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, .45) 0 .7em, transparent .7em 6em),
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, .45) 0 .7em, transparent .7em 6em),
+    linear-gradient(160deg, #d7252e, #a8121a);
+  box-shadow: inset 0 0 0 1em #b51820, inset 0 0 0 1.6em rgba(255, 255, 255, .55);
+}
+.cks-shade { position: absolute; inset: 0; background: #1b1440; opacity: 0; pointer-events: none; z-index: 3; }
+.cks-card svg { display: block; fill: currentColor; }
+.cks-card.red { color: #d0202a; }
+/* corner index */
+.cks-ix { position: absolute; display: flex; flex-direction: column; align-items: center; width: 16em; line-height: .9; z-index: 1; }
+.cks-ix.tl { left: 4.5em; top: 5em; }
+.cks-ix.br { right: 4.5em; bottom: 5em; transform: rotate(180deg); }
+.cks-ix b { font: 700 17em/1 Georgia, 'Times New Roman', serif; letter-spacing: -.06em; }
+.cks-ix svg { width: 11em; height: 11em; margin-top: 1em; }
+/* number cards: pips */
+.cks-pips { position: absolute; inset: 14% 20%; }
+.cks-pips i { position: absolute; width: 19em; height: 19em; transform: translate(-50%, -50%); }
+.cks-pips i.dn { transform: translate(-50%, -50%) rotate(180deg); }
+.cks-pips svg { width: 100%; height: 100%; }
+.cks-pips.ace i { width: 40em; height: 40em; }
+/* picture cards: a framed panel */
+.cks-court {
+  position: absolute; inset: 15% 19%; display: grid; place-items: center; align-content: center; gap: 3em; border-radius: 2em;
+  border: .9em solid currentColor;
+  background: repeating-linear-gradient(135deg, rgba(255, 196, 46, .55) 0 4em, rgba(40, 70, 190, .28) 4em 8em), #fff8e6;
+}
+.cks-court b { font: 700 46em/1 Georgia, 'Times New Roman', serif; }
+.cks-court svg { width: 20em; height: 20em; }
+/* deck cards: the deck's icon and name */
+.cks-card.deck { color: #c8202c; }
+.cks-card.deck .cks-ix svg { width: 13em; height: 13em; margin: 0; }
+.cks-mid { position: absolute; inset: 18% 9% 16%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4em; text-align: center; color: #15151c; z-index: 1; }
+.cks-icon { width: 40em; height: 40em; color: #15151c; }
+.cks-icon svg { width: 100%; height: 100%; }
+.cks-mid b { font: 400 13em/1.02 var(--display, system-ui), system-ui, sans-serif; letter-spacing: .03em; text-transform: uppercase; }
+.cks-mid small { font: 800 7.4em/1.2 var(--ui, system-ui), system-ui, sans-serif; letter-spacing: .02em; color: #6a6478; }
+.cks-card.locked .cks-mid { opacity: .5; }
+.cks-lock { position: absolute; left: 50%; top: 40%; width: 34em; height: 34em; margin: -17em 0 0 -17em; padding: 7em; box-sizing: border-box; border-radius: 50%; background: rgba(20, 16, 60, .86); color: #ffd84a; z-index: 2; }
+.cks-lock svg { width: 100%; height: 100%; }
+/* the chosen deck: a warm glow */
+.cks-card.deck.is-front .cks-face { box-shadow: 0 0 0 1.4em #ffd84a, 0 0 12em 4em rgba(255, 216, 74, .65), 0 3em 6em rgba(8, 4, 40, .35); }
+.cks-card.deck.locked.is-front .cks-face { box-shadow: 0 0 0 1.4em rgba(255, 255, 255, .6), 0 3em 6em rgba(8, 4, 40, .35); }
+.cks-card.cks-pop .cks-face { animation: dsPop .35s ease-out; }
+@keyframes dsPop { 40% { filter: brightness(1.12); } }
+/* the top stack and the bottom pile: blocks of card edges */
+.cks-block { position: absolute; }
+.cks-stack {
+  z-index: 85; border-radius: .8vmin .5vmin .5vmin .8vmin;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .35), rgba(255, 255, 255, 0) 30%, rgba(30, 20, 70, .18)),
+    linear-gradient(90deg, rgba(30, 20, 70, .38), rgba(255, 255, 255, 0) 22%, rgba(255, 255, 255, .15) 60%, rgba(30, 20, 70, .3)),
+    repeating-linear-gradient(90deg, #fbfbfd 0 .14vmin, #b9b8c6 .14vmin .2vmin);
+  box-shadow: 0 1vmin 2.4vmin rgba(8, 4, 40, .4), inset 0 0 0 .1vmin rgba(30, 20, 70, .25);
+}
+.cks-pileblock {
+  z-index: 10; border-radius: .5vmin;
+  background: linear-gradient(90deg, rgba(30, 20, 70, .3), rgba(255, 255, 255, .1) 30%, rgba(255, 255, 255, .1) 70%, rgba(30, 20, 70, .35)),
+    linear-gradient(180deg, rgba(255, 255, 255, .3), rgba(30, 20, 70, .3)),
+    repeating-linear-gradient(180deg, #fbfbfd 0 .14vmin, #b9b8c6 .14vmin .2vmin);
+  box-shadow: 0 1.6vmin 2.6vmin rgba(8, 4, 40, .45);
+}
+.cks-cap { position: absolute; margin: 0; transform: translate(-50%, -50%); width: 30%; text-align: center; pointer-events: none; z-index: 120; font-size: 1.9vmin; font-weight: 800; line-height: 1.25; color: #fff; text-shadow: 0 .3vmin .8vmin rgba(10, 6, 60, .6); }
+.cks-cap span { display: block; opacity: .85; }
+.cks-cap b { display: block; margin-top: .8vmin; color: #ffd84a; font-size: 1.8vmin; }
+@media (prefers-reduced-motion: reduce) { .cks-card { will-change: auto; } .cks-card.cks-pop .cks-face { animation: none; } }
+
+/* ---------------------------------------------------------------- the lobby: the card spring beside the settings
+   The game's name across the top, the card spring on the left, the settings on the right with the
+   join card by the start button (table.js moves them: stageLayout). */
+#lobbyStage, .lobby-go, .lobby-head { display: none; }
+body.has-stage .lobby-main { display: grid; grid-template-columns: auto auto; grid-template-areas: 'stage head' 'stage info'; justify-content: center; align-items: center; gap: 1.2vmin 3vmin; }
+body.has-stage .lobby-info { grid-area: info; }
+body.has-stage .lobby-head { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0 2vmin; grid-area: head; align-self: end; text-align: center; width: 0; min-width: 100%; }   /* sized by the panel under it, not by its own line */
+body.has-stage .lobby-head :is(.back, .game-title) { flex: 0 0 100%; }
+body.has-stage .lobby-head .back { margin: 0 0 .5vmin; }
+body.has-stage .lobby-head .game-title { font-size: 5.6vmin; }
+body.has-stage .lobby-head .game-blurb { margin: .8vmin 0; }
+body.has-stage .lobby-head .rules-btn { margin: 0; }
+body.has-stage.in-lobby #lobbyStage { display: block; grid-area: stage; height: min(58vmin, calc((var(--lob-b, 100vh) - var(--lob-t, 0px) - var(--mirror-h)) / var(--lz, 1) - 1vmin)); aspect-ratio: 800 / 940; }
+body.has-stage.in-lobby .lobby-info {
+  width: 64vmin; max-width: 64vmin;
+  max-height: calc((var(--lob-b, 100vh) - var(--lob-t, 0px) - var(--mirror-h) - 2.4vmin) / var(--lz, 1) - 12vmin);
+}
+body.has-stage.in-lobby .lobby-info .settings { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); gap: 1.2vmin 1.6vmin; align-items: end; margin: 0; }
+body.has-stage.in-lobby .lobby-info .settings label { display: flex; flex-direction: column; align-items: stretch; gap: .5vmin; white-space: nowrap; font-size: .92em; }
+body.has-stage.in-lobby .lobby-info .settings select { width: 100%; max-width: none; font-size: .88em; padding-inline: .9vmin; text-overflow: ellipsis; }
+body.has-stage.in-lobby .lobby-info .settings .ck-ownbtn, body.has-stage.in-lobby .lobby-info .settings .ck-si { grid-column: 1 / -1; }
+body.has-stage #joinUrl { display: none; }
+body.has-stage .lobby-go { display: flex; align-items: center; gap: 2vmin; margin-top: 1.2vmin; }
+body.has-stage .lobby-go .tent { width: 12.5vmin; flex: none; padding: 1vmin 1vmin .8vmin; }
+body.has-stage .lobby-go .tent-cap { margin: .7vmin 0 0; font-size: 1.25vmin; }
+body.has-stage .lobby-go .tent-room { font-size: .95vmin; }
+body.has-stage .lobby-go .tent-room b { font-size: 2.1vmin; }
+body.has-stage .lobby-go .tent-note { font-size: .9vmin; margin-top: .2vmin; }
+body.has-stage .lobby-go #startBtn { flex: 1; align-self: stretch; margin: 0; font-size: 2.6vmin; white-space: normal; }
+html[data-style="vibrant"] body.has-stage .lobby-go #startBtn:not(:disabled) {
+  color: #3a2200; background: linear-gradient(180deg, #ffe680, #ffc21f); box-shadow: 0 .6vmin 0 #c98a00, 0 0 4vmin rgba(255, 210, 60, .45), 0 1.6vmin 3vmin rgba(10, 6, 60, .35);
+}

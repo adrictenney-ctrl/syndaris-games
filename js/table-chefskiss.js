@@ -1,15 +1,16 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=126';
+import * as K from './chefskiss.js?v=127';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
-import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
+import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=126';
-import { movable } from './gesture.js?v=126';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=127';
+import { movable } from './gesture.js?v=127';
 import { startSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=126';
+import { topPicks } from './laugh-engine.js?v=127';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
+import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=1';
 
 // ---------------------------------------------------------------- what the tables learn
 // Each judged round is reported (anonymously) and the stats for the next Recipe choices are
@@ -230,15 +231,14 @@ function message(g, ctx) {
   return '';
 }
 
-// The deck setting: Starter deck, Expansion - 1 only, or both. A locked Expansion shows a lock.
-function deckSelect(s) {
-  const level = OFFICIAL_LEVELS[s.level] || 'mild', open = unlocked().includes(expansionOf(level));
-  const cur = playableMode(level, s.deckMode, unlocked());
-  return `<label>Cards <select data-set="deckMode">${DECK_MODES.map(m => {
-    const locked = m !== 'base' && !open;
-    return `<option value="${m}" ${m === cur ? 'selected' : ''} ${locked ? 'disabled' : ''}>${locked ? '🔒 ' : ''}${MODE_LABEL[m]}${locked ? ' (499 Dough in the Shop)' : ''}</option>`;
-  }).join('')}</select></label>${capsuleSelect(s)}`;
-}
+// The deck setting, picked on the card spring in the lobby: Starter deck, Expansion - 1 only, or both.
+// A locked Expansion shows a lock (it's 499 Dough in the Shop).
+const DECK_CARD = {
+  base: { name: 'Starter deck', sub: 'Free with every table', icon: 'hat' },
+  expansion: { name: 'Expansion - 1', sub: 'Expansion cards only', icon: 'plus' },
+  mixed: { name: 'Starter + Expansion - 1', sub: 'Both decks mixed', icon: 'both' },
+};
+let spring = null;
 // Time Capsule: off, every unlocked decade mixed in, or one decade alone (Medium only).
 function capsuleSelect(s) {
   const level = OFFICIAL_LEVELS[s.level] || 'mild', mine = unlocked();
@@ -282,18 +282,29 @@ export default {
     return false;
   },
 
+  // The deck picker beside the settings: a card spring with one card per deck (js/ck-deckspring.js).
+  lobbyStage(el, s, change) {
+    const level = OFFICIAL_LEVELS[s.level] || 'mild', open = unlocked().includes(expansionOf(level));
+    const decks = DECK_MODES.map(m => {
+      const locked = m !== 'base' && !open;
+      return { id: m, name: DECK_CARD[m].name, icon: ICONS[DECK_CARD[m].icon], locked, sub: locked ? '499 Dough in the Shop' : DECK_CARD[m].sub };
+    });
+    if (!spring || spring.el !== el) spring = { el, api: mountDeckSpring(el, { onSelect: d => change('deckMode', d.id) }) };
+    spring.api.update({ decks, selected: playableMode(level, s.deckMode, unlocked()) });
+  },
+
   settingsHTML(s) {
     // a timer saved from before the timers got longer shows (and starts) as the new default
     s = { ...s, recipeTime: K.RECIPE_TIMES.includes(Number(s.recipeTime)) ? Number(s.recipeTime) : K.DEFAULTS.recipeTime, ingredientTime: K.INGREDIENT_TIMES.includes(Number(s.ingredientTime)) ? Number(s.ingredientTime) : K.DEFAULTS.ingredientTime };
     const sel = (key, vals, label) => `<select data-set="${key}">${vals.map(v => `<option value="${v}" ${v === s[key] ? 'selected' : ''}>${label(v)}</option>`).join('')}</select>`;
     return `
       <label>Card level ${sel('level', [0, 1, 2], v => LEVEL_LABEL[OFFICIAL_LEVELS[v]])}</label>
-      ${deckSelect(s)}
-      <button type="button" class="tool ck-ownbtn" data-ck-own="${OFFICIAL_LEVELS[s.level] || 'mild'}">✎ Write your own card</button>
+      ${capsuleSelect(s)}
       <label>Play to ${sel('target', [5, 7, 10, 0], v => (v ? `${v} Chef's Kisses` : 'no target'))}</label>
       <label>Game length ${sel('length', [30, 60, 120, 0], v => (v ? (v === 120 ? '2 hours' : `${v} minutes`) : 'no timer'))}</label>
       <label>Recipe timer ${sel('recipeTime', K.RECIPE_TIMES, timeLabel)}</label>
       <label>Ingredient timer ${sel('ingredientTime', K.INGREDIENT_TIMES, timeLabel)}</label>
+      <button type="button" class="tool ck-ownbtn" data-ck-own="${OFFICIAL_LEVELS[s.level] || 'mild'}">✎ Write your own card</button>
       <p class="ck-si" data-si-status>${siLine()}</p>${(startSi(), '')}`;
   },
 

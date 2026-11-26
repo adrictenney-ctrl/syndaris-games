@@ -1,5 +1,5 @@
 // Clue Crack on the table — the quiz-show screen (see table-quiz.js).
-import { QUIZ } from './quiz-games.js?v=126';
-import { quizTable } from './table-quiz.js?v=126';
+import { QUIZ } from './quiz-games.js?v=127';
+import { quizTable } from './table-quiz.js?v=127';
 
 export default quizTable(QUIZ.cluecrack, { id: 'cluecrack' });

@@ -1,12 +1,12 @@
 // Chef's Kiss on a phone. Cards arrive face up: slide one
 // up into the selection area to play it. The Chef picks a Recipe Card the same way, then
 // awards the Chef's Kiss here (or on the table).
-import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=126';
-import { face, wireBulbs, esc } from './ck-face.js?v=126';
-import { movable } from './gesture.js?v=126';
+import { $, setHud, setStatus, renderHand, toast } from './phone-kit.js?v=127';
+import { face, wireBulbs, esc } from './ck-face.js?v=127';
+import { movable } from './gesture.js?v=127';
 import { openWorkshop, myCards } from './ck-workshop.js?v=1';
 import { makeCustomCard } from './ck-custom.js?v=1';
-import { funnyPicks, makeCards } from './laugh-engine.js?v=126';
+import { funnyPicks, makeCards } from './laugh-engine.js?v=127';
 
 let ctx = null, v = null;
 let chosen = -1;
