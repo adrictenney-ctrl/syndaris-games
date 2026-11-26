@@ -1,7 +1,7 @@
 // Checkers on a player's phone: the board turned to your side, tap a piece then where it lands.
 // For a multiple jump, tap the square it finishes on.
-import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=129';
-import { targetsFrom, num, NAME, isKing, colorOf } from './checkers.js?v=129';
+import { $, toast, setHud, setStatus, renderHand } from './phone-kit.js?v=130';
+import { targetsFrom, num, NAME, isKing, colorOf } from './checkers.js?v=130';
 
 let ctx = null;
 let selected = null;

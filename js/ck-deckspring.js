@@ -39,7 +39,9 @@ const TILT = 22 * Math.PI / 180;   // the camera looks down at the table this mu
 // A point in the photo at a distance from the camera -> camera space (x right, y up, looking down -z).
 export const unproject = (px, py, d) => [(px - 1000) / F * d, -(py - 1000) / F * d, -d];
 const UP_W = [0, Math.cos(TILT), Math.sin(TILT)];   // the table's "up", seen from the camera
-const PILE_BASE = unproject(990, 1712, 13.7);         // the table under the pile
+// How near the cards are (below 1 = nearer, so bigger cards in the same arc).
+export const NEAR = .8;
+const PILE_BASE = unproject(990, 1650, 13.7 * NEAR);   // the table under the pile
 // The distance at which the photo point lands on the table, a given height above it.
 function onTable(px, py, h) {
   const dir = [(px - 1000) / F, -(py - 1000) / F, -1];
@@ -49,13 +51,14 @@ function onTable(px, py, h) {
   return num / den;
 }
 const PILE_TOP = 36 * .0135;   // the static pile's height
+const onTablePoint = (px, py, h) => unproject(px, py, onTable(px, py, h));
 
 // Each place s (0 = the front, the chosen deck; up the spring is negative, down it positive):
 // [s, photo x, photo y, distance (or null: lying on the pile, `lift` above its top), turn away (yaw),
 //  lean back (pitch), turn in the picture (roll) (degrees), bend, lift]
 // Which card is drawn over which (higher on top), place by place, as the photo layers them.
-const Z = { '-13': .5, '-12': 1, '-11': 2, '-10': 3, '-9': 4, '-8': 5, '-7': 6, '-6': 14, '-5': 15, '-4': 16, '-3': 17, '-2': 18, '-1': 19, 0: 30, 1: 29, 2: 28, 3: 27, 4: 26, 5: 25, 6: 24, 7: 23, 8: 22, 9: 21, 10: 11.2, 11: 11, 12: 11.6, 13: 11.8, 14: 10.5 };
-const K = (s, px, py, d, yaw, pitch, roll, bend = 0, lift = 0) => ({ s, px, py, d: d ?? onTable(px, py, PILE_TOP + lift), yaw, pitch, roll, bend, z: Z[s] });
+const Z = { '-13': .5, '-12': 1, '-11': 2, '-10': 3, '-9': 4, '-8': 5, '-7': 6, '-6': 14, '-5': 15, '-4': 16, '-3': 17, '-2': 18, '-1': 19, 0: 30, 1: 29, 2: 28, 3: 27, 4: 26, 5: 25, 6: 24, 7: 23, 8: 22, 9: 21, 10: 12, 11: 11.8, 12: 11.6, 13: 11.4, 14: 11.2 };
+const K = (s, px, py, d, yaw, pitch, roll, bend = 0, lift = 0) => ({ s, px, py, d: d != null ? d * NEAR : onTable(px, py, PILE_TOP + lift), yaw, pitch, roll, bend, z: Z[s] });
 const FLAT = 90 - 22;   // lying flat on the table, seen from the camera
 export const KEYS = [
   K(-13, 640, 600, 15.32, 10, 0, 29),            // tucked under the far-left card (hidden)
@@ -80,12 +83,12 @@ export const KEYS = [
   K(6, 1413, 1486, 14.3, 360, 71, -102, .05),
   K(7, 1398, 1524, 14.25, 360, 73, -104, .04),
   K(8, 1385, 1561, 14.2, 360, 75, -106, .03),
-  K(9, 1330, 1640, null, 360, FLAT, -110, .015, .05),   // landing on the pile
-  K(10, 1150, 1660, null, 360, FLAT, -100, 0, .04),
-  K(11, 985, 1700, null, 360, FLAT, -80, 0, .025),
-  K(12, 930, 1592, null, 360, FLAT, -62, 0, .03),
-  K(13, 750, 1582, null, 360, FLAT, -68, 0, .045),
-  K(14, 940, 1680, null, 360, FLAT, -75, 0, -.02),       // under the top of the pile (hidden)
+  K(9, 1040, 1600, null, 360, FLAT - 4, -102, .015, .2),   // dropping onto the pile, just above it
+  K(10, 990, 1625, null, 360, FLAT, -100, 0, .0675),      // landed: the top of the pile, squared up
+  K(11, 990, 1625, null, 360, FLAT, -100, 0, .054),       // ... each one under the one that landed after it
+  K(12, 990, 1625, null, 360, FLAT, -100, 0, .0405),
+  K(13, 990, 1625, null, 360, FLAT, -100, 0, .027),
+  K(14, 990, 1625, null, 360, FLAT, -100, 0, .0135),      // into the pile (hidden under the others)
 ];
 const SMIN = KEYS[0].s, SMAX = KEYS[KEYS.length - 1].s;
 const FIELDS = ['px', 'py', 'd', 'yaw', 'pitch', 'roll', 'bend', 'z'];
@@ -484,7 +487,7 @@ function mount3d(el, { onSelect = () => {}, onFront = () => {}, hint = 'Drag the
   const fbo = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, fbo); gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, shadowTex, 0);
   gl.drawBuffers([gl.NONE]); gl.readBuffer(gl.NONE);
   gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-  const centre = unproject(1080, 1000, 15);
+  const centre = unproject(1080, 1000, 15 * NEAR);
   const lightView = lookAt(centre.map((v, i) => v + LIGHT[i] * 12), centre, [0, 1, 0]);
   const lightVP = mul(ortho(-4.6, 4.6, -4.6, 4.6, 2, 24), lightView);
   const PROJ = projection(), VIEW = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
@@ -515,14 +518,14 @@ function mount3d(el, { onSelect = () => {}, onFront = () => {}, hint = 'Drag the
     const st = poseAt(-7), q = quatEuler(st.yaw, st.pitch, st.roll), nrm = [2 * (q[0] * q[2] + q[1] * q[3]), 2 * (q[1] * q[2] - q[0] * q[3]), 1 - 2 * (q[0] * q[0] + q[1] * q[1])];
     for (let i = 0; i < 46; i++) {
       const off = (i - 23) * .0158, j = (hash(i, 9) - .5);
-      const pos = st.pos.map((v, k) => v + nrm[k] * off + (k === 1 ? j * .03 + (i - 23) * .002 : 0));
-      still.push({ m: modelMatrix(pos, quatEuler(st.yaw + j * 2.4, 0, st.roll + (hash(i, 4) - .5) * 1.6)), face: plainTex, back: plainTex, bend: 0, z: 7 + i * .13 });
+      const pos = st.pos.map((v, k) => v + nrm[k] * off);
+      still.push({ m: modelMatrix(pos, quatEuler(st.yaw + j * .6, 0, st.roll)), face: plainTex, back: plainTex, bend: 0, z: 7 + i * .13 });
     }
     for (let i = 0; i < 36; i++) {
-      const h = i * .0135, sx = (hash(i, 5) - .5) * 1.5 * (1 - i / 60), sz = (hash(i, 6) - .5) * .5;
-      const pos = PILE_BASE.map((v, k) => v + UP_W[k] * h + ax[k] * (sx + .05) + az[k] * sz);
+      const h = i * .0135, sx = (hash(i, 5) - .5) * .03, sz = (hash(i, 6) - .5) * .03;   // squared up, a hair out of line
+      const pos = onTablePoint(990, 1625, h).map((v, k) => v + ax[k] * sx + az[k] * sz);
       const cid = ALLPLAIN[Math.floor(hash(i, 7) * ALLPLAIN.length)];
-      still.push({ m: modelMatrix(pos, quatEuler(0, FLAT, -90 + (hash(i, 8) - .5) * 50)), face: faceTex(cid), back: backTex, bend: 0, pile: true, z: i * .25 });
+      still.push({ m: modelMatrix(pos, quatEuler(0, FLAT, -100 + (hash(i, 8) - .5) * 3)), face: faceTex(cid), back: backTex, bend: 0, pile: true, z: i * .25 });
     }
   }
 

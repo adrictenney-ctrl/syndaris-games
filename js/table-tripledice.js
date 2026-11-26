@@ -1,5 +1,5 @@
 // tripledice on the table — see table-casino.js.
-import * as C from './casino-games.js?v=129';
-import { casinoTable } from './table-casino.js?v=129';
+import * as C from './casino-games.js?v=130';
+import { casinoTable } from './table-casino.js?v=130';
 
 export default casinoTable(C.tripledice, { id: 'tripledice' });

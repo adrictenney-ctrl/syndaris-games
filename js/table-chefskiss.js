@@ -1,16 +1,16 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=129';
+import * as K from './chefskiss.js?v=130';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=129';
-import { movable } from './gesture.js?v=129';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=130';
+import { movable } from './gesture.js?v=130';
 import { startSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=129';
+import { topPicks } from './laugh-engine.js?v=130';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
-import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=3';
+import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=4';
 
 // ---------------------------------------------------------------- what the tables learn
 // Each judged round is reported (anonymously) and the stats for the next Recipe choices are
