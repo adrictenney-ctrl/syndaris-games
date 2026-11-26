@@ -1,7 +1,7 @@
 // Bug Bluff on the table: each player's face-up bugs (danger at three of a kind), how many cards
 // they hold, and the bug in transit — face down, with its claim and everyone who's peeked.
-import * as E from './bugbluff.js?v=125';
-import { partyTable, esc, who } from './table-party.js?v=125';
+import * as E from './bugbluff.js?v=126';
+import { partyTable, esc, who } from './table-party.js?v=126';
 
 export default partyTable(E, {
   id: 'bugbluff',

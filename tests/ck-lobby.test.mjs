@@ -11,20 +11,23 @@ const players = n => Array.from({ length: n }, (_, i) => ({ name: 'P' + i }));
 
 test('defaults: Play to 5, Recipe and Ingredient timers off', () => {
   assert.equal(K.DEFAULTS.target, 5);
+  assert.equal(K.DEFAULTS.length, 30);
   assert.equal(K.DEFAULTS.recipeTime, 0);
   assert.equal(K.DEFAULTS.ingredientTime, 0);
-  assert.deepEqual(K.FRESH, ['target', 'recipeTime', 'ingredientTime']);
+  assert.deepEqual(K.FRESH, ['target', 'length', 'recipeTime', 'ingredientTime']);
   const g = K.createGame({}, players(4));
   assert.equal(g.endsAt, 0, 'no Recipe timer');
 });
 
 test('they can still be changed', () => {
-  const g = K.createGame({ target: 10, recipeTime: 30, ingredientTime: 60 }, players(4));
+  const g = K.createGame({ target: 10, length: 120, recipeTime: 30, ingredientTime: 60 }, players(4));
   assert.equal(g.settings.target, 10);
+  assert.equal(g.settings.length, 120);
   assert.equal(g.settings.recipeTime, 30);
   assert.equal(g.settings.ingredientTime, 60);
   const lobby = read('../js/table-chefskiss.js');
   assert.match(lobby, /Play to \$\{sel\('target'/);
+  assert.match(lobby, /Game length \$\{sel\('length'/);
   assert.match(lobby, /Recipe timer \$\{sel\('recipeTime'/);
   assert.match(lobby, /Ingredient timer \$\{sel\('ingredientTime'/);
 });

@@ -1,14 +1,14 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=125';
+import * as K from './chefskiss.js?v=126';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
 import { DECK_MODES, MODE_LABEL, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, CAPSULE_ALONE_LEVELS, tableDecks } from './chefskiss-decks.js?v=3';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=125';
-import { movable } from './gesture.js?v=125';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=126';
+import { movable } from './gesture.js?v=126';
 import { startSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=125';
+import { topPicks } from './laugh-engine.js?v=126';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
 
 // ---------------------------------------------------------------- what the tables learn
@@ -272,7 +272,7 @@ function watchTv() {
 
 export default {
   defaults: { ...K.DEFAULTS },
-  fresh: K.FRESH,   // Play to 5, both timers off: every time the table opens
+  fresh: K.FRESH,   // Play to 5, 30 minutes, both timers off: every time the table opens
   lobbyPlayers(players, redraw) { seatOwned = cleanOwned((players || []).flatMap(p => (p && !p.bot ? p.owns || [] : []))); redrawLobby = redraw; watchTv(); },
   applySetting(s, key, el) {
     // A new level changes which Cards and Time Capsule choices are open: draw the settings again.

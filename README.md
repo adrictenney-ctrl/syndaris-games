@@ -182,7 +182,7 @@ prompt) and **Ingredient Cards** (terracotta orange, the response).
   smaller, and twisted with two fingers. With a mouse, scroll to resize and Shift+scroll to rotate. Double-tap puts
   a card back.
 - **Ending:** play to 5 (every table starts at 5), 7 or 10 Chef's Kisses, or no target. The game-length timer is 30 minutes, 60 minutes, 2
-  hours, or none; when time is up the current round finishes and the most Chef's Kisses wins.
+  hours, or none (every table starts at 30 minutes); when time is up the current round finishes and the most Chef's Kisses wins.
 - **Timers:** a Recipe Card timer (off, 15, 30, 45, 60 or 90 s) and an Ingredient Card timer (off, 30, 45, 60, 90,
   120 or 180 s). Both start off every time the table opens. When
   one runs out, a random card is played. The host can change any timer mid-game with **⏱ Timers** on the table,

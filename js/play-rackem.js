@@ -1,8 +1,8 @@
 // Rack 'Em on a phone: your rack top to bottom (slot 1 at the top must be the lowest). Draw from
 // the deck or take the discard, then tap the slot to swap it into — or throw it away.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=125';
-import { rkCard } from './table-rackem.js?v=125';
-import { runFromFront } from './rackem.js?v=125';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=126';
+import { rkCard } from './table-rackem.js?v=126';
+import { runFromFront } from './rackem.js?v=126';
 
 let wasMyTurn = false;
 export function reset() { document.getElementById('rkPhone')?.remove(); }

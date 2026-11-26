@@ -1,8 +1,8 @@
 // Lucky Streak on a phone: your row of cards, your chance of busting on the next flip, and
 // two big buttons — Hit or Stay. When you draw a Halt or a Triple Dare, pick who gets it.
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=125';
-import * as L from './luckystreak.js?v=125';
-import { lkCard } from './table-luckystreak.js?v=125';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=126';
+import * as L from './luckystreak.js?v=126';
+import { lkCard } from './table-luckystreak.js?v=126';
 
 let ctx = null, wasMyTurn = false;
 

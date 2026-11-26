@@ -1,9 +1,9 @@
 // Cribbage on the table: an oak peg board along the middle (two tracks of 120 holes in three
 // rows each, front and back pegs), the starter and crib beside it, the pegging pile with its
 // running count, and in the show each hand laid out with its points.
-import * as C from './cribbage.js?v=125';
-import { cardEl, snap } from './cards.js?v=125';
-import { centerMsg, clearMsg } from './table-hearts.js?v=125';
+import * as C from './cribbage.js?v=126';
+import { cardEl, snap } from './cards.js?v=126';
+import { centerMsg, clearMsg } from './table-hearts.js?v=126';
 
 let root = null, key = '';
 

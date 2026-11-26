@@ -113,13 +113,13 @@ export const DEFAULTS = {
   deckMode: 'base',   // which of the level's decks: 'base' (free starter) until purchases exist (Al's spec Section 7)
   level: 0,           // the table's one deck: 0 = Mild (elementary), 1 = Medium (middle school), 2 = Hot (high school)
   target: 5,          // Chef's Kisses to win (0 = no target); every new table starts here (FRESH)
-  length: 60,         // minutes (0 = no game timer)
+  length: 30,         // minutes (0 = no game timer); every new table starts here (FRESH)
   recipeTime: 0,      // seconds for the Chef to pick a Recipe Card (0 = off); starts off (FRESH)
   ingredientTime: 0,  // seconds for Apprentices to play (0 = off); starts off (FRESH)
 };
 // The Laugh Engine is always on and there are no teams (no settings for either).
 // These settings start at their default every time the table opens, whatever was picked last time.
-export const FRESH = ['target', 'recipeTime', 'ingredientTime'];
+export const FRESH = ['target', 'length', 'recipeTime', 'ingredientTime'];
 const MAX_CUSTOM = 30;  // custom cards one player can have at a table at once
 const OWN_MAX = 5;      // "Write your own card": free cards per account (a paid blank deck adds more later)
 
