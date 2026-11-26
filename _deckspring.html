@@ -7,7 +7,8 @@
 <style>
   :root { --display: 'Lilita One', system-ui, sans-serif; --ui: 'Nunito', system-ui, sans-serif; }
   body { margin: 0; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; gap: 2vmin; align-items: center; justify-items: center; background: radial-gradient(ellipse at 50% 40%, #4b3bd6, #23187e); font: 700 16px var(--ui); color: #fff; }
-  .s { height: 88vh; aspect-ratio: 800 / 940; }
+  .s { height: 88vh; aspect-ratio: 1420 / 1780; }
+  body.one { grid-template-columns: 1fr; } body.one #b { display: none; } body.one .s { height: 96vh; }
   #log { position: fixed; left: 12px; bottom: 8px; margin: 0; }
 </style></head><body>
 <div class="s" id="a"></div><div class="s" id="b"></div>
@@ -16,6 +17,7 @@
   // ?timer: run on timers instead of animation frames (for checking it in a hidden window)
   if (location.search.includes('timer')) window.requestAnimationFrame = f => setTimeout(() => f(performance.now()), 16);
 </script>
+<script>if (location.search.includes('one')) document.addEventListener('DOMContentLoaded', () => document.body.classList.add('one'));</script>
 <script type="module">
   import { mountDeckSpring, ICONS } from './js/ck-deckspring.js';
   const log = d => { document.querySelector('#log').textContent = 'onSelect: ' + d.name; };

@@ -1,91 +1,70 @@
-/* Chef's Kiss deck picker: the card spring (js/ck-deckspring.js), and the lobby around it. */
+/* Chef's Kiss deck picker: the card spring (js/ck-deckspring.js), and the lobby around it.
+   Every card is a 250 x 350 box put onto its four corners from the reference photo (matrix3d). */
 
 .cks { position: relative; outline: none; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; border-radius: 2vmin; }
 .cks.cks-dragging { cursor: grabbing; }
 .cks:focus-visible { box-shadow: 0 0 0 .35vmin rgba(255, 216, 74, .85); }
 .cks-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 .cks-cards { position: absolute; inset: 0; }
-.cks-cards.cks-swap { animation: dsSwap .26s ease-out; }
-@keyframes dsSwap { from { opacity: .35; transform: translateY(1.2%); } }
+.cks-cards.cks-swap { animation: cksSwap .26s ease-out; }
+@keyframes cksSwap { from { opacity: .35; transform: translateY(1.2%); } }
+.cks-blocks { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 40; pointer-events: none; overflow: visible; }
+
 .cks-card {
-  position: absolute; left: 0; top: 0; width: var(--dsw); height: var(--dsh); transform-style: preserve-3d; will-change: transform;   /* not opacity: that would flatten the card and hide its back */
-  font-size: calc(var(--dsw) / 100); color: #15151c;
+  position: absolute; left: 0; top: 0; width: 250px; height: 350px; transform-origin: 0 0; will-change: transform;
+  border-radius: 16px; color: #111;
+  box-shadow: 0 0 0 1px rgba(40, 40, 60, .22), 0 10px 22px rgba(10, 6, 40, .28), 0 2px 4px rgba(10, 6, 40, .2);
 }
-.cks-face, .cks-back {
-  position: absolute; inset: 0; border-radius: 7em / 5em; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  box-shadow: 0 0 0 .6em rgba(0, 0, 0, .14), 0 3em 6em rgba(8, 4, 40, .35);
-}
-/* white glossy stock with a thin border */
-.cks-face { background: linear-gradient(155deg, #ffffff 0%, #f7f6f2 55%, #ecebe6 100%); }
-.cks-face::before { content: ''; position: absolute; inset: 3.4em; border: .5em solid rgba(20, 20, 40, .08); border-radius: 5em / 3.6em; pointer-events: none; }
-.cks-face::after { content: ''; position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255, 255, 255, .7) 0 18%, rgba(255, 255, 255, 0) 34%); pointer-events: none; z-index: 2; }
-/* the red patterned back */
-.cks-back { transform: rotateY(180deg); background: #fbfaf6; }
-.cks-back::before {
-  content: ''; position: absolute; inset: 6em; border-radius: 3.6em / 2.6em;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .55) 0 7em, transparent 7.6em),
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, .45) 0 .7em, transparent .7em 6em),
-    repeating-linear-gradient(-45deg, rgba(255, 255, 255, .45) 0 .7em, transparent .7em 6em),
-    linear-gradient(160deg, #d7252e, #a8121a);
-  box-shadow: inset 0 0 0 1em #b51820, inset 0 0 0 1.6em rgba(255, 255, 255, .55);
-}
-.cks-shade { position: absolute; inset: 0; background: #1b1440; opacity: 0; pointer-events: none; z-index: 3; }
+.cks-face, .cks-back, .cks-shade, .cks-edge { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; }
+/* glossy white stock */
+.cks-face { background: linear-gradient(160deg, #ffffff 0%, #fbfbf9 45%, #efefec 100%); }
+.cks-face::after { content: ''; position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255, 255, 255, .75) 0 14%, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(20, 20, 40, .06)); pointer-events: none; z-index: 3; }
+/* the red back (drawn over the face when the card shows its back) */
+.cks-back { background: #fbfaf7; opacity: 0; z-index: 4; }
+.cks-back svg { width: 100%; height: 100%; display: block; }
+.cks-edge { position: absolute; inset: 0; border-radius: 16px; opacity: 0; z-index: 4; background: linear-gradient(90deg, #d9d9df, #ffffff 40%, #c9c8d2); }
+.cks-shade { background: linear-gradient(180deg, #2a2440, #0d0a1c); opacity: 0; z-index: 5; pointer-events: none; }
 .cks-card svg { display: block; fill: currentColor; }
-.cks-card.red { color: #d0202a; }
+.cks-card.red { color: #d3121f; }
 /* corner index */
-.cks-ix { position: absolute; display: flex; flex-direction: column; align-items: center; width: 16em; line-height: .9; z-index: 1; }
-.cks-ix.tl { left: 4.5em; top: 5em; }
-.cks-ix.br { right: 4.5em; bottom: 5em; transform: rotate(180deg); }
-.cks-ix b { font: 700 17em/1 Georgia, 'Times New Roman', serif; letter-spacing: -.06em; }
-.cks-ix svg { width: 11em; height: 11em; margin-top: 1em; }
+.cks-ix { position: absolute; display: flex; flex-direction: column; align-items: center; width: 34px; z-index: 1; }
+.cks-ix.tl { left: 9px; top: 12px; }
+.cks-ix.br { right: 9px; bottom: 12px; transform: rotate(180deg); }
+.cks-ix b { font: 700 38px/0.95 'Times New Roman', Georgia, serif; letter-spacing: -2px; }
+.cks-ix svg { width: 24px; height: 24px; margin-top: 3px; }
 /* number cards: pips */
-.cks-pips { position: absolute; inset: 14% 20%; }
-.cks-pips i { position: absolute; width: 19em; height: 19em; transform: translate(-50%, -50%); }
+.cks-pips { position: absolute; inset: 30px 46px; }
+.cks-pips i { position: absolute; width: 44px; height: 44px; transform: translate(-50%, -50%); }
 .cks-pips i.dn { transform: translate(-50%, -50%) rotate(180deg); }
 .cks-pips svg { width: 100%; height: 100%; }
-.cks-pips.ace i { width: 40em; height: 40em; }
-/* picture cards: a framed panel */
-.cks-court {
-  position: absolute; inset: 15% 19%; display: grid; place-items: center; align-content: center; gap: 3em; border-radius: 2em;
-  border: .9em solid currentColor;
-  background: repeating-linear-gradient(135deg, rgba(255, 196, 46, .55) 0 4em, rgba(40, 70, 190, .28) 4em 8em), #fff8e6;
-}
-.cks-court b { font: 700 46em/1 Georgia, 'Times New Roman', serif; }
-.cks-court svg { width: 20em; height: 20em; }
-/* deck cards: the deck's icon and name */
+.cks-pips.ace i { width: 90px; height: 90px; }
+/* picture cards: a framed, two-headed court figure */
+.cks-court { position: absolute; inset: 40px 44px; border: 2.5px solid #1f3f9a; background: #fbf4df; overflow: hidden; }
+.cks-court > svg:first-child { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cks-court .cks-cpip { position: absolute; left: 6px; top: 6px; width: 32px; height: 32px; }
+.cks-court .cks-cpip.dn { left: auto; top: auto; right: 6px; bottom: 6px; transform: rotate(180deg); }
+/* deck cards: a framed panel with the deck's icon and name */
 .cks-card.deck { color: #c8202c; }
-.cks-card.deck .cks-ix svg { width: 13em; height: 13em; margin: 0; }
-.cks-mid { position: absolute; inset: 18% 9% 16%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4em; text-align: center; color: #15151c; z-index: 1; }
-.cks-icon { width: 40em; height: 40em; color: #15151c; }
+.cks-card.deck .cks-ix svg { width: 30px; height: 30px; margin: 0; }
+.cks-dframe {
+  position: absolute; inset: 44px 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 10px; text-align: center; color: #1b1b28; border: 2.5px solid #1f3f9a; border-radius: 4px;
+  background: radial-gradient(ellipse at 50% 35%, #fffaf0, #f6eedb);
+  box-shadow: inset 0 0 0 5px #fbf4df, inset 0 0 0 6.5px #c8202c;
+}
+.cks-icon { width: 84px; height: 84px; color: #1b1b28; }
 .cks-icon svg { width: 100%; height: 100%; }
-.cks-mid b { font: 400 13em/1.02 var(--display, system-ui), system-ui, sans-serif; letter-spacing: .03em; text-transform: uppercase; }
-.cks-mid small { font: 800 7.4em/1.2 var(--ui, system-ui), system-ui, sans-serif; letter-spacing: .02em; color: #6a6478; }
-.cks-card.locked .cks-mid { opacity: .5; }
-.cks-lock { position: absolute; left: 50%; top: 40%; width: 34em; height: 34em; margin: -17em 0 0 -17em; padding: 7em; box-sizing: border-box; border-radius: 50%; background: rgba(20, 16, 60, .86); color: #ffd84a; z-index: 2; }
+.cks-dframe b { font: 400 27px/1.02 var(--display, 'Lilita One'), system-ui, sans-serif; letter-spacing: .5px; text-transform: uppercase; }
+.cks-dframe small { font: 800 14px/1.2 var(--ui, 'Nunito'), system-ui, sans-serif; color: #6a6478; }
+.cks-card.locked .cks-dframe > * { opacity: .45; }
+.cks-lock { position: absolute; left: 50%; top: 42%; width: 80px; height: 80px; margin: -40px 0 0 -40px; padding: 18px; box-sizing: border-box; border-radius: 50%; background: rgba(20, 16, 60, .88); color: #ffd84a; z-index: 2; }
 .cks-lock svg { width: 100%; height: 100%; }
 /* the chosen deck: a warm glow */
-.cks-card.deck.is-front .cks-face { box-shadow: 0 0 0 1.4em #ffd84a, 0 0 12em 4em rgba(255, 216, 74, .65), 0 3em 6em rgba(8, 4, 40, .35); }
-.cks-card.deck.locked.is-front .cks-face { box-shadow: 0 0 0 1.4em rgba(255, 255, 255, .6), 0 3em 6em rgba(8, 4, 40, .35); }
-.cks-card.cks-pop .cks-face { animation: dsPop .35s ease-out; }
-@keyframes dsPop { 40% { filter: brightness(1.12); } }
-/* the top stack and the bottom pile: blocks of card edges */
-.cks-block { position: absolute; }
-.cks-stack {
-  z-index: 85; border-radius: .8vmin .5vmin .5vmin .8vmin;
-  background: linear-gradient(180deg, rgba(255, 255, 255, .35), rgba(255, 255, 255, 0) 30%, rgba(30, 20, 70, .18)),
-    linear-gradient(90deg, rgba(30, 20, 70, .38), rgba(255, 255, 255, 0) 22%, rgba(255, 255, 255, .15) 60%, rgba(30, 20, 70, .3)),
-    repeating-linear-gradient(90deg, #fbfbfd 0 .14vmin, #b9b8c6 .14vmin .2vmin);
-  box-shadow: 0 1vmin 2.4vmin rgba(8, 4, 40, .4), inset 0 0 0 .1vmin rgba(30, 20, 70, .25);
-}
-.cks-pileblock {
-  z-index: 10; border-radius: .5vmin;
-  background: linear-gradient(90deg, rgba(30, 20, 70, .3), rgba(255, 255, 255, .1) 30%, rgba(255, 255, 255, .1) 70%, rgba(30, 20, 70, .35)),
-    linear-gradient(180deg, rgba(255, 255, 255, .3), rgba(30, 20, 70, .3)),
-    repeating-linear-gradient(180deg, #fbfbfd 0 .14vmin, #b9b8c6 .14vmin .2vmin);
-  box-shadow: 0 1.6vmin 2.6vmin rgba(8, 4, 40, .45);
-}
-.cks-cap { position: absolute; margin: 0; transform: translate(-50%, -50%); width: 30%; text-align: center; pointer-events: none; z-index: 120; font-size: 1.9vmin; font-weight: 800; line-height: 1.25; color: #fff; text-shadow: 0 .3vmin .8vmin rgba(10, 6, 60, .6); }
+.cks-card.deck.is-front { box-shadow: 0 0 0 4px #ffd84a, 0 0 34px 10px rgba(255, 216, 74, .6), 0 10px 22px rgba(10, 6, 40, .3); }
+.cks-card.deck.locked.is-front { box-shadow: 0 0 0 4px rgba(255, 255, 255, .7), 0 10px 22px rgba(10, 6, 40, .3); }
+.cks-card.cks-pop .cks-face { animation: cksPop .35s ease-out; }
+@keyframes cksPop { 40% { filter: brightness(1.12); } }
+.cks-cap { position: absolute; margin: 0; transform: translate(-50%, -50%); width: 30%; text-align: center; pointer-events: none; z-index: 200; font-size: 1.9vmin; font-weight: 800; line-height: 1.25; color: #fff; text-shadow: 0 .3vmin .8vmin rgba(10, 6, 60, .6); }
 .cks-cap span { display: block; opacity: .85; }
 .cks-cap b { display: block; margin-top: .8vmin; color: #ffd84a; font-size: 1.8vmin; }
 @media (prefers-reduced-motion: reduce) { .cks-card { will-change: auto; } .cks-card.cks-pop .cks-face { animation: none; } }
@@ -102,7 +81,7 @@ body.has-stage .lobby-head .back { margin: 0 0 .5vmin; }
 body.has-stage .lobby-head .game-title { font-size: 5.6vmin; }
 body.has-stage .lobby-head .game-blurb { margin: .8vmin 0; }
 body.has-stage .lobby-head .rules-btn { margin: 0; }
-body.has-stage.in-lobby #lobbyStage { display: block; grid-area: stage; height: min(58vmin, calc((var(--lob-b, 100vh) - var(--lob-t, 0px) - var(--mirror-h)) / var(--lz, 1) - 1vmin)); aspect-ratio: 800 / 940; }
+body.has-stage.in-lobby #lobbyStage { display: block; grid-area: stage; height: min(58vmin, calc((var(--lob-b, 100vh) - var(--lob-t, 0px) - var(--mirror-h)) / var(--lz, 1) - 1vmin)); aspect-ratio: 1420 / 1780; }
 body.has-stage.in-lobby .lobby-info {
   width: 64vmin; max-width: 64vmin;
   max-height: calc((var(--lob-b, 100vh) - var(--lob-t, 0px) - var(--mirror-h) - 2.4vmin) / var(--lz, 1) - 12vmin);

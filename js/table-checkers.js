@@ -1,8 +1,8 @@
 // Checkers on the table screen: an ebony-and-champagne board on a dark leather desk.
 // Ebony plays from the bottom, Ivory from the top. Moves can be made by tapping the
 // board on the table, or from either phone. Multi-jumps hop square by square.
-import * as K from './checkers.js?v=127';
-import { snap } from './cards.js?v=127';
+import * as K from './checkers.js?v=128';
+import { snap } from './cards.js?v=128';
 
 let boardEl = null;
 let pieceEls = new Array(64).fill(null);

@@ -1,4 +1,4 @@
 // See table-words.js.
-import { longwordT } from './table-words.js?v=127';
+import { longwordT } from './table-words.js?v=128';
 
 export default longwordT;

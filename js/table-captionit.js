@@ -1,4 +1,4 @@
 // See table-social.js.
-import { captionitT } from './table-social.js?v=127';
+import { captionitT } from './table-social.js?v=128';
 
 export default captionitT;

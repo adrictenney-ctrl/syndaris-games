@@ -1,4 +1,4 @@
 // See table-words.js.
-import { acroraceT } from './table-words.js?v=127';
+import { acroraceT } from './table-words.js?v=128';
 
 export default acroraceT;

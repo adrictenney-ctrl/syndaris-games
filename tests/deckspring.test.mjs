@@ -4,29 +4,40 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { pose, ARC, ARC_FROM, ICONS } from '../js/ck-deckspring.js';
+import { SLOTS, FRONT, quadAt, quadMatrix, ICONS, ASPECT } from '../js/ck-deckspring.js';
 import { DECK_MODES } from '../js/chefskiss-decks.js';
 
 const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
 
-test('the arc: the front card is the biggest and faces straight out; the others turn away', () => {
-  const [, , , ry, rx, s] = pose(0);
-  assert.equal(ry, 0);
-  assert.equal(rx, 0);
-  for (let p = ARC_FROM; p <= 16; p += .5) if (p) assert.ok(pose(p)[5] < s, `position ${p} is smaller than the front`);
-  // springing out of the top stack: turned further away the farther from the front
-  for (let p = -1; p > -7; p--) assert.ok(pose(p - 1)[3] < pose(p)[3], `position ${p - 1} turns away more`);
-  // the top stack is edge on, the far left shows red backs, then faces again
-  for (let p = -13; p <= -8; p++) assert.ok(Math.abs(pose(p)[3]) > 80);
-  for (let p = -17; p <= -15; p++) assert.ok(Math.abs(pose(p)[3]) > 90, 'a back');
-  assert.ok(Math.abs(pose(-19)[3]) < 90, 'a face');
-  // down the right side the cards lean back more and more, and land lying in the pile
-  for (let p = 1; p < 10; p++) assert.ok(pose(p + 1)[4] >= pose(p)[4]);
-  assert.equal(pose(14)[4], 70);
-  // between two positions a card is part way between them
-  const a = pose(2), b = pose(3), m = pose(2.5);
-  assert.ok(Math.abs(m[0] - (a[0] + b[0]) / 2) < 1e-9 && Math.abs(m[1] - (a[1] + b[1]) / 2) < 1e-9);
-  assert.equal(ARC[-ARC_FROM][5], s, 'row -ARC_FROM is the front');
+test('the arc is the reference photo: each card on its own four corners', () => {
+  // the front card is the photo's Jack of clubs, upper right; the biggest card and on top
+  const area = q => Math.abs((q[0] * q[3] - q[2] * q[1]) + (q[2] * q[5] - q[4] * q[3]) + (q[4] * q[7] - q[6] * q[5]) + (q[6] * q[1] - q[0] * q[7])) / 2;
+  assert.equal(SLOTS[FRONT].card, 'Jc');
+  for (const [i, sl] of SLOTS.entries()) {
+    if (i !== FRONT) { assert.ok(area(sl.q) < area(SLOTS[FRONT].q), `place ${i} is smaller`); assert.ok(sl.z < SLOTS[FRONT].z, `place ${i} is under the front`); }
+    for (let c = 0; c < 8; c += 2) assert.ok(sl.q[c] >= 380 && sl.q[c] <= 1800 && sl.q[c + 1] >= 120 && sl.q[c + 1] <= 1900, `place ${i} is inside the photo's frame`);
+  }
+  // red backs fan out of the top stack on the left, face-up cards spring out of it on the right
+  assert.deepEqual(SLOTS.slice(0, 5).map(s => s.back), [0, 0, 1, 1, 1]);
+  assert.ok(SLOTS.slice(5, 13).every(s => s.edge === 1), 'the top stack is edge on');
+  assert.deepEqual(SLOTS.slice(13, 19).map(s => s.card), ['Ah', 'Js', '5s', 'Js', 'Qd', '5h']);
+  // down the right side the cards lie back, each under the one above, and land in the pile
+  for (let i = FRONT + 1; i < FRONT + 10; i++) assert.ok(SLOTS[i + 1].z < SLOTS[i].z);
+  assert.ok(Math.abs(ASPECT - 1420 / 1780) < 1e-9);
+});
+
+test('between two places a card turns and slides without shrinking; the transform lands on the corners', () => {
+  const area = q => Math.abs((q[0] * q[3] - q[2] * q[1]) + (q[2] * q[5] - q[4] * q[3]) + (q[4] * q[7] - q[6] * q[5]) + (q[6] * q[1] - q[0] * q[7])) / 2;
+  assert.deepEqual(quadAt(FRONT), SLOTS[FRONT].q);
+  const a = area(SLOTS[FRONT].q), b = area(SLOTS[FRONT + 1].q), m = area(quadAt(FRONT + .5));
+  assert.ok(m > Math.min(a, b) * .9, 'no squash half way');
+  // the matrix maps the card's corners (0,0), (250,0), (250,350), (0,350) onto the place's corners
+  const q = SLOTS[FRONT].q, M = quadMatrix(q);
+  const map = (x, y) => { const w = M[3] * x + M[7] * y + M[15]; return [(M[0] * x + M[4] * y + M[12]) / w, (M[1] * x + M[5] * y + M[13]) / w]; };
+  [[0, 0], [250, 0], [250, 350], [0, 350]].forEach(([x, y], c) => {
+    const [X, Y] = map(x, y);
+    assert.ok(Math.abs(X - q[c * 2]) < 1e-6 && Math.abs(Y - q[c * 2 + 1]) < 1e-6, `corner ${c}`);
+  });
 });
 
 test('the lobby: the card spring replaces the Cards list; one card per deck, locked ones show the Shop price', () => {
@@ -55,7 +66,7 @@ test('smooth: only transforms and opacity move, a card keeps its 3D (no opacity 
   const css = read('../css/ck-deckspring.css'), js = read('../js/ck-deckspring.js');
   assert.match(css, /\.cks-card \{[^}]*will-change: transform;/);
   assert.doesNotMatch(css, /will-change: [^;]*opacity/);
-  assert.match(css, /backface-visibility: hidden/);
+  assert.match(js, /matrix3d\(/);
   assert.match(js, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(js.replace(/\/\/.*$/gm, ''), /style\.(left|top|width|height) = /, 'no layout properties set while moving');
   // keyboard, wheel, pointer (mouse, pen and touch) and screen readers
