@@ -3,7 +3,7 @@
 // A real-time 3D model of a card spring, laid out after the reference photo: a camera matched to the
 // photo, and every card a thin, slightly bendable 3D card with rounded corners and edges, lit by a
 // soft key light with a glossy coat, casting soft shadows on the cards around it and on the table
-// under the pile. The cards spring out of the top stack, turn to face you at the front (the chosen
+// under the pile. The cards fan out of the red backs at the top, turn to face you at the front (the chosen
 // deck), lie back as they fall down the right side and land in the pile. Moving, each card follows
 // a moment after the one before and flexes; at rest the front card floats gently. Deck cards are
 // ivory with gold foil that catches the light. Drawn with WebGL 2 (no library); on a screen without
@@ -62,12 +62,12 @@ const K = (s, px, py, d, yaw, pitch, roll, bend = 0, lift = 0) => ({ s, px, py, 
 const FLAT = 90 - 22;   // lying flat on the table, seen from the camera
 export const KEYS = [
   K(-13, 640, 600, 15.32, 10, 0, 29),            // tucked under the far-left card (hidden)
-  K(-12, 628, 590, 15.25, 10, 0, 28, .01),       // the fan off the top stack: face up at the far left
+  K(-12, 628, 590, 15.25, 10, 0, 28, .01),       // the fan at the top: face up at the far left
   K(-11, 661, 547, 15.15, 12, 0, 24, .01),
   K(-10, 761, 452, 15.3, 205, 0, -22, .02),      // red backs
   K(-9, 810, 402, 15.45, 214, 0, -17, .02),
   K(-8, 860, 395, 15.6, 228, 0, -10, .02),
-  K(-7, 918, 362, 15.85, 268, 0, -2),            // in the top stack, edge on
+  K(-7, 925, 368, 15.85, 250, 0, -6, .02),       // the last red back, turning over
   K(-6, 1036, 330, 15.8, 281, 0, -4, .03),       // springing out of it, turned away
   K(-5, 1066, 345, 15.7, 283, 0, -6, .03),
   K(-4, 1101, 368, 15.6, 286, 0, -8, .035),
@@ -507,20 +507,11 @@ function mount3d(el, { onSelect = () => {}, onFront = () => {}, hint = 'Drag the
   const faces = new Map();
   const faceTex = cid => { if (!faces.has(cid)) faces.set(cid, texOf(drawFace(cid))); return faces.get(cid); };
   const backTex = texOf(drawBack());
-  // a card in the top stack, seen almost edge on: white, with a grey line down each long edge so the
-  // stack shows its layers
-  const plainTex = texOf((() => { const { c, g } = stock(64, 90, ['#ffffff', '#efeee9']); const gr = g.createLinearGradient(0, 0, 64, 0); gr.addColorStop(0, 'rgba(70,66,92,.75)'); gr.addColorStop(.09, 'rgba(70,66,92,0)'); gr.addColorStop(.91, 'rgba(70,66,92,0)'); gr.addColorStop(1, 'rgba(70,66,92,.6)'); g.fillStyle = gr; g.fillRect(0, 0, 64, 90); return c; })());
   const black = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, black); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 255]));
 
-  // ---- the still cards: the top stack (edge on) and the pile under the landing cards
+  // ---- the still cards: the pile under the landing cards
   const still = [];
   {
-    const st = poseAt(-7), q = quatEuler(st.yaw, st.pitch, st.roll), nrm = [2 * (q[0] * q[2] + q[1] * q[3]), 2 * (q[1] * q[2] - q[0] * q[3]), 1 - 2 * (q[0] * q[0] + q[1] * q[1])];
-    for (let i = 0; i < 46; i++) {
-      const off = (i - 23) * .0158, j = (hash(i, 9) - .5);
-      const pos = st.pos.map((v, k) => v + nrm[k] * off);
-      still.push({ m: modelMatrix(pos, quatEuler(st.yaw + j * .6, 0, st.roll)), face: plainTex, back: plainTex, bend: 0, z: 7 + i * .13 });
-    }
     for (let i = 0; i < 36; i++) {
       const h = i * .0135, sx = (hash(i, 5) - .5) * .03, sz = (hash(i, 6) - .5) * .03;   // squared up, a hair out of line
       const pos = onTablePoint(990, 1625, h).map((v, k) => v + ax[k] * sx + az[k] * sz);
@@ -720,7 +711,7 @@ function mount3d(el, { onSelect = () => {}, onFront = () => {}, hint = 'Drag the
     }
     return best?.c || null;
   }
-  // Drag up the spring (toward the top stack) and the next deck comes up out of the pile to the
+  // Drag up the spring (toward the top) and the next deck comes up out of the pile to the
   // front; drag down it and the deck before comes back down out of the stack.
   function along(p) {
     const a = toScreen(poseAt(p - .5).pos), b = toScreen(poseAt(p + .5).pos);

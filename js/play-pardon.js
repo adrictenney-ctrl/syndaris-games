@@ -1,9 +1,9 @@
 // Pardon Me! on a phone: Draw a card, then pick one of the moves it allows (pawns are numbered
 // 1–4 on the board).
-import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=130';
-import { boardSVG } from './table-ludo.js?v=130';
-import { pmCard, optText } from './table-pardon.js?v=130';
-import { SLIDES } from './pardon.js?v=130';
+import { $, setHud, setStatus, renderHand } from './phone-kit.js?v=131';
+import { boardSVG } from './table-ludo.js?v=131';
+import { pmCard, optText } from './table-pardon.js?v=131';
+import { SLIDES } from './pardon.js?v=131';
 
 let ctx = null, wasMyTurn = false;
 export function reset() { document.getElementById('pmPhone')?.remove(); }
