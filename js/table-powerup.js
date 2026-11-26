@@ -1,6 +1,6 @@
 // PowerUp Chess on the table: the chess board and controls, running the stacking engine.
 // Absorbed pieces show in a strip under the piece on top.
-import * as P from './powerchess.js?v=136';
-import { withEngine } from './table-chess.js?v=136';
+import * as P from './powerchess.js?v=137';
+import { withEngine } from './table-chess.js?v=137';
 
 export default withEngine(P);

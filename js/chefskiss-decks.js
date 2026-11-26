@@ -13,7 +13,7 @@ export const DECKS = {
 // still say: owned decks are saved under them): one decade each, 500 cards with heat set per card (most
 // Medium). Each is bought separately for 499 Bread.
 export const CAPSULE_PRICE = 499;   // Bread
-export const DECADES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'];
+export const DECADES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s', '1950s'];
 for (const d of DECADES) DECKS[`deck_timecapsule_${d}`] = { level: 'mixed', kind: 'expansion', bread: CAPSULE_PRICE, decade: d, name: `Classic Cookbook: ${d}` };
 export const CAPSULES = DECADES.map(d => `deck_timecapsule_${d}`);
 export const EXPANSIONS = Object.keys(DECKS).filter(id => DECKS[id].kind === 'expansion');

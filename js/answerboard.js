@@ -3,8 +3,8 @@
 // value and takes control; other right answers score half; wrong answers lose half. One clue on
 // the board is a Double Down — only the picker answers, for double. When the board is empty, the
 // most points wins.
-import { base, shuffle, sfx, left, announce, waiting } from './party.js?v=136';
-import { CATS, Q } from './trivia-bank.js?v=136';
+import { base, shuffle, sfx, left, announce, waiting } from './party.js?v=137';
+import { CATS, Q } from './trivia-bank.js?v=137';
 
 export function createGame(settings, players) {
   const g = base(settings, players, { cats: 5, secs: 15 });

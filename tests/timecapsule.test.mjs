@@ -1,4 +1,4 @@
-// Al's Time Capsule decks (21 Nov 2026): six decades, 500 cards each, heat per card, 499 Bread each.
+// Al's Time Capsule decks (21 Nov 2026): seven decades (1950s added 26 Nov), 500 cards each, heat per card, 499 Bread each.
 // Run:  node --test "tests/*.test.mjs"
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,9 +14,9 @@ const LEVELS = ['mild', 'medium', 'hot'];
 const byId = new Map(CARDS.map(c => [c.id, c]));
 const players = [0, 1, 2, 3, 4, 5].map(i => ({ name: 'P' + i }));
 
-test('six Time Capsule decks, each 100 + 400 with Al\'s heat split, all live and unique', () => {
-  assert.deepEqual(DECADES, ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s']);
-  assert.equal(readdirSync(DIR).filter(f => f.endsWith('.json')).length, 6);
+test('seven Time Capsule decks, each 100 + 400 with Al\'s heat split, all live and unique', () => {
+  assert.deepEqual(DECADES, ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s', '1950s']);
+  assert.equal(readdirSync(DIR).filter(f => f.endsWith('.json')).length, 7);
   const ids = new Set();
   for (const id of CAPSULES) {
     const cards = CARDS.filter(c => c.deckIds?.includes(id));
@@ -25,7 +25,7 @@ test('six Time Capsule decks, each 100 + 400 with Al\'s heat split, all live and
     assert.deepEqual(LEVELS.map(l => n('ingredient', l)), [80, 240, 80], id);
     for (const c of cards) { assert.equal(c.status, 'active'); assert.equal(c.decade, DECKS[id].decade); assert.ok(!ids.has(c.id)); ids.add(c.id); }
   }
-  assert.equal(ids.size, 3000);
+  assert.equal(ids.size, 3500);
   assert.equal(new Set(CARDS.map(c => c.id)).size, CARDS.length, 'no id is used twice in the whole database');
 });
 
@@ -71,11 +71,11 @@ test('dealing: every card matches the table level; off never deals a Time Capsul
 });
 
 test('Al\'s decade fix: a decade filter applies to the Recipe choices too', () => {
-  const table = { level: 'medium', decks: ['deck_medium_base', ...CAPSULES], decadeFilter: ['1960s'], usedCardIds: new Set() };
-  for (let i = 0; i < 20; i++) for (const id of recipeChoices(CARDS, table, makeRng('r' + i))) assert.equal(byId.get(id).decade, '1960s');
+  const table = { level: 'medium', decks: ['deck_medium_base', ...CAPSULES], decadeFilter: ['1950s'], usedCardIds: new Set() };
+  for (let i = 0; i < 20; i++) for (const id of recipeChoices(CARDS, table, makeRng('r' + i))) assert.equal(byId.get(id).decade, '1950s');
 });
 
-test('each decade is a deck on the deck chooser (greyed out when nobody owns it); the Shop sells the six for Bread', () => {
+test('each decade is a deck on the deck chooser (greyed out when nobody owns it); the Shop sells the seven for Bread', () => {
   const t = read('../js/table-chefskiss.js');
   assert.doesNotMatch(t, /data-set="capsule"/, 'no Time Capsule dropdown');
   assert.match(t, /for \(const id of CAPSULES\) \{\s*const locked = !mine\.includes\(id\);\s*decks\.push/);

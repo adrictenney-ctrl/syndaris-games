@@ -106,7 +106,7 @@ export const DECK_SHOP = {
   deck_medium_exp1: { name: 'Medium Expansion - 1', price: 499 },
   deck_hot_exp1: { name: 'Hot Expansion - 1', price: 499 },
   // Classic Cookbooks (the decade decks; ids say timecapsule, their first name): 499 Bread each
-  ...Object.fromEntries(['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'].map(d => [`deck_timecapsule_${d}`, { name: `Classic Cookbook: ${d}`, price: 499, currency: 'bread' }])),
+  ...Object.fromEntries(['2010s', '2000s', '1990s', '1980s', '1970s', '1960s', '1950s'].map(d => [`deck_timecapsule_${d}`, { name: `Classic Cookbook: ${d}`, price: 499, currency: 'bread' }])),
 };
 export async function buyDeck(id) {
   const u = currentUser(), item = DECK_SHOP[id];

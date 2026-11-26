@@ -5,7 +5,7 @@
 // The slot labels stay with the table; players never see them.
 import { CONFIG, rank } from './chefskiss-config.js?v=3';
 import { answerFit } from './ck-custom.js?v=1';
-import { inDecks } from './chefskiss-decks.js?v=5';
+import { inDecks } from './chefskiss-decks.js?v=6';
 
 const DIMS = ['subject', 'tone', 'scale', 'register', 'violation', 'status'];
 export const TAG_WEIGHTS = { subject: 1.0, tone: 1.5, scale: 1.0, register: 1.0, violation: 1.0, status: 1.0 };

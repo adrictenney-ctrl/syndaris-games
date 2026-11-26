@@ -1,14 +1,14 @@
 // Chef's Kiss on the table: the Recipe Card in the middle, the Ingredient Cards laid out
 // beside it (face down as they come in, face up for the Chef to judge). Every card can be
 // moved, pinched bigger or smaller, and twisted, like a real card on the table.
-import * as K from './chefskiss.js?v=136';
+import * as K from './chefskiss.js?v=137';
 import { OFFICIAL_LEVELS, LEVEL_LABEL } from './chefskiss-config.js?v=3';
-import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, tableDecks, deckChoice, CAPSULE_PRICE } from './chefskiss-decks.js?v=5';
+import { DECK_MODES, expansionOf, playableMode, cleanOwned, CAPSULES, DECKS, tableDecks, deckChoice, CAPSULE_PRICE } from './chefskiss-decks.js?v=6';
 import { makeBlocker } from './parental.js?v=1';
-import { face, back, wireBulbs, esc } from './ck-face.js?v=136';
-import { movable } from './gesture.js?v=136';
+import { face, back, wireBulbs, esc } from './ck-face.js?v=137';
+import { movable } from './gesture.js?v=137';
 import { startSi, siStatus, onSiStatus, useModelFile, gemmaBackend } from './laugh-si.js?v=1';
-import { topPicks } from './laugh-engine.js?v=136';
+import { topPicks } from './laugh-engine.js?v=137';
 import { statsNow, prefetch, report } from './ck-stats.js?v=1';
 import { mountDeckSpring, ICONS } from './ck-deckspring.js?v=8';
 
@@ -258,7 +258,7 @@ const unlocked = () => [...new Set([...tvOwned, ...seatOwned])];
 function watchTv() {
   if (watching || typeof window === 'undefined') return;
   watching = true;
-  import('./dough.js?v=16').then(m => m.watchDecks(list => { tvOwned = cleanOwned(list); redrawLobby?.(); })).catch(() => {});
+  import('./dough.js?v=17').then(m => m.watchDecks(list => { tvOwned = cleanOwned(list); redrawLobby?.(); })).catch(() => {});
 }
 
 export default {

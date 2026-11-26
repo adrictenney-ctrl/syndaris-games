@@ -99,7 +99,7 @@ async function sendGift(f) {
 }
 
 const EXPANSIONS = [['deck_mild_exp1', 'Mild Expansion - 1'], ['deck_medium_exp1', 'Medium Expansion - 1'], ['deck_hot_exp1', 'Hot Expansion - 1']];
-const CAPSULES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s'].map(d => [`deck_timecapsule_${d}`, `Classic Cookbook: ${d}`]);
+const CAPSULES = ['2010s', '2000s', '1990s', '1980s', '1970s', '1960s', '1950s'].map(d => [`deck_timecapsule_${d}`, `Classic Cookbook: ${d}`]);
 const LOAF = '<svg class="loaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11c0-3.5 3.6-6 8-6s8 2.5 8 6c0 1.2-.8 2-2 2v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5c-1.2 0-2-.8-2-2z" fill="#e8b45a" stroke="#7a4a14" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 9l1 2M12 8.5l1 2M15 9l1 2" stroke="#7a4a14" stroke-width="1.3" stroke-linecap="round"/></svg>';
 async function buyDeck(id, btn) {
   const capsule = CAPSULES.some(x => x[0] === id), coin = capsule ? 'Bread' : 'Dough';
