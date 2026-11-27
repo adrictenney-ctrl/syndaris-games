@@ -1,5 +1,5 @@
 // casinowar on the table — see table-casino.js.
-import * as C from './casino-games.js?v=137';
-import { casinoTable } from './table-casino.js?v=137';
+import * as C from './casino-games.js?v=138';
+import { casinoTable } from './table-casino.js?v=138';
 
 export default casinoTable(C.casinowar, { id: 'casinowar' });

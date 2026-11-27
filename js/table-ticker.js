@@ -1,4 +1,4 @@
 // See table-choice.js.
-import { tickerT } from './table-choice.js?v=137';
+import { tickerT } from './table-choice.js?v=138';
 
 export default tickerT;

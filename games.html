@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display&family=Noto+Sans+Symbols+2&family=Manrope:wght@400;500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <!-- Style from Settings: Vibrant (free), Classic or a skin (bought; skins dress the table and phones). -->
-  <script src="js/skin-boot.js?v=137" data-page="home"></script>
-  <link rel="stylesheet" href="css/cards.css?v=137">
-  <link rel="stylesheet" href="css/tablet.css?v=137">
+  <script src="js/skin-boot.js?v=138" data-page="home"></script>
+  <link rel="stylesheet" href="css/cards.css?v=138">
+  <link rel="stylesheet" href="css/tablet.css?v=138">
   <style>
     html { background: var(--onyx); }
     body {
@@ -125,6 +125,9 @@
     .fav.pop { animation: favPop .35s ease; }
     @keyframes favPop { 50% { transform: scale(1.4); } }
     @media (hover: none) { .fav { opacity: .8; } }
+    /* the ten most played games everywhere (js/plays.js) */
+    .top-badge { position: absolute; left: 12px; top: 12px; z-index: 2; font-family: var(--ui); font-size: 10px; font-weight: 800; letter-spacing: .12em; padding: 5px 9px; border-radius: 999px; color: #fff; background: linear-gradient(180deg, #ff6a3d, #d8304a); box-shadow: 0 4px 10px rgba(0, 0, 0, .3); }
+    .new ~ .top-badge { top: 42px; }
 
     /* ---------- the library ---------- */
     .section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 16px; }
@@ -410,7 +413,7 @@
     html.tv .info-row { padding-left: 14px; min-height: 0; }
     html.tv .info-row .box-stage { display: none; }
   </style>
-  <link rel="stylesheet" href="css/vibrant.css?v=137">
+  <link rel="stylesheet" href="css/vibrant.css?v=138">
 </head>
 <body class="home">
   <header class="bar">
@@ -487,13 +490,13 @@
     <div class="wrap legal">Play On Display™ is a trademark of Syndaris.</div>
   </footer>
 
-  <script type="module" src="js/tvnav.js?v=137"></script>
+  <script type="module" src="js/tvnav.js?v=138"></script>
   <script type="module">
-    import { GAMES } from './js/games.js?v=137';
-    import { ALIASES, nearWord } from './js/search-aliases.js?v=137';
-    import { sceneSVG } from './js/covers.js?v=137';
+    import { GAMES } from './js/games.js?v=138';
+    import { ALIASES, nearWord } from './js/search-aliases.js?v=138';
+    import { sceneSVG } from './js/covers.js?v=138';
     import { isGameBlocked, getParental } from './js/parental.js?v=1';
-    import { KIND } from './js/game-kind-list.js?v=137';
+    import { KIND } from './js/game-kind-list.js?v=138';
     // Parent Controls: games turned off on this screen don't show anywhere on the home page.
     const allowed = id => !isGameBlocked(id);
 
@@ -716,6 +719,18 @@
       tiles[id] = box;
     });
 
+    // ---- Most played: the ten games with the most plays on every screen go first in every list.
+    let top = [];
+    const isTop = id => top.includes(id);
+    function setTop(list) {
+      top = list.filter(id => GAMES[id] && allowed(id)).slice(0, 10);
+      for (const [id, t] of Object.entries(tiles)) {
+        t.querySelector('.top-badge')?.remove();
+        const k = top.indexOf(id);
+        if (k >= 0) t.querySelector('.art').insertAdjacentHTML('beforeend', `<span class="top-badge" title="One of the 10 most played games">#${k + 1} MOST PLAYED</span>`);
+      }
+    }
+
     function draw() {
       try { localStorage.setItem('pod.home.filters', JSON.stringify({ cat, who })); } catch {}
       cats.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', !q.trim() && b.dataset.cat === cat));
@@ -725,7 +740,7 @@
       let show = ids.filter(id => allowed(id) && inCat(id) && matches(id) && fits(GAMES[id]));
       // Starred games come first (in Favorites, in the order they were starred).
       if (cat === 'fav' && !searching) show = favs.filter(id => show.includes(id));
-      else show = [...show.filter(isFav), ...show.filter(id => !isFav(id))];
+      else show = [...top.filter(id => show.includes(id)), ...show.filter(id => isFav(id) && !isTop(id)), ...show.filter(id => !isFav(id) && !isTop(id))];
       // Searching: the closest matches first (a game's own name, or exactly the other name typed).
       if (searching) {
         const nq = flat(q), rank = id => flat(GAMES[id].name) === nq || (ALIASES[id] || []).some(a => flat(a) === nq) ? 0
@@ -743,6 +758,11 @@
       document.getElementById('libCount').textContent = `${show.length} ${show.length === 1 ? 'game' : 'games'}${who !== 'any' ? ` · ${PLAYERS.find(p => p[0] === who)[1]} players` : ''}`;
     }
     draw();
+    // The last top ten this screen saw at once, then the fresh one.
+    import('./js/plays.js?v=1').then(m => {
+      setTop(m.cachedTop()); draw();
+      return m.topPlayed().then(t => { if (t.join() !== top.join()) { setTop(t); draw(); } });
+    }).catch(() => {});
 
     // ---- Account (Firebase sign-in). Loaded in the background; the page never waits on it.
     if (!onTV) import('./js/account.js?v=6').then(m => m.mountAccount()).catch(() => {});
